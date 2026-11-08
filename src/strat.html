@@ -1,0 +1,87 @@
+<div class="wrap" id="view-strat" hidden>
+  <header class="vh">
+    <h1>Stratégies à 100 €</h1>
+    <p class="sub">Chaque stratégie part de 100 € <b>virtuels</b> et mise 1 € par pari, avec les vraies cotes, sur les matchs de foot des championnats suivis et de NBA (pas de cotes gratuites pour le tennis au jour le jour). Les paris sont enregistrés avant le match et jamais modifiés.</p>
+  </header>
+
+  <div class="card">
+    <div class="eyebrow">Verdict des tests sur le passé</div>
+    <p class="sverdict" id="stVerdict"></p>
+  </div>
+
+  <section class="card">
+    <div class="eyebrow">En direct <span id="stSince" style="text-transform:none;letter-spacing:0"></span></div>
+    <p class="note">Il faut environ 300 paris réglés par stratégie avant de conclure : avant, la chance pèse plus que la méthode.</p>
+    <div class="slist" id="stLive"></div>
+    <details class="more"><summary>Paris en cours (<span id="stOpenN">0</span>)</summary><div class="sopen" id="stOpen"></div></details>
+  </section>
+
+  <section class="card">
+    <div class="eyebrow">Tests sur le passé</div>
+    <div class="seg" role="group" aria-label="Sport" id="stSeg"><button data-s="Foot" aria-pressed="true">Foot</button><button data-s="Tennis" aria-pressed="false">Tennis</button><button data-s="NBA" aria-pressed="false">NBA</button></div>
+    <p class="note"><b id="stBtInfo"></b><br>Même règle : 1 € par pari, vraies cotes, pronostics du modèle calculés avant chaque match. « Rendement » = gain ou perte pour 100 € misés au total ; la marge entre parenthèses donne la part de hasard possible.</p>
+    <div class="slist" id="stBt"></div>
+  </section>
+</div>
+
+<style>
+.sverdict { margin: 6px 0 0; font-size: 15px; line-height: 1.5; }
+.slist { display: grid; gap: 8px; margin-top: 10px; }
+.srow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.srow .sn { font-weight: 600; font-size: 14px; }
+.srow .sd { font-size: 12px; color: var(--ink-3); grid-column: 1; }
+.srow .sv { grid-row: 1 / span 2; grid-column: 2; display: grid; justify-items: end; font-size: 12px; color: var(--ink-2); text-align: right; }
+.srow .sv b { font-size: 16px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.srow .up { color: var(--grass); } .srow .down { color: var(--b); }
+.sopen { display: grid; gap: 6px; margin-top: 10px; font-size: 13px; }
+.sopen > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.sopen small { color: var(--ink-3); grid-column: 1 / -1; }
+</style>
+
+<script>
+(() => {
+  const P = window.PAPER, B = window.BT, g = id => document.getElementById(id);
+  const f = (x, d = 0) => x.toFixed(d).replace(".", ",");
+  const eur = x => f(x, 2) + " €";
+  const pct = x => (x >= 0 ? "+" : "−") + f(Math.abs(x * 100), 1) + " %";
+  const cls = x => x > 0 ? "up" : x < 0 ? "down" : "";
+
+  // ---- verdict (calculé sur les tests, pas écrit à la main)
+  if (B && B.Foot) {
+    const all = Object.entries(B).flatMap(([sp, x]) => x.res.map(r => ({ ...r, sp })));
+    const proven = all.filter(r => r.roi - r.ci > 0 && r.n >= 300);
+    const big = all.filter(r => r.n >= 300);
+    const lo = Math.min(...big.map(r => r.roi)), hi = Math.max(...big.map(r => r.roi));
+    const lucky = all.filter(r => r.roi > 0).map(r => `${r.name.toLowerCase()} (${r.sp}, ${pct(r.roi)})`);
+    g("stVerdict").innerHTML = (proven.length ? `<b>Stratégie gagnante au-delà du hasard : ${proven.map(r => r.name + " (" + r.sp + ")").join(", ")}.</b> `
+        : `<b>Aucune stratégie n'est rentable de façon prouvée, ni au foot, ni au tennis, ni en NBA.</b> Sur les stratégies avec au moins 300 paris, le rendement va de ${pct(lo)} à ${pct(hi)} : on perd à peu près la marge du bookmaker. `)
+      + (lucky.length ? `Quelques résultats positifs — ${lucky.join(", ")} — restent dans la marge du hasard : à surveiller en direct, pas à jouer.` : "");
+    const draw = sp => {
+      const X = B[sp];
+      g("stBtInfo").textContent = `${X.label} · ${X.n_matches.toLocaleString("fr-FR")} matchs`;
+      g("stSeg").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.s === sp));
+      g("stBt").innerHTML = [...X.res].sort((a, b) => b.roi - a.roi).map(r => {
+        const end = r.id === "kelly" || r.id === "martingale" ? r.final : 100 + r.roi * r.n;
+        const ruin = r.busted ? `à sec dès ${new Date(r.busted).toLocaleDateString("fr-FR", { month: "short", year: "numeric" })}` : `100 € → ${eur(Math.max(0, end))}`;
+        return `<div class="srow"><span class="sn">${r.name}</span><span class="sd">${r.n.toLocaleString("fr-FR")} paris · ${f(r.hit * 100)} % gagnés · cote moyenne ${f(r.odds, 2)} · périodes gagnantes ${r.pos_seasons}/${r.n_seasons}</span>
+          <span class="sv"><b class="${cls(r.roi)}">${pct(r.roi)}</b><span>(± ${f(r.ci * 100, 1)} %)</span><span>${ruin}</span></span></div>`;
+      }).join("");
+    };
+    g("stSeg").addEventListener("click", e => { const b = e.target.closest("button"); if (b) draw(b.dataset.s); });
+    draw("Foot");
+  } else { g("stVerdict").textContent = "Tests indisponibles."; }
+
+  // ---- direct
+  if (P && P.strats) {
+    g("stSince").textContent = P.since ? `· depuis le ${new Date(P.since).toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}` : "";
+    const L = [...P.strats].sort((a, b) => b.bank - a.bank || b.pending - a.pending);
+    g("stLive").innerHTML = L.map(r => `<div class="srow"><span class="sn">${r.name}</span><span class="sd">${r.desc}<br>${r.n} réglés${r.n ? ` · ${r.won} gagnés` : ""} · ${r.pending} en cours</span>
+      <span class="sv"><b class="${cls(r.profit)}">${eur(r.bank)}</b><span>${r.roi == null ? "—" : pct(r.roi)}</span></span></div>`).join("");
+    g("stOpenN").textContent = P.open.length;
+    g("stOpen").innerHTML = P.open.length ? P.open.map(b => {
+      const d = new Date(b.dt);
+      return `<div><span><b>${b.sel}</b> · ${b.match}</span><span>cote ${f(b.odds, 2)} · ${eur(b.stake)}</span><small>${b.strat} · ${b.sport} · ${d.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric" })} ${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}</small></div>`;
+    }).join("") : `<p class="note">Aucun pari en cours.</p>`;
+  } else { g("stLive").innerHTML = `<p class="note">Le suivi en direct démarre à la prochaine mise à jour.</p>`; }
+})();
+</script>

@@ -1,0 +1,624 @@
+<style>
+.bx { --ch: #3D7BEA; --ca: #F2B526; position: relative; overflow: hidden; border-radius: 16px; color: #fff; font-family: var(--f-display);
+  background: radial-gradient(90% 80% at 0% 45%, rgba(61,123,234,.30), transparent 60%), radial-gradient(90% 80% at 100% 45%, rgba(242,181,38,.22), transparent 60%), #0A1122; }
+.bx-top { display: grid; grid-template-columns: minmax(0,1fr) auto auto auto minmax(0,1fr); margin: 10px 10px 0; border-radius: 10px 10px 0 0; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
+.bx-team { padding: 7px 10px; background: linear-gradient(180deg,#1C2E57,#142445); border-bottom: 3px solid var(--c); min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+.bx-team b { font-size: 15px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bx-team.a { text-align: right; }
+.bx-team small { font-size: 10px; opacity: .65; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bx-sc { font-size: 30px; font-weight: 700; padding: 0 10px; display: flex; align-items: center; justify-content: center; background: #0C1631; font-variant-numeric: tabular-nums; min-width: 46px; border-bottom: 3px solid var(--c); }
+.bx-sc.up { animation: bxup .6s ease-out; }
+@keyframes bxup { 0% { color: #F7E04A; transform: scale(1.25); } 100% { color: #fff; transform: none; } }
+.bx-mid { background: #060C1C; padding: 4px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 70px; border-bottom: 3px solid #060C1C; }
+.bx-mid b { font-size: 15px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bx-mid small { font-size: 10px; color: #F2B526; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.bx-ten { margin: 10px 10px 0; border-radius: 10px 10px 0 0; overflow: hidden; background: #0C1631; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
+.bx-ten div { display: flex; align-items: center; gap: 0; font-weight: 700; font-size: 15px; border-left: 4px solid var(--c); }
+.bx-ten div + div { border-top: 1px solid rgba(255,255,255,.08); }
+.bx-ten span { flex: 1; min-width: 0; padding: 7px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: linear-gradient(90deg,#1C2E57,#142445); }
+.bx-ten i { width: 8px; height: 8px; border-radius: 50%; margin: 0 8px; flex: none; }
+.bx-ten b { width: 30px; text-align: center; font-variant-numeric: tabular-nums; padding: 7px 0; }
+.bx-ten b.pt { width: 44px; background: #F2B526; color: #0A1122; }
+.bx-ten b.w { color: #F7E04A; }
+.bx-wp { display: grid; grid-template-columns: 52px minmax(0,1fr) 52px; gap: 8px; align-items: center; margin: 0 10px; padding: 5px 10px 6px; background: rgba(6,12,28,.85); border-radius: 0 0 10px 10px; }
+.bx-wp i { font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+.bx-wp i.h { color: var(--ch); } .bx-wp i.a { color: var(--ca); text-align: right; }
+.bx-tr { position: relative; height: 22px; }
+.bx-tr::before { content: ""; position: absolute; left: 0; right: 0; top: 60%; border-top: 2px dotted rgba(255,255,255,.22); }
+.bx-tr .fh, .bx-tr .fa { position: absolute; top: calc(60% - 1px); height: 3px; border-radius: 2px; transition: width .5s; }
+.bx-tr .fh { left: 0; background: var(--ch); } .bx-tr .fa { right: 0; background: var(--ca); }
+.bx-tr .mk { position: absolute; top: 60%; width: 10px; height: 10px; border-radius: 50%; background: #F7E04A; transform: translate(-50%,-45%); transition: left .5s; box-shadow: 0 0 0 4px rgba(247,224,74,.2); }
+.bx-tr .lb { position: absolute; left: 50%; top: -2px; transform: translateX(-50%); font-size: 9px; font-weight: 700; letter-spacing: .14em; opacity: .55; text-transform: uppercase; white-space: nowrap; }
+.bx-stage { position: relative; margin-top: 4px; }
+.bx-stage canvas { display: block; width: 100%; }
+.bx-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 62px; height: 62px; border-radius: 50%; border: 0; background: rgba(255,255,255,.94); color: #0A1122; display: grid; place-items: center; cursor: pointer; box-shadow: 0 8px 26px rgba(0,0,0,.45); }
+.bx-flash { position: absolute; left: 50%; top: 45%; font-size: 40px; font-weight: 700; letter-spacing: .03em; text-shadow: 0 4px 20px rgba(0,0,0,.7); animation: bxpop 1s ease-out both; pointer-events: none; white-space: nowrap; transform: translate(-50%,-50%); }
+@keyframes bxpop { 0% { transform: translate(-50%,-50%) scale(.3); opacity: 0; } 25% { transform: translate(-50%,-50%) scale(1.15); opacity: 1; } 80% { opacity: 1; } 100% { transform: translate(-50%,-50%) scale(1); opacity: 0; } }
+.bx-tick { display: flex; align-items: center; gap: 10px; padding: 8px 12px 11px; min-height: 24px; }
+.bx-chip { flex: none; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; transform: skewX(-12deg); background: var(--cc, #fff); color: #0A1122; max-width: 45%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bx-tick > span { font-size: 13px; font-weight: 600; opacity: .92; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.bx-ctl { display: flex; gap: 10px; justify-content: center; align-items: center; }
+.bx-ctl button { font: inherit; font-weight: 700; font-size: 14px; height: 44px; min-width: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid var(--line2); background: var(--surface); color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.bx-ctl button.main { background: var(--hot); border-color: var(--hot); color: #fff; min-width: 64px; }
+.bx-stats { display: grid; gap: 9px; }
+.bx-row { display: grid; grid-template-columns: 40px minmax(0,1fr) auto minmax(0,1fr) 40px; align-items: center; gap: 8px; font-size: 14px; }
+.bx-row > b { font-variant-numeric: tabular-nums; } .bx-row > b:last-child { text-align: right; }
+.bx-row > em { font-style: normal; font-size: 12px; color: var(--ink-3); text-align: center; min-width: 92px; font-weight: 600; }
+.bx-bar { height: 6px; border-radius: 3px; background: var(--track); overflow: hidden; display: flex; }
+.bx-bar.l { justify-content: flex-end; } .bx-bar i { display: block; height: 100%; border-radius: 3px; transition: width .4s; }
+.bx-bar.l i { background: #3D7BEA; } .bx-bar.r i { background: #F2B526; }
+.bx-many { display: grid; gap: 10px; }
+.bx-many > button { font: inherit; font-weight: 700; font-size: 15px; min-height: 44px; border-radius: 12px; border: 1px solid var(--line2); background: var(--surface); color: var(--ink); cursor: pointer; }
+.bx-hda { display: flex; height: 30px; border-radius: 8px; overflow: hidden; font-size: 13px; font-weight: 700; }
+.bx-hda span { display: flex; align-items: center; justify-content: center; min-width: 0; white-space: nowrap; overflow: hidden; }
+.bx-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.bx-chips span { padding: 5px 11px; border-radius: 999px; background: var(--track); font-size: 13px; font-weight: 600; }
+.bx-chips b { margin-right: 6px; }
+.bx-sub { font-size: 12px; font-weight: 700; color: var(--ink-3); letter-spacing: .04em; text-transform: uppercase; }
+.bx-if { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.bx-if .sm-l { font-weight: 700; }
+.sm-head h2 { margin: 0; }
+@media (max-width: 520px) {
+  .bx-top { grid-template-columns: minmax(0,1fr) auto auto minmax(0,1fr); }
+  .bx-top .bx-team.h { grid-column: 1; grid-row: 1; } .bx-top .bx-sc.h { grid-column: 2; grid-row: 1; }
+  .bx-top .bx-sc.a { grid-column: 3; grid-row: 1; } .bx-top .bx-team.a { grid-column: 4; grid-row: 1; }
+  .bx-top .bx-mid { grid-column: 1 / -1; grid-row: 2; flex-direction: row; gap: 10px; padding: 3px 8px; border-bottom: 0; }
+  .bx-team b { font-size: 14px; } .bx-team small { display: none; } .bx-sc { font-size: 26px; min-width: 40px; padding: 0 8px; }
+  .bx-mid b { font-size: 13px; }
+}
+</style>
+<script>
+// ---------- Simulation du match (foot, tennis, NBA), façon retransmission ----------
+(() => {
+  const CH = "#3D7BEA", CA = "#F2B526";
+  const tr = s => (window.I18N ? window.I18N.tr(s) : s);
+  const pc = x => Math.round(x * 100) + " %";
+  const pmf = (k, l) => { let p = Math.exp(-l); for (let i = 1; i <= k; i++) p *= l / i; return p; };
+  const poisson = l => { let L = Math.exp(-l), k = 0, p = 1; do { k++; p *= Math.random(); } while (p > L); return k - 1; };
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  const pick = a => a[Math.floor(Math.random() * a.length)];
+  const erf = x => { const t = 1 / (1 + .3275911 * Math.abs(x)), y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - .284496736) * t + .254829592) * t * Math.exp(-x * x); return x >= 0 ? y : -y; };
+  const Phi = z => .5 * (1 + erf(z / Math.SQRT2));
+  function fprobs(lh, la, gh, ga) {
+    let H = 0, D = 0, A = 0, tot = 0;
+    for (let i = 0; i <= 10; i++) for (let j = 0; j <= 10; j++) { const q = pmf(i, lh) * pmf(j, la); tot += q; const x = i + gh, y = j + ga; if (x > y) H += q; else if (x === y) D += q; else A += q; }
+    return [H / tot, D / tot, A / tot];
+  }
+  const short = n => { const s = String(n).trim().split(" "); return /\.$/.test(s[s.length - 1]) && s.length > 1 ? s.slice(0, -1).join(" ") : s[s.length - 1]; };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const IC = {
+    play: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg>',
+    pause: '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>',
+    again: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4"/></svg>',
+    big: '<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>'
+  };
+
+  // ---------- dessin en perspective ----------
+  function Stage(cv, o) {
+    const ctx = cv.getContext("2d");
+    let W = 0, H = 0, pr = null;
+    const resize = () => {
+      const w = cv.parentNode.clientWidth || 340, h = Math.round(w * (w < 520 ? o.ratio[0] : o.ratio[1])), d = window.devicePixelRatio || 1;
+      if (w === W && h === H) return; W = w; H = h;
+      cv.width = w * d; cv.height = h * d; cv.style.height = h + "px"; ctx.setTransform(d, 0, 0, d, 0, 0);
+      const cw = W * o.cw, top = o.top * H, bot = o.bot * H, hh = H - top - bot, g = o.g;
+      pr = (u, v, z = 0) => { const vv = v * (1 + g) / (1 + g * v), s = o.far + (1 - o.far) * vv; return [W / 2 + (u - .5) * cw * s, top + hh * vv - z * s * cw / o.m * .85, s]; };
+    };
+    resize();
+    const path = pts => { ctx.beginPath(); pts.forEach((p, i) => { const [x, y] = pr(p[0], p[1], p[2] || 0); i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); };
+    const S = {
+      ctx, get W() { return W; }, get H() { return H; }, p: (u, v, z) => pr(u, v, z), resize,
+      line(pts, c, w) { path(pts); ctx.strokeStyle = c; ctx.lineWidth = w; ctx.stroke(); },
+      fill(pts, c) { path(pts); ctx.closePath(); ctx.fillStyle = c; ctx.fill(); },
+      rect: (u0, v0, u1, v1) => [[u0, v0], [u1, v0], [u1, v1], [u0, v1], [u0, v0]],
+      arc: (cu, cv2, ru, rv, a0, a1, n = 40) => Array.from({ length: n + 1 }, (_, i) => { const a = a0 + (a1 - a0) * i / n; return [cu + ru * Math.cos(a), cv2 + rv * Math.sin(a)]; }),
+      shadow(u, v, r) { const [x, y, s] = pr(u, v); ctx.beginPath(); ctx.ellipse(x, y + 1, r * s * 1.1, r * s * .45, 0, 0, 7); ctx.fillStyle = "rgba(0,0,0,.35)"; ctx.fill(); },
+      player(u, v, col, label, hl, r0 = 9) {
+        const [x, y, s] = pr(u, v), r = Math.max(6, r0 * s * W / 380);
+        ctx.beginPath(); ctx.ellipse(x, y + 1, r * 1.05, r * .42, 0, 0, 7); ctx.fillStyle = "rgba(0,0,0,.35)"; ctx.fill();
+        const cy = y - r * .9;
+        if (hl) { ctx.beginPath(); ctx.arc(x, cy, r + 4, 0, 7); ctx.fillStyle = "rgba(247,224,74,.35)"; ctx.fill(); }
+        ctx.beginPath(); ctx.arc(x, cy, r, 0, 7); ctx.fillStyle = col; ctx.fill();
+        ctx.lineWidth = 2; ctx.strokeStyle = hl ? "#F7E04A" : "#fff"; ctx.stroke();
+        if (label !== "" && r >= 7) { ctx.fillStyle = col === CA ? "#0A1122" : "#fff"; ctx.font = `700 ${Math.round(r * 1.05)}px Quicksand, system-ui, sans-serif`; ctx.textAlign = "center"; ctx.textBaseline = "middle"; ctx.fillText(label, x, cy + .5); }
+      },
+      ball(u, v, z, col, r0, edge) {
+        const [gx, gy, s] = pr(u, v), r = Math.max(2.5, r0 * s * W / 380);
+        ctx.beginPath(); ctx.ellipse(gx, gy, r, r * .45, 0, 0, 7); ctx.fillStyle = "rgba(0,0,0,.4)"; ctx.fill();
+        const [x, y] = pr(u, v, z); ctx.beginPath(); ctx.arc(x, y - r, r, 0, 7); ctx.fillStyle = col; ctx.fill(); ctx.lineWidth = 1.2; ctx.strokeStyle = edge; ctx.stroke();
+      },
+      call(u, v, z, who, what, col) { // étiquette d'action façon télé
+        if (!what) return;
+        const [x0, y0] = pr(u, v, z); ctx.font = "700 11px Quicksand, system-ui, sans-serif";
+        const A = String(who || "").toUpperCase(), B = String(what).toUpperCase(), wa = A ? ctx.measureText(A).width + 16 : 0, wb = ctx.measureText(B).width + 16, h = 20, tw = wa + wb;
+        let x = Math.min(Math.max(x0 - tw / 2, 6), W - tw - 6), y = Math.max(6, y0 - 46);
+        const sk = 5, box = (bx, bw, c) => { ctx.beginPath(); ctx.moveTo(bx + sk, y); ctx.lineTo(bx + bw + sk, y); ctx.lineTo(bx + bw - sk, y + h); ctx.lineTo(bx - sk, y + h); ctx.closePath(); ctx.fillStyle = c; ctx.fill(); };
+        ctx.shadowColor = "rgba(0,0,0,.45)"; ctx.shadowBlur = 10;
+        if (A) box(x, wa, "#0A1122"); box(x + wa, wb, col); ctx.shadowBlur = 0;
+        ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        if (A) { ctx.fillStyle = "#fff"; ctx.fillText(A, x + wa / 2, y + h / 2 + .5); }
+        ctx.fillStyle = col === CA ? "#0A1122" : "#fff"; ctx.fillText(B, x + wa + wb / 2, y + h / 2 + .5);
+      }
+    };
+    return S;
+  }
+
+  // ---------- coque commune : tableau de score, chances, scène, bandeau, commandes, stats ----------
+  function shell(el, P, o) {
+    el.innerHTML = `${o.pre || ""}<div class="bx" style="--c:${CH}">
+        <div class="bx-hd"></div>
+        <div class="bx-wp"><i class="h">50 %</i><div class="bx-tr"><span class="lb">Chances de victoire</span><span class="fh"></span><span class="fa"></span><span class="mk"></span></div><i class="a">50 %</i></div>
+        <div class="bx-stage"><canvas></canvas><button class="bx-play" aria-label="Lecture">${IC.big}</button></div>
+        <div class="bx-tick"><b class="bx-chip"></b><span></span></div></div>
+      <div class="bx-ctl"><button class="main" data-a="go" aria-label="Lecture">${IC.play}</button><button data-a="spd" aria-label="Vitesse">1×</button><button data-a="rs" aria-label="Rejouer">${IC.again}</button></div>
+      <div class="bx-stats"></div>
+      <div class="bx-many"><button data-a="many">Simuler 10 000 matchs</button><div class="bx-mres"></div></div>`;
+    const q = s => el.querySelector(s);
+    const st = Stage(q("canvas"), o.stage);
+    const R = { q, st, speed: 1, run: false, call: null, raf: 0, acc: 0, last: 0 };
+    R.hd = html => { q(".bx-hd").innerHTML = html; };
+    R.wp = (ph, pa, mid) => {
+      q(".bx-wp i.h").textContent = pc(ph); q(".bx-wp i.a").textContent = pc(pa);
+      q(".bx-tr .fh").style.width = ph * 100 + "%"; q(".bx-tr .fa").style.width = pa * 100 + "%";
+      q(".bx-tr .mk").style.left = (ph + (1 - ph - pa) / 2) * 100 + "%";
+      q(".bx-tr .lb").textContent = mid || "Chances de victoire";
+    };
+    R.tick = (who, col, txt) => { const c = q(".bx-chip"); c.textContent = who || ""; c.hidden = !who; c.style.setProperty("--cc", col || "#fff"); q(".bx-tick span").textContent = txt || ""; };
+    R.flash = (txt, col) => { const f = document.createElement("div"); f.className = "bx-flash"; f.textContent = txt; f.style.color = col || "#fff"; f.style.animationDuration = (1 / Math.sqrt(R.speed)) + "s"; q(".bx-stage").appendChild(f); setTimeout(() => f.remove(), 1100); };
+    R.bump = sel => { const e = q(sel); if (!e) return; e.classList.remove("up"); void e.offsetWidth; e.classList.add("up"); };
+    R.stats = rows => {
+      q(".bx-stats").innerHTML = rows.map(([l, h, a, fmt]) => {
+        const t = h + a || 1, f = fmt || (x => x);
+        return `<div class="bx-row"><b>${f(h)}</b><span class="bx-bar l"><i style="width:${h / t * 100}%"></i></span><em>${l}</em><span class="bx-bar r"><i style="width:${a / t * 100}%"></i></span><b>${f(a)}</b></div>`;
+      }).join("");
+    };
+    R.setCall = (u, v, z, who, what, col, ms = 1700) => { R.call = { u, v, z, who, what: tr(what), col, until: performance.now() + ms / Math.max(1, R.speed * .6) }; };
+    const btn = () => { const g = q('[data-a="go"]'); g.innerHTML = R.run ? IC.pause : IC.play; g.setAttribute("aria-label", R.run ? "Pause" : "Lecture"); q(".bx-play").hidden = R.run || R.started; };
+    R.setRun = v => { R.run = v; if (v) R.started = true; btn(); };
+    const loop = now => {
+      R.raf = requestAnimationFrame(loop);
+      const dt = Math.min(100, now - (R.last || now)); R.last = now;
+      if (R.run) { R.acc += dt * R.speed; while (R.acc >= o.base && R.run) { R.acc -= o.base; o.step(); } }
+      st.resize(); o.draw(now);
+      if (R.call && now < R.call.until) st.call(R.call.u, R.call.v, R.call.z, R.call.who, R.call.what, R.call.col);
+    };
+    q(".bx-play").onclick = () => { o.start(); R.setRun(true); };
+    q('[data-a="go"]').onclick = () => { if (!R.run) o.start(); R.setRun(!R.run); };
+    q('[data-a="rs"]').onclick = () => { o.reset(); R.started = false; o.start(); R.setRun(true); };
+    q('[data-a="spd"]').onclick = e => { R.speed = R.speed === 1 ? 2 : R.speed === 2 ? 4 : 1; e.currentTarget.textContent = R.speed + "×"; };
+    q('[data-a="many"]').onclick = () => { q(".bx-mres").innerHTML = o.many(); };
+    R.begin = () => { btn(); R.raf = requestAnimationFrame(loop); return () => cancelAnimationFrame(R.raf); };
+    return R;
+  }
+  // déplacement fluide vers une cible
+  const ease = (e, k) => { e.u += (e.tu - e.u) * k; e.v += (e.tv - e.v) * k; };
+  // trajectoire du ballon (de A à B avec une hauteur maximale)
+  const fly = (b, u, v, peak, ms, R, z1 = 0) => { b.fu = b.u; b.fv = b.v; b.fz = b.z || 0; b.tu = u; b.tv = v; b.tz = z1; b.peak = peak; b.t0 = performance.now(); b.dur = ms / R.speed; };
+  const ballAt = (b, now) => {
+    const k = b.dur ? Math.min(1, (now - b.t0) / b.dur) : 1;
+    b.u = b.fu + (b.tu - b.fu) * k; b.v = b.fv + (b.tv - b.fv) * k; b.z = b.fz + (b.tz - b.fz) * k + 4 * b.peak * k * (1 - k);
+    return k;
+  };
+
+  // ================= FOOT =================
+  function foot(el, P) {
+    const S = { absH: false, absA: false };
+    const pre = `<div class="bx-if"><span class="sm-l">Et si…</span>
+      <button class="chip-t" data-k="absH" aria-pressed="false">${esc(P.h)} sans son meilleur buteur</button>
+      <button class="chip-t" data-k="absA" aria-pressed="false">${esc(P.a)} sans son meilleur buteur</button></div>`;
+    const lams = () => { let h = P.lh, a = P.la; if (S.absH) { h *= .86; a *= 1.04; } if (S.absA) { a *= .86; h *= 1.04; } return [h, a]; };
+    let G;
+    const fresh = () => ({ t: 0, hs: 0, as: 0, poss: 0, holder: 9, pause: 0, half: false, done: false, sh: [0, 0], on: [0, 0], cor: [0, 0], pt: [0, 0], ball: { u: .5, v: .5, z: 0, fu: .5, fv: .5, fz: 0, tu: .5, tv: .5, tz: 0, peak: 0, t0: 0, dur: 0 }, pl: Array.from({ length: 22 }, () => ({ u: .5, v: .5, tu: .5, tv: .5 })), lp: null });
+    // positions : home (0-10) attaque vers la droite
+    const pos = (i, t, poss) => {
+      const ys = [[.5], [.15, .38, .62, .85], [.25, .5, .75], [.22, .5, .78]], xs = [.035, .2, .36, .47];
+      const side = i < 11 ? 0 : 1, k = i % 11, line = !k ? 0 : k <= 4 ? 1 : k <= 7 ? 2 : 3, idx = !k ? 0 : k <= 4 ? k - 1 : k <= 7 ? k - 5 : k - 8;
+      let x = xs[line] + (line ? (poss === side ? .14 : -.02) : 0), y = ys[line][idx];
+      x += line ? .02 * Math.sin(t * .9 + i) : 0; y += line ? .04 * Math.sin(t * .7 + i * 1.7) : .05 * Math.sin(t * .6 + side);
+      return side ? [1 - x, y] : [x, y];
+    };
+    const place = () => G.pl.forEach((p, i) => { const [u, v] = pos(i, G.t, G.poss); p.tu = u; p.tv = v; });
+    const R = shell(el, P, {
+      pre, base: 520,
+      stage: { ratio: [.66, .5], cw: .9, far: .66, top: .2, bot: .06, g: .35, m: 105 },
+      start: () => { if (G.done) reset(); },
+      reset: () => reset(),
+      step: () => step(),
+      draw: now => draw(now),
+      many: () => many()
+    });
+    const st = R.st, nm = s => s ? P.a : P.h, col = s => s ? CA : CH;
+    const head = () => R.hd(`<div class="bx-top"><div class="bx-team h" style="--c:${CH}"><b>${esc(P.h)}</b><small>${esc(P.comp || "")}</small></div><div class="bx-sc h" style="--c:${CH}">${G.hs}</div>
+      <div class="bx-mid"><b>${G.done ? "FIN" : G.t ? Math.floor(G.t) + "'" : "0'"}</b><small>${G.done ? "Terminé" : G.half ? "Mi-temps" : G.t ? (G.t <= 45 ? "1re période" : "2e période") : "Coup d'envoi"}</small></div>
+      <div class="bx-sc a" style="--c:${CA}">${G.as}</div><div class="bx-team a" style="--c:${CA}"><b>${esc(P.a)}</b><small>${esc(P.comp || "")}</small></div></div>`);
+    const stats = () => { const T = G.pt[0] + G.pt[1] || 1; R.stats([["Tirs", G.sh[0], G.sh[1]], ["Tirs cadrés", G.on[0], G.on[1]], ["Possession", Math.round(G.pt[0] / T * 100) || 50, Math.round(G.pt[1] / T * 100) || 50, x => x + " %"], ["Corners", G.cor[0], G.cor[1]]]); };
+    const prob = () => { const [lh, la] = lams(), r = Math.max(0, 90 - G.t) / 90; G.lp = G.done ? (G.hs > G.as ? [1, 0, 0] : G.hs === G.as ? [0, 1, 0] : [0, 0, 1]) : fprobs(lh * r, la * r, G.hs, G.as); R.wp(G.lp[0], G.lp[2], "Nul " + pc(G.lp[1])); };
+    function reset() { G = fresh(); place(); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); R.call = null; head(); prob(); stats(); R.tick("", "", "Coup d'envoi : touche ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
+    const goalU = s => s ? 0 : 1; // but visé par l'équipe s
+    function step() {
+      if (G.done) return;
+      if (G.pause) { G.pause--; if (!G.pause) { if (G.half) G.half = false; G.ball.u = .5; G.ball.v = .5; G.ball.dur = 0; G.holder = G.poss * 11 + 9; } head(); return; }
+      const stepT = .5; G.t = Math.min(90, G.t + stepT); G.pt[G.poss] += stepT;
+      const [lh, la] = lams(); let ev = null;
+      [lh, la].forEach((l, s) => { if (!ev && Math.random() < l * stepT / 90) ev = { k: "goal", s }; });
+      if (!ev) [lh, la].forEach((l, s) => { if (!ev && Math.random() < l * 8.5 * stepT / 90) ev = { k: "shot", s }; });
+      place();
+      if (ev) {
+        const s = ev.s, sh = s * 11 + pick([8, 9, 10]), p = G.pl[sh]; G.poss = s; place();
+        p.tu = s ? rnd(.12, .25) : rnd(.75, .88); p.tv = rnd(.3, .7); G.holder = sh; G.ball.u = p.tu; G.ball.v = p.tv; G.ball.dur = 0; G.sh[s]++;
+        const gu = goalU(s);
+        if (ev.k === "goal") {
+          G.on[s]++; s ? G.as++ : G.hs++;
+          fly(G.ball, gu === 1 ? 1.012 : -.012, rnd(.465, .535), rnd(.6, 2.2), 420, R);
+          R.setCall(gu ? .9 : .1, .5, 0, nm(s), "But !", col(s), 2400); R.flash(tr("BUT !"), col(s)); R.bump(s ? ".bx-sc.a" : ".bx-sc.h");
+          R.tick(nm(s), col(s), `${tr("But")} · ${Math.floor(G.t)}' · ${G.hs}-${G.as}`);
+          G.pause = 4; G.poss = 1 - s;
+        } else {
+          const r = Math.random();
+          if (r < .33) { G.on[s]++; const k = 11 * (1 - s); fly(G.ball, G.pl[k].u, G.pl[k].v, 1.2, 380, R); R.setCall(G.pl[k].u, G.pl[k].v, 0, nm(1 - s), "Arrêt du gardien", col(1 - s)); R.tick(nm(1 - s), col(1 - s), `${tr("Arrêt du gardien")} · ${Math.floor(G.t)}'`); G.holder = k; G.poss = 1 - s; }
+          else if (r < .75) { const corner = Math.random() < .35; fly(G.ball, gu ? 1.03 : -.03, pick([rnd(.2, .42), rnd(.58, .8)]), rnd(1, 3.5), 420, R); if (corner) G.cor[s]++; R.setCall(gu ? .92 : .08, .5, 0, nm(s), corner ? "Corner" : "Tir à côté", col(s)); R.tick(nm(s), col(s), `${tr(corner ? "Tir dévié · corner" : "Tir à côté")} · ${Math.floor(G.t)}'`); G.poss = corner ? s : 1 - s; }
+          else { const d = (1 - s) * 11 + pick([1, 2, 3, 4]); fly(G.ball, G.pl[d].tu, G.pl[d].tv, .4, 260, R); R.setCall(G.pl[d].tu, G.pl[d].tv, 0, nm(1 - s), "Tir contré", col(1 - s)); R.tick(nm(s), col(s), `${tr("Tir contré")} · ${Math.floor(G.t)}'`); G.holder = d; }
+          G.pause = 1;
+        }
+      } else {
+        if (Math.random() < .18) G.poss = 1 - G.poss;
+        const nh = G.poss * 11 + 1 + Math.floor(Math.random() * 10); place();
+        const p = G.pl[nh]; fly(G.ball, p.tu, p.tv, Math.random() < .25 ? rnd(1.5, 4) : .2, 420, R); G.holder = nh;
+      }
+      if (G.t === 45 && !G.half && !G.pause) { G.half = true; G.pause = 3; R.tick("", "", tr("Mi-temps") + ` · ${G.hs}-${G.as}`); }
+      if (G.t >= 90 && !G.pause) { G.done = true; R.setRun(false); R.tick("", "", `${tr("Fin du match")} · ${P.h} ${G.hs}-${G.as} ${P.a}`); R.flash(`${G.hs} – ${G.as}`, "#fff"); }
+      head(); prob(); stats();
+    }
+    function draw(now) {
+      const c = st.ctx; c.clearRect(0, 0, st.W, st.H);
+      // pelouse
+      st.fill(st.rect(-.04, -.07, 1.04, 1.07), "#1F6B3A");
+      for (let i = 0; i < 14; i++) st.fill(st.rect(i / 14, 0, (i + 1) / 14, 1), i % 2 ? "#2E8C4C" : "#329652");
+      const w = "rgba(255,255,255,.85)", lw = Math.max(1.2, st.W / 340);
+      st.line(st.rect(0, 0, 1, 1), w, lw); st.line([[.5, 0], [.5, 1]], w, lw);
+      st.line(st.arc(.5, .5, 9.15 / 105, 9.15 / 68, 0, 6.3), w, lw);
+      [0, 1].forEach(sd => {
+        const f = u => sd ? 1 - u : u;
+        st.line([[f(0), .2035], [f(16.5 / 105), .2035], [f(16.5 / 105), .7965], [f(0), .7965]], w, lw);
+        st.line([[f(0), .3653], [f(5.5 / 105), .3653], [f(5.5 / 105), .6347], [f(0), .6347]], w, lw);
+        st.line(st.arc(f(11 / 105), .5, 9.15 / 105 * (sd ? -1 : 1), 9.15 / 68, -.9257, .9257, 20), w, lw);
+      });
+      // buts
+      const goal = sd => { const u = sd ? 1 : 0, d = sd ? 1.6 / 105 : -1.6 / 105, v0 = .4462, v1 = .5538, h = 2.44;
+        st.fill([[u, v0, h], [u + d, v0, h * .8], [u + d, v1, h * .8], [u, v1, h]], "rgba(255,255,255,.12)");
+        st.fill([[u + d, v0, 0], [u + d, v0, h * .8], [u + d, v1, h * .8], [u + d, v1, 0]], "rgba(255,255,255,.10)");
+        st.line([[u, v0, 0], [u, v0, h], [u, v1, h], [u, v1, 0]], "#fff", lw * 1.4); };
+      goal(0);
+      const k = 1 - Math.pow(.004, (now - (draw.t || now)) / 1000); draw.t = now;
+      G.pl.forEach(p => ease(p, Math.min(1, k * 1.6)));
+      const order = G.pl.map((p, i) => i).sort((a, b) => G.pl[a].v - G.pl[b].v);
+      const kb = ballAt(G.ball, now);
+      if (kb >= 1 && !G.pause && G.holder != null) { const h = G.pl[G.holder]; G.ball.u += (h.u + .008 - G.ball.u) * .5; G.ball.v += (h.v + .01 - G.ball.v) * .5; G.ball.fu = G.ball.tu = G.ball.u; G.ball.fv = G.ball.tv = G.ball.v; }
+      let ballDrawn = false;
+      order.forEach(i => {
+        const p = G.pl[i];
+        if (!ballDrawn && G.ball.v < p.v) { st.ball(G.ball.u, G.ball.v, G.ball.z, "#fff", 3.6, "#1a1a1a"); ballDrawn = true; }
+        st.player(p.u, p.v, i < 11 ? (i ? CH : "#1E3F86") : (i - 11 ? CA : "#A7740B"), String(i % 11 + 1), i === G.holder && !G.pause, 8.5);
+      });
+      if (!ballDrawn) st.ball(G.ball.u, G.ball.v, G.ball.z, "#fff", 3.6, "#1a1a1a");
+      goal(1);
+    }
+    function many() {
+      const [lh, la] = lams(); let h = 0, d = 0, a = 0; const sc = {};
+      for (let i = 0; i < 10000; i++) { const x = poisson(lh), y = poisson(la); x > y ? h++ : x === y ? d++ : a++; const k = x + "-" + y; sc[k] = (sc[k] || 0) + 1; }
+      const top = Object.entries(sc).sort((p, q) => q[1] - p[1]).slice(0, 5);
+      return `<div class="bx-hda"><span style="width:${h / 100}%;background:${CH};color:#fff">${Math.round(h / 100)} %</span><span style="width:${d / 100}%;background:var(--track);color:var(--ink)">${Math.round(d / 100)} %</span><span style="width:${a / 100}%;background:${CA};color:#0A1122">${Math.round(a / 100)} %</span></div>
+        <div class="bx-sub">Scores les plus fréquents</div><div class="bx-chips">${top.map(([k, v]) => `<span><b>${k}</b>${Math.round(v / 100)} %</span>`).join("")}</div>`;
+    }
+    el.querySelectorAll(".chip-t").forEach(b => b.onclick = () => { S[b.dataset.k] = !S[b.dataset.k]; b.setAttribute("aria-pressed", S[b.dataset.k]); reset(); R.setRun(false); R.started = false; R.setRun(false); });
+    reset();
+    return R.begin();
+  }
+
+  // ================= TENNIS =================
+  function tennis(el, P) {
+    const PS = [P.pa, P.pb], best = P.bo === 5 ? 3 : 2, NH = short(P.h), NA = short(P.a);
+    const SURF = { Hard: ["#2F6CB0", "#3B8062"], Clay: ["#C4683A", "#B65E33"], Grass: ["#4E9A3E", "#3F8634"] }[P.surf] || ["#2F6CB0", "#3B8062"];
+    // terrain : u = largeur (18 m), v = longueur (36,57 m), v=0 au fond
+    const U = x => (x + 3.515) / 18, V = y => (y + 6.4) / 36.57, NETV = V(11.885);
+    const award = (st, w) => {
+      const r = { pts: st.pts.slice(), games: st.games.slice(), sets: st.sets.map(s => s.slice()), server: st.server, ev: "", done: false, winner: -1 };
+      const tb = r.games[0] === 6 && r.games[1] === 6; r.pts[w]++;
+      if (r.pts[w] >= (tb ? 7 : 4) && r.pts[w] - r.pts[1 - w] >= 2) {
+        r.games[w]++; r.pts = [0, 0]; r.server = 1 - r.server; r.ev = "game";
+        if ((r.games[w] >= 6 && r.games[w] - r.games[1 - w] >= 2) || r.games[w] === 7) {
+          r.sets.push(r.games.slice()); r.games = [0, 0]; r.ev = "set";
+          if (r.sets.filter(s => s[w] > s[1 - w]).length === best) { r.done = true; r.winner = w; r.ev = "match"; }
+        }
+      } else if (tb && (r.pts[0] + r.pts[1]) % 2 === 1) r.server = 1 - r.server;
+      return r;
+    };
+    const finish = st0 => { let s = st0; for (let k = 0; k < 4000 && !s.done; k++) s = award(s, Math.random() < PS[s.server] ? s.server : 1 - s.server); return s; };
+    let G;
+    const fresh = () => ({ pts: [0, 0], games: [0, 0], sets: [], server: 0, done: false, winner: -1, Q: [], ace: [0, 0], df: [0, 0], wn: [0, 0], ue: [0, 0], won: [0, 0], ph: P.p || null,
+      pl: [{ u: U(5.485), v: V(24.6), tu: U(5.485), tv: V(24.6) }, { u: U(5.485), v: V(-.8), tu: U(5.485), tv: V(-.8) }],
+      ball: { u: U(5.485), v: V(24.4), z: 1, fu: 0, fv: 0, fz: 0, tu: U(5.485), tv: V(24.4), tz: 1, peak: 0, t0: 0, dur: 0 } });
+    const R = shell(el, P, {
+      base: 430,
+      stage: { ratio: [.9, .6], cw: 1.5, far: .56, top: .08, bot: .02, g: .45, m: 18 },
+      start: () => { if (G.done) reset(); }, reset: () => reset(), step: () => step(), draw: now => draw(now), many: () => many()
+    });
+    const st = R.st, nmS = s => s ? NA : NH, col = s => s ? CA : CH;
+    const lbl = (p, o, tb) => tb ? String(p) : (p >= 3 && o >= 3 ? (p === o ? "40" : p > o ? "AV" : "40") : ["0", "15", "30", "40"][Math.min(p, 3)]);
+    const head = () => {
+      const tb = G.games[0] === 6 && G.games[1] === 6, n = best * 2 - 1;
+      const cell = (i, k) => G.sets[k] ? G.sets[k][i] : (k === G.sets.length && !G.done ? G.games[i] : "");
+      const won = (i, k) => G.sets[k] && G.sets[k][i] > G.sets[k][1 - i];
+      R.hd(`<div class="bx-ten">${[0, 1].map(i => `<div style="--c:${col(i)}"><span>${esc(i ? P.a : P.h)}</span><i style="background:${G.server === i && !G.done ? "#D9F23A" : "transparent"}"></i>${Array.from({ length: n }, (_, k) => `<b class="${won(i, k) ? "w" : ""}">${cell(i, k)}</b>`).join("")}<b class="pt">${G.done ? (G.winner === i ? "✓" : "") : lbl(G.pts[i], G.pts[1 - i], tb)}</b></div>`).join("")}</div>`);
+    };
+    const prob = () => {
+      if (G.done) { R.wp(G.winner === 0 ? 1 : 0, G.winner === 1 ? 1 : 0); return; }
+      let a = 0; const N = 400; for (let i = 0; i < N; i++) if (finish(G).winner === 0) a++;
+      R.wp(a / N, 1 - a / N);
+    };
+    const stats = () => R.stats([["Aces", G.ace[0], G.ace[1]], ["Doubles fautes", G.df[0], G.df[1]], ["Coups gagnants", G.wn[0], G.wn[1]], ["Fautes directes", G.ue[0], G.ue[1]], ["Points gagnés", G.won[0], G.won[1]]]);
+    function reset() { G = fresh(); R.call = null; head(); stats(); R.tick("", "", "Touche ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; const p0 = P.p != null ? P.p : null; if (p0 != null) R.wp(p0, 1 - p0); else prob(); }
+    // y du joueur : 0 (près) au fond bas, 1 (loin) au fond haut
+    const baseY = s => s ? -.8 : 24.6;
+    const side = s => (G.pts[0] + G.pts[1]) % 2; // 0 = égalité (deuce), 1 = avantage
+    function plan() {
+      const sv = G.server, rc = 1 - sv, w = Math.random() < PS[sv] ? sv : 1 - sv, r = Math.random();
+      const dside = side(), svX = (sv === 0 ? (dside ? 4.2 : 6.8) : (dside ? 6.8 : 4.2)), rcX = (rc === 0 ? (dside ? 3.2 : 7.8) : (dside ? 7.8 : 3.2));
+      const Q = [];
+      const tgt = (hit, deep) => [rnd(1.8, 9.2), hit === 0 ? (deep ? rnd(.8, 4.5) : rnd(4, 9)) : (deep ? rnd(19.3, 23) : rnd(14.5, 19.5))];
+      const svBox = () => [sv === 0 ? (dside ? rnd(6, 9) : rnd(2, 5)) : (dside ? rnd(2, 5) : rnd(6, 9)), sv === 0 ? rnd(6.5, 11) : rnd(12.8, 17.3)];
+      Q.push(() => { G.pl[sv].tu = U(svX); G.pl[sv].tv = V(baseY(sv)); G.pl[rc].tu = U(rcX); G.pl[rc].tv = V(sv ? 24.2 : -.4); G.ball.u = G.pl[sv].tu; G.ball.v = G.pl[sv].tv; G.ball.z = 1; G.ball.dur = 0; fly(G.ball, G.ball.u, G.ball.v, 1.1, 300, R, 1); });
+      let kind;
+      if (w === sv && r < .13) kind = "ace"; else if (w === rc && r < .08) kind = "df"; else kind = Math.random() < .58 ? "wn" : "ue";
+      const hitFrom = s => [G.pl[s].u, G.pl[s].v];
+      if (kind === "ace") {
+        Q.push(() => { const [x, y] = svBox(); fly(G.ball, U(x), V(y), 1.6, 380, R); G.pl[rc].tu = U(x < 5.5 ? x - 1.8 : x + 1.8); });
+        Q.push(() => end(sv, "ace"));
+      } else if (kind === "df") {
+        const fault = () => () => { fly(G.ball, U(rnd(3, 8)), NETV, 1.3, 330, R, .7); };
+        Q.push(fault()); Q.push(() => { G.ball.u = G.pl[sv].u; G.ball.v = G.pl[sv].v; G.ball.z = 1; G.ball.dur = 0; R.setCall(G.pl[sv].u, G.pl[sv].v, 1, nmS(sv), "Faute", col(sv), 900); });
+        Q.push(fault()); Q.push(() => end(rc, "df"));
+      } else {
+        // dernier frappeur : le gagnant (coup gagnant) ou le perdant (faute directe)
+        const lastHitter = kind === "wn" ? w : 1 - w;
+        let n = 2 + Math.floor(Math.random() * 6); if ((n % 2 === 1 ? sv : rc) !== lastHitter) n++;
+        for (let i = 0; i < n; i++) {
+          const hit = i % 2 === 0 ? sv : rc, opp = 1 - hit, last = i === n - 1;
+          Q.push(() => {
+            let x, y;
+            if (i === 0) [x, y] = svBox(); else[x, y] = tgt(hit, Math.random() < .6);
+            if (last && kind === "ue") { if (Math.random() < .5) { x = rnd(2, 9); y = 11.885; fly(G.ball, U(x), NETV, 1.4, 340, R, .6); return; } y = hit === 0 ? rnd(-2.2, -.4) : rnd(24.2, 26); x = rnd(0, 11); }
+            fly(G.ball, U(x), V(y), i === 0 ? 1.6 : rnd(1.3, 2.6), 400, R);
+            const reach = last && kind === "wn" ? (x < 5.5 ? Math.min(10, x + 3.5) : Math.max(1, x - 3.5)) : x;
+            G.pl[opp].tu = U(reach); G.pl[opp].tv = V(opp ? Math.min(y - 1, -.3) : Math.max(y + 1, 23.9));
+            G.pl[hit].tu += (U(5.485) - G.pl[hit].tu) * .5;
+          });
+        }
+        Q.push(() => end(w, kind));
+      }
+      return Q;
+    }
+    function end(w, kind) {
+      const l = 1 - w;
+      if (kind === "ace") { G.ace[w]++; R.setCall(G.ball.u, G.ball.v, 0, nmS(w), "Ace", col(w)); }
+      if (kind === "df") { G.df[l]++; R.setCall(G.pl[l].u, G.pl[l].v, 1, nmS(l), "Double faute", col(l)); }
+      if (kind === "wn") { G.wn[w]++; R.setCall(G.ball.u, G.ball.v, 0, nmS(w), "Coup gagnant", col(w)); }
+      if (kind === "ue") { G.ue[l]++; R.setCall(G.ball.u, G.ball.v, 0, nmS(l), "Faute directe", col(l)); }
+      G.won[w]++;
+      const r = award(G, w); Object.assign(G, r);
+      const T = { ace: "Ace", df: "Double faute", wn: "Coup gagnant", ue: "Faute directe" }[kind];
+      if (r.ev === "match") { R.tick(nmS(w), col(w), tr("Jeu, set et match") + " · " + G.sets.map(s => s.join("-")).join(" ")); R.flash(nmS(w) + " ✓", col(w)); R.setRun(false); }
+      else if (r.ev === "set") { const s = G.sets[G.sets.length - 1]; R.tick(nmS(w), col(w), `${tr("Set")} ${s[0]}-${s[1]}`); R.flash(tr("Set") + " " + nmS(w), col(w)); }
+      else if (r.ev === "game") R.tick(nmS(w), col(w), `${tr("Jeu")} · ${G.games[0]}-${G.games[1]}`);
+      else R.tick(kind === "df" || kind === "ue" ? nmS(l) : nmS(w), col(kind === "df" || kind === "ue" ? l : w), tr(T));
+      head(); stats(); prob();
+    }
+    function step() { if (G.done) return; if (!G.Q.length) { G.Q = plan(); G.Q.push(() => {}); } G.Q.shift()(); }
+    function draw(now) {
+      const c = st.ctx; c.fillStyle = SURF[1]; c.fillRect(0, 0, st.W, st.H);
+      st.fill(st.rect(U(0), V(0), U(10.97), V(23.77)), SURF[0]);
+      const w = "rgba(255,255,255,.92)", lw = Math.max(1.2, st.W / 330);
+      st.line(st.rect(U(0), V(0), U(10.97), V(23.77)), w, lw);
+      st.line([[U(1.37), V(0)], [U(1.37), V(23.77)]], w, lw); st.line([[U(9.6), V(0)], [U(9.6), V(23.77)]], w, lw);
+      st.line([[U(1.37), V(5.485)], [U(9.6), V(5.485)]], w, lw); st.line([[U(1.37), V(18.285)], [U(9.6), V(18.285)]], w, lw);
+      st.line([[U(5.485), V(5.485)], [U(5.485), V(18.285)]], w, lw);
+      st.line([[U(5.485), V(0)], [U(5.485), V(.3)]], w, lw); st.line([[U(5.485), V(23.47)], [U(5.485), V(23.77)]], w, lw);
+      const k = 1 - Math.pow(.002, (now - (draw.t || now)) / 1000); draw.t = now;
+      G.pl.forEach(p => ease(p, Math.min(1, k * 1.4)));
+      ballAt(G.ball, now);
+      const net = () => {
+        st.fill([[U(-.9), NETV, 0], [U(-.9), NETV, 1.07], [U(5.485), NETV, .914], [U(11.87), NETV, 1.07], [U(11.87), NETV, 0]], "rgba(15,20,30,.45)");
+        st.line([[U(-.9), NETV, 1.07], [U(5.485), NETV, .914], [U(11.87), NETV, 1.07]], "#fff", lw * 1.6);
+        st.line([[U(-.9), NETV, 0], [U(-.9), NETV, 1.07]], "#ddd", lw * 1.4); st.line([[U(11.87), NETV, 0], [U(11.87), NETV, 1.07]], "#ddd", lw * 1.4);
+      };
+      const far = G.pl[1], near = G.pl[0], bFar = G.ball.v < NETV;
+      st.player(far.u, far.v, CA, NA.charAt(0), G.server === 1 && !G.done, 11);
+      if (bFar) st.ball(G.ball.u, G.ball.v, G.ball.z, "#DDF23A", 3.2, "#6b7a10");
+      net();
+      if (!bFar) st.ball(G.ball.u, G.ball.v, G.ball.z, "#DDF23A", 3.2, "#6b7a10");
+      st.player(near.u, near.v, CH, NH.charAt(0), G.server === 0 && !G.done, 11);
+    }
+    function many() {
+      let a = 0; const sc = {};
+      for (let i = 0; i < 10000; i++) { const r = finish({ pts: [0, 0], games: [0, 0], sets: [], server: Math.random() < .5 ? 0 : 1 }); if (r.winner === 0) a++; const w = r.winner, k = nmS(w) + " " + r.sets.filter(s => s[w] > s[1 - w]).length + "-" + r.sets.filter(s => s[w] < s[1 - w]).length; sc[k] = (sc[k] || 0) + 1; }
+      const rows = Object.entries(sc).sort((x, y) => y[1] - x[1]);
+      return `<div class="bx-hda"><span style="width:${a / 100}%;background:${CH};color:#fff">${esc(NH)} ${Math.round(a / 100)} %</span><span style="width:${100 - a / 100}%;background:${CA};color:#0A1122">${Math.round(100 - a / 100)} % ${esc(NA)}</span></div>
+        <div class="bx-sub">Scores en sets</div><div class="bx-chips">${rows.map(([k, v]) => `<span><b>${esc(k)}</b>${Math.round(v / 100)} %</span>`).join("")}</div>`;
+    }
+    reset();
+    return R.begin();
+  }
+
+  // ================= NBA =================
+  function nba(el, P) {
+    const EF = [P.ea / 100, P.eb / 100], NH = short(P.h), NA = short(P.a);
+    const out = team => { const e = EF[team] / 1.15, r = Math.random(); return r < .12 * e ? 3 : r < .54 * e ? 2 : 0; };
+    const mu = t => 1.2 * EF[t] / 1.15, va = t => 2.76 * EF[t] / 1.15 - mu(t) * mu(t);
+    // terrain : u = longueur (28 m), v = largeur (15 m) ; domicile attaque à droite
+    const BU = 1.575 / 28, RIM = [[BU, .5], [1 - BU, .5]];
+    // calage : au coup d'envoi, les chances affichées = celles du modèle
+    let BIAS = 0;
+    if (P.p > 0 && P.p < 1) { let lo = -6, hi = 6; for (let i = 0; i < 40; i++) { const m = (lo + hi) / 2; Phi(m) < P.p ? lo = m : hi = m; } BIAS = lo * Math.sqrt(100 * (va(0) + va(1))) / 100 - (mu(0) - mu(1)); }
+    let G;
+    const fresh = () => ({ hs: 0, as: 0, poss: 0, q: 1, pc: 0, done: false, Q: [], qi: 0, ql: 1, holder: 0, fg: [[0, 0], [0, 0]], tp: [[0, 0], [0, 0]], reb: [0, 0], to: [0, 0],
+      pl: Array.from({ length: 10 }, () => ({ u: .5, v: .5, tu: .5, tv: .5 })), ball: { u: .5, v: .5, z: 1, fu: .5, fv: .5, fz: 1, tu: .5, tv: .5, tz: 1, peak: 0, t0: 0, dur: 0 }, free: false });
+    const R = shell(el, P, {
+      base: 560,
+      stage: { ratio: [.66, .5], cw: .92, far: .66, top: .22, bot: .05, g: .35, m: 28 },
+      start: () => { if (G.done) reset(); }, reset: () => reset(), step: () => step(), draw: now => draw(now), many: () => many()
+    });
+    const st = R.st, nm = s => s ? NA : NH, col = s => s ? CA : CH;
+    const LEN = q => q > 4 ? 20 : 50;
+    const clock = () => { const len = LEN(G.q), per = (G.q > 4 ? 300 : 720) / len, secs = Math.max(0, Math.round((len - G.pc - G.qi / Math.max(1, G.ql)) * per)); return Math.floor(secs / 60) + ":" + String(secs % 60).padStart(2, "0"); };
+    const head = () => R.hd(`<div class="bx-top"><div class="bx-team h" style="--c:${CH}"><b>${esc(NH)}</b><small>${esc(P.h)}</small></div><div class="bx-sc h" style="--c:${CH}">${G.hs}</div>
+      <div class="bx-mid"><b>${G.done ? "FIN" : (G.q > 4 ? "PR" : "QT" + G.q) + " " + clock()}</b><small>${G.done ? "Terminé" : (G.poss ? NA : NH) + " · balle"}</small></div>
+      <div class="bx-sc a" style="--c:${CA}">${G.as}</div><div class="bx-team a" style="--c:${CA}"><b>${esc(NA)}</b><small>${esc(P.a)}</small></div></div>`);
+    const prob = () => {
+      if (G.done) { R.wp(G.hs > G.as ? 1 : 0, G.hs > G.as ? 0 : 1); return; }
+      const rem = Math.max(0, (Math.max(0, 4 - G.q) * 50 + (G.q <= 4 ? 50 - G.pc : 20 - G.pc)) / 2);
+      const D = G.hs - G.as + rem * (mu(0) - mu(1) + BIAS), V = rem * (va(0) + va(1)) + 1e-6;
+      const p = rem < .5 ? (G.hs > G.as ? 1 : G.hs < G.as ? 0 : .5) : Phi(D / Math.sqrt(V));
+      R.wp(p, 1 - p);
+    };
+    const stats = () => R.stats([["Tirs réussis", G.fg[0][0], G.fg[1][0], null], ["Tirs à 3 pts", G.tp[0][0], G.tp[1][0]], ["Rebonds", G.reb[0], G.reb[1]], ["Pertes de balle", G.to[0], G.to[1]]].map(r => r));
+    // positions d'attaque (vers le panier de droite), miroir pour l'autre équipe
+    const OFF = [[.62, .5], [.76, .12], [.76, .88], [.87, .3], [.88, .7]];
+    const setup = (team, jit = 1) => {
+      const m = u => team ? 1 - u : u, rim = RIM[1 - team];
+      for (let k = 0; k < 5; k++) {
+        const o = G.pl[team * 5 + k], d = G.pl[(1 - team) * 5 + k];
+        const u = OFF[k][0] + rnd(-.03, .03) * jit, v = Math.min(.95, Math.max(.05, OFF[k][1] + rnd(-.07, .07) * jit));
+        o.tu = m(u); o.tv = v; d.tu = o.tu + (rim[0] - o.tu) * .25; d.tv = v + (rim[1] - v) * .25;
+      }
+    };
+    function reset() { G = fresh(); setup(0, 0); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); G.ball.u = G.pl[0].u; G.ball.v = G.pl[0].v; R.call = null; head(); stats(); prob(); R.tick("", "", "Touche ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
+    const toHolder = (k, ms = 380, peak = .6) => { const p = G.pl[G.poss * 5 + k]; G.holder = G.poss * 5 + k; fly(G.ball, p.tu, p.tv, peak, ms, R, 1); };
+    function plan() {
+      const t = G.poss, pts = out(t), r = Math.random(), rim = RIM[1 - t];
+      let kind = pts === 3 ? "three" : pts === 2 ? (r < .15 ? "putback" : r < .3 ? "dunk" : r < .65 ? "layup" : "mid") : (r < .25 ? "tov" : r < .53 ? "miss3" : "miss2");
+      const Q = [];
+      Q.push(() => { setup(t); toHolder(0, 450, .8); });
+      const passes = 1 + Math.floor(Math.random() * 3);
+      for (let i = 0; i < passes; i++) Q.push(() => { setup(t); let k; do k = Math.floor(Math.random() * 5); while (G.poss * 5 + k === G.holder); if (i === passes - 1 && (kind === "three" || kind === "miss3")) k = pick([1, 2]); toHolder(k); });
+      const shoot = (peak, ms) => fly(G.ball, rim[0], rim[1], peak, ms, R, 3.05);
+      const sh = () => G.pl[G.holder];
+      if (kind === "tov") {
+        Q.push(() => { const d = G.pl[(1 - t) * 5 + Math.floor(Math.random() * 5)]; fly(G.ball, d.tu, d.tv, .3, 260, R, 1); G.to[t]++; R.setCall(d.tu, d.tv, 1, nm(1 - t), "Interception", col(1 - t)); R.tick(nm(t), col(t), tr("Perte de balle")); });
+      } else if (kind === "layup" || kind === "dunk") {
+        Q.push(() => { const p = sh(); p.tu = rim[0] + (t ? .05 : -.05); p.tv = rim[1] + rnd(-.08, .08); fly(G.ball, p.tu, p.tv, .3, 380, R, 1); });
+        Q.push(() => { shoot(kind === "dunk" ? .2 : .8, 300); R.setCall(rim[0], rim[1], 3, nm(t), kind === "dunk" ? "Dunk" : "Lay-up", col(t)); });
+      } else if (kind === "putback") {
+        Q.push(() => { shoot(3.5, 620); R.setCall(sh().u, sh().v, 1, nm(t), "Tir", col(t), 900); });
+        Q.push(() => { const p = G.pl[t * 5 + 3]; p.tu = rim[0] + (t ? .04 : -.04); p.tv = .52; G.holder = t * 5 + 3; fly(G.ball, p.tu, p.tv, .8, 300, R, 2.2); G.reb[t]++; R.setCall(p.tu, p.tv, 2, nm(t), "Rebond offensif", col(t), 1000); G.fg[t][1]++; });
+        Q.push(() => { shoot(.4, 260); R.setCall(rim[0], rim[1], 3, nm(t), "Claquette", col(t)); });
+      } else {
+        const three = kind === "three" || kind === "miss3";
+        Q.push(() => { shoot(three ? 5 : 4, three ? 820 : 680); R.setCall(sh().u, sh().v, 1, nm(t), three ? "Tir à 3 pts" : "Tir", col(t), 1100); });
+      }
+      if (kind !== "tov") {
+        Q.push(() => {
+          const three = kind === "three" || kind === "miss3", made = pts > 0;
+          G.fg[t][1]++; if (three) G.tp[t][1]++;
+          if (made) {
+            G.fg[t][0]++; if (three) G.tp[t][0]++;
+            R.flash("+" + pts, col(t)); R.bump(t ? ".bx-sc.a" : ".bx-sc.h");
+            const T = { three: "Panier à 3 points", dunk: "Dunk", layup: "Lay-up réussi", mid: "Tir à mi-distance réussi", putback: "Claquette après rebond" }[kind];
+            R.tick(nm(t), col(t), tr(T)); fly(G.ball, rim[0], rim[1], 0, 250, R, 0);
+          } else {
+            const d = G.pl[(1 - t) * 5 + pick([3, 4])]; d.tu = rim[0] + (t ? -.05 : .05); d.tv = rim[1] + rnd(-.1, .1);
+            fly(G.ball, d.tu, d.tv, 1.2, 380, R, 2.2); G.reb[1 - t]++;
+            R.setCall(d.tu, d.tv, 2, nm(1 - t), "Rebond", col(1 - t)); R.tick(nm(t), col(t), tr(three ? "Tir à 3 points raté" : "Tir raté"));
+          }
+        });
+      }
+      Q.push(() => endPoss(pts));
+      return Q;
+    }
+    function endPoss(pts) {
+      if (G.poss === 0) G.hs += pts; else G.as += pts;
+      G.pc++;
+      if (G.pc >= LEN(G.q)) {
+        if (G.q >= 4 && G.hs !== G.as) { G.done = true; R.setRun(false); R.tick("", "", `${tr("Fin du match")} · ${NH} ${G.hs}-${G.as} ${NA}`); R.flash(`${G.hs} – ${G.as}`, "#fff"); }
+        else { G.q++; G.pc = 0; R.tick("", "", tr(G.q > 4 ? "Prolongation" : "Fin du quart-temps") + ` · ${G.hs}-${G.as}`); }
+      }
+      G.poss = 1 - G.poss; head(); stats(); prob();
+    }
+    function step() {
+      if (G.done) return;
+      if (!G.Q.length) { G.Q = plan(); G.ql = G.Q.length; G.qi = 0; }
+      G.Q.shift()(); G.qi++; head();
+    }
+    function draw(now) {
+      const c = st.ctx; c.clearRect(0, 0, st.W, st.H);
+      st.fill(st.rect(-.04, -.08, 1.04, 1.08), "#5E3A22");
+      // parquet
+      const [x0, y0] = st.p(.5, 0), [, y1] = st.p(.5, 1), gr = c.createLinearGradient(0, y0, 0, y1); gr.addColorStop(0, "#B57A45"); gr.addColorStop(1, "#D29A5C");
+      st.fill(st.rect(0, 0, 1, 1), gr);
+      for (let i = 1; i < 22; i++) st.line([[0, i / 22], [1, i / 22]], "rgba(70,35,10,.10)", 1);
+      const w = "rgba(255,255,255,.88)", lw = Math.max(1.2, st.W / 340);
+      [0, 1].forEach(sd => {
+        const f = u => sd ? 1 - u : u, c0 = sd ? "rgba(242,181,38,.55)" : "rgba(61,123,234,.55)";
+        st.fill([[f(0), .3367], [f(5.8 / 28), .3367], [f(5.8 / 28), .6633], [f(0), .6633]], c0);
+        st.line([[f(0), .3367], [f(5.8 / 28), .3367], [f(5.8 / 28), .6633], [f(0), .6633]], w, lw);
+        st.line(st.arc(f(5.8 / 28), .5, (sd ? -1 : 1) * 1.8 / 28, 1.8 / 15, -Math.PI / 2, Math.PI / 2, 20), w, lw);
+        const a = Math.asin(6.6 / 6.75), arc = st.arc(BU, .5, 6.75 / 28, 6.75 / 15, -a, a, 40).map(([u, v]) => [f(u), v]);
+        st.line([[f(0), .06], ...arc, [f(0), .94]], w, lw);
+      });
+      st.line(st.rect(0, 0, 1, 1), w, lw); st.line([[.5, 0], [.5, 1]], w, lw);
+      st.fill(st.arc(.5, .5, 1.8 / 28, 1.8 / 15, 0, 6.3), "rgba(10,17,34,.35)"); st.line(st.arc(.5, .5, 1.8 / 28, 1.8 / 15, 0, 6.3), w, lw);
+      const hoop = sd => {
+        const u = sd ? 1 - BU : BU, bu = sd ? 1 - 1.2 / 28 : 1.2 / 28;
+        st.line([[sd ? 1.03 : -.03, .5, 0], [sd ? 1.03 : -.03, .5, 3.3], [bu, .5, 3.3]], "#9AA3B2", lw * 1.6);
+        st.fill([[bu, .44, 2.9], [bu, .56, 2.9], [bu, .56, 3.95], [bu, .44, 3.95]], "rgba(255,255,255,.85)");
+        st.line(st.arc(u, .5, .23 / 28, .23 / 15, 0, 6.3, 20).map(([a, b]) => [a, b, 3.05]), "#F06A1A", lw * 1.8);
+      };
+      const k = 1 - Math.pow(.003, (now - (draw.t || now)) / 1000); draw.t = now;
+      G.pl.forEach(p => ease(p, Math.min(1, k * 1.5)));
+      const kb = ballAt(G.ball, now);
+      if (kb >= 1 && G.ball.tz === 1 && G.holder != null) { const h = G.pl[G.holder]; G.ball.u = h.u + .006; G.ball.v = h.v + .012; G.ball.fu = G.ball.tu = G.ball.u; G.ball.fv = G.ball.tv = G.ball.v; }
+      hoop(0);
+      const order = G.pl.map((p, i) => i).sort((a, b) => G.pl[a].v - G.pl[b].v);
+      let bd = false;
+      order.forEach(i => { const p = G.pl[i]; if (!bd && G.ball.v < p.v) { st.ball(G.ball.u, G.ball.v, G.ball.z, "#F28C28", 4.4, "#5A2A0A"); bd = true; } st.player(p.u, p.v, i < 5 ? CH : CA, String([1, 2, 3, 4, 5][i % 5]), i === G.holder, 10); });
+      if (!bd) st.ball(G.ball.u, G.ball.v, G.ball.z, "#F28C28", 4.4, "#5A2A0A");
+      hoop(1);
+    }
+    const quickGame = () => { let a = 0, b = 0; for (let i = 0; i < 100; i++) { a += out(0); b += out(1); } while (a === b) for (let i = 0; i < 10; i++) { a += out(0); b += out(1); } return [a, b]; };
+    function many() {
+      let h = 0, ta = 0, tb = 0, close = 0;
+      for (let i = 0; i < 10000; i++) { const [a, b] = quickGame(); if (a > b) h++; ta += a; tb += b; if (Math.abs(a - b) <= 5) close++; }
+      return `<div class="bx-hda"><span style="width:${h / 100}%;background:${CH};color:#fff">${esc(NH)} ${Math.round(h / 100)} %</span><span style="width:${100 - h / 100}%;background:${CA};color:#0A1122">${Math.round(100 - h / 100)} % ${esc(NA)}</span></div>
+        <div class="bx-chips"><span><b>Score moyen</b>${Math.round(ta / 10000)} – ${Math.round(tb / 10000)}</span><span><b>Écart de 5 pts ou moins</b>${Math.round(close / 100)} %</span></div>`;
+    }
+    reset();
+    return R.begin();
+  }
+
+  // ---------------- montage dans chaque onglet ----------------
+  const RUN = { foot, tennis, nba };
+  const SPOTS = [["foot", "ftResult", () => window.FootAPI && window.FootAPI.current()], ["nba", "nbResult", () => window.NbaAPI && window.NbaAPI.current()], ["tennis", "result", () => window.TennisAPI && window.TennisAPI.current()]];
+  let stop = null, openEl = null;
+  const label = open => open ? "Fermer" : "▶ Voir le match";
+  const stopAll = () => { if (stop) stop(); stop = null; if (openEl) { openEl.innerHTML = ""; openEl.closest(".sm-card").classList.remove("open"); openEl = null; } document.querySelectorAll(".sm-open").forEach(b => b.textContent = label(false)); };
+  SPOTS.forEach(([sport, rid, get]) => {
+    const res = document.getElementById(rid); if (!res) return;
+    const host = res.closest(".card"); if (!host) return;
+    const card = document.createElement("section");
+    card.className = "card sm-card";
+    card.innerHTML = `<div class="sm-head"><h2>Simulation du match</h2><button class="sm-btn sm-main sm-open">${label(false)}</button></div><div class="sm-body"></div>`;
+    host.insertAdjacentElement("afterend", card);
+    const body = card.querySelector(".sm-body"), ob = card.querySelector(".sm-open");
+    ob.onclick = () => {
+      if (openEl === body) { stopAll(); return; }
+      stopAll();
+      const P = get(); if (!P) return;
+      card.classList.add("open"); openEl = body; ob.textContent = label(true);
+      stop = RUN[sport](body, P);
+      card.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+  });
+  document.addEventListener("change", e => { if (!e.target.closest(".sm-card")) stopAll(); });
+  document.addEventListener("click", e => { if (e.target.closest(".game, .swap, .seg, #tabs, .tabs")) stopAll(); });
+  addEventListener("hashchange", stopAll);
+})();
+</script>

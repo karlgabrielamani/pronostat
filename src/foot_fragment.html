@@ -1,0 +1,61 @@
+<div class="wrap" id="view-foot" hidden>
+  <header class="vh">
+    <h1>Pronos Foot</h1>
+    <p class="sub">Bon résultat <b id="ftAcc"></b> du temps (<span id="ftN"></span> matchs testés)<span id="ftCupNote" hidden> · coupes d'Europe 56 %</span> · à jour au <span id="ftUpd"></span></p>
+  </header>
+
+  <div class="card">
+    <label class="lg" for="ftL">Compétition<select id="ftL"></select></label>
+    <div class="eyebrow">Prochains matchs <span style="text-transform:none;letter-spacing:0">· heure locale</span></div>
+    <div class="games" id="ftGames"></div>
+  </div>
+
+  <div class="card">
+    <div class="pick">
+      <label for="ftA">Domicile<select id="ftA"></select></label>
+      <div class="vs">vs</div>
+      <label for="ftB">Extérieur<select id="ftB"></select></label>
+    </div>
+    <div class="row">
+      <label class="chk" for="ftN0"><input type="checkbox" id="ftN0"> Terrain neutre</label>
+      <button class="swap" id="ftSwap">Inverser</button>
+    </div>
+    <p class="err" id="ftErr" hidden></p>
+
+    <div class="result" id="ftResult">
+      <div class="three">
+        <div><span class="pname" id="ftNA"></span><span class="pct pa num" id="ftPH"></span><span class="odd num" id="ftOH"></span></div>
+        <div class="mid"><span class="pname">Nul</span><span class="pct pn num" id="ftPD"></span><span class="odd num" id="ftOD"></span></div>
+        <div><span class="pname" id="ftNB"></span><span class="pct pb num" id="ftPA"></span><span class="odd num" id="ftOA"></span></div>
+      </div>
+      <div class="bar" aria-hidden="true"><span id="ftBarH" style="background:var(--a)"></span><span id="ftBarD" style="background:var(--ink-3)"></span><span id="ftBarA" style="background:var(--b)"></span></div>
+      <p class="verdict" id="ftVerdict"></p>
+      <div class="scen combo" style="gap:10px">
+        <div class="eyebrow">Événements du match</div>
+        <p class="sub2">Ça va ensemble</p>
+        <div class="sugg" id="ftSug"></div>
+        <p class="sub2">Tous les événements</p>
+        <div class="evlist" id="ftEv"></div>
+        <div class="row"><button class="simbtn" id="ftAdd">Ajouter au combiné</button><span class="note" id="ftSel"></span></div>
+      </div>
+      <details class="more">
+        <summary>Détails du match et match simulé</summary>
+        <div class="facts" id="ftFacts"></div>
+        <div class="tl" id="ftTl"></div>
+        <button class="simbtn" id="ftSim">Simuler un match</button>
+      </details>
+    </div>
+  </div>
+
+  <details class="more sec">
+    <summary>Classement et notes des équipes</summary>
+    <p class="sub">Attaque et défense : buts en plus ou en moins par rapport à une équipe moyenne.</p>
+    <div class="card tablewrap" style="padding:8px 12px">
+      <table>
+        <thead><tr><th>#</th><th>Équipe</th><th>J</th><th>Pts</th><th>Diff.</th><th>Forme</th><th>Attaque</th><th>Défense</th><th></th></tr></thead>
+        <tbody id="ftTb"></tbody>
+      </table>
+    </div>
+    <p class="note">Le modèle ne tient pas compte des blessés. Données : football-data.co.uk.</p>
+  </details>
+</div>

@@ -1,0 +1,663 @@
+<title>Pronos Tennis ATP</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout : outil en une colonne — choix du match en haut, verdict, scénarios, puis classement Elo */
+:root {
+  --bg: #f5f6f2; --surface: #ffffff; --ink: #151814; --ink-2: #4b5149; --ink-3: #7b8179;
+  --line: #dde1d8; --a: #2a78d6; --b: #eb6834; --clay: #b85a2e; --grass: #3e7d3a; --hard: #2f6aa8;
+  --f-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #121411; --surface: #1a1d19; --ink: #eef0eb; --ink-2: #b8bdb5; --ink-3: #888e86;
+    --line: #2c312a; --a: #3987e5; --b: #d95926; --clay: #d9784a; --grass: #6db368; --hard: #6aa0d8; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #121411; --surface: #1a1d19; --ink: #eef0eb; --ink-2: #b8bdb5; --ink-3: #888e86;
+  --line: #2c312a; --a: #3987e5; --b: #d95926; --clay: #d9784a; --grass: #6db368; --hard: #6aa0d8; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 28px 48px; }
+.wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 28px; }
+.num { font-variant-numeric: tabular-nums; }
+h1, h2 { font-family: var(--f-display); font-weight: 700; margin: 0; line-height: 1.05; text-wrap: balance; }
+h1 { font-size: clamp(32px, 6vw, 44px); }
+h2 { font-size: 24px; }
+p { margin: 0; }
+.sub { color: var(--ink-2); max-width: 62ch; }
+.eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-weight: 600; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; display: grid; gap: 18px; min-width: 0; }
+.pick { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: end; }
+.pick label { display: grid; gap: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); font-weight: 600; min-width: 0; }
+.pick input { font: inherit; font-size: 16px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); width: 100%; min-width: 0; }
+.pick input:focus-visible { outline: 2px solid var(--a); outline-offset: 1px; }
+#pA { border-left: 4px solid var(--a); } #pB { border-left: 4px solid var(--b); }
+.vs { font-family: var(--f-display); font-size: 22px; color: var(--ink-3); padding-bottom: 8px; }
+.swap { font: inherit; font-size: 13px; background: none; border: 1px solid var(--line); color: var(--ink-2); border-radius: 7px; padding: 6px 10px; cursor: pointer; }
+.row { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+.seg button { font: inherit; font-size: 13px; padding: 7px 13px; background: transparent; color: var(--ink-2); border: 0; cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.seg button:focus-visible, .swap:focus-visible { outline: 2px solid var(--a); outline-offset: -2px; }
+.err { color: var(--b); font-size: 14px; }
+
+.result { display: grid; gap: 14px; }
+.names { display: flex; justify-content: space-between; gap: 12px; }
+.names div { display: grid; min-width: 0; }
+.names div:last-child { text-align: right; }
+.pname { font-family: var(--f-display); font-size: 26px; font-weight: 700; line-height: 1.1; overflow-wrap: anywhere; }
+.pct { font-family: var(--f-display); font-size: 48px; font-weight: 600; line-height: 1; }
+.pa { color: var(--a); } .pb { color: var(--b); }
+.bar { display: flex; height: 14px; border-radius: 4px; overflow: hidden; gap: 2px; background: var(--surface); }
+.bar span { display: block; height: 100%; transition: width .3s; }
+.odds { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-2); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.fact { border-top: 1px solid var(--line); padding-top: 8px; display: grid; gap: 2px; }
+.fact .l { font-size: 12px; color: var(--ink-3); }
+.fact .v { font-size: 14px; }
+.scen { display: grid; gap: 8px; }
+.scen-row { display: grid; grid-template-columns: 150px 1fr 52px; gap: 10px; align-items: center; font-size: 14px; }
+.scen-row .track { height: 10px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.scen-row .fill { height: 100%; border-radius: 0 3px 3px 0; }
+.scen-row .p { text-align: right; }
+.verdict { font-size: 15px; color: var(--ink-2); }
+.verdict b { color: var(--ink); }
+
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; }
+th, td { padding: 7px 8px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+th:nth-child(2), td:nth-child(2) { text-align: left; }
+th { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); font-weight: 600; cursor: pointer; }
+th[aria-sort] { color: var(--ink); }
+td.name { font-weight: 500; }
+td button { font: inherit; font-size: 12px; background: none; border: 1px solid var(--line); border-radius: 6px; color: var(--ink-2); padding: 2px 7px; cursor: pointer; }
+.note { font-size: 13px; color: var(--ink-3); }
+
+.simgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.board { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.board-row { display: grid; grid-template-columns: minmax(0, 1fr) repeat(5, 34px); align-items: center; border-bottom: 1px solid var(--line); }
+.board-row:last-child { border-bottom: 0; }
+.board-row > span { padding: 9px 0; text-align: center; font-size: 20px; font-family: var(--f-display); font-weight: 600; }
+.board-row > span.who { text-align: left; padding-left: 12px; font-family: var(--f-body); font-size: 15px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.board-row > span.win { color: var(--ink); } .board-row > span.lose { color: var(--ink-3); }
+.board-row > span sup { font-size: 11px; color: var(--ink-3); }
+.board-row.winner .who::after { content: " ✓"; color: var(--grass); }
+.set-in { animation: pop .35s ease-out both; }
+@keyframes pop { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .set-in { animation: none; } }
+.simbtn { font: inherit; font-size: 14px; font-weight: 600; background: var(--ink); color: var(--bg); border: 0; border-radius: 8px; padding: 9px 16px; cursor: pointer; justify-self: start; }
+.simbtn:focus-visible { outline: 2px solid var(--a); outline-offset: 2px; }
+.topscores { display: grid; gap: 7px; }
+.scen-row.ind { grid-template-columns: minmax(0, 1.4fr) minmax(60px, 1fr) 46px; }
+.scen-row.ind > span:first-child { min-width: 0; }
+.evlist { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 6px 14px; }
+.evlist label { display: grid; grid-template-columns: 16px minmax(0, 1fr) auto; gap: 8px; align-items: center; font-size: 14px; cursor: pointer; padding: 4px 0; }
+.evlist input { accent-color: var(--ink); width: 16px; height: 16px; margin: 0; }
+.evlist .q { font-size: 12px; color: var(--ink-3); }
+.legs { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.legs li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 10px; align-items: center; font-size: 14px; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: var(--bg); }
+.legs li small { display: block; color: var(--ink-3); font-size: 12px; }
+.legs button { font: inherit; font-size: 12px; background: none; border: 1px solid var(--line); border-radius: 6px; color: var(--ink-2); padding: 2px 7px; cursor: pointer; }
+.cbtot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-family: var(--f-display); font-size: 20px; font-weight: 600; padding: 8px 2px; border-top: 1px solid var(--line); margin-top: 8px; }
+.bk { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-2); }
+.bk input { font: inherit; font-size: 16px; width: 110px; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); }
+.cal { display: grid; gap: 6px; }
+.sub2 { font-size: 13px; color: var(--ink-2); }
+.sugg { display: grid; gap: 6px; }
+.sg { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; font-size: 14px; border: 1px solid var(--line); border-left: 4px solid var(--grass); border-radius: 8px; padding: 8px 10px; background: var(--bg); }
+.sg b { font-weight: 600; }
+.sg small { display: block; font-size: 12px; color: var(--ink-3); margin-top: 2px; }
+.sg button { font: inherit; font-size: 13px; font-weight: 600; background: var(--ink); color: var(--bg); border: 0; border-radius: 7px; padding: 6px 10px; cursor: pointer; }
+.linkbtn { font: inherit; font-size: 13px; background: none; border: 0; padding: 0; color: var(--a); text-decoration: underline; cursor: pointer; }
+.game:disabled { opacity: .5; cursor: not-allowed; }
+.tourn { font-size: 14px; color: var(--ink-2); background: var(--bg); border: 1px solid var(--line); border-left: 4px solid var(--grass); border-radius: 8px; padding: 8px 12px; }
+.tourn b { color: var(--ink); }
+.tourn.flash { animation: flash 1.2s ease-out; }
+@keyframes flash { from { background: color-mix(in srgb, var(--grass) 25%, var(--bg)); } to { background: var(--bg); } }
+@media (prefers-reduced-motion: reduce) { .tourn.flash { animation: none; } }
+.calrow { font: inherit; display: grid; grid-template-columns: 92px minmax(0, 1fr) auto; gap: 10px; align-items: center; text-align: left; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); cursor: pointer; }
+.calrow:focus-visible { outline: 2px solid var(--a); outline-offset: 1px; }
+.calrow[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.calrow .d { font-size: 12px; color: var(--ink-2); }
+.calrow .t { min-width: 0; display: grid; }
+.calrow .t b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.calrow .t span { font-size: 12px; color: var(--ink-3); }
+.chips { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+.chip { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--ink-2); white-space: nowrap; }
+.chip.live { background: var(--grass); border-color: var(--grass); color: #fff; }
+.chip.Hard { color: var(--hard); border-color: var(--hard); } .chip.Clay { color: var(--clay); border-color: var(--clay); } .chip.Grass { color: var(--grass); border-color: var(--grass); }
+@media (max-width: 520px) {
+  .pick { grid-template-columns: 1fr; } .vs { display: none; }
+  .scen-row { grid-template-columns: 110px 1fr 46px; }
+  .pct { font-size: 40px; }
+}
+</style>
+
+<div class="wrap">
+  <header class="vh">
+    <h1>Pronos Tennis</h1>
+    <div class="seg" role="group" aria-label="Circuit"><button id="t-ATP" aria-pressed="true">ATP · hommes</button><button id="t-WTA" aria-pressed="false">WTA · femmes</button></div>
+    <p class="sub">Bon vainqueur <b id="acc"></b> du temps<span id="accpW" hidden><span id="accp"></span></span> · à jour au <span id="upd"></span></p>
+  </header>
+
+  <div class="card">
+    <div class="eyebrow">Matchs à venir <span style="text-transform:none;letter-spacing:0">· heure locale</span></div>
+    <div class="games" id="tLive"></div>
+    <details class="more">
+      <summary>Calendrier des tournois</summary>
+      <div class="cal" id="cal"></div>
+      <p class="note">Touche un tournoi pour régler la surface et ses joueurs.</p>
+    </details>
+  </div>
+
+  <div class="card">
+    <div class="pick">
+      <label for="pA">Joueur 1<input id="pA" list="plist" autocomplete="off" value="Sinner J."></label>
+      <div class="vs">vs</div>
+      <label for="pB">Joueur 2<input id="pB" list="plist" autocomplete="off" value="Alcaraz C."></label>
+    </div>
+    <datalist id="plist"></datalist>
+    <div class="row">
+      <div class="seg" role="group" aria-label="Surface">
+        <button id="s-Hard" aria-pressed="true">Dur (béton)</button><button id="s-Clay" aria-pressed="false">Terre battue</button><button id="s-Grass" aria-pressed="false">Gazon</button>
+      </div>
+      <div class="seg" role="group" aria-label="Format">
+        <button id="f-3" aria-pressed="true">2 sets gagnants</button><button id="f-5" aria-pressed="false">3 sets gagnants</button>
+      </div>
+      <button class="swap" id="swap">Inverser</button>
+    </div>
+    <p class="tourn" id="tourn" hidden></p>
+    <p class="err" id="err" hidden></p>
+
+    <div class="result" id="result">
+      <div class="names">
+        <div><span class="pname" id="nA"></span><span class="pct pa num" id="wA"></span></div>
+        <div><span class="pname" id="nB"></span><span class="pct pb num" id="wB"></span></div>
+      </div>
+      <div class="bar" aria-hidden="true"><span id="barA" style="background:var(--a)"></span><span id="barB" style="background:var(--b)"></span></div>
+      <div class="odds num"><span id="oA"></span><span id="oB"></span></div>
+      <p class="verdict" id="verdict"></p>
+      <div class="scen combo" style="gap:10px">
+        <div class="eyebrow">Événements du match</div>
+        <p class="sub2">Ça va ensemble</p>
+        <div class="sugg" id="tSug"></div>
+        <p class="sub2">Tous les événements</p>
+        <div class="evlist" id="evList"></div>
+        <div class="row"><button class="simbtn" id="cbAdd">Ajouter au combiné</button><span class="note" id="cbSel"></span></div>
+      </div>
+      <details class="more">
+        <summary>Détails du match et match simulé</summary>
+        <div class="facts" id="facts"></div>
+        <div class="simgrid" id="simstats"></div>
+        <div class="board" id="board"></div>
+        <button class="simbtn" id="simbtn">Simuler un match</button>
+      </details>
+    </div>
+  </div>
+
+  <details class="more sec">
+    <summary>Classement Elo des joueurs</summary>
+    <p class="sub">Joueurs actifs ces 12 derniers mois.</p>
+    <p class="tourn" id="tbNote" hidden></p>
+    <div class="card tablewrap" style="padding:8px 12px">
+      <table>
+        <thead><tr><th data-k="i">#</th><th data-k="name">Joueur</th><th data-k="rank">Rang</th><th data-k="elo" aria-sort="descending">Elo</th><th data-k="hard">Dur</th><th data-k="clay">Terre</th><th data-k="grass">Gazon</th><th></th></tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+    </div>
+    <p class="note">Pronostics, pas une garantie de gain.</p>
+  </details>
+</div>
+
+<script>
+const TOURS = { ATP: __DATA__, WTA: __WTA__ };
+let TOUR = "ATP", D = TOURS.ATP, P = Object.fromEntries(D.players.map(p => [p.name, p]));
+let surface = "Hard", bo = 3;
+const $ = id => document.getElementById(id);
+const fr = (x, d = 0) => x.toFixed(d).replace(".", ",");
+function drawHeader() {
+  $("upd").textContent = new Date(D.updated).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+  $("acc").textContent = fr(D.test.acc * 100) + " %";
+  $("accpW").hidden = true;
+  if (D.test.acc_pin) $("accp").textContent = fr(D.test.acc_pin * 100) + " %";
+  $("plist").innerHTML = D.players.map(p => `<option value="${p.name}">`).join("");
+}
+drawHeader();
+
+const E = (a, b) => 1 / (1 + Math.pow(10, (b - a) / 400));
+const logit = p => Math.log(p / (1 - p));
+const key = { Hard: "hard", Clay: "clay", Grass: "grass" };
+const gkey = { Hard: "gHard", Clay: "gClay", Grass: "gGrass" };
+const daysSince = d => Math.max(0, Math.round((new Date(D.updated + "T12:00:00") - new Date(d)) / 864e5));
+const load = p => p.hist.filter(d => { const x = daysSince(d); return x <= 14; }).length;
+const cl = p => Math.min(Math.max(p, 1e-4), 1 - 1e-4);
+function prob(a, b) {
+  const s = key[surface], g = gkey[surface];
+  const eloB = logit(cl(E((a.elo + a[s]) / 2, (b.elo + b[s]) / 2)));
+  const eloS = logit(cl(E(a[s], b[s])));
+  const gelB = logit(cl(E((a.g + a[g]) / 2, (b.g + b[g]) / 2)));
+  const rank = Math.log((b.rank || 500) / (a.rank || 500));
+  const inact = Math.log1p(Math.min(daysSince(a.last), 365)) - Math.log1p(Math.min(daysSince(b.last), 365));
+  const x = [eloB, eloS, gelB, rank, inact, load(a) - load(b), a.ret - b.ret, eloB * (bo === 5 ? 1 : 0), eloS * (bo === 5 ? 1 : 0)];
+  const z = x.reduce((acc, v, i) => acc + v * D.coef.w[i], D.coef.c);
+  return 1 / (1 + Math.exp(-z));
+}
+function matchFromSet(s, need) {
+  const memo = {};
+  const f = (x, y) => { if (x === need) return 1; if (y === need) return 0; const k = x + "-" + y; if (k in memo) return memo[k]; return memo[k] = s * f(x + 1, y) + (1 - s) * f(x, y + 1); };
+  return f(0, 0);
+}
+function setScores(pm, need) {
+  let lo = 0, hi = 1;
+  for (let i = 0; i < 60; i++) { const m = (lo + hi) / 2; matchFromSet(m, need) < pm ? lo = m : hi = m; }
+  const s = (lo + hi) / 2, out = [];
+  const C = (n, k) => { let r = 1; for (let i = 0; i < k; i++) r = r * (n - i) / (i + 1); return r; };
+  for (let l = 0; l < need; l++) out.push({ w: "A", score: `${need}–${l}`, p: C(need - 1 + l, l) * Math.pow(s, need) * Math.pow(1 - s, l) });
+  for (let l = 0; l < need; l++) out.push({ w: "B", score: `${l}–${need}`, p: C(need - 1 + l, l) * Math.pow(1 - s, need) * Math.pow(s, l) });
+  return out.sort((x, y) => y.p - x.p);
+}
+function render() {
+  const a = P[$("pA").value.trim()], b = P[$("pB").value.trim()];
+  const err = $("err");
+  if (!a || !b || a === b) {
+    err.hidden = false; $("result").style.opacity = .35;
+    err.textContent = !a || !b ? "Choisis un joueur dans la liste (format : Nom I., par exemple « Sinner J. »)." : "Choisis deux joueurs différents.";
+    return;
+  }
+  err.hidden = true; $("result").style.opacity = 1;
+  const p = prob(a, b);
+  $("nA").textContent = a.name; $("nB").textContent = b.name;
+  $("wA").textContent = fr(p * 100) + " %"; $("wB").textContent = fr((1 - p) * 100) + " %";
+  $("barA").style.width = `calc(${p * 100}% - 1px)`; $("barB").style.width = `calc(${(1 - p) * 100}% - 1px)`;
+  $("oA").textContent = "Cote juste " + fr(1 / p, 2); $("oB").textContent = "Cote juste " + fr(1 / (1 - p), 2);
+  const fav = p >= .5 ? a : b, pf = Math.max(p, 1 - p);
+  const lvl = pf >= .8 ? "grand favori" : pf >= .65 ? "favori net" : pf >= .55 ? "léger favori" : "match très serré";
+  $("verdict").innerHTML = pf < .55 ? `<b>Match très serré</b>` : `<b>${fav.name}</b> est ${lvl}.`;
+  const surfName = { Hard: "dur", Clay: "terre", Grass: "gazon" }[surface];
+  $("facts").innerHTML = [
+    ["Elo général", `${Math.round(a.elo)} – ${Math.round(b.elo)}`],
+    [`Elo sur ${surfName}`, `${Math.round(a[key[surface]])} – ${Math.round(b[key[surface]])}`],
+    ["Classement ATP", `${a.rank ?? "–"} – ${b.rank ?? "–"}`],
+    ["Dernier match", `${new Date(a.last).toLocaleDateString("fr-FR", { day: "numeric", month: "short" })} – ${new Date(b.last).toLocaleDateString("fr-FR", { day: "numeric", month: "short" })}`],
+    ["Alerte", [a, b].map(p => daysSince(p.last) > 60 ? `${p.name} : ${daysSince(p.last)} j sans match` : p.ret ? `${p.name} : abandon au dernier match` : "").filter(Boolean).join(" · ") || "Aucune"],
+  ].map(([l, v]) => `<div class="fact"><span class="l">${l}</span><span class="v num">${v}</span></div>`).join("");
+  clearTimeout(window._simT);
+  window._simT = setTimeout(() => { simulateAll(a, b, p); seed = 4242; drawBoard(simMatch(window._sim.pa, window._sim.pb), 9); if (typeof drawEvents === "function") drawEvents(); }, 30);
+}
+
+// ---------- simulation point par point ----------
+const BASE = { Hard: 0.645, Clay: 0.615, Grass: 0.675 };   // points gagnés au service, moyenne ATP
+function pGame(p) { const q = 1 - p; return Math.pow(p, 4) * (1 + 4 * q + 10 * q * q) + 20 * Math.pow(p, 3) * Math.pow(q, 3) * (p * p / (p * p + q * q)); }
+function pTB(pa, pb) {
+  const m = {};
+  const f = (a, b) => {
+    if (a >= 7 && a - b >= 2) return 1; if (b >= 7 && b - a >= 2) return 0;
+    if (a >= 6 && a === b) { const w = pa * (1 - pb), l = (1 - pa) * pb; return w / (w + l); }
+    const k = a + "," + b; if (k in m) return m[k];
+    const n = a + b, srvA = n % 4 === 0 || n % 4 === 3, p = srvA ? pa : 1 - pb;
+    return m[k] = p * f(a + 1, b) + (1 - p) * f(a, b + 1);
+  };
+  return f(0, 0);
+}
+function pSetA(pa, pb) {
+  const ga = pGame(pa), gb = pGame(pb), tb = pTB(pa, pb), m = {};
+  const f = (a, b) => {
+    if ((a === 6 && b <= 4) || a === 7) return 1; if ((b === 6 && a <= 4) || b === 7) return 0;
+    if (a === 6 && b === 6) return tb;
+    const k = a + "," + b; if (k in m) return m[k];
+    const p = (a + b) % 2 === 0 ? ga : 1 - gb;
+    return m[k] = p * f(a + 1, b) + (1 - p) * f(a, b + 1);
+  };
+  return f(0, 0);
+}
+function serveProbs(pm) {
+  // trouve l'écart d au service tel que P(match) = pm ; A sert à base+d/2, B à base−d/2
+  const base = BASE[surface], need = bo === 5 ? 3 : 2;
+  let lo = -0.4, hi = 0.4;
+  for (let i = 0; i < 40; i++) {
+    const d = (lo + hi) / 2, pa = base + d / 2, pb = base - d / 2;
+    const s = (pSetA(pa, pb) + 1 - pSetA(pb, pa)) / 2;      // moyenne sur qui sert en premier
+    matchFromSet(s, need) < pm ? lo = d : hi = d;
+  }
+  const d = (lo + hi) / 2; return [base + d / 2, base - d / 2];
+}
+let seed = 12345;
+const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+function simGame(p) { let a = 0, b = 0; for (;;) { rnd() < p ? a++ : b++; if (a >= 4 && a - b >= 2) return true; if (b >= 4 && b - a >= 2) return false; } }
+function simTB(pa, pb, aFirst) {
+  let a = 0, b = 0, n = 0;
+  for (;;) { const srvA = ((n % 4 === 0 || n % 4 === 3) === aFirst); const p = srvA ? pa : 1 - pb; rnd() < p ? a++ : b++; n++;
+    if (a >= 7 && a - b >= 2) return [7, 6, a, b]; if (b >= 7 && b - a >= 2) return [6, 7, a, b]; }
+}
+function simMatch(pa, pb) {
+  const need = bo === 5 ? 3 : 2; let sa = 0, sb = 0, aServes = rnd() < 0.5; const sets = [];
+  while (sa < need && sb < need) {
+    let ga = 0, gb = 0, tb = null;
+    for (;;) {
+      if (ga === 6 && gb === 6) { const r = simTB(pa, pb, aServes); tb = r[0] > r[1] ? r[3] : r[2]; ga = r[0]; gb = r[1]; aServes = !aServes; break; }
+      const won = aServes ? simGame(pa) : !simGame(pb);
+      won ? ga++ : gb++; aServes = !aServes;
+      if ((ga >= 6 || gb >= 6) && Math.abs(ga - gb) >= 2) break;
+      if (ga === 7 || gb === 7) break;
+    }
+    sets.push([ga, gb, tb]); ga > gb ? sa++ : sb++;
+  }
+  return { sets, aWins: sa > sb };
+}
+function simulateAll(a, b, pm) {
+  const [pa, pb] = serveProbs(pm); seed = 987654;
+  const N = 10000, need = bo === 5 ? 3 : 2, lines = bo === 5 ? [34.5, 37.5, 40.5] : [20.5, 22.5, 24.5];
+  let tbs = 0, long = 0, aStraight = 0, bStraight = 0, aSet = 0, bSet = 0, aFirst = 0; const totals = [];
+  for (let i = 0; i < N; i++) {
+    const m = simMatch(pa, pb);
+    const wa = m.sets.filter(s => s[0] > s[1]).length, wb = m.sets.length - wa;
+    if (m.aWins && wb === 0) aStraight++; if (!m.aWins && wa === 0) bStraight++;
+    if (wa > 0) aSet++; if (wb > 0) bSet++;
+    if (m.sets[0][0] > m.sets[0][1]) aFirst++;
+    if (m.sets.some(s => s[2] !== null)) tbs++;
+    if (m.sets.length === 2 * need - 1) long++;
+    totals.push(m.sets.reduce((x, s) => x + s[0] + s[1], 0));
+  }
+  totals.sort((x, y) => x - y);
+  const med = totals[N >> 1];
+  const rows = [
+    ["A", `${a.name} gagne le 1er set`, aFirst / N],
+    ["A", `${a.name} gagne sans perdre de set`, aStraight / N],
+    ["B", `${b.name} gagne sans perdre de set`, bStraight / N],
+    ["A", `${a.name} gagne au moins un set`, aSet / N],
+    ["B", `${b.name} gagne au moins un set`, bSet / N],
+    ["N", `Au moins un tie-break`, tbs / N],
+    ["N", bo === 5 ? "Match en 5 sets" : "Match en 3 sets", long / N],
+    ...lines.map(l => ["N", `Plus de ${fr(l, 1)} jeux`, totals.filter(x => x > l).length / N]),
+  ];
+  const col = w => w === "A" ? "var(--a)" : w === "B" ? "var(--b)" : "var(--ink-3)";
+  $("simstats").innerHTML = [
+    ["Jeux le plus souvent", `${totals[Math.floor(N * .25)]} à ${totals[Math.floor(N * .75)]} (médiane ${med})`],
+    ["Points gagnés au service", `${fr(pa * 100)} % – ${fr(pb * 100)} %`],
+  ].map(([l, v]) => `<div class="fact"><span class="l">${l}</span><span class="v num">${v}</span></div>`).join("");
+  window._sim = { a, b, pa, pb };
+}
+function drawBoard(m, upto) {
+  const { a, b } = window._sim, cols = bo === 5 ? 5 : 3;
+  const cell = (s, i, mine) => {
+    if (i >= upto || !s) return `<span></span>`;
+    const v = mine ? s[0] : s[1], o = mine ? s[1] : s[0], tb = s[2] !== null && v < o ? `<sup>${s[2]}</sup>` : "";
+    return `<span class="${v > o ? "win" : "lose"} ${i === upto - 1 ? "set-in" : ""}">${v}${tb}</span>`;
+  };
+  const done = upto >= m.sets.length;
+  const row = (p, mine) => `<div class="board-row ${done && (mine === m.aWins) ? "winner" : ""}" style="grid-template-columns:minmax(0,1fr) repeat(${cols},34px)"><span class="who" style="border-left:4px solid ${mine ? "var(--a)" : "var(--b)"}">${p.name}</span>${Array.from({ length: cols }, (_, i) => cell(m.sets[i], i, mine)).join("")}</div>`;
+  $("board").innerHTML = row(a, true) + row(b, false);
+}
+let timer = null;
+function simOne() {
+  if (!window._sim) return;
+  seed = (Date.now() ^ (Math.random() * 1e9)) >>> 0;
+  const m = simMatch(window._sim.pa, window._sim.pb);
+  clearInterval(timer); let k = 0; drawBoard(m, 0);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { drawBoard(m, m.sets.length); return; }
+  timer = setInterval(() => { k++; drawBoard(m, k); if (k >= m.sets.length) clearInterval(timer); }, 650);
+}
+$("simbtn").addEventListener("click", simOne);
+
+function seg(ids, fn) { ids.forEach(id => $(id).addEventListener("click", () => { ids.forEach(j => $(j).setAttribute("aria-pressed", j === id)); fn(id); render(); })); }
+seg(["s-Hard", "s-Clay", "s-Grass"], id => surface = id.slice(2));
+seg(["f-3", "f-5"], id => bo = +id.slice(2));
+["pA", "pB"].forEach(id => $(id).addEventListener("input", render));
+$("swap").addEventListener("click", () => { const t = $("pA").value; $("pA").value = $("pB").value; $("pB").value = t; render(); });
+
+// ---------- filtre « joueurs du tournoi » ----------
+let FILTER = null;
+const pool = () => FILTER ? D.players.filter(p => FILTER.has(p.name)) : D.players;
+function fillList() { $("plist").innerHTML = pool().map(p => `<option value="${p.name}">`).join(""); }
+const normCity = s => String(s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+const CITY_EN = { bucarest: "bucharest", turin: "turin", torino: "turin", dubai: "dubai", adelaide: "adelaide" };
+function drawFor(city) {
+  const k = CITY_EN[normCity(city)] || normCity(city);
+  return (D.draws || []).find(d => (CITY_EN[normCity(d.city)] || normCity(d.city)) === k && d.players.length) || null;
+}
+function applyDraw(d) {
+  FILTER = d ? new Set(d.alive.length ? d.alive : d.players) : null;
+  fillList(); table();
+  if (FILTER) {
+    const top = pool();
+    if (!FILTER.has($("pA").value)) $("pA").value = top[0] ? top[0].name : "";
+    if (!FILTER.has($("pB").value) || $("pB").value === $("pA").value) { const o = top.find(p => p.name !== $("pA").value); $("pB").value = o ? o.name : ""; }
+  }
+  $("tbNote").textContent = FILTER ? `Seuls les ${FILTER.size} joueurs encore en lice dans ${d.tour} sont affichés.` : "";
+  $("tbNote").hidden = !FILTER;
+}
+function drawMsg(d) {
+  if (!d) return " La liste des participants n'est pas encore connue (elle est publiée la veille du tournoi) : tous les joueurs restent affichés.";
+  return ` <b>${FILTER.size} joueurs encore en lice</b> : la liste et le classement n'affichent qu'eux. <button class="linkbtn" data-all="1">Afficher tous les joueurs</button>`;
+}
+$("tourn").addEventListener("click", e => { if (e.target.closest("[data-all]")) { applyDraw(null); $("tourn").querySelector("[data-all]").remove(); render(); } });
+let sortK = "elo", dir = -1;
+function table() {
+  const rows = pool().map((p, i) => ({ ...p, i: i + 1 }));
+  rows.sort((x, y) => { const a = x[sortK] ?? 9999, b = y[sortK] ?? 9999; return (typeof a === "string" ? a.localeCompare(b) : a - b) * dir; });
+  $("tb").innerHTML = rows.slice(0, 60).map((p, i) => `<tr><td class="num">${i + 1}</td><td class="name">${p.name}</td><td class="num">${p.rank ?? "–"}</td><td class="num"><b>${Math.round(p.elo)}</b></td><td class="num">${Math.round(p.hard)}</td><td class="num">${Math.round(p.clay)}</td><td class="num">${Math.round(p.grass)}</td><td><button data-n="${p.name}" data-s="A">J1</button> <button data-n="${p.name}" data-s="B">J2</button></td></tr>`).join("");
+}
+document.querySelectorAll("th[data-k]").forEach(th => th.addEventListener("click", () => {
+  const k = th.dataset.k; if (k === "i") return;
+  dir = sortK === k ? -dir : (k === "rank" || k === "name" ? 1 : -1); sortK = k;
+  document.querySelectorAll("th[data-k]").forEach(t => t.removeAttribute("aria-sort"));
+  th.setAttribute("aria-sort", dir > 0 ? "ascending" : "descending"); table();
+}));
+$("tb").addEventListener("click", e => { const btn = e.target.closest("button"); if (!btn) return; $(btn.dataset.s === "A" ? "pA" : "pB").value = btn.dataset.n; render(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+// ---------- combinaisons cohérentes (utilisé par les 3 sports) ----------
+function suggestCombos(n, joint) {
+  const single = [...Array(n)].map((_, i) => joint([i]));
+  const out = [];
+  for (let i = 0; i < n; i++) for (let j = i + 1; j < n; j++) {
+    const p = joint([i, j]), naive = single[i] * single[j], mn = Math.min(single[i], single[j]);
+    if (p < 0.2 || p > 0.7 || naive <= 0) continue;     // cote juste entre ~1,4 et 5
+    if (p >= 0.95 * mn) continue;                        // l'un implique presque l'autre : redondant
+    const lift = p / naive; if (lift < 1.12) continue;   // doivent aller ensemble
+    out.push({ i, j, p, naive, lift });
+  }
+  out.sort((a, b) => b.lift - a.lift);
+  const res = [], cnt = {};
+  for (const o of out) {
+    if ((cnt[o.i] || 0) >= 2 || (cnt[o.j] || 0) >= 2) continue;
+    res.push(o); cnt[o.i] = (cnt[o.i] || 0) + 1; cnt[o.j] = (cnt[o.j] || 0) + 1;
+    if (res.length >= 4) break;
+  }
+  return res;
+}
+function renderSugg(el, list, labels, onAdd, emptyMsg) {
+  el.innerHTML = list.length ? list.map((o, k) => `<div class="sg"><span><b>${labels[o.i]}</b> + <b>${labels[o.j]}</b><small>${fr(o.p * 100)} % · cote juste ${fr(1 / o.p, 2)}</small></span><button data-k="${k}">Ajouter</button></div>`).join("")
+    : `<p class="note">${emptyMsg || "Pas de combinaison vraiment cohérente pour ce match."}</p>`;
+  el.onclick = e => { const b = e.target.closest("[data-k]"); if (b) onAdd(list[+b.dataset.k]); };
+}
+const naiveTxt = (pj, pn) => pj > pn * 1.1 ? " · ça va ensemble" : pj < pn * 0.9 ? " · ça se contredit" : "";
+
+// ---------- calculateur de combiné ----------
+const EVENTS = [
+  ["A gagne", m => m.aWins], ["B gagne", m => !m.aWins],
+  ["A gagne au moins un set", m => m.wa > 0], ["B gagne au moins un set", m => m.wb > 0],
+  ["A gagne le 1er set", m => m.sets[0][0] > m.sets[0][1]], ["B gagne le 1er set", m => m.sets[0][0] < m.sets[0][1]],
+  ["A gagne sans perdre de set", m => m.aWins && m.wb === 0], ["B gagne sans perdre de set", m => !m.aWins && m.wa === 0],
+  ["Match qui va au bout", m => m.sets.length === (bo === 5 ? 5 : 3)], ["Au moins un tie-break", m => m.sets.some(s => s[2] !== null)],
+  ["Plus de X1 jeux", (m, l) => m.g > l[0]], ["Plus de X2 jeux", (m, l) => m.g > l[1]], ["Moins de X2 jeux", (m, l) => m.g < l[1]],
+];
+let cbSims = null;
+function simsFor() {
+  const s = window._sim; if (!s) return null;
+  const key = [s.a.name, s.b.name, surface, bo].join("|");
+  if (cbSims && cbSims.key === key) return cbSims;
+  const save = seed; seed = 31337; const rows = [];
+  for (let i = 0; i < 12000; i++) {
+    const m = simMatch(s.pa, s.pb);
+    m.wa = m.sets.filter(x => x[0] > x[1]).length; m.wb = m.sets.length - m.wa; m.g = m.sets.reduce((x, y) => x + y[0] + y[1], 0);
+    rows.push(m);
+  }
+  seed = save;
+  const lines = bo === 5 ? [34.5, 37.5] : [20.5, 22.5];
+  cbSims = { key, rows, lines, a: s.a, b: s.b };
+  return cbSims;
+}
+const evLabel = (lab, S) => lab.replace(/^A /, S.a.name + " ").replace(/^B /, S.b.name + " ").replace("X1", fr(S.lines[0], 1)).replace("X2", fr(S.lines[1], 1));
+function drawEvents() {
+  const S = simsFor(); if (!S) return;
+  $("evList").innerHTML = EVENTS.map(([lab, fn], i) => {
+    const q = S.rows.filter(m => fn(m, S.lines)).length / S.rows.length;
+    return `<label for="ev${i}"><input type="checkbox" id="ev${i}" data-i="${i}"><span>${evLabel(lab, S)}</span><span class="q num">${fr(q * 100)} %</span></label>`;
+  }).join("");
+  const labs = EVENTS.map(e => evLabel(e[0], S));
+  renderSugg($("tSug"), suggestCombos(EVENTS.length, idx => jointP(S, idx)), labs,
+    o => Combo.add("Tennis", `${S.a.name} – ${S.b.name}`, [labs[o.i], labs[o.j]], o.p));
+  updSel();
+}
+function selected() { return [...document.querySelectorAll("#evList input:checked")].map(x => +x.dataset.i); }
+function jointP(S, idx) { return S.rows.filter(m => idx.every(i => EVENTS[i][1](m, S.lines))).length / S.rows.length; }
+function updSel() {
+  const S = cbSims, idx = selected();
+  const pj = idx.length ? jointP(S, idx) : 0, pn = idx.reduce((x, i) => x * jointP(S, [i]), 1);
+  $("cbSel").textContent = idx.length ? `${fr(pj * 100)} % · cote juste ${fr(1 / Math.max(pj, 1e-4), 2)}${idx.length > 1 ? naiveTxt(pj, pn) : ""}` : "Coche un ou plusieurs événements.";
+  $("cbAdd").disabled = !idx.length;
+}
+$("evList").addEventListener("change", updSel);
+$("cbAdd").addEventListener("click", () => {
+  const S = cbSims, idx = selected(); if (!idx.length) return;
+  Combo.add("Tennis", `${S.a.name} – ${S.b.name}`, idx.map(i => evLabel(EVENTS[i][0], S)), jointP(S, idx));
+  document.querySelectorAll("#evList input").forEach(x => x.checked = false); updSel();
+});
+
+// ---------- matchs à venir (tableaux ESPN, mis à jour chaque jour) ----------
+let LIVE = [];
+function drawLive() {
+  const sod = new Date(); sod.setHours(0, 0, 0, 0);   // les matchs du jour restent visibles jusqu'au lendemain
+  const live = LIVE = (D.live || []).filter(m => new Date(m.dt).getTime() >= sod.getTime()).slice(0, 20);
+  window._tLive = live;
+  $("tLive").innerHTML = live.length ? live.map((m, i) => {
+    const d = new Date(m.dt);
+    const when = d.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric" }) + " " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
+    const ok = m.k1 && m.k2;
+    const past = d.getTime() < Date.now();
+    return `<div class="gw"><button class="game wide${past ? " past" : ""}" data-i="${i}" ${ok ? "" : 'disabled title="Un des joueurs n\'a pas assez de matchs pour être noté"'}><span class="when">${past ? "Commencé · " : ""}${when} · ${m.tour} · ${m.round}</span><span><b>${m.p1}</b> – <b>${m.p2}</b></span></button>${Fav.star("Tennis", m.dt, m.p1, m.p2, TOUR + " · " + m.tour + " · " + m.round)}</div>`;
+  }).join("") : `<p class="note">Pas encore de match : les tableaux sortent la veille du tournoi.</p>`;
+  if (live.length) { const first = $("tLive").querySelector(".game:not([disabled]):not(.past)") || $("tLive").querySelector(".game:not([disabled])"); if (first) { const m = live[+first.dataset.i]; $("pA").value = m.p1; $("pB").value = m.p2; $("s-" + m.surface).click(); $("f-" + m.bo).click(); first.setAttribute("aria-pressed", "true"); return true; } }
+  return false;
+}
+{
+  const SURF = { Hard: "dur (béton)", Clay: "terre battue", Grass: "gazon" };
+  $("tLive").addEventListener("click", e => {
+    const b = e.target.closest(".game"); if (!b || b.disabled) return;
+    const m = LIVE[+b.dataset.i];
+    const dr = drawFor(m.city); applyDraw(dr);
+    $("pA").value = m.p1; $("pB").value = m.p2;
+    $("s-" + m.surface).click(); $("f-" + m.bo).click();
+    document.querySelectorAll("#tLive .game").forEach(x => x.setAttribute("aria-pressed", x === b));
+    const tn = $("tourn");
+    tn.innerHTML = `<b>${m.tour}</b> · ${m.round} : ${SURF[m.surface]}, ${m.bo === 5 ? "3 sets gagnants" : "2 sets gagnants"}.` + drawMsg(dr);
+    tn.hidden = false; tn.classList.remove("flash"); void tn.offsetWidth; tn.classList.add("flash");
+    render();
+    $("pA").closest(".card").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  });
+}
+drawLive();
+
+// ---------- calendrier ATP (source : calendriers officiels ATP 2026 et 2027) ----------
+const CAL = [
+  ["2026-11-02", "2026-11-08", "Rolex Paris Masters", "Paris", "1000", "Hard", 1],
+  ["2026-11-08", "2026-11-14", "Nordic Open", "Stockholm", "250", "Hard", 1],
+  ["2026-11-15", "2026-11-22", "Nitto ATP Finals", "Turin", "Finals", "Hard", 1],
+  ["2027-01-01", "2027-01-11", "United Cup", "Perth / Sydney", "Équipes", "Hard", 0],
+  ["2027-01-04", "2027-01-10", "Brisbane International", "Brisbane", "250", "Hard", 0],
+  ["2027-01-04", "2027-01-10", "Hong Kong Tennis Open", "Hong Kong", "250", "Hard", 0],
+  ["2027-01-11", "2027-01-16", "Adelaide International", "Adélaïde", "250", "Hard", 0],
+  ["2027-01-11", "2027-01-16", "ASB Classic", "Auckland", "250", "Hard", 0],
+  ["2027-01-17", "2027-01-31", "Open d'Australie", "Melbourne", "Grand Chelem", "Hard", 0, 5],
+  ["2027-02-01", "2027-02-07", "Open Occitanie", "Montpellier", "250", "Hard", 1],
+  ["2027-02-08", "2027-02-14", "ABN AMRO Open", "Rotterdam", "500", "Hard", 1],
+  ["2027-02-08", "2027-02-14", "Dallas Open", "Dallas", "500", "Hard", 1],
+  ["2027-02-08", "2027-02-14", "Argentina Open", "Buenos Aires", "250", "Clay", 0],
+  ["2027-02-15", "2027-02-21", "Qatar Open", "Doha", "500", "Hard", 0],
+  ["2027-02-15", "2027-02-21", "Rio Open", "Rio de Janeiro", "500", "Clay", 0],
+  ["2027-02-15", "2027-02-21", "Delray Beach Open", "Delray Beach", "250", "Hard", 0],
+  ["2027-02-22", "2027-02-28", "Dubai Tennis Championships", "Dubaï", "500", "Hard", 0],
+  ["2027-02-22", "2027-02-28", "Abierto Mexicano", "Acapulco", "500", "Hard", 0],
+  ["2027-02-22", "2027-02-28", "Chile Open", "Santiago", "250", "Clay", 0],
+  ["2027-03-03", "2027-03-14", "BNP Paribas Open", "Indian Wells", "1000", "Hard", 0],
+  ["2027-03-17", "2027-03-28", "Miami Open", "Miami", "1000", "Hard", 0],
+  ["2027-03-29", "2027-04-04", "Grand Prix Hassan II", "Marrakech", "250", "Clay", 0],
+  ["2027-03-29", "2027-04-04", "Tiriac Open", "Bucarest", "250", "Clay", 0],
+  ["2027-03-29", "2027-04-04", "U.S. Clay Court Championship", "Houston", "250", "Clay", 0],
+];
+let CALLIST = [];
+const SURF_C = { Hard: "Dur (béton)", Clay: "Terre battue", Grass: "Gazon" };
+function drawCal() {
+  const now = new Date(); now.setHours(0, 0, 0, 0);
+  const SURF = SURF_C;
+  const day = s => new Date(s + "T12:00:00");
+  const fmt = (a, b) => { const o = { day: "numeric", month: "short" }; return `${day(a).toLocaleDateString("fr-FR", o)} – ${day(b).toLocaleDateString("fr-FR", o)}`; };
+  // tournois connus d'ESPN (les 5 prochaines semaines), complétés par le calendrier officiel au-delà
+  const norm = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  const espn = (D.tours || []).map(e => {
+    const c = TOUR === "ATP" ? CAL.find(c => c[0] <= e.end && c[1] >= e.start && (!e.city || norm(c[3]).includes(norm(e.city)) || norm(e.name).includes(norm(c[3])))) : null;
+    return [e.start, e.end, e.name, e.city || (c ? c[3] : ""), c ? c[4] : "", e.surface, c ? c[6] : 0, e.major ? 5 : (c && c[7]) || 3];
+  });
+  const horizon = (D.tours || []).length ? D.toursUntil : "0000";
+  const list = CALLIST = espn.concat(TOUR === "ATP" ? CAL.filter(c => c[0] > horizon) : []).filter(c => day(c[1]) >= now).sort((x, y) => x[0] < y[0] ? -1 : 1).slice(0, 8);
+  $("cal").innerHTML = list.length ? list.map((c, i) => {
+    const live = day(c[0]) <= now;
+    return `<button class="calrow" data-i="${i}"><span class="d num">${fmt(c[0], c[1])}</span><span class="t"><b>${c[2]}</b><span>${c[3] ? c[3] + " · " : ""}${!c[4] ? TOUR : ["Grand Chelem", "Finals", "Équipes"].includes(c[4]) ? c[4] : TOUR + " " + c[4]}${c[6] ? " · en salle" : ""}</span></span><span class="chips">${live ? '<span class="chip live">En cours</span>' : ""}<span class="chip ${c[5]}">${SURF[c[5]]}</span></span></button>`;
+  }).join("") : `<p class="note">Aucun tournoi connu pour les prochaines semaines.</p>`;
+}
+{
+  const SURF = SURF_C;
+  $("cal").addEventListener("click", e => {
+    const b = e.target.closest(".calrow"); if (!b) return;
+    const c = CALLIST[+b.dataset.i];
+    const dr = drawFor(c[3]); applyDraw(dr);
+    $("s-" + c[5]).click(); $("f-" + (c[7] || 3)).click();
+    document.querySelectorAll(".calrow").forEach(x => x.setAttribute("aria-pressed", x === b));
+    const tn = $("tourn");
+    tn.innerHTML = `<b>${c[2]}</b> (${c[3]}) : réglé sur ${SURF[c[5]].toLowerCase()}, ${(c[7] || 3) === 5 ? "3 sets gagnants" : "2 sets gagnants"}.` + drawMsg(dr);
+    render();
+    tn.hidden = false; tn.classList.remove("flash"); void tn.offsetWidth; tn.classList.add("flash");
+    $("pA").closest(".card").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  });
+}
+drawCal();
+
+// ---------- changement de circuit ATP / WTA ----------
+function setTour(tour) {
+  if (tour === TOUR) return;
+  TOUR = tour; D = TOURS[tour]; P = Object.fromEntries(D.players.map(p => [p.name, p]));
+  ["ATP", "WTA"].forEach(k => $("t-" + k).setAttribute("aria-pressed", k === tour));
+  applyDraw(null); $("tourn").hidden = true; cbSims = null;
+  drawHeader(); drawCal();
+  if (!drawLive()) { $("pA").value = D.players[0] ? D.players[0].name : ""; $("pB").value = D.players[1] ? D.players[1].name : ""; }
+  render();
+}
+$("t-ATP").addEventListener("click", () => setTour("ATP"));
+$("t-WTA").addEventListener("click", () => setTour("WTA"));
+
+// ---------- accès pour l'onglet « Aujourd'hui » ----------
+window.TennisAPI = {
+  current: () => window._sim && { sport: "tennis", h: window._sim.a.name, a: window._sim.b.name, pa: window._sim.pa, pb: window._sim.pb, bo, surf: surface },
+  updated: TOURS.ATP.updated,
+  list() {
+    const out = [];
+    for (const tour of ["ATP", "WTA"]) {
+      const DT = TOURS[tour], PT = Object.fromEntries(DT.players.map(p => [p.name, p]));
+      for (const m of (DT.live || []).filter(m => m.k1 && m.k2 && PT[m.p1] && PT[m.p2])) {
+        const s0 = surface, b0 = bo, d0 = D; surface = m.surface; bo = m.bo; D = DT;
+        const p = prob(PT[m.p1], PT[m.p2]); surface = s0; bo = b0; D = d0;
+        out.push({ sport: "Tennis", dt: m.dt, comp: `${tour} · ${m.tour} · ${m.round}`, a: m.p1, b: m.p2, pa: p, pb: 1 - p,
+          open: () => { location.hash = "#tennis"; setTour(tour);
+            const i = (window._tLive || []).findIndex(x => x.p1 === m.p1 && x.p2 === m.p2 && x.dt === m.dt);
+            const btn = document.querySelector(`#tLive .game[data-i="${i}"]`); if (btn) btn.click(); else { $("pA").value = m.p1; $("pB").value = m.p2; render(); } } });
+      }
+    }
+    return out;
+  }
+};
+
+table(); render();
+</script>

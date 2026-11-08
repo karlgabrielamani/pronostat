@@ -1,0 +1,63 @@
+<div class="wrap" id="view-basket" hidden>
+  <header class="vh">
+    <h1>Pronos NBA</h1>
+    <p class="sub">Bon vainqueur <b id="nbAcc"></b> du temps · absents inclus · à jour au <span id="nbUpd"></span><span hidden><span id="nbMae"></span><span id="nbSeason"></span></span></p>
+  </header>
+
+  <div class="card">
+    <div class="eyebrow">Prochains matchs <span id="nbTz" style="text-transform:none;letter-spacing:0"></span></div>
+    <div class="games" id="nbGames"></div>
+  </div>
+
+  <div class="card">
+    <div class="pick">
+      <label for="nbA">Domicile<select id="nbA"></select></label>
+      <div class="vs">vs</div>
+      <label for="nbB">Extérieur<select id="nbB"></select></label>
+    </div>
+    <div class="row">
+      <label class="chk" for="nbBa"><input type="checkbox" id="nbBa"> <span id="nbBaL">Domicile a joué la veille</span></label>
+      <label class="chk" for="nbBb"><input type="checkbox" id="nbBb"> <span id="nbBbL">Extérieur a joué la veille</span></label>
+      <label class="chk" for="nbN"><input type="checkbox" id="nbN"> Terrain neutre</label>
+      <button class="swap" id="nbSwap">Inverser</button>
+    </div>
+    <div class="inj" id="nbInj"></div>
+    <p class="err" id="nbErr" hidden></p>
+
+    <div class="result" id="nbResult">
+      <div class="names">
+        <div><span class="pname" id="nbNA"></span><span class="pct pa num" id="nbWA"></span></div>
+        <div><span class="pname" id="nbNB"></span><span class="pct pb num" id="nbWB"></span></div>
+      </div>
+      <div class="bar" aria-hidden="true"><span id="nbBarA" style="background:var(--a)"></span><span id="nbBarB" style="background:var(--b)"></span></div>
+      <div class="odds num"><span id="nbOA"></span><span id="nbOB"></span></div>
+      <p class="verdict" id="nbVerdict"></p>
+      <div class="facts" id="nbScore"></div>
+      <div class="scen combo" style="gap:10px">
+        <div class="eyebrow">Événements du match</div>
+        <p class="sub2">Ça va ensemble</p>
+        <div class="sugg" id="nbSug"></div>
+        <p class="sub2">Tous les événements</p>
+        <div class="evlist" id="nbEv"></div>
+        <div class="row"><button class="simbtn" id="nbAdd">Ajouter au combiné</button><span class="note" id="nbSel"></span></div>
+      </div>
+      <details class="more">
+        <summary>Match simulé quart-temps par quart-temps</summary>
+        <div class="board" id="nbBoard"></div>
+        <button class="simbtn" id="nbSim">Simuler un match</button>
+      </details>
+    </div>
+  </div>
+
+  <details class="more sec">
+    <summary>Classement des équipes</summary>
+    <p class="sub">Points par match en plus ou en moins par rapport à une équipe moyenne.</p>
+    <div class="card tablewrap" style="padding:8px 12px">
+      <table>
+        <thead><tr><th data-nk="i">#</th><th data-nk="name">Équipe</th><th data-nk="w">Bilan</th><th data-nk="o">Attaque</th><th data-nk="d">Défense</th><th data-nk="net" aria-sort="descending">Total</th><th></th></tr></thead>
+        <tbody id="nbTb"></tbody>
+      </table>
+    </div>
+    <p class="note">Absents mis à jour chaque matin. Données : ESPN.</p>
+  </details>
+</div>

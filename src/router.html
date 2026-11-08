@@ -1,0 +1,214 @@
+
+<div class="wrap" id="view-fav" hidden>
+  <header class="vh">
+    <h1>Favoris</h1>
+    <p class="sub">Touche ☆ à côté d'un match pour le suivre ici.</p>
+  </header>
+  <div class="jlist" id="favList"></div>
+</div>
+
+<div class="wrap" id="view-jour" hidden>
+  <header class="vh">
+    <h1>Matchs à venir</h1>
+    <p class="sub">Aujourd'hui et demain · touche un match pour le détail.</p>
+  </header>
+  <div class="seg" role="group" aria-label="Sport" id="jSeg"><button data-s="" aria-pressed="true">Tous</button><button data-s="Foot" aria-pressed="false">Foot</button><button data-s="Tennis" aria-pressed="false">Tennis</button><button data-s="NBA" aria-pressed="false">NBA</button></div>
+  <div class="jlist" id="jList"></div>
+  <p class="note" id="jUpd"></p>
+  <section class="bilan" id="bilan" aria-labelledby="bilanT" hidden>
+    <h2 id="bilanT">Bilan du modèle</h2>
+    <p class="sub">Chaque pronostic est enregistré <b>avant</b> le début du match et n'est jamais modifié ensuite. On compte ici combien de fois le favori du modèle a vu juste, bons et mauvais résultats compris.</p>
+    <div class="btiles" id="bTiles"></div>
+    <details class="more"><summary>Derniers pronostics réglés</summary><ol class="brec" id="bRec"></ol></details>
+  </section>
+</div>
+
+<script>
+(() => {
+  const views = ["jour", "foot", "tennis", "basket", "fav", "strat"].filter(k => document.getElementById("view-" + k));
+  const show = () => {
+    const h = location.hash.slice(1), v = views.includes(h) ? h : "jour";
+    views.forEach(k => {
+      document.getElementById("view-" + k).hidden = k !== v;
+      const a = document.getElementById("tab-" + k); k === v ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current");
+    });
+  };
+  addEventListener("hashchange", () => { show(); window.scrollTo(0, 0); }); show();
+})();
+</script>
+<script>
+// ---------- combiné commun aux trois sports ----------
+const Combo = (() => {
+  let legs = [], odds = "", note = "", noteT = null;
+  const f = (x, d = 0) => x.toFixed(d).replace(".", ",");
+  const total = () => legs.reduce((x, l) => x * l.p, 1);
+  function verdict(P) {
+    const o = parseFloat(String(odds).replace(",", "."));
+    let txt = `Perdu <b>${Math.round((1 - P) * 10)} fois sur 10</b> selon le modèle.`;
+    if (o > 1) {
+      const ev = P * o - 1;
+      txt += ev > 0 ? ` Cote ${f(o, 2)} : <b>au-dessus</b> de la cote juste (+${f(ev * 100)} %).`
+                    : ` Cote ${f(o, 2)} : <b>en dessous</b> de la cote juste (−${f(-ev * 100)} %).`;
+    }
+    return txt;
+  }
+  let open = false;
+  function ensureBar() {
+    if (document.getElementById("cbBar")) return;
+    const bar = document.createElement("div");
+    bar.id = "cbBar"; bar.hidden = true;
+    bar.innerHTML = `<button class="cbsum" id="cbSum" aria-expanded="false" aria-controls="cbPanel"></button><div class="cbpanel" id="cbPanel" hidden></div>`;
+    document.body.appendChild(bar);
+    document.getElementById("cbSum").addEventListener("click", () => { open = !open; render(); });
+  }
+  function render(flash) {
+    ensureBar();
+    const P = total(), bar = document.getElementById("cbBar"), panel = document.getElementById("cbPanel"), sum = document.getElementById("cbSum");
+    bar.hidden = !legs.length; document.body.classList.toggle("has-cb", !!legs.length);
+    if (!legs.length) { open = false; return; }
+    const sports = [...new Set(legs.map(l => l.sport))].join(", ");
+    sum.innerHTML = `<span><b>Combiné</b> · ${legs.length} sélection${legs.length > 1 ? "s" : ""} (${sports})${note ? ` <span class="cbnote">${note}</span>` : ""}</span><span class="num">${f(P * 100)} % · cote juste ${f(1 / Math.max(P, 1e-4), 2)} <span class="chev">${open ? "▾" : "▴"}</span></span>`;
+    sum.setAttribute("aria-expanded", open);
+    panel.hidden = !open;
+    panel.innerHTML = `<p class="note" style="margin-bottom:8px">Ajoute des événements depuis n'importe quel sport.</p>
+      <ol class="legs">${legs.map((l, i) => `<li><span>${l.events.join(" + ")}<small>${l.sport} · ${l.match}</small></span><span class="num">${f(l.p * 100)} %</span><button data-r="${i}">Retirer</button></li>`).join("")}</ol>
+      <div class="cbtot"><span>Chance de gagner : <span class="num">${f(P * 100)} %</span></span><span>Cote juste <span class="num">${f(1 / Math.max(P, 1e-4), 2)}</span></span></div>
+      <label class="bk" for="cbOdds">Cote proposée par le bookmaker <input id="cbOdds" class="cbOdds" type="number" inputmode="decimal" step="0.01" min="1.01" placeholder="ex. 2,10" value="${odds}"></label>
+      <p class="verdict cbVerdict">${verdict(P)}</p>
+      <button class="swap" data-clear="1">Vider le combiné</button>`;
+    if (flash) { sum.classList.remove("flash"); void sum.offsetWidth; sum.classList.add("flash"); }
+  }
+  document.addEventListener("click", e => {
+    const r = e.target.closest("#cbPanel [data-r]"); if (r) { legs.splice(+r.dataset.r, 1); render(); return; }
+    if (e.target.closest("#cbPanel [data-clear]")) { legs = []; odds = ""; render(); }
+  });
+  document.addEventListener("input", e => {
+    if (!e.target.classList.contains("cbOdds")) return;
+    odds = e.target.value;
+    document.querySelectorAll(".cbVerdict").forEach(x => x.innerHTML = verdict(total()));
+  });
+  return { add(sport, match, events, p) {
+    const replaced = legs.some(l => l.match === match);
+    legs = legs.filter(l => l.match !== match); legs.push({ sport, match, events, p });
+    note = replaced ? "· pari remplacé (un seul par match)" : "· ajouté";
+    clearTimeout(noteT); noteT = setTimeout(() => { note = ""; render(); }, 3500);
+    render(true);
+  } };
+})();
+</script>
+
+<script>
+// ---------- onglet « Aujourd'hui » ----------
+(() => {
+  const f = x => Math.round(x * 100) + " %";
+  const APIS = [window.FootAPI, window.TennisAPI, window.NbaAPI].filter(Boolean);
+  let filt = "", showAll = false;
+  const dayLabel = d => {
+    const t0 = new Date(); t0.setHours(0, 0, 0, 0);
+    const k = Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - t0) / 864e5);
+    return k === 0 ? "Aujourd'hui" : k === 1 ? "Demain" : d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+  };
+  let items = [];
+  function draw() {
+    const now = Date.now();
+    items = APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } })
+      .filter(x => { const t = new Date(x.dt).getTime(), sod = new Date(); sod.setHours(0, 0, 0, 0); return t >= sod.getTime() && t < now + 48 * 3600e3; })
+      .sort((x, y) => new Date(x.dt) - new Date(y.dt));
+    const shown = items.filter(x => !filt || x.sport === filt);
+    const lim = showAll ? shown.length : 40;
+    let html = "", last = "";
+    shown.slice(0, lim).forEach(x => {
+      const d = new Date(x.dt), lab = dayLabel(d);
+      if (lab !== last) { html += `<div class="jday">${lab}</div>`; last = lab; }
+      const drawFav = x.pd != null && x.pd > Math.max(x.pa, x.pb);
+      const fav = drawFav ? "Match nul" : (x.pa >= x.pb ? x.a : x.b), pf = drawFav ? x.pd : Math.max(x.pa, x.pb);
+      const extra = x.pd != null && !drawFav ? `<small>nul ${f(x.pd)}</small>` : "";
+      const past = d.getTime() < now;
+      html += `<div class="jw${past ? " past" : ""}"><button class="jrow${past ? " past" : ""}" data-k="${items.indexOf(x)}"><span class="jt num">${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}</span>
+        <span class="jm"><span class="jc"><span class="sp sp-${x.sport}">${x.sport}</span>${x.comp}${past ? " · commencé" : ""}</span><b class="tm">${x.a}</b><b class="tm">${x.b}</b></span>
+        <span class="jf"><span>${fav}</span><b class="num">${f(pf)}</b>${extra}</span></button>${Fav.star(x.sport, x.dt, x.a, x.b, x.comp)}</div>`;
+    });
+    if (!shown.length) html = `<p class="note">Aucun match programmé dans les deux prochains jours${filt ? " pour ce sport" : ""}.</p>`;
+    if (shown.length > lim) html += `<button class="swap" id="jMore">Afficher les ${shown.length - lim} autres matchs</button>`;
+    document.getElementById("jList").innerHTML = html;
+    const dd = s => s ? new Date(s + "T12:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" }) : "–";
+    document.getElementById("jUpd").textContent = `Le favori affiché est celui du modèle, pas un conseil de pari.`;
+  }
+  document.getElementById("jList").addEventListener("click", e => {
+    if (e.target.closest("#jMore")) { showAll = true; draw(); return; }
+    const b = e.target.closest(".jrow"); if (b) items[+b.dataset.k].open();
+  });
+  document.getElementById("jSeg").addEventListener("click", e => {
+    const b = e.target.closest("button"); if (!b) return;
+    filt = b.dataset.s; showAll = false;
+    document.querySelectorAll("#jSeg button").forEach(x => x.setAttribute("aria-pressed", x === b)); draw();
+  });
+  addEventListener("hashchange", () => { if (!location.hash || location.hash === "#jour") draw(); });
+  draw();
+})();
+</script>
+<script>
+// ---------- bilan public des pronostics ----------
+(() => {
+  const H = window.HIST, f = x => Math.round(x * 100) + " %";
+  const el = id => document.getElementById(id);
+  if (!H) { el("bilan").hidden = true; return; }
+  const since = H.since ? new Date(H.since + "T12:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) : "aujourd'hui";
+  el("bTiles").innerHTML = ["Foot", "Tennis", "NBA"].map(sp => {
+    const s = H.sports[sp] || { n: 0 };
+    if (!s.n) return `<div class="bt"><span class="l">${sp}</span><span class="v">–</span><span class="s">Pas encore de match réglé</span></div>`;
+    return `<div class="bt"><span class="l">${sp}</span><span class="v num">${f(s.hits / s.n)}</span><span class="s">favori juste ${s.hits} fois sur ${s.n} · attendu ${f(s.expected)}</span></div>`;
+  }).join("") + `<p class="note" style="grid-column:1/-1">Suivi depuis le ${since}. ${H.pending} pronostic${H.pending > 1 ? "s" : ""} en attente du résultat. « Attendu » : ce que le modèle annonçait en moyenne. Si les deux chiffres sont proches, le modèle est bien calibré.</p>`;
+  el("bRec").innerHTML = H.recent.length ? H.recent.map(r => {
+    const d = new Date(r.dt).toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
+    return `<li class="${r.ok ? "ok" : "ko"}"><span class="mk">${r.ok ? "✓" : "✗"}</span><span><b>${r.a} – ${r.b}</b>${r.score ? ` <span class="num">${r.score}</span>` : ""}<small>${r.sport} · ${r.comp} · ${d} · pronostic : ${r.pick} (${f(r.p)})</small></span></li>`;
+  }).join("") : `<li class="none">Les premiers résultats apparaîtront après les matchs d'aujourd'hui.</li>`;
+})();
+</script><script>
+// téléphone : après avoir touché un match, aller directement au pronostic ; toucher le texte d'intro pour le déplier
+(() => {
+  const small = () => window.matchMedia("(max-width: 600px)").matches;
+  document.addEventListener("click", e => {
+    const sub = e.target.closest(".vh .sub"); if (sub) sub.classList.toggle("open");
+    const g = e.target.closest(".game"); if (!g || !e.isTrusted || !small()) return;
+    const res = g.closest(".wrap") && g.closest(".wrap").querySelector(".result");
+    if (res) setTimeout(() => res.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+  });
+})();
+</script>
+<script>
+(() => { const d = document.getElementById("appDay"); if (d) d.textContent = new Date().toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" }); })();
+</script>
+<script>
+// ---------- onglet Favoris ----------
+(() => {
+  const APIS = [window.FootAPI, window.TennisAPI, window.NbaAPI].filter(Boolean);
+  const f = x => Math.round(x * 100) + " %";
+  const el = document.getElementById("favList");
+  function draw() {
+    const favs = Fav.all(), keys = Object.keys(favs);
+    const items = APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } });
+    const byKey = {}; items.forEach(x => { byKey[Fav.key(x.sport, x.dt, x.a, x.b)] = x; });
+    if (!keys.length) { el.innerHTML = `<p class="note fav-empty">Aucun favori. Touche ☆ à côté d'un match.</p>`; return; }
+    const rows = keys.map(k => ({ k, m: favs[k], x: byKey[k] })).sort((p, q) => new Date(p.m.dt) - new Date(q.m.dt));
+    const now = Date.now(); let last = "", html = "";
+    rows.forEach(({ m, x }, i) => {
+      const d = new Date(m.dt), lab = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+      if (lab !== last) { html += `<div class="jday">${lab.charAt(0).toUpperCase() + lab.slice(1)}</div>`; last = lab; }
+      const past = d.getTime() < now;
+      let right = `<span class="jf"><span>${past ? "Commencé" : ""}</span></span>`;
+      if (x) {
+        const drawFav = x.pd != null && x.pd > Math.max(x.pa, x.pb);
+        right = `<span class="jf"><span>${drawFav ? "Match nul" : (x.pa >= x.pb ? x.a : x.b)}</span><b class="num">${f(drawFav ? x.pd : Math.max(x.pa, x.pb))}</b></span>`;
+      }
+      html += `<div class="jw${past ? " past" : ""}"><button class="jrow${past ? " past" : ""}" data-i="${i}" ${x ? "" : "disabled"}><span class="jt num">${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}</span>
+        <span class="jm"><span class="jc"><span class="sp sp-${m.sp}">${m.sp}</span>${m.comp || ""}${past ? " · commencé" : ""}</span><b class="tm">${m.a}</b><b class="tm">${m.b}</b></span>${right}</button>${Fav.star(m.sp, m.dt, m.a, m.b, m.comp)}</div>`;
+    });
+    el.innerHTML = html;
+    el.onclick = e => { const b = e.target.closest(".jrow"); if (b && rows[+b.dataset.i].x) rows[+b.dataset.i].x.open(); };
+  }
+  addEventListener("favchange", () => { if (location.hash === "#fav") draw(); });
+  addEventListener("hashchange", () => { if (location.hash === "#fav") draw(); });
+  draw();
+})();
+</script>

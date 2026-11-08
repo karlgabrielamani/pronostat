@@ -1,0 +1,25 @@
+<script>
+// ---------- Favoris : étoile à côté de chaque match, gardés dans ce navigateur ----------
+window.Fav = (() => {
+  const K = "pronostat-favs"; let s = {};
+  try { s = JSON.parse(localStorage.getItem(K) || "{}") || {}; } catch (e) { s = {}; }
+  const save = () => { try { localStorage.setItem(K, JSON.stringify(s)); } catch (e) {} };
+  const key = (sp, dt, a, b) => { let d = String(dt); try { d = new Date(dt).toISOString().slice(0, 16); } catch (e) {} return sp.toLowerCase() + "|" + d + "|" + a + "|" + b; };
+  const icon = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>';
+  const label = on => on ? "Retirer des favoris" : "Ajouter aux favoris";
+  const star = (sp, dt, a, b, comp) => {
+    const k = key(sp, dt, a, b), on = !!s[k];
+    return `<button class="star" type="button" data-fav="${encodeURIComponent(k)}" data-meta="${encodeURIComponent(JSON.stringify({ sp, dt, a, b, comp }))}" aria-pressed="${on}" aria-label="${label(on)}" title="${label(on)}">${icon}</button>`;
+  };
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".star"); if (!b) return;
+    e.preventDefault(); e.stopPropagation();
+    const k = decodeURIComponent(b.dataset.fav);
+    if (s[k]) delete s[k]; else s[k] = JSON.parse(decodeURIComponent(b.dataset.meta));
+    save();
+    document.querySelectorAll(`.star[data-fav="${b.dataset.fav}"]`).forEach(x => { x.setAttribute("aria-pressed", !!s[k]); x.setAttribute("aria-label", label(!!s[k])); x.title = label(!!s[k]); });
+    dispatchEvent(new Event("favchange"));
+  }, true);
+  return { key, star, has: k => !!s[k], all: () => Object.assign({}, s) };
+})();
+</script>
