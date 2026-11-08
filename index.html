@@ -425,18 +425,18 @@ th { font-size: 12px; font-weight: 700; color: var(--ink-3); }
 @media (max-width: 600px) { .jf { max-width: 92px; } .jm .tm { font-size: 14.5px; } }
 @media (max-width: 600px) { .pname { overflow-wrap: normal; word-break: normal; font-size: 14px; } }
 /* langue */
-.appbar .day { margin-left: auto; }
+.appbar .lang { margin-left: auto; }
 .appbar .lang { display: flex; gap: 2px; background: var(--track); border-radius: 999px; padding: 2px; }
 .appbar .lang button { border: 0; background: transparent; color: var(--ink-3); font: inherit; font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 999px; cursor: pointer; min-width: 32px; }
 .appbar .lang button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
 @media (max-width: 600px) { .appbar .day { font-size: 12px; } }
 </style>
 
-<header class="appbar"><a class="logo" href="#jour"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V13 M12 19 V5 M18 19 V10"/></svg></i>pronostat</a><span class="day" id="appDay"></span></header><nav class="tabs" aria-label="Sport"><a href="#jour" id="tab-jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 L12 4 L21 11 V20 H3 Z"/></svg>Aujourd&#39;hui</a><a href="#foot" id="tab-foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7 L16 10 L14.5 15 H9.5 L8 10 Z"/></svg>Foot</a><a href="#tennis" id="tab-tennis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 6 C10 9 10 15 5 18 M19 6 C14 9 14 15 19 18"/></svg>Tennis</a><a href="#basket" id="tab-basket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12 H21 M12 3 V21 M5.5 5.5 C9 9 9 15 5.5 18.5 M18.5 5.5 C15 9 15 15 18.5 18.5"/></svg>NBA</a><a href="#fav" id="tab-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a></nav>
+<header class="appbar"><a class="logo" href="#jour"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V13 M12 19 V5 M18 19 V10"/></svg></i>pronostat</a></header><nav class="tabs" aria-label="Sport"><a href="#jour" id="tab-jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 L12 4 L21 11 V20 H3 Z"/></svg>Aujourd&#39;hui</a><a href="#foot" id="tab-foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7 L16 10 L14.5 15 H9.5 L8 10 Z"/></svg>Football</a><a href="#tennis" id="tab-tennis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 6 C10 9 10 15 5 18 M19 6 C14 9 14 15 19 18"/></svg>Tennis</a><a href="#basket" id="tab-basket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12 H21 M12 3 V21 M5.5 5.5 C9 9 9 15 5.5 18.5 M18.5 5.5 C15 9 15 15 18.5 18.5"/></svg>NBA</a><a href="#fav" id="tab-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a></nav>
 <div class="wrap" id="view-foot" hidden>
   <header class="vh">
-    <h1>Pronos Foot</h1>
-    <p class="sub">Bon résultat <b id="ftAcc"></b> du temps (<span id="ftN"></span> matchs testés)<span id="ftCupNote" hidden> · coupes d'Europe 56 %</span> · à jour au <span id="ftUpd"></span></p>
+    <h1>Football</h1>
+    <p class="sub">Bon résultat <b id="ftAcc"></b> du temps (<span id="ftN"></span> matchs testés)<span id="ftCupNote" hidden> · coupes d'Europe 56 %</span><span id="ftUpd" hidden></span></p>
   </header>
 
   <div class="card">
@@ -497,8 +497,8 @@ th { font-size: 12px; font-weight: 700; color: var(--ink-3); }
 
 <div class="wrap" id="view-basket" hidden>
   <header class="vh">
-    <h1>Pronos NBA</h1>
-    <p class="sub">Bon vainqueur <b id="nbAcc"></b> du temps · absents inclus · à jour au <span id="nbUpd"></span><span hidden><span id="nbMae"></span><span id="nbSeason"></span></span></p>
+    <h1>NBA</h1>
+    <p class="sub">Bon vainqueur <b id="nbAcc"></b> du temps · absents inclus<span id="nbUpd" hidden></span><span hidden><span id="nbMae"></span><span id="nbSeason"></span></span></p>
   </header>
 
   <div class="card">
@@ -586,9 +586,9 @@ window.Fav = (() => {
 </script>
 <div class="wrap" id="view-tennis" hidden>
   <header class="vh">
-    <h1>Pronos Tennis</h1>
+    <h1>Tennis</h1>
     <div class="seg" role="group" aria-label="Circuit"><button id="t-ATP" aria-pressed="true">ATP · hommes</button><button id="t-WTA" aria-pressed="false">WTA · femmes</button></div>
-    <p class="sub">Bon vainqueur <b id="acc"></b> du temps<span id="accpW" hidden><span id="accp"></span></span> · à jour au <span id="upd"></span></p>
+    <p class="sub">Bon vainqueur <b id="acc"></b> du temps<span id="accpW" hidden><span id="accp"></span></span><span id="upd" hidden></span></p>
   </header>
 
   <div class="card">
@@ -597,7 +597,7 @@ window.Fav = (() => {
     <details class="more">
       <summary>Calendrier des tournois</summary>
       <div class="cal" id="cal"></div>
-      <p class="note">Touche un tournoi pour régler la surface et ses joueurs.</p>
+      <p class="note">Touchez un tournoi pour régler la surface et ses joueurs.</p>
     </details>
   </div>
 
@@ -687,22 +687,22 @@ window.I18N = (() => {
     ["Le modèle ne tient pas compte des blessés. Données : football-data.co.uk.", "The model doesn't account for injuries. Data: football-data.co.uk.", "Het model houdt geen rekening met blessures. Gegevens: football-data.co.uk."],
     ["Points par match en plus ou en moins par rapport à une équipe moyenne.", "Points per game above or below an average team.", "Punten per wedstrijd boven of onder een gemiddelde ploeg."],
     ["Absents mis à jour chaque matin. Données : ESPN.", "Absentees updated every morning. Data: ESPN.", "Afwezigen elke ochtend bijgewerkt. Gegevens: ESPN."],
-    ["Touche un tournoi pour régler la surface et ses joueurs.", "Tap a tournament to set the surface and its players.", "Tik op een toernooi voor de ondergrond en de spelers."],
+    ["Touchez un tournoi pour régler la surface et ses joueurs.", "Tap a tournament to set the surface and its players.", "Tik op een toernooi voor de ondergrond en de spelers."],
     ["Joueurs actifs ces # derniers mois.", "Players active in the last # months.", "Spelers actief in de laatste # maanden."],
     ["Pronostics, pas une garantie de gain.", "Predictions, not a guarantee of winnings.", "Voorspellingen, geen garantie op winst."],
     ["Ça va ensemble", "Goes together", "Gaat samen"], ["ça va ensemble", "goes together", "gaat samen"], ["ça se contredit", "contradicts", "spreekt elkaar tegen"],
     ["Tous les événements", "All events", "Alle gebeurtenissen"], ["Événements du match", "Match events", "Wedstrijdgebeurtenissen"],
     ["Pas encore de match : les tableaux sortent la veille du tournoi.", "No matches yet: draws come out the day before the tournament.", "Nog geen wedstrijden: de tabellen verschijnen de dag voor het toernooi."],
-    ["Touche ☆ à côté d'un match pour le suivre ici.", "Tap ☆ next to a match to follow it here.", "Tik op ☆ naast een wedstrijd om hem hier te volgen."],
-    ["Aujourd'hui et demain · touche un match pour le détail.", "Today and tomorrow · tap a match for details.", "Vandaag en morgen · tik op een wedstrijd voor details."],
-    ["Ajoute des événements depuis n'importe quel sport.", "Add events from any sport.", "Voeg gebeurtenissen toe vanuit elke sport."],
-    ["Aucun favori. Touche ☆ à côté d'un match.", "No favourites. Tap ☆ next to a match.", "Geen favorieten. Tik op ☆ naast een wedstrijd."],
+    ["Touchez ☆ à côté d'un match pour le suivre ici.", "Tap ☆ next to a match to follow it here.", "Tik op ☆ naast een wedstrijd om hem hier te volgen."],
+    ["Touchez un match pour le détail.", "Today and tomorrow · tap a match for details.", "Vandaag en morgen · tik op een wedstrijd voor details."],
+    ["Ajoutez des événements depuis n'importe quel sport.", "Add events from any sport.", "Voeg gebeurtenissen toe vanuit elke sport."],
+    ["Aucun favori. Touchez ☆ à côté d'un match.", "No favourites. Tap ☆ next to a match.", "Geen favorieten. Tik op ☆ naast een wedstrijd."],
     ["Perdu", "Lost", "Verloren"], ["Cote", "Odds", "Quotering"], ["de la cote juste", "the fair odds", "de eerlijke quotering"],
     ["est grand favori", "is a big favourite", "is grote favoriet"], ["est favori", "is the favourite", "is favoriet"], ["grand favori", "big favourite", "grote favoriet"],
     ["Chances de victoire", "Win probability", "Winkans"], ["Lecture", "Play", "Afspelen"], ["Vitesse", "Speed", "Snelheid"], ["Pause", "Pause", "Pauze"],
     ["Voir le match", "Watch the match", "Bekijk de wedstrijd"], ["FIN", "END", "EINDE"], ["1re période", "1st half", "1e helft"], ["2e période", "2nd half", "2e helft"],
-    ["Coup d'envoi : touche ▶ pour lancer le match.", "Kick-off: tap ▶ to start the match.", "Aftrap: tik op ▶ om de wedstrijd te starten."],
-    ["Touche ▶ pour lancer le match.", "Tap ▶ to start the match.", "Tik op ▶ om de wedstrijd te starten."],
+    ["Coup d'envoi : touchez ▶ pour lancer le match.", "Kick-off: tap ▶ to start the match.", "Aftrap: tik op ▶ om de wedstrijd te starten."],
+    ["Touchez ▶ pour lancer le match.", "Tap ▶ to start the match.", "Tik op ▶ om de wedstrijd te starten."],
     ["BUT !", "GOAL!", "GOAL!"], ["But !", "Goal!", "Goal!"], ["But", "Goal", "Doelpunt"], ["Arrêt du gardien", "Save", "Redding"], ["Tir dévié · corner", "Deflected · corner", "Afgeweerd · hoekschop"],
     ["Tir à côté", "Shot wide", "Schot naast"], ["Tir contré", "Blocked shot", "Geblokt schot"], ["Corners", "Corners", "Hoekschoppen"], ["Corner", "Corner", "Hoekschop"],
     ["Tirs cadrés", "Shots on target", "Schoten op doel"], ["Tirs réussis", "Field goals", "Velddoelpunten"], ["Tirs à 3 pts", "3-pointers", "Driepunters"], ["Tirs", "Shots", "Schoten"],
@@ -719,10 +719,10 @@ window.I18N = (() => {
     ["Aujourd'hui", "Today", "Vandaag"], ["Demain", "Tomorrow", "Morgen"], ["Favoris", "Favourites", "Favorieten"],
     ["Matchs à venir", "Upcoming matches", "Komende wedstrijden"], ["Prochains matchs", "Upcoming matches", "Komende wedstrijden"],
     ["Pronos Foot", "Football predictions", "Voetbalvoorspellingen"], ["Pronos Tennis", "Tennis predictions", "Tennisvoorspellingen"], ["Pronos NBA", "NBA predictions", "NBA-voorspellingen"],
-    ["Foot", "Football", "Voetbal"], ["Tous", "All", "Alle"], ["heure locale", "local time", "lokale tijd"],
+    ["Foot", "Football", "Voetbal"], ["Football", "Football", "Voetbal"], ["Tous", "All", "Alle"], ["heure locale", "local time", "lokale tijd"],
     ["Les matchs des deux prochains jours dans les trois sports, avec le favori du modèle. Clique sur un match pour le détail et les combinés.", "Matches for the next two days in all three sports, with the model's favourite. Tap a match for details and combos.", "Wedstrijden van de komende twee dagen in de drie sporten, met de favoriet van het model. Tik op een wedstrijd voor details en combinaties."],
-    ["Touche l'étoile à côté d'un match pour le retrouver ici. Tes favoris restent enregistrés sur cet appareil.", "Tap the star next to a match to find it here. Your favourites are saved on this device.", "Tik op de ster naast een wedstrijd om hem hier terug te vinden. Je favorieten worden op dit toestel bewaard."],
-    ["Aucun favori pour l'instant. Touche l'étoile à côté d'un match, dans Aujourd'hui ou dans un sport.", "No favourites yet. Tap the star next to a match, in Today or in a sport.", "Nog geen favorieten. Tik op de ster naast een wedstrijd, in Vandaag of bij een sport."],
+    ["Touchez l'étoile à côté d'un match pour le retrouver ici. Tes favoris restent enregistrés sur cet appareil.", "Tap the star next to a match to find it here. Your favourites are saved on this device.", "Tik op de ster naast een wedstrijd om hem hier terug te vinden. Je favorieten worden op dit toestel bewaard."],
+    ["Aucun favori pour l'instant. Touchez l'étoile à côté d'un match, dans Aujourd'hui ou dans un sport.", "No favourites yet. Tap the star next to a match, in Today or in a sport.", "Nog geen favorieten. Tik op de ster naast een wedstrijd, in Vandaag of bij een sport."],
     ["Ajouter aux favoris", "Add to favourites", "Toevoegen aan favorieten"], ["Retirer des favoris", "Remove from favourites", "Verwijderen uit favorieten"],
     ["Aucun match programmé dans les deux prochains jours", "No matches scheduled in the next two days", "Geen wedstrijden gepland in de komende twee dagen"], ["pour ce sport", "for this sport", "voor deze sport"],
     ["Afficher les # autres matchs", "Show the other # matches", "Toon de # andere wedstrijden"],
@@ -730,13 +730,13 @@ window.I18N = (() => {
     ["Le favori affiché est celui du modèle, pas un conseil de pari.", "The favourite shown is the model's, not betting advice.", "De getoonde favoriet is die van het model, geen gokadvies."],
     ["commencé", "started", "begonnen"], ["Commencé", "Started", "Begonnen"], ["Match nul", "Draw", "Gelijkspel"], ["Nul", "Draw", "Gelijk"], ["nul", "draw", "gelijk"],
     // ---- foot
-    ["Choisis une compétition (championnat ou coupe d'Europe), puis un match à venir ou deux équipes. Fiabilité : bon résultat (#, N ou #)", "Pick a competition (league or European cup), then an upcoming match or two teams. Reliability: correct result (1, X or 2)", "Kies een competitie (competitie of Europese beker), dan een komende wedstrijd of twee ploegen. Betrouwbaarheid: juiste uitslag (1, X of 2)"],
+    ["Choisissez une compétition (championnat ou coupe d'Europe), puis un match à venir ou deux équipes. Fiabilité : bon résultat (#, N ou #)", "Pick a competition (league or European cup), then an upcoming match or two teams. Reliability: correct result (1, X or 2)", "Kies een competitie (competitie of Europese beker), dan een komende wedstrijd of twee ploegen. Betrouwbaarheid: juiste uitslag (1, X of 2)"],
     ["matchs testés, moins qu'au tennis à cause du nul.", "matches tested, lower than tennis because of the draw.", "geteste wedstrijden, lager dan bij tennis door het gelijkspel."],
     ["Coupes d'Europe : bon résultat # % sur # matchs testés (# % en Ligue des Champions) ; les clubs hors des championnats suivis sont estimés seulement sur leurs matchs européens.", "European cups: correct result $1 % over $2 matches tested ($3 % in the Champions League); clubs outside the tracked leagues are rated on their European matches only.", "Europese bekers: juiste uitslag $1 % op $2 geteste wedstrijden ($3 % in de Champions League); clubs buiten de gevolgde competities worden alleen op hun Europese wedstrijden beoordeeld."],
     ["Résultats jusqu'au", "Results up to", "Uitslagen tot"], ["résultats jusqu'au", "results up to", "uitslagen tot"],
     ["Compétition", "Competition", "Competitie"], ["Domicile", "Home", "Thuis"], ["Extérieur", "Away", "Uit"], ["Terrain neutre", "Neutral ground", "Neutraal terrein"], ["Inverser", "Swap", "Omwisselen"],
-    ["Pas de match programmé dans les données pour l'instant. Choisis deux équipes ci-dessous.", "No match scheduled in the data yet. Pick two teams below.", "Nog geen wedstrijd gepland in de gegevens. Kies hieronder twee ploegen."],
-    ["Choisis deux équipes différentes", "Pick two different teams", "Kies twee verschillende ploegen"],
+    ["Pas de match programmé dans les données pour l'instant. Choisissez deux équipes ci-dessous.", "No match scheduled in the data yet. Pick two teams below.", "Nog geen wedstrijd gepland in de gegevens. Kies hieronder twee ploegen."],
+    ["Choisissez deux équipes différentes", "Pick two different teams", "Kies twee verschillende ploegen"],
     ["Match très ouvert", "Very open match", "Zeer open wedstrijd"], ["les trois issues sont proches, le nul est une vraie possibilité", "the three outcomes are close, a draw is a real possibility", "de drie uitkomsten liggen dicht bij elkaar, een gelijkspel is goed mogelijk"],
     ["est légèrement favori", "is a slight favourite", "is lichte favoriet"], ["est léger favori", "is a slight favourite", "is lichte favoriet"], ["est favori net", "is a clear favourite", "is duidelijk favoriet"],
     ["léger favori", "slight favourite", "lichte favoriet"], ["légèrement favori", "slight favourite", "lichte favoriet"],
@@ -754,8 +754,8 @@ window.I18N = (() => {
     ["Pays-Bas", "Netherlands", "Nederland"], ["Belgique", "Belgium", "België"], ["Angleterre", "England", "Engeland"], ["Espagne", "Spain", "Spanje"], ["Italie", "Italy", "Italië"],
     ["Allemagne", "Germany", "Duitsland"], ["Écosse", "Scotland", "Schotland"], ["Turquie", "Turkey", "Turkije"], ["Grèce", "Greece", "Griekenland"], ["Europe", "Europe", "Europa"],
     // ---- tennis
-    ["Choisis un match à venir ou deux joueurs. Fiabilité : bon vainqueur", "Pick an upcoming match or two players. Reliability: correct winner", "Kies een komende wedstrijd of twee spelers. Betrouwbaarheid: juiste winnaar"],
-    ["Choisis un match à venir ou deux équipes. Fiabilité : bon vainqueur", "Pick an upcoming match or two teams. Reliability: correct winner", "Kies een komende wedstrijd of twee ploegen. Betrouwbaarheid: juiste winnaar"],
+    ["Choisissez un match à venir ou deux joueurs. Fiabilité : bon vainqueur", "Pick an upcoming match or two players. Reliability: correct winner", "Kies een komende wedstrijd of twee spelers. Betrouwbaarheid: juiste winnaar"],
+    ["Choisissez un match à venir ou deux équipes. Fiabilité : bon vainqueur", "Pick an upcoming match or two teams. Reliability: correct winner", "Kies een komende wedstrijd of twee ploegen. Betrouwbaarheid: juiste winnaar"],
     ["du temps sur la saison passée, écart prévu à", "of the time last season, predicted margin within", "van de tijd vorig seizoen, voorspeld verschil tot op"],
     ["points près en moyenne. Les absents annoncés (blessés) sont pris en compte. Saison", "points on average. Announced absentees (injuries) are taken into account. Season", "punten gemiddeld. Aangekondigde afwezigen (blessures) worden meegeteld. Seizoen"],
     ["du temps sur", "of the time over", "van de tijd op"], ["du temps", "of the time", "van de tijd"], ["favori des bookmakers", "bookmakers' favourite", "favoriet van de bookmakers"],
@@ -765,8 +765,8 @@ window.I18N = (() => {
     ["Aucun tournoi connu pour les prochaines semaines", "No tournaments known for the coming weeks", "Geen toernooien bekend voor de komende weken"],
     ["Joueur", "Player", "Speler"], ["Surface", "Surface", "Ondergrond"], ["Dur (béton)", "Hard court", "Hardcourt"], ["dur (béton)", "hard court", "hardcourt"], ["Terre battue", "Clay", "Gravel"], ["Gazon", "Grass", "Gras"], ["Dur", "Hard", "Hard"], ["Terre", "Clay", "Gravel"],
     ["# sets gagnants", "best of # sets", "# gewonnen sets"], ["en salle", "indoor", "indoor"], ["En cours", "In progress", "Bezig"],
-    ["Choisis deux joueurs différents", "Pick two different players", "Kies twee verschillende spelers"],
-    ["Choisis un joueur dans la liste (format : Nom I., par exemple « Sinner J. »)", "Pick a player from the list (format: Name I., e.g. “Sinner J.”)", "Kies een speler uit de lijst (formaat: Naam I., bijv. „Sinner J.”)"],
+    ["Choisissez deux joueurs différents", "Pick two different players", "Kies twee verschillende spelers"],
+    ["Choisissez un joueur dans la liste (format : Nom I., par exemple « Sinner J. »)", "Pick a player from the list (format: Name I., e.g. “Sinner J.”)", "Kies een speler uit de lijst (formaat: Naam I., bijv. „Sinner J.”)"],
     ["Match très serré", "Very close match", "Zeer spannende wedstrijd"], ["match très serré", "very close match", "zeer spannende wedstrijd"], ["aucun des deux ne se détache", "neither player stands out", "geen van beiden springt eruit"],
     ["Elo général", "Overall Elo", "Algemene Elo"], ["Elo sur", "Elo on", "Elo op"], ["Jeux le plus souvent", "Most frequent games", "Meest voorkomende games"], ["Points gagnés au service", "Service points won", "Gewonnen servicepunten"],
     ["j sans match", "d without a match", "d zonder wedstrijd"], ["abandon au dernier match", "retired in last match", "opgave in laatste wedstrijd"],
@@ -782,7 +782,7 @@ window.I18N = (() => {
     ["Un des joueurs n'a pas assez de matchs pour être noté", "One of the players hasn't played enough matches to be rated", "Een van de spelers heeft te weinig wedstrijden voor een score"],
     ["Finale", "Final", "Finale"], ["Demi-finale", "Semi-final", "Halve finale"], ["Quart de finale", "Quarter-final", "Kwartfinale"], ["#er tour", "Round 1", "1e ronde"], ["#e tour", "Round $1", "$1e ronde"],
     // ---- NBA
-    ["Absents pris en compte", "Absentees taken into account", "Afwezigen meegeteld"], ["décoche un joueur s'il joue finalement", "untick a player if he plays after all", "vink een speler uit als hij toch speelt"],
+    ["Absents pris en compte", "Absentees taken into account", "Afwezigen meegeteld"], ["décochez un joueur s'il joue finalement", "untick a player if he plays after all", "vink een speler uit als hij toch speelt"],
     ["aucun absent important annoncé", "no key absentees announced", "geen belangrijke afwezigen gemeld"], ["au jour le jour", "day-to-day", "dag tot dag"], ["absent", "out", "afwezig"], ["incertain", "doubtful", "onzeker"], ["probable", "probable", "waarschijnlijk"],
     ["Score prévu", "Predicted score", "Voorspelde score"], ["Écart prévu", "Predicted margin", "Voorspeld verschil"], ["Total prévu", "Predicted total", "Voorspeld totaal"], ["Bilan cette saison", "Record this season", "Balans dit seizoen"],
     ["pts pour", "pts for", "ptn voor"], ["avec environ # points d'avance prévus", "with a predicted lead of about # points", "met een voorspelde voorsprong van ongeveer # punten"], ["points d'avance prévus", "points ahead predicted", "punten voorsprong voorspeld"], ["avec environ", "with about", "met ongeveer"], ["aucune équipe ne se détache", "no team stands out", "geen ploeg springt eruit"],
@@ -801,7 +801,7 @@ window.I18N = (() => {
     ["Combinaisons cohérentes (des événements qui vont ensemble) :", "Consistent combinations (events that go together):", "Samenhangende combinaties (gebeurtenissen die samengaan):"],
     ["Tous les événements, avec leur probabilité :", "All events, with their probability:", "Alle gebeurtenissen, met hun kans:"],
     ["Pas de combinaison vraiment cohérente pour ce match", "No really consistent combination for this match", "Geen echt samenhangende combinatie voor deze wedstrijd"],
-    ["Coche un ou plusieurs événements.", "Tick one or more events.", "Vink een of meer gebeurtenissen aan."], ["Ajouter au combiné", "Add to combo", "Toevoegen aan combinatie"], ["Ajouter", "Add", "Toevoegen"],
+    ["Cochez un ou plusieurs événements.", "Tick one or more events.", "Vink een of meer gebeurtenissen aan."], ["Ajouter au combiné", "Add to combo", "Toevoegen aan combinatie"], ["Ajouter", "Add", "Toevoegen"],
     ["fois plus probable que si on multipliait les deux", "times more likely than multiplying both", "keer waarschijnlijker dan beide vermenigvuldigen"], ["ces événements vont ensemble", "these events go together", "deze gebeurtenissen gaan samen"], ["ces événements se contredisent", "these events contradict each other", "deze gebeurtenissen spreken elkaar tegen"],
     ["Ces événements ensemble", "These events together", "Deze gebeurtenissen samen"], ["Cet événement", "This event", "Deze gebeurtenis"], ["si on multipliait", "if multiplied", "bij vermenigvuldiging"], ["cote juste", "fair odds", "eerlijke quotering"], ["Cote juste", "Fair odds", "Eerlijke quotering"],
     ["Combiné", "Combo", "Combinatie"], ["Le combiné est commun aux trois sports : ajoute des événements depuis l'onglet Foot, Tennis ou Basket, ils s'ajoutent tous ici", "The combo is shared across the three sports: add events from the Football, Tennis or NBA tab, they all land here", "De combinatie is gedeeld over de drie sporten: voeg gebeurtenissen toe vanuit Voetbal, Tennis of NBA, ze komen allemaal hier"],
@@ -918,7 +918,7 @@ function render() {
   const err = $("err");
   if (!a || !b || a === b) {
     err.hidden = false; $("result").style.opacity = .35;
-    err.textContent = !a || !b ? "Choisis un joueur dans la liste (format : Nom I., par exemple « Sinner J. »)." : "Choisis deux joueurs différents.";
+    err.textContent = !a || !b ? "Choisissez un joueur dans la liste (format : Nom I., par exemple « Sinner J. »)." : "Choisissez deux joueurs différents.";
     return;
   }
   err.hidden = true; $("result").style.opacity = 1;
@@ -1171,7 +1171,7 @@ function jointP(S, idx) { return S.rows.filter(m => idx.every(i => EVENTS[i][1](
 function updSel() {
   const S = cbSims, idx = selected();
   const pj = idx.length ? jointP(S, idx) : 0, pn = idx.reduce((x, i) => x * jointP(S, [i]), 1);
-  $("cbSel").textContent = idx.length ? `${fr(pj * 100)} % · cote juste ${fr(1 / Math.max(pj, 1e-4), 2)}${idx.length > 1 ? naiveTxt(pj, pn) : ""}` : "Coche un ou plusieurs événements.";
+  $("cbSel").textContent = idx.length ? `${fr(pj * 100)} % · cote juste ${fr(1 / Math.max(pj, 1e-4), 2)}${idx.length > 1 ? naiveTxt(pj, pn) : ""}` : "Cochez un ou plusieurs événements.";
   $("cbAdd").disabled = !idx.length;
 }
 $("evList").addEventListener("change", updSel);
@@ -1372,7 +1372,7 @@ table(); render();
       ? `<div><b>${t.abbr || t.name}</b> ${t.inj.map(x => { const k = t.name + "|" + x.name;
           return `<label class="chk"><input type="checkbox" data-k="${k}"${OFF[k] ? "" : " checked"}> ${x.name} <span class="muted">(${st[x.status] || x.status})</span></label>`; }).join(" ")}</div>`
       : `<div><b>${t.abbr || t.name}</b> <span class="muted">aucun absent important annoncé</span></div>`;
-    g("nbInj").innerHTML = `<div class="eyebrow">Absents pris en compte <span style="text-transform:none;letter-spacing:0">· décoche un joueur s'il joue finalement</span></div>${blk(a)}${blk(b)}`;
+    g("nbInj").innerHTML = `<div class="eyebrow">Absents pris en compte <span style="text-transform:none;letter-spacing:0">· décochez un joueur s'il joue finalement</span></div>${blk(a)}${blk(b)}`;
   }
   g("nbInj").addEventListener("change", e => { const k = e.target.dataset.k; if (!k) return; OFF[k] = !e.target.checked; render(); });
   function expected(a, b) {
@@ -1405,7 +1405,7 @@ table(); render();
     const a = T[g("nbA").value], b = T[g("nbB").value];
     g("nbBaL").textContent = `${a.name} a joué la veille`;
     g("nbBbL").textContent = `${b.name} a joué la veille`;
-    if (a === b) { g("nbErr").hidden = false; g("nbErr").textContent = "Choisis deux équipes différentes."; g("nbResult").style.opacity = .35; return; }
+    if (a === b) { g("nbErr").hidden = false; g("nbErr").textContent = "Choisissez deux équipes différentes."; g("nbResult").style.opacity = .35; return; }
     g("nbErr").hidden = true; g("nbResult").style.opacity = 1;
     drawInj(a, b);
     const [ea, eb] = expected(a, b);
@@ -1492,7 +1492,7 @@ table(); render();
   }
   function nUpd() {
     const idx = nSel(), q = idx.length ? nJoint(idx) : 0, pn = idx.reduce((x, k) => x * nJoint([k]), 1);
-    g("nbSel").textContent = idx.length ? `${f(q * 100)} % · cote juste ${f(1 / Math.max(q, 1e-4), 2)}${idx.length > 1 ? naiveTxt(q, pn) : ""}` : "Coche un ou plusieurs événements.";
+    g("nbSel").textContent = idx.length ? `${f(q * 100)} % · cote juste ${f(1 / Math.max(q, 1e-4), 2)}${idx.length > 1 ? naiveTxt(q, pn) : ""}` : "Cochez un ou plusieurs événements.";
     g("nbAdd").disabled = !idx.length;
   }
   g("nbEv").addEventListener("change", nUpd);
@@ -1587,7 +1587,7 @@ table(); render();
       const when = d.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric" }) + " " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
       const past = d.getTime() < now;
       return `<div class="gw"><button class="game wide${past ? " past" : ""}" data-i="${i}"><span class="when">${when}${past ? " · commencé" : ""}</span><span><b>${x.home}</b> – <b>${x.away}</b></span></button>${Fav.star("Foot", x.dt + "Z", x.home, x.away, L.name)}</div>`;
-    }).join("") : `<p class="note">Pas de match programmé dans les données pour l'instant. Choisis deux équipes ci-dessous.</p>`;
+    }).join("") : `<p class="note">Pas de match programmé dans les données pour l'instant. Choisissez deux équipes ci-dessous.</p>`;
     table();
     if (games.length) (g("ftGames").querySelector(".game:not(.past)") || g("ftGames").querySelector(".game")).click();
     else { g("ftA").value = L.teams[0].name; g("ftB").value = L.teams[1].name; render(); }
@@ -1604,7 +1604,7 @@ table(); render();
   let cur = null, timer = null;
   function render() {
     const h = T[g("ftA").value], a = T[g("ftB").value];
-    if (h === a) { g("ftErr").hidden = false; g("ftErr").textContent = "Choisis deux équipes différentes."; g("ftResult").style.opacity = .35; return; }
+    if (h === a) { g("ftErr").hidden = false; g("ftErr").textContent = "Choisissez deux équipes différentes."; g("ftResult").style.opacity = .35; return; }
     g("ftErr").hidden = true; g("ftResult").style.opacity = 1;
     const { m, lam, mu } = matrix(h, a);
     const pH = sum(m, (i, j) => i > j), pD = sum(m, (i, j) => i === j), pA = sum(m, (i, j) => i < j);
@@ -1694,7 +1694,7 @@ table(); render();
   }
   function fUpd() {
     const idx = fSel(), q = idx.length ? fJoint(idx) : 0, pn = idx.reduce((x, k) => x * fJoint([k]), 1);
-    g("ftSel").textContent = idx.length ? `${f(q * 100)} % · cote juste ${f(1 / Math.max(q, 1e-4), 2)}${idx.length > 1 ? naiveTxt(q, pn) : ""}` : "Coche un ou plusieurs événements.";
+    g("ftSel").textContent = idx.length ? `${f(q * 100)} % · cote juste ${f(1 / Math.max(q, 1e-4), 2)}${idx.length > 1 ? naiveTxt(q, pn) : ""}` : "Cochez un ou plusieurs événements.";
     g("ftAdd").disabled = !idx.length;
   }
   g("ftEv").addEventListener("change", fUpd);
@@ -1748,11 +1748,11 @@ table(); render();
 })();
 
 </script>
-<script>window.HIST = {"since": "2026-11-07", "pending": 155, "sports": {"Foot": {"n": 0}, "Tennis": {"n": 7, "hits": 4, "expected": 0.6523}, "NBA": {"n": 0}}, "recent": [{"sport": "Tennis", "comp": "WTA · Prudential Hong Kong Tennis Open · Finale", "dt": "2026-11-08T05:00:00+00:00", "a": "Claire Liu", "b": "Alexandra Eala", "pick": "Alexandra Eala", "p": 0.743, "ok": false, "score": null}, {"sport": "Tennis", "comp": "Rolex Paris Masters · Demi-finale", "dt": "2026-11-07T16:00:00+00:00", "a": "Ruud C.", "b": "Alcaraz C.", "pick": "Alcaraz C.", "p": 0.767, "ok": true, "score": null}, {"sport": "Tennis", "comp": "WTA · Reto Win Tennis Cali Open · Demi-finale", "dt": "2026-11-07T15:00:00+00:00", "a": "Alice Tubello", "b": "Bianca Andreescu", "pick": "Alice Tubello", "p": 0.509, "ok": false, "score": null}, {"sport": "Tennis", "comp": "WTA · Chennai Open · Demi-finale", "dt": "2026-11-07T14:00:00+00:00", "a": "Magda Linette", "b": "Anastasia Zakharova", "pick": "Magda Linette", "p": 0.503, "ok": true, "score": null}, {"sport": "Tennis", "comp": "Rolex Paris Masters · Demi-finale", "dt": "2026-11-07T13:30:00+00:00", "a": "Van Assche L.", "b": "Shelton B.", "pick": "Shelton B.", "p": 0.786, "ok": true, "score": null}, {"sport": "Tennis", "comp": "WTA · Chennai Open · Demi-finale", "dt": "2026-11-07T12:30:00+00:00", "a": "Janice Tjen", "b": "Robin Montgomery", "pick": "Janice Tjen", "p": 0.644, "ok": true, "score": null}, {"sport": "Tennis", "comp": "WTA · Angola Ladies Open · Demi-finale", "dt": "2026-11-07T12:30:00+00:00", "a": "Sofya Lansere", "b": "Noma Noha Akugue", "pick": "Noma Noha Akugue", "p": 0.613, "ok": false, "score": null}]};</script>
+<script>window.HIST = {"since": "2026-11-07", "pending": 158, "sports": {"Foot": {"n": 0}, "Tennis": {"n": 7, "hits": 4, "expected": 0.6523}, "NBA": {"n": 0}}, "recent": [{"sport": "Tennis", "comp": "WTA · Prudential Hong Kong Tennis Open · Finale", "dt": "2026-11-08T05:00:00+00:00", "a": "Claire Liu", "b": "Alexandra Eala", "pick": "Alexandra Eala", "p": 0.743, "ok": false, "score": null}, {"sport": "Tennis", "comp": "Rolex Paris Masters · Demi-finale", "dt": "2026-11-07T16:00:00+00:00", "a": "Ruud C.", "b": "Alcaraz C.", "pick": "Alcaraz C.", "p": 0.767, "ok": true, "score": null}, {"sport": "Tennis", "comp": "WTA · Reto Win Tennis Cali Open · Demi-finale", "dt": "2026-11-07T15:00:00+00:00", "a": "Alice Tubello", "b": "Bianca Andreescu", "pick": "Alice Tubello", "p": 0.509, "ok": false, "score": null}, {"sport": "Tennis", "comp": "WTA · Chennai Open · Demi-finale", "dt": "2026-11-07T14:00:00+00:00", "a": "Magda Linette", "b": "Anastasia Zakharova", "pick": "Magda Linette", "p": 0.503, "ok": true, "score": null}, {"sport": "Tennis", "comp": "Rolex Paris Masters · Demi-finale", "dt": "2026-11-07T13:30:00+00:00", "a": "Van Assche L.", "b": "Shelton B.", "pick": "Shelton B.", "p": 0.786, "ok": true, "score": null}, {"sport": "Tennis", "comp": "WTA · Chennai Open · Demi-finale", "dt": "2026-11-07T12:30:00+00:00", "a": "Janice Tjen", "b": "Robin Montgomery", "pick": "Janice Tjen", "p": 0.644, "ok": true, "score": null}, {"sport": "Tennis", "comp": "WTA · Angola Ladies Open · Demi-finale", "dt": "2026-11-07T12:30:00+00:00", "a": "Sofya Lansere", "b": "Noma Noha Akugue", "pick": "Noma Noha Akugue", "p": 0.613, "ok": false, "score": null}]};</script>
 <div class="wrap" id="view-fav" hidden>
   <header class="vh">
     <h1>Favoris</h1>
-    <p class="sub">Touche ☆ à côté d'un match pour le suivre ici.</p>
+    <p class="sub">Touchez ☆ à côté d'un match pour le suivre ici.</p>
   </header>
   <div class="jlist" id="favList"></div>
 </div>
@@ -1760,9 +1760,9 @@ table(); render();
 <div class="wrap" id="view-jour" hidden>
   <header class="vh">
     <h1>Matchs à venir</h1>
-    <p class="sub">Aujourd'hui et demain · touche un match pour le détail.</p>
+    <p class="sub">Touchez un match pour le détail.</p>
   </header>
-  <div class="seg" role="group" aria-label="Sport" id="jSeg"><button data-s="" aria-pressed="true">Tous</button><button data-s="Foot" aria-pressed="false">Foot</button><button data-s="Tennis" aria-pressed="false">Tennis</button><button data-s="NBA" aria-pressed="false">NBA</button></div>
+  <div class="seg" role="group" aria-label="Sport" id="jSeg"><button data-s="" aria-pressed="true">Tous</button><button data-s="Foot" aria-pressed="false">Football</button><button data-s="Tennis" aria-pressed="false">Tennis</button><button data-s="NBA" aria-pressed="false">NBA</button></div>
   <div class="jlist" id="jList"></div>
   <p class="note" id="jUpd"></p>
   <section class="bilan" id="bilan" aria-labelledby="bilanT" hidden>
@@ -1820,7 +1820,7 @@ const Combo = (() => {
     sum.innerHTML = `<span><b>Combiné</b> · ${legs.length} sélection${legs.length > 1 ? "s" : ""} (${sports})${note ? ` <span class="cbnote">${note}</span>` : ""}</span><span class="num">${f(P * 100)} % · cote juste ${f(1 / Math.max(P, 1e-4), 2)} <span class="chev">${open ? "▾" : "▴"}</span></span>`;
     sum.setAttribute("aria-expanded", open);
     panel.hidden = !open;
-    panel.innerHTML = `<p class="note" style="margin-bottom:8px">Ajoute des événements depuis n'importe quel sport.</p>
+    panel.innerHTML = `<p class="note" style="margin-bottom:8px">Ajoutez des événements depuis n'importe quel sport.</p>
       <ol class="legs">${legs.map((l, i) => `<li><span>${l.events.join(" + ")}<small>${l.sport} · ${l.match}</small></span><span class="num">${f(l.p * 100)} %</span><button data-r="${i}">Retirer</button></li>`).join("")}</ol>
       <div class="cbtot"><span>Chance de gagner : <span class="num">${f(P * 100)} %</span></span><span>Cote juste <span class="num">${f(1 / Math.max(P, 1e-4), 2)}</span></span></div>
       <label class="bk" for="cbOdds">Cote proposée par le bookmaker <input id="cbOdds" class="cbOdds" type="number" inputmode="decimal" step="0.01" min="1.01" placeholder="ex. 2,10" value="${odds}"></label>
@@ -1939,7 +1939,7 @@ const Combo = (() => {
     const favs = Fav.all(), keys = Object.keys(favs);
     const items = APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } });
     const byKey = {}; items.forEach(x => { byKey[Fav.key(x.sport, x.dt, x.a, x.b)] = x; });
-    if (!keys.length) { el.innerHTML = `<p class="note fav-empty">Aucun favori. Touche ☆ à côté d'un match.</p>`; return; }
+    if (!keys.length) { el.innerHTML = `<p class="note fav-empty">Aucun favori. Touchez ☆ à côté d'un match.</p>`; return; }
     const rows = keys.map(k => ({ k, m: favs[k], x: byKey[k] })).sort((p, q) => new Date(p.m.dt) - new Date(q.m.dt));
     const now = Date.now(); let last = "", html = "";
     rows.forEach(({ m, x }, i) => {
@@ -2197,7 +2197,7 @@ const Combo = (() => {
       <div class="bx-sc a" style="--c:${CA}">${G.as}</div><div class="bx-team a" style="--c:${CA}"><b>${esc(P.a)}</b><small>${esc(P.comp || "")}</small></div></div>`);
     const stats = () => { const T = G.pt[0] + G.pt[1] || 1; R.stats([["Tirs", G.sh[0], G.sh[1]], ["Tirs cadrés", G.on[0], G.on[1]], ["Possession", Math.round(G.pt[0] / T * 100) || 50, Math.round(G.pt[1] / T * 100) || 50, x => x + " %"], ["Corners", G.cor[0], G.cor[1]]]); };
     const prob = () => { const [lh, la] = lams(), r = Math.max(0, 90 - G.t) / 90; G.lp = G.done ? (G.hs > G.as ? [1, 0, 0] : G.hs === G.as ? [0, 1, 0] : [0, 0, 1]) : fprobs(lh * r, la * r, G.hs, G.as); R.wp(G.lp[0], G.lp[2], "Nul " + pc(G.lp[1])); };
-    function reset() { G = fresh(); place(); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); R.call = null; head(); prob(); stats(); R.tick("", "", "Coup d'envoi : touche ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
+    function reset() { G = fresh(); place(); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); R.call = null; head(); prob(); stats(); R.tick("", "", "Coup d'envoi : touchez ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
     const goalU = s => s ? 0 : 1; // but visé par l'équipe s
     function step() {
       if (G.done) return;
@@ -2321,7 +2321,7 @@ const Combo = (() => {
       R.wp(a / N, 1 - a / N);
     };
     const stats = () => R.stats([["Aces", G.ace[0], G.ace[1]], ["Doubles fautes", G.df[0], G.df[1]], ["Coups gagnants", G.wn[0], G.wn[1]], ["Fautes directes", G.ue[0], G.ue[1]], ["Points gagnés", G.won[0], G.won[1]]]);
-    function reset() { G = fresh(); R.call = null; head(); stats(); R.tick("", "", "Touche ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; const p0 = P.p != null ? P.p : null; if (p0 != null) R.wp(p0, 1 - p0); else prob(); }
+    function reset() { G = fresh(); R.call = null; head(); stats(); R.tick("", "", "Touchez ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; const p0 = P.p != null ? P.p : null; if (p0 != null) R.wp(p0, 1 - p0); else prob(); }
     // y du joueur : 0 (près) au fond bas, 1 (loin) au fond haut
     const baseY = s => s ? -.8 : 24.6;
     const side = s => (G.pts[0] + G.pts[1]) % 2; // 0 = égalité (deuce), 1 = avantage
@@ -2455,7 +2455,7 @@ const Combo = (() => {
         o.tu = m(u); o.tv = v; d.tu = o.tu + (rim[0] - o.tu) * .25; d.tv = v + (rim[1] - v) * .25;
       }
     };
-    function reset() { G = fresh(); setup(0, 0); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); G.ball.u = G.pl[0].u; G.ball.v = G.pl[0].v; R.call = null; head(); stats(); prob(); R.tick("", "", "Touche ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
+    function reset() { G = fresh(); setup(0, 0); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); G.ball.u = G.pl[0].u; G.ball.v = G.pl[0].v; R.call = null; head(); stats(); prob(); R.tick("", "", "Touchez ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
     const toHolder = (k, ms = 380, peak = .6) => { const p = G.pl[G.poss * 5 + k]; G.holder = G.poss * 5 + k; fly(G.ball, p.tu, p.tv, peak, ms, R, 1); };
     function plan() {
       const t = G.poss, pts = out(t), r = Math.random(), rim = RIM[1 - t];

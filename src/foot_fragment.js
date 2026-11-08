@@ -39,7 +39,7 @@
       const when = d.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric" }) + " " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
       const past = d.getTime() < now;
       return `<div class="gw"><button class="game wide${past ? " past" : ""}" data-i="${i}"><span class="when">${when}${past ? " · commencé" : ""}</span><span><b>${x.home}</b> – <b>${x.away}</b></span></button>${Fav.star("Foot", x.dt + "Z", x.home, x.away, L.name)}</div>`;
-    }).join("") : `<p class="note">Pas de match programmé dans les données pour l'instant. Choisis deux équipes ci-dessous.</p>`;
+    }).join("") : `<p class="note">Pas de match programmé dans les données pour l'instant. Choisissez deux équipes ci-dessous.</p>`;
     table();
     if (games.length) (g("ftGames").querySelector(".game:not(.past)") || g("ftGames").querySelector(".game")).click();
     else { g("ftA").value = L.teams[0].name; g("ftB").value = L.teams[1].name; render(); }
@@ -56,7 +56,7 @@
   let cur = null, timer = null;
   function render() {
     const h = T[g("ftA").value], a = T[g("ftB").value];
-    if (h === a) { g("ftErr").hidden = false; g("ftErr").textContent = "Choisis deux équipes différentes."; g("ftResult").style.opacity = .35; return; }
+    if (h === a) { g("ftErr").hidden = false; g("ftErr").textContent = "Choisissez deux équipes différentes."; g("ftResult").style.opacity = .35; return; }
     g("ftErr").hidden = true; g("ftResult").style.opacity = 1;
     const { m, lam, mu } = matrix(h, a);
     const pH = sum(m, (i, j) => i > j), pD = sum(m, (i, j) => i === j), pA = sum(m, (i, j) => i < j);
@@ -146,7 +146,7 @@
   }
   function fUpd() {
     const idx = fSel(), q = idx.length ? fJoint(idx) : 0, pn = idx.reduce((x, k) => x * fJoint([k]), 1);
-    g("ftSel").textContent = idx.length ? `${f(q * 100)} % · cote juste ${f(1 / Math.max(q, 1e-4), 2)}${idx.length > 1 ? naiveTxt(q, pn) : ""}` : "Coche un ou plusieurs événements.";
+    g("ftSel").textContent = idx.length ? `${f(q * 100)} % · cote juste ${f(1 / Math.max(q, 1e-4), 2)}${idx.length > 1 ? naiveTxt(q, pn) : ""}` : "Cochez un ou plusieurs événements.";
     g("ftAdd").disabled = !idx.length;
   }
   g("ftEv").addEventListener("change", fUpd);

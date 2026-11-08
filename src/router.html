@@ -2,7 +2,7 @@
 <div class="wrap" id="view-fav" hidden>
   <header class="vh">
     <h1>Favoris</h1>
-    <p class="sub">Touche ☆ à côté d'un match pour le suivre ici.</p>
+    <p class="sub">Touchez ☆ à côté d'un match pour le suivre ici.</p>
   </header>
   <div class="jlist" id="favList"></div>
 </div>
@@ -10,9 +10,9 @@
 <div class="wrap" id="view-jour" hidden>
   <header class="vh">
     <h1>Matchs à venir</h1>
-    <p class="sub">Aujourd'hui et demain · touche un match pour le détail.</p>
+    <p class="sub">Touchez un match pour le détail.</p>
   </header>
-  <div class="seg" role="group" aria-label="Sport" id="jSeg"><button data-s="" aria-pressed="true">Tous</button><button data-s="Foot" aria-pressed="false">Foot</button><button data-s="Tennis" aria-pressed="false">Tennis</button><button data-s="NBA" aria-pressed="false">NBA</button></div>
+  <div class="seg" role="group" aria-label="Sport" id="jSeg"><button data-s="" aria-pressed="true">Tous</button><button data-s="Foot" aria-pressed="false">Football</button><button data-s="Tennis" aria-pressed="false">Tennis</button><button data-s="NBA" aria-pressed="false">NBA</button></div>
   <div class="jlist" id="jList"></div>
   <p class="note" id="jUpd"></p>
   <section class="bilan" id="bilan" aria-labelledby="bilanT" hidden>
@@ -70,7 +70,7 @@ const Combo = (() => {
     sum.innerHTML = `<span><b>Combiné</b> · ${legs.length} sélection${legs.length > 1 ? "s" : ""} (${sports})${note ? ` <span class="cbnote">${note}</span>` : ""}</span><span class="num">${f(P * 100)} % · cote juste ${f(1 / Math.max(P, 1e-4), 2)} <span class="chev">${open ? "▾" : "▴"}</span></span>`;
     sum.setAttribute("aria-expanded", open);
     panel.hidden = !open;
-    panel.innerHTML = `<p class="note" style="margin-bottom:8px">Ajoute des événements depuis n'importe quel sport.</p>
+    panel.innerHTML = `<p class="note" style="margin-bottom:8px">Ajoutez des événements depuis n'importe quel sport.</p>
       <ol class="legs">${legs.map((l, i) => `<li><span>${l.events.join(" + ")}<small>${l.sport} · ${l.match}</small></span><span class="num">${f(l.p * 100)} %</span><button data-r="${i}">Retirer</button></li>`).join("")}</ol>
       <div class="cbtot"><span>Chance de gagner : <span class="num">${f(P * 100)} %</span></span><span>Cote juste <span class="num">${f(1 / Math.max(P, 1e-4), 2)}</span></span></div>
       <label class="bk" for="cbOdds">Cote proposée par le bookmaker <input id="cbOdds" class="cbOdds" type="number" inputmode="decimal" step="0.01" min="1.01" placeholder="ex. 2,10" value="${odds}"></label>
@@ -189,7 +189,7 @@ const Combo = (() => {
     const favs = Fav.all(), keys = Object.keys(favs);
     const items = APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } });
     const byKey = {}; items.forEach(x => { byKey[Fav.key(x.sport, x.dt, x.a, x.b)] = x; });
-    if (!keys.length) { el.innerHTML = `<p class="note fav-empty">Aucun favori. Touche ☆ à côté d'un match.</p>`; return; }
+    if (!keys.length) { el.innerHTML = `<p class="note fav-empty">Aucun favori. Touchez ☆ à côté d'un match.</p>`; return; }
     const rows = keys.map(k => ({ k, m: favs[k], x: byKey[k] })).sort((p, q) => new Date(p.m.dt) - new Date(q.m.dt));
     const now = Date.now(); let last = "", html = "";
     rows.forEach(({ m, x }, i) => {

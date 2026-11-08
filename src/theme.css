@@ -178,7 +178,7 @@ th { font-size: 12px; font-weight: 700; color: var(--ink-3); }
 @media (max-width: 600px) { .jf { max-width: 92px; } .jm .tm { font-size: 14.5px; } }
 @media (max-width: 600px) { .pname { overflow-wrap: normal; word-break: normal; font-size: 14px; } }
 /* langue */
-.appbar .day { margin-left: auto; }
+.appbar .lang { margin-left: auto; }
 .appbar .lang { display: flex; gap: 2px; background: var(--track); border-radius: 999px; padding: 2px; }
 .appbar .lang button { border: 0; background: transparent; color: var(--ink-3); font: inherit; font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 999px; cursor: pointer; min-width: 32px; }
 .appbar .lang button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }

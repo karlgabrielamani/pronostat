@@ -53,7 +53,7 @@
       ? `<div><b>${t.abbr || t.name}</b> ${t.inj.map(x => { const k = t.name + "|" + x.name;
           return `<label class="chk"><input type="checkbox" data-k="${k}"${OFF[k] ? "" : " checked"}> ${x.name} <span class="muted">(${st[x.status] || x.status})</span></label>`; }).join(" ")}</div>`
       : `<div><b>${t.abbr || t.name}</b> <span class="muted">aucun absent important annoncé</span></div>`;
-    g("nbInj").innerHTML = `<div class="eyebrow">Absents pris en compte <span style="text-transform:none;letter-spacing:0">· décoche un joueur s'il joue finalement</span></div>${blk(a)}${blk(b)}`;
+    g("nbInj").innerHTML = `<div class="eyebrow">Absents pris en compte <span style="text-transform:none;letter-spacing:0">· décochez un joueur s'il joue finalement</span></div>${blk(a)}${blk(b)}`;
   }
   g("nbInj").addEventListener("change", e => { const k = e.target.dataset.k; if (!k) return; OFF[k] = !e.target.checked; render(); });
   function expected(a, b) {
@@ -86,7 +86,7 @@
     const a = T[g("nbA").value], b = T[g("nbB").value];
     g("nbBaL").textContent = `${a.name} a joué la veille`;
     g("nbBbL").textContent = `${b.name} a joué la veille`;
-    if (a === b) { g("nbErr").hidden = false; g("nbErr").textContent = "Choisis deux équipes différentes."; g("nbResult").style.opacity = .35; return; }
+    if (a === b) { g("nbErr").hidden = false; g("nbErr").textContent = "Choisissez deux équipes différentes."; g("nbResult").style.opacity = .35; return; }
     g("nbErr").hidden = true; g("nbResult").style.opacity = 1;
     drawInj(a, b);
     const [ea, eb] = expected(a, b);
@@ -173,7 +173,7 @@
   }
   function nUpd() {
     const idx = nSel(), q = idx.length ? nJoint(idx) : 0, pn = idx.reduce((x, k) => x * nJoint([k]), 1);
-    g("nbSel").textContent = idx.length ? `${f(q * 100)} % · cote juste ${f(1 / Math.max(q, 1e-4), 2)}${idx.length > 1 ? naiveTxt(q, pn) : ""}` : "Coche un ou plusieurs événements.";
+    g("nbSel").textContent = idx.length ? `${f(q * 100)} % · cote juste ${f(1 / Math.max(q, 1e-4), 2)}${idx.length > 1 ? naiveTxt(q, pn) : ""}` : "Cochez un ou plusieurs événements.";
     g("nbAdd").disabled = !idx.length;
   }
   g("nbEv").addEventListener("change", nUpd);

@@ -138,9 +138,9 @@ td button { font: inherit; font-size: 12px; background: none; border: 1px solid 
 
 <div class="wrap">
   <header class="vh">
-    <h1>Pronos Tennis</h1>
+    <h1>Tennis</h1>
     <div class="seg" role="group" aria-label="Circuit"><button id="t-ATP" aria-pressed="true">ATP · hommes</button><button id="t-WTA" aria-pressed="false">WTA · femmes</button></div>
-    <p class="sub">Bon vainqueur <b id="acc"></b> du temps<span id="accpW" hidden><span id="accp"></span></span> · à jour au <span id="upd"></span></p>
+    <p class="sub">Bon vainqueur <b id="acc"></b> du temps<span id="accpW" hidden><span id="accp"></span></span><span id="upd" hidden></span></p>
   </header>
 
   <div class="card">
@@ -149,7 +149,7 @@ td button { font: inherit; font-size: 12px; background: none; border: 1px solid 
     <details class="more">
       <summary>Calendrier des tournois</summary>
       <div class="cal" id="cal"></div>
-      <p class="note">Touche un tournoi pour régler la surface et ses joueurs.</p>
+      <p class="note">Touchez un tournoi pour régler la surface et ses joueurs.</p>
     </details>
   </div>
 
@@ -264,7 +264,7 @@ function render() {
   const err = $("err");
   if (!a || !b || a === b) {
     err.hidden = false; $("result").style.opacity = .35;
-    err.textContent = !a || !b ? "Choisis un joueur dans la liste (format : Nom I., par exemple « Sinner J. »)." : "Choisis deux joueurs différents.";
+    err.textContent = !a || !b ? "Choisissez un joueur dans la liste (format : Nom I., par exemple « Sinner J. »)." : "Choisissez deux joueurs différents.";
     return;
   }
   err.hidden = true; $("result").style.opacity = 1;
@@ -517,7 +517,7 @@ function jointP(S, idx) { return S.rows.filter(m => idx.every(i => EVENTS[i][1](
 function updSel() {
   const S = cbSims, idx = selected();
   const pj = idx.length ? jointP(S, idx) : 0, pn = idx.reduce((x, i) => x * jointP(S, [i]), 1);
-  $("cbSel").textContent = idx.length ? `${fr(pj * 100)} % · cote juste ${fr(1 / Math.max(pj, 1e-4), 2)}${idx.length > 1 ? naiveTxt(pj, pn) : ""}` : "Coche un ou plusieurs événements.";
+  $("cbSel").textContent = idx.length ? `${fr(pj * 100)} % · cote juste ${fr(1 / Math.max(pj, 1e-4), 2)}${idx.length > 1 ? naiveTxt(pj, pn) : ""}` : "Cochez un ou plusieurs événements.";
   $("cbAdd").disabled = !idx.length;
 }
 $("evList").addEventListener("change", updSel);
