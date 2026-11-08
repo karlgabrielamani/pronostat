@@ -204,6 +204,13 @@
     return s * (1 - (((((1.061405429 * u - 1.453152027) * u) + 1.421413741) * u - 0.284496736) * u + 0.254829592) * u * Math.exp(-x * x)); };
   window.NbaAPI = {
     updated: N.updated,
+    teams() {
+      return N.teams.map(t => ({ sport: "NBA", name: t.name, sub: "NBA", open: () => {
+        location.hash = "#basket";
+        const i = games.findIndex(y => y.home === t.name || y.away === t.name);
+        const btn = i >= 0 && g("nbGames").querySelector(`.game[data-i="${i}"]`);
+        if (btn) btn.click(); else { g("nbA").value = t.name; if (g("nbB").value === t.name) g("nbB").value = N.teams.find(x => x.name !== t.name).name; render(); } } }));
+    },
     current: () => cur && { sport: "nba", h: cur.a.name, a: cur.b.name, ea: cur.ea, eb: cur.eb, p: cur.sims.filter(r => r.ta > r.tb).length / cur.sims.length },
     list() {
       return N.games.filter(x => T[x.home] && T[x.away]).map(x => {

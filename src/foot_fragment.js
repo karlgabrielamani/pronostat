@@ -177,6 +177,18 @@
   }
   window.FootAPI = {
     updated: F.updated,
+    teams() {
+      const seen = new Set(), out = [];
+      for (const k of [...F.order].sort((x, y) => !!F.leagues[x].cup - !!F.leagues[y].cup)) for (const t of F.leagues[k].teams) {
+        if (seen.has(t.name)) continue; seen.add(t.name);
+        out.push({ sport: "Foot", name: t.name, sub: F.leagues[k].name, open: () => {
+          location.hash = "#foot"; g("ftL").value = k; setLeague(k);
+          const i = games.findIndex(y => y.home === t.name || y.away === t.name);
+          const btn = i >= 0 && g("ftGames").querySelector(`.game[data-i="${i}"]`);
+          if (btn) btn.click(); else { g("ftA").value = t.name; if (g("ftB").value === t.name) g("ftB").value = F.leagues[k].teams.find(x => x.name !== t.name).name; render(); } } });
+      }
+      return out;
+    },
     current: () => cur && { sport: "foot", h: cur.h.name, a: cur.a.name, lh: cur.lam, la: cur.mu, comp: L.name },
     list() {
       const out = [];

@@ -18,6 +18,8 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Rechercher", "Search", "Zoeken"], ["Équipe, joueur ou joueuse", "Team or player", "Ploeg of speler"], ["Tapez au moins 2 lettres.", "Type at least 2 letters.", "Typ minstens 2 letters."],
+    ["Aucun résultat.", "No results.", "Geen resultaten."], ["Équipes et joueurs", "Teams and players", "Ploegen en spelers"],
     // ---- textes courts (v2) et simulation
     ["Bon résultat", "Correct result", "Juiste uitslag"], ["Bon vainqueur", "Correct winner", "Juiste winnaar"], ["matchs testés", "matches tested", "geteste wedstrijden"],
     ["coupes d'Europe", "European cups", "Europese bekers"], ["à jour au", "updated", "bijgewerkt op"], ["absents inclus", "absentees included", "afwezigen inbegrepen"],

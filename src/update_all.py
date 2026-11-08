@@ -263,7 +263,7 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
     js = lambda name, ph, data: "\n<script>\n" + open(f"{SRC}/{name}").read().replace(ph, json.dumps(data, ensure_ascii=False)) + "\n</script>"
     t = (t + js("nba_fragment.js", "__NBA__", nba_data) + js("foot_fragment.js", "__FOOT__", foot_data)
            + "\n<script>window.HIST = " + json.dumps(hist, ensure_ascii=False) + ";</script>"
-           + open(f"{SRC}/router.html").read() + open(f"{SRC}/sim.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
+           + open(f"{SRC}/router.html").read() + open(f"{SRC}/sim.html").read() + open(f"{SRC}/search.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
     t = t.replace("__WTA__", json.dumps(wta_data or dict(players=[], coef=tennis_data["coef"], updated=tennis_data["updated"], test=dict(acc=0, acc_pin=None), live=[]), ensure_ascii=False))
     t = t.replace("__DATA__", json.dumps(tennis_data, ensure_ascii=False))
     open(f"{OUT}/pronos.html", "w").write(t)

@@ -640,6 +640,15 @@ $("t-WTA").addEventListener("click", () => setTour("WTA"));
 
 // ---------- accès pour l'onglet « Aujourd'hui » ----------
 window.TennisAPI = {
+  teams() {
+    const out = [];
+    for (const tour of ["ATP", "WTA"]) for (const p of TOURS[tour].players) out.push({ sport: "Tennis", name: p.name, sub: tour, open: () => {
+      location.hash = "#tennis"; setTour(tour);
+      const i = (window._tLive || []).findIndex(x => x.p1 === p.name || x.p2 === p.name);
+      const btn = i >= 0 && document.querySelector(`#tLive .game[data-i="${i}"]`);
+      if (btn) btn.click(); else { $("pA").value = p.name; if ($("pB").value === p.name) $("pB").value = TOURS[tour].players.find(x => x.name !== p.name).name; render(); } } });
+    return out;
+  },
   current: () => window._sim && { sport: "tennis", h: window._sim.a.name, a: window._sim.b.name, pa: window._sim.pa, pb: window._sim.pb, bo, surf: surface },
   updated: TOURS.ATP.updated,
   list() {
