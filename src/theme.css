@@ -183,3 +183,6 @@ th { font-size: 12px; font-weight: 700; color: var(--ink-3); }
 .appbar .lang button { border: 0; background: transparent; color: var(--ink-3); font: inherit; font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 999px; cursor: pointer; min-width: 32px; }
 .appbar .lang button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
 @media (max-width: 600px) { .appbar .day { font-size: 12px; } }
+/* iPhone : pas de zoom automatique quand on touche un menu ou un champ (texte d'au moins 16 px), pas de défilement horizontal de la page */
+@media (max-width: 600px) { select, textarea, input[type="text"], input[type="search"], input:not([type]) { font-size: 16px !important; } }
+html, body { overflow-x: clip; }
