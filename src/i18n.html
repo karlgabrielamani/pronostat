@@ -18,6 +18,33 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    // ---- page d'accueil
+    ["Ouvrir l'appli gratuitement", "Open the app for free", "Open de app gratis"], ["Ouvrir l'appli", "Open the app", "Open de app"], ["Voir les offres", "See plans", "Bekijk de abonnementen"],
+    ["Les probabilités de chaque match,", "The probabilities of every match,", "De kansen van elke wedstrijd,"], ["événement par événement.", "event by event.", "gebeurtenis per gebeurtenis."],
+    ["Football, tennis et NBA. Pas seulement qui va gagner : les deux équipes marquent, le nombre de buts, les sets… Calculé chaque matin par un modèle testé sur plus de # matchs.", "Football, tennis and NBA. Not just who wins: both teams to score, number of goals, sets… Calculated every morning by a model tested on more than # matches.", "Voetbal, tennis en NBA. Niet alleen wie wint: beide ploegen scoren, aantal doelpunten, sets… Elke ochtend berekend door een model getest op meer dan # wedstrijden."],
+    ["La stat du jour", "Stat of the day", "Stat van de dag"], ["Le match du jour", "Match of the day", "Wedstrijd van de dag"], ["Voir tous les événements du match", "See all match events", "Bekijk alle wedstrijdgebeurtenissen"],
+    ["Ce que vous trouvez dans Pronostat", "What you'll find in Pronostat", "Wat u vindt in Pronostat"], ["Chaque événement en %", "Every event in %", "Elke gebeurtenis in %"],
+    ["Les deux équipes marquent, plus de 2,5 buts, gagne au moins un set… Pas seulement 1, N ou 2.", "Both teams to score, over 2.5 goals, wins at least one set… Not just 1, X or 2.", "Beide ploegen scoren, meer dan 2,5 doelpunten, wint minstens één set… Niet alleen 1, X of 2."],
+    ["Combinés cohérents", "Consistent combos", "Samenhangende combinaties"],
+    ["Les événements qui vont ensemble, avec leur vraie probabilité commune et leur cote juste.", "Events that go together, with their true joint probability and fair odds.", "Gebeurtenissen die samengaan, met hun echte gezamenlijke kans en eerlijke quotering."],
+    ["Regardez le match se jouer avec les forces du modèle, ou rejouez-le # # fois.", "Watch the match play out with the model's strengths, or replay it 10,000 times.", "Bekijk de wedstrijd met de krachten van het model, of speel hem 10.000 keer opnieuw."],
+    ["Recherche et favoris", "Search and favourites", "Zoeken en favorieten"],
+    ["Trouvez une équipe ou un joueur en deux lettres, suivez vos matchs d'une étoile.", "Find a team or player in two letters, follow your matches with a star.", "Vind een ploeg of speler in twee letters, volg uw wedstrijden met een ster."],
+    ["Compétitions couvertes", "Competitions covered", "Gedekte competities"], ["Offres", "Plans", "Abonnementen"], ["Gratuit", "Free", "Gratis"],
+    ["Tous les matchs du jour", "All of today's matches", "Alle wedstrijden van de dag"], ["Probabilités 1, N, 2", "1, X, 2 probabilities", "Kansen 1, X, 2"],
+    ["Bientôt disponible", "Coming soon", "Binnenkort beschikbaar"], ["Bientôt", "Soon", "Binnenkort"], ["mois", "month", "maand"],
+    ["Tous les événements en %", "All events in %", "Alle gebeurtenissen in %"], ["Simulations et # # matchs simulés", "Simulations and 10,000 simulated matches", "Simulaties en 10.000 gesimuleerde wedstrijden"],
+    ["Sans publicité", "No ads", "Zonder reclame"], ["Sur devis", "On request", "Op offerte"], ["Médias, blogs, créateurs", "Media, blogs, creators", "Media, blogs, makers"],
+    ["Widget ou flux de probabilités", "Widget or probability feed", "Widget of kansenfeed"], ["Vos championnats", "Your leagues", "Uw competities"],
+    ["Questions fréquentes", "Frequently asked questions", "Veelgestelde vragen"], ["Est-ce un conseil de pari ?", "Is this betting advice?", "Is dit gokadvies?"],
+    ["Non. Pronostat donne des probabilités calculées par un modèle statistique. Ce n'est pas une garantie de résultat, et les bookmakers ont souvent raison.", "No. Pronostat gives probabilities calculated by a statistical model. It is not a guarantee of results, and bookmakers are often right.", "Nee. Pronostat geeft kansen berekend door een statistisch model. Het is geen garantie op een uitslag, en bookmakers hebben vaak gelijk."],
+    ["D'où viennent les chiffres ?", "Where do the numbers come from?", "Waar komen de cijfers vandaan?"],
+    ["D'un modèle statistique entraîné sur les résultats passés, testé sur plus de # matchs. Il est recalculé chaque matin avec les derniers résultats.", "From a statistical model trained on past results, tested on more than # matches. It is recalculated every morning with the latest results.", "Van een statistisch model getraind op eerdere uitslagen, getest op meer dan # wedstrijden. Het wordt elke ochtend herberekend met de laatste uitslagen."],
+    ["Quels sports et compétitions ?", "Which sports and competitions?", "Welke sporten en competities?"],
+    ["Le football (grands championnats européens et coupes d'Europe), le tennis ATP et WTA, et la NBA.", "Football (major European leagues and European cups), ATP and WTA tennis, and the NBA.", "Voetbal (grote Europese competities en Europese bekers), ATP- en WTA-tennis, en de NBA."],
+    ["Est-ce gratuit ?", "Is it free?", "Is het gratis?"], ["Oui. Une offre Premium arrivera bientôt pour les fonctions avancées.", "Yes. A Premium plan for advanced features is coming soon.", "Ja. Binnenkort komt er een Premium-abonnement voor geavanceerde functies."],
+    ["Pronostat · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.", "Pronostat · Probabilities for information only, not betting advice. 18+ only.", "Pronostat · Kansen ter informatie, geen gokadvies. Alleen voor 18+."],
+    ["Votre e-mail", "Your email", "Uw e-mail"], ["Me prévenir", "Notify me", "Houd me op de hoogte"],
     ["Rechercher", "Search", "Zoeken"], ["Équipe, joueur ou joueuse", "Team or player", "Ploeg of speler"], ["Tapez au moins 2 lettres.", "Type at least 2 letters.", "Typ minstens 2 letters."],
     ["Aucun résultat.", "No results.", "Geen resultaten."], ["Équipes et joueurs", "Teams and players", "Ploegen en spelers"],
     // ---- textes courts (v2) et simulation
@@ -174,7 +201,7 @@ window.I18N = (() => {
     .sort((a, b) => b.len - a.len);
   // numérotation des « # » de chaque traduction : $1, $2… dans l'ordre
   D.forEach(r => delete r.k);
-  const tr = s => { if (!s || !/[A-Za-zÀ-ÿ]/.test(s)) return s; let o = s; for (const r of RULES) o = o.replace(r.re, r.to); if (LANG === "en") o = o.replace(/(\d),(\d)/g, "$1.$2"); return o; };
+  const tr = s => { if (!s || LANG === "fr") return s; let o = s; if (/[A-Za-zÀ-ÿ]/.test(o)) for (const r of RULES) o = o.replace(r.re, r.to); if (LANG === "en") o = o.replace(/(\d),(\d{1,2})(?!\d)/g, "$1.$2"); return o; };
   const done = new WeakMap();
   function walk(root) {
     if (LANG === "fr") return;
