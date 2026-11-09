@@ -2,7 +2,7 @@
 <div class="wrap" id="view-fav" hidden>
   <header class="vh">
     <h1>Favoris</h1>
-    <p class="sub">Touchez ☆ à côté d'un match pour le suivre ici.</p>
+    <p class="sub">Cliquez ☆ à côté d'un match pour le suivre ici.</p>
   </header>
   <div class="jlist" id="favList"></div>
 </div>
@@ -10,7 +10,7 @@
 <div class="wrap" id="view-jour" hidden>
   <header class="vh">
     <h1>Matchs à venir</h1>
-    <p class="sub">Touchez un match pour le détail.</p>
+    <p class="sub">Cliquez un match pour le détail.</p>
   </header>
   <div class="seg" role="group" aria-label="Sport" id="jSeg"><button data-s="" aria-pressed="true">Tous</button><button data-s="Foot" aria-pressed="false">Football</button><button data-s="Tennis" aria-pressed="false">Tennis</button><button data-s="NBA" aria-pressed="false">NBA</button></div>
   <div class="jlist" id="jList"></div>
@@ -189,7 +189,7 @@ const Combo = (() => {
     const favs = Fav.all(), keys = Object.keys(favs);
     const items = APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } });
     const byKey = {}; items.forEach(x => { byKey[Fav.key(x.sport, x.dt, x.a, x.b)] = x; });
-    if (!keys.length) { el.innerHTML = `<p class="note fav-empty">Aucun favori. Touchez ☆ à côté d'un match.</p>`; return; }
+    if (!keys.length) { el.innerHTML = `<p class="note fav-empty">Aucun favori. Cliquez ☆ à côté d'un match.</p>`; return; }
     const rows = keys.map(k => ({ k, m: favs[k], x: byKey[k] })).sort((p, q) => new Date(p.m.dt) - new Date(q.m.dt));
     const now = Date.now(); let last = "", html = "";
     rows.forEach(({ m, x }, i) => {
