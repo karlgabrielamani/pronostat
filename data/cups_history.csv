@@ -7,10 +7,10 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 720421,UCL,2024-09-17T19:00Z,Sporting CP,Lille,2,0,True,post,False
 720424,UCL,2024-09-18T16:45Z,Bologna,Shakhtar Donetsk,0,0,True,post,False
 720423,UCL,2024-09-18T16:45Z,Sparta Prague,RB Salzburg,3,0,True,post,False
-720427,UCL,2024-09-18T19:00Z,Celtic,Slovan Bratislava,5,1,True,post,False
-720428,UCL,2024-09-18T19:00Z,Club Brugge,Borussia Dortmund,0,3,True,post,False
 720426,UCL,2024-09-18T19:00Z,Manchester City,Internazionale,0,0,True,post,False
 720425,UCL,2024-09-18T19:00Z,Paris Saint-Germain,Girona,1,0,True,post,False
+720427,UCL,2024-09-18T19:00Z,Celtic,Slovan Bratislava,5,1,True,post,False
+720428,UCL,2024-09-18T19:00Z,Club Brugge,Borussia Dortmund,0,3,True,post,False
 720429,UCL,2024-09-19T16:45Z,Red Star Belgrade,Benfica,1,2,True,post,False
 720430,UCL,2024-09-19T16:45Z,Feyenoord Rotterdam,Bayer Leverkusen,0,4,True,post,False
 720434,UCL,2024-09-19T19:00Z,AS Monaco,Barcelona,2,1,True,post,False
@@ -19,78 +19,78 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 720433,UCL,2024-09-19T19:00Z,Brest,SK Sturm Graz,2,1,True,post,False
 720509,UEL,2024-09-25T16:45Z,Bodo/Glimt,FC Porto,3,2,True,post,False
 720510,UEL,2024-09-25T16:45Z,AZ Alkmaar,IF Elfsborg,3,2,True,post,False
-720516,UEL,2024-09-25T19:00Z,Dynamo Kyiv,Lazio,0,3,True,post,False
-720513,UEL,2024-09-25T19:00Z,Manchester United,FC Twente,1,1,True,post,False
-720515,UEL,2024-09-25T19:00Z,FC Midtjylland,TSG Hoffenheim,1,1,True,post,False
-720514,UEL,2024-09-25T19:00Z,Nice,Real Sociedad,1,1,True,post,False
-720517,UEL,2024-09-25T19:00Z,Anderlecht,Ferencvaros,2,1,True,post,False
 720512,UEL,2024-09-25T19:00Z,Ludogorets Razgrad,Slavia Prague,0,2,True,post,False
 720511,UEL,2024-09-25T19:00Z,Galatasaray,PAOK,3,1,True,post,False
+720517,UEL,2024-09-25T19:00Z,Anderlecht,Ferencvaros,2,1,True,post,False
+720516,UEL,2024-09-25T19:00Z,Dynamo Kyiv,Lazio,0,3,True,post,False
+720515,UEL,2024-09-25T19:00Z,FC Midtjylland,TSG Hoffenheim,1,1,True,post,False
+720513,UEL,2024-09-25T19:00Z,Manchester United,FC Twente,1,1,True,post,False
+720514,UEL,2024-09-25T19:00Z,Nice,Real Sociedad,1,1,True,post,False
 720518,UEL,2024-09-26T16:45Z,Malmö FF,Rangers,0,2,True,post,False
 720519,UEL,2024-09-26T16:45Z,Fenerbahce,Union St.-Gilloise,2,1,True,post,False
-720523,UEL,2024-09-26T19:00Z,Braga,Maccabi Tel-Aviv,2,1,True,post,False
-720522,UEL,2024-09-26T19:00Z,AS Roma,Athletic Club,1,1,True,post,False
-720526,UEL,2024-09-26T19:00Z,Lyon,Olympiacos,2,0,True,post,False
-720524,UEL,2024-09-26T19:00Z,Eintracht Frankfurt,Viktoria Plzen,3,3,True,post,False
-720525,UEL,2024-09-26T19:00Z,Ajax Amsterdam,Besiktas,4,0,True,post,False
 720520,UEL,2024-09-26T19:00Z,FCSB,Rigas Futbola Skola,4,1,True,post,False
+720525,UEL,2024-09-26T19:00Z,Ajax Amsterdam,Besiktas,4,0,True,post,False
+720524,UEL,2024-09-26T19:00Z,Eintracht Frankfurt,Viktoria Plzen,3,3,True,post,False
+720522,UEL,2024-09-26T19:00Z,AS Roma,Athletic Club,1,1,True,post,False
+720523,UEL,2024-09-26T19:00Z,Braga,Maccabi Tel-Aviv,2,1,True,post,False
+720526,UEL,2024-09-26T19:00Z,Lyon,Olympiacos,2,0,True,post,False
 720521,UEL,2024-09-26T19:35Z,Tottenham Hotspur,FK Qarabag,3,0,True,post,False
 720436,UCL,2024-10-01T16:45Z,VfB Stuttgart,Sparta Prague,1,1,True,post,False
 720435,UCL,2024-10-01T16:45Z,RB Salzburg,Brest,0,4,True,post,False
-720440,UCL,2024-10-01T19:00Z,Internazionale,Red Star Belgrade,4,0,True,post,False
-720443,UCL,2024-10-01T19:00Z,Arsenal,Paris Saint-Germain,2,0,True,post,False
-720441,UCL,2024-10-01T19:00Z,PSV Eindhoven,Sporting CP,1,1,True,post,False
-720438,UCL,2024-10-01T19:00Z,Borussia Dortmund,Celtic,7,1,True,post,False
-720442,UCL,2024-10-01T19:00Z,Barcelona,Young Boys,5,0,True,post,False
 720439,UCL,2024-10-01T19:00Z,Slovan Bratislava,Manchester City,0,4,True,post,False
 720437,UCL,2024-10-01T19:00Z,Bayer Leverkusen,AC Milan,1,0,True,post,False
+720442,UCL,2024-10-01T19:00Z,Barcelona,Young Boys,5,0,True,post,False
+720441,UCL,2024-10-01T19:00Z,PSV Eindhoven,Sporting CP,1,1,True,post,False
+720443,UCL,2024-10-01T19:00Z,Arsenal,Paris Saint-Germain,2,0,True,post,False
+720440,UCL,2024-10-01T19:00Z,Internazionale,Red Star Belgrade,4,0,True,post,False
+720438,UCL,2024-10-01T19:00Z,Borussia Dortmund,Celtic,7,1,True,post,False
 720610,UECL,2024-10-02T14:30Z,Vitória de Guimaraes,NK Celje,3,1,True,post,False
 720609,UECL,2024-10-02T14:30Z,Istanbul Basaksehir,Rapid Vienna,1,2,True,post,False
 720445,UCL,2024-10-02T16:45Z,Girona,Feyenoord Rotterdam,2,3,True,post,False
 720444,UCL,2024-10-02T16:45Z,Shakhtar Donetsk,Atalanta,0,3,True,post,False
-720450,UCL,2024-10-02T19:00Z,SK Sturm Graz,Club Brugge,0,1,True,post,False
+720447,UCL,2024-10-02T19:00Z,Benfica,Atlético Madrid,4,0,True,post,False
+720448,UCL,2024-10-02T19:00Z,Lille,Real Madrid,1,0,True,post,False
+720451,UCL,2024-10-02T19:00Z,Aston Villa,Bayern Munich,1,0,True,post,False
 720446,UCL,2024-10-02T19:00Z,Dinamo Zagreb,AS Monaco,2,2,True,post,False
 720366,UCL,2024-10-02T19:00Z,Liverpool,Bologna,2,0,True,post,False
+720450,UCL,2024-10-02T19:00Z,SK Sturm Graz,Club Brugge,0,1,True,post,False
 720449,UCL,2024-10-02T19:00Z,RB Leipzig,Juventus,2,3,True,post,False
-720447,UCL,2024-10-02T19:00Z,Benfica,Atlético Madrid,4,0,True,post,False
-720451,UCL,2024-10-02T19:00Z,Aston Villa,Bayern Munich,1,0,True,post,False
-720448,UCL,2024-10-02T19:00Z,Lille,Real Madrid,1,0,True,post,False
-720528,UEL,2024-10-03T16:45Z,Rigas Futbola Skola,Galatasaray,2,2,True,post,False
-720535,UEL,2024-10-03T16:45Z,FK Qarabag,Malmö FF,1,2,True,post,False
-720527,UEL,2024-10-03T16:45Z,Slavia Prague,Ajax Amsterdam,1,1,True,post,False
-720614,UECL,2024-10-03T16:45Z,Dinamo Minsk,Heart of Midlothian,1,2,True,post,False
-720530,UEL,2024-10-03T16:45Z,Ferencvaros,Tottenham Hotspur,1,2,True,post,False
-720534,UEL,2024-10-03T16:45Z,Maccabi Tel-Aviv,FC Midtjylland,0,2,True,post,False
-720533,UEL,2024-10-03T16:45Z,Lazio,Nice,4,1,True,post,False
-720529,UEL,2024-10-03T16:45Z,Real Sociedad,Anderlecht,1,2,True,post,False
-720531,UEL,2024-10-03T16:45Z,Olympiacos,Braga,3,0,True,post,False
-720532,UEL,2024-10-03T16:45Z,TSG Hoffenheim,Dynamo Kyiv,2,0,True,post,False
-720613,UECL,2024-10-03T16:45Z,Legia Warsaw,Real Betis,1,0,True,post,False
 720617,UECL,2024-10-03T16:45Z,Omonia Nicosia,Vikingur Reykjavik,4,0,True,post,False
 720616,UECL,2024-10-03T16:45Z,FC Noah,Mlada Boleslav,2,0,True,post,False
 720618,UECL,2024-10-03T16:45Z,Cercle Brugge KSV,St. Gallen,6,2,True,post,False
-720615,UECL,2024-10-03T16:45Z,1. FC Heidenheim 1846,Olimpija Ljubljana,2,1,True,post,False
+720534,UEL,2024-10-03T16:45Z,Maccabi Tel-Aviv,FC Midtjylland,0,2,True,post,False
 720612,UECL,2024-10-03T16:45Z,FC Astana,FK TSC,1,0,True,post,False
 720611,UECL,2024-10-03T16:45Z,Molde,Larne,3,0,True,post,False
-720621,UECL,2024-10-03T19:00Z,Petrocub,Pafos,1,4,True,post,False
-720625,UECL,2024-10-03T19:00Z,Shamrock Rovers,Apoel Nicosia,1,1,True,post,False
-720624,UECL,2024-10-03T19:00Z,Fiorentina,The New Saints,2,0,True,post,False
-720623,UECL,2024-10-03T19:00Z,LASK Linz,Djurgården,2,2,True,post,False
-720619,UECL,2024-10-03T19:00Z,Borac Banja Luka,Panathinaikos,1,1,True,post,False
-720620,UECL,2024-10-03T19:00Z,F.C. København,Jagiellonia Bialystok,1,2,True,post,False
-720626,UECL,2024-10-03T19:00Z,Chelsea,KAA Gent,4,2,True,post,False
-720536,UEL,2024-10-03T19:00Z,Rangers,Lyon,1,4,True,post,False
-720540,UEL,2024-10-03T19:00Z,IF Elfsborg,AS Roma,1,0,True,post,False
-720537,UEL,2024-10-03T19:00Z,PAOK,FCSB,0,1,True,post,False
-720538,UEL,2024-10-03T19:00Z,FC Twente,Fenerbahce,1,1,True,post,False
+720613,UECL,2024-10-03T16:45Z,Legia Warsaw,Real Betis,1,0,True,post,False
+720615,UECL,2024-10-03T16:45Z,1. FC Heidenheim 1846,Olimpija Ljubljana,2,1,True,post,False
+720532,UEL,2024-10-03T16:45Z,TSG Hoffenheim,Dynamo Kyiv,2,0,True,post,False
+720527,UEL,2024-10-03T16:45Z,Slavia Prague,Ajax Amsterdam,1,1,True,post,False
+720529,UEL,2024-10-03T16:45Z,Real Sociedad,Anderlecht,1,2,True,post,False
+720533,UEL,2024-10-03T16:45Z,Lazio,Nice,4,1,True,post,False
+720530,UEL,2024-10-03T16:45Z,Ferencvaros,Tottenham Hotspur,1,2,True,post,False
+720614,UECL,2024-10-03T16:45Z,Dinamo Minsk,Heart of Midlothian,1,2,True,post,False
+720535,UEL,2024-10-03T16:45Z,FK Qarabag,Malmö FF,1,2,True,post,False
+720528,UEL,2024-10-03T16:45Z,Rigas Futbola Skola,Galatasaray,2,2,True,post,False
+720531,UEL,2024-10-03T16:45Z,Olympiacos,Braga,3,0,True,post,False
 720539,UEL,2024-10-03T19:00Z,FC Porto,Manchester United,3,3,True,post,False
-720622,UECL,2024-10-03T19:00Z,FC Lugano,HJK Helsinki,3,0,True,post,False
+720538,UEL,2024-10-03T19:00Z,FC Twente,Fenerbahce,1,1,True,post,False
 720544,UEL,2024-10-03T19:00Z,Union St.-Gilloise,Bodo/Glimt,0,0,True,post,False
-720542,UEL,2024-10-03T19:00Z,Besiktas,Eintracht Frankfurt,1,3,True,post,False
+720537,UEL,2024-10-03T19:00Z,PAOK,FCSB,0,1,True,post,False
 720541,UEL,2024-10-03T19:00Z,Athletic Club,AZ Alkmaar,2,0,True,post,False
 720543,UEL,2024-10-03T19:00Z,Viktoria Plzen,Ludogorets Razgrad,0,0,True,post,False
-720453,UCL,2024-10-22T16:45Z,AC Milan,Club Brugge,3,1,True,post,False
+720542,UEL,2024-10-03T19:00Z,Besiktas,Eintracht Frankfurt,1,3,True,post,False
+720540,UEL,2024-10-03T19:00Z,IF Elfsborg,AS Roma,1,0,True,post,False
+720622,UECL,2024-10-03T19:00Z,FC Lugano,HJK Helsinki,3,0,True,post,False
+720626,UECL,2024-10-03T19:00Z,Chelsea,KAA Gent,4,2,True,post,False
+720620,UECL,2024-10-03T19:00Z,F.C. København,Jagiellonia Bialystok,1,2,True,post,False
+720619,UECL,2024-10-03T19:00Z,Borac Banja Luka,Panathinaikos,1,1,True,post,False
+720536,UEL,2024-10-03T19:00Z,Rangers,Lyon,1,4,True,post,False
+720623,UECL,2024-10-03T19:00Z,LASK Linz,Djurgården,2,2,True,post,False
+720624,UECL,2024-10-03T19:00Z,Fiorentina,The New Saints,2,0,True,post,False
+720625,UECL,2024-10-03T19:00Z,Shamrock Rovers,Apoel Nicosia,1,1,True,post,False
+720621,UECL,2024-10-03T19:00Z,Petrocub,Pafos,1,4,True,post,False
 720452,UCL,2024-10-22T16:45Z,AS Monaco,Red Star Belgrade,5,1,True,post,False
+720453,UCL,2024-10-22T16:45Z,AC Milan,Club Brugge,3,1,True,post,False
 720458,UCL,2024-10-22T19:00Z,SK Sturm Graz,Sporting CP,0,2,True,post,False
 720459,UCL,2024-10-22T19:00Z,Real Madrid,Borussia Dortmund,5,2,True,post,False
 720460,UCL,2024-10-22T19:00Z,Paris Saint-Germain,PSV Eindhoven,1,1,True,post,False
@@ -98,53 +98,53 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 720457,UCL,2024-10-22T19:00Z,Aston Villa,Bologna,2,0,True,post,False
 720455,UCL,2024-10-22T19:00Z,Arsenal,Shakhtar Donetsk,1,0,True,post,False
 720454,UCL,2024-10-22T19:00Z,Girona,Slovan Bratislava,2,0,True,post,False
-720545,UEL,2024-10-23T14:30Z,Galatasaray,IF Elfsborg,4,3,True,post,False
 720546,UEL,2024-10-23T14:30Z,Braga,Bodo/Glimt,1,2,True,post,False
+720545,UEL,2024-10-23T14:30Z,Galatasaray,IF Elfsborg,4,3,True,post,False
 720461,UCL,2024-10-23T16:45Z,Atalanta,Celtic,0,0,True,post,False
 720462,UCL,2024-10-23T16:45Z,Brest,Bayer Leverkusen,1,1,True,post,False
+720463,UCL,2024-10-23T19:00Z,Benfica,Feyenoord Rotterdam,1,3,True,post,False
 720367,UCL,2024-10-23T19:00Z,RB Leipzig,Liverpool,0,1,True,post,False
 720373,UCL,2024-10-23T19:00Z,Atlético Madrid,Lille,1,3,True,post,False
 720371,UCL,2024-10-23T19:00Z,Young Boys,Internazionale,0,1,True,post,False
 720464,UCL,2024-10-23T19:00Z,RB Salzburg,Dinamo Zagreb,0,2,True,post,False
 720374,UCL,2024-10-23T19:00Z,Manchester City,Sparta Prague,5,0,True,post,False
 720372,UCL,2024-10-23T19:00Z,Barcelona,Bayern Munich,4,1,True,post,False
-720463,UCL,2024-10-23T19:00Z,Benfica,Feyenoord Rotterdam,1,3,True,post,False
 720638,UECL,2024-10-24T14:30Z,Vikingur Reykjavik,Cercle Brugge KSV,3,1,True,post,False
-720634,UECL,2024-10-24T16:45Z,Heart of Midlothian,Omonia Nicosia,2,0,True,post,False
-720630,UECL,2024-10-24T16:45Z,Rapid Vienna,FC Noah,1,0,True,post,False
-720633,UECL,2024-10-24T16:45Z,Jagiellonia Bialystok,Petrocub,2,0,True,post,False
-720631,UECL,2024-10-24T16:45Z,Panathinaikos,Chelsea,1,4,True,post,False
-720628,UECL,2024-10-24T16:45Z,Larne,Shamrock Rovers,1,4,True,post,False
-720550,UEL,2024-10-24T16:45Z,PAOK,Viktoria Plzen,2,2,True,post,False
-720636,UECL,2024-10-24T16:45Z,NK Celje,Istanbul Basaksehir,5,1,True,post,False
-720627,UECL,2024-10-24T16:45Z,Apoel Nicosia,Borac Banja Luka,0,1,True,post,False
-720632,UECL,2024-10-24T16:45Z,KAA Gent,Molde,2,1,True,post,False
-720547,UEL,2024-10-24T16:45Z,Ferencvaros,Nice,1,0,True,post,False
 720635,UECL,2024-10-24T16:45Z,Djurgården,Vitória de Guimaraes,1,2,True,post,False
 720552,UEL,2024-10-24T16:45Z,FC Midtjylland,Union St.-Gilloise,1,0,True,post,False
 720549,UEL,2024-10-24T16:45Z,FK Qarabag,Ajax Amsterdam,0,3,True,post,False
-720548,UEL,2024-10-24T16:45Z,AS Roma,Dynamo Kyiv,1,0,True,post,False
+720547,UEL,2024-10-24T16:45Z,Ferencvaros,Nice,1,0,True,post,False
 720551,UEL,2024-10-24T16:45Z,Maccabi Tel-Aviv,Real Sociedad,1,2,True,post,False
-720553,UEL,2024-10-24T16:45Z,Eintracht Frankfurt,Rigas Futbola Skola,1,0,True,post,False
 720629,UECL,2024-10-24T16:45Z,St. Gallen,Fiorentina,2,4,True,post,False
-720640,UECL,2024-10-24T19:00Z,Real Betis,F.C. København,1,1,True,post,False
-720637,UECL,2024-10-24T19:00Z,Pafos,1. FC Heidenheim 1846,0,1,True,post,False
-720641,UECL,2024-10-24T19:00Z,Olimpija Ljubljana,LASK Linz,2,0,True,post,False
-720558,UEL,2024-10-24T19:00Z,Lyon,Besiktas,0,1,True,post,False
-720644,UECL,2024-10-24T19:00Z,HJK Helsinki,Dinamo Minsk,1,0,True,post,False
-720639,UECL,2024-10-24T19:00Z,FK TSC,Legia Warsaw,0,3,True,post,False
-720556,UEL,2024-10-24T19:00Z,Malmö FF,Olympiacos,0,1,True,post,False
-720561,UEL,2024-10-24T19:00Z,Fenerbahce,Manchester United,1,1,True,post,False
-720557,UEL,2024-10-24T19:00Z,FC Twente,Lazio,0,2,True,post,False
-720554,UEL,2024-10-24T19:00Z,FC Porto,TSG Hoffenheim,2,0,True,post,False
-720642,UECL,2024-10-24T19:00Z,Mlada Boleslav,FC Lugano,0,1,True,post,False
-720555,UEL,2024-10-24T19:00Z,Anderlecht,Ludogorets Razgrad,2,0,True,post,False
-720643,UECL,2024-10-24T19:00Z,The New Saints,FC Astana,2,0,True,post,False
+720548,UEL,2024-10-24T16:45Z,AS Roma,Dynamo Kyiv,1,0,True,post,False
+720632,UECL,2024-10-24T16:45Z,KAA Gent,Molde,2,1,True,post,False
+720553,UEL,2024-10-24T16:45Z,Eintracht Frankfurt,Rigas Futbola Skola,1,0,True,post,False
+720636,UECL,2024-10-24T16:45Z,NK Celje,Istanbul Basaksehir,5,1,True,post,False
+720550,UEL,2024-10-24T16:45Z,PAOK,Viktoria Plzen,2,2,True,post,False
+720628,UECL,2024-10-24T16:45Z,Larne,Shamrock Rovers,1,4,True,post,False
+720631,UECL,2024-10-24T16:45Z,Panathinaikos,Chelsea,1,4,True,post,False
+720633,UECL,2024-10-24T16:45Z,Jagiellonia Bialystok,Petrocub,2,0,True,post,False
+720630,UECL,2024-10-24T16:45Z,Rapid Vienna,FC Noah,1,0,True,post,False
+720634,UECL,2024-10-24T16:45Z,Heart of Midlothian,Omonia Nicosia,2,0,True,post,False
+720627,UECL,2024-10-24T16:45Z,Apoel Nicosia,Borac Banja Luka,0,1,True,post,False
 720560,UEL,2024-10-24T19:00Z,Tottenham Hotspur,AZ Alkmaar,1,0,True,post,False
+720643,UECL,2024-10-24T19:00Z,The New Saints,FC Astana,2,0,True,post,False
+720555,UEL,2024-10-24T19:00Z,Anderlecht,Ludogorets Razgrad,2,0,True,post,False
+720642,UECL,2024-10-24T19:00Z,Mlada Boleslav,FC Lugano,0,1,True,post,False
+720554,UEL,2024-10-24T19:00Z,FC Porto,TSG Hoffenheim,2,0,True,post,False
+720557,UEL,2024-10-24T19:00Z,FC Twente,Lazio,0,2,True,post,False
+720561,UEL,2024-10-24T19:00Z,Fenerbahce,Manchester United,1,1,True,post,False
+720558,UEL,2024-10-24T19:00Z,Lyon,Besiktas,0,1,True,post,False
+720639,UECL,2024-10-24T19:00Z,FK TSC,Legia Warsaw,0,3,True,post,False
+720644,UECL,2024-10-24T19:00Z,HJK Helsinki,Dinamo Minsk,1,0,True,post,False
 720562,UEL,2024-10-24T19:00Z,Athletic Club,Slavia Prague,1,0,True,post,False
+720641,UECL,2024-10-24T19:00Z,Olimpija Ljubljana,LASK Linz,2,0,True,post,False
+720637,UECL,2024-10-24T19:00Z,Pafos,1. FC Heidenheim 1846,0,1,True,post,False
+720640,UECL,2024-10-24T19:00Z,Real Betis,F.C. København,1,1,True,post,False
+720556,UEL,2024-10-24T19:00Z,Malmö FF,Olympiacos,0,1,True,post,False
 720559,UEL,2024-10-24T19:00Z,Rangers,FCSB,4,0,True,post,False
-720376,UCL,2024-11-05T17:45Z,PSV Eindhoven,Girona,4,0,True,post,False
 720375,UCL,2024-11-05T17:45Z,Slovan Bratislava,Dinamo Zagreb,1,4,True,post,False
+720376,UCL,2024-11-05T17:45Z,PSV Eindhoven,Girona,4,0,True,post,False
 720382,UCL,2024-11-05T20:00Z,Bologna,AS Monaco,0,1,True,post,False
 720381,UCL,2024-11-05T20:00Z,Borussia Dortmund,SK Sturm Graz,1,0,True,post,False
 720377,UCL,2024-11-05T20:00Z,Celtic,RB Leipzig,3,1,True,post,False
@@ -153,58 +153,58 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 720380,UCL,2024-11-05T20:00Z,Real Madrid,AC Milan,1,3,True,post,False
 720379,UCL,2024-11-05T20:00Z,Sporting CP,Manchester City,4,1,True,post,False
 720563,UEL,2024-11-06T15:30Z,Besiktas,Malmö FF,2,1,True,post,False
-720383,UCL,2024-11-06T17:45Z,Club Brugge,Aston Villa,1,0,True,post,False
 720384,UCL,2024-11-06T17:45Z,Shakhtar Donetsk,Young Boys,2,1,True,post,False
+720383,UCL,2024-11-06T17:45Z,Club Brugge,Aston Villa,1,0,True,post,False
+720388,UCL,2024-11-06T20:00Z,Paris Saint-Germain,Atlético Madrid,1,2,True,post,False
+720386,UCL,2024-11-06T20:00Z,Feyenoord Rotterdam,RB Salzburg,1,3,True,post,False
+720387,UCL,2024-11-06T20:00Z,Internazionale,Arsenal,1,0,True,post,False
+720385,UCL,2024-11-06T20:00Z,Red Star Belgrade,Barcelona,2,5,True,post,False
 720391,UCL,2024-11-06T20:00Z,VfB Stuttgart,Atalanta,0,2,True,post,False
 720390,UCL,2024-11-06T20:00Z,Sparta Prague,Brest,1,2,True,post,False
-720385,UCL,2024-11-06T20:00Z,Red Star Belgrade,Barcelona,2,5,True,post,False
-720387,UCL,2024-11-06T20:00Z,Internazionale,Arsenal,1,0,True,post,False
-720386,UCL,2024-11-06T20:00Z,Feyenoord Rotterdam,RB Salzburg,1,3,True,post,False
-720388,UCL,2024-11-06T20:00Z,Paris Saint-Germain,Atlético Madrid,1,2,True,post,False
 720389,UCL,2024-11-06T20:15Z,Bayern Munich,Benfica,1,0,True,post,False
 720652,UECL,2024-11-07T14:30Z,Vikingur Reykjavik,Borac Banja Luka,2,0,True,post,False
-720651,UECL,2024-11-07T17:45Z,FK TSC,FC Lugano,4,1,True,post,False
-720571,UEL,2024-11-07T17:45Z,Eintracht Frankfurt,Slavia Prague,1,0,True,post,False
-720647,UECL,2024-11-07T17:45Z,Shamrock Rovers,The New Saints,2,1,True,post,False
-720646,UECL,2024-11-07T17:45Z,HJK Helsinki,Olimpija Ljubljana,0,2,True,post,False
-720649,UECL,2024-11-07T17:45Z,Pafos,FC Astana,1,0,True,post,False
-720648,UECL,2024-11-07T17:45Z,Petrocub,Rapid Vienna,0,3,True,post,False
-720645,UECL,2024-11-07T17:45Z,KAA Gent,Omonia Nicosia,1,0,True,post,False
-720650,UECL,2024-11-07T17:45Z,Legia Warsaw,Dinamo Minsk,4,0,True,post,False
-720569,UEL,2024-11-07T17:45Z,FCSB,FC Midtjylland,2,0,True,post,False
-720570,UEL,2024-11-07T17:45Z,IF Elfsborg,Braga,1,1,True,post,False
-720572,UEL,2024-11-07T17:45Z,Bodo/Glimt,FK Qarabag,1,2,True,post,False
 720567,UEL,2024-11-07T17:45Z,Nice,FC Twente,2,2,True,post,False
+720572,UEL,2024-11-07T17:45Z,Bodo/Glimt,FK Qarabag,1,2,True,post,False
 720564,UEL,2024-11-07T17:45Z,Galatasaray,Tottenham Hotspur,3,2,True,post,False
-720566,UEL,2024-11-07T17:45Z,Olympiacos,Rangers,1,1,True,post,False
+720570,UEL,2024-11-07T17:45Z,IF Elfsborg,Braga,1,1,True,post,False
 720565,UEL,2024-11-07T17:45Z,Union St.-Gilloise,AS Roma,1,1,True,post,False
 720568,UEL,2024-11-07T17:45Z,Ludogorets Razgrad,Athletic Club,1,2,True,post,False
-720577,UEL,2024-11-07T20:00Z,Dynamo Kyiv,Ferencvaros,0,4,True,post,False
-720580,UEL,2024-11-07T20:00Z,AZ Alkmaar,Fenerbahce,3,1,True,post,False
-720578,UEL,2024-11-07T20:00Z,Lazio,FC Porto,2,1,True,post,False
-720579,UEL,2024-11-07T20:00Z,Ajax Amsterdam,Maccabi Tel-Aviv,5,0,True,post,False
-720574,UEL,2024-11-07T20:00Z,Rigas Futbola Skola,Anderlecht,1,1,True,post,False
-720576,UEL,2024-11-07T20:00Z,TSG Hoffenheim,Lyon,2,2,True,post,False
-720573,UEL,2024-11-07T20:00Z,Viktoria Plzen,Real Sociedad,2,1,True,post,False
-720660,UECL,2024-11-07T20:00Z,Apoel Nicosia,Fiorentina,2,1,True,post,False
-720658,UECL,2024-11-07T20:00Z,Djurgården,Panathinaikos,2,1,True,post,False
-720662,UECL,2024-11-07T20:00Z,F.C. København,Istanbul Basaksehir,2,2,True,post,False
-720657,UECL,2024-11-07T20:00Z,Heart of Midlothian,1. FC Heidenheim 1846,0,2,True,post,False
-720656,UECL,2024-11-07T20:00Z,Jagiellonia Bialystok,Molde,3,0,True,post,False
-720654,UECL,2024-11-07T20:00Z,Larne,St. Gallen,1,2,True,post,False
-720653,UECL,2024-11-07T20:00Z,LASK Linz,Cercle Brugge KSV,0,0,True,post,False
-720661,UECL,2024-11-07T20:00Z,Real Betis,NK Celje,2,1,True,post,False
-720575,UEL,2024-11-07T20:00Z,Manchester United,PAOK,2,0,True,post,False
-720659,UECL,2024-11-07T20:00Z,Chelsea,FC Noah,8,0,True,post,False
+720566,UEL,2024-11-07T17:45Z,Olympiacos,Rangers,1,1,True,post,False
+720569,UEL,2024-11-07T17:45Z,FCSB,FC Midtjylland,2,0,True,post,False
+720651,UECL,2024-11-07T17:45Z,FK TSC,FC Lugano,4,1,True,post,False
+720645,UECL,2024-11-07T17:45Z,KAA Gent,Omonia Nicosia,1,0,True,post,False
+720648,UECL,2024-11-07T17:45Z,Petrocub,Rapid Vienna,0,3,True,post,False
+720649,UECL,2024-11-07T17:45Z,Pafos,FC Astana,1,0,True,post,False
+720646,UECL,2024-11-07T17:45Z,HJK Helsinki,Olimpija Ljubljana,0,2,True,post,False
+720647,UECL,2024-11-07T17:45Z,Shamrock Rovers,The New Saints,2,1,True,post,False
+720571,UEL,2024-11-07T17:45Z,Eintracht Frankfurt,Slavia Prague,1,0,True,post,False
+720650,UECL,2024-11-07T17:45Z,Legia Warsaw,Dinamo Minsk,4,0,True,post,False
 720655,UECL,2024-11-07T20:00Z,Vitória de Guimaraes,Mlada Boleslav,2,1,True,post,False
+720659,UECL,2024-11-07T20:00Z,Chelsea,FC Noah,8,0,True,post,False
+720575,UEL,2024-11-07T20:00Z,Manchester United,PAOK,2,0,True,post,False
+720661,UECL,2024-11-07T20:00Z,Real Betis,NK Celje,2,1,True,post,False
+720653,UECL,2024-11-07T20:00Z,LASK Linz,Cercle Brugge KSV,0,0,True,post,False
+720654,UECL,2024-11-07T20:00Z,Larne,St. Gallen,1,2,True,post,False
+720656,UECL,2024-11-07T20:00Z,Jagiellonia Bialystok,Molde,3,0,True,post,False
+720657,UECL,2024-11-07T20:00Z,Heart of Midlothian,1. FC Heidenheim 1846,0,2,True,post,False
+720662,UECL,2024-11-07T20:00Z,F.C. København,Istanbul Basaksehir,2,2,True,post,False
+720577,UEL,2024-11-07T20:00Z,Dynamo Kyiv,Ferencvaros,0,4,True,post,False
+720660,UECL,2024-11-07T20:00Z,Apoel Nicosia,Fiorentina,2,1,True,post,False
+720573,UEL,2024-11-07T20:00Z,Viktoria Plzen,Real Sociedad,2,1,True,post,False
+720576,UEL,2024-11-07T20:00Z,TSG Hoffenheim,Lyon,2,2,True,post,False
+720574,UEL,2024-11-07T20:00Z,Rigas Futbola Skola,Anderlecht,1,1,True,post,False
+720579,UEL,2024-11-07T20:00Z,Ajax Amsterdam,Maccabi Tel-Aviv,5,0,True,post,False
+720578,UEL,2024-11-07T20:00Z,Lazio,FC Porto,2,1,True,post,False
+720580,UEL,2024-11-07T20:00Z,AZ Alkmaar,Fenerbahce,3,1,True,post,False
+720658,UECL,2024-11-07T20:00Z,Djurgården,Panathinaikos,2,1,True,post,False
 720392,UCL,2024-11-26T17:45Z,Sparta Prague,Atlético Madrid,0,6,True,post,False
 720393,UCL,2024-11-26T17:45Z,Slovan Bratislava,AC Milan,2,3,True,post,False
-720395,UCL,2024-11-26T20:00Z,Bayer Leverkusen,RB Salzburg,5,0,True,post,False
-720396,UCL,2024-11-26T20:00Z,Bayern Munich,Paris Saint-Germain,1,0,True,post,False
-720397,UCL,2024-11-26T20:00Z,Internazionale,RB Leipzig,1,0,True,post,False
-720398,UCL,2024-11-26T20:00Z,Manchester City,Feyenoord Rotterdam,3,3,True,post,False
 720399,UCL,2024-11-26T20:00Z,Sporting CP,Arsenal,1,5,True,post,False
+720398,UCL,2024-11-26T20:00Z,Manchester City,Feyenoord Rotterdam,3,3,True,post,False
 720400,UCL,2024-11-26T20:00Z,Young Boys,Atalanta,1,6,True,post,False
+720396,UCL,2024-11-26T20:00Z,Bayern Munich,Paris Saint-Germain,1,0,True,post,False
+720395,UCL,2024-11-26T20:00Z,Bayer Leverkusen,RB Salzburg,5,0,True,post,False
+720397,UCL,2024-11-26T20:00Z,Internazionale,RB Leipzig,1,0,True,post,False
 720394,UCL,2024-11-26T20:00Z,Barcelona,Brest,3,0,True,post,False
 720663,UECL,2024-11-27T15:30Z,Istanbul Basaksehir,Petrocub,1,1,True,post,False
 720402,UCL,2024-11-27T17:45Z,Red Star Belgrade,VfB Stuttgart,5,1,True,post,False
@@ -217,42 +217,42 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 720405,UCL,2024-11-27T20:00Z,Aston Villa,Juventus,0,0,True,post,False
 720408,UCL,2024-11-27T20:00Z,PSV Eindhoven,Shakhtar Donetsk,3,2,True,post,False
 720664,UECL,2024-11-28T15:30Z,FC Astana,Vitória de Guimaraes,1,1,True,post,False
-720672,UECL,2024-11-28T17:45Z,Molde,Apoel Nicosia,0,1,True,post,False
-720667,UECL,2024-11-28T17:45Z,NK Celje,Jagiellonia Bialystok,3,3,True,post,False
-720671,UECL,2024-11-28T17:45Z,FC Noah,Vikingur Reykjavik,0,0,True,post,False
-720666,UECL,2024-11-28T17:45Z,Cercle Brugge KSV,Heart of Midlothian,2,0,True,post,False
-720588,UEL,2024-11-28T17:45Z,Rigas Futbola Skola,PAOK,0,2,True,post,False
-720673,UECL,2024-11-28T17:45Z,Dinamo Minsk,F.C. København,1,2,True,post,False
-720586,UEL,2024-11-28T17:45Z,FK Qarabag,Lyon,1,4,True,post,False
-720674,UECL,2024-11-28T17:45Z,1. FC Heidenheim 1846,Chelsea,0,2,True,post,False
-720665,UECL,2024-11-28T17:45Z,Borac Banja Luka,LASK Linz,2,1,True,post,False
-720668,UECL,2024-11-28T17:45Z,The New Saints,Djurgården,0,1,True,post,False
-720585,UEL,2024-11-28T17:45Z,Lazio,Ludogorets Razgrad,0,0,True,post,False
-720584,UEL,2024-11-28T17:45Z,Dynamo Kyiv,Viktoria Plzen,1,2,True,post,False
-720587,UEL,2024-11-28T17:45Z,Anderlecht,FC Porto,2,2,True,post,False
-720582,UEL,2024-11-28T17:45Z,Athletic Club,IF Elfsborg,3,0,True,post,False
-720581,UEL,2024-11-28T17:45Z,AZ Alkmaar,Galatasaray,1,1,True,post,False
-720583,UEL,2024-11-28T17:45Z,Besiktas,Maccabi Tel-Aviv,1,3,True,post,False
-720670,UECL,2024-11-28T17:45Z,Panathinaikos,HJK Helsinki,1,0,True,post,False
 720669,UECL,2024-11-28T17:45Z,St. Gallen,FK TSC,2,2,True,post,False
-720676,UECL,2024-11-28T20:00Z,Mlada Boleslav,Real Betis,2,1,True,post,False
-720678,UECL,2024-11-28T20:00Z,Fiorentina,Pafos,3,2,True,post,False
-720677,UECL,2024-11-28T20:00Z,FC Lugano,KAA Gent,2,0,True,post,False
-720679,UECL,2024-11-28T20:00Z,Olimpija Ljubljana,Larne,1,0,True,post,False
-720675,UECL,2024-11-28T20:00Z,Omonia Nicosia,Legia Warsaw,0,3,True,post,False
-720680,UECL,2024-11-28T20:00Z,Rapid Vienna,Shamrock Rovers,1,1,True,post,False
-720598,UEL,2024-11-28T20:00Z,Slavia Prague,Fenerbahce,1,2,True,post,False
-720589,UEL,2024-11-28T20:00Z,Tottenham Hotspur,AS Roma,2,2,True,post,False
-720597,UEL,2024-11-28T20:00Z,Real Sociedad,Ajax Amsterdam,2,0,True,post,False
+720670,UECL,2024-11-28T17:45Z,Panathinaikos,HJK Helsinki,1,0,True,post,False
+720583,UEL,2024-11-28T17:45Z,Besiktas,Maccabi Tel-Aviv,1,3,True,post,False
+720581,UEL,2024-11-28T17:45Z,AZ Alkmaar,Galatasaray,1,1,True,post,False
+720582,UEL,2024-11-28T17:45Z,Athletic Club,IF Elfsborg,3,0,True,post,False
+720587,UEL,2024-11-28T17:45Z,Anderlecht,FC Porto,2,2,True,post,False
+720584,UEL,2024-11-28T17:45Z,Dynamo Kyiv,Viktoria Plzen,1,2,True,post,False
+720585,UEL,2024-11-28T17:45Z,Lazio,Ludogorets Razgrad,0,0,True,post,False
+720668,UECL,2024-11-28T17:45Z,The New Saints,Djurgården,0,1,True,post,False
+720674,UECL,2024-11-28T17:45Z,1. FC Heidenheim 1846,Chelsea,0,2,True,post,False
+720586,UEL,2024-11-28T17:45Z,FK Qarabag,Lyon,1,4,True,post,False
+720673,UECL,2024-11-28T17:45Z,Dinamo Minsk,F.C. København,1,2,True,post,False
+720588,UEL,2024-11-28T17:45Z,Rigas Futbola Skola,PAOK,0,2,True,post,False
+720666,UECL,2024-11-28T17:45Z,Cercle Brugge KSV,Heart of Midlothian,2,0,True,post,False
+720671,UECL,2024-11-28T17:45Z,FC Noah,Vikingur Reykjavik,0,0,True,post,False
+720667,UECL,2024-11-28T17:45Z,NK Celje,Jagiellonia Bialystok,3,3,True,post,False
+720672,UECL,2024-11-28T17:45Z,Molde,Apoel Nicosia,0,1,True,post,False
+720665,UECL,2024-11-28T17:45Z,Borac Banja Luka,LASK Linz,2,1,True,post,False
 720591,UEL,2024-11-28T20:00Z,Ferencvaros,Malmö FF,4,1,True,post,False
-720592,UEL,2024-11-28T20:00Z,FCSB,Olympiacos,0,0,True,post,False
-720593,UEL,2024-11-28T20:00Z,FC Twente,Union St.-Gilloise,0,1,True,post,False
-720594,UEL,2024-11-28T20:00Z,FC Midtjylland,Eintracht Frankfurt,1,2,True,post,False
-720596,UEL,2024-11-28T20:00Z,Nice,Rangers,1,4,True,post,False
 720590,UEL,2024-11-28T20:00Z,Manchester United,Bodo/Glimt,3,2,True,post,False
+720596,UEL,2024-11-28T20:00Z,Nice,Rangers,1,4,True,post,False
+720594,UEL,2024-11-28T20:00Z,FC Midtjylland,Eintracht Frankfurt,1,2,True,post,False
+720593,UEL,2024-11-28T20:00Z,FC Twente,Union St.-Gilloise,0,1,True,post,False
+720592,UEL,2024-11-28T20:00Z,FCSB,Olympiacos,0,0,True,post,False
+720597,UEL,2024-11-28T20:00Z,Real Sociedad,Ajax Amsterdam,2,0,True,post,False
 720595,UEL,2024-11-28T20:00Z,Braga,TSG Hoffenheim,3,0,True,post,False
-720370,UCL,2024-12-10T17:45Z,Girona,Liverpool,0,1,True,post,False
+720598,UEL,2024-11-28T20:00Z,Slavia Prague,Fenerbahce,1,2,True,post,False
+720680,UECL,2024-11-28T20:00Z,Rapid Vienna,Shamrock Rovers,1,1,True,post,False
+720675,UECL,2024-11-28T20:00Z,Omonia Nicosia,Legia Warsaw,0,3,True,post,False
+720679,UECL,2024-11-28T20:00Z,Olimpija Ljubljana,Larne,1,0,True,post,False
+720677,UECL,2024-11-28T20:00Z,FC Lugano,KAA Gent,2,0,True,post,False
+720678,UECL,2024-11-28T20:00Z,Fiorentina,Pafos,3,2,True,post,False
+720676,UECL,2024-11-28T20:00Z,Mlada Boleslav,Real Betis,2,1,True,post,False
+720589,UEL,2024-11-28T20:00Z,Tottenham Hotspur,AS Roma,2,2,True,post,False
 720409,UCL,2024-12-10T17:45Z,Dinamo Zagreb,Celtic,0,0,True,post,False
+720370,UCL,2024-12-10T17:45Z,Girona,Liverpool,0,1,True,post,False
 720413,UCL,2024-12-10T20:00Z,Atalanta,Real Madrid,2,3,True,post,False
 720412,UCL,2024-12-10T20:00Z,Bayer Leverkusen,Internazionale,1,0,True,post,False
 720411,UCL,2024-12-10T20:00Z,Brest,PSV Eindhoven,1,0,True,post,False
@@ -261,8 +261,8 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 720414,UCL,2024-12-10T20:00Z,RB Salzburg,Paris Saint-Germain,0,3,True,post,False
 720415,UCL,2024-12-10T20:00Z,Shakhtar Donetsk,Bayern Munich,1,5,True,post,False
 720599,UEL,2024-12-11T15:30Z,Fenerbahce,Athletic Club,0,2,True,post,False
-720321,UCL,2024-12-11T17:45Z,Atlético Madrid,Slovan Bratislava,3,1,True,post,False
 720417,UCL,2024-12-11T17:45Z,Lille,SK Sturm Graz,3,2,True,post,False
+720321,UCL,2024-12-11T17:45Z,Atlético Madrid,Slovan Bratislava,3,1,True,post,False
 720322,UCL,2024-12-11T20:00Z,Borussia Dortmund,Barcelona,2,3,True,post,False
 720327,UCL,2024-12-11T20:00Z,VfB Stuttgart,Young Boys,5,1,True,post,False
 720328,UCL,2024-12-11T20:00Z,AC Milan,Red Star Belgrade,2,1,True,post,False
@@ -272,67 +272,67 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 720326,UCL,2024-12-11T20:00Z,Juventus,Manchester City,2,0,True,post,False
 720694,UECL,2024-12-12T13:00Z,Vikingur Reykjavik,Djurgården,1,2,True,post,False
 720681,UECL,2024-12-12T15:30Z,FC Astana,Chelsea,1,3,True,post,False
-720604,UEL,2024-12-12T17:45Z,AS Roma,Braga,3,0,True,post,False
-720602,UEL,2024-12-12T17:45Z,Ludogorets Razgrad,AZ Alkmaar,2,2,True,post,False
-720687,UECL,2024-12-12T17:45Z,FC Noah,Apoel Nicosia,1,3,True,post,False
-720600,UEL,2024-12-12T17:45Z,Olympiacos,FC Twente,0,0,True,post,False
-720606,UEL,2024-12-12T17:45Z,TSG Hoffenheim,FCSB,0,0,True,post,False
-720603,UEL,2024-12-12T17:45Z,Union St.-Gilloise,Nice,2,1,True,post,False
-720607,UEL,2024-12-12T17:45Z,Viktoria Plzen,Manchester United,1,2,True,post,False
-720689,UECL,2024-12-12T17:45Z,Olimpija Ljubljana,Cercle Brugge KSV,1,4,True,post,False
-720688,UECL,2024-12-12T17:45Z,Petrocub,Real Betis,0,1,True,post,False
-720690,UECL,2024-12-12T17:45Z,Legia Warsaw,FC Lugano,1,2,True,post,False
-720682,UECL,2024-12-12T17:45Z,Istanbul Basaksehir,1. FC Heidenheim 1846,3,1,True,post,False
-720683,UECL,2024-12-12T17:45Z,HJK Helsinki,Molde,2,2,True,post,False
-720684,UECL,2024-12-12T17:45Z,Fiorentina,LASK Linz,7,0,True,post,False
-720601,UEL,2024-12-12T17:45Z,PAOK,Ferencvaros,5,0,True,post,False
-720685,UECL,2024-12-12T17:45Z,F.C. København,Heart of Midlothian,2,0,True,post,False
 720686,UECL,2024-12-12T17:45Z,Dinamo Minsk,Larne,2,0,True,post,False
+720685,UECL,2024-12-12T17:45Z,F.C. København,Heart of Midlothian,2,0,True,post,False
 720605,UEL,2024-12-12T17:45Z,Malmö FF,Galatasaray,2,2,True,post,False
-720465,UEL,2024-12-12T20:00Z,Real Sociedad,Dynamo Kyiv,3,0,True,post,False
-720466,UEL,2024-12-12T20:00Z,Rangers,Tottenham Hotspur,1,1,True,post,False
-720467,UEL,2024-12-12T20:00Z,Maccabi Tel-Aviv,Rigas Futbola Skola,2,1,True,post,False
-720695,UECL,2024-12-12T20:00Z,The New Saints,Panathinaikos,0,2,True,post,False
-720469,UEL,2024-12-12T20:00Z,IF Elfsborg,FK Qarabag,1,0,True,post,False
-720472,UEL,2024-12-12T20:00Z,FC Porto,FC Midtjylland,2,0,True,post,False
-720608,UEL,2024-12-12T20:00Z,Slavia Prague,Anderlecht,1,2,True,post,False
-720468,UEL,2024-12-12T20:00Z,Lyon,Eintracht Frankfurt,3,2,True,post,False
-720471,UEL,2024-12-12T20:00Z,Ajax Amsterdam,Lazio,1,3,True,post,False
-720470,UEL,2024-12-12T20:00Z,Bodo/Glimt,Besiktas,2,1,True,post,False
-720696,UECL,2024-12-12T20:00Z,KAA Gent,FK TSC,3,0,True,post,False
-720692,UECL,2024-12-12T20:00Z,Mlada Boleslav,Jagiellonia Bialystok,1,0,True,post,False
-720691,UECL,2024-12-12T20:00Z,Omonia Nicosia,Rapid Vienna,3,1,True,post,False
-720693,UECL,2024-12-12T20:00Z,Pafos,NK Celje,2,0,True,post,False
+720684,UECL,2024-12-12T17:45Z,Fiorentina,LASK Linz,7,0,True,post,False
+720683,UECL,2024-12-12T17:45Z,HJK Helsinki,Molde,2,2,True,post,False
+720682,UECL,2024-12-12T17:45Z,Istanbul Basaksehir,1. FC Heidenheim 1846,3,1,True,post,False
+720690,UECL,2024-12-12T17:45Z,Legia Warsaw,FC Lugano,1,2,True,post,False
+720688,UECL,2024-12-12T17:45Z,Petrocub,Real Betis,0,1,True,post,False
+720601,UEL,2024-12-12T17:45Z,PAOK,Ferencvaros,5,0,True,post,False
+720607,UEL,2024-12-12T17:45Z,Viktoria Plzen,Manchester United,1,2,True,post,False
+720603,UEL,2024-12-12T17:45Z,Union St.-Gilloise,Nice,2,1,True,post,False
+720606,UEL,2024-12-12T17:45Z,TSG Hoffenheim,FCSB,0,0,True,post,False
+720600,UEL,2024-12-12T17:45Z,Olympiacos,FC Twente,0,0,True,post,False
+720687,UECL,2024-12-12T17:45Z,FC Noah,Apoel Nicosia,1,3,True,post,False
+720602,UEL,2024-12-12T17:45Z,Ludogorets Razgrad,AZ Alkmaar,2,2,True,post,False
+720604,UEL,2024-12-12T17:45Z,AS Roma,Braga,3,0,True,post,False
+720689,UECL,2024-12-12T17:45Z,Olimpija Ljubljana,Cercle Brugge KSV,1,4,True,post,False
 720698,UECL,2024-12-12T20:00Z,Shamrock Rovers,Borac Banja Luka,3,0,True,post,False
+720693,UECL,2024-12-12T20:00Z,Pafos,NK Celje,2,0,True,post,False
+720691,UECL,2024-12-12T20:00Z,Omonia Nicosia,Rapid Vienna,3,1,True,post,False
+720692,UECL,2024-12-12T20:00Z,Mlada Boleslav,Jagiellonia Bialystok,1,0,True,post,False
+720696,UECL,2024-12-12T20:00Z,KAA Gent,FK TSC,3,0,True,post,False
+720470,UEL,2024-12-12T20:00Z,Bodo/Glimt,Besiktas,2,1,True,post,False
+720471,UEL,2024-12-12T20:00Z,Ajax Amsterdam,Lazio,1,3,True,post,False
 720697,UECL,2024-12-12T20:00Z,St. Gallen,Vitória de Guimaraes,1,4,True,post,False
-720702,UECL,2024-12-19T20:00Z,LASK Linz,Vikingur Reykjavik,1,1,True,post,False
-720706,UECL,2024-12-19T20:00Z,Vitória de Guimaraes,Fiorentina,1,1,True,post,False
-720715,UECL,2024-12-19T20:00Z,Real Betis,HJK Helsinki,1,0,True,post,False
-720704,UECL,2024-12-19T20:00Z,FC Lugano,Pafos,2,2,True,post,False
-720712,UECL,2024-12-19T20:00Z,Apoel Nicosia,FC Astana,1,1,True,post,False
-720714,UECL,2024-12-19T20:00Z,Rapid Vienna,F.C. København,3,0,True,post,False
-720710,UECL,2024-12-19T20:00Z,Borac Banja Luka,Omonia Nicosia,0,0,True,post,False
-720699,UECL,2024-12-19T20:00Z,Djurgården,Legia Warsaw,3,1,True,post,False
-720713,UECL,2024-12-19T20:00Z,1. FC Heidenheim 1846,St. Gallen,1,1,True,post,False
-720703,UECL,2024-12-19T20:00Z,Larne,KAA Gent,1,0,True,post,False
+720608,UEL,2024-12-12T20:00Z,Slavia Prague,Anderlecht,1,2,True,post,False
+720472,UEL,2024-12-12T20:00Z,FC Porto,FC Midtjylland,2,0,True,post,False
+720469,UEL,2024-12-12T20:00Z,IF Elfsborg,FK Qarabag,1,0,True,post,False
+720695,UECL,2024-12-12T20:00Z,The New Saints,Panathinaikos,0,2,True,post,False
+720467,UEL,2024-12-12T20:00Z,Maccabi Tel-Aviv,Rigas Futbola Skola,2,1,True,post,False
+720466,UEL,2024-12-12T20:00Z,Rangers,Tottenham Hotspur,1,1,True,post,False
+720465,UEL,2024-12-12T20:00Z,Real Sociedad,Dynamo Kyiv,3,0,True,post,False
+720468,UEL,2024-12-12T20:00Z,Lyon,Eintracht Frankfurt,3,2,True,post,False
 720708,UECL,2024-12-19T20:00Z,Chelsea,Shamrock Rovers,5,1,True,post,False
 720707,UECL,2024-12-19T20:00Z,Panathinaikos,Dinamo Minsk,4,0,True,post,False
 720711,UECL,2024-12-19T20:00Z,FK TSC,FC Noah,4,3,True,post,False
-720709,UECL,2024-12-19T20:00Z,Cercle Brugge KSV,Istanbul Basaksehir,1,1,True,post,False
+720701,UECL,2024-12-19T20:00Z,Jagiellonia Bialystok,Olimpija Ljubljana,0,0,True,post,False
 720705,UECL,2024-12-19T20:00Z,Molde,Mlada Boleslav,4,3,True,post,False
 720700,UECL,2024-12-19T20:00Z,Heart of Midlothian,Petrocub,2,2,True,post,False
-720701,UECL,2024-12-19T20:00Z,Jagiellonia Bialystok,Olimpija Ljubljana,0,0,True,post,False
 720716,UECL,2024-12-19T20:00Z,NK Celje,The New Saints,3,2,True,post,False
+720709,UECL,2024-12-19T20:00Z,Cercle Brugge KSV,Istanbul Basaksehir,1,1,True,post,False
+720703,UECL,2024-12-19T20:00Z,Larne,KAA Gent,1,0,True,post,False
+720699,UECL,2024-12-19T20:00Z,Djurgården,Legia Warsaw,3,1,True,post,False
+720710,UECL,2024-12-19T20:00Z,Borac Banja Luka,Omonia Nicosia,0,0,True,post,False
+720714,UECL,2024-12-19T20:00Z,Rapid Vienna,F.C. København,3,0,True,post,False
+720712,UECL,2024-12-19T20:00Z,Apoel Nicosia,FC Astana,1,1,True,post,False
+720704,UECL,2024-12-19T20:00Z,FC Lugano,Pafos,2,2,True,post,False
+720715,UECL,2024-12-19T20:00Z,Real Betis,HJK Helsinki,1,0,True,post,False
+720706,UECL,2024-12-19T20:00Z,Vitória de Guimaraes,Fiorentina,1,1,True,post,False
+720702,UECL,2024-12-19T20:00Z,LASK Linz,Vikingur Reykjavik,1,1,True,post,False
+720713,UECL,2024-12-19T20:00Z,1. FC Heidenheim 1846,St. Gallen,1,1,True,post,False
 720473,UEL,2025-01-21T15:30Z,Galatasaray,Dynamo Kyiv,3,3,True,post,False
 720329,UCL,2025-01-21T17:45Z,Atalanta,SK Sturm Graz,5,0,True,post,False
 720330,UCL,2025-01-21T17:45Z,AS Monaco,Aston Villa,1,0,True,post,False
-720332,UCL,2025-01-21T20:00Z,Red Star Belgrade,PSV Eindhoven,2,3,True,post,False
+720331,UCL,2025-01-21T20:00Z,Liverpool,Lille,2,1,True,post,False
+720333,UCL,2025-01-21T20:00Z,Bologna,Borussia Dortmund,2,1,True,post,False
+720337,UCL,2025-01-21T20:00Z,Slovan Bratislava,VfB Stuttgart,1,3,True,post,False
+720334,UCL,2025-01-21T20:00Z,Benfica,Barcelona,4,5,True,post,False
 720335,UCL,2025-01-21T20:00Z,Atlético Madrid,Bayer Leverkusen,2,1,True,post,False
 720336,UCL,2025-01-21T20:00Z,Club Brugge,Juventus,0,0,True,post,False
-720337,UCL,2025-01-21T20:00Z,Slovan Bratislava,VfB Stuttgart,1,3,True,post,False
-720331,UCL,2025-01-21T20:00Z,Liverpool,Lille,2,1,True,post,False
-720334,UCL,2025-01-21T20:00Z,Benfica,Barcelona,4,5,True,post,False
-720333,UCL,2025-01-21T20:00Z,Bologna,Borussia Dortmund,2,1,True,post,False
+720332,UCL,2025-01-21T20:00Z,Red Star Belgrade,PSV Eindhoven,2,3,True,post,False
 720474,UEL,2025-01-22T15:30Z,Besiktas,Athletic Club,4,1,True,post,False
 720338,UCL,2025-01-22T17:45Z,Shakhtar Donetsk,Brest,2,0,True,post,False
 720339,UCL,2025-01-22T17:45Z,RB Leipzig,Sporting CP,2,1,True,post,False
@@ -343,66 +343,66 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 720344,UCL,2025-01-22T20:00Z,Paris Saint-Germain,Manchester City,4,2,True,post,False
 720345,UCL,2025-01-22T20:00Z,Real Madrid,RB Salzburg,5,1,True,post,False
 720340,UCL,2025-01-22T20:00Z,Sparta Prague,Internazionale,0,1,True,post,False
-720475,UEL,2025-01-23T17:45Z,AZ Alkmaar,AS Roma,1,0,True,post,False
-720482,UEL,2025-01-23T17:45Z,FC Porto,Olympiacos,0,1,True,post,False
-720476,UEL,2025-01-23T17:45Z,Bodo/Glimt,Maccabi Tel-Aviv,3,1,True,post,False
-720478,UEL,2025-01-23T17:45Z,TSG Hoffenheim,Tottenham Hotspur,2,3,True,post,False
+720477,UEL,2025-01-23T17:45Z,Viktoria Plzen,Anderlecht,2,0,True,post,False
+720479,UEL,2025-01-23T17:45Z,FK Qarabag,FCSB,2,3,True,post,False
 720481,UEL,2025-01-23T17:45Z,Fenerbahce,Lyon,0,0,True,post,False
 720480,UEL,2025-01-23T17:45Z,Malmö FF,FC Twente,2,3,True,post,False
-720479,UEL,2025-01-23T17:45Z,FK Qarabag,FCSB,2,3,True,post,False
-720477,UEL,2025-01-23T17:45Z,Viktoria Plzen,Anderlecht,2,0,True,post,False
-720490,UEL,2025-01-23T20:00Z,PAOK,Slavia Prague,2,0,True,post,False
-720487,UEL,2025-01-23T20:00Z,Ludogorets Razgrad,FC Midtjylland,0,2,True,post,False
-720483,UEL,2025-01-23T20:00Z,Manchester United,Rangers,2,1,True,post,False
-720489,UEL,2025-01-23T20:00Z,Rigas Futbola Skola,Ajax Amsterdam,1,0,True,post,False
+720476,UEL,2025-01-23T17:45Z,Bodo/Glimt,Maccabi Tel-Aviv,3,1,True,post,False
+720482,UEL,2025-01-23T17:45Z,FC Porto,Olympiacos,0,1,True,post,False
+720475,UEL,2025-01-23T17:45Z,AZ Alkmaar,AS Roma,1,0,True,post,False
+720478,UEL,2025-01-23T17:45Z,TSG Hoffenheim,Tottenham Hotspur,2,3,True,post,False
+720484,UEL,2025-01-23T20:00Z,Eintracht Frankfurt,Ferencvaros,2,0,True,post,False
+720485,UEL,2025-01-23T20:00Z,IF Elfsborg,Nice,1,0,True,post,False
 720486,UEL,2025-01-23T20:00Z,Lazio,Real Sociedad,3,1,True,post,False
 720488,UEL,2025-01-23T20:00Z,Union St.-Gilloise,Braga,2,1,True,post,False
-720485,UEL,2025-01-23T20:00Z,IF Elfsborg,Nice,1,0,True,post,False
-720484,UEL,2025-01-23T20:00Z,Eintracht Frankfurt,Ferencvaros,2,0,True,post,False
-720358,UCL,2025-01-29T20:00Z,Dinamo Zagreb,AC Milan,2,1,True,post,False
+720483,UEL,2025-01-23T20:00Z,Manchester United,Rangers,2,1,True,post,False
+720487,UEL,2025-01-23T20:00Z,Ludogorets Razgrad,FC Midtjylland,0,2,True,post,False
+720490,UEL,2025-01-23T20:00Z,PAOK,Slavia Prague,2,0,True,post,False
+720489,UEL,2025-01-23T20:00Z,Rigas Futbola Skola,Ajax Amsterdam,1,0,True,post,False
+720350,UCL,2025-01-29T20:00Z,Manchester City,Club Brugge,3,1,True,post,False
+720348,UCL,2025-01-29T20:00Z,Juventus,Benfica,0,2,True,post,False
+720349,UCL,2025-01-29T20:00Z,Lille,Feyenoord Rotterdam,6,1,True,post,False
+720363,UCL,2025-01-29T20:00Z,Aston Villa,Celtic,4,2,True,post,False
+720352,UCL,2025-01-29T20:00Z,SK Sturm Graz,RB Leipzig,1,0,True,post,False
+720353,UCL,2025-01-29T20:00Z,Sporting CP,Bologna,1,1,True,post,False
+720359,UCL,2025-01-29T20:00Z,Young Boys,Red Star Belgrade,0,1,True,post,False
+720355,UCL,2025-01-29T20:00Z,Girona,Arsenal,1,2,True,post,False
+720351,UCL,2025-01-29T20:00Z,PSV Eindhoven,Liverpool,3,2,True,post,False
+720361,UCL,2025-01-29T20:00Z,Bayer Leverkusen,Sparta Prague,2,0,True,post,False
+720364,UCL,2025-01-29T20:00Z,Brest,Real Madrid,0,3,True,post,False
 720347,UCL,2025-01-29T20:00Z,Internazionale,AS Monaco,3,0,True,post,False
 720354,UCL,2025-01-29T20:00Z,VfB Stuttgart,Paris Saint-Germain,1,4,True,post,False
 720356,UCL,2025-01-29T20:00Z,RB Salzburg,Atlético Madrid,1,4,True,post,False
+720358,UCL,2025-01-29T20:00Z,Dinamo Zagreb,AC Milan,2,1,True,post,False
 720362,UCL,2025-01-29T20:00Z,Barcelona,Atalanta,2,2,True,post,False
 720360,UCL,2025-01-29T20:00Z,Borussia Dortmund,Shakhtar Donetsk,3,1,True,post,False
 720357,UCL,2025-01-29T20:00Z,Bayern Munich,Slovan Bratislava,3,1,True,post,False
-720361,UCL,2025-01-29T20:00Z,Bayer Leverkusen,Sparta Prague,2,0,True,post,False
-720364,UCL,2025-01-29T20:00Z,Brest,Real Madrid,0,3,True,post,False
-720355,UCL,2025-01-29T20:00Z,Girona,Arsenal,1,2,True,post,False
-720350,UCL,2025-01-29T20:00Z,Manchester City,Club Brugge,3,1,True,post,False
-720359,UCL,2025-01-29T20:00Z,Young Boys,Red Star Belgrade,0,1,True,post,False
-720353,UCL,2025-01-29T20:00Z,Sporting CP,Bologna,1,1,True,post,False
-720351,UCL,2025-01-29T20:00Z,PSV Eindhoven,Liverpool,3,2,True,post,False
-720352,UCL,2025-01-29T20:00Z,SK Sturm Graz,RB Leipzig,1,0,True,post,False
-720363,UCL,2025-01-29T20:00Z,Aston Villa,Celtic,4,2,True,post,False
-720349,UCL,2025-01-29T20:00Z,Lille,Feyenoord Rotterdam,6,1,True,post,False
-720348,UCL,2025-01-29T20:00Z,Juventus,Benfica,0,2,True,post,False
-720498,UEL,2025-01-30T20:00Z,Lyon,Ludogorets Razgrad,1,1,True,post,False
-720500,UEL,2025-01-30T20:00Z,Nice,Bodo/Glimt,1,1,True,post,False
-720501,UEL,2025-01-30T20:00Z,Braga,Lazio,1,0,True,post,False
-720492,UEL,2025-01-30T20:00Z,Real Sociedad,PAOK,2,0,True,post,False
-720504,UEL,2025-01-30T20:00Z,Rangers,Union St.-Gilloise,2,1,True,post,False
-720506,UEL,2025-01-30T20:00Z,Olympiacos,FK Qarabag,3,0,True,post,False
-720503,UEL,2025-01-30T20:00Z,Slavia Prague,Malmö FF,2,2,True,post,False
-720499,UEL,2025-01-30T20:00Z,Maccabi Tel-Aviv,FC Porto,0,1,True,post,False
-720507,UEL,2025-01-30T20:00Z,Tottenham Hotspur,IF Elfsborg,3,0,True,post,False
-720497,UEL,2025-01-30T20:00Z,Ferencvaros,AZ Alkmaar,4,3,True,post,False
 720505,UEL,2025-01-30T20:00Z,AS Roma,Eintracht Frankfurt,2,0,True,post,False
-720495,UEL,2025-01-30T20:00Z,FC Twente,Besiktas,1,0,True,post,False
-720491,UEL,2025-01-30T20:00Z,Ajax Amsterdam,Galatasaray,2,1,True,post,False
-720502,UEL,2025-01-30T20:00Z,Anderlecht,TSG Hoffenheim,3,4,True,post,False
-720493,UEL,2025-01-30T20:00Z,Dynamo Kyiv,Rigas Futbola Skola,1,0,True,post,False
-720496,UEL,2025-01-30T20:00Z,FCSB,Manchester United,0,2,True,post,False
 720508,UEL,2025-01-30T20:00Z,Athletic Club,Viktoria Plzen,3,1,True,post,False
+720496,UEL,2025-01-30T20:00Z,FCSB,Manchester United,0,2,True,post,False
+720502,UEL,2025-01-30T20:00Z,Anderlecht,TSG Hoffenheim,3,4,True,post,False
+720491,UEL,2025-01-30T20:00Z,Ajax Amsterdam,Galatasaray,2,1,True,post,False
+720495,UEL,2025-01-30T20:00Z,FC Twente,Besiktas,1,0,True,post,False
 720494,UEL,2025-01-30T20:00Z,FC Midtjylland,Fenerbahce,2,2,True,post,False
+720497,UEL,2025-01-30T20:00Z,Ferencvaros,AZ Alkmaar,4,3,True,post,False
+720493,UEL,2025-01-30T20:00Z,Dynamo Kyiv,Rigas Futbola Skola,1,0,True,post,False
+720499,UEL,2025-01-30T20:00Z,Maccabi Tel-Aviv,FC Porto,0,1,True,post,False
+720503,UEL,2025-01-30T20:00Z,Slavia Prague,Malmö FF,2,2,True,post,False
+720506,UEL,2025-01-30T20:00Z,Olympiacos,FK Qarabag,3,0,True,post,False
+720504,UEL,2025-01-30T20:00Z,Rangers,Union St.-Gilloise,2,1,True,post,False
+720492,UEL,2025-01-30T20:00Z,Real Sociedad,PAOK,2,0,True,post,False
+720501,UEL,2025-01-30T20:00Z,Braga,Lazio,1,0,True,post,False
+720500,UEL,2025-01-30T20:00Z,Nice,Bodo/Glimt,1,1,True,post,False
+720498,UEL,2025-01-30T20:00Z,Lyon,Ludogorets Razgrad,1,1,True,post,False
+720507,UEL,2025-01-30T20:00Z,Tottenham Hotspur,IF Elfsborg,3,0,True,post,False
 732185,UCL,2025-02-11T17:45Z,Brest,Paris Saint-Germain,0,3,True,post,False
 732190,UCL,2025-02-11T20:00Z,Juventus,PSV Eindhoven,2,1,True,post,False
 732187,UCL,2025-02-11T20:00Z,Manchester City,Real Madrid,2,3,True,post,False
 732189,UCL,2025-02-11T20:00Z,Sporting CP,Borussia Dortmund,0,3,True,post,False
 732192,UCL,2025-02-12T17:45Z,Club Brugge,Atalanta,2,1,True,post,False
+732186,UCL,2025-02-12T20:00Z,Celtic,Bayern Munich,1,2,True,post,False
 732191,UCL,2025-02-12T20:00Z,Feyenoord Rotterdam,AC Milan,1,0,True,post,False
 732188,UCL,2025-02-12T20:00Z,AS Monaco,Benfica,0,1,True,post,False
-732186,UCL,2025-02-12T20:00Z,Celtic,Bayern Munich,1,2,True,post,False
 732206,UEL,2025-02-13T17:45Z,Fenerbahce,Anderlecht,3,0,True,post,False
 732205,UEL,2025-02-13T17:45Z,Union St.-Gilloise,Ajax Amsterdam,0,2,True,post,False
 727375,UECL,2025-02-13T17:45Z,FK TSC,Jagiellonia Bialystok,1,3,True,post,False
@@ -411,14 +411,14 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 732202,UEL,2025-02-13T17:45Z,FC Midtjylland,Real Sociedad,1,2,True,post,False
 732203,UEL,2025-02-13T17:45Z,Ferencvaros,Viktoria Plzen,1,0,True,post,False
 727379,UECL,2025-02-13T17:45Z,Vikingur Reykjavik,Panathinaikos,2,1,True,post,False
-727376,UECL,2025-02-13T20:00Z,Borac Banja Luka,Olimpija Ljubljana,1,0,True,post,False
+727378,UECL,2025-02-13T20:00Z,Omonia Nicosia,Pafos,1,1,True,post,False
+732207,UEL,2025-02-13T20:00Z,FC Twente,Bodo/Glimt,2,1,True,post,False
+727381,UECL,2025-02-13T20:00Z,F.C. København,1. FC Heidenheim 1846,1,2,True,post,False
+732204,UEL,2025-02-13T20:00Z,PAOK,FCSB,1,2,True,post,False
 727380,UECL,2025-02-13T20:00Z,KAA Gent,Real Betis,0,3,True,post,False
 732208,UEL,2025-02-13T20:00Z,FC Porto,AS Roma,1,1,True,post,False
+727376,UECL,2025-02-13T20:00Z,Borac Banja Luka,Olimpija Ljubljana,1,0,True,post,False
 732201,UEL,2025-02-13T20:00Z,AZ Alkmaar,Galatasaray,4,1,True,post,False
-732204,UEL,2025-02-13T20:00Z,PAOK,FCSB,1,2,True,post,False
-727378,UECL,2025-02-13T20:00Z,Omonia Nicosia,Pafos,1,1,True,post,False
-727381,UECL,2025-02-13T20:00Z,F.C. København,1. FC Heidenheim 1846,1,2,True,post,False
-732207,UEL,2025-02-13T20:00Z,FC Twente,Bodo/Glimt,2,1,True,post,False
 732194,UCL,2025-02-18T17:45Z,AC Milan,Feyenoord Rotterdam,1,1,True,post,False
 732193,UCL,2025-02-18T20:00Z,Bayern Munich,Celtic,1,1,True,post,False
 732197,UCL,2025-02-18T20:00Z,Atalanta,Club Brugge,1,3,True,post,False
@@ -427,22 +427,22 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 732200,UCL,2025-02-19T20:00Z,Real Madrid,Manchester City,3,1,True,post,False
 732195,UCL,2025-02-19T20:00Z,PSV Eindhoven,Juventus,3,1,True,post,False
 732196,UCL,2025-02-19T20:00Z,Paris Saint-Germain,Brest,7,0,True,post,False
-727386,UECL,2025-02-20T17:45Z,Real Betis,KAA Gent,0,1,True,post,False
-727384,UECL,2025-02-20T17:45Z,Pafos,Omonia Nicosia,2,1,True,post,False
-727383,UECL,2025-02-20T17:45Z,Olimpija Ljubljana,Borac Banja Luka,0,0,True,post,False
-727387,UECL,2025-02-20T17:45Z,1. FC Heidenheim 1846,F.C. København,1,3,True,post,False
-732209,UEL,2025-02-20T17:45Z,Galatasaray,AZ Alkmaar,2,2,True,post,False
-732215,UEL,2025-02-20T17:45Z,FCSB,PAOK,2,0,True,post,False
 732212,UEL,2025-02-20T17:45Z,AS Roma,FC Porto,3,2,True,post,False
+732215,UEL,2025-02-20T17:45Z,FCSB,PAOK,2,0,True,post,False
+732209,UEL,2025-02-20T17:45Z,Galatasaray,AZ Alkmaar,2,2,True,post,False
 732214,UEL,2025-02-20T17:45Z,Bodo/Glimt,FC Twente,5,2,True,post,False
-732216,UEL,2025-02-20T20:00Z,Viktoria Plzen,Ferencvaros,3,0,True,post,False
-732210,UEL,2025-02-20T20:00Z,Anderlecht,Fenerbahce,2,2,True,post,False
-732211,UEL,2025-02-20T20:00Z,Real Sociedad,FC Midtjylland,5,2,True,post,False
-727388,UECL,2025-02-20T20:00Z,Apoel Nicosia,NK Celje,0,2,True,post,False
-732213,UEL,2025-02-20T20:00Z,Ajax Amsterdam,Union St.-Gilloise,1,2,True,post,False
-727390,UECL,2025-02-20T20:00Z,Shamrock Rovers,Molde,0,1,True,post,False
+727383,UECL,2025-02-20T17:45Z,Olimpija Ljubljana,Borac Banja Luka,0,0,True,post,False
+727384,UECL,2025-02-20T17:45Z,Pafos,Omonia Nicosia,2,1,True,post,False
+727386,UECL,2025-02-20T17:45Z,Real Betis,KAA Gent,0,1,True,post,False
+727387,UECL,2025-02-20T17:45Z,1. FC Heidenheim 1846,F.C. København,1,3,True,post,False
 727389,UECL,2025-02-20T20:00Z,Jagiellonia Bialystok,FK TSC,3,1,True,post,False
+727390,UECL,2025-02-20T20:00Z,Shamrock Rovers,Molde,0,1,True,post,False
+732213,UEL,2025-02-20T20:00Z,Ajax Amsterdam,Union St.-Gilloise,1,2,True,post,False
 727385,UECL,2025-02-20T20:00Z,Panathinaikos,Vikingur Reykjavik,2,0,True,post,False
+732211,UEL,2025-02-20T20:00Z,Real Sociedad,FC Midtjylland,5,2,True,post,False
+732216,UEL,2025-02-20T20:00Z,Viktoria Plzen,Ferencvaros,3,0,True,post,False
+727388,UECL,2025-02-20T20:00Z,Apoel Nicosia,NK Celje,0,2,True,post,False
+732210,UEL,2025-02-20T20:00Z,Anderlecht,Fenerbahce,2,2,True,post,False
 733145,UCL,2025-03-04T17:45Z,Club Brugge,Aston Villa,1,3,True,post,False
 733602,UCL,2025-03-04T20:00Z,Real Madrid,Atlético Madrid,2,1,True,post,False
 733601,UCL,2025-03-04T20:00Z,Borussia Dortmund,Lille,1,1,True,post,False
@@ -451,30 +451,30 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 733143,UCL,2025-03-05T20:00Z,Benfica,Barcelona,0,1,True,post,False
 733147,UCL,2025-03-05T20:00Z,Bayern Munich,Bayer Leverkusen,3,0,True,post,False
 733600,UCL,2025-03-05T20:00Z,Paris Saint-Germain,Liverpool,0,1,True,post,False
-733624,UEL,2025-03-06T17:45Z,FCSB,Lyon,1,3,True,post,False
-733655,UECL,2025-03-06T17:45Z,Real Betis,Vitória de Guimaraes,2,2,True,post,False
-733622,UEL,2025-03-06T17:45Z,AZ Alkmaar,Tottenham Hotspur,1,0,True,post,False
-733625,UEL,2025-03-06T17:45Z,Real Sociedad,Manchester United,1,1,True,post,False
-733621,UEL,2025-03-06T17:45Z,Fenerbahce,Rangers,1,3,True,post,False
+733652,UECL,2025-03-06T17:45Z,Panathinaikos,Fiorentina,3,2,True,post,False
 733653,UECL,2025-03-06T17:45Z,Molde,Legia Warsaw,3,2,True,post,False
 733654,UECL,2025-03-06T17:45Z,F.C. København,Chelsea,1,2,True,post,False
-733652,UECL,2025-03-06T17:45Z,Panathinaikos,Fiorentina,3,2,True,post,False
-733623,UEL,2025-03-06T20:00Z,Bodo/Glimt,Olympiacos,3,0,True,post,False
-733627,UEL,2025-03-06T20:00Z,Viktoria Plzen,Lazio,1,2,True,post,False
-733628,UEL,2025-03-06T20:00Z,Ajax Amsterdam,Eintracht Frankfurt,1,2,True,post,False
-733626,UEL,2025-03-06T20:00Z,AS Roma,Athletic Club,2,1,True,post,False
-733650,UECL,2025-03-06T20:00Z,NK Celje,FC Lugano,1,0,True,post,False
-733657,UECL,2025-03-06T20:00Z,Pafos,Djurgården,1,0,True,post,False
-733656,UECL,2025-03-06T20:00Z,Borac Banja Luka,Rapid Vienna,1,1,True,post,False
+733621,UEL,2025-03-06T17:45Z,Fenerbahce,Rangers,1,3,True,post,False
+733622,UEL,2025-03-06T17:45Z,AZ Alkmaar,Tottenham Hotspur,1,0,True,post,False
+733655,UECL,2025-03-06T17:45Z,Real Betis,Vitória de Guimaraes,2,2,True,post,False
+733624,UEL,2025-03-06T17:45Z,FCSB,Lyon,1,3,True,post,False
+733625,UEL,2025-03-06T17:45Z,Real Sociedad,Manchester United,1,1,True,post,False
 733651,UECL,2025-03-06T20:00Z,Jagiellonia Bialystok,Cercle Brugge KSV,3,0,True,post,False
+733656,UECL,2025-03-06T20:00Z,Borac Banja Luka,Rapid Vienna,1,1,True,post,False
+733657,UECL,2025-03-06T20:00Z,Pafos,Djurgården,1,0,True,post,False
+733650,UECL,2025-03-06T20:00Z,NK Celje,FC Lugano,1,0,True,post,False
+733628,UEL,2025-03-06T20:00Z,Ajax Amsterdam,Eintracht Frankfurt,1,2,True,post,False
+733627,UEL,2025-03-06T20:00Z,Viktoria Plzen,Lazio,1,2,True,post,False
+733623,UEL,2025-03-06T20:00Z,Bodo/Glimt,Olympiacos,3,0,True,post,False
+733626,UEL,2025-03-06T20:00Z,AS Roma,Athletic Club,2,1,True,post,False
 733144,UCL,2025-03-11T17:45Z,Barcelona,Benfica,3,1,True,post,False
 733605,UCL,2025-03-11T20:00Z,Liverpool,Paris Saint-Germain,0,1,True,post,False
 733150,UCL,2025-03-11T20:00Z,Internazionale,Feyenoord Rotterdam,2,1,True,post,False
 733148,UCL,2025-03-11T20:00Z,Bayer Leverkusen,Bayern Munich,0,2,True,post,False
 733604,UCL,2025-03-12T17:45Z,Lille,Borussia Dortmund,1,2,True,post,False
-733146,UCL,2025-03-12T20:00Z,Aston Villa,Club Brugge,3,0,True,post,False
 733607,UCL,2025-03-12T20:00Z,Arsenal,PSV Eindhoven,2,2,True,post,False
 733606,UCL,2025-03-12T20:00Z,Atlético Madrid,Real Madrid,1,0,True,post,False
+733146,UCL,2025-03-12T20:00Z,Aston Villa,Club Brugge,3,0,True,post,False
 733631,UEL,2025-03-13T17:45Z,Olympiacos,Bodo/Glimt,2,1,True,post,False
 733634,UEL,2025-03-13T17:45Z,Lazio,Viktoria Plzen,1,1,True,post,False
 733630,UEL,2025-03-13T17:45Z,Eintracht Frankfurt,Ajax Amsterdam,4,1,True,post,False
@@ -483,20 +483,20 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 733659,UECL,2025-03-13T17:45Z,FC Lugano,NK Celje,5,4,True,post,False
 733660,UECL,2025-03-13T17:45Z,Cercle Brugge KSV,Jagiellonia Bialystok,2,0,True,post,False
 733664,UECL,2025-03-13T17:45Z,Rapid Vienna,Borac Banja Luka,2,1,True,post,False
-733629,UEL,2025-03-13T20:00Z,Rangers,Fenerbahce,0,2,True,post,False
 733633,UEL,2025-03-13T20:00Z,Lyon,FCSB,4,0,True,post,False
-733635,UEL,2025-03-13T20:00Z,Manchester United,Real Sociedad,4,1,True,post,False
-733632,UEL,2025-03-13T20:00Z,Tottenham Hotspur,AZ Alkmaar,3,1,True,post,False
-733663,UECL,2025-03-13T20:00Z,Chelsea,F.C. København,1,0,True,post,False
-733658,UECL,2025-03-13T20:00Z,Fiorentina,Panathinaikos,3,1,True,post,False
-733661,UECL,2025-03-13T20:00Z,Legia Warsaw,Molde,2,0,True,post,False
 733662,UECL,2025-03-13T20:00Z,Vitória de Guimaraes,Real Betis,0,4,True,post,False
+733661,UECL,2025-03-13T20:00Z,Legia Warsaw,Molde,2,0,True,post,False
+733658,UECL,2025-03-13T20:00Z,Fiorentina,Panathinaikos,3,1,True,post,False
+733629,UEL,2025-03-13T20:00Z,Rangers,Fenerbahce,0,2,True,post,False
+733632,UEL,2025-03-13T20:00Z,Tottenham Hotspur,AZ Alkmaar,3,1,True,post,False
+733635,UEL,2025-03-13T20:00Z,Manchester United,Real Sociedad,4,1,True,post,False
+733663,UECL,2025-03-13T20:00Z,Chelsea,F.C. København,1,0,True,post,False
 733608,UCL,2025-04-08T19:00Z,Arsenal,Real Madrid,3,0,True,post,False
 733611,UCL,2025-04-08T19:00Z,Bayern Munich,Internazionale,1,2,True,post,False
 733610,UCL,2025-04-09T19:00Z,Barcelona,Borussia Dortmund,4,0,True,post,False
 733609,UCL,2025-04-09T19:00Z,Paris Saint-Germain,Aston Villa,3,1,True,post,False
-733668,UECL,2025-04-10T16:45Z,Legia Warsaw,Chelsea,0,3,True,post,False
 733638,UEL,2025-04-10T16:45Z,Bodo/Glimt,Lazio,2,0,True,post,False
+733668,UECL,2025-04-10T16:45Z,Legia Warsaw,Chelsea,0,3,True,post,False
 734500,UEL,2025-04-10T19:00Z,Lyon,Manchester United,2,2,True,post,False
 733639,UEL,2025-04-10T19:00Z,Rangers,Athletic Club,0,0,True,post,False
 734501,UECL,2025-04-10T19:00Z,Djurgården,Rapid Vienna,0,1,True,post,False
@@ -505,8 +505,8 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 733637,UEL,2025-04-10T19:00Z,Tottenham Hotspur,Eintracht Frankfurt,1,1,True,post,False
 733614,UCL,2025-04-15T19:00Z,Borussia Dortmund,Barcelona,3,1,True,post,False
 733613,UCL,2025-04-15T19:00Z,Aston Villa,Paris Saint-Germain,3,2,True,post,False
-733612,UCL,2025-04-16T19:00Z,Real Madrid,Arsenal,1,2,True,post,False
 733615,UCL,2025-04-16T19:00Z,Internazionale,Bayern Munich,2,2,True,post,False
+733612,UCL,2025-04-16T19:00Z,Real Madrid,Arsenal,1,2,True,post,False
 733670,UECL,2025-04-17T16:45Z,Fiorentina,NK Celje,2,2,True,post,False
 733669,UECL,2025-04-17T16:45Z,Jagiellonia Bialystok,Real Betis,1,1,True,post,False
 733643,UEL,2025-04-17T19:00Z,Athletic Club,Rangers,2,0,True,post,False
@@ -523,42 +523,42 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 733673,UECL,2025-05-01T19:00Z,Djurgården,Chelsea,1,4,True,post,False
 733619,UCL,2025-05-06T19:00Z,Internazionale,Barcelona,4,3,True,post,False
 733618,UCL,2025-05-07T19:00Z,Paris Saint-Germain,Arsenal,2,1,True,post,False
+733648,UEL,2025-05-08T19:00Z,Manchester United,Athletic Club,4,1,True,post,False
+733647,UEL,2025-05-08T19:00Z,Bodo/Glimt,Tottenham Hotspur,0,2,True,post,False
 733675,UECL,2025-05-08T19:00Z,Chelsea,Djurgården,1,0,True,post,False
 733674,UECL,2025-05-08T19:00Z,Fiorentina,Real Betis,2,2,True,post,False
-733647,UEL,2025-05-08T19:00Z,Bodo/Glimt,Tottenham Hotspur,0,2,True,post,False
-733648,UEL,2025-05-08T19:00Z,Manchester United,Athletic Club,4,1,True,post,False
 733649,UEL,2025-05-21T19:00Z,Tottenham Hotspur,Manchester United,1,0,True,post,False
 733676,UECL,2025-05-28T19:00Z,Real Betis,Chelsea,1,4,True,post,False
 733620,UCL,2025-05-31T19:00Z,Paris Saint-Germain,Internazionale,5,0,True,post,False
 757653,UCL,2025-09-16T16:45Z,Athletic Club,Arsenal,0,2,True,post,False
 757654,UCL,2025-09-16T16:45Z,PSV Eindhoven,Union St.-Gilloise,1,3,True,post,False
+757655,UCL,2025-09-16T19:00Z,Real Madrid,Marseille,2,1,True,post,False
 757656,UCL,2025-09-16T19:00Z,Juventus,Borussia Dortmund,4,4,True,post,False
 757658,UCL,2025-09-16T19:00Z,Tottenham Hotspur,Villarreal,1,0,True,post,False
-757655,UCL,2025-09-16T19:00Z,Real Madrid,Marseille,2,1,True,post,False
 757657,UCL,2025-09-16T19:00Z,Benfica,FK Qarabag,2,3,True,post,False
-757659,UCL,2025-09-17T16:45Z,Olympiacos,Pafos,0,0,True,post,False
 757660,UCL,2025-09-17T16:45Z,Slavia Prague,Bodo/Glimt,2,2,True,post,False
+757659,UCL,2025-09-17T16:45Z,Olympiacos,Pafos,0,0,True,post,False
 757664,UCL,2025-09-17T19:00Z,Ajax Amsterdam,Internazionale,0,2,True,post,False
 757663,UCL,2025-09-17T19:00Z,Bayern Munich,Chelsea,3,1,True,post,False
 757662,UCL,2025-09-17T19:00Z,Liverpool,Atlético Madrid,3,2,True,post,False
 757661,UCL,2025-09-17T19:00Z,Paris Saint-Germain,Atalanta,4,0,True,post,False
 757665,UCL,2025-09-18T16:45Z,Club Brugge,AS Monaco,4,1,True,post,False
 757666,UCL,2025-09-18T16:45Z,F.C. København,Bayer Leverkusen,2,2,True,post,False
+757669,UCL,2025-09-18T19:00Z,Newcastle United,Barcelona,1,2,True,post,False
 757667,UCL,2025-09-18T19:00Z,Manchester City,Napoli,2,0,True,post,False
 757670,UCL,2025-09-18T19:00Z,Sporting CP,Kairat Almaty,4,1,True,post,False
-757669,UCL,2025-09-18T19:00Z,Newcastle United,Barcelona,1,2,True,post,False
 757668,UCL,2025-09-18T19:00Z,Eintracht Frankfurt,Galatasaray,5,1,True,post,False
 757798,UEL,2025-09-24T16:45Z,FC Midtjylland,SK Sturm Graz,2,0,True,post,False
 757797,UEL,2025-09-24T16:45Z,PAOK,Maccabi Tel-Aviv,0,0,True,post,False
-757801,UEL,2025-09-24T19:00Z,Braga,Feyenoord Rotterdam,1,0,True,post,False
-757800,UEL,2025-09-24T19:00Z,Dinamo Zagreb,Fenerbahce,3,1,True,post,False
-757803,UEL,2025-09-24T19:00Z,Malmö FF,Ludogorets Razgrad,1,2,True,post,False
-757804,UEL,2025-09-24T19:00Z,Nice,AS Roma,1,2,True,post,False
 757805,UEL,2025-09-24T19:00Z,Real Betis,Nottingham Forest,2,2,True,post,False
+757804,UEL,2025-09-24T19:00Z,Nice,AS Roma,1,2,True,post,False
 757799,UEL,2025-09-24T19:00Z,Red Star Belgrade,Celtic,1,1,True,post,False
+757800,UEL,2025-09-24T19:00Z,Dinamo Zagreb,Fenerbahce,3,1,True,post,False
+757801,UEL,2025-09-24T19:00Z,Braga,Feyenoord Rotterdam,1,0,True,post,False
+757803,UEL,2025-09-24T19:00Z,Malmö FF,Ludogorets Razgrad,1,2,True,post,False
 757802,UEL,2025-09-24T19:00Z,SC Freiburg,FC Basel,2,1,True,post,False
-757807,UEL,2025-09-25T16:45Z,Go Ahead Eagles,FCSB,0,1,True,post,False
 757806,UEL,2025-09-25T16:45Z,Lille,SK Brann,2,1,True,post,False
+757807,UEL,2025-09-25T16:45Z,Go Ahead Eagles,FCSB,0,1,True,post,False
 757814,UEL,2025-09-25T19:00Z,Young Boys,Panathinaikos,1,4,True,post,False
 757813,UEL,2025-09-25T19:00Z,FC Utrecht,Lyon,0,1,True,post,False
 757809,UEL,2025-09-25T19:00Z,VfB Stuttgart,Celta Vigo,2,1,True,post,False
@@ -568,301 +568,301 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 757810,UEL,2025-09-25T19:00Z,Rangers,Racing Genk,0,1,True,post,False
 757671,UCL,2025-09-30T16:45Z,Kairat Almaty,Real Madrid,0,5,True,post,False
 757672,UCL,2025-09-30T16:45Z,Atalanta,Club Brugge,2,1,True,post,False
-757673,UCL,2025-09-30T19:00Z,Atlético Madrid,Eintracht Frankfurt,5,1,True,post,False
-757674,UCL,2025-09-30T19:00Z,Bodo/Glimt,Tottenham Hotspur,2,2,True,post,False
-757675,UCL,2025-09-30T19:00Z,Chelsea,Benfica,1,0,True,post,False
-757676,UCL,2025-09-30T19:00Z,Galatasaray,Liverpool,1,0,True,post,False
 757678,UCL,2025-09-30T19:00Z,Internazionale,Slavia Prague,3,0,True,post,False
+757676,UCL,2025-09-30T19:00Z,Galatasaray,Liverpool,1,0,True,post,False
 757679,UCL,2025-09-30T19:00Z,Marseille,Ajax Amsterdam,4,0,True,post,False
+757674,UCL,2025-09-30T19:00Z,Bodo/Glimt,Tottenham Hotspur,2,2,True,post,False
+757673,UCL,2025-09-30T19:00Z,Atlético Madrid,Eintracht Frankfurt,5,1,True,post,False
+757675,UCL,2025-09-30T19:00Z,Chelsea,Benfica,1,0,True,post,False
 757677,UCL,2025-09-30T19:00Z,Pafos,Bayern Munich,1,5,True,post,False
-757681,UCL,2025-10-01T16:45Z,Union St.-Gilloise,Newcastle United,0,4,True,post,False
 757680,UCL,2025-10-01T16:45Z,FK Qarabag,F.C. København,2,0,True,post,False
-757685,UCL,2025-10-01T19:00Z,Napoli,Sporting CP,2,1,True,post,False
-757684,UCL,2025-10-01T19:00Z,Bayer Leverkusen,PSV Eindhoven,1,1,True,post,False
-757688,UCL,2025-10-01T19:00Z,Arsenal,Olympiacos,2,0,True,post,False
-757683,UCL,2025-10-01T19:00Z,Borussia Dortmund,Athletic Club,4,1,True,post,False
-757682,UCL,2025-10-01T19:00Z,Villarreal,Juventus,2,2,True,post,False
-757687,UCL,2025-10-01T19:00Z,Barcelona,Paris Saint-Germain,1,2,True,post,False
+757681,UCL,2025-10-01T16:45Z,Union St.-Gilloise,Newcastle United,0,4,True,post,False
 757686,UCL,2025-10-01T19:00Z,AS Monaco,Manchester City,2,2,True,post,False
-757815,UEL,2025-10-02T16:45Z,Celtic,Braga,0,2,True,post,False
+757687,UCL,2025-10-01T19:00Z,Barcelona,Paris Saint-Germain,1,2,True,post,False
+757682,UCL,2025-10-01T19:00Z,Villarreal,Juventus,2,2,True,post,False
+757688,UCL,2025-10-01T19:00Z,Arsenal,Olympiacos,2,0,True,post,False
+757684,UCL,2025-10-01T19:00Z,Bayer Leverkusen,PSV Eindhoven,1,1,True,post,False
+757685,UCL,2025-10-01T19:00Z,Napoli,Sporting CP,2,1,True,post,False
+757683,UCL,2025-10-01T19:00Z,Borussia Dortmund,Athletic Club,4,1,True,post,False
+757969,UECL,2025-10-02T16:45Z,Zrinjski Mostar,Lincoln Red Imps,5,0,True,post,False
+757967,UECL,2025-10-02T16:45Z,Jagiellonia Bialystok,Hamrun Spartans,1,0,True,post,False
+757973,UECL,2025-10-02T16:45Z,Omonia Nicosia,Mainz,0,1,True,post,False
+757968,UECL,2025-10-02T16:45Z,Lausanne Sports,Breidablik,3,0,True,post,False
+757821,UEL,2025-10-02T16:45Z,Viktoria Plzen,Malmö FF,3,0,True,post,False
+757970,UECL,2025-10-02T16:45Z,KuPS Kuopio,Drita Gjilan,1,1,True,post,False
+757965,UECL,2025-10-02T16:45Z,Lech Poznan,Rapid Vienna,4,1,True,post,False
+757971,UECL,2025-10-02T16:45Z,Dynamo Kyiv,Crystal Palace,0,2,True,post,False
+757966,UECL,2025-10-02T16:45Z,FC Noah,Rijeka,1,0,True,post,False
+757823,UEL,2025-10-02T16:45Z,Panathinaikos,Go Ahead Eagles,1,2,True,post,False
+757818,UEL,2025-10-02T16:45Z,Ludogorets Razgrad,Real Betis,0,2,True,post,False
 757819,UEL,2025-10-02T16:45Z,SK Brann,FC Utrecht,1,0,True,post,False
 757822,UEL,2025-10-02T16:45Z,Bologna,SC Freiburg,1,1,True,post,False
 757816,UEL,2025-10-02T16:45Z,FCSB,Young Boys,0,2,True,post,False
-757972,UECL,2025-10-02T16:45Z,Rayo Vallecano,KF Shkëndija,2,0,True,post,False
+757815,UEL,2025-10-02T16:45Z,Celtic,Braga,0,2,True,post,False
 757817,UEL,2025-10-02T16:45Z,Fenerbahce,Nice,2,1,True,post,False
 757820,UEL,2025-10-02T16:45Z,AS Roma,Lille,0,1,True,post,False
-757823,UEL,2025-10-02T16:45Z,Panathinaikos,Go Ahead Eagles,1,2,True,post,False
-757818,UEL,2025-10-02T16:45Z,Ludogorets Razgrad,Real Betis,0,2,True,post,False
-757971,UECL,2025-10-02T16:45Z,Dynamo Kyiv,Crystal Palace,0,2,True,post,False
-757965,UECL,2025-10-02T16:45Z,Lech Poznan,Rapid Vienna,4,1,True,post,False
-757966,UECL,2025-10-02T16:45Z,FC Noah,Rijeka,1,0,True,post,False
-757970,UECL,2025-10-02T16:45Z,KuPS Kuopio,Drita Gjilan,1,1,True,post,False
-757821,UEL,2025-10-02T16:45Z,Viktoria Plzen,Malmö FF,3,0,True,post,False
-757968,UECL,2025-10-02T16:45Z,Lausanne Sports,Breidablik,3,0,True,post,False
-757973,UECL,2025-10-02T16:45Z,Omonia Nicosia,Mainz,0,1,True,post,False
-757967,UECL,2025-10-02T16:45Z,Jagiellonia Bialystok,Hamrun Spartans,1,0,True,post,False
-757969,UECL,2025-10-02T16:45Z,Zrinjski Mostar,Lincoln Red Imps,5,0,True,post,False
+757972,UECL,2025-10-02T16:45Z,Rayo Vallecano,KF Shkëndija,2,0,True,post,False
+757978,UECL,2025-10-02T19:00Z,AEK Larnaca,AZ Alkmaar,4,0,True,post,False
+757824,UEL,2025-10-02T19:00Z,Celta Vigo,PAOK,3,1,True,post,False
+757980,UECL,2025-10-02T19:00Z,Shelbourne,BK Häcken,0,0,True,post,False
+757975,UECL,2025-10-02T19:00Z,Raków Czestochowa,CSU Craiova,2,0,True,post,False
+757981,UECL,2025-10-02T19:00Z,Slovan Bratislava,Strasbourg,1,2,True,post,False
+757974,UECL,2025-10-02T19:00Z,Legia Warsaw,Samsunspor,0,1,True,post,False
+757977,UECL,2025-10-02T19:00Z,Fiorentina,Sigma Olomouc,2,0,True,post,False
+757976,UECL,2025-10-02T19:00Z,Aberdeen,Shakhtar Donetsk,2,3,True,post,False
+757979,UECL,2025-10-02T19:00Z,Sparta Prague,Shamrock Rovers,4,1,True,post,False
+757829,UEL,2025-10-02T19:00Z,Racing Genk,Ferencvaros,0,1,True,post,False
 757982,UECL,2025-10-02T19:00Z,NK Celje,AEK Athens,3,1,True,post,False
 757827,UEL,2025-10-02T19:00Z,FC Basel,VfB Stuttgart,2,0,True,post,False
 757828,UEL,2025-10-02T19:00Z,FC Porto,Red Star Belgrade,2,1,True,post,False
-757832,UEL,2025-10-02T19:00Z,SK Sturm Graz,Rangers,2,1,True,post,False
+757825,UEL,2025-10-02T19:00Z,Lyon,RB Salzburg,2,0,True,post,False
 757831,UEL,2025-10-02T19:00Z,Feyenoord Rotterdam,Aston Villa,0,2,True,post,False
 757826,UEL,2025-10-02T19:00Z,Maccabi Tel-Aviv,Dinamo Zagreb,1,3,True,post,False
 757830,UEL,2025-10-02T19:00Z,Nottingham Forest,FC Midtjylland,2,3,True,post,False
-757829,UEL,2025-10-02T19:00Z,Racing Genk,Ferencvaros,0,1,True,post,False
-757825,UEL,2025-10-02T19:00Z,Lyon,RB Salzburg,2,0,True,post,False
-757976,UECL,2025-10-02T19:00Z,Aberdeen,Shakhtar Donetsk,2,3,True,post,False
-757978,UECL,2025-10-02T19:00Z,AEK Larnaca,AZ Alkmaar,4,0,True,post,False
-757977,UECL,2025-10-02T19:00Z,Fiorentina,Sigma Olomouc,2,0,True,post,False
-757974,UECL,2025-10-02T19:00Z,Legia Warsaw,Samsunspor,0,1,True,post,False
-757981,UECL,2025-10-02T19:00Z,Slovan Bratislava,Strasbourg,1,2,True,post,False
-757975,UECL,2025-10-02T19:00Z,Raków Czestochowa,CSU Craiova,2,0,True,post,False
-757980,UECL,2025-10-02T19:00Z,Shelbourne,BK Häcken,0,0,True,post,False
-757824,UEL,2025-10-02T19:00Z,Celta Vigo,PAOK,3,1,True,post,False
-757979,UECL,2025-10-02T19:00Z,Sparta Prague,Shamrock Rovers,4,1,True,post,False
+757832,UEL,2025-10-02T19:00Z,SK Sturm Graz,Rangers,2,1,True,post,False
 757690,UCL,2025-10-21T16:45Z,Barcelona,Olympiacos,6,1,True,post,False
 757689,UCL,2025-10-21T16:45Z,Kairat Almaty,Pafos,0,0,True,post,False
-757694,UCL,2025-10-21T19:00Z,Villarreal,Manchester City,0,2,True,post,False
-757691,UCL,2025-10-21T19:00Z,PSV Eindhoven,Napoli,6,2,True,post,False
-757697,UCL,2025-10-21T19:00Z,Arsenal,Atlético Madrid,4,0,True,post,False
-757696,UCL,2025-10-21T19:00Z,Newcastle United,Benfica,3,0,True,post,False
-757695,UCL,2025-10-21T19:00Z,F.C. København,Borussia Dortmund,2,4,True,post,False
-757693,UCL,2025-10-21T19:00Z,Bayer Leverkusen,Paris Saint-Germain,2,7,True,post,False
 757692,UCL,2025-10-21T19:00Z,Union St.-Gilloise,Internazionale,0,4,True,post,False
+757693,UCL,2025-10-21T19:00Z,Bayer Leverkusen,Paris Saint-Germain,2,7,True,post,False
+757695,UCL,2025-10-21T19:00Z,F.C. København,Borussia Dortmund,2,4,True,post,False
+757697,UCL,2025-10-21T19:00Z,Arsenal,Atlético Madrid,4,0,True,post,False
+757691,UCL,2025-10-21T19:00Z,PSV Eindhoven,Napoli,6,2,True,post,False
+757696,UCL,2025-10-21T19:00Z,Newcastle United,Benfica,3,0,True,post,False
+757694,UCL,2025-10-21T19:00Z,Villarreal,Manchester City,0,2,True,post,False
 757698,UCL,2025-10-22T16:45Z,Galatasaray,Bodo/Glimt,3,1,True,post,False
 757699,UCL,2025-10-22T16:45Z,Athletic Club,FK Qarabag,3,1,True,post,False
-757703,UCL,2025-10-22T19:00Z,Bayern Munich,Club Brugge,4,0,True,post,False
-757706,UCL,2025-10-22T19:00Z,Sporting CP,Marseille,2,1,True,post,False
-757704,UCL,2025-10-22T19:00Z,AS Monaco,Tottenham Hotspur,0,0,True,post,False
-757701,UCL,2025-10-22T19:00Z,Chelsea,Ajax Amsterdam,5,1,True,post,False
 757705,UCL,2025-10-22T19:00Z,Real Madrid,Juventus,1,0,True,post,False
-757700,UCL,2025-10-22T19:00Z,Atalanta,Slavia Prague,0,0,True,post,False
 757702,UCL,2025-10-22T19:00Z,Eintracht Frankfurt,Liverpool,1,5,True,post,False
-757835,UEL,2025-10-23T16:45Z,Braga,Red Star Belgrade,2,0,True,post,False
-757983,UECL,2025-10-23T16:45Z,Strasbourg,Jagiellonia Bialystok,1,1,True,post,False
-757840,UEL,2025-10-23T16:45Z,FCSB,Bologna,1,2,True,post,False
-757837,UEL,2025-10-23T16:45Z,Go Ahead Eagles,Aston Villa,2,1,True,post,False
-757836,UEL,2025-10-23T16:45Z,Lyon,FC Basel,2,0,True,post,False
-757833,UEL,2025-10-23T16:45Z,Racing Genk,Real Betis,0,0,True,post,False
-757987,UECL,2025-10-23T16:45Z,AEK Athens,Aberdeen,6,0,True,post,False
-757841,UEL,2025-10-23T16:45Z,Fenerbahce,VfB Stuttgart,1,0,True,post,False
-757984,UECL,2025-10-23T16:45Z,Shakhtar Donetsk,Legia Warsaw,1,2,True,post,False
-757989,UECL,2025-10-23T16:45Z,Drita Gjilan,Omonia Nicosia,1,1,True,post,False
-757988,UECL,2025-10-23T16:45Z,Breidablik,KuPS Kuopio,0,0,True,post,False
-757997,UECL,2025-10-23T16:45Z,AZ Alkmaar,Slovan Bratislava,1,0,True,post,False
-757990,UECL,2025-10-23T16:45Z,BK Häcken,Rayo Vallecano,2,2,True,post,False
-757839,UEL,2025-10-23T16:45Z,RB Salzburg,Ferencvaros,2,3,True,post,False
-757838,UEL,2025-10-23T16:45Z,SK Brann,Rangers,3,0,True,post,False
-757985,UECL,2025-10-23T16:45Z,Rapid Vienna,Fiorentina,0,3,True,post,False
+757700,UCL,2025-10-22T19:00Z,Atalanta,Slavia Prague,0,0,True,post,False
+757701,UCL,2025-10-22T19:00Z,Chelsea,Ajax Amsterdam,5,1,True,post,False
+757706,UCL,2025-10-22T19:00Z,Sporting CP,Marseille,2,1,True,post,False
+757703,UCL,2025-10-22T19:00Z,Bayern Munich,Club Brugge,4,0,True,post,False
+757704,UCL,2025-10-22T19:00Z,AS Monaco,Tottenham Hotspur,0,0,True,post,False
 757991,UECL,2025-10-23T16:45Z,KF Shkëndija,Shelbourne,1,0,True,post,False
-757845,UEL,2025-10-23T19:00Z,Celta Vigo,Nice,2,1,True,post,False
-757843,UEL,2025-10-23T19:00Z,AS Roma,Viktoria Plzen,1,2,True,post,False
-758000,UECL,2025-10-23T19:00Z,Crystal Palace,AEK Larnaca,0,1,True,post,False
-757996,UECL,2025-10-23T19:00Z,CSU Craiova,FC Noah,1,1,True,post,False
-757992,UECL,2025-10-23T19:00Z,Hamrun Spartans,Lausanne Sports,0,1,True,post,False
-757998,UECL,2025-10-23T19:00Z,Mainz,Zrinjski Mostar,1,0,True,post,False
-757849,UEL,2025-10-23T19:00Z,Lille,PAOK,3,4,True,post,False
-757993,UECL,2025-10-23T19:00Z,Samsunspor,Dynamo Kyiv,3,0,True,post,False
-757999,UECL,2025-10-23T19:00Z,Lincoln Red Imps,Lech Poznan,2,1,True,post,False
-757995,UECL,2025-10-23T19:00Z,Sigma Olomouc,Raków Czestochowa,1,1,True,post,False
-757842,UEL,2025-10-23T19:00Z,Young Boys,Ludogorets Razgrad,3,2,True,post,False
-757994,UECL,2025-10-23T19:00Z,Shamrock Rovers,NK Celje,0,2,True,post,False
+757985,UECL,2025-10-23T16:45Z,Rapid Vienna,Fiorentina,0,3,True,post,False
+757838,UEL,2025-10-23T16:45Z,SK Brann,Rangers,3,0,True,post,False
+757839,UEL,2025-10-23T16:45Z,RB Salzburg,Ferencvaros,2,3,True,post,False
+757990,UECL,2025-10-23T16:45Z,BK Häcken,Rayo Vallecano,2,2,True,post,False
+757997,UECL,2025-10-23T16:45Z,AZ Alkmaar,Slovan Bratislava,1,0,True,post,False
+757988,UECL,2025-10-23T16:45Z,Breidablik,KuPS Kuopio,0,0,True,post,False
+757989,UECL,2025-10-23T16:45Z,Drita Gjilan,Omonia Nicosia,1,1,True,post,False
+757984,UECL,2025-10-23T16:45Z,Shakhtar Donetsk,Legia Warsaw,1,2,True,post,False
+757987,UECL,2025-10-23T16:45Z,AEK Athens,Aberdeen,6,0,True,post,False
+757833,UEL,2025-10-23T16:45Z,Racing Genk,Real Betis,0,0,True,post,False
+757836,UEL,2025-10-23T16:45Z,Lyon,FC Basel,2,0,True,post,False
+757837,UEL,2025-10-23T16:45Z,Go Ahead Eagles,Aston Villa,2,1,True,post,False
+757840,UEL,2025-10-23T16:45Z,FCSB,Bologna,1,2,True,post,False
+757983,UECL,2025-10-23T16:45Z,Strasbourg,Jagiellonia Bialystok,1,1,True,post,False
+757835,UEL,2025-10-23T16:45Z,Braga,Red Star Belgrade,2,0,True,post,False
+757841,UEL,2025-10-23T16:45Z,Fenerbahce,VfB Stuttgart,1,0,True,post,False
 757846,UEL,2025-10-23T19:00Z,Nottingham Forest,FC Porto,2,0,True,post,False
+757994,UECL,2025-10-23T19:00Z,Shamrock Rovers,NK Celje,0,2,True,post,False
 757848,UEL,2025-10-23T19:00Z,Maccabi Tel-Aviv,FC Midtjylland,0,3,True,post,False
-757834,UEL,2025-10-23T19:00Z,Feyenoord Rotterdam,Panathinaikos,3,1,True,post,False
+757842,UEL,2025-10-23T19:00Z,Young Boys,Ludogorets Razgrad,3,2,True,post,False
 757850,UEL,2025-10-23T19:00Z,Celtic,SK Sturm Graz,2,1,True,post,False
 757844,UEL,2025-10-23T19:00Z,SC Freiburg,FC Utrecht,2,0,True,post,False
 757847,UEL,2025-10-23T19:00Z,Malmö FF,Dinamo Zagreb,1,1,True,post,False
+757834,UEL,2025-10-23T19:00Z,Feyenoord Rotterdam,Panathinaikos,3,1,True,post,False
+757995,UECL,2025-10-23T19:00Z,Sigma Olomouc,Raków Czestochowa,1,1,True,post,False
+757845,UEL,2025-10-23T19:00Z,Celta Vigo,Nice,2,1,True,post,False
+757993,UECL,2025-10-23T19:00Z,Samsunspor,Dynamo Kyiv,3,0,True,post,False
+757849,UEL,2025-10-23T19:00Z,Lille,PAOK,3,4,True,post,False
+757998,UECL,2025-10-23T19:00Z,Mainz,Zrinjski Mostar,1,0,True,post,False
+757992,UECL,2025-10-23T19:00Z,Hamrun Spartans,Lausanne Sports,0,1,True,post,False
+757996,UECL,2025-10-23T19:00Z,CSU Craiova,FC Noah,1,1,True,post,False
+758000,UECL,2025-10-23T19:00Z,Crystal Palace,AEK Larnaca,0,1,True,post,False
+757843,UEL,2025-10-23T19:00Z,AS Roma,Viktoria Plzen,1,2,True,post,False
+757999,UECL,2025-10-23T19:00Z,Lincoln Red Imps,Lech Poznan,2,1,True,post,False
 757986,UECL,2025-10-24T14:00Z,Rijeka,Sparta Prague,1,0,True,post,False
 757708,UCL,2025-11-04T17:45Z,Napoli,Eintracht Frankfurt,0,0,True,post,False
 757707,UCL,2025-11-04T17:45Z,Slavia Prague,Arsenal,0,3,True,post,False
-757713,UCL,2025-11-04T20:00Z,Olympiacos,PSV Eindhoven,1,1,True,post,False
-757711,UCL,2025-11-04T20:00Z,Atlético Madrid,Union St.-Gilloise,3,1,True,post,False
-757710,UCL,2025-11-04T20:00Z,Juventus,Sporting CP,1,1,True,post,False
-757709,UCL,2025-11-04T20:00Z,Paris Saint-Germain,Bayern Munich,1,2,True,post,False
-757714,UCL,2025-11-04T20:00Z,Liverpool,Real Madrid,1,0,True,post,False
 757715,UCL,2025-11-04T20:00Z,Tottenham Hotspur,F.C. København,4,0,True,post,False
+757714,UCL,2025-11-04T20:00Z,Liverpool,Real Madrid,1,0,True,post,False
+757709,UCL,2025-11-04T20:00Z,Paris Saint-Germain,Bayern Munich,1,2,True,post,False
 757712,UCL,2025-11-04T20:00Z,Bodo/Glimt,AS Monaco,0,1,True,post,False
+757711,UCL,2025-11-04T20:00Z,Atlético Madrid,Union St.-Gilloise,3,1,True,post,False
+757713,UCL,2025-11-04T20:00Z,Olympiacos,PSV Eindhoven,1,1,True,post,False
+757710,UCL,2025-11-04T20:00Z,Juventus,Sporting CP,1,1,True,post,False
 757717,UCL,2025-11-05T17:45Z,Pafos,Villarreal,1,0,True,post,False
 757716,UCL,2025-11-05T17:45Z,FK Qarabag,Chelsea,2,2,True,post,False
-757724,UCL,2025-11-05T20:00Z,Marseille,Atalanta,0,1,True,post,False
-757722,UCL,2025-11-05T20:00Z,Internazionale,Kairat Almaty,2,1,True,post,False
-757719,UCL,2025-11-05T20:00Z,Newcastle United,Athletic Club,2,0,True,post,False
+757723,UCL,2025-11-05T20:00Z,Club Brugge,Barcelona,3,3,True,post,False
+757718,UCL,2025-11-05T20:00Z,Manchester City,Borussia Dortmund,4,1,True,post,False
 757721,UCL,2025-11-05T20:00Z,Ajax Amsterdam,Galatasaray,0,3,True,post,False
 757720,UCL,2025-11-05T20:00Z,Benfica,Bayer Leverkusen,0,1,True,post,False
-757718,UCL,2025-11-05T20:00Z,Manchester City,Borussia Dortmund,4,1,True,post,False
-757723,UCL,2025-11-05T20:00Z,Club Brugge,Barcelona,3,3,True,post,False
-757859,UEL,2025-11-06T17:45Z,SK Sturm Graz,Nottingham Forest,0,0,True,post,False
+757722,UCL,2025-11-05T20:00Z,Internazionale,Kairat Almaty,2,1,True,post,False
+757724,UCL,2025-11-05T20:00Z,Marseille,Atalanta,0,1,True,post,False
+757719,UCL,2025-11-05T20:00Z,Newcastle United,Athletic Club,2,0,True,post,False
+758003,UECL,2025-11-06T17:45Z,AEK Larnaca,Aberdeen,0,0,True,post,False
+758004,UECL,2025-11-06T17:45Z,KuPS Kuopio,Slovan Bratislava,3,1,True,post,False
+757854,UEL,2025-11-06T17:45Z,Malmö FF,Panathinaikos,0,1,True,post,False
+758005,UECL,2025-11-06T17:45Z,Sparta Prague,Raków Czestochowa,0,0,True,post,False
+758009,UECL,2025-11-06T17:45Z,Mainz,Fiorentina,2,1,True,post,False
+758001,UECL,2025-11-06T17:45Z,Samsunspor,Hamrun Spartans,3,0,True,post,False
+758007,UECL,2025-11-06T17:45Z,NK Celje,Legia Warsaw,2,1,True,post,False
+758008,UECL,2025-11-06T17:45Z,FC Noah,Sigma Olomouc,1,2,True,post,False
+758002,UECL,2025-11-06T17:45Z,Shakhtar Donetsk,Breidablik,2,0,True,post,False
+758006,UECL,2025-11-06T17:45Z,AEK Athens,Shamrock Rovers,1,1,True,post,False
+757857,UEL,2025-11-06T17:45Z,FC Basel,FCSB,3,1,True,post,False
 757852,UEL,2025-11-06T17:45Z,RB Salzburg,Go Ahead Eagles,2,0,True,post,False
 757856,UEL,2025-11-06T17:45Z,Red Star Belgrade,Lille,1,0,True,post,False
 757855,UEL,2025-11-06T17:45Z,Nice,SC Freiburg,1,3,True,post,False
-757853,UEL,2025-11-06T17:45Z,Dinamo Zagreb,Celta Vigo,0,3,True,post,False
+757859,UEL,2025-11-06T17:45Z,SK Sturm Graz,Nottingham Forest,0,0,True,post,False
 757851,UEL,2025-11-06T17:45Z,FC Utrecht,FC Porto,1,1,True,post,False
 757858,UEL,2025-11-06T17:45Z,FC Midtjylland,Celtic,3,1,True,post,False
-758006,UECL,2025-11-06T17:45Z,AEK Athens,Shamrock Rovers,1,1,True,post,False
-757857,UEL,2025-11-06T17:45Z,FC Basel,FCSB,3,1,True,post,False
-758008,UECL,2025-11-06T17:45Z,FC Noah,Sigma Olomouc,1,2,True,post,False
-758003,UECL,2025-11-06T17:45Z,AEK Larnaca,Aberdeen,0,0,True,post,False
-758002,UECL,2025-11-06T17:45Z,Shakhtar Donetsk,Breidablik,2,0,True,post,False
-758007,UECL,2025-11-06T17:45Z,NK Celje,Legia Warsaw,2,1,True,post,False
-758001,UECL,2025-11-06T17:45Z,Samsunspor,Hamrun Spartans,3,0,True,post,False
-758009,UECL,2025-11-06T17:45Z,Mainz,Fiorentina,2,1,True,post,False
-758005,UECL,2025-11-06T17:45Z,Sparta Prague,Raków Czestochowa,0,0,True,post,False
-757854,UEL,2025-11-06T17:45Z,Malmö FF,Panathinaikos,0,1,True,post,False
-758004,UECL,2025-11-06T17:45Z,KuPS Kuopio,Slovan Bratislava,3,1,True,post,False
-758018,UECL,2025-11-06T20:00Z,Crystal Palace,AZ Alkmaar,3,1,True,post,False
-758016,UECL,2025-11-06T20:00Z,BK Häcken,Strasbourg,1,2,True,post,False
-758014,UECL,2025-11-06T20:00Z,Lausanne Sports,Omonia Nicosia,1,1,True,post,False
-758015,UECL,2025-11-06T20:00Z,Dynamo Kyiv,Zrinjski Mostar,6,0,True,post,False
-758011,UECL,2025-11-06T20:00Z,Shelbourne,Drita Gjilan,0,1,True,post,False
-758013,UECL,2025-11-06T20:00Z,Rayo Vallecano,Lech Poznan,3,2,True,post,False
-757860,UEL,2025-11-06T20:00Z,VfB Stuttgart,Feyenoord Rotterdam,2,0,True,post,False
-758010,UECL,2025-11-06T20:00Z,KF Shkëndija,Jagiellonia Bialystok,1,1,True,post,False
-757863,UEL,2025-11-06T20:00Z,Viktoria Plzen,Fenerbahce,0,0,True,post,False
-758017,UECL,2025-11-06T20:00Z,Lincoln Red Imps,Rijeka,1,1,True,post,False
-757864,UEL,2025-11-06T20:00Z,Ferencvaros,Ludogorets Razgrad,3,1,True,post,False
-757868,UEL,2025-11-06T20:00Z,PAOK,Young Boys,4,0,True,post,False
-757865,UEL,2025-11-06T20:00Z,Rangers,AS Roma,0,2,True,post,False
-758012,UECL,2025-11-06T20:00Z,Rapid Vienna,CSU Craiova,0,1,True,post,False
-757866,UEL,2025-11-06T20:00Z,Real Betis,Lyon,2,0,True,post,False
-757862,UEL,2025-11-06T20:00Z,Bologna,SK Brann,0,0,True,post,False
-757861,UEL,2025-11-06T20:00Z,Aston Villa,Maccabi Tel-Aviv,2,0,True,post,False
+757853,UEL,2025-11-06T17:45Z,Dinamo Zagreb,Celta Vigo,0,3,True,post,False
 757867,UEL,2025-11-06T20:00Z,Braga,Racing Genk,3,4,True,post,False
+757864,UEL,2025-11-06T20:00Z,Ferencvaros,Ludogorets Razgrad,3,1,True,post,False
+757861,UEL,2025-11-06T20:00Z,Aston Villa,Maccabi Tel-Aviv,2,0,True,post,False
+757862,UEL,2025-11-06T20:00Z,Bologna,SK Brann,0,0,True,post,False
+757866,UEL,2025-11-06T20:00Z,Real Betis,Lyon,2,0,True,post,False
+758012,UECL,2025-11-06T20:00Z,Rapid Vienna,CSU Craiova,0,1,True,post,False
+757865,UEL,2025-11-06T20:00Z,Rangers,AS Roma,0,2,True,post,False
+758017,UECL,2025-11-06T20:00Z,Lincoln Red Imps,Rijeka,1,1,True,post,False
+757868,UEL,2025-11-06T20:00Z,PAOK,Young Boys,4,0,True,post,False
+758010,UECL,2025-11-06T20:00Z,KF Shkëndija,Jagiellonia Bialystok,1,1,True,post,False
+757860,UEL,2025-11-06T20:00Z,VfB Stuttgart,Feyenoord Rotterdam,2,0,True,post,False
+758013,UECL,2025-11-06T20:00Z,Rayo Vallecano,Lech Poznan,3,2,True,post,False
+758011,UECL,2025-11-06T20:00Z,Shelbourne,Drita Gjilan,0,1,True,post,False
+758015,UECL,2025-11-06T20:00Z,Dynamo Kyiv,Zrinjski Mostar,6,0,True,post,False
+758014,UECL,2025-11-06T20:00Z,Lausanne Sports,Omonia Nicosia,1,1,True,post,False
+758016,UECL,2025-11-06T20:00Z,BK Häcken,Strasbourg,1,2,True,post,False
+758018,UECL,2025-11-06T20:00Z,Crystal Palace,AZ Alkmaar,3,1,True,post,False
+757863,UEL,2025-11-06T20:00Z,Viktoria Plzen,Fenerbahce,0,0,True,post,False
 757726,UCL,2025-11-25T17:45Z,Galatasaray,Union St.-Gilloise,0,1,True,post,False
 757725,UCL,2025-11-25T17:45Z,Ajax Amsterdam,Benfica,0,2,True,post,False
-757733,UCL,2025-11-25T20:00Z,Slavia Prague,Athletic Club,0,0,True,post,False
-757727,UCL,2025-11-25T20:00Z,Borussia Dortmund,Villarreal,4,0,True,post,False
-757732,UCL,2025-11-25T20:00Z,Chelsea,Barcelona,3,0,True,post,False
-757731,UCL,2025-11-25T20:00Z,Bodo/Glimt,Juventus,2,3,True,post,False
-757728,UCL,2025-11-25T20:00Z,Napoli,FK Qarabag,2,0,True,post,False
-757729,UCL,2025-11-25T20:00Z,Marseille,Newcastle United,2,1,True,post,False
 757730,UCL,2025-11-25T20:00Z,Manchester City,Bayer Leverkusen,0,2,True,post,False
+757729,UCL,2025-11-25T20:00Z,Marseille,Newcastle United,2,1,True,post,False
+757728,UCL,2025-11-25T20:00Z,Napoli,FK Qarabag,2,0,True,post,False
+757733,UCL,2025-11-25T20:00Z,Slavia Prague,Athletic Club,0,0,True,post,False
+757732,UCL,2025-11-25T20:00Z,Chelsea,Barcelona,3,0,True,post,False
+757727,UCL,2025-11-25T20:00Z,Borussia Dortmund,Villarreal,4,0,True,post,False
+757731,UCL,2025-11-25T20:00Z,Bodo/Glimt,Juventus,2,3,True,post,False
 757735,UCL,2025-11-26T17:45Z,F.C. København,Kairat Almaty,3,2,True,post,False
 757734,UCL,2025-11-26T17:45Z,Pafos,AS Monaco,2,2,True,post,False
-757741,UCL,2025-11-26T20:00Z,Sporting CP,Club Brugge,3,0,True,post,False
-757736,UCL,2025-11-26T20:00Z,Paris Saint-Germain,Tottenham Hotspur,5,3,True,post,False
-757738,UCL,2025-11-26T20:00Z,Liverpool,PSV Eindhoven,1,4,True,post,False
-757737,UCL,2025-11-26T20:00Z,Olympiacos,Real Madrid,3,4,True,post,False
 757739,UCL,2025-11-26T20:00Z,Eintracht Frankfurt,Atalanta,0,3,True,post,False
 757740,UCL,2025-11-26T20:00Z,Atlético Madrid,Internazionale,2,1,True,post,False
+757737,UCL,2025-11-26T20:00Z,Olympiacos,Real Madrid,3,4,True,post,False
 757742,UCL,2025-11-26T20:00Z,Arsenal,Bayern Munich,3,1,True,post,False
-758025,UECL,2025-11-27T17:45Z,Sigma Olomouc,NK Celje,2,1,True,post,False
+757736,UCL,2025-11-26T20:00Z,Paris Saint-Germain,Tottenham Hotspur,5,3,True,post,False
+757741,UCL,2025-11-26T20:00Z,Sporting CP,Club Brugge,3,0,True,post,False
+757738,UCL,2025-11-26T20:00Z,Liverpool,PSV Eindhoven,1,4,True,post,False
+757872,UEL,2025-11-27T17:45Z,Feyenoord Rotterdam,Celtic,1,3,True,post,False
+757876,UEL,2025-11-27T17:45Z,AS Roma,FC Midtjylland,2,1,True,post,False
+757875,UEL,2025-11-27T17:45Z,PAOK,SK Brann,1,1,True,post,False
+757870,UEL,2025-11-27T17:45Z,FC Porto,Nice,3,0,True,post,False
+757873,UEL,2025-11-27T17:45Z,Lille,Dinamo Zagreb,4,0,True,post,False
+757869,UEL,2025-11-27T17:45Z,Aston Villa,Young Boys,2,1,True,post,False
+757874,UEL,2025-11-27T17:45Z,Ludogorets Razgrad,Celta Vigo,3,2,True,post,False
+758019,UECL,2025-11-27T17:45Z,AZ Alkmaar,Shelbourne,2,0,True,post,False
+758026,UECL,2025-11-27T17:45Z,CSU Craiova,Mainz,1,0,True,post,False
+757871,UEL,2025-11-27T17:45Z,Fenerbahce,Ferencvaros,1,1,True,post,False
+758020,UECL,2025-11-27T17:45Z,Hamrun Spartans,Lincoln Red Imps,3,1,True,post,False
 757877,UEL,2025-11-27T17:45Z,Viktoria Plzen,SC Freiburg,0,0,True,post,False
 758023,UECL,2025-11-27T17:45Z,Raków Czestochowa,Rapid Vienna,4,1,True,post,False
 758024,UECL,2025-11-27T17:45Z,Slovan Bratislava,Rayo Vallecano,2,1,True,post,False
-758021,UECL,2025-11-27T17:45Z,Lech Poznan,Lausanne Sports,2,0,True,post,False
+758025,UECL,2025-11-27T17:45Z,Sigma Olomouc,NK Celje,2,1,True,post,False
 758027,UECL,2025-11-27T17:45Z,Zrinjski Mostar,BK Häcken,2,1,True,post,False
 758022,UECL,2025-11-27T17:45Z,Omonia Nicosia,Dynamo Kyiv,2,0,True,post,False
-757871,UEL,2025-11-27T17:45Z,Fenerbahce,Ferencvaros,1,1,True,post,False
-758020,UECL,2025-11-27T17:45Z,Hamrun Spartans,Lincoln Red Imps,3,1,True,post,False
-758019,UECL,2025-11-27T17:45Z,AZ Alkmaar,Shelbourne,2,0,True,post,False
-757874,UEL,2025-11-27T17:45Z,Ludogorets Razgrad,Celta Vigo,3,2,True,post,False
-758026,UECL,2025-11-27T17:45Z,CSU Craiova,Mainz,1,0,True,post,False
-757869,UEL,2025-11-27T17:45Z,Aston Villa,Young Boys,2,1,True,post,False
-757873,UEL,2025-11-27T17:45Z,Lille,Dinamo Zagreb,4,0,True,post,False
-757870,UEL,2025-11-27T17:45Z,FC Porto,Nice,3,0,True,post,False
-757875,UEL,2025-11-27T17:45Z,PAOK,SK Brann,1,1,True,post,False
-757876,UEL,2025-11-27T17:45Z,AS Roma,FC Midtjylland,2,1,True,post,False
-757872,UEL,2025-11-27T17:45Z,Feyenoord Rotterdam,Celtic,1,3,True,post,False
-758032,UECL,2025-11-27T20:00Z,Legia Warsaw,Sparta Prague,0,1,True,post,False
-758033,UECL,2025-11-27T20:00Z,Jagiellonia Bialystok,KuPS Kuopio,1,0,True,post,False
-757879,UEL,2025-11-27T20:00Z,Go Ahead Eagles,VfB Stuttgart,0,4,True,post,False
-758030,UECL,2025-11-27T20:00Z,Fiorentina,AEK Athens,0,1,True,post,False
-758034,UECL,2025-11-27T20:00Z,Strasbourg,Crystal Palace,2,1,True,post,False
-758036,UECL,2025-11-27T20:00Z,Drita Gjilan,KF Shkëndija,1,0,True,post,False
-758029,UECL,2025-11-27T20:00Z,Breidablik,Samsunspor,2,2,True,post,False
-757882,UEL,2025-11-27T20:00Z,Panathinaikos,SK Sturm Graz,2,1,True,post,False
-757886,UEL,2025-11-27T20:00Z,Bologna,RB Salzburg,4,1,True,post,False
-758031,UECL,2025-11-27T20:00Z,Rijeka,AEK Larnaca,0,0,True,post,False
+758021,UECL,2025-11-27T17:45Z,Lech Poznan,Lausanne Sports,2,0,True,post,False
 757885,UEL,2025-11-27T20:00Z,Nottingham Forest,Malmö FF,3,0,True,post,False
-757880,UEL,2025-11-27T20:00Z,Racing Genk,FC Basel,2,1,True,post,False
-757878,UEL,2025-11-27T20:00Z,Rangers,Braga,1,1,True,post,False
-757883,UEL,2025-11-27T20:00Z,Real Betis,FC Utrecht,2,1,True,post,False
-757881,UEL,2025-11-27T20:00Z,Red Star Belgrade,FCSB,1,0,True,post,False
-758035,UECL,2025-11-27T20:00Z,Shamrock Rovers,Shakhtar Donetsk,1,2,True,post,False
-757884,UEL,2025-11-27T20:00Z,Maccabi Tel-Aviv,Lyon,0,6,True,post,False
 758028,UECL,2025-11-27T20:00Z,Aberdeen,FC Noah,1,1,True,post,False
+757884,UEL,2025-11-27T20:00Z,Maccabi Tel-Aviv,Lyon,0,6,True,post,False
+758035,UECL,2025-11-27T20:00Z,Shamrock Rovers,Shakhtar Donetsk,1,2,True,post,False
+757881,UEL,2025-11-27T20:00Z,Red Star Belgrade,FCSB,1,0,True,post,False
+757883,UEL,2025-11-27T20:00Z,Real Betis,FC Utrecht,2,1,True,post,False
+757878,UEL,2025-11-27T20:00Z,Rangers,Braga,1,1,True,post,False
+757880,UEL,2025-11-27T20:00Z,Racing Genk,FC Basel,2,1,True,post,False
+758031,UECL,2025-11-27T20:00Z,Rijeka,AEK Larnaca,0,0,True,post,False
+758032,UECL,2025-11-27T20:00Z,Legia Warsaw,Sparta Prague,0,1,True,post,False
+757882,UEL,2025-11-27T20:00Z,Panathinaikos,SK Sturm Graz,2,1,True,post,False
+758029,UECL,2025-11-27T20:00Z,Breidablik,Samsunspor,2,2,True,post,False
+758036,UECL,2025-11-27T20:00Z,Drita Gjilan,KF Shkëndija,1,0,True,post,False
+758034,UECL,2025-11-27T20:00Z,Strasbourg,Crystal Palace,2,1,True,post,False
+758030,UECL,2025-11-27T20:00Z,Fiorentina,AEK Athens,0,1,True,post,False
+757879,UEL,2025-11-27T20:00Z,Go Ahead Eagles,VfB Stuttgart,0,4,True,post,False
+758033,UECL,2025-11-27T20:00Z,Jagiellonia Bialystok,KuPS Kuopio,1,0,True,post,False
+757886,UEL,2025-11-27T20:00Z,Bologna,RB Salzburg,4,1,True,post,False
 757743,UCL,2025-12-09T15:30Z,Kairat Almaty,Olympiacos,0,1,True,post,False
 757744,UCL,2025-12-09T17:45Z,Bayern Munich,Sporting CP,3,1,True,post,False
-757746,UCL,2025-12-09T20:00Z,Barcelona,Eintracht Frankfurt,2,1,True,post,False
-757751,UCL,2025-12-09T20:00Z,AS Monaco,Galatasaray,1,0,True,post,False
-757745,UCL,2025-12-09T20:00Z,Internazionale,Liverpool,0,1,True,post,False
-757748,UCL,2025-12-09T20:00Z,Union St.-Gilloise,Marseille,2,3,True,post,False
-757747,UCL,2025-12-09T20:00Z,Atalanta,Chelsea,2,1,True,post,False
 757749,UCL,2025-12-09T20:00Z,Tottenham Hotspur,Slavia Prague,3,0,True,post,False
 757750,UCL,2025-12-09T20:00Z,PSV Eindhoven,Atlético Madrid,2,3,True,post,False
+757747,UCL,2025-12-09T20:00Z,Atalanta,Chelsea,2,1,True,post,False
+757746,UCL,2025-12-09T20:00Z,Barcelona,Eintracht Frankfurt,2,1,True,post,False
+757745,UCL,2025-12-09T20:00Z,Internazionale,Liverpool,0,1,True,post,False
+757751,UCL,2025-12-09T20:00Z,AS Monaco,Galatasaray,1,0,True,post,False
+757748,UCL,2025-12-09T20:00Z,Union St.-Gilloise,Marseille,2,3,True,post,False
 757752,UCL,2025-12-10T17:45Z,FK Qarabag,Ajax Amsterdam,2,4,True,post,False
 757753,UCL,2025-12-10T17:45Z,Villarreal,F.C. København,2,3,True,post,False
-757758,UCL,2025-12-10T20:00Z,Bayer Leverkusen,Newcastle United,2,2,True,post,False
-757760,UCL,2025-12-10T20:00Z,Real Madrid,Manchester City,1,2,True,post,False
-757759,UCL,2025-12-10T20:00Z,Athletic Club,Paris Saint-Germain,0,0,True,post,False
-757756,UCL,2025-12-10T20:00Z,Juventus,Pafos,2,0,True,post,False
-757754,UCL,2025-12-10T20:00Z,Benfica,Napoli,2,0,True,post,False
-757755,UCL,2025-12-10T20:00Z,Borussia Dortmund,Bodo/Glimt,2,2,True,post,False
 757757,UCL,2025-12-10T20:00Z,Club Brugge,Arsenal,0,3,True,post,False
-757890,UEL,2025-12-11T17:45Z,VfB Stuttgart,Maccabi Tel-Aviv,4,1,True,post,False
-758038,UECL,2025-12-11T17:45Z,BK Häcken,AEK Larnaca,1,1,True,post,False
-758043,UECL,2025-12-11T17:45Z,FC Noah,Legia Warsaw,2,1,True,post,False
-758044,UECL,2025-12-11T17:45Z,Fiorentina,Dynamo Kyiv,2,1,True,post,False
-758037,UECL,2025-12-11T17:45Z,Jagiellonia Bialystok,Rayo Vallecano,1,2,True,post,False
-758045,UECL,2025-12-11T17:45Z,KF Shkëndija,Slovan Bratislava,2,0,True,post,False
-758039,UECL,2025-12-11T17:45Z,Samsunspor,AEK Athens,1,2,True,post,False
-758042,UECL,2025-12-11T17:45Z,Drita Gjilan,AZ Alkmaar,0,3,True,post,False
-758040,UECL,2025-12-11T17:45Z,CSU Craiova,Sparta Prague,1,2,True,post,False
-757892,UEL,2025-12-11T17:45Z,Nice,Braga,0,1,True,post,False
-757894,UEL,2025-12-11T17:45Z,Ludogorets Razgrad,PAOK,3,3,True,post,False
-757893,UEL,2025-12-11T17:45Z,Ferencvaros,Rangers,2,1,True,post,False
-757888,UEL,2025-12-11T17:45Z,FC Utrecht,Nottingham Forest,1,2,True,post,False
-757895,UEL,2025-12-11T17:45Z,FC Midtjylland,Racing Genk,1,0,True,post,False
-758041,UECL,2025-12-11T17:45Z,Breidablik,Shamrock Rovers,3,1,True,post,False
-757891,UEL,2025-12-11T17:45Z,Dinamo Zagreb,Real Betis,1,3,True,post,False
-757889,UEL,2025-12-11T17:45Z,SK Sturm Graz,Red Star Belgrade,0,1,True,post,False
+757754,UCL,2025-12-10T20:00Z,Benfica,Napoli,2,0,True,post,False
+757756,UCL,2025-12-10T20:00Z,Juventus,Pafos,2,0,True,post,False
+757755,UCL,2025-12-10T20:00Z,Borussia Dortmund,Bodo/Glimt,2,2,True,post,False
+757760,UCL,2025-12-10T20:00Z,Real Madrid,Manchester City,1,2,True,post,False
+757758,UCL,2025-12-10T20:00Z,Bayer Leverkusen,Newcastle United,2,2,True,post,False
+757759,UCL,2025-12-10T20:00Z,Athletic Club,Paris Saint-Germain,0,0,True,post,False
 757887,UEL,2025-12-11T17:45Z,Young Boys,Lille,1,0,True,post,False
-758054,UECL,2025-12-11T20:00Z,KuPS Kuopio,Lausanne Sports,0,0,True,post,False
-758050,UECL,2025-12-11T20:00Z,Lech Poznan,Mainz,1,1,True,post,False
-758046,UECL,2025-12-11T20:00Z,Lincoln Red Imps,Sigma Olomouc,2,1,True,post,False
-758052,UECL,2025-12-11T20:00Z,Aberdeen,Strasbourg,0,1,True,post,False
-758051,UECL,2025-12-11T20:00Z,Rapid Vienna,Omonia Nicosia,0,1,True,post,False
-758049,UECL,2025-12-11T20:00Z,Shelbourne,Crystal Palace,0,3,True,post,False
-758047,UECL,2025-12-11T20:00Z,Raków Czestochowa,Zrinjski Mostar,1,0,True,post,False
-758053,UECL,2025-12-11T20:00Z,Hamrun Spartans,Shakhtar Donetsk,0,2,True,post,False
-758048,UECL,2025-12-11T20:00Z,Rijeka,NK Celje,3,0,True,post,False
-757904,UEL,2025-12-11T20:00Z,FC Basel,Aston Villa,1,2,True,post,False
-757898,UEL,2025-12-11T20:00Z,Lyon,Go Ahead Eagles,2,1,True,post,False
+757889,UEL,2025-12-11T17:45Z,SK Sturm Graz,Red Star Belgrade,0,1,True,post,False
+757891,UEL,2025-12-11T17:45Z,Dinamo Zagreb,Real Betis,1,3,True,post,False
+758041,UECL,2025-12-11T17:45Z,Breidablik,Shamrock Rovers,3,1,True,post,False
+757895,UEL,2025-12-11T17:45Z,FC Midtjylland,Racing Genk,1,0,True,post,False
+757888,UEL,2025-12-11T17:45Z,FC Utrecht,Nottingham Forest,1,2,True,post,False
+757893,UEL,2025-12-11T17:45Z,Ferencvaros,Rangers,2,1,True,post,False
+757894,UEL,2025-12-11T17:45Z,Ludogorets Razgrad,PAOK,3,3,True,post,False
+757892,UEL,2025-12-11T17:45Z,Nice,Braga,0,1,True,post,False
+758042,UECL,2025-12-11T17:45Z,Drita Gjilan,AZ Alkmaar,0,3,True,post,False
+758039,UECL,2025-12-11T17:45Z,Samsunspor,AEK Athens,1,2,True,post,False
+758045,UECL,2025-12-11T17:45Z,KF Shkëndija,Slovan Bratislava,2,0,True,post,False
+758037,UECL,2025-12-11T17:45Z,Jagiellonia Bialystok,Rayo Vallecano,1,2,True,post,False
+758044,UECL,2025-12-11T17:45Z,Fiorentina,Dynamo Kyiv,2,1,True,post,False
+758043,UECL,2025-12-11T17:45Z,FC Noah,Legia Warsaw,2,1,True,post,False
+758038,UECL,2025-12-11T17:45Z,BK Häcken,AEK Larnaca,1,1,True,post,False
+757890,UEL,2025-12-11T17:45Z,VfB Stuttgart,Maccabi Tel-Aviv,4,1,True,post,False
+758040,UECL,2025-12-11T17:45Z,CSU Craiova,Sparta Prague,1,2,True,post,False
 757900,UEL,2025-12-11T20:00Z,SK Brann,Fenerbahce,0,4,True,post,False
 757901,UEL,2025-12-11T20:00Z,Celta Vigo,Bologna,1,2,True,post,False
 757902,UEL,2025-12-11T20:00Z,Celtic,AS Roma,0,3,True,post,False
-757896,UEL,2025-12-11T20:00Z,SC Freiburg,RB Salzburg,1,0,True,post,False
+757903,UEL,2025-12-11T20:00Z,FC Porto,Malmö FF,2,1,True,post,False
 757897,UEL,2025-12-11T20:00Z,Panathinaikos,Viktoria Plzen,0,0,True,post,False
 757899,UEL,2025-12-11T20:00Z,FCSB,Feyenoord Rotterdam,4,3,True,post,False
-757903,UEL,2025-12-11T20:00Z,FC Porto,Malmö FF,2,1,True,post,False
-758066,UECL,2025-12-18T20:00Z,Slovan Bratislava,BK Häcken,1,0,True,post,False
-758070,UECL,2025-12-18T20:00Z,Sigma Olomouc,Lech Poznan,1,2,True,post,False
-758055,UECL,2025-12-18T20:00Z,Mainz,Samsunspor,2,0,True,post,False
-758069,UECL,2025-12-18T20:00Z,Sparta Prague,Aberdeen,3,0,True,post,False
-758065,UECL,2025-12-18T20:00Z,Rayo Vallecano,Drita Gjilan,3,0,True,post,False
-758064,UECL,2025-12-18T20:00Z,Omonia Nicosia,Raków Czestochowa,0,1,True,post,False
-758059,UECL,2025-12-18T20:00Z,NK Celje,Shelbourne,0,0,True,post,False
-758067,UECL,2025-12-18T20:00Z,Shakhtar Donetsk,Rijeka,0,0,True,post,False
-758071,UECL,2025-12-18T20:00Z,Shamrock Rovers,Hamrun Spartans,3,1,True,post,False
-758058,UECL,2025-12-18T20:00Z,AZ Alkmaar,Jagiellonia Bialystok,0,0,True,post,False
-758062,UECL,2025-12-18T20:00Z,Lausanne Sports,Fiorentina,1,0,True,post,False
+757898,UEL,2025-12-11T20:00Z,Lyon,Go Ahead Eagles,2,1,True,post,False
+757896,UEL,2025-12-11T20:00Z,SC Freiburg,RB Salzburg,1,0,True,post,False
+757904,UEL,2025-12-11T20:00Z,FC Basel,Aston Villa,1,2,True,post,False
+758047,UECL,2025-12-11T20:00Z,Raków Czestochowa,Zrinjski Mostar,1,0,True,post,False
+758053,UECL,2025-12-11T20:00Z,Hamrun Spartans,Shakhtar Donetsk,0,2,True,post,False
+758048,UECL,2025-12-11T20:00Z,Rijeka,NK Celje,3,0,True,post,False
+758049,UECL,2025-12-11T20:00Z,Shelbourne,Crystal Palace,0,3,True,post,False
+758051,UECL,2025-12-11T20:00Z,Rapid Vienna,Omonia Nicosia,0,1,True,post,False
+758052,UECL,2025-12-11T20:00Z,Aberdeen,Strasbourg,0,1,True,post,False
+758046,UECL,2025-12-11T20:00Z,Lincoln Red Imps,Sigma Olomouc,2,1,True,post,False
+758050,UECL,2025-12-11T20:00Z,Lech Poznan,Mainz,1,1,True,post,False
+758054,UECL,2025-12-11T20:00Z,KuPS Kuopio,Lausanne Sports,0,0,True,post,False
 758061,UECL,2025-12-18T20:00Z,Dynamo Kyiv,FC Noah,2,0,True,post,False
 758060,UECL,2025-12-18T20:00Z,Crystal Palace,KuPS Kuopio,2,2,True,post,False
 758063,UECL,2025-12-18T20:00Z,Legia Warsaw,Lincoln Red Imps,4,1,True,post,False
-758072,UECL,2025-12-18T20:00Z,Zrinjski Mostar,Rapid Vienna,1,1,True,post,False
+758057,UECL,2025-12-18T20:00Z,AEK Larnaca,KF Shkëndija,1,0,True,post,False
 758056,UECL,2025-12-18T20:00Z,AEK Athens,CSU Craiova,3,2,True,post,False
 758068,UECL,2025-12-18T20:00Z,Strasbourg,Breidablik,3,1,True,post,False
-758057,UECL,2025-12-18T20:00Z,AEK Larnaca,KF Shkëndija,1,0,True,post,False
+758062,UECL,2025-12-18T20:00Z,Lausanne Sports,Fiorentina,1,0,True,post,False
+758072,UECL,2025-12-18T20:00Z,Zrinjski Mostar,Rapid Vienna,1,1,True,post,False
+758058,UECL,2025-12-18T20:00Z,AZ Alkmaar,Jagiellonia Bialystok,0,0,True,post,False
+758067,UECL,2025-12-18T20:00Z,Shakhtar Donetsk,Rijeka,0,0,True,post,False
+758059,UECL,2025-12-18T20:00Z,NK Celje,Shelbourne,0,0,True,post,False
+758064,UECL,2025-12-18T20:00Z,Omonia Nicosia,Raków Czestochowa,0,1,True,post,False
+758065,UECL,2025-12-18T20:00Z,Rayo Vallecano,Drita Gjilan,3,0,True,post,False
+758069,UECL,2025-12-18T20:00Z,Sparta Prague,Aberdeen,3,0,True,post,False
+758055,UECL,2025-12-18T20:00Z,Mainz,Samsunspor,2,0,True,post,False
+758070,UECL,2025-12-18T20:00Z,Sigma Olomouc,Lech Poznan,1,2,True,post,False
+758066,UECL,2025-12-18T20:00Z,Slovan Bratislava,BK Häcken,1,0,True,post,False
+758071,UECL,2025-12-18T20:00Z,Shamrock Rovers,Hamrun Spartans,3,1,True,post,False
 757761,UCL,2026-01-20T15:30Z,Kairat Almaty,Club Brugge,1,4,True,post,False
 757762,UCL,2026-01-20T17:45Z,Bodo/Glimt,Manchester City,3,1,True,post,False
-757769,UCL,2026-01-20T20:00Z,Tottenham Hotspur,Borussia Dortmund,2,0,True,post,False
-757766,UCL,2026-01-20T20:00Z,Villarreal,Ajax Amsterdam,1,2,True,post,False
-757764,UCL,2026-01-20T20:00Z,Real Madrid,AS Monaco,6,1,True,post,False
-757767,UCL,2026-01-20T20:00Z,F.C. København,Napoli,1,1,True,post,False
 757763,UCL,2026-01-20T20:00Z,Internazionale,Arsenal,1,3,True,post,False
 757765,UCL,2026-01-20T20:00Z,Olympiacos,Bayer Leverkusen,2,0,True,post,False
+757767,UCL,2026-01-20T20:00Z,F.C. København,Napoli,1,1,True,post,False
 757768,UCL,2026-01-20T20:00Z,Sporting CP,Paris Saint-Germain,2,1,True,post,False
+757766,UCL,2026-01-20T20:00Z,Villarreal,Ajax Amsterdam,1,2,True,post,False
+757769,UCL,2026-01-20T20:00Z,Tottenham Hotspur,Borussia Dortmund,2,0,True,post,False
+757764,UCL,2026-01-20T20:00Z,Real Madrid,AS Monaco,6,1,True,post,False
 757770,UCL,2026-01-21T17:45Z,FK Qarabag,Eintracht Frankfurt,3,2,True,post,False
 757771,UCL,2026-01-21T17:45Z,Galatasaray,Atlético Madrid,1,1,True,post,False
 757773,UCL,2026-01-21T20:00Z,Chelsea,Pafos,1,0,True,post,False
@@ -872,60 +872,60 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 757778,UCL,2026-01-21T20:00Z,Slavia Prague,Barcelona,2,4,True,post,False
 757772,UCL,2026-01-21T20:00Z,Atalanta,Athletic Club,2,3,True,post,False
 757775,UCL,2026-01-21T20:00Z,Juventus,Benfica,2,0,True,post,False
-757911,UEL,2026-01-22T17:45Z,Feyenoord Rotterdam,SK Sturm Graz,3,0,True,post,False
-757913,UEL,2026-01-22T17:45Z,Bologna,Celtic,2,2,True,post,False
-757907,UEL,2026-01-22T17:45Z,Malmö FF,Red Star Belgrade,0,1,True,post,False
-757909,UEL,2026-01-22T17:45Z,Viktoria Plzen,FC Porto,1,1,True,post,False
-757910,UEL,2026-01-22T17:45Z,SK Brann,FC Midtjylland,3,3,True,post,False
-757906,UEL,2026-01-22T17:45Z,Young Boys,Lyon,0,1,True,post,False
-757908,UEL,2026-01-22T17:45Z,Fenerbahce,Aston Villa,0,1,True,post,False
-757912,UEL,2026-01-22T17:45Z,SC Freiburg,Maccabi Tel-Aviv,1,0,True,post,False
 757905,UEL,2026-01-22T17:45Z,PAOK,Real Betis,2,0,True,post,False
-757920,UEL,2026-01-22T20:00Z,AS Roma,VfB Stuttgart,2,0,True,post,False
-757921,UEL,2026-01-22T20:00Z,Braga,Nottingham Forest,1,0,True,post,False
-757918,UEL,2026-01-22T20:00Z,RB Salzburg,FC Basel,3,1,True,post,False
-757919,UEL,2026-01-22T20:00Z,Rangers,Ludogorets Razgrad,1,0,True,post,False
-757922,UEL,2026-01-22T20:00Z,Nice,Go Ahead Eagles,3,1,True,post,False
-757917,UEL,2026-01-22T20:00Z,Ferencvaros,Panathinaikos,1,1,True,post,False
-757915,UEL,2026-01-22T20:00Z,Dinamo Zagreb,FCSB,4,1,True,post,False
+757912,UEL,2026-01-22T17:45Z,SC Freiburg,Maccabi Tel-Aviv,1,0,True,post,False
+757906,UEL,2026-01-22T17:45Z,Young Boys,Lyon,0,1,True,post,False
+757910,UEL,2026-01-22T17:45Z,SK Brann,FC Midtjylland,3,3,True,post,False
+757908,UEL,2026-01-22T17:45Z,Fenerbahce,Aston Villa,0,1,True,post,False
+757907,UEL,2026-01-22T17:45Z,Malmö FF,Red Star Belgrade,0,1,True,post,False
+757913,UEL,2026-01-22T17:45Z,Bologna,Celtic,2,2,True,post,False
+757911,UEL,2026-01-22T17:45Z,Feyenoord Rotterdam,SK Sturm Graz,3,0,True,post,False
+757909,UEL,2026-01-22T17:45Z,Viktoria Plzen,FC Porto,1,1,True,post,False
 757914,UEL,2026-01-22T20:00Z,Celta Vigo,Lille,2,1,True,post,False
+757917,UEL,2026-01-22T20:00Z,Ferencvaros,Panathinaikos,1,1,True,post,False
+757922,UEL,2026-01-22T20:00Z,Nice,Go Ahead Eagles,3,1,True,post,False
+757915,UEL,2026-01-22T20:00Z,Dinamo Zagreb,FCSB,4,1,True,post,False
+757918,UEL,2026-01-22T20:00Z,RB Salzburg,FC Basel,3,1,True,post,False
+757921,UEL,2026-01-22T20:00Z,Braga,Nottingham Forest,1,0,True,post,False
+757920,UEL,2026-01-22T20:00Z,AS Roma,VfB Stuttgart,2,0,True,post,False
+757919,UEL,2026-01-22T20:00Z,Rangers,Ludogorets Razgrad,1,0,True,post,False
 757916,UEL,2026-01-22T20:50Z,FC Utrecht,Racing Genk,0,2,True,post,False
+757788,UCL,2026-01-28T20:00Z,Eintracht Frankfurt,Tottenham Hotspur,0,2,True,post,False
+757792,UCL,2026-01-28T20:00Z,Napoli,Chelsea,2,3,True,post,False
+757789,UCL,2026-01-28T20:00Z,Liverpool,FK Qarabag,6,0,True,post,False
+757796,UCL,2026-01-28T20:00Z,Union St.-Gilloise,Atalanta,1,0,True,post,False
+757795,UCL,2026-01-28T20:00Z,Paris Saint-Germain,Newcastle United,1,1,True,post,False
+757794,UCL,2026-01-28T20:00Z,Pafos,Slavia Prague,4,1,True,post,False
+757790,UCL,2026-01-28T20:00Z,Manchester City,Galatasaray,2,0,True,post,False
+757793,UCL,2026-01-28T20:00Z,PSV Eindhoven,Bayern Munich,1,2,True,post,False
+757787,UCL,2026-01-28T20:00Z,Club Brugge,Marseille,3,0,True,post,False
+757785,UCL,2026-01-28T20:00Z,Benfica,Real Madrid,4,2,True,post,False
 757779,UCL,2026-01-28T20:00Z,Ajax Amsterdam,Olympiacos,1,2,True,post,False
 757782,UCL,2026-01-28T20:00Z,Atlético Madrid,Bodo/Glimt,1,2,True,post,False
 757791,UCL,2026-01-28T20:00Z,AS Monaco,Juventus,0,0,True,post,False
-757786,UCL,2026-01-28T20:00Z,Borussia Dortmund,Internazionale,0,2,True,post,False
+757780,UCL,2026-01-28T20:00Z,Arsenal,Kairat Almaty,3,2,True,post,False
 757784,UCL,2026-01-28T20:00Z,Bayer Leverkusen,Villarreal,3,0,True,post,False
 757783,UCL,2026-01-28T20:00Z,Barcelona,F.C. København,4,1,True,post,False
 757781,UCL,2026-01-28T20:00Z,Athletic Club,Sporting CP,2,3,True,post,False
-757785,UCL,2026-01-28T20:00Z,Benfica,Real Madrid,4,2,True,post,False
-757780,UCL,2026-01-28T20:00Z,Arsenal,Kairat Almaty,3,2,True,post,False
-757793,UCL,2026-01-28T20:00Z,PSV Eindhoven,Bayern Munich,1,2,True,post,False
-757788,UCL,2026-01-28T20:00Z,Eintracht Frankfurt,Tottenham Hotspur,0,2,True,post,False
-757790,UCL,2026-01-28T20:00Z,Manchester City,Galatasaray,2,0,True,post,False
-757794,UCL,2026-01-28T20:00Z,Pafos,Slavia Prague,4,1,True,post,False
-757795,UCL,2026-01-28T20:00Z,Paris Saint-Germain,Newcastle United,1,1,True,post,False
-757796,UCL,2026-01-28T20:00Z,Union St.-Gilloise,Atalanta,1,0,True,post,False
-757789,UCL,2026-01-28T20:00Z,Liverpool,FK Qarabag,6,0,True,post,False
-757787,UCL,2026-01-28T20:00Z,Club Brugge,Marseille,3,0,True,post,False
-757792,UCL,2026-01-28T20:00Z,Napoli,Chelsea,2,3,True,post,False
-757933,UEL,2026-01-29T20:00Z,FCSB,Fenerbahce,1,1,True,post,False
-757939,UEL,2026-01-29T20:00Z,Aston Villa,RB Salzburg,3,2,True,post,False
-757925,UEL,2026-01-29T20:00Z,Lyon,PAOK,4,2,True,post,False
-757937,UEL,2026-01-29T20:00Z,Celtic,FC Utrecht,4,2,True,post,False
-757935,UEL,2026-01-29T20:00Z,FC Basel,Viktoria Plzen,0,1,True,post,False
-757940,UEL,2026-01-29T20:00Z,FC Midtjylland,Dinamo Zagreb,2,0,True,post,False
-757934,UEL,2026-01-29T20:00Z,FC Porto,Rangers,3,1,True,post,False
-757938,UEL,2026-01-29T20:00Z,VfB Stuttgart,Young Boys,3,2,True,post,False
-757923,UEL,2026-01-29T20:00Z,Lille,SC Freiburg,1,0,True,post,False
-757928,UEL,2026-01-29T20:00Z,Real Betis,Feyenoord Rotterdam,2,1,True,post,False
-757930,UEL,2026-01-29T20:00Z,Nottingham Forest,Ferencvaros,4,0,True,post,False
+757786,UCL,2026-01-28T20:00Z,Borussia Dortmund,Internazionale,0,2,True,post,False
 757936,UEL,2026-01-29T20:00Z,Red Star Belgrade,Celta Vigo,1,1,True,post,False
-757927,UEL,2026-01-29T20:00Z,SK Sturm Graz,SK Brann,1,0,True,post,False
-757924,UEL,2026-01-29T20:00Z,Ludogorets Razgrad,Nice,1,0,True,post,False
-757929,UEL,2026-01-29T20:00Z,Panathinaikos,AS Roma,1,1,True,post,False
-757931,UEL,2026-01-29T20:00Z,Go Ahead Eagles,Braga,0,0,True,post,False
-757926,UEL,2026-01-29T20:00Z,Maccabi Tel-Aviv,Bologna,0,3,True,post,False
 757932,UEL,2026-01-29T20:00Z,Racing Genk,Malmö FF,2,1,True,post,False
+757926,UEL,2026-01-29T20:00Z,Maccabi Tel-Aviv,Bologna,0,3,True,post,False
+757931,UEL,2026-01-29T20:00Z,Go Ahead Eagles,Braga,0,0,True,post,False
+757929,UEL,2026-01-29T20:00Z,Panathinaikos,AS Roma,1,1,True,post,False
+757924,UEL,2026-01-29T20:00Z,Ludogorets Razgrad,Nice,1,0,True,post,False
+757927,UEL,2026-01-29T20:00Z,SK Sturm Graz,SK Brann,1,0,True,post,False
+757930,UEL,2026-01-29T20:00Z,Nottingham Forest,Ferencvaros,4,0,True,post,False
+757928,UEL,2026-01-29T20:00Z,Real Betis,Feyenoord Rotterdam,2,1,True,post,False
+757933,UEL,2026-01-29T20:00Z,FCSB,Fenerbahce,1,1,True,post,False
+757938,UEL,2026-01-29T20:00Z,VfB Stuttgart,Young Boys,3,2,True,post,False
+757934,UEL,2026-01-29T20:00Z,FC Porto,Rangers,3,1,True,post,False
+757940,UEL,2026-01-29T20:00Z,FC Midtjylland,Dinamo Zagreb,2,0,True,post,False
+757935,UEL,2026-01-29T20:00Z,FC Basel,Viktoria Plzen,0,1,True,post,False
+757937,UEL,2026-01-29T20:00Z,Celtic,FC Utrecht,4,2,True,post,False
+757925,UEL,2026-01-29T20:00Z,Lyon,PAOK,4,2,True,post,False
+757939,UEL,2026-01-29T20:00Z,Aston Villa,RB Salzburg,3,2,True,post,False
+757923,UEL,2026-01-29T20:00Z,Lille,SC Freiburg,1,0,True,post,False
 401858759,UCL,2026-02-17T17:45Z,Galatasaray,Juventus,5,2,True,post,False
 401858735,UCL,2026-02-17T20:00Z,Benfica,Real Madrid,0,1,True,post,False
 401858758,UCL,2026-02-17T20:00Z,AS Monaco,Paris Saint-Germain,2,3,True,post,False
@@ -934,14 +934,15 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 401858737,UCL,2026-02-18T20:00Z,Olympiacos,Bayer Leverkusen,0,2,True,post,False
 401858760,UCL,2026-02-18T20:00Z,Club Brugge,Atlético Madrid,3,3,True,post,False
 401858734,UCL,2026-02-18T20:00Z,Bodo/Glimt,Internazionale,3,1,True,post,False
-401858776,UEL,2026-02-19T17:45Z,Fenerbahce,Nottingham Forest,0,3,True,post,False
-401854522,UECL,2026-02-19T17:45Z,Zrinjski Mostar,Crystal Palace,1,1,True,post,False
-401854529,UECL,2026-02-19T17:45Z,Sigma Olomouc,Lausanne Sports,1,1,True,post,False
-401858777,UEL,2026-02-19T17:45Z,Dinamo Zagreb,Racing Genk,1,3,True,post,False
-401854526,UECL,2026-02-19T17:45Z,FC Noah,AZ Alkmaar,1,0,True,post,False
 401858773,UEL,2026-02-19T17:45Z,PAOK,Celta Vigo,1,2,True,post,False
 401854525,UECL,2026-02-19T17:45Z,KuPS Kuopio,Lech Poznan,0,2,True,post,False
+401854526,UECL,2026-02-19T17:45Z,FC Noah,AZ Alkmaar,1,0,True,post,False
 401858770,UEL,2026-02-19T17:45Z,SK Brann,Bologna,0,1,True,post,False
+401854529,UECL,2026-02-19T17:45Z,Sigma Olomouc,Lausanne Sports,1,1,True,post,False
+401858776,UEL,2026-02-19T17:45Z,Fenerbahce,Nottingham Forest,0,3,True,post,False
+401858777,UEL,2026-02-19T17:45Z,Dinamo Zagreb,Racing Genk,1,3,True,post,False
+401854522,UECL,2026-02-19T17:45Z,Zrinjski Mostar,Crystal Palace,1,1,True,post,False
+401854524,UECL,2026-02-19T20:00Z,Jagiellonia Bialystok,Fiorentina,0,3,True,post,False
 401858771,UEL,2026-02-19T20:00Z,Celtic,VfB Stuttgart,1,4,True,post,False
 401858775,UEL,2026-02-19T20:00Z,Lille,Red Star Belgrade,0,1,True,post,False
 401858774,UEL,2026-02-19T20:00Z,Ludogorets Razgrad,Ferencvaros,2,1,True,post,False
@@ -949,31 +950,30 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 401854527,UECL,2026-02-19T20:00Z,Omonia Nicosia,Rijeka,0,1,True,post,False
 401854528,UECL,2026-02-19T20:00Z,KF Shkëndija,Samsunspor,0,1,True,post,False
 401854523,UECL,2026-02-19T20:00Z,Drita Gjilan,NK Celje,2,3,True,post,False
-401854524,UECL,2026-02-19T20:00Z,Jagiellonia Bialystok,Fiorentina,0,3,True,post,False
 401858768,UCL,2026-02-24T17:45Z,Atlético Madrid,Club Brugge,4,1,True,post,False
+401858766,UCL,2026-02-24T20:00Z,Internazionale,Bodo/Glimt,1,2,True,post,False
 401858764,UCL,2026-02-24T20:00Z,Newcastle United,FK Qarabag,3,2,True,post,False
 401858767,UCL,2026-02-24T20:00Z,Bayer Leverkusen,Olympiacos,0,0,True,post,False
-401858766,UCL,2026-02-24T20:00Z,Internazionale,Bodo/Glimt,1,2,True,post,False
 401858762,UCL,2026-02-25T17:45Z,Atalanta,Borussia Dortmund,4,1,True,post,False
 401858765,UCL,2026-02-25T20:00Z,Juventus,Galatasaray,3,2,True,post,False
 401858763,UCL,2026-02-25T20:00Z,Paris Saint-Germain,AS Monaco,2,2,True,post,False
 401858769,UCL,2026-02-25T20:00Z,Real Madrid,Benfica,2,1,True,post,False
-401854532,UECL,2026-02-26T17:45Z,NK Celje,Drita Gjilan,3,2,True,post,False
-401854534,UECL,2026-02-26T17:45Z,Fiorentina,Jagiellonia Bialystok,2,4,True,post,False
-401854535,UECL,2026-02-26T17:45Z,Samsunspor,KF Shkëndija,4,0,True,post,False
-401854530,UECL,2026-02-26T17:45Z,Rijeka,Omonia Nicosia,3,1,True,post,False
 401858785,UEL,2026-02-26T17:45Z,Viktoria Plzen,Panathinaikos,1,1,True,post,False
-401858782,UEL,2026-02-26T17:45Z,Ferencvaros,Ludogorets Razgrad,2,0,True,post,False
 401858779,UEL,2026-02-26T17:45Z,VfB Stuttgart,Celtic,0,1,True,post,False
+401858782,UEL,2026-02-26T17:45Z,Ferencvaros,Ludogorets Razgrad,2,0,True,post,False
 401858783,UEL,2026-02-26T17:45Z,Red Star Belgrade,Lille,0,2,True,post,False
-401854533,UECL,2026-02-26T20:00Z,Crystal Palace,Zrinjski Mostar,2,0,True,post,False
-401854531,UECL,2026-02-26T20:00Z,AZ Alkmaar,FC Noah,4,0,True,post,False
-401854537,UECL,2026-02-26T20:00Z,Lausanne Sports,Sigma Olomouc,1,2,True,post,False
-401858781,UEL,2026-02-26T20:00Z,Racing Genk,Dinamo Zagreb,3,3,True,post,False
-401858780,UEL,2026-02-26T20:00Z,Nottingham Forest,Fenerbahce,1,2,True,post,False
-401854536,UECL,2026-02-26T20:00Z,Lech Poznan,KuPS Kuopio,1,0,True,post,False
+401854530,UECL,2026-02-26T17:45Z,Rijeka,Omonia Nicosia,3,1,True,post,False
+401854534,UECL,2026-02-26T17:45Z,Fiorentina,Jagiellonia Bialystok,2,4,True,post,False
+401854532,UECL,2026-02-26T17:45Z,NK Celje,Drita Gjilan,3,2,True,post,False
+401854535,UECL,2026-02-26T17:45Z,Samsunspor,KF Shkëndija,4,0,True,post,False
 401858784,UEL,2026-02-26T20:00Z,Celta Vigo,PAOK,1,0,True,post,False
+401854536,UECL,2026-02-26T20:00Z,Lech Poznan,KuPS Kuopio,1,0,True,post,False
+401858780,UEL,2026-02-26T20:00Z,Nottingham Forest,Fenerbahce,1,2,True,post,False
 401858778,UEL,2026-02-26T20:00Z,Bologna,SK Brann,1,0,True,post,False
+401854537,UECL,2026-02-26T20:00Z,Lausanne Sports,Sigma Olomouc,1,2,True,post,False
+401854531,UECL,2026-02-26T20:00Z,AZ Alkmaar,FC Noah,4,0,True,post,False
+401854533,UECL,2026-02-26T20:00Z,Crystal Palace,Zrinjski Mostar,2,0,True,post,False
+401858781,UEL,2026-02-26T20:00Z,Racing Genk,Dinamo Zagreb,3,3,True,post,False
 401862667,UCL,2026-03-10T17:45Z,Galatasaray,Liverpool,1,0,True,post,False
 401862641,UCL,2026-03-10T20:00Z,Atalanta,Bayern Munich,1,6,True,post,False
 401862579,UCL,2026-03-10T20:00Z,Atlético Madrid,Tottenham Hotspur,5,2,True,post,False
@@ -982,31 +982,31 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 401862583,UCL,2026-03-11T20:00Z,Bodo/Glimt,Sporting CP,3,0,True,post,False
 401862646,UCL,2026-03-11T20:00Z,Paris Saint-Germain,Chelsea,5,2,True,post,False
 401862645,UCL,2026-03-11T20:00Z,Real Madrid,Manchester City,3,0,True,post,False
-401862871,UEL,2026-03-12T17:45Z,Bologna,AS Roma,1,1,True,post,False
-401862855,UECL,2026-03-12T17:45Z,AZ Alkmaar,Sparta Prague,2,1,True,post,False
-401862847,UECL,2026-03-12T17:45Z,Samsunspor,Rayo Vallecano,1,3,True,post,False
-401862848,UECL,2026-03-12T17:45Z,Rijeka,Strasbourg,1,2,True,post,False
-401862754,UEL,2026-03-12T17:45Z,Lille,Aston Villa,0,1,True,post,False
 401862752,UEL,2026-03-12T17:45Z,VfB Stuttgart,FC Porto,1,2,True,post,False
-401862853,UECL,2026-03-12T17:45Z,Lech Poznan,Shakhtar Donetsk,1,3,True,post,False
 401862753,UEL,2026-03-12T17:45Z,Panathinaikos,Real Betis,1,0,True,post,False
-401862856,UECL,2026-03-12T20:00Z,Sigma Olomouc,Mainz,0,0,True,post,False
-401862846,UECL,2026-03-12T20:00Z,Fiorentina,Raków Czestochowa,2,1,True,post,False
-401862845,UECL,2026-03-12T20:00Z,NK Celje,AEK Athens,0,4,True,post,False
-401862769,UEL,2026-03-12T20:00Z,Racing Genk,SC Freiburg,1,0,True,post,False
+401862754,UEL,2026-03-12T17:45Z,Lille,Aston Villa,0,1,True,post,False
+401862853,UECL,2026-03-12T17:45Z,Lech Poznan,Shakhtar Donetsk,1,3,True,post,False
+401862847,UECL,2026-03-12T17:45Z,Samsunspor,Rayo Vallecano,1,3,True,post,False
+401862855,UECL,2026-03-12T17:45Z,AZ Alkmaar,Sparta Prague,2,1,True,post,False
+401862871,UEL,2026-03-12T17:45Z,Bologna,AS Roma,1,1,True,post,False
+401862848,UECL,2026-03-12T17:45Z,Rijeka,Strasbourg,1,2,True,post,False
+401862755,UEL,2026-03-12T20:00Z,Ferencvaros,Braga,2,0,True,post,False
+401862770,UEL,2026-03-12T20:00Z,Nottingham Forest,FC Midtjylland,0,1,True,post,False
 401862854,UECL,2026-03-12T20:00Z,Crystal Palace,AEK Larnaca,0,0,True,post,False
 401862872,UEL,2026-03-12T20:00Z,Celta Vigo,Lyon,1,1,True,post,False
-401862770,UEL,2026-03-12T20:00Z,Nottingham Forest,FC Midtjylland,0,1,True,post,False
-401862755,UEL,2026-03-12T20:00Z,Ferencvaros,Braga,2,0,True,post,False
+401862845,UECL,2026-03-12T20:00Z,NK Celje,AEK Athens,0,4,True,post,False
+401862846,UECL,2026-03-12T20:00Z,Fiorentina,Raków Czestochowa,2,1,True,post,False
+401862856,UECL,2026-03-12T20:00Z,Sigma Olomouc,Mainz,0,0,True,post,False
+401862769,UEL,2026-03-12T20:00Z,Racing Genk,SC Freiburg,1,0,True,post,False
 401862584,UCL,2026-03-17T17:45Z,Sporting CP,Bodo/Glimt,5,0,True,post,False
 401862648,UCL,2026-03-17T20:00Z,Chelsea,Paris Saint-Germain,0,3,True,post,False
 401862647,UCL,2026-03-17T20:00Z,Manchester City,Real Madrid,1,2,True,post,False
 401862581,UCL,2026-03-17T20:00Z,Arsenal,Bayer Leverkusen,2,0,True,post,False
 401862758,UEL,2026-03-18T15:30Z,Braga,Ferencvaros,4,0,True,post,False
 401862582,UCL,2026-03-18T17:45Z,Barcelona,Newcastle United,7,2,True,post,False
-401862668,UCL,2026-03-18T20:00Z,Liverpool,Galatasaray,4,0,True,post,False
-401862580,UCL,2026-03-18T20:00Z,Tottenham Hotspur,Atlético Madrid,3,2,True,post,False
 401862642,UCL,2026-03-18T20:00Z,Bayern Munich,Atalanta,4,1,True,post,False
+401862580,UCL,2026-03-18T20:00Z,Tottenham Hotspur,Atlético Madrid,3,2,True,post,False
+401862668,UCL,2026-03-18T20:00Z,Liverpool,Galatasaray,4,0,True,post,False
 401862875,UEL,2026-03-19T17:45Z,FC Midtjylland,Nottingham Forest,1,2,True,post,False
 401862876,UEL,2026-03-19T17:45Z,Lyon,Celta Vigo,0,2,True,post,False
 401862873,UEL,2026-03-19T17:45Z,SC Freiburg,Racing Genk,5,1,True,post,False
@@ -1014,19 +1014,19 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 401862859,UECL,2026-03-19T17:45Z,Mainz,Sigma Olomouc,2,0,True,post,False
 401862858,UECL,2026-03-19T17:45Z,AEK Larnaca,Crystal Palace,1,2,True,post,False
 401862851,UECL,2026-03-19T17:45Z,AEK Athens,NK Celje,0,2,True,post,False
-401862757,UEL,2026-03-19T20:00Z,Real Betis,Panathinaikos,4,0,True,post,False
+401862874,UEL,2026-03-19T20:00Z,AS Roma,Bologna,3,4,True,post,False
+401862857,UECL,2026-03-19T20:00Z,Sparta Prague,AZ Alkmaar,0,4,True,post,False
+401862759,UEL,2026-03-19T20:00Z,Aston Villa,Lille,2,0,True,post,False
+401862860,UECL,2026-03-19T20:00Z,Shakhtar Donetsk,Lech Poznan,1,2,True,post,False
 401862850,UECL,2026-03-19T20:00Z,Strasbourg,Rijeka,1,1,True,post,False
 401862756,UEL,2026-03-19T20:00Z,FC Porto,VfB Stuttgart,2,0,True,post,False
+401862757,UEL,2026-03-19T20:00Z,Real Betis,Panathinaikos,4,0,True,post,False
 401862852,UECL,2026-03-19T20:00Z,Rayo Vallecano,Samsunspor,0,1,True,post,False
-401862860,UECL,2026-03-19T20:00Z,Shakhtar Donetsk,Lech Poznan,1,2,True,post,False
-401862759,UEL,2026-03-19T20:00Z,Aston Villa,Lille,2,0,True,post,False
-401862857,UECL,2026-03-19T20:00Z,Sparta Prague,AZ Alkmaar,0,4,True,post,False
-401862874,UEL,2026-03-19T20:00Z,AS Roma,Bologna,3,4,True,post,False
 401862888,UCL,2026-04-07T19:00Z,Sporting CP,Arsenal,0,1,True,post,False
 401862886,UCL,2026-04-07T19:00Z,Real Madrid,Bayern Munich,1,2,True,post,False
 401862899,UEL,2026-04-08T16:45Z,Braga,Real Betis,1,1,True,post,False
-401862885,UCL,2026-04-08T19:00Z,Paris Saint-Germain,Liverpool,2,0,True,post,False
 401862887,UCL,2026-04-08T19:00Z,Barcelona,Atlético Madrid,0,2,True,post,False
+401862885,UCL,2026-04-08T19:00Z,Paris Saint-Germain,Liverpool,2,0,True,post,False
 401862919,UECL,2026-04-09T16:45Z,Rayo Vallecano,AEK Athens,3,0,True,post,False
 401862920,UECL,2026-04-09T19:00Z,Mainz,Strasbourg,2,0,True,post,False
 401862918,UECL,2026-04-09T19:00Z,Shakhtar Donetsk,AZ Alkmaar,3,0,True,post,False
@@ -1040,12 +1040,12 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 401862891,UCL,2026-04-15T19:00Z,Bayern Munich,Real Madrid,4,3,True,post,False
 401862904,UEL,2026-04-16T16:45Z,Celta Vigo,SC Freiburg,1,3,True,post,False
 401862922,UECL,2026-04-16T16:45Z,AZ Alkmaar,Shakhtar Donetsk,2,2,True,post,False
-401862906,UEL,2026-04-16T19:00Z,Aston Villa,Bologna,4,0,True,post,False
-401862905,UEL,2026-04-16T19:00Z,Nottingham Forest,FC Porto,1,0,True,post,False
-401862923,UECL,2026-04-16T19:00Z,AEK Athens,Rayo Vallecano,3,1,True,post,False
-401862921,UECL,2026-04-16T19:00Z,Fiorentina,Crystal Palace,2,1,True,post,False
 401862903,UEL,2026-04-16T19:00Z,Real Betis,Braga,2,4,True,post,False
+401862921,UECL,2026-04-16T19:00Z,Fiorentina,Crystal Palace,2,1,True,post,False
 401862924,UECL,2026-04-16T19:00Z,Strasbourg,Mainz,4,0,True,post,False
+401862905,UEL,2026-04-16T19:00Z,Nottingham Forest,FC Porto,1,0,True,post,False
+401862906,UEL,2026-04-16T19:00Z,Aston Villa,Bologna,4,0,True,post,False
+401862923,UECL,2026-04-16T19:00Z,AEK Athens,Rayo Vallecano,3,1,True,post,False
 401862893,UCL,2026-04-28T19:00Z,Paris Saint-Germain,Bayern Munich,5,4,True,post,False
 401862894,UCL,2026-04-29T19:00Z,Atlético Madrid,Arsenal,1,1,True,post,False
 401862926,UECL,2026-04-30T19:00Z,Rayo Vallecano,Strasbourg,1,0,True,post,False
@@ -1063,148 +1063,148 @@ id,cup,dt,home,away,hg,ag,done,state,neutral
 401862897,UCL,2026-05-30T16:00Z,Paris Saint-Germain,Arsenal,1,1,True,post,False
 401915452,UCL,2026-09-08T16:45Z,AEK Athens,LASK Linz,1,0,True,post,False
 401915426,UCL,2026-09-08T16:45Z,Club Brugge,Aston Villa,2,3,True,post,False
+401915425,UCL,2026-09-08T19:00Z,FC Porto,Manchester City,0,2,True,post,False
+401915451,UCL,2026-09-08T19:00Z,Real Madrid,Internazionale,2,1,True,post,False
 401915449,UCL,2026-09-08T19:00Z,Borussia Dortmund,Villarreal,3,2,True,post,False
 401915450,UCL,2026-09-08T19:00Z,Lille,Real Betis,2,3,True,post,False
-401915451,UCL,2026-09-08T19:00Z,Real Madrid,Internazionale,2,1,True,post,False
-401915425,UCL,2026-09-08T19:00Z,FC Porto,Manchester City,0,2,True,post,False
 401915424,UCL,2026-09-09T16:45Z,Barcelona,Feyenoord Rotterdam,5,1,True,post,False
 401915448,UCL,2026-09-09T16:45Z,VfB Stuttgart,Viking FK,3,1,True,post,False
 401915446,UCL,2026-09-09T19:00Z,Liverpool,Atlético Madrid,2,1,True,post,False
 401915445,UCL,2026-09-09T19:00Z,Paris Saint-Germain,Slovan Bratislava,6,1,True,post,False
 401915447,UCL,2026-09-09T19:00Z,Sporting CP,Galatasaray,3,1,True,post,False
 401915423,UCL,2026-09-09T19:00Z,Napoli,Arsenal,0,1,True,post,False
-401915422,UCL,2026-09-10T16:45Z,PSV Eindhoven,Shakhtar Donetsk,1,1,True,post,False
 401915444,UCL,2026-09-10T16:45Z,Fenerbahce,AS Roma,1,1,True,post,False
+401915422,UCL,2026-09-10T16:45Z,PSV Eindhoven,Shakhtar Donetsk,1,1,True,post,False
 401915443,UCL,2026-09-10T19:00Z,Bayern Munich,Bodo/Glimt,5,0,True,post,False
 401915441,UCL,2026-09-10T19:00Z,Como,RB Leipzig,4,1,True,post,False
 401915442,UCL,2026-09-10T19:00Z,Manchester United,Sabah FK,4,0,True,post,False
 401915440,UCL,2026-09-10T19:00Z,Slavia Prague,Lens,2,3,True,post,False
 401915594,UEL,2026-09-16T16:45Z,Ararat-Armenia,Sparta Prague,1,4,True,post,False
 401915611,UEL,2026-09-16T16:45Z,Omonia Nicosia,Celta Vigo,1,0,True,post,False
-401915593,UEL,2026-09-16T19:00Z,SK Sturm Graz,Stade Rennais,0,0,True,post,False
-401915590,UEL,2026-09-16T19:00Z,Anderlecht,Lyon,1,2,True,post,False
-401915587,UEL,2026-09-16T19:00Z,Bayer Leverkusen,NK Celje,2,0,True,post,False
-401915592,UEL,2026-09-16T19:00Z,Sunderland,AZ Alkmaar,1,0,True,post,False
-401915589,UEL,2026-09-16T19:00Z,Hapoel Be'er,Dinamo Zagreb,0,0,True,post,False
 401915586,UEL,2026-09-16T19:00Z,AC Milan,Benfica,0,2,True,post,False
 401915588,UEL,2026-09-16T19:00Z,Olympiacos,Jagiellonia Bialystok,2,1,True,post,False
+401915589,UEL,2026-09-16T19:00Z,Hapoel Be'er,Dinamo Zagreb,0,0,True,post,False
+401915587,UEL,2026-09-16T19:00Z,Bayer Leverkusen,NK Celje,2,0,True,post,False
+401915590,UEL,2026-09-16T19:00Z,Anderlecht,Lyon,1,2,True,post,False
+401915593,UEL,2026-09-16T19:00Z,SK Sturm Graz,Stade Rennais,0,0,True,post,False
+401915592,UEL,2026-09-16T19:00Z,Sunderland,AZ Alkmaar,1,0,True,post,False
 401915585,UEL,2026-09-17T16:45Z,OFI Crete,TSG Hoffenheim,2,0,True,post,False
 401915584,UEL,2026-09-17T16:45Z,Levski Sofia,RB Salzburg,0,1,True,post,False
+401915569,UEL,2026-09-17T19:00Z,Crystal Palace,Lech Poznan,4,0,True,post,False
 401915583,UEL,2026-09-17T19:00Z,Real Sociedad,AFC Bournemouth,1,2,True,post,False
 401915580,UEL,2026-09-17T19:00Z,Viktoria Plzen,Union St.-Gilloise,0,3,True,post,False
 401915582,UEL,2026-09-17T19:00Z,Juventus,NEC Nijmegen,5,0,True,post,False
-401915569,UEL,2026-09-17T19:00Z,Crystal Palace,Lech Poznan,4,0,True,post,False
 401915581,UEL,2026-09-17T19:00Z,Celtic,Ferencvaros,1,3,True,post,False
 401915591,UEL,2026-09-17T19:00Z,Besiktas,Marseille,4,1,True,post,False
 401915570,UEL,2026-09-17T19:00Z,Lillestrom,Torreense,1,2,True,post,False
 401915418,UCL,2026-10-13T16:45Z,Lens,Sporting CP,0,2,True,post,False
 401915436,UCL,2026-10-13T16:45Z,Sabah FK,Slavia Prague,2,0,True,post,False
-401915434,UCL,2026-10-13T19:00Z,RB Leipzig,PSV Eindhoven,1,0,True,post,False
+401915410,UCL,2026-10-13T19:00Z,Villarreal,Napoli,3,1,True,post,False
+401915411,UCL,2026-10-13T19:00Z,Viking FK,Bayern Munich,3,3,True,post,False
+401915435,UCL,2026-10-13T19:00Z,Galatasaray,Barcelona,1,4,True,post,False
 401915413,UCL,2026-10-13T19:00Z,Internazionale,Club Brugge,3,4,True,post,False
 401915417,UCL,2026-10-13T19:00Z,Arsenal,Lille,3,0,True,post,False
 401915412,UCL,2026-10-13T19:00Z,Atlético Madrid,Manchester United,2,0,True,post,False
-401915435,UCL,2026-10-13T19:00Z,Galatasaray,Barcelona,1,4,True,post,False
-401915410,UCL,2026-10-13T19:00Z,Villarreal,Napoli,3,1,True,post,False
-401915411,UCL,2026-10-13T19:00Z,Viking FK,Bayern Munich,3,3,True,post,False
+401915434,UCL,2026-10-13T19:00Z,RB Leipzig,PSV Eindhoven,1,0,True,post,False
 401915416,UCL,2026-10-14T16:45Z,Feyenoord Rotterdam,Como,3,2,True,post,False
 401915415,UCL,2026-10-14T16:45Z,LASK Linz,Liverpool,3,6,True,post,False
-401915414,UCL,2026-10-14T19:00Z,AS Roma,Real Madrid,3,4,True,post,False
-401915408,UCL,2026-10-14T19:00Z,Real Betis,FC Porto,3,2,True,post,False
-401915407,UCL,2026-10-14T19:00Z,Manchester City,Paris Saint-Germain,2,4,True,post,False
-401915405,UCL,2026-10-14T19:00Z,Slovan Bratislava,VfB Stuttgart,0,3,True,post,False
-401915409,UCL,2026-10-14T19:00Z,Aston Villa,Fenerbahce,6,0,True,post,False
-401915393,UCL,2026-10-14T19:00Z,Bodo/Glimt,Borussia Dortmund,1,0,True,post,False
 401915406,UCL,2026-10-14T19:00Z,Shakhtar Donetsk,AEK Athens,3,1,True,post,False
-401915747,UECL,2026-10-15T16:45Z,Riga FC,Kairat Almaty,1,1,True,post,False
-401915859,UECL,2026-10-15T16:45Z,Egnatia,FC Midtjylland,1,1,True,post,False
-401915748,UECL,2026-10-15T16:45Z,FC Lugano,Red Star Belgrade,3,2,True,post,False
-401915861,UECL,2026-10-15T16:45Z,Hajduk Split,Ajax Amsterdam,2,1,True,post,False
-401915860,UECL,2026-10-15T16:45Z,KAA Gent,AGF,1,0,True,post,False
-401915857,UECL,2026-10-15T16:45Z,Mjällby AIF,Inter D'Escaldes,2,0,True,post,False
-401915575,UEL,2026-10-15T16:45Z,Torreense,Sunderland,1,2,True,post,False
-401915856,UECL,2026-10-15T16:45Z,Panathinaikos,Borac Banja Luka,2,1,True,post,False
-401915858,UECL,2026-10-15T16:45Z,KuPS Kuopio,Trabzonspor,2,4,True,post,False
-401915577,UEL,2026-10-15T16:45Z,NK Celje,Omonia Nicosia,0,3,True,post,False
+401915409,UCL,2026-10-14T19:00Z,Aston Villa,Fenerbahce,6,0,True,post,False
+401915405,UCL,2026-10-14T19:00Z,Slovan Bratislava,VfB Stuttgart,0,3,True,post,False
+401915393,UCL,2026-10-14T19:00Z,Bodo/Glimt,Borussia Dortmund,1,0,True,post,False
+401915408,UCL,2026-10-14T19:00Z,Real Betis,FC Porto,3,2,True,post,False
+401915414,UCL,2026-10-14T19:00Z,AS Roma,Real Madrid,3,4,True,post,False
+401915407,UCL,2026-10-14T19:00Z,Manchester City,Paris Saint-Germain,2,4,True,post,False
 401915576,UEL,2026-10-15T16:45Z,Lech Poznan,Bayer Leverkusen,0,4,True,post,False
-401915854,UECL,2026-10-15T16:45Z,CSU Craiova,Getafe,1,1,True,post,False
-401915855,UECL,2026-10-15T16:45Z,CSKA Sofia,AS Monaco,1,2,True,post,False
-401915568,UEL,2026-10-15T16:45Z,RB Salzburg,AC Milan,0,4,True,post,False
-401915567,UEL,2026-10-15T16:45Z,Sparta Prague,Lillestrom,1,1,True,post,False
-401915574,UEL,2026-10-15T16:45Z,Union St.-Gilloise,Real Sociedad,1,1,True,post,False
 401915573,UEL,2026-10-15T16:45Z,AZ Alkmaar,Hapoel Be'er,2,1,True,post,False
+401915574,UEL,2026-10-15T16:45Z,Union St.-Gilloise,Real Sociedad,1,1,True,post,False
+401915567,UEL,2026-10-15T16:45Z,Sparta Prague,Lillestrom,1,1,True,post,False
+401915568,UEL,2026-10-15T16:45Z,RB Salzburg,AC Milan,0,4,True,post,False
 401915566,UEL,2026-10-15T16:45Z,Lyon,Crystal Palace,3,2,True,post,False
-401915853,UECL,2026-10-15T19:00Z,Brighton & Hove Albion,Kauno Zalgiris,4,0,True,post,False
-401915561,UEL,2026-10-15T19:00Z,Jagiellonia Bialystok,Ararat-Armenia,3,1,True,post,False
-401915549,UEL,2026-10-15T19:00Z,Dinamo Zagreb,Anderlecht,1,0,True,post,False
-401915851,UECL,2026-10-15T19:00Z,FC Twente,FC Thun,1,0,True,post,False
-401915560,UEL,2026-10-15T19:00Z,Celta Vigo,Juventus,1,2,True,post,False
-401915550,UEL,2026-10-15T19:00Z,Marseille,Olympiacos,0,1,True,post,False
-401915571,UEL,2026-10-15T19:00Z,AFC Bournemouth,SK Sturm Graz,3,0,True,post,False
-401915852,UECL,2026-10-15T19:00Z,F.C. København,Braga,3,0,True,post,False
-401915562,UEL,2026-10-15T19:00Z,Benfica,Celtic,4,1,True,post,False
-401915746,UECL,2026-10-15T19:00Z,Atalanta,Pafos,3,1,True,post,False
-401915564,UEL,2026-10-15T19:00Z,Ferencvaros,Viktoria Plzen,2,1,True,post,False
-401915848,UECL,2026-10-15T19:00Z,SC Freiburg,Jablonec,3,2,True,post,False
+401915855,UECL,2026-10-15T16:45Z,CSKA Sofia,AS Monaco,1,2,True,post,False
+401915854,UECL,2026-10-15T16:45Z,CSU Craiova,Getafe,1,1,True,post,False
+401915577,UEL,2026-10-15T16:45Z,NK Celje,Omonia Nicosia,0,3,True,post,False
+401915860,UECL,2026-10-15T16:45Z,KAA Gent,AGF,1,0,True,post,False
+401915856,UECL,2026-10-15T16:45Z,Panathinaikos,Borac Banja Luka,2,1,True,post,False
+401915575,UEL,2026-10-15T16:45Z,Torreense,Sunderland,1,2,True,post,False
+401915857,UECL,2026-10-15T16:45Z,Mjällby AIF,Inter D'Escaldes,2,0,True,post,False
+401915861,UECL,2026-10-15T16:45Z,Hajduk Split,Ajax Amsterdam,2,1,True,post,False
+401915748,UECL,2026-10-15T16:45Z,FC Lugano,Red Star Belgrade,3,2,True,post,False
+401915859,UECL,2026-10-15T16:45Z,Egnatia,FC Midtjylland,1,1,True,post,False
+401915747,UECL,2026-10-15T16:45Z,Riga FC,Kairat Almaty,1,1,True,post,False
+401915858,UECL,2026-10-15T16:45Z,KuPS Kuopio,Trabzonspor,2,4,True,post,False
 401915572,UEL,2026-10-15T19:00Z,Stade Rennais,OFI Crete,2,1,True,post,False
+401915848,UECL,2026-10-15T19:00Z,SC Freiburg,Jablonec,3,2,True,post,False
 401915847,UECL,2026-10-15T19:00Z,SK Brann,Lincoln Red Imps,2,1,True,post,False
-401915565,UEL,2026-10-15T19:00Z,NEC Nijmegen,Levski Sofia,1,1,True,post,False
+401915564,UEL,2026-10-15T19:00Z,Ferencvaros,Viktoria Plzen,2,1,True,post,False
 401915850,UECL,2026-10-15T19:00Z,Heart of Midlothian,FC Nordsjælland,1,1,True,post,False
-401915849,UECL,2026-10-15T19:00Z,Sint-Truidense,Iberia 1999,2,0,True,post,False
 401915563,UEL,2026-10-15T19:00Z,TSG Hoffenheim,Besiktas,2,3,True,post,False
+401915565,UEL,2026-10-15T19:00Z,NEC Nijmegen,Levski Sofia,1,1,True,post,False
+401915746,UECL,2026-10-15T19:00Z,Atalanta,Pafos,3,1,True,post,False
+401915849,UECL,2026-10-15T19:00Z,Sint-Truidense,Iberia 1999,2,0,True,post,False
+401915852,UECL,2026-10-15T19:00Z,F.C. København,Braga,3,0,True,post,False
+401915571,UEL,2026-10-15T19:00Z,AFC Bournemouth,SK Sturm Graz,3,0,True,post,False
+401915550,UEL,2026-10-15T19:00Z,Marseille,Olympiacos,0,1,True,post,False
+401915560,UEL,2026-10-15T19:00Z,Celta Vigo,Juventus,1,2,True,post,False
+401915851,UECL,2026-10-15T19:00Z,FC Twente,FC Thun,1,0,True,post,False
+401915549,UEL,2026-10-15T19:00Z,Dinamo Zagreb,Anderlecht,1,0,True,post,False
+401915561,UEL,2026-10-15T19:00Z,Jagiellonia Bialystok,Ararat-Armenia,3,1,True,post,False
+401915853,UECL,2026-10-15T19:00Z,Brighton & Hove Albion,Kauno Zalgiris,4,0,True,post,False
+401915562,UEL,2026-10-15T19:00Z,Benfica,Celtic,4,1,True,post,False
 401915403,UCL,2026-10-20T16:45Z,Fenerbahce,Slavia Prague,2,2,True,post,False
 401915404,UCL,2026-10-20T16:45Z,Sabah FK,Borussia Dortmund,1,2,True,post,False
-401915392,UCL,2026-10-20T19:00Z,VfB Stuttgart,Atlético Madrid,1,1,True,post,False
-401915398,UCL,2026-10-20T19:00Z,FC Porto,PSV Eindhoven,0,1,True,post,False
-401915397,UCL,2026-10-20T19:00Z,Liverpool,Villarreal,4,3,True,post,False
-401915402,UCL,2026-10-20T19:00Z,AS Roma,Slovan Bratislava,4,0,True,post,False
-401915399,UCL,2026-10-20T19:00Z,Paris Saint-Germain,Barcelona,4,2,True,post,False
-401915400,UCL,2026-10-20T19:00Z,Napoli,Bodo/Glimt,4,3,True,post,False
 401915401,UCL,2026-10-20T19:00Z,Manchester City,AEK Athens,5,1,True,post,False
+401915400,UCL,2026-10-20T19:00Z,Napoli,Bodo/Glimt,4,3,True,post,False
+401915399,UCL,2026-10-20T19:00Z,Paris Saint-Germain,Barcelona,4,2,True,post,False
+401915392,UCL,2026-10-20T19:00Z,VfB Stuttgart,Atlético Madrid,1,1,True,post,False
+401915397,UCL,2026-10-20T19:00Z,Liverpool,Villarreal,4,3,True,post,False
+401915398,UCL,2026-10-20T19:00Z,FC Porto,PSV Eindhoven,0,1,True,post,False
+401915402,UCL,2026-10-20T19:00Z,AS Roma,Slovan Bratislava,4,0,True,post,False
 401915395,UCL,2026-10-21T16:45Z,Como,Manchester United,4,1,True,post,False
 401915396,UCL,2026-10-21T16:45Z,Lille,Galatasaray,2,4,True,post,False
-401915394,UCL,2026-10-21T19:00Z,Aston Villa,Viking FK,3,1,True,post,False
-401915312,UCL,2026-10-21T19:00Z,Bayern Munich,Arsenal,2,2,True,post,False
-401915390,UCL,2026-10-21T19:00Z,Internazionale,Shakhtar Donetsk,1,0,True,post,False
-401915391,UCL,2026-10-21T19:00Z,Sporting CP,LASK Linz,2,3,True,post,False
 401915389,UCL,2026-10-21T19:00Z,Real Betis,Feyenoord Rotterdam,1,0,True,post,False
 401915313,UCL,2026-10-21T19:00Z,Real Madrid,RB Leipzig,4,1,True,post,False
+401915391,UCL,2026-10-21T19:00Z,Sporting CP,LASK Linz,2,3,True,post,False
 401915388,UCL,2026-10-21T19:00Z,Club Brugge,Lens,3,0,True,post,False
+401915312,UCL,2026-10-21T19:00Z,Bayern Munich,Arsenal,2,2,True,post,False
+401915394,UCL,2026-10-21T19:00Z,Aston Villa,Viking FK,3,1,True,post,False
+401915390,UCL,2026-10-21T19:00Z,Internazionale,Shakhtar Donetsk,1,0,True,post,False
 401915846,UECL,2026-10-22T14:30Z,Kairat Almaty,Panathinaikos,1,5,True,post,False
-401915546,UEL,2026-10-22T16:45Z,Lech Poznan,Sunderland,1,1,True,post,False
-401915545,UEL,2026-10-22T16:45Z,Union St.-Gilloise,Hapoel Be'er,4,0,True,post,False
-401915844,UECL,2026-10-22T16:45Z,FC Nordsjælland,CSKA Sofia,2,2,True,post,False
-401915841,UECL,2026-10-22T16:45Z,Kauno Zalgiris,SK Brann,1,4,True,post,False
-401915840,UECL,2026-10-22T16:45Z,Getafe,FC Lugano,2,5,True,post,False
-401915838,UECL,2026-10-22T16:45Z,Pafos,Riga FC,1,1,True,post,False
-401915843,UECL,2026-10-22T16:45Z,Red Star Belgrade,F.C. København,2,2,True,post,False
-401915557,UEL,2026-10-22T16:45Z,SK Sturm Graz,Marseille,1,0,True,post,False
-401915839,UECL,2026-10-22T16:45Z,Inter D'Escaldes,CSU Craiova,1,3,True,post,False
-401915559,UEL,2026-10-22T16:45Z,OFI Crete,Bayer Leverkusen,0,2,True,post,False
-401915547,UEL,2026-10-22T16:45Z,Juventus,Stade Rennais,2,2,True,post,False
-401915558,UEL,2026-10-22T16:45Z,Ferencvaros,Torreense,4,1,True,post,False
-401915556,UEL,2026-10-22T16:45Z,Dinamo Zagreb,NEC Nijmegen,2,4,True,post,False
-401915548,UEL,2026-10-22T16:45Z,Ararat-Armenia,AZ Alkmaar,0,4,True,post,False
-401915842,UECL,2026-10-22T16:45Z,Jablonec,Brighton & Hove Albion,0,0,True,post,False
-401915845,UECL,2026-10-22T16:45Z,Iberia 1999,Mjällby AIF,1,1,True,post,False
 401915745,UECL,2026-10-22T16:45Z,Trabzonspor,Heart of Midlothian,2,0,True,post,False
+401915845,UECL,2026-10-22T16:45Z,Iberia 1999,Mjällby AIF,1,1,True,post,False
+401915842,UECL,2026-10-22T16:45Z,Jablonec,Brighton & Hove Albion,0,0,True,post,False
+401915548,UEL,2026-10-22T16:45Z,Ararat-Armenia,AZ Alkmaar,0,4,True,post,False
+401915556,UEL,2026-10-22T16:45Z,Dinamo Zagreb,NEC Nijmegen,2,4,True,post,False
+401915558,UEL,2026-10-22T16:45Z,Ferencvaros,Torreense,4,1,True,post,False
+401915559,UEL,2026-10-22T16:45Z,OFI Crete,Bayer Leverkusen,0,2,True,post,False
+401915839,UECL,2026-10-22T16:45Z,Inter D'Escaldes,CSU Craiova,1,3,True,post,False
+401915547,UEL,2026-10-22T16:45Z,Juventus,Stade Rennais,2,2,True,post,False
+401915843,UECL,2026-10-22T16:45Z,Red Star Belgrade,F.C. København,2,2,True,post,False
+401915838,UECL,2026-10-22T16:45Z,Pafos,Riga FC,1,1,True,post,False
+401915840,UECL,2026-10-22T16:45Z,Getafe,FC Lugano,2,5,True,post,False
+401915841,UECL,2026-10-22T16:45Z,Kauno Zalgiris,SK Brann,1,4,True,post,False
+401915844,UECL,2026-10-22T16:45Z,FC Nordsjælland,CSKA Sofia,2,2,True,post,False
+401915545,UEL,2026-10-22T16:45Z,Union St.-Gilloise,Hapoel Be'er,4,0,True,post,False
+401915546,UEL,2026-10-22T16:45Z,Lech Poznan,Sunderland,1,1,True,post,False
+401915557,UEL,2026-10-22T16:45Z,SK Sturm Graz,Marseille,1,0,True,post,False
+401915541,UEL,2026-10-22T19:00Z,NK Celje,RB Salzburg,2,2,True,post,False
+401915836,UECL,2026-10-22T19:00Z,AS Monaco,SC Freiburg,3,0,True,post,False
+401915542,UEL,2026-10-22T19:00Z,Jagiellonia Bialystok,Anderlecht,0,3,True,post,False
+401915543,UEL,2026-10-22T19:00Z,TSG Hoffenheim,Lyon,3,0,True,post,False
+401915552,UEL,2026-10-22T19:00Z,AFC Bournemouth,AC Milan,3,0,True,post,False
+401915540,UEL,2026-10-22T19:00Z,Lillestrom,Real Sociedad,0,6,True,post,False
+401915555,UEL,2026-10-22T19:00Z,Celtic,Celta Vigo,1,2,True,post,False
+401915554,UEL,2026-10-22T19:00Z,Olympiacos,Sparta Prague,1,0,True,post,False
+401915553,UEL,2026-10-22T19:00Z,Besiktas,Crystal Palace,2,2,True,post,False
+401915539,UEL,2026-10-22T19:00Z,Viktoria Plzen,Levski Sofia,1,2,True,post,False
 401915834,UECL,2026-10-22T19:00Z,FC Thun,Hajduk Split,0,1,True,post,False
 401915833,UECL,2026-10-22T19:00Z,Lincoln Red Imps,FC Twente,1,4,True,post,False
 401915835,UECL,2026-10-22T19:00Z,FC Midtjylland,Sint-Truidense,0,1,True,post,False
-401915832,UECL,2026-10-22T19:00Z,Braga,KAA Gent,2,0,True,post,False
+401915544,UEL,2026-10-22T19:00Z,Omonia Nicosia,Benfica,1,4,True,post,False
 401915744,UECL,2026-10-22T19:00Z,AGF,Egnatia,1,1,True,post,False
 401915837,UECL,2026-10-22T19:00Z,Ajax Amsterdam,Atalanta,2,0,True,post,False
 401915743,UECL,2026-10-22T19:00Z,Borac Banja Luka,KuPS Kuopio,2,0,True,post,False
-401915539,UEL,2026-10-22T19:00Z,Viktoria Plzen,Levski Sofia,1,2,True,post,False
-401915544,UEL,2026-10-22T19:00Z,Omonia Nicosia,Benfica,1,4,True,post,False
-401915554,UEL,2026-10-22T19:00Z,Olympiacos,Sparta Prague,1,0,True,post,False
-401915541,UEL,2026-10-22T19:00Z,NK Celje,RB Salzburg,2,2,True,post,False
-401915555,UEL,2026-10-22T19:00Z,Celtic,Celta Vigo,1,2,True,post,False
-401915540,UEL,2026-10-22T19:00Z,Lillestrom,Real Sociedad,0,6,True,post,False
-401915552,UEL,2026-10-22T19:00Z,AFC Bournemouth,AC Milan,3,0,True,post,False
-401915553,UEL,2026-10-22T19:00Z,Besiktas,Crystal Palace,2,2,True,post,False
-401915543,UEL,2026-10-22T19:00Z,TSG Hoffenheim,Lyon,3,0,True,post,False
-401915542,UEL,2026-10-22T19:00Z,Jagiellonia Bialystok,Anderlecht,0,3,True,post,False
-401915836,UECL,2026-10-22T19:00Z,AS Monaco,SC Freiburg,3,0,True,post,False
+401915832,UECL,2026-10-22T19:00Z,Braga,KAA Gent,2,0,True,post,False
 401915310,UCL,2026-11-03T17:45Z,Shakhtar Donetsk,Sporting CP,0,1,True,post,False
 401915311,UCL,2026-11-03T17:45Z,Galatasaray,VfB Stuttgart,2,0,True,post,False
 401915309,UCL,2026-11-03T20:00Z,Villarreal,Paris Saint-Germain,0,6,True,post,False
