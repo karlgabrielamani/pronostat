@@ -186,3 +186,14 @@ th { font-size: 12px; font-weight: 700; color: var(--ink-3); }
 /* iPhone : pas de zoom automatique quand on touche un menu ou un champ (texte d'au moins 16 px), pas de défilement horizontal de la page */
 @media (max-width: 600px) { select, textarea, input[type="text"], input[type="search"], input:not([type]) { font-size: 16px !important; } }
 html, body { overflow-x: clip; }
+
+/* sports : rangée en haut sur mobile (la barre du bas garde Accueil, Aujourd'hui, Favoris) */
+.sports { display: none; }
+@media (max-width: 600px) {
+  .tabs #tab-foot, .tabs #tab-tennis, .tabs #tab-basket { display: none; }
+  .sports { display: flex; gap: 8px; max-width: 760px; margin: 0 auto 12px; overflow-x: auto; scrollbar-width: none; }
+  .sports::-webkit-scrollbar { display: none; }
+  .sports a { flex: none; font-size: 15px; font-weight: 700; color: var(--ink); background: var(--surface); border: 1px solid var(--line2); border-radius: 999px; padding: 8px 16px; text-decoration: none; white-space: nowrap; }
+  .sports a[aria-current="page"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+}
+.jf { overflow: hidden; } .jf > span { max-width: 100%; }

@@ -43,6 +43,8 @@ def head(title, desc, extra=""):
 
 
 # ---------------------------------------------------------------- l'appli
+HOME_TAB = '<a href="./" id="tab-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 L12 4 L21 11 V20 H3 Z"/></svg>Accueil</a>'
+page = page.replace('<a class="logo" href="#jour">', '<a class="logo" href="./">', 1).replace('<a href="#jour" id="tab-jour">', HOME_TAB + '<a href="#jour" id="tab-jour">', 1)
 open(f"{ROOT}/app.html", "w", encoding="utf-8").write(
     head("Pronostat · l'appli", "Probabilités foot, tennis et NBA : chaque match, événement par événement.") + page + "\n</body>\n</html>\n")
 
@@ -57,7 +59,7 @@ def when(s):
     d = datetime.fromisoformat(str(s).replace("Z", "+00:00"))
     return d.replace(tzinfo=timezone.utc) if d.tzinfo is None else d.astimezone(timezone.utc)
 soon = lambda s: now <= when(s) <= until
-PRIO = ["UCL", "E0", "SP1", "I1", "D1", "F1", "N1", "UEL", "B1", "P1", "UECL", "E1", "SC0", "T1", "G1", "D2", "SP2", "I2", "F2", "E2", "E3", "SC1"]
+PRIO = ["UCL", "E0", "SP1", "I1", "D1", "F1", "N1", "UEL", "B1", "P1", "UECL", "FAC", "CDR", "CIT", "DFB", "CDF", "KNVB", "EFL", "TDP", "E1", "SC0", "SCC", "SLC", "T1", "G1", "D2", "SP2", "I2", "F2", "E2", "E3", "SC1"]
 
 
 def foot_events(L, h, a, neutral=False):
@@ -80,7 +82,6 @@ def foot_events(L, h, a, neutral=False):
                    ("Plus de 2,5 buts", P(lambda i, j: i + j > 2), 1),
                    ("Moins de 2,5 buts", P(lambda i, j: i + j < 3), 1),
                    (f"{hn} gagne", P(lambda i, j: i > j), 0), (f"{an} gagne", P(lambda i, j: i < j), 0),
-                   (f"{hn} ou nul", P(lambda i, j: i >= j), 0), (f"{an} ou nul", P(lambda i, j: i <= j), 0),
                    (f"{hn} n'encaisse aucun but", P(lambda i, j: j == 0), 1), (f"{an} n'encaisse aucun but", P(lambda i, j: i == 0), 1)]}
 
 
@@ -93,10 +94,12 @@ try:
                 if g["home"] not in TM or g["away"] not in TM or not (now <= when(g["dt"]) <= now + timedelta(days=21)): continue
                 e = foot_events(L, TM[g["home"]], TM[g["away"]], g.get("neutral", False))
                 m = {"sport": "Football", "comp": L["name"], "dt": g["dt"], "a": g["home"], "b": g["away"], **e}
-                if match_day is None or (not soon(match_day["dt"]) and soon(g["dt"])): match_day = m
+                m["key"] = (0 if soon(g["dt"]) else 1, PRIO.index(k) if k in PRIO else 99, -(TM[g["home"]]["att"] + TM[g["away"]]["att"]))
+                if match_day is None or m["key"] < match_day["key"]: match_day = m
                 if not soon(g["dt"]): continue
+                known = not L.get("cup") or all(abs(TM[x]["att"] + .3) > 1e-6 for x in (g["home"], g["away"]))
                 for txt, p, novel in e["ev"]:
-                    if .66 <= p <= .9: cands.append((p + .06 * novel - .004 * (PRIO.index(k) if k in PRIO else 30), txt, p, m))
+                    if novel and known and .62 <= p <= .9: cands.append((p + .06 * novel - .004 * (PRIO.index(k) if k in PRIO else 30), txt, p, m))
 except Exception as ex:
     print("  ATTENTION accueil foot :", repr(ex))
 try:
@@ -133,7 +136,7 @@ for sc, txt, p, m in cands:
     key = (m["a"], m["b"])
     if key in seen: continue
     seen.add(key); stats.append((txt, p, m))
-    if len(stats) == 4: break
+    if len(stats) == 3: break
 
 n_test = 0
 for D in (F, N, T):
@@ -159,13 +162,13 @@ if match_day:
     m = match_day
     evs = [("Les deux équipes marquent", next(p for t, p, _ in m["ev"] if t == "Les deux équipes marquent")),
            ("Plus de 2,5 buts", next(p for t, p, _ in m["ev"] if t == "Plus de 2,5 buts")),
-           (f'{m["a"]} n\'encaisse aucun but', m["ev"][7][1]), (f'{m["b"]} n\'encaisse aucun but', m["ev"][8][1])]
+           ]
     md_html = f"""<section class="blk"><h2>Le match du jour</h2>
     <article class="md"><p class="mt"><span class="tag">{esc(m["comp"])}</span> {t_(m)}</p>
       <div class="md-t"><div><b>{esc(m["a"])}</b><span class="pa">{pct(m["H"])}</span></div><div class="dr"><b>Nul</b><span>{pct(m["D"])}</span></div><div class="r"><b>{esc(m["b"])}</b><span class="pb">{pct(m["A"])}</span></div></div>
       <div class="bar"><i style="width:{m["H"]*100:.1f}%;background:var(--a)"></i><i style="width:{m["D"]*100:.1f}%;background:var(--ink-3)"></i><i style="width:{m["A"]*100:.1f}%;background:var(--b)"></i></div>
       <ul class="evs">{''.join(f'<li><span>{esc(t)}</span><b>{pct(p)}</b></li>' for t, p in evs)}<li><span>Score le plus probable</span><b>{esc(m["score"])}</b></li></ul>
-      <a class="btn" href="app.html#foot">Voir tous les événements du match</a></article></section>"""
+      <a class="btn" href="app.html#foot">Voir toutes les probabilités</a></article></section>"""
 
 ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V13 M12 19 V5 M18 19 V10"/></svg>'
 FEATS = [("Chaque événement en %", "Les deux équipes marquent, plus de 2,5 buts, gagne au moins un set… Pas seulement 1, N ou 2."),
@@ -175,8 +178,7 @@ FEATS = [("Chaque événement en %", "Les deux équipes marquent, plus de 2,5 bu
 waitlist = (f"""<form class="wl" action="{esc(FORM_ACTION)}" method="POST"><input type="email" name="email" required placeholder="Votre e-mail" autocomplete="email"><button type="submit">Me prévenir</button></form>"""
             if FORM_ACTION else '<span class="btn ghost" aria-disabled="true">Bientôt disponible</span>')
 FAQ = [("Est-ce un conseil de pari ?", "Non. Pronostat donne des probabilités calculées par un modèle statistique. Ce n'est pas une garantie de résultat, et les bookmakers ont souvent raison."),
-       ("D'où viennent les chiffres ?", f"D'un modèle statistique entraîné sur les résultats passés, testé sur {n_txt} matchs. Il est recalculé chaque matin avec les derniers résultats."),
-       ("Quels sports et compétitions ?", "Le football (grands championnats européens et coupes d'Europe), le tennis ATP et WTA, et la NBA."),
+       ("Quels sports et compétitions ?", "Le football (grands championnats européens, coupes d'Europe et coupes nationales), le tennis ATP et WTA, et la NBA."),
        ("Est-ce gratuit ?", "Oui. Une offre Premium arrivera bientôt pour les fonctions avancées.")]
 
 css = """<style>
@@ -233,22 +235,18 @@ landing = head("Pronostat · Probabilités foot, tennis et NBA",
                f"Les probabilités de chaque match, événement par événement : football, tennis et NBA, recalculées chaque matin.",
                fonts + "\n<style>" + THEME + "</style>\n" + css) + f"""
 <div class="lp">
-  <header class="appbar"><a class="logo" href="./"><i>{ICON}</i>Pronostat</a><a class="open" href="app.html">Ouvrir l'appli</a></header>
+  <header class="appbar"><a class="logo" href="./"><i>{ICON}</i>Pronostat</a><a class="open" href="app.html">Les matchs</a></header>
   <section class="hero">
     <h1>Les probabilités de chaque match, <em>événement par événement.</em></h1>
-    <p>Football, tennis et NBA. Pas seulement qui va gagner : les deux équipes marquent, le nombre de buts, les sets… Calculé chaque matin par un modèle testé sur {esc(n_txt)} matchs.</p>
-    <div class="ctas"><a class="btn" href="app.html">Ouvrir l'appli gratuitement</a><a class="btn ghost" href="#offres">Voir les offres</a></div>
+    <p>Football, tennis et NBA. Chaque match est simulé 10 000 fois : le pourcentage indique combien de fois chaque événement s'est produit.</p>
+    <div class="ctas"><a class="btn" href="app.html">Voir toutes les probabilités</a></div>
   </section>
   {stats_html}
   {md_html}
-  <section class="blk"><h2>Ce que vous trouvez dans Pronostat</h2>
-    <div class="feats">{''.join(f'<div><b>{esc(a)}</b><p>{esc(b)}</p></div>' for a, b in FEATS)}</div></section>
-  <section class="blk"><h2>Compétitions couvertes</h2>
-    <div class="cov">{''.join(f'<span>{esc(c)}</span>' for c in comps)}<span>Tennis ATP</span><span>Tennis WTA</span><span>NBA</span></div></section>
   <section class="blk" id="offres"><h2>Offres</h2>
     <div class="plans">
-      <div class="plan"><h3>Gratuit</h3><div class="pr">0 €</div><ul><li>Tous les matchs du jour</li><li>Probabilités 1, N, 2</li><li>Recherche et favoris</li></ul><a class="btn ghost" href="app.html">Ouvrir l'appli</a></div>
-      <div class="plan top"><span class="lab">Bientôt</span><h3>Premium</h3><div class="pr">3,99 € <small>/ mois</small></div><ul><li>Tous les événements en %</li><li>Combinés cohérents</li><li>Simulations et 10 000 matchs simulés</li><li>Sans publicité</li></ul>{waitlist}</div>
+      <div class="plan"><h3>Gratuit</h3><div class="pr">0 €</div><ul><li>Tous les matchs du jour</li><li>Probabilités 1, N, 2</li><li>Recherche et favoris</li></ul><a class="btn ghost" href="app.html">Voir les probabilités</a></div>
+      <div class="plan top"><span class="lab">Bientôt</span><h3>Premium</h3><div class="pr">3,99 € <small>/ mois</small></div><ul><li>Tous les événements en %</li><li>Combinés cohérents</li><li>Le match simulé en direct</li><li>Sans publicité</li></ul>{waitlist}</div>
       <div class="plan"><h3>Pros</h3><div class="pr">Sur devis</div><ul><li>Médias, blogs, créateurs</li><li>Widget ou flux de probabilités</li><li>Vos championnats</li></ul></div>
     </div></section>
   <section class="blk faq"><h2>Questions fréquentes</h2>{''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in FAQ)}</section>

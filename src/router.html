@@ -32,6 +32,7 @@
       document.getElementById("view-" + k).hidden = k !== v;
       const a = document.getElementById("tab-" + k); k === v ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current");
     });
+    document.querySelectorAll(".sports a").forEach(x => x.getAttribute("href") === "#" + v ? x.setAttribute("aria-current", "page") : x.removeAttribute("aria-current"));
   };
   addEventListener("hashchange", () => { show(); window.scrollTo(0, 0); }); show();
 })();

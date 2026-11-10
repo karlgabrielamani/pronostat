@@ -11,7 +11,14 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
 
-CUPS = {"UCL": ("uefa.champions", "Ligue des Champions"), "UEL": ("uefa.europa", "Europa League"), "UECL": ("uefa.europa.conf", "Conference League")}
+CUPS = {"UCL": ("uefa.champions", "Ligue des Champions", "Europe"), "UEL": ("uefa.europa", "Europa League", "Europe"),
+        "UECL": ("uefa.europa.conf", "Conference League", "Europe"),
+        # coupes nationales
+        "FAC": ("eng.fa", "FA Cup", "Angleterre"), "EFL": ("eng.league_cup", "Carabao Cup", "Angleterre"),
+        "CDR": ("esp.copa_del_rey", "Copa del Rey", "Espagne"), "CIT": ("ita.coppa_italia", "Coppa Italia", "Italie"),
+        "DFB": ("ger.dfb_pokal", "DFB-Pokal", "Allemagne"), "CDF": ("fra.coupe_de_france", "Coupe de France", "France"),
+        "KNVB": ("ned.cup", "KNVB Beker", "Pays-Bas"), "TDP": ("por.taca.portugal", "Taça de Portugal", "Portugal"),
+        "SCC": ("sco.tennents", "Scottish Cup", "Écosse"), "SLC": ("sco.cis", "Scottish League Cup", "Écosse")}
 ESPN = "https://site.api.espn.com/apis/site/v2/sports/soccer/{lg}/scoreboard?dates={d:%Y%m%d}"
 XI = 0.0019                       # demi-vie d'environ un an, comme les championnats
 
@@ -66,7 +73,7 @@ def parse(code, data):
 
 def fetch_range(start, end, threads=8):
     days = [start + timedelta(days=k) for k in range((end - start).days + 1)]
-    jobs = [(code, lg, d) for code, (lg, _) in CUPS.items() for d in days]
+    jobs = [(code, lg, d) for code, (lg, _, _) in CUPS.items() for d in days]
     with ThreadPoolExecutor(threads) as ex:
         res = list(ex.map(lambda j: parse(j[0], fetch(j[1], j[2])), jobs))
     rows = {r["id"]: r for lst in res for r in lst}
@@ -147,10 +154,11 @@ def update(hist_path, out_dir, today, dom, fd_names):
     # ---- format attendu par l'onglet Foot : log λ = att(h) + dfn(a) + home  (dfn = base − défense)
     leagues, results = {}, []
     season_start = pd.Timestamp(year=today.year if today.month >= 7 else today.year - 1, month=7, day=1)
-    for code, (_, name) in CUPS.items():
+    for code, (_, name, country) in CUPS.items():
         cur = cres[(cres.cup == code) & (cres.Date >= season_start)]
         up = allc[(allc.cup == code) & (allc.done != True) & (pd.to_datetime(allc.dt).dt.tz_convert(None) >= today - pd.Timedelta(hours=3))]
         teams = sorted(set(cur.home) | set(cur.away) | set(up.home) | set(up.away))
+        if len(teams) < 2: continue
         tab = {t: dict(p=0, w=0, d=0, l=0, gf=0, ga=0) for t in teams}; form = {t: "" for t in teams}
         for r in cur.sort_values("Date").itertuples():
             for t, f_, c_ in ((r.home, int(r.hg), int(r.ag)), (r.away, int(r.ag), int(r.hg))):
@@ -165,7 +173,7 @@ def update(hist_path, out_dir, today, dom, fd_names):
         T.sort(key=lambda x: (-x["pts"], -(x["gf"] - x["ga"]), -x["gf"]))
         games = [dict(dt=pd.Timestamp(r.dt).tz_convert(None).strftime("%Y-%m-%dT%H:%M"), home=r.home, away=r.away, neutral=bool(r.neutral))
                  for r in up.sort_values("dt").itertuples()]
-        leagues[code] = dict(name=name, country="Europe", cup=True, home=round(m["home"], 4), rho=0.0, teams=T, games=games,
+        leagues[code] = dict(name=name, country=country, cup=True, home=round(m["home"], 4), rho=0.0, teams=T, games=games,
                              last=str(cur.Date.max().date()) if len(cur) else "")
         print(f"  coupe {code:4s} {len(T)} équipes, {len(games)} matchs à venir")
     unmatched = [n for n in names if mapping[n] == n]
