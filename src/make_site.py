@@ -179,7 +179,7 @@ waitlist = (f"""<form class="wl" action="{esc(FORM_ACTION)}" method="POST"><inpu
             if FORM_ACTION else '<span class="btn ghost" aria-disabled="true">Bientôt disponible</span>')
 FAQ = [("Est-ce un conseil de pari ?", "Non. Pronostat donne des probabilités calculées par un modèle statistique. Ce n'est pas une garantie de résultat, et les bookmakers ont souvent raison."),
        ("Quels sports et compétitions ?", "Le football (grands championnats européens, coupes d'Europe et coupes nationales), le tennis ATP et WTA, et la NBA."),
-       ("Est-ce gratuit ?", "Oui. Une offre Premium arrivera bientôt pour les fonctions avancées.")]
+       ("Est-ce gratuit ?", "Oui, Pronostat est entièrement gratuit.")]
 
 css = """<style>
 .lp { max-width: 960px; margin: 0 auto; padding: 12px max(16px, env(safe-area-inset-right, 0px)) 40px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 34px; }
@@ -243,12 +243,6 @@ landing = head("Pronostat · Probabilités foot, tennis et NBA",
   </section>
   {stats_html}
   {md_html}
-  <section class="blk" id="offres"><h2>Offres</h2>
-    <div class="plans">
-      <div class="plan"><h3>Gratuit</h3><div class="pr">0 €</div><ul><li>Tous les matchs du jour</li><li>Probabilités 1, N, 2</li><li>Recherche et favoris</li></ul><a class="btn ghost" href="app.html">Voir les probabilités</a></div>
-      <div class="plan top"><span class="lab">Bientôt</span><h3>Premium</h3><div class="pr">3,99 € <small>/ mois</small></div><ul><li>Tous les événements en %</li><li>Combinés cohérents</li><li>Le match simulé en direct</li><li>Sans publicité</li></ul>{waitlist}</div>
-      <div class="plan"><h3>Pros</h3><div class="pr">Sur devis</div><ul><li>Médias, blogs, créateurs</li><li>Widget ou flux de probabilités</li><li>Vos championnats</li></ul></div>
-    </div></section>
   <section class="blk faq"><h2>Questions fréquentes</h2>{''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in FAQ)}</section>
   <footer class="foot">Pronostat · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.</footer>
 </div>

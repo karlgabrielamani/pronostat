@@ -233,7 +233,7 @@
       <div class="bx-sc a" style="--c:${CA}">${G.as}</div><div class="bx-team a" style="--c:${CA}"><b>${esc(P.a)}</b><small>${esc(P.comp || "")}</small></div></div>`);
     const stats = () => { const T = G.pt[0] + G.pt[1] || 1; R.stats([["Tirs", G.sh[0], G.sh[1]], ["Tirs cadrés", G.on[0], G.on[1]], ["Possession", Math.round(G.pt[0] / T * 100) || 50, Math.round(G.pt[1] / T * 100) || 50, x => x + " %"], ["Corners", G.cor[0], G.cor[1]]]); };
     const prob = () => { const [lh, la] = lams(), r = Math.max(0, 90 - G.t) / 90; G.lp = G.done ? (G.hs > G.as ? [1, 0, 0] : G.hs === G.as ? [0, 1, 0] : [0, 0, 1]) : fprobs(lh * r, la * r, G.hs, G.as); R.wp(G.lp[0], G.lp[2], "Nul " + pc(G.lp[1])); };
-    function reset() { G = fresh(); place(); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); R.call = null; head(); prob(); stats(); R.tick("", "", "Coup d'envoi : cliquez ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
+    function reset() { G = fresh(); place(); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); R.call = null; head(); prob(); stats(); R.tick("", "", "Coup d'envoi : cliquez sur ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
     const goalU = s => s ? 0 : 1; // but visé par l'équipe s
     function step() {
       if (G.done) return;
@@ -357,7 +357,7 @@
       R.wp(a / N, 1 - a / N);
     };
     const stats = () => R.stats([["Aces", G.ace[0], G.ace[1]], ["Doubles fautes", G.df[0], G.df[1]], ["Coups gagnants", G.wn[0], G.wn[1]], ["Fautes directes", G.ue[0], G.ue[1]], ["Points gagnés", G.won[0], G.won[1]]]);
-    function reset() { G = fresh(); R.call = null; head(); stats(); R.tick("", "", "Cliquez ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; const p0 = P.p != null ? P.p : null; if (p0 != null) R.wp(p0, 1 - p0); else prob(); }
+    function reset() { G = fresh(); R.call = null; head(); stats(); R.tick("", "", "Cliquez sur ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; const p0 = P.p != null ? P.p : null; if (p0 != null) R.wp(p0, 1 - p0); else prob(); }
     // y du joueur : 0 (près) au fond bas, 1 (loin) au fond haut
     const baseY = s => s ? -.8 : 24.6;
     const side = s => (G.pts[0] + G.pts[1]) % 2; // 0 = égalité (deuce), 1 = avantage
@@ -491,7 +491,7 @@
         o.tu = m(u); o.tv = v; d.tu = o.tu + (rim[0] - o.tu) * .25; d.tv = v + (rim[1] - v) * .25;
       }
     };
-    function reset() { G = fresh(); setup(0, 0); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); G.ball.u = G.pl[0].u; G.ball.v = G.pl[0].v; R.call = null; head(); stats(); prob(); R.tick("", "", "Cliquez ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
+    function reset() { G = fresh(); setup(0, 0); G.pl.forEach(p => { p.u = p.tu; p.v = p.tv; }); G.ball.u = G.pl[0].u; G.ball.v = G.pl[0].v; R.call = null; head(); stats(); prob(); R.tick("", "", "Cliquez sur ▶ pour lancer le match."); R.q(".bx-mres").innerHTML = ""; }
     const toHolder = (k, ms = 380, peak = .6) => { const p = G.pl[G.poss * 5 + k]; G.holder = G.poss * 5 + k; fly(G.ball, p.tu, p.tv, peak, ms, R, 1); };
     function plan() {
       const t = G.poss, pts = out(t), r = Math.random(), rim = RIM[1 - t];
