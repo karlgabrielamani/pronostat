@@ -20,6 +20,11 @@ jobs:
       - run: pip install pandas==3.0.5 numpy==2.5.3 scipy==1.18.1
       - run: python src/update_all.py .
       - run: python src/make_site.py .
+      - name: Garder la base des votes active (Supabase met en pause un projet gratuit après 7 jours sans activité)
+        continue-on-error: true
+        run: |
+          curl -sS -m 30 -X POST "https://mueldojterubckckwytm.supabase.co/rest/v1/rpc/vote_counts" \
+            -H "apikey: sb_publishable_bIVh_e0es-Ppb47ZjKtNJg_vIO-teLy" -H "Content-Type: application/json" -d '{"m":"keepalive"}'
       - name: Enregistrer
         run: |
           git config user.name "pronostat-bot"
