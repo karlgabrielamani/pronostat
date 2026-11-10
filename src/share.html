@@ -125,7 +125,7 @@
     const X2 = sx + cwd + gx; rr(X2, cy, cwd, 124, 24, "#14161A");
     if (C && C.n >= MIN_VOTES) {
       x.fillStyle = "#FFFFFF"; x.font = F(700, 64); x.fillText(Math.round(C.get(mine) * 100) + " %", X2 + cwd / 2, cy + 72);
-      x.fillStyle = "rgba(255,255,255,.78)"; const t = up(tr("des votants Pronostat")) + " · " + C.n; fit(t, cwd - 40, 700, 22, 14); x.fillText(t, X2 + cwd / 2, cy + 108);
+      x.fillStyle = "rgba(255,255,255,.78)"; const t = up(tr("des votants Pronostat")); fit(t, cwd - 40, 700, 22, 14); x.fillText(t, X2 + cwd / 2, cy + 108);
     } else {
       x.fillStyle = "#FFFFFF"; fit(up(tr("Votez sur Pronostat")), cwd - 40, 700, 36, 20); x.fillText(up(tr("Votez sur Pronostat")), X2 + cwd / 2, cy + 74);
     }
