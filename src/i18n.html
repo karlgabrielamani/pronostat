@@ -18,6 +18,14 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["En direct", "Live", "Live"], ["Chances maintenant :", "Chances now:", "Kansen nu:"], ["Fin", "FT", "Einde"],
+    ["Votre prono", "Your pick", "Uw voorspelling"], ["Mon prono", "My pick", "Mijn voorspelling"], ["Partager", "Share", "Delen"], ["Les joueurs :", "Players:", "Spelers:"],
+    ["contre", "vs", "tegen"], ["Et vous, vous en pensez quoi ?", "What do you think?", "Wat denkt u?"], ["Télécharger l'image", "Download the image", "Afbeelding downloaden"],
+    ["Copier le texte", "Copy the text", "Tekst kopiëren"], ["Copié !", "Copied!", "Gekopieerd!"],
+    ["Nul à la mi-temps", "Draw at half-time", "Gelijk bij de rust"], ["But en 1re période", "Goal in the 1st half", "Doelpunt in de 1e helft"], ["But en 2e période", "Goal in the 2nd half", "Doelpunt in de 2e helft"],
+    ["obtient plus de corners", "gets more corners", "krijgt meer hoekschoppen"], ["Plus de # corners", "Over # corners", "Meer dan # hoekschoppen"], ["Plus de # cartons", "Over # cards", "Meer dan # kaarten"],
+    ["reçoit plus de cartons", "gets more cards", "krijgt meer kaarten"], ["Au moins un carton rouge", "At least one red card", "Minstens één rode kaart"], ["Cartons", "Cards", "Kaarten"],
+    ["gagne # sets à #", "wins # sets to #", "wint met # sets tegen #"], ["marque plus de # points", "scores over # points", "scoort meer dan # punten"],
     ["Oui, Pronostat est entièrement gratuit.", "Yes, Pronostat is completely free.", "Ja, Pronostat is volledig gratis."],
     ["Accueil", "Home", "Home"], ["Les matchs", "Matches", "Wedstrijden"], ["Voir toutes les probabilités", "See all probabilities", "Bekijk alle kansen"], ["Voir les probabilités", "See the probabilities", "Bekijk de kansen"], ["Le match simulé en direct", "The match simulated live", "De wedstrijd live gesimuleerd"],
     ["Football, tennis et NBA. Chaque match est simulé 10 000 fois : le pourcentage indique combien de fois chaque événement s'est produit.", "Football, tennis and NBA. Every match is simulated 10,000 times: the percentage shows how often each event happened.", "Voetbal, tennis en NBA. Elke wedstrijd wordt 10.000 keer gesimuleerd: het percentage toont hoe vaak elke gebeurtenis voorkwam."],

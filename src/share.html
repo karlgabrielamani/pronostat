@@ -1,0 +1,154 @@
+<style>
+.mp { display: grid; gap: 10px; border-top: 1px solid var(--line); padding-top: 12px; margin-top: 4px; }
+.mp-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.mp-h b { font-size: 15px; }
+.mp-picks { display: flex; gap: 8px; flex-wrap: wrap; }
+.mp-picks button { flex: 1 1 0; min-width: 0; min-height: 44px; font: inherit; font-weight: 700; font-size: 14px; border-radius: 12px; border: 1px solid var(--line2); background: var(--surface); color: var(--ink); cursor: pointer; padding: 6px 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mp-picks button[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.mp-com { font-size: 13px; color: var(--ink-3); }
+.mp-com b { color: var(--ink); }
+.mp-share { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 12px; border: 0; background: var(--hot); color: #fff; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; }
+.shv { position: fixed; inset: 0; z-index: 70; background: rgba(10,14,22,.72); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.shv[hidden] { display: none; }
+.shv-box { background: var(--surface); border-radius: 18px; padding: 14px; width: min(420px, 100%); max-height: 100%; overflow: auto; display: grid; gap: 12px; }
+.shv-box img { width: 100%; border-radius: 12px; border: 1px solid var(--line); display: block; }
+.shv-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.shv-row a, .shv-row button { flex: 1 1 0; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; font: inherit; font-weight: 700; font-size: 14px; border-radius: 12px; border: 1px solid var(--line2); background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer; padding: 0 12px; white-space: nowrap; }
+.shv-row .main { background: var(--hot); border-color: var(--hot); color: #fff; }
+</style>
+<script>
+// ---------- Mon prono, vote des joueurs et image à partager ----------
+(() => {
+  const SITE = "https://karlgabrielamani.github.io/pronostat/";
+  // Vote des joueurs : base Supabase (adresse du projet + clé publique « anon »). Vide = le vote des joueurs ne s'affiche pas.
+  const VOTE = { url: "", key: "" };
+  const tr = s => (window.I18N ? window.I18N.tr(s) : s);
+  const ICO = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>';
+  const $ = id => document.getElementById(id);
+  const txt = id => ($(id) ? $(id).textContent.trim() : "");
+  const num = s => parseFloat(String(s).replace(",", ".").replace(/[^\d.]/g, "")) / 100 || 0;
+  const load = () => { try { return JSON.parse(localStorage.getItem("pronostat-picks") || "{}"); } catch (e) { return {}; } };
+  const save = o => { try { localStorage.setItem("pronostat-picks", JSON.stringify(o)); } catch (e) {} };
+  const week = () => { const d = new Date(); d.setHours(0, 0, 0, 0); d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7); const w1 = new Date(d.getFullYear(), 0, 4); return d.getFullYear() + "-W" + (1 + Math.round(((d - w1) / 864e5 - 3 + (w1.getDay() + 6) % 7) / 7)); };
+  const evs = sel => [...document.querySelectorAll(sel)].map(el => { const q = el.querySelector(".q"); const lab = [...el.querySelectorAll("span")].find(s => !s.classList.contains("q")); return lab && q ? [lab.textContent.trim(), num(q.textContent)] : null; }).filter(Boolean);
+  const pickEvents = (list, a, b) => {
+    const skip = new RegExp("^(" + [a, b].map(x => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")\\s+(gagne|wins|wint)$");
+    const c = list.map(([l, p]) => [tr(l), p]).filter(([l, p]) => p >= .52 && p <= .88 && !skip.test(l) && !/ (ou nul|or draw|of gelijk)$/.test(l)).sort((x, y) => y[1] - x[1]);
+    const out = [], seen = new Set();
+    for (const e of c) { const k = e[0].replace(/\d+[,.]?\d*/g, "#"); if (seen.has(k)) continue; seen.add(k); out.push(e); if (out.length === 3) break; }
+    return out;
+  };
+  const SPOTS = [
+    { sport: "Football", res: "ftResult", anchor: "ftVerdict", data: () => ({ comp: (window.FootAPI && FootAPI.current() || {}).comp || "", a: txt("ftNA"), b: txt("ftNB"), p: [num(txt("ftPH")), num(txt("ftPD")), num(txt("ftPA"))], ev: evs("#ftEv label, #ftX .er") }) },
+    { sport: "NBA", res: "nbResult", anchor: "nbVerdict", data: () => ({ comp: "NBA", a: txt("nbNA"), b: txt("nbNB"), p: [num(txt("nbWA")), 0, num(txt("nbWB"))], ev: evs("#nbEv label") }) },
+    { sport: "Tennis", res: "result", anchor: "verdict", data: () => ({ comp: "Tennis", a: txt("nA"), b: txt("nB"), p: [num(txt("wA")), 0, num(txt("wB"))], ev: evs("#evList label") }) },
+  ];
+
+  // ---- vote des joueurs (optionnel)
+  const api = (path, body) => fetch(VOTE.url + path, { method: "POST", headers: { apikey: VOTE.key, Authorization: "Bearer " + VOTE.key, "Content-Type": "application/json", Prefer: "return=minimal" }, body: JSON.stringify(body) });
+  async function counts(key) { if (!VOTE.url) return null; try { const r = await api("/rest/v1/rpc/vote_counts", { m: key }); return r.ok ? await r.json() : null; } catch (e) { return null; } }
+  async function vote(key, pick) { if (!VOTE.url) return; try { await api("/rest/v1/votes", { match: key, pick }); } catch (e) {} }
+
+  function mount(S) {
+    const res = $(S.res), anc = $(S.anchor); if (!res || !anc) return;
+    const box = document.createElement("div"); box.className = "mp";
+    anc.insertAdjacentElement("afterend", box);
+    let lastKey = "";
+    const draw = async () => {
+      const D = S.data(); if (!D.a || !D.b) return;
+      const key = [S.sport, D.a, D.b, week()].join("|"); if (key === lastKey && box.childElementCount) return; lastKey = key;
+      const picks = load(), mine = picks[key];
+      const opts = S.sport === "Football" ? [["1", D.a], ["N", "Nul"], ["2", D.b]] : [["1", D.a], ["2", D.b]];
+      box.innerHTML = `<div class="mp-h"><b>Votre prono</b><button type="button" class="mp-share">${ICO}Partager</button></div>
+        <div class="mp-picks">${opts.map(([k, l]) => `<button type="button" data-k="${k}" aria-pressed="${mine === k}">${l}</button>`).join("")}</div><div class="mp-com"></div>`;
+      const com = box.querySelector(".mp-com");
+      const showCounts = async () => {
+        const c = await counts(key); if (!c || !c.length) { com.textContent = ""; return; }
+        const n = c.reduce((s, r) => s + r.n, 0), get = k => (c.find(r => r.pick === k) || { n: 0 }).n / n;
+        com.innerHTML = `Les joueurs : ${opts.map(([k, l]) => `<b>${l} ${Math.round(get(k) * 100)} %</b>`).join(" · ")} (${n})`;
+      };
+      box.querySelector(".mp-picks").onclick = e => {
+        const bt = e.target.closest("button"); if (!bt) return;
+        const p = load(); const first = !p[key]; p[key] = bt.dataset.k; save(p);
+        box.querySelectorAll(".mp-picks button").forEach(x => x.setAttribute("aria-pressed", x === bt));
+        if (first) vote(key, bt.dataset.k).then(showCounts); else showCounts();
+      };
+      box.querySelector(".mp-share").onclick = () => share(S, D, load()[key], opts);
+      if (mine) showCounts();
+    };
+    new MutationObserver(() => requestAnimationFrame(draw)).observe(anc, { childList: true, characterData: true, subtree: true });
+    draw();
+  }
+
+  // ---- l'image à partager
+  async function card(S, D, mine, opts) {
+    const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
+    try { await Promise.all(["700 60px Quicksand", "600 40px Quicksand"].map(f => document.fonts.load(f))); } catch (e) {}
+    const F = (w, s) => `${w} ${s}px Quicksand, "Nunito", system-ui, sans-serif`;
+    const fit = (t, max, w, s) => { let z = s; x.font = F(w, z); while (x.measureText(t).width > max && z > 24) { z -= 2; x.font = F(w, z); } return z; };
+    const rr = (X, Y, w, h, r, col) => { x.beginPath(); x.roundRect(X, Y, w, h, r); x.fillStyle = col; x.fill(); };
+    x.fillStyle = "#F4F5F7"; x.fillRect(0, 0, W, H);
+    // en-tête
+    rr(70, 70, 84, 84, 22, "#D0202E");
+    x.strokeStyle = "#fff"; x.lineWidth = 11; x.lineCap = "round";
+    x.beginPath(); x.moveTo(94, 136); x.lineTo(94, 118); x.moveTo(112, 136); x.lineTo(112, 94); x.moveTo(130, 136); x.lineTo(130, 110); x.stroke();
+    x.fillStyle = "#14161A"; x.font = F(700, 54); x.textBaseline = "middle"; x.fillText("Pronostat", 178, 114);
+    x.fillStyle = "#5B6270"; x.font = F(600, 32); x.textAlign = "right"; x.fillText(D.comp || S.sport, W - 70, 114); x.textAlign = "left";
+    // carte blanche
+    rr(50, 200, W - 100, 880, 40, "#FFFFFF");
+    x.fillStyle = "#14161A"; x.textBaseline = "alphabetic";
+    let z = fit(D.a, W - 220, 700, 64); x.fillText(D.a, 110, 310);
+    x.fillStyle = "#9AA1AC"; x.font = F(600, 34); x.fillText(tr("contre"), 110, 362);
+    x.fillStyle = "#14161A"; z = fit(D.b, W - 220, 700, 64); x.fillText(D.b, 110, 440);
+    // pourcentages
+    const cols = ["#1F5FBF", "#5B6270", "#C2410C"], labs = S.sport === "Football" ? [D.a, tr("Nul"), D.b] : [D.a, null, D.b];
+    const parts = [0, 1, 2].filter(i => labs[i] !== null), wTot = W - 220;
+    let X0 = 110;
+    parts.forEach((i, k) => {
+      const w = wTot / parts.length;
+      x.fillStyle = cols[i]; x.font = F(700, 76); x.textAlign = k === 0 ? "left" : k === parts.length - 1 ? "right" : "center";
+      const tx = k === 0 ? 110 : k === parts.length - 1 ? W - 110 : W / 2;
+      x.fillText(Math.round(D.p[i] * 100) + " %", tx, 560);
+      x.fillStyle = "#5B6270"; z = fit(labs[i], w - 20, 600, 30); x.fillText(labs[i], tx, 606);
+    });
+    x.textAlign = "left";
+    const tot = parts.reduce((s, i) => s + D.p[i], 0) || 1;
+    parts.forEach(i => { const w = (D.p[i] / tot) * (wTot - 8 * (parts.length - 1)); rr(X0, 640, Math.max(w, 6), 16, 8, cols[i]); X0 += w + 8; });
+    // événements
+    const ev = pickEvents(D.ev, D.a, D.b);
+    let y = 740;
+    ev.forEach(([l, p]) => {
+      x.strokeStyle = "#E4E6EA"; x.lineWidth = 2; x.beginPath(); x.moveTo(110, y - 52); x.lineTo(W - 110, y - 52); x.stroke();
+      x.fillStyle = "#14161A"; fit(l, W - 400, 600, 36); x.fillText(l, 110, y);
+      x.font = F(700, 44); x.textAlign = "right"; x.fillStyle = "#D0202E"; x.fillText(Math.round(p * 100) + " %", W - 110, y); x.textAlign = "left";
+      y += 100;
+    });
+    // mon prono
+    if (mine) {
+      const l = (opts.find(o => o[0] === mine) || [0, ""])[1];
+      const t = tr("Mon prono") + ((window.I18N && I18N.lang !== "fr") ? ": " : " : ") + l; x.font = F(700, 38); const tw = Math.min(x.measureText(t).width + 60, W - 140);
+      rr(70, 1110, tw, 76, 38, "#14161A"); x.fillStyle = "#fff"; fit(t, tw - 60, 700, 38); x.fillText(t, 100, 1160);
+    }
+    x.fillStyle = "#14161A"; fit(tr("Et vous, vous en pensez quoi ?"), W - 140, 700, 52); x.fillText(tr("Et vous, vous en pensez quoi ?"), 70, mine ? 1250 : 1190);
+    x.fillStyle = "#5B6270"; x.font = F(600, 30); x.fillText(SITE.replace(/^https:\/\//, "").replace(/\/$/, ""), 70, mine ? 1300 : 1250);
+    return new Promise(r => c.toBlob(r, "image/png"));
+  }
+
+  let ov = null;
+  async function share(S, D, mine, opts) {
+    const blob = await card(S, D, mine, opts); if (!blob) return;
+    const top = pickEvents(D.ev, D.a, D.b)[0];
+    const text = `${D.a} – ${D.b}${top ? " : " + top[0] + " " + Math.round(top[1] * 100) + " %" : ""}. ${tr("Et vous, vous en pensez quoi ?")} ${SITE}`;
+    const file = new File([blob], "pronostat.png", { type: "image/png" });
+    try { if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text }); return; } } catch (e) { if (e && e.name === "AbortError") return; }
+    // sinon : aperçu, téléchargement et copie du texte
+    const url = URL.createObjectURL(blob);
+    if (!ov) { ov = document.createElement("div"); ov.className = "shv"; ov.hidden = true; document.body.appendChild(ov); ov.addEventListener("click", e => { if (e.target === ov) ov.hidden = true; }); }
+    ov.innerHTML = `<div class="shv-box" role="dialog" aria-label="Partager"><img alt="" src="${url}"><div class="shv-row"><a class="main" href="${url}" download="pronostat.png">Télécharger l'image</a><button type="button" data-a="copy">Copier le texte</button></div><div class="shv-row"><button type="button" data-a="close">Fermer</button></div></div>`;
+    ov.hidden = false;
+    ov.querySelector('[data-a="close"]').onclick = () => { ov.hidden = true; };
+    ov.querySelector('[data-a="copy"]').onclick = async e => { const b = e.currentTarget; try { await navigator.clipboard.writeText(text); b.textContent = tr("Copié !"); } catch (er) { b.textContent = text; } };
+  }
+  SPOTS.forEach(mount);
+})();
+</script>

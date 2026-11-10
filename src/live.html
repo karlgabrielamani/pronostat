@@ -1,0 +1,136 @@
+<style>
+.live { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; padding: 10px 12px; border-radius: 12px; background: var(--soft-b, #FBEDE6); font-size: 14px; }
+.live[hidden] { display: none; }
+.live .ld { width: 9px; height: 9px; border-radius: 50%; background: var(--hot); animation: ldp 1.4s ease-in-out infinite; flex: none; }
+.live.post { background: var(--track); } .live.post .ld { background: var(--ink-3); animation: none; }
+@keyframes ldp { 50% { opacity: .25; } }
+.live b.st { font-weight: 700; color: var(--hot); } .live.post b.st { color: var(--ink-2); }
+.live b.sc { font-size: 18px; font-variant-numeric: tabular-nums; }
+.live .now { flex-basis: 100%; color: var(--ink-2); }
+.live .now b { color: var(--ink); }
+.jt.lv { color: var(--hot); font-weight: 700; }
+.lsc { color: var(--hot); font-variant-numeric: tabular-nums; margin-right: 6px; }
+</style>
+<script>
+// ---------- probabilités en direct : score réel (ESPN) et chances recalculées pendant le match ----------
+(() => {
+  const SLUG = { E0: "eng.1", E1: "eng.2", E2: "eng.3", E3: "eng.4", SP1: "esp.1", SP2: "esp.2", I1: "ita.1", I2: "ita.2", D1: "ger.1", D2: "ger.2",
+    F1: "fra.1", F2: "fra.2", N1: "ned.1", B1: "bel.1", P1: "por.1", SC0: "sco.1", SC1: "sco.2", T1: "tur.1", G1: "gre.1",
+    UCL: "uefa.champions", UEL: "uefa.europa", UECL: "uefa.europa.conf", FAC: "eng.fa", EFL: "eng.league_cup", CDR: "esp.copa_del_rey",
+    CIT: "ita.coppa_italia", DFB: "ger.dfb_pokal", CDF: "fra.coupe_de_france", KNVB: "ned.cup", TDP: "por.taca.portugal", SCC: "sco.tennents", SLC: "sco.cis" };
+  const STOP = new Set(["fc", "cf", "ac", "sc", "afc", "club", "de", "fk", "sk", "cd", "ss", "us", "as", "rc", "the", "city", "united", "real", "sporting", "athletic", "1"]);
+  const norm = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(Boolean);
+  const sim = (x, y) => {
+    const A = norm(x), B = norm(y); if (A.join(" ") === B.join(" ")) return 3;
+    let s = 0;
+    for (const w of A) for (const v of B) {
+      if (w === v) s += STOP.has(w) ? .3 : 1;
+      else if (w.length >= 3 && v.length >= 3 && (w.startsWith(v) || v.startsWith(w))) s += .6;
+    }
+    return s;
+  };
+  const cache = {};
+  const etDay = (d, off = 0) => new Date(d.getTime() + off * 864e5).toLocaleDateString("en-CA", { timeZone: "America/New_York" }).replace(/-/g, "");
+  async function board(path, ymd) {
+    const k = path + ymd, c = cache[k];
+    if (c && Date.now() - c.t < 45e3) return c.p;
+    const p = fetch(`https://site.api.espn.com/apis/site/v2/sports/${path}/scoreboard?dates=${ymd}`).then(r => r.ok ? r.json() : { events: [] }).catch(() => ({ events: [] }));
+    cache[k] = { t: Date.now(), p }; return p;
+  }
+  async function find(path, dt, a, b) {
+    const d = new Date(dt);
+    for (const off of [0, -1, 1]) {
+      const data = await board(path, etDay(d, off));
+      let best = null, bs = 0;
+      for (const e of data.events || []) {
+        const c = e.competitions && e.competitions[0]; if (!c) continue;
+        const H = c.competitors.find(x => x.homeAway === "home"), A = c.competitors.find(x => x.homeAway === "away"); if (!H || !A) continue;
+        if (Math.abs(new Date(e.date) - d) > 6 * 3600e3) continue;
+        const s = Math.min(sim(a, H.team.displayName), sim(b, A.team.displayName)) + .1 * (sim(a, H.team.displayName) + sim(b, A.team.displayName));
+        if (s > bs) { bs = s; best = { e, c, H, A }; }
+      }
+      if (best && bs >= .6) return best;
+    }
+    return null;
+  }
+  // état du match, du point de vue « a » = domicile
+  async function status(sport, key, dt, a, b) {
+    const path = sport === "NBA" ? "basketball/nba" : SLUG[key] ? "soccer/" + SLUG[key] : null;
+    if (!path || !dt) return null;
+    const t = new Date(dt).getTime(); if (Date.now() < t - 15 * 60e3 || Date.now() > t + 4 * 3600e3) return null;
+    const m = await find(path, dt, a, b); if (!m) return null;
+    const st = m.e.status || m.c.status || {}, ty = st.type || {};
+    if (ty.state === "pre") return null;
+    const hs = +m.H.score || 0, as = +m.A.score || 0;
+    let el = 0, lab = "";
+    if (sport === "NBA") {
+      const per = st.period || 1, rem = (st.clock || 0) / 60;
+      el = per <= 4 ? (per - 1) * 12 + (12 - rem) : 48 + (per - 5) * 5 + (5 - rem);
+      lab = ty.state === "post" ? "" : (per <= 4 ? "QT" + per : "PR") + " " + (st.displayClock || "");
+    } else {
+      el = Math.min(90, (st.clock || 0) / 60);
+      lab = ty.state === "post" ? "" : (ty.name === "STATUS_HALFTIME" ? "Mi-temps" : (st.displayClock || Math.round(el) + "'"));
+    }
+    return { post: ty.state === "post", hs, as, el, lab };
+  }
+  // chances recalculées
+  const pmf = (k, l) => { let p = Math.exp(-l); for (let i = 1; i <= k; i++) p *= l / i; return p; };
+  const erf = x => { const t = 1 / (1 + .3275911 * Math.abs(x)), y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - .284496736) * t + .254829592) * t * Math.exp(-x * x); return x >= 0 ? y : -y; };
+  const Phi = z => .5 * (1 + erf(z / Math.SQRT2));
+  const Pinv = p => { let lo = -6, hi = 6; for (let i = 0; i < 50; i++) { const m = (lo + hi) / 2; Phi(m) < p ? lo = m : hi = m; } return lo; };
+  function footNow(lh, la, s) {
+    if (s.post) return [s.hs > s.as ? 1 : 0, s.hs === s.as ? 1 : 0, s.hs < s.as ? 1 : 0];
+    const r = Math.max(0, 90 - s.el) / 90; let H = 0, D = 0, A = 0;
+    for (let i = 0; i <= 10; i++) for (let j = 0; j <= 10; j++) { const q = pmf(i, lh * r) * pmf(j, la * r), x = s.hs + i, y = s.as + j; if (x > y) H += q; else if (x === y) D += q; else A += q; }
+    const t = H + D + A; return [H / t, D / t, A / t];
+  }
+  function nbaNow(p0, s) {
+    if (s.post) return [s.hs > s.as ? 1 : 0, 0, s.hs > s.as ? 0 : 1];
+    const SD = 13.5, r = Math.max(0.004, 1 - s.el / 48), mu = (s.hs - s.as) + SD * Pinv(Math.min(.999, Math.max(.001, p0))) * r;
+    const p = Phi(mu / (SD * Math.sqrt(r))); return [p, 0, 1 - p];
+  }
+  const pc = x => Math.round(x * 100) + " %";
+
+  // ---- encadré « En direct » dans le détail du match
+  function panel(resId, getCur, sport) {
+    const res = document.getElementById(resId); if (!res) return;
+    const box = document.createElement("div"); box.className = "live"; box.hidden = true; res.prepend(box);
+    let busy = false;
+    const upd = async () => {
+      if (busy || res.offsetParent === null) return; busy = true;
+      try {
+        const C = getCur(); if (!C || !C.dt) { box.hidden = true; return; }
+        const s = await status(sport, C.k, C.dt, C.h, C.a);
+        if (!s) { box.hidden = true; return; }
+        const P = sport === "NBA" ? nbaNow(C.p, s) : footNow(C.lh, C.la, s);
+        box.className = "live" + (s.post ? " post" : "");
+        box.innerHTML = `<span class="ld"></span><b class="st">${s.post ? "Terminé" : "En direct · " + s.lab}</b><b class="sc">${C.h} ${s.hs} – ${s.as} ${C.a}</b>` +
+          (s.post ? "" : `<span class="now">Chances maintenant : <b>${C.h} ${pc(P[0])}</b>${sport === "NBA" ? "" : ` · Nul <b>${pc(P[1])}</b>`} · <b>${C.a} ${pc(P[2])}</b></span>`);
+        box.hidden = false;
+      } finally { busy = false; }
+    };
+    const anc = res.querySelector(".verdict"); if (anc) new MutationObserver(() => setTimeout(upd, 50)).observe(anc, { childList: true, subtree: true, characterData: true });
+    addEventListener("hashchange", () => setTimeout(upd, 100));
+    setInterval(upd, 60e3); setTimeout(upd, 500);
+  }
+  panel("ftResult", () => window.FootAPI && FootAPI.current(), "Foot");
+  panel("nbResult", () => window.NbaAPI && NbaAPI.current(), "NBA");
+
+  // ---- liste « Aujourd'hui » : minute et score des matchs en cours
+  window.Live = {
+    async rows(list, items) {
+      if (!list) return;
+      for (const btn of list.querySelectorAll(".jrow.past")) {
+        const x = items[+btn.dataset.k]; if (!x || (x.sport !== "Foot" && x.sport !== "NBA")) continue;
+        status(x.sport, x.lg, x.dt, x.a, x.b).then(s => {
+          if (!s) return;
+          const jt = btn.querySelector(".jt"); if (jt) { jt.textContent = s.post ? "Fin" : s.lab.replace(/^QT/, "Q"); jt.classList.add("lv"); }
+          const tm = btn.querySelectorAll(".tm"); if (tm.length === 2 && !btn.querySelector(".lsc")) { tm[0].insertAdjacentHTML("afterbegin", `<span class="lsc">${s.hs}</span>`); tm[1].insertAdjacentHTML("afterbegin", `<span class="lsc">${s.as}</span>`); }
+        });
+      }
+    }
+  };
+  const jl = document.getElementById("jList");
+  if (jl) { const go = () => window.__jItems && Live.rows(jl, window.__jItems()); new MutationObserver(() => setTimeout(go, 50)).observe(jl, { childList: true }); go(); setInterval(() => { jl.querySelectorAll(".lsc").forEach(e => e.remove()); go(); }, 60e3); }
+})();
+</script>

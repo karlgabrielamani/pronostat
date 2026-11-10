@@ -197,3 +197,7 @@ html, body { overflow-x: clip; }
   .sports a[aria-current="page"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
 }
 .jf { overflow: hidden; } .jf > span { max-width: 100%; }
+
+/* événements en lecture seule (mi-temps, corners, cartons) */
+.evlist.ro .er { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 4px 0; font-size: 14px; }
+.xev { display: grid; gap: 6px; }

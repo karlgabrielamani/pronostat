@@ -481,6 +481,7 @@ const EVENTS = [
   ["A gagne au moins un set", m => m.wa > 0], ["B gagne au moins un set", m => m.wb > 0],
   ["A gagne le 1er set", m => m.sets[0][0] > m.sets[0][1]], ["B gagne le 1er set", m => m.sets[0][0] < m.sets[0][1]],
   ["A gagne sans perdre de set", m => m.aWins && m.wb === 0], ["B gagne sans perdre de set", m => !m.aWins && m.wa === 0],
+  ["A gagne W sets à 1", m => m.aWins && m.wb === 1], ["B gagne W sets à 1", m => !m.aWins && m.wa === 1],
   ["Match qui va au bout", m => m.sets.length === (bo === 5 ? 5 : 3)], ["Au moins un tie-break", m => m.sets.some(s => s[2] !== null)],
   ["Plus de X1 jeux", (m, l) => m.g > l[0]], ["Plus de X2 jeux", (m, l) => m.g > l[1]], ["Moins de X2 jeux", (m, l) => m.g < l[1]],
 ];
@@ -500,7 +501,7 @@ function simsFor() {
   cbSims = { key, rows, lines, a: s.a, b: s.b };
   return cbSims;
 }
-const evLabel = (lab, S) => lab.replace(/^A /, S.a.name + " ").replace(/^B /, S.b.name + " ").replace("X1", fr(S.lines[0], 1)).replace("X2", fr(S.lines[1], 1));
+const evLabel = (lab, S) => lab.replace(/^A /, S.a.name + " ").replace(/^B /, S.b.name + " ").replace("W sets", (bo === 5 ? 3 : 2) + " sets").replace("X1", fr(S.lines[0], 1)).replace("X2", fr(S.lines[1], 1));
 function drawEvents() {
   const S = simsFor(); if (!S) return;
   $("evList").innerHTML = EVENTS.map(([lab, fn], i) => {

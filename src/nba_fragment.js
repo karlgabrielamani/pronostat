@@ -1,6 +1,7 @@
 (() => {
   const N = __NBA__;
   const g = id => document.getElementById(id);
+  let curGame = null;
   const f = (x, d = 0) => x.toFixed(d).replace(".", ",");
   const T = Object.fromEntries(N.teams.map(t => [t.name, t]));
   const byName = [...N.teams].sort((a, b) => a.name.localeCompare(b.name));
@@ -24,7 +25,7 @@
   }).join("") : `<p class="note">Aucun match à venir dans les données.</p>`;
   g("nbGames").addEventListener("click", e => {
     const b = e.target.closest(".game"); if (!b) return;
-    const x = games[+b.dataset.i];
+    const x = games[+b.dataset.i]; curGame = x;
     g("nbA").value = x.home; g("nbB").value = x.away; g("nbN").checked = false;
     g("nbBa").checked = false; g("nbBb").checked = false;
     // dos-à-dos automatique si l'équipe a joué la veille du match (d'après les données)
@@ -121,7 +122,8 @@
       ["N", "Prolongation", ot / M],
       ...lines.map(l => ["N", `Plus de ${f(l, 1)} points au total`, tot.filter(x => x > l).length / M]),
     ];
-    cur = { a, b, ea, eb, sims, lines, half: Math.round(exp / 2) + 0.5 };
+    const med = k => { const v = sims.map(r => r[k]).sort((x, y) => x - y); return Math.round(v[v.length >> 1]) - 0.5; };
+    cur = { a, b, ea, eb, sims, lines, half: Math.round(exp / 2) + 0.5, ta: med("ta"), tb: med("tb") };
     drawNev();
     s = 4242; drawBoard(simGame(ea, eb, true), 99);
   }
@@ -154,6 +156,7 @@
     ["A gagne de 10 points ou plus", r => r.ta - r.tb >= 10], ["B gagne de 10 points ou plus", r => r.tb - r.ta >= 10],
     ["A gagne de 5 points ou moins", r => r.ta > r.tb && r.ta - r.tb <= 5], ["B gagne de 5 points ou moins", r => r.tb > r.ta && r.tb - r.ta <= 5],
     ["Match serré (5 points ou moins)", r => Math.abs(r.ta - r.tb) <= 5], ["Prolongation", r => r.ot > 0],
+    ["A marque plus de TA points", r => r.ta > cur.ta], ["B marque plus de TB points", r => r.tb > cur.tb],
     ["Plus de L0 points au total", (r, l) => r.ta + r.tb > l[0]], ["Plus de L1 points au total", (r, l) => r.ta + r.tb > l[1]],
     ["Moins de L1 points au total", (r, l) => r.ta + r.tb < l[1]], ["Plus de L2 points au total", (r, l) => r.ta + r.tb > l[2]],
     ["A mène à la mi-temps", r => r.qs[0][0] + r.qs[1][0] > r.qs[0][1] + r.qs[1][1]],
@@ -161,7 +164,7 @@
     ["A gagne le 1er quart-temps", r => r.qs[0][0] > r.qs[0][1]], ["B gagne le 1er quart-temps", r => r.qs[0][0] < r.qs[0][1]],
     ["Plus de HH points en 1re mi-temps", r => r.qs[0][0] + r.qs[0][1] + r.qs[1][0] + r.qs[1][1] > cur.half],
   ];
-  const nLab = lab => lab.replace(/^A /, cur.a.name + " ").replace(/^B /, cur.b.name + " ").replace(/L(\d)/, (_, k) => f(cur.lines[+k], 1)).replace("HH", f(cur.half, 1));
+  const nLab = lab => lab.replace(/^A /, cur.a.name + " ").replace(/^B /, cur.b.name + " ").replace(/L(\d)/, (_, k) => f(cur.lines[+k], 1)).replace("HH", f(cur.half, 1)).replace("TA", f(cur.ta, 1)).replace("TB", f(cur.tb, 1));
   const nSel = () => [...document.querySelectorAll("#nbEv input:checked")].map(x => +x.dataset.i);
   const nJoint = idx => cur.sims.filter(r => idx.every(k => NEV[k][1](r, cur.lines))).length / cur.sims.length;
   function drawNev() {
@@ -211,7 +214,8 @@
         const btn = i >= 0 && g("nbGames").querySelector(`.game[data-i="${i}"]`);
         if (btn) btn.click(); else { g("nbA").value = t.name; if (g("nbB").value === t.name) g("nbB").value = N.teams.find(x => x.name !== t.name).name; render(); } } }));
     },
-    current: () => cur && { sport: "nba", h: cur.a.name, a: cur.b.name, ea: cur.ea, eb: cur.eb, p: cur.sims.filter(r => r.ta > r.tb).length / cur.sims.length },
+    current: () => cur && { sport: "nba", h: cur.a.name, a: cur.b.name, ea: cur.ea, eb: cur.eb, p: cur.sims.filter(r => r.ta > r.tb).length / cur.sims.length,
+      dt: curGame && curGame.home === cur.a.name && curGame.away === cur.b.name ? curGame.dt : null },
     list() {
       return N.games.filter(x => T[x.home] && T[x.away]).map(x => {
         const a = T[x.home], b = T[x.away];

@@ -84,13 +84,18 @@ def foot():
                 s = tab[t]; s["p"] += 1; s["gf"] += f_; s["ga"] += c
                 s["w"] += f_ > c; s["d"] += f_ == c; s["l"] += f_ < c
                 form[t] = (form[t] + ("V" if f_ > c else "N" if f_ == c else "D"))[-5:]
+        try:
+            import extras
+            lgx, tx = extras.fit(hist, TODAY)
+        except Exception as e:
+            print("  ATTENTION corners/cartons", div, repr(e)); lgx, tx = None, {}
         T = [dict(name=t, att=round(float(m.params["att"].get(t, 0)), 4), dfn=round(float(m.params["dfn"].get(t, 0)), 4),
-                  pts=3 * tab[t]["w"] + tab[t]["d"], **tab[t], form=form[t]) for t in teams]
+                  pts=3 * tab[t]["w"] + tab[t]["d"], **tab[t], form=form[t], **tx.get(t, {})) for t in teams]
         T.sort(key=lambda x: (-x["pts"], -(x["gf"] - x["ga"]), -x["gf"]))
         games = [dict(dt=f"{r.Date.date()}T{r.Time if isinstance(r.Time, str) else '15:00'}", home=r.HomeTeam, away=r.AwayTeam)
                  for r in fx[fx.Div == div].sort_values(["Date", "Time"]).itertuples() if r.HomeTeam in tab and r.AwayTeam in tab]
         leagues[div] = dict(name=name, country=country, home=round(float(m.params["home_adv"]), 4), rho=round(float(m.params["rho"]), 4),
-                            teams=T, games=games, last=str(cur.Date.max().date()))
+                            teams=T, games=games, last=str(cur.Date.max().date()), **({"x": lgx} if lgx else {}))
         print(f"  foot {div:4s} {len(T)} équipes, {len(games)} matchs à venir, dernier résultat {leagues[div]['last']}")
     order = list(LEAGUES)
     try:                                         # coupes d'Europe : ne bloquent pas les championnats
@@ -265,7 +270,7 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
     js = lambda name, ph, data: "\n<script>\n" + open(f"{SRC}/{name}").read().replace(ph, json.dumps(data, ensure_ascii=False)) + "\n</script>"
     t = (t + js("nba_fragment.js", "__NBA__", nba_data) + js("foot_fragment.js", "__FOOT__", foot_data)
            + "\n<script>window.HIST = " + json.dumps(hist, ensure_ascii=False) + ";</script>"
-           + open(f"{SRC}/router.html").read() + open(f"{SRC}/sim.html").read() + open(f"{SRC}/search.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
+           + open(f"{SRC}/router.html").read() + open(f"{SRC}/sim.html").read() + open(f"{SRC}/search.html").read() + open(f"{SRC}/share.html").read() + open(f"{SRC}/live.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
     t = t.replace("__WTA__", json.dumps(wta_data or dict(players=[], coef=tennis_data["coef"], updated=tennis_data["updated"], test=dict(acc=0, acc_pin=None), live=[]), ensure_ascii=False))
     t = t.replace("__DATA__", json.dumps(tennis_data, ensure_ascii=False))
     open(f"{OUT}/pronos.html", "w").write(t)

@@ -110,6 +110,7 @@ const Combo = (() => {
     return k === 0 ? "Aujourd'hui" : k === 1 ? "Demain" : d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
   };
   let items = [];
+  window.__jItems = () => items;
   function draw() {
     const now = Date.now();
     items = APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } })

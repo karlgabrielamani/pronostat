@@ -24,8 +24,9 @@
   }
   const sum = (m, fn) => { let s = 0; for (let i = 0; i <= MAXG; i++) for (let j = 0; j <= MAXG; j++) if (fn(i, j)) s += m[i][j]; return s; };
 
+  let curKey = null, curGame = null;
   function setLeague(k, keepTeams) {
-    L = F.leagues[k];
+    L = F.leagues[k]; curKey = k;
     g("ftCupNote").hidden = !L.cup;
     T = Object.fromEntries(L.teams.map(t => [t.name, t]));
     meanD = L.teams.reduce((s, t) => s + t.dfn, 0) / L.teams.length;
@@ -47,7 +48,7 @@
   g("ftL").addEventListener("change", () => setLeague(g("ftL").value));
   g("ftGames").addEventListener("click", e => {
     const b = e.target.closest(".game"); if (!b) return;
-    const x = games[+b.dataset.i];
+    const x = games[+b.dataset.i]; curGame = x;
     g("ftA").value = x.home; g("ftB").value = x.away; g("ftN0").checked = !!x.neutral;
     g("ftGames").querySelectorAll(".game").forEach(el => el.setAttribute("aria-pressed", el === b));
     render();
@@ -88,7 +89,7 @@
     ];
     cur = { h, a, m, lam, mu };
     seed = 777; drawTl(simMatch(), 99);
-    drawFev();
+    drawFev(); drawX(h, a, lam, mu);
   }
 
   // ---------- un match simulé : buts avec leur minute ----------
@@ -156,6 +157,31 @@
     document.querySelectorAll("#ftEv input").forEach(x => x.checked = false); fUpd();
   });
 
+  // ---------- autres événements : mi-temps, corners, cartons ----------
+  const pmf = (k, l) => { let p = Math.exp(-l); for (let i = 1; i <= k; i++) p *= l / i; return p; };
+  const nbpmf = (k, l, v) => { if (v <= 1.01) return pmf(k, l); const r = l / (v - 1), q = 1 / v; let lg = 0; for (let i = 1; i <= k; i++) lg += Math.log((r + i - 1) / i); return Math.exp(lg + r * Math.log(q) + k * Math.log(1 - q)); };
+  const more = (l1, l2) => { let s = 0; for (let i = 0; i < 40; i++) { const p = pmf(i, l1); let c = 0; for (let j = 0; j < i; j++) c += pmf(j, l2); s += p * c; } return s; };
+  const over = (k, l, v) => { let s = 0; for (let i = 0; i <= k; i++) s += nbpmf(i, l, v || 1); return 1 - s; };
+  window.FootX = (Lg, h, a, lam, mu) => {
+    const x = Lg.x, out = [];
+    if (x) {
+      const l1 = lam * x.f1, m1 = mu * x.f1, l2 = lam - l1, m2 = mu - m1;
+      out.push(["Mi-temps", [[`${h.name} mène à la mi-temps`, more(l1, m1)], ["Nul à la mi-temps", 1 - more(l1, m1) - more(m1, l1)], [`${a.name} mène à la mi-temps`, more(m1, l1)],
+        ["But en 1re période", 1 - Math.exp(-(l1 + m1))], ["But en 2e période", 1 - Math.exp(-(l2 + m2))]]]);
+      if (h.c && a.c) {
+        const ch = x.ch * h.c[0] * a.c[1], ca = x.ca * a.c[0] * h.c[1];
+        out.push(["Corners", [[`${h.name} obtient plus de corners`, more(ch, ca)], [`${a.name} obtient plus de corners`, more(ca, ch)], ["Plus de 9,5 corners", over(9, ch + ca, x.cd)]]]);
+        const kh = x.kh * h.k[0] * a.k[1], ka = x.ka * a.k[0] * h.k[1];
+        out.push(["Cartons", [["Plus de 4,5 cartons", over(4, kh + ka)], [`${h.name} reçoit plus de cartons`, more(kh, ka)], [`${a.name} reçoit plus de cartons`, more(ka, kh)], ["Au moins un carton rouge", x.red]]]);
+      }
+    }
+    return out;
+  };
+  function drawX(h, a, lam, mu) {
+    const groups = window.FootX(L, h, a, lam, mu);
+    g("ftX").innerHTML = groups.map(([t, rows]) => `<p class="sub2">${t}</p><div class="evlist ro">${rows.map(([l, p]) => `<div class="er"><span>${l}</span><span class="q num">${f(p * 100)} %</span></div>`).join("")}</div>`).join("");
+  }
+
   function table() {
     const sg = v => (v >= 0 ? "+" : "−") + f(Math.abs(v * 100)) + " %";
     const fm = s => s.split("").map(c => `<span class="fm fm-${c}">${c}</span>`).join("");
@@ -189,7 +215,8 @@
       }
       return out;
     },
-    current: () => cur && { sport: "foot", h: cur.h.name, a: cur.a.name, lh: cur.lam, la: cur.mu, comp: L.name },
+    current: () => cur && { sport: "foot", h: cur.h.name, a: cur.a.name, lh: cur.lam, la: cur.mu, comp: L.name, k: curKey,
+      dt: curGame && curGame.home === cur.h.name && curGame.away === cur.a.name ? curGame.dt + "Z" : null },
     list() {
       const out = [];
       for (const k of F.order) {
@@ -197,7 +224,7 @@
         for (const x of Lg.games) {
           const h = TT[x.home], a = TT[x.away]; if (!h || !a) continue;
           const [pH, pD, pA] = pure(Lg, h, a, x.neutral);
-          out.push({ sport: "Foot", dt: x.dt + "Z", comp: Lg.name, a: x.home, b: x.away, pa: pH, pd: pD, pb: pA,
+          out.push({ sport: "Foot", lg: k, dt: x.dt + "Z", comp: Lg.name, a: x.home, b: x.away, pa: pH, pd: pD, pb: pA,
             open: () => { location.hash = "#foot"; g("ftL").value = k; setLeague(k);
               const i = games.findIndex(y => y.home === x.home && y.away === x.away);
               const btn = g("ftGames").querySelector(`.game[data-i="${i}"]`);
