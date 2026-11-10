@@ -21,6 +21,7 @@
 (() => {
   const SITE = "https://karlgabrielamani.github.io/pronostat/";
   // Vote des joueurs : base Supabase (adresse du projet + clé publique « anon »). Vide = le vote des joueurs ne s'affiche pas.
+  const MIN_VOTES = 30;
   const VOTE = { url: "https://mueldojterubckckwytm.supabase.co", key: "sb_publishable_bIVh_e0es-Ppb47ZjKtNJg_vIO-teLy" };
   const tr = s => (window.I18N ? window.I18N.tr(s) : s);
   const ICO = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>';
@@ -39,9 +40,9 @@
     return out;
   };
   const SPOTS = [
-    { sport: "Football", res: "ftResult", anchor: "ftVerdict", data: () => ({ comp: (window.FootAPI && FootAPI.current() || {}).comp || "", a: txt("ftNA"), b: txt("ftNB"), p: [num(txt("ftPH")), num(txt("ftPD")), num(txt("ftPA"))], ev: evs("#ftEv label, #ftX .er") }) },
-    { sport: "NBA", res: "nbResult", anchor: "nbVerdict", data: () => ({ comp: "NBA", a: txt("nbNA"), b: txt("nbNB"), p: [num(txt("nbWA")), 0, num(txt("nbWB"))], ev: evs("#nbEv label") }) },
-    { sport: "Tennis", res: "result", anchor: "verdict", data: () => ({ comp: "Tennis", a: txt("nA"), b: txt("nB"), p: [num(txt("wA")), 0, num(txt("wB"))], ev: evs("#evList label") }) },
+    { sport: "Football", res: "ftResult", anchor: "ftVerdict", data: () => ({ comp: (window.FootAPI && FootAPI.current() || {}).comp || "", a: txt("ftNA"), b: txt("ftNB"), p: [num(txt("ftPH")), num(txt("ftPD")), num(txt("ftPA"))], ev: evs("#ftEv label"), sel: evs("#ftEv label:has(input:checked)"), selTxt: txt("ftSel") }) },
+    { sport: "NBA", res: "nbResult", anchor: "nbVerdict", data: () => ({ comp: "NBA", a: txt("nbNA"), b: txt("nbNB"), p: [num(txt("nbWA")), 0, num(txt("nbWB"))], ev: evs("#nbEv label"), sel: evs("#nbEv label:has(input:checked)"), selTxt: txt("nbSel") }) },
+    { sport: "Tennis", res: "result", anchor: "verdict", data: () => ({ comp: "Tennis", a: txt("nA"), b: txt("nB"), p: [num(txt("wA")), 0, num(txt("wB"))], ev: evs("#evList label"), sel: evs("#evList label:has(input:checked)"), selTxt: txt("cbSel") }) },
   ];
 
   // ---- vote des joueurs (optionnel)
@@ -61,11 +62,12 @@
       const opts = S.sport === "Football" ? [["1", D.a], ["N", "Nul"], ["2", D.b]] : [["1", D.a], ["2", D.b]];
       box.innerHTML = `<div class="mp-h"><b>Votre prono</b><button type="button" class="mp-share">${ICO}Partager</button></div>
         <div class="mp-picks">${opts.map(([k, l]) => `<button type="button" data-k="${k}" aria-pressed="${mine === k}">${l}</button>`).join("")}</div><div class="mp-com"></div>`;
-      const com = box.querySelector(".mp-com");
+      const com = box.querySelector(".mp-com"); let C = null;
       const showCounts = async () => {
-        const c = await counts(key); if (!c || !c.length) { com.textContent = ""; return; }
+        const c = await counts(key); if (!c || !c.length) { com.textContent = ""; C = null; return; }
         const n = c.reduce((s, r) => s + r.n, 0), get = k => (c.find(r => r.pick === k) || { n: 0 }).n / n;
-        com.innerHTML = `Les joueurs : ${opts.map(([k, l]) => `<b>${l} ${Math.round(get(k) * 100)} %</b>`).join(" · ")} (${n})`;
+        C = { n, get };
+        com.innerHTML = n >= MIN_VOTES ? `Votants Pronostat : ${opts.map(([k, l]) => `<b>${l} ${Math.round(get(k) * 100)} %</b>`).join(" · ")} (${n} votes)` : `${n} ${n > 1 ? "votes" : "vote"} pour l'instant`;
       };
       box.querySelector(".mp-picks").onclick = e => {
         const bt = e.target.closest("button"); if (!bt) return;
@@ -73,7 +75,11 @@
         box.querySelectorAll(".mp-picks button").forEach(x => x.setAttribute("aria-pressed", x === bt));
         if (first) vote(key, bt.dataset.k).then(showCounts); else showCounts();
       };
-      box.querySelector(".mp-share").onclick = () => share(S, D, load()[key], opts);
+      box.querySelector(".mp-share").onclick = () => {
+        const m = load()[key];
+        if (!m) { com.innerHTML = "<b>Choisissez d'abord votre prono.</b>"; const pk = box.querySelector(".mp-picks"); pk.animate([{ transform: "translateX(0)" }, { transform: "translateX(-6px)" }, { transform: "translateX(6px)" }, { transform: "translateX(0)" }], { duration: 300 }); return; }
+        share(S, S.data(), m, opts, C);
+      };
       if (mine) showCounts();
     };
     new MutationObserver(() => requestAnimationFrame(draw)).observe(anc, { childList: true, characterData: true, subtree: true });
@@ -81,62 +87,79 @@
   }
 
   // ---- l'image à partager
-  async function card(S, D, mine, opts) {
+  async function card(S, D, mine, opts, C) {
     const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
     try { await Promise.all(["700 120px Quicksand", "600 40px Quicksand"].map(f => document.fonts.load(f))); } catch (e) {}
     const F = (w, s) => `${w} ${s}px Quicksand, "Nunito", system-ui, sans-serif`;
-    const fit = (t, max, w, s, min = 28) => { let z = s; x.font = F(w, z); while (x.measureText(t).width > max && z > min) { z -= 2; x.font = F(w, z); } return z; };
+    const fit = (t, max, w, s, min = 24) => { let z = s; x.font = F(w, z); while (x.measureText(t).width > max && z > min) { z -= 2; x.font = F(w, z); } return z; };
     const up = t => String(t).toLocaleUpperCase(window.I18N && I18N.lang === "nl" ? "nl" : "fr");
     const rr = (X, Y, w, h, r, col) => { x.beginPath(); x.roundRect(X, Y, w, h, r); x.fillStyle = col; x.fill(); };
-    const skewText = (t, cx, y, col, shadow) => { x.save(); x.translate(cx, y); x.transform(1, 0, -0.12, 1, 0, 0); if (shadow) { x.shadowColor = "rgba(208,32,46,.22)"; x.shadowOffsetY = 12; x.shadowBlur = 30; } x.fillStyle = col; x.textAlign = "center"; x.fillText(t, 0, 0); x.restore(); };
-    // fond rouge Pronostat, rayons de lumière
-    x.fillStyle = "#FFFFFF"; x.fillRect(0, 0, W, H);
-    x.fillStyle = "#F4F5F7";
+    const sk = (t, cx, y, col) => { x.save(); x.translate(cx, y); x.transform(1, 0, -0.12, 1, 0, 0); x.fillStyle = col; x.textAlign = "center"; x.fillText(t, 0, 0); x.restore(); };
+    // fond blanc, bandes grises, coin rouge
+    x.fillStyle = "#FFFFFF"; x.fillRect(0, 0, W, H); x.fillStyle = "#F4F5F7";
     [[-200, 260], [420, 120], [760, 200]].forEach(([X0, w]) => { x.beginPath(); x.moveTo(X0, 0); x.lineTo(X0 + w, 0); x.lineTo(X0 + w - 520, H); x.lineTo(X0 - 520, H); x.closePath(); x.fill(); });
-    // touches de rouge : coin et filet
-    x.fillStyle = "#D0202E"; x.beginPath(); x.moveTo(W, H - 260); x.lineTo(W, H); x.lineTo(W - 260, H); x.closePath(); x.fill();
-    x.beginPath(); x.moveTo(0, 0); x.lineTo(150, 0); x.lineTo(0, 150); x.closePath(); x.globalAlpha = .12; x.fill(); x.globalAlpha = 1;
-    // logo
-    rr(60, 56, 76, 76, 20, "#D0202E");
-    x.strokeStyle = "#FFFFFF"; x.lineWidth = 10; x.lineCap = "round"; x.beginPath(); x.moveTo(82, 112); x.lineTo(82, 96); x.moveTo(98, 112); x.lineTo(98, 76); x.moveTo(114, 112); x.lineTo(114, 90); x.stroke();
+    x.fillStyle = "#D0202E"; x.beginPath(); x.moveTo(W, H - 220); x.lineTo(W, H); x.lineTo(W - 220, H); x.closePath(); x.fill();
+    // en-tête
+    rr(60, 56, 76, 76, 20, "#D0202E"); x.strokeStyle = "#FFFFFF"; x.lineWidth = 10; x.lineCap = "round";
+    x.beginPath(); x.moveTo(82, 112); x.lineTo(82, 96); x.moveTo(98, 112); x.lineTo(98, 76); x.moveTo(114, 112); x.lineTo(114, 90); x.stroke();
     x.fillStyle = "#14161A"; x.font = F(700, 48); x.textBaseline = "middle"; x.textAlign = "left"; x.fillText("Pronostat", 154, 96);
     const comp = D.comp || S.sport; x.font = F(700, 28); const cw = Math.min(x.measureText(comp).width + 40, 420);
     rr(W - 60 - cw, 70, cw, 52, 26, "#EEF0F3"); x.fillStyle = "#3A404B"; x.textAlign = "center"; fit(comp, cw - 30, 700, 28, 18); x.fillText(comp, W - 60 - cw / 2, 97);
     // bandeau du match
-    x.save(); x.translate(0, 200); x.beginPath(); x.moveTo(40, 0); x.lineTo(W - 20, 0); x.lineTo(W - 40, 110); x.lineTo(20, 110); x.closePath(); x.fillStyle = "#14161A"; x.fill(); x.restore();
-    const vs = up(D.a) + "  –  " + up(D.b); x.fillStyle = "#fff"; x.textAlign = "center"; fit(vs, W - 140, 700, 58, 30); x.fillText(vs, W / 2, 256);
-    // la stat
-    const ev = pickEvents(D.ev, D.a, D.b);
-    const fi = D.p[0] >= D.p[2] ? 0 : 2, main = ev[0] || [`${fi ? D.b : D.a} ${tr("gagne")}`, D.p[fi]];
-    x.textBaseline = "alphabetic"; x.font = F(700, 290); skewText(Math.round(main[1] * 100) + "%", W / 2 + 10, 640, "#D0202E", true);
-    const words = up(main[0]).split(" "), lines = [""];
-    x.font = F(700, 66); for (const w of words) { const t = (lines[lines.length - 1] + " " + w).trim(); if (x.measureText(t).width > W - 160 && lines[lines.length - 1]) lines.push(w); else lines[lines.length - 1] = t; }
-    lines.slice(0, 2).forEach((l, k) => { fit(l, W - 140, 700, 66, 36); skewText(l, W / 2, 740 + k * 78, "#14161A", false); });
-    // 1 · N · 2
-    const parts = (S.sport === "Football" ? [[D.a, D.p[0], "#1F5FBF"], [tr("Nul"), D.p[1], "#5B6270"], [D.b, D.p[2], "#C2410C"]] : [[D.a, D.p[0], "#1F5FBF"], [D.b, D.p[2], "#C2410C"]]);
-    const gap = 18, bw = (W - 120 - gap * (parts.length - 1)) / parts.length, by = 900;
-    parts.forEach(([n, p, col], k) => {
-      const bx = 60 + k * (bw + gap); rr(bx, by, bw, 150, 26, col);
-      x.fillStyle = "#FFFFFF"; x.font = F(700, 64); x.textAlign = "center"; x.fillText(Math.round(p * 100) + " %", bx + bw / 2, by + 82);
-      x.fillStyle = "rgba(255,255,255,.88)"; fit(up(n), bw - 30, 700, 26, 16); x.fillText(up(n), bx + bw / 2, by + 124);
-    });
-    // mon prono
-    let yb = 1150;
-    if (mine) {
-      const l = (opts.find(o => o[0] === mine) || [0, ""])[1];
-      const t = up(tr("Mon prono")) + ((window.I18N && I18N.lang !== "fr") ? ": " : " : ") + up(l); x.font = F(700, 36); const tw = Math.min(x.measureText(t).width + 70, W - 120);
-      rr((W - tw) / 2, 1090, tw, 72, 36, "#14161A"); x.fillStyle = "#FFFFFF"; x.textAlign = "center"; fit(t, tw - 60, 700, 36, 20); x.fillText(t, W / 2, 1138); yb = 1238;
+    x.save(); x.translate(0, 180); x.beginPath(); x.moveTo(40, 0); x.lineTo(W - 20, 0); x.lineTo(W - 40, 100); x.lineTo(20, 100); x.closePath(); x.fillStyle = "#14161A"; x.fill(); x.restore();
+    const vs = up(D.a) + "  –  " + up(D.b); x.fillStyle = "#FFFFFF"; fit(vs, W - 140, 700, 54, 28); x.fillText(vs, W / 2, 232);
+    x.textBaseline = "alphabetic";
+    // MON PRONO
+    const pi = mine === "1" ? 0 : mine === "N" ? 1 : 2, pl = pi === 1 ? tr("Match nul") : `${pi === 0 ? D.a : D.b} ${tr("gagne")}`;
+    x.save(); x.translate(W / 2, 350); x.transform(1, 0, -0.12, 1, 0, 0); x.font = F(700, 40); const lw = x.measureText(up(tr("Mon prono"))).width + 60;
+    x.beginPath(); x.roundRect(-lw / 2, -44, lw, 64, 12); x.fillStyle = "#D0202E"; x.fill(); x.fillStyle = "#FFFFFF"; x.textAlign = "center"; x.fillText(up(tr("Mon prono")), 0, 0); x.restore();
+    const big = up(pl), words = big.split(" "), lines = [""];
+    x.font = F(700, 124); const one = fit(big, W - 120, 700, 124, 84) > 84 || x.measureText(big).width <= W - 120;
+    if (!one) for (const w of words) { const t = (lines[lines.length - 1] + " " + w).trim(); if (x.measureText(t).width > W - 120 && lines[lines.length - 1]) lines.push(w); else lines[lines.length - 1] = t; }
+    if (one) lines[0] = big;
+    let y = 500; lines.slice(0, 2).forEach((l, k) => { fit(l, W - 120, 700, lines.length > 1 ? 104 : 124, 56); sk(l, W / 2, y + k * 112, "#14161A"); }); y += (Math.min(lines.length, 2) - 1) * 112;
+    // selon Pronostat / votants Pronostat
+    const cwd = 400, gx = 24, sx = (W - (cwd * 2 + gx)) / 2, cy = y + 60;
+    rr(sx, cy, cwd, 124, 24, "#FDECEE"); x.fillStyle = "#D0202E"; x.font = F(700, 64); x.textAlign = "center"; x.fillText(Math.round(D.p[pi] * 100) + " %", sx + cwd / 2, cy + 72);
+    x.fillStyle = "#9B1B24"; fit(up(tr("selon Pronostat")), cwd - 40, 700, 24, 16); x.fillText(up(tr("selon Pronostat")), sx + cwd / 2, cy + 108);
+    const X2 = sx + cwd + gx; rr(X2, cy, cwd, 124, 24, "#14161A");
+    if (C && C.n >= MIN_VOTES) {
+      x.fillStyle = "#FFFFFF"; x.font = F(700, 64); x.fillText(Math.round(C.get(mine) * 100) + " %", X2 + cwd / 2, cy + 72);
+      x.fillStyle = "rgba(255,255,255,.78)"; const t = up(tr("des votants Pronostat")) + " · " + C.n; fit(t, cwd - 40, 700, 22, 14); x.fillText(t, X2 + cwd / 2, cy + 108);
+    } else {
+      x.fillStyle = "#FFFFFF"; fit(up(tr("Votez sur Pronostat")), cwd - 40, 700, 36, 20); x.fillText(up(tr("Votez sur Pronostat")), X2 + cwd / 2, cy + 74);
     }
-    x.font = F(700, mine ? 76 : 96); fit(up(tr("Et vous ?")), W - 120, 700, mine ? 76 : 96, 40); skewText(up(tr("Et vous ?")), W / 2, yb + (mine ? 0 : 30), "#D0202E", false);
-    x.fillStyle = "#5B6270"; x.font = F(600, 28); x.textAlign = "center"; x.fillText(SITE.replace(/^https:\/\//, "").replace(/\/$/, ""), W / 2, 1312);
+    y = cy + 124;
+    // mon combiné (événements cochés par le joueur)
+    const sel = (D.sel || []).map(([l, p]) => [tr(l), p]).slice(0, 3);
+    if (sel.length) {
+      y += 70; x.fillStyle = "#5B6270"; x.font = F(700, 28); x.textAlign = "center"; x.fillText("+ " + up(tr("Mon combiné")), W / 2, y); y += 28;
+      sel.forEach(([l, p]) => {
+        rr(80, y, W - 160, 88, 20, "#FFFFFF"); x.strokeStyle = "#E4E6EA"; x.lineWidth = 3; x.beginPath(); x.roundRect(80, y, W - 160, 88, 20); x.stroke();
+        x.fillStyle = "#14161A"; x.textAlign = "left"; fit(l, W - 420, 700, 36, 20); x.fillText(l, 116, y + 57);
+        x.fillStyle = "#D0202E"; x.font = F(700, 42); x.textAlign = "right"; x.fillText(Math.round(p * 100) + " %", W - 116, y + 59); y += 102;
+      });
+      const mm = String(D.selTxt || "").match(/(\d+(?:[.,]\d+)?)\s*%/), pj = sel.length > 1 && mm ? parseFloat(mm[1].replace(",", ".")) / 100 : 0; if (pj) { x.fillStyle = "#5B6270"; x.font = F(700, 30); x.textAlign = "center"; x.fillText(up(tr("Ensemble")) + " : " + Math.round(pj * 100) + " %", W / 2, y + 26); y += 50; }
+    } else {
+      // chances 1 · N · 2
+      const parts = S.sport === "Football" ? [[D.a, D.p[0], "#1F5FBF"], [tr("Nul"), D.p[1], "#5B6270"], [D.b, D.p[2], "#C2410C"]] : [[D.a, D.p[0], "#1F5FBF"], [D.b, D.p[2], "#C2410C"]];
+      const gap = 16, bw = (W - 120 - gap * (parts.length - 1)) / parts.length, by = Math.max(y + 70, 820);
+      parts.forEach(([n, p, col], k) => {
+        const bx = 60 + k * (bw + gap); rr(bx, by, bw, 112, 22, col); x.fillStyle = "#FFFFFF"; x.font = F(700, 52); x.textAlign = "center"; x.fillText(Math.round(p * 100) + " %", bx + bw / 2, by + 62);
+        x.fillStyle = "rgba(255,255,255,.88)"; fit(up(n), bw - 30, 700, 22, 14); x.fillText(up(n), bx + bw / 2, by + 96);
+      });
+      y = by + 112;
+    }
+    x.font = F(700, 96); fit(up(tr("Et vous ?")), W - 160, 700, 96, 40); sk(up(tr("Et vous ?")), W / 2, Math.min(Math.max(y + 130, 1150), 1250), "#D0202E");
+    x.fillStyle = "#5B6270"; x.font = F(600, 28); x.textAlign = "center"; x.fillText(SITE.replace(/^https:\/\//, "").replace(/\/$/, ""), W / 2, 1316);
     return new Promise(r => c.toBlob(r, "image/png"));
   }
 
   let ov = null;
-  async function share(S, D, mine, opts) {
-    const blob = await card(S, D, mine, opts); if (!blob) return;
-    const top = pickEvents(D.ev, D.a, D.b)[0];
-    const text = `${D.a} – ${D.b}${top ? " : " + top[0] + " " + Math.round(top[1] * 100) + " %" : ""}. ${tr("Et vous, vous en pensez quoi ?")} ${SITE}`;
+  async function share(S, D, mine, opts, C) {
+    const blob = await card(S, D, mine, opts, C); if (!blob) return;
+    const pick = (opts.find(o => o[0] === mine) || [0, ""])[1];
+    const text = `${D.a} – ${D.b} · ${tr("Mon prono")} : ${pick}. ${tr("Et vous ?")} ${SITE}`;
     const file = new File([blob], "pronostat.png", { type: "image/png" });
     try { if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text }); return; } } catch (e) { if (e && e.name === "AbortError") return; }
     // sinon : aperçu, téléchargement et copie du texte

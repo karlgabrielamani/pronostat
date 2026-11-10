@@ -18,6 +18,10 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Ensemble", "Together", "Samen"],
+    ["selon Pronostat", "according to Pronostat", "volgens Pronostat"], ["des votants Pronostat", "of Pronostat voters", "van de Pronostat-stemmers"], ["Votants Pronostat :", "Pronostat voters:", "Pronostat-stemmers:"],
+    ["Votez sur Pronostat", "Vote on Pronostat", "Stem op Pronostat"], ["Mon combiné", "My combo", "Mijn combinatie"], ["Tout ensemble", "All together", "Alles samen"],
+    ["Choisissez d'abord votre prono.", "Choose your pick first.", "Kies eerst uw voorspelling."], ["pour l'instant", "so far", "tot nu toe"], ["votes", "votes", "stemmen"], ["vote", "vote", "stem"],
     ["Et vous ?", "And you?", "En u?"],
     ["Résultat et buts", "Result and goals", "Uitslag en doelpunten"],
     ["En direct", "Live", "Live"], ["Chances maintenant :", "Chances now:", "Kansen nu:"], ["Fin", "FT", "Einde"],
