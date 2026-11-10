@@ -111,12 +111,14 @@
     x.textBaseline = "alphabetic";
     // MON PRONO
     const pi = mine === "1" ? 0 : mine === "N" ? 1 : 2, pl = pi === 1 ? tr("Match nul") : `${pi === 0 ? D.a : D.b} ${tr("gagne")}`;
-    x.save(); x.translate(W / 2, 350); x.transform(1, 0, -0.12, 1, 0, 0); x.font = F(700, 40); const lw = x.measureText(up(tr("Mon prono"))).width + 60;
-    x.beginPath(); x.roundRect(-lw / 2, -44, lw, 64, 12); x.fillStyle = "#D0202E"; x.fill(); x.fillStyle = "#FFFFFF"; x.textAlign = "center"; x.fillText(up(tr("Mon prono")), 0, 0); x.restore();
     const big = up(pl), words = big.split(" "), lines = [""];
     x.font = F(700, 124); const one = fit(big, W - 120, 700, 124, 84) > 84 || x.measureText(big).width <= W - 120;
     if (!one) for (const w of words) { const t = (lines[lines.length - 1] + " " + w).trim(); if (x.measureText(t).width > W - 120 && lines[lines.length - 1]) lines.push(w); else lines[lines.length - 1] = t; }
     if (one) lines[0] = big;
+    const nSel = (D.sel || []).length, oy = nSel ? 0 : Math.round((1040 - (684 + (Math.min(lines.length, 2) - 1) * 112)) / 2);
+    x.save(); x.translate(0, oy);
+    x.save(); x.translate(W / 2, 350); x.transform(1, 0, -0.12, 1, 0, 0); x.font = F(700, 40); const lw = x.measureText(up(tr("Mon prono"))).width + 60;
+    x.beginPath(); x.roundRect(-lw / 2, -44, lw, 64, 12); x.fillStyle = "#D0202E"; x.fill(); x.fillStyle = "#FFFFFF"; x.textAlign = "center"; x.fillText(up(tr("Mon prono")), 0, 0); x.restore();
     let y = 500; lines.slice(0, 2).forEach((l, k) => { fit(l, W - 120, 700, lines.length > 1 ? 104 : 124, 56); sk(l, W / 2, y + k * 112, "#14161A"); }); y += (Math.min(lines.length, 2) - 1) * 112;
     // selon Pronostat / votants Pronostat
     const hasV = !!(C && C.n >= MIN_VOTES), cwd = 400, gx = 24, sx = hasV ? (W - (cwd * 2 + gx)) / 2 : (W - cwd) / 2, cy = y + 60;
@@ -138,17 +140,8 @@
         x.fillStyle = "#D0202E"; x.font = F(700, 42); x.textAlign = "right"; x.fillText(Math.round(p * 100) + " %", W - 116, y + 59); y += 102;
       });
       const mm = String(D.selTxt || "").match(/(\d+(?:[.,]\d+)?)\s*%/), pj = sel.length > 1 && mm ? parseFloat(mm[1].replace(",", ".")) / 100 : 0; if (pj) { x.fillStyle = "#5B6270"; x.font = F(700, 30); x.textAlign = "center"; x.fillText(up(tr("Ensemble")) + " : " + Math.round(pj * 100) + " %", W / 2, y + 26); y += 50; }
-    } else {
-      // chances 1 · N · 2, même style que le combiné
-      const parts = S.sport === "Football" ? [[D.a, D.p[0], 0], [tr("Nul"), D.p[1], 1], [D.b, D.p[2], 2]] : [[D.a, D.p[0], 0], [D.b, D.p[2], 2]];
-      y += 60;
-      parts.forEach(([l, p, k]) => {
-        const on = k === pi;
-        rr(80, y, W - 160, 88, 20, "#FFFFFF"); x.strokeStyle = on ? "#D0202E" : "#E4E6EA"; x.lineWidth = on ? 4 : 3; x.beginPath(); x.roundRect(80, y, W - 160, 88, 20); x.stroke();
-        x.fillStyle = "#14161A"; x.textAlign = "left"; fit(l, W - 420, 700, 36, 20); x.fillText(l, 116, y + 57);
-        x.fillStyle = "#D0202E"; x.font = F(700, 42); x.textAlign = "right"; x.fillText(Math.round(p * 100) + " %", W - 116, y + 59); y += 102;
-      });
     }
+    x.restore();
     x.font = F(700, 96); fit(up(tr("Et vous ?")), W - 160, 700, 96, 40); sk(up(tr("Et vous ?")), W / 2, Math.min(Math.max(y + 130, 1150), 1250), "#D0202E");
     x.fillStyle = "#5B6270"; x.font = F(600, 28); x.textAlign = "center"; x.fillText(SITE.replace(/^https:\/\//, "").replace(/\/$/, ""), W / 2, 1316);
     return new Promise(r => c.toBlob(r, "image/png"));
