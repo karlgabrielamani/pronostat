@@ -221,6 +221,7 @@ html, body { overflow-x: clip; }
 /* événements en lecture seule (mi-temps, corners, cartons) */
 .evlist.ro .er { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 4px 0; font-size: 14px; }
 .xev { display: grid; gap: 6px; }
+.evlist .evh { grid-column: 1 / -1; margin: 8px 0 0; font-size: 12px; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: .05em; }
 </style>
 <style>
 .lp { max-width: 960px; margin: 0 auto; padding: 12px max(16px, env(safe-area-inset-right, 0px)) 40px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 34px; }
@@ -293,6 +294,7 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Résultat et buts", "Result and goals", "Uitslag en doelpunten"],
     ["En direct", "Live", "Live"], ["Chances maintenant :", "Chances now:", "Kansen nu:"], ["Fin", "FT", "Einde"],
     ["Votre prono", "Your pick", "Uw voorspelling"], ["Mon prono", "My pick", "Mijn voorspelling"], ["Partager", "Share", "Delen"], ["Les joueurs :", "Players:", "Spelers:"],
     ["contre", "vs", "tegen"], ["Et vous, vous en pensez quoi ?", "What do you think?", "Wat denkt u?"], ["Télécharger l'image", "Download the image", "Afbeelding downloaden"],
@@ -536,10 +538,9 @@ window.I18N = (() => {
   <section class="blk"><h2>Le match du jour</h2>
     <article class="md"><p class="mt"><span class="tag">Copa del Rey</span> <time data-dt="2026-11-10T18:00:00+00:00"></time></p>
       <div class="md-t"><div><b>Anaitasuna</b><span class="pa">13 %</span></div><div class="dr"><b>Nul</b><span>21 %</span></div><div class="r"><b>Alavés</b><span class="pb">66 %</span></div></div>
-      <div class="bar"><i style="width:12.7%;background:var(--a)"></i><i style="width:21.0%;background:var(--ink-3)"></i><i style="width:66.4%;background:var(--b)"></i></div>
+      <div class="bar"><i style="width:12.6%;background:var(--a)"></i><i style="width:21.0%;background:var(--ink-3)"></i><i style="width:66.4%;background:var(--b)"></i></div>
       <ul class="evs"><li><span>Les deux équipes marquent</span><b>42 %</b></li><li><span>Plus de 2,5 buts</span><b>48 %</b></li><li><span>Score le plus probable</span><b>0-1</b></li></ul>
       <a class="btn" href="app.html#foot">Voir toutes les probabilités</a></article></section>
-  <section class="blk faq"><h2>Questions fréquentes</h2><details><summary>Est-ce un conseil de pari ?</summary><p>Non. Pronostat donne des probabilités calculées par un modèle statistique. Ce n&#x27;est pas une garantie de résultat, et les bookmakers ont souvent raison.</p></details><details><summary>Quels sports et compétitions ?</summary><p>Le football (grands championnats européens, coupes d&#x27;Europe et coupes nationales), le tennis ATP et WTA, et la NBA.</p></details><details><summary>Est-ce gratuit ?</summary><p>Oui, Pronostat est entièrement gratuit.</p></details></section>
   <footer class="foot">Pronostat · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.</footer>
 </div>
 <script>

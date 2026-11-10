@@ -201,3 +201,4 @@ html, body { overflow-x: clip; }
 /* événements en lecture seule (mi-temps, corners, cartons) */
 .evlist.ro .er { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 4px 0; font-size: 14px; }
 .xev { display: grid; gap: 6px; }
+.evlist .evh { grid-column: 1 / -1; margin: 8px 0 0; font-size: 12px; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: .05em; }

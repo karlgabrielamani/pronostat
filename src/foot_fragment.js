@@ -89,7 +89,7 @@
     ];
     cur = { h, a, m, lam, mu };
     seed = 777; drawTl(simMatch(), 99);
-    drawFev(); drawX(h, a, lam, mu);
+    drawFev();
   }
 
   // ---------- un match simulé : buts avec leur minute ----------
@@ -127,22 +127,70 @@
   ["ftA", "ftB", "ftN0"].forEach(id => g(id).addEventListener("change", render));
   g("ftSwap").addEventListener("click", () => { const t = g("ftA").value; g("ftA").value = g("ftB").value; g("ftB").value = t; render(); });
 
-  // ---------- combiné ----------
+  // ---------- événements du match (tous combinables) ----------
+  // buts : buts par mi-temps (part de la 1re période propre au championnat), recalés sur le modèle des buts (correction Dixon-Coles)
+  // corners et cartons : indépendants des buts dans notre modèle ; un combiné qui les mélange multiplie donc leurs probabilités
   const FEV = [
-    ["H gagne", (i, j) => i > j], ["Match nul", (i, j) => i === j], ["A gagne", (i, j) => i < j],
-    ["H ou nul", (i, j) => i >= j], ["A ou nul", (i, j) => i <= j],
-    ["H gagne de 2 buts ou plus", (i, j) => i - j >= 2], ["A gagne de 2 buts ou plus", (i, j) => j - i >= 2],
-    ["Les deux équipes marquent", (i, j) => i > 0 && j > 0], ["Les deux équipes ne marquent pas", (i, j) => !(i > 0 && j > 0)],
-    ["Plus de 1,5 but", (i, j) => i + j > 1.5], ["Plus de 2,5 buts", (i, j) => i + j > 2.5], ["Moins de 2,5 buts", (i, j) => i + j < 2.5],
-    ["Plus de 3,5 buts", (i, j) => i + j > 3.5], ["H n'encaisse aucun but", (i, j) => j === 0], ["A n'encaisse aucun but", (i, j) => i === 0],
+    ["Résultat et buts"],
+    ["H gagne", "g", (i, j) => i > j], ["Match nul", "g", (i, j) => i === j], ["A gagne", "g", (i, j) => i < j],
+    ["H ou nul", "g", (i, j) => i >= j], ["A ou nul", "g", (i, j) => i <= j],
+    ["H gagne de 2 buts ou plus", "g", (i, j) => i - j >= 2], ["A gagne de 2 buts ou plus", "g", (i, j) => j - i >= 2],
+    ["Les deux équipes marquent", "g", (i, j) => i > 0 && j > 0], ["Les deux équipes ne marquent pas", "g", (i, j) => !(i > 0 && j > 0)],
+    ["Plus de 1,5 but", "g", (i, j) => i + j > 1.5], ["Plus de 2,5 buts", "g", (i, j) => i + j > 2.5], ["Moins de 2,5 buts", "g", (i, j) => i + j < 2.5],
+    ["Plus de 3,5 buts", "g", (i, j) => i + j > 3.5], ["H n'encaisse aucun but", "g", (i, j) => j === 0], ["A n'encaisse aucun but", "g", (i, j) => i === 0],
+    ["Mi-temps"],
+    ["H mène à la mi-temps", "g", (i, j, a, b) => a > b], ["Nul à la mi-temps", "g", (i, j, a, b) => a === b], ["A mène à la mi-temps", "g", (i, j, a, b) => a < b],
+    ["But en 1re période", "g", (i, j, a, b) => a + b > 0], ["But en 2e période", "g", (i, j, a, b) => i + j - a - b > 0],
+    ["Corners"],
+    ["H obtient plus de corners", "c", (x, y) => x > y], ["A obtient plus de corners", "c", (x, y) => y > x],
+    ["Plus de 8,5 corners", "c", (x, y) => x + y > 8.5], ["Plus de 9,5 corners", "c", (x, y) => x + y > 9.5], ["Plus de 10,5 corners", "c", (x, y) => x + y > 10.5],
+    ["Cartons"],
+    ["Plus de 3,5 cartons", "k", (x, y) => x + y > 3.5], ["Plus de 4,5 cartons", "k", (x, y) => x + y > 4.5],
+    ["H reçoit plus de cartons", "k", (x, y) => x > y], ["A reçoit plus de cartons", "k", (x, y) => y > x], ["Au moins un carton rouge", "r", () => true],
   ];
+  const pmf = (k, l) => { let p = Math.exp(-l); for (let i = 1; i <= k; i++) p *= l / i; return p; };
+  function buildJoint(h, a, lam, mu) {
+    const x = L.x || { f1: .45 }, G = 8, l1 = lam * x.f1, m1 = mu * x.f1, l2 = lam - l1, m2 = mu - m1, rho = L.rho;
+    const A1 = [], B1 = [], A2 = [], B2 = [];
+    for (let k = 0; k <= G; k++) { A1.push(pmf(k, l1)); B1.push(pmf(k, m1)); A2.push(pmf(k, l2)); B2.push(pmf(k, m2)); }
+    const cells = []; let tot = 0;
+    for (let a1 = 0; a1 <= G; a1++) for (let b1 = 0; b1 <= G; b1++) for (let a2 = 0; a2 <= G; a2++) for (let b2 = 0; b2 <= G; b2++) {
+      const i = a1 + a2, j = b1 + b2; let w = A1[a1] * B1[b1] * A2[a2] * B2[b2];
+      if (w < 1e-9) continue;
+      if (i === 0 && j === 0) w *= 1 - lam * mu * rho; else if (i === 0 && j === 1) w *= 1 + lam * rho; else if (i === 1 && j === 0) w *= 1 + mu * rho; else if (i === 1 && j === 1) w *= 1 - rho;
+      cells.push([i, j, a1, b1, w]); tot += w;
+    }
+    cells.forEach(c => c[4] /= tot);
+    const grid = (lh, la) => { const P = [], Q = []; for (let k = 0; k <= 30; k++) { P.push(pmf(k, lh)); Q.push(pmf(k, la)); } return [P, Q]; };
+    const J = { cells };
+    if (L.x && h.c && a.c) {
+      J.c = grid(L.x.ch * h.c[0] * a.c[1], L.x.ca * a.c[0] * h.c[1]);
+      J.k = grid(L.x.kh * h.k[0] * a.k[1], L.x.ka * a.k[0] * h.k[1]);
+      J.r = L.x.red;
+    }
+    return J;
+  }
+  const avail = k => FEV[k][1] && (FEV[k][1] === "g" || (cur.J && cur.J[FEV[k][1]] !== undefined));
+  function fJoint(idx) {
+    const J = cur.J, by = { g: [], c: [], k: [], r: [] };
+    idx.forEach(k => by[FEV[k][1]].push(FEV[k][2]));
+    let p = 1;
+    if (by.g.length) { let s = 0; for (const c of J.cells) if (by.g.every(fn => fn(c[0], c[1], c[2], c[3]))) s += c[4]; p *= s; }
+    for (const t of ["c", "k"]) if (by[t].length) { const [P, Q] = J[t]; let s = 0; for (let x = 0; x <= 30; x++) for (let y = 0; y <= 30; y++) if (by[t].every(fn => fn(x, y))) s += P[x] * Q[y]; p *= s; }
+    if (by.r.length) p *= J.r;
+    return p;
+  }
   const fLab = (lab, h, a) => lab.replace(/^H /, h.name + " ").replace(/^A /, a.name + " ");
   const fSel = () => [...document.querySelectorAll("#ftEv input:checked")].map(x => +x.dataset.i);
-  const fJoint = idx => sum(cur.m, (i, j) => idx.every(k => FEV[k][1](i, j)));
   function drawFev() {
-    g("ftEv").innerHTML = FEV.map(([lab, fn], k) => `<label for="fe${k}"><input type="checkbox" id="fe${k}" data-i="${k}"><span>${fLab(lab, cur.h, cur.a)}</span><span class="q num">${f(sum(cur.m, fn) * 100)} %</span></label>`).join("");
+    cur.J = buildJoint(cur.h, cur.a, cur.lam, cur.mu);
+    const secOk = k => { for (let j = k + 1; j < FEV.length && FEV[j][1]; j++) if (avail(j)) return true; return false; };
+    g("ftEv").innerHTML = FEV.map((e, k) => !e[1] ? (secOk(k) ? `<p class="evh">${e[0]}</p>` : "")
+      : !avail(k) ? "" : `<label for="fe${k}"><input type="checkbox" id="fe${k}" data-i="${k}"><span>${fLab(e[0], cur.h, cur.a)}</span><span class="q num">${f(fJoint([k]) * 100)} %</span></label>`).join("");
     const labs = FEV.map(e => fLab(e[0], cur.h, cur.a));
-    renderSugg(g("ftSug"), suggestCombos(FEV.length, fJoint), labs, o => Combo.add("Foot", `${cur.h.name} – ${cur.a.name}`, [labs[o.i], labs[o.j]], o.p));
+    const ok = FEV.map((e, k) => avail(k) ? k : -1).filter(k => k >= 0);
+    const sug = suggestCombos(ok.length, idx => fJoint(idx.map(t => ok[t]))).map(o => ({ ...o, i: ok[o.i], j: ok[o.j] }));
+    renderSugg(g("ftSug"), sug, labs, o => Combo.add("Foot", `${cur.h.name} – ${cur.a.name}`, [labs[o.i], labs[o.j]], o.p));
     fUpd();
   }
   function fUpd() {
@@ -156,31 +204,6 @@
     Combo.add("Foot", `${cur.h.name} – ${cur.a.name}`, idx.map(k => fLab(FEV[k][0], cur.h, cur.a)), fJoint(idx));
     document.querySelectorAll("#ftEv input").forEach(x => x.checked = false); fUpd();
   });
-
-  // ---------- autres événements : mi-temps, corners, cartons ----------
-  const pmf = (k, l) => { let p = Math.exp(-l); for (let i = 1; i <= k; i++) p *= l / i; return p; };
-  const nbpmf = (k, l, v) => { if (v <= 1.01) return pmf(k, l); const r = l / (v - 1), q = 1 / v; let lg = 0; for (let i = 1; i <= k; i++) lg += Math.log((r + i - 1) / i); return Math.exp(lg + r * Math.log(q) + k * Math.log(1 - q)); };
-  const more = (l1, l2) => { let s = 0; for (let i = 0; i < 40; i++) { const p = pmf(i, l1); let c = 0; for (let j = 0; j < i; j++) c += pmf(j, l2); s += p * c; } return s; };
-  const over = (k, l, v) => { let s = 0; for (let i = 0; i <= k; i++) s += nbpmf(i, l, v || 1); return 1 - s; };
-  window.FootX = (Lg, h, a, lam, mu) => {
-    const x = Lg.x, out = [];
-    if (x) {
-      const l1 = lam * x.f1, m1 = mu * x.f1, l2 = lam - l1, m2 = mu - m1;
-      out.push(["Mi-temps", [[`${h.name} mène à la mi-temps`, more(l1, m1)], ["Nul à la mi-temps", 1 - more(l1, m1) - more(m1, l1)], [`${a.name} mène à la mi-temps`, more(m1, l1)],
-        ["But en 1re période", 1 - Math.exp(-(l1 + m1))], ["But en 2e période", 1 - Math.exp(-(l2 + m2))]]]);
-      if (h.c && a.c) {
-        const ch = x.ch * h.c[0] * a.c[1], ca = x.ca * a.c[0] * h.c[1];
-        out.push(["Corners", [[`${h.name} obtient plus de corners`, more(ch, ca)], [`${a.name} obtient plus de corners`, more(ca, ch)], ["Plus de 9,5 corners", over(9, ch + ca, x.cd)]]]);
-        const kh = x.kh * h.k[0] * a.k[1], ka = x.ka * a.k[0] * h.k[1];
-        out.push(["Cartons", [["Plus de 4,5 cartons", over(4, kh + ka)], [`${h.name} reçoit plus de cartons`, more(kh, ka)], [`${a.name} reçoit plus de cartons`, more(ka, kh)], ["Au moins un carton rouge", x.red]]]);
-      }
-    }
-    return out;
-  };
-  function drawX(h, a, lam, mu) {
-    const groups = window.FootX(L, h, a, lam, mu);
-    g("ftX").innerHTML = groups.map(([t, rows]) => `<p class="sub2">${t}</p><div class="evlist ro">${rows.map(([l, p]) => `<div class="er"><span>${l}</span><span class="q num">${f(p * 100)} %</span></div>`).join("")}</div>`).join("");
-  }
 
   function table() {
     const sg = v => (v >= 0 ? "+" : "−") + f(Math.abs(v * 100)) + " %";

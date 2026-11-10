@@ -243,7 +243,6 @@ landing = head("Pronostat · Probabilités foot, tennis et NBA",
   </section>
   {stats_html}
   {md_html}
-  <section class="blk faq"><h2>Questions fréquentes</h2>{''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in FAQ)}</section>
   <footer class="foot">Pronostat · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.</footer>
 </div>
 <script>

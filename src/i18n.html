@@ -18,6 +18,7 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Résultat et buts", "Result and goals", "Uitslag en doelpunten"],
     ["En direct", "Live", "Live"], ["Chances maintenant :", "Chances now:", "Kansen nu:"], ["Fin", "FT", "Einde"],
     ["Votre prono", "Your pick", "Uw voorspelling"], ["Mon prono", "My pick", "Mijn voorspelling"], ["Partager", "Share", "Delen"], ["Les joueurs :", "Players:", "Spelers:"],
     ["contre", "vs", "tegen"], ["Et vous, vous en pensez quoi ?", "What do you think?", "Wat denkt u?"], ["Télécharger l'image", "Download the image", "Afbeelding downloaden"],
