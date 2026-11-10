@@ -89,8 +89,8 @@
   // ---- l'image à partager
   async function card(S, D, mine, opts, C) {
     const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
-    try { await Promise.all(["700 120px Quicksand", "600 40px Quicksand"].map(f => document.fonts.load(f))); } catch (e) {}
-    const F = (w, s) => `${w} ${s}px Quicksand, "Nunito", system-ui, sans-serif`;
+    try { if (!document.getElementById("shFont")) { const l = document.createElement("link"); l.id = "shFont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,600;0,700;0,800;1,800&display=swap"; document.head.appendChild(l); await new Promise(r => { l.onload = r; l.onerror = r; setTimeout(r, 2500); }); } await Promise.all(["700 120px Inter", "600 40px Inter"].map(f => document.fonts.load(f))); } catch (e) {}
+    const F = (w, s) => `${w} ${s}px Inter, "Helvetica Neue", Arial, sans-serif`;
     const fit = (t, max, w, s, min = 24) => { let z = s; x.font = F(w, z); while (x.measureText(t).width > max && z > min) { z -= 2; x.font = F(w, z); } return z; };
     const up = t => String(t).toLocaleUpperCase(window.I18N && I18N.lang === "nl" ? "nl" : "fr");
     const rr = (X, Y, w, h, r, col) => { x.beginPath(); x.roundRect(X, Y, w, h, r); x.fillStyle = col; x.fill(); };
@@ -139,14 +139,15 @@
       });
       const mm = String(D.selTxt || "").match(/(\d+(?:[.,]\d+)?)\s*%/), pj = sel.length > 1 && mm ? parseFloat(mm[1].replace(",", ".")) / 100 : 0; if (pj) { x.fillStyle = "#5B6270"; x.font = F(700, 30); x.textAlign = "center"; x.fillText(up(tr("Ensemble")) + " : " + Math.round(pj * 100) + " %", W / 2, y + 26); y += 50; }
     } else {
-      // chances 1 · N · 2
-      const parts = S.sport === "Football" ? [[D.a, D.p[0], "#1F5FBF"], [tr("Nul"), D.p[1], "#5B6270"], [D.b, D.p[2], "#C2410C"]] : [[D.a, D.p[0], "#1F5FBF"], [D.b, D.p[2], "#C2410C"]];
-      const gap = 16, bw = (W - 120 - gap * (parts.length - 1)) / parts.length, by = y + 60;
-      parts.forEach(([n, p, col], k) => {
-        const bx = 60 + k * (bw + gap); rr(bx, by, bw, 112, 22, col); x.fillStyle = "#FFFFFF"; x.font = F(700, 52); x.textAlign = "center"; x.fillText(Math.round(p * 100) + " %", bx + bw / 2, by + 62);
-        x.fillStyle = "rgba(255,255,255,.88)"; fit(up(n), bw - 30, 700, 22, 14); x.fillText(up(n), bx + bw / 2, by + 96);
+      // chances 1 · N · 2, même style que le combiné
+      const parts = S.sport === "Football" ? [[D.a, D.p[0], 0], [tr("Nul"), D.p[1], 1], [D.b, D.p[2], 2]] : [[D.a, D.p[0], 0], [D.b, D.p[2], 2]];
+      y += 60;
+      parts.forEach(([l, p, k]) => {
+        const on = k === pi;
+        rr(80, y, W - 160, 88, 20, "#FFFFFF"); x.strokeStyle = on ? "#D0202E" : "#E4E6EA"; x.lineWidth = on ? 4 : 3; x.beginPath(); x.roundRect(80, y, W - 160, 88, 20); x.stroke();
+        x.fillStyle = "#14161A"; x.textAlign = "left"; fit(l, W - 420, 700, 36, 20); x.fillText(l, 116, y + 57);
+        x.fillStyle = "#D0202E"; x.font = F(700, 42); x.textAlign = "right"; x.fillText(Math.round(p * 100) + " %", W - 116, y + 59); y += 102;
       });
-      y = by + 112;
     }
     x.font = F(700, 96); fit(up(tr("Et vous ?")), W - 160, 700, 96, 40); sk(up(tr("Et vous ?")), W / 2, Math.min(Math.max(y + 130, 1150), 1250), "#D0202E");
     x.fillStyle = "#5B6270"; x.font = F(600, 28); x.textAlign = "center"; x.fillText(SITE.replace(/^https:\/\//, "").replace(/\/$/, ""), W / 2, 1316);
