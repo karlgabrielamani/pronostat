@@ -119,15 +119,13 @@
     if (one) lines[0] = big;
     let y = 500; lines.slice(0, 2).forEach((l, k) => { fit(l, W - 120, 700, lines.length > 1 ? 104 : 124, 56); sk(l, W / 2, y + k * 112, "#14161A"); }); y += (Math.min(lines.length, 2) - 1) * 112;
     // selon Pronostat / votants Pronostat
-    const cwd = 400, gx = 24, sx = (W - (cwd * 2 + gx)) / 2, cy = y + 60;
+    const hasV = !!(C && C.n >= MIN_VOTES), cwd = 400, gx = 24, sx = hasV ? (W - (cwd * 2 + gx)) / 2 : (W - cwd) / 2, cy = y + 60;
     rr(sx, cy, cwd, 124, 24, "#FDECEE"); x.fillStyle = "#D0202E"; x.font = F(700, 64); x.textAlign = "center"; x.fillText(Math.round(D.p[pi] * 100) + " %", sx + cwd / 2, cy + 72);
     x.fillStyle = "#9B1B24"; fit(up(tr("selon Pronostat")), cwd - 40, 700, 24, 16); x.fillText(up(tr("selon Pronostat")), sx + cwd / 2, cy + 108);
-    const X2 = sx + cwd + gx; rr(X2, cy, cwd, 124, 24, "#14161A");
-    if (C && C.n >= MIN_VOTES) {
+    if (hasV) {
+      const X2 = sx + cwd + gx; rr(X2, cy, cwd, 124, 24, "#14161A");
       x.fillStyle = "#FFFFFF"; x.font = F(700, 64); x.fillText(Math.round(C.get(mine) * 100) + " %", X2 + cwd / 2, cy + 72);
       x.fillStyle = "rgba(255,255,255,.78)"; const t = up(tr("des votants Pronostat")); fit(t, cwd - 40, 700, 22, 14); x.fillText(t, X2 + cwd / 2, cy + 108);
-    } else {
-      x.fillStyle = "#FFFFFF"; fit(up(tr("Votez sur Pronostat")), cwd - 40, 700, 36, 20); x.fillText(up(tr("Votez sur Pronostat")), X2 + cwd / 2, cy + 74);
     }
     y = cy + 124;
     // mon combiné (événements cochés par le joueur)
@@ -143,7 +141,7 @@
     } else {
       // chances 1 · N · 2
       const parts = S.sport === "Football" ? [[D.a, D.p[0], "#1F5FBF"], [tr("Nul"), D.p[1], "#5B6270"], [D.b, D.p[2], "#C2410C"]] : [[D.a, D.p[0], "#1F5FBF"], [D.b, D.p[2], "#C2410C"]];
-      const gap = 16, bw = (W - 120 - gap * (parts.length - 1)) / parts.length, by = Math.max(y + 70, 820);
+      const gap = 16, bw = (W - 120 - gap * (parts.length - 1)) / parts.length, by = y + 60;
       parts.forEach(([n, p, col], k) => {
         const bx = 60 + k * (bw + gap); rr(bx, by, bw, 112, 22, col); x.fillStyle = "#FFFFFF"; x.font = F(700, 52); x.textAlign = "center"; x.fillText(Math.round(p * 100) + " %", bx + bw / 2, by + 62);
         x.fillStyle = "rgba(255,255,255,.88)"; fit(up(n), bw - 30, 700, 22, 14); x.fillText(up(n), bx + bw / 2, by + 96);
