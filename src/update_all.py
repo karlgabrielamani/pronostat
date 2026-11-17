@@ -249,7 +249,13 @@ def nba():
 
 
 # ------------------------------------------------------------------ PAGE
-FONT_LINK = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap">'
+FONT_LINK = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">'
+
+
+def logos_js():
+    """Logos des équipes (data/logos.json, fait par src/logos.py) ; sans ce fichier la page affiche les initiales."""
+    p = f"{ROOT}/data/logos.json"
+    return "\n<script>window.LOGOS = " + open(p).read() + ";</script>" if os.path.exists(p) else ""
 
 
 def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data=None):
@@ -258,11 +264,18 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
     t = t.replace("@media (max-width: 520px) {", css + "@media (max-width: 520px) {", 1)
     t = t.replace("<title>Pronos Tennis ATP</title>", "<title>Pronostat</title>")
     t = t.replace('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap">', FONT_LINK, 1)   # police Quicksand
-    j = t.index("</style>"); t = t[:j] + open(f"{SRC}/theme.css").read() + t[j:]
+    j = t.index("</style>"); t = t[:j] + open(f"{SRC}/theme.css").read() + open(f"{SRC}/home.css").read() + t[j:]
     nav = ('<header class="appbar"><a class="logo" href="#jour"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V13 M12 19 V5 M18 19 V10"/></svg></i>Pronostat</a></header>'
            '<nav class="tabs" aria-label="Sport"><a href="#jour" id="tab-jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10 H20.5 M8 3 V7 M16 3 V7"/></svg>Aujourd&#39;hui</a><a href="#foot" id="tab-foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7 L16 10 L14.5 15 H9.5 L8 10 Z"/></svg>Football</a>'
            '<a href="#tennis" id="tab-tennis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 6 C10 9 10 15 5 18 M19 6 C14 9 14 15 19 18"/></svg>Tennis</a><a href="#basket" id="tab-basket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12 H21 M12 3 V21 M5.5 5.5 C9 9 9 15 5.5 18.5 M18.5 5.5 C15 9 15 15 18.5 18.5"/></svg>NBA</a><a href="#fav" id="tab-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a></nav>'
            '<nav class="sports" aria-label="Sports"><a href="#foot">Football</a><a href="#tennis">Tennis</a><a href="#basket">NBA</a></nav>\n')
+    # mise en page 2026-11 : barre du haut (web) + barre du bas (téléphone), remplace la barre ci-dessus
+    nav = ('<header class="appbar"><button class="hback" type="button" aria-label="Retour"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button>'
+           '<a class="logo" href="#jour"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V14 M12 19 V10 M18 19 V5"/></svg></i>Pronostat</a>'
+           '<nav class="topnav" aria-label="Rubriques"><a href="#jour" data-v="jour">Les matchs</a><a href="#about" data-v="about">Comment ça marche</a></nav></header>'
+           '<nav class="bnav" aria-label="Navigation"><a href="#jour" data-v="jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Matchs</a>'
+           '<a href="#fav" data-v="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a>'
+           '<a href="#about" data-v="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg>À propos</a></nav>\n')
     t = t.replace('<script', open(f"{SRC}/i18n.html").read() + '<script', 1)
     t = t.replace('<div class="wrap">', nav + open(f"{SRC}/fav.html").read() + '<div class="wrap" id="view-tennis" hidden>', 1)
     i = t.index("<script>")
@@ -270,7 +283,7 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
     js = lambda name, ph, data: "\n<script>\n" + open(f"{SRC}/{name}").read().replace(ph, json.dumps(data, ensure_ascii=False)) + "\n</script>"
     t = (t + js("nba_fragment.js", "__NBA__", nba_data) + js("foot_fragment.js", "__FOOT__", foot_data)
            + "\n<script>window.HIST = " + json.dumps(hist, ensure_ascii=False) + ";</script>"
-           + open(f"{SRC}/router.html").read() + open(f"{SRC}/sim.html").read() + open(f"{SRC}/search.html").read() + open(f"{SRC}/share.html").read() + open(f"{SRC}/live.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
+           + open(f"{SRC}/router.html").read() + logos_js() + "\n<script>\n" + open(f"{SRC}/home.js").read() + "\n</script>\n" + open(f"{SRC}/sim.html").read() + open(f"{SRC}/search.html").read() + open(f"{SRC}/share.html").read() + open(f"{SRC}/live.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
     t = t.replace("__WTA__", json.dumps(wta_data or dict(players=[], coef=tennis_data["coef"], updated=tennis_data["updated"], test=dict(acc=0, acc_pin=None), live=[]), ensure_ascii=False))
     t = t.replace("__DATA__", json.dumps(tennis_data, ensure_ascii=False))
     open(f"{OUT}/pronos.html", "w").write(t)
@@ -315,4 +328,9 @@ if __name__ == "__main__":
                                   pd.concat(RESULTS["foot"], ignore_index=True), RESULTS["nba"])
     except Exception as e:                       # les portefeuilles virtuels ne bloquent pas la mise à jour
         import traceback; print("  ATTENTION stratégies non mises à jour :", repr(e)); traceback.print_exc(limit=3)
+    try:                                         # logos des équipes nouvelles (ESPN) ; sans logo, la page affiche les initiales
+        import logos
+        print("  logos :", len(logos.update(f)), "nouveaux")
+    except Exception as e:
+        print("  ATTENTION logos non mis à jour :", repr(e))
     print("Page :", build(f, n, tennis, hist, wta, paper_data))

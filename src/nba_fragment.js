@@ -222,7 +222,7 @@
         const be = N.beta || 0;
         const m = (N.mu + a.o - b.d + N.hca / 2 - be * missDefault(a)) - (N.mu + b.o - a.d - N.hca / 2 - be * missDefault(b));
         const p = 0.5 * (1 + erf(m / (sd * Math.sqrt(2 * (1 - rho))) / Math.SQRT2));
-        return { sport: "NBA", dt: x.dt, comp: "NBA", a: x.home, b: x.away, pa: p, pb: 1 - p,
+        return { sport: "NBA", dt: x.dt, comp: "NBA", a: x.home, b: x.away, pa: p, pb: 1 - p, mg: m, sg: sd * Math.sqrt(2 * (1 - rho)),
           open: () => { location.hash = "#basket"; const i = games.findIndex(y => y.home === x.home && y.away === x.away && y.dt === x.dt);
             const btn = g("nbGames").querySelector(`.game[data-i="${i}"]`);
             if (btn) btn.click(); else { g("nbA").value = x.home; g("nbB").value = x.away; render(); } } };

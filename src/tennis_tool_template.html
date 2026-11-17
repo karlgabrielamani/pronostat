@@ -652,6 +652,15 @@ window.TennisAPI = {
   },
   current: () => window._sim && { sport: "tennis", h: window._sim.a.name, a: window._sim.b.name, pa: window._sim.pa, pb: window._sim.pb, bo, surf: surface },
   updated: TOURS.ATP.updated,
+  tournaments() {                 // tournois en cours et à venir (ESPN pour les prochaines semaines, calendrier officiel ATP au-delà)
+    const today = new Date().toISOString().slice(0, 10), out = [];
+    for (const tour of ["ATP", "WTA"]) {
+      const DT = TOURS[tour];
+      (DT.tours || []).forEach(e => out.push({ tour, name: e.name, start: e.start, end: e.end, city: e.city || "", surface: e.surface, bo: e.major ? 5 : 3 }));
+      if (tour === "ATP") { const hz = (DT.tours || []).length ? DT.toursUntil : "0000"; CAL.filter(c => c[0] > hz).forEach(c => out.push({ tour, name: c[2], start: c[0], end: c[1], city: c[3] || "", surface: c[5], bo: c[7] || 3, cat: c[4] })); }
+    }
+    return out.filter(t => t.end >= today).sort((a, b) => a.start < b.start ? -1 : a.start > b.start ? 1 : 0);
+  },
   list() {
     const out = [];
     for (const tour of ["ATP", "WTA"]) {
@@ -659,7 +668,7 @@ window.TennisAPI = {
       for (const m of (DT.live || []).filter(m => m.k1 && m.k2 && PT[m.p1] && PT[m.p2])) {
         const s0 = surface, b0 = bo, d0 = D; surface = m.surface; bo = m.bo; D = DT;
         const p = prob(PT[m.p1], PT[m.p2]); surface = s0; bo = b0; D = d0;
-        out.push({ sport: "Tennis", dt: m.dt, comp: `${tour} · ${m.tour} · ${m.round}`, a: m.p1, b: m.p2, pa: p, pb: 1 - p,
+        out.push({ sport: "Tennis", dt: m.dt, comp: `${tour} · ${m.tour} · ${m.round}`, tour, event: m.tour, round: m.round, surface: m.surface, bo: m.bo, a: m.p1, b: m.p2, pa: p, pb: 1 - p,
           open: () => { location.hash = "#tennis"; setTour(tour);
             const i = (window._tLive || []).findIndex(x => x.p1 === m.p1 && x.p2 === m.p2 && x.dt === m.dt);
             const btn = document.querySelector(`#tLive .game[data-i="${i}"]`); if (btn) btn.click(); else { $("pA").value = m.p1; $("pB").value = m.p2; render(); } } });

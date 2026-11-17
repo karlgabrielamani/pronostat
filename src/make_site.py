@@ -1,6 +1,6 @@
 """Construit le site public à partir de la sortie de update_all.py :
 - app.html  : l'appli (out/pronos.html dans une page autonome)
-- index.html : la page d'accueil (promesse, stats du jour, match du jour, offres, questions)
+- presentation.html : l ancienne page de présentation (promesse, stats du jour, match du jour, offres, questions)
 et recopie les données mises à jour dans data/."""
 import html, json, math, os, re, shutil, sys
 from datetime import datetime, timedelta, timezone
@@ -42,11 +42,10 @@ def head(title, desc, extra=""):
 """
 
 
-# ---------------------------------------------------------------- l'appli
-HOME_TAB = '<a href="./" id="tab-home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 L12 4 L21 11 V20 H3 Z"/></svg>Accueil</a>'
-page = page.replace('<a class="logo" href="#jour">', '<a class="logo" href="./">', 1).replace('<a href="#jour" id="tab-jour">', HOME_TAB + '<a href="#jour" id="tab-jour">', 1)
-open(f"{ROOT}/app.html", "w", encoding="utf-8").write(
-    head("Pronostat · l'appli", "Probabilités foot, tennis et NBA : chaque match, événement par événement.") + page + "\n</body>\n</html>\n")
+# ---------------------------------------------------------------- l'appli (page d'accueil du site depuis la mise en page 2026-11)
+app = head("Pronostat · les probabilités, simplement", "Probabilités foot, tennis et NBA : chaque match, événement par événement.") + page + "\n</body>\n</html>\n"
+for name in ("index.html", "app.html"):          # app.html reste pour les anciens liens
+    open(f"{ROOT}/{name}", "w", encoding="utf-8").write(app)
 
 # ---------------------------------------------------------------- calculs pour la page d'accueil
 load = lambda n: json.load(open(f"{OUT}/{n}", encoding="utf-8")) if os.path.exists(f"{OUT}/{n}") else None
@@ -254,10 +253,10 @@ document.querySelectorAll("time[data-dt]").forEach(t => {{ const d = new Date(t.
 """
 # i18n doit s'exécuter avant le script des heures (correction des dates) : on le place en tête
 landing = landing.replace("<body>\n", "<body>\n" + I18N, 1).replace(f"</script>\n{I18N}\n</body>", "</script>\n</body>")
-open(f"{ROOT}/index.html", "w", encoding="utf-8").write(landing)
+open(f"{ROOT}/presentation.html", "w", encoding="utf-8").write(landing)
 
 for name in ["tennis_history.csv", "tennis_tool.json", "wta_history.csv", "wta_tool.json", "cups_history.csv", "predictions_log.csv", "paper_bets.csv"]:
     src = f"{OUT}/{name}"
     if os.path.exists(src) and os.path.getsize(src) > 0:
         shutil.copy(src, f"{ROOT}/data/{name}")
-print("Site écrit :", f"{ROOT}/index.html", "et", f"{ROOT}/app.html", f"· {len(stats)} stats du jour", "· match du jour :" , (match_day or {}).get("a"), "-", (match_day or {}).get("b"))
+print("Site écrit :", f"{ROOT}/index.html", "+ app.html, présentation :", f"{ROOT}/presentation.html", f"· {len(stats)} stats du jour", "· match du jour :" , (match_day or {}).get("a"), "-", (match_day or {}).get("b"))

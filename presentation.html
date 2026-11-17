@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pronostat · Probabilités foot, tennis et NBA</title>
+<meta name="description" content="Les probabilités de chaque match, événement par événement : football, tennis et NBA, recalculées chaque matin.">
+<meta property="og:title" content="Pronostat · Probabilités foot, tennis et NBA">
+<meta property="og:description" content="Les probabilités de chaque match, événement par événement : football, tennis et NBA, recalculées chaque matin.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://karlgabrielamani.github.io/pronostat/">
+<meta property="og:image" content="https://karlgabrielamani.github.io/pronostat/icon-512.png">
+<meta name="theme-color" content="#D0202E">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="manifest" href="manifest.json">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>/* ===== Thème pronostat : Quicksand, cartes blanches arrondies, bleu (domicile) / orange (extérieur), rouge pour l'action ===== */
+:root {
+  --bg: #F4F5F7; --surface: #FFFFFF; --ink: #14161A; --ink-2: #3A404B; --ink-3: #5B6270; --line: #E4E6EA; --line2: #D5D8DE;
+  --a: #1F5FBF; --b: #C2410C; --hot: #D0202E; --grass: #0F7A5A; --clay: #B4531F; --hard: #1F5FBF; --soft-a: #E8F0FB; --soft-b: #FBEDE6; --track: #EEF0F3;
+  --f-display: "Quicksand", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif; --f-body: var(--f-display);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0F1114; --surface: #1A1D22; --ink: #F1F2F4; --ink-2: #C9CDD4; --ink-3: #9AA1AC; --line: #2A2E35; --line2: #3A3F47;
+  --a: #6E9BEB; --b: #F08A4B; --hot: #F0474F; --grass: #4FBF8E; --clay: #E38A57; --hard: #6E9BEB; --soft-a: #1C2A40; --soft-b: #3A2418; --track: #262A31; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #0F1114; --surface: #1A1D22; --ink: #F1F2F4; --ink-2: #C9CDD4; --ink-3: #9AA1AC; --line: #2A2E35; --line2: #3A3F47;
+  --a: #6E9BEB; --b: #F08A4B; --hot: #F0474F; --grass: #4FBF8E; --clay: #E38A57; --hard: #6E9BEB; --soft-a: #1C2A40; --soft-b: #3A2418; --track: #262A31; color-scheme: dark; }
+
+body { font-family: var(--f-body); font-weight: 500; background: var(--bg); color: var(--ink); }
+h1, h2, .pname, .pct, .vs, .tabs a, .eyebrow, .jday, th, .lg, .pick label, details.more > summary { font-family: var(--f-body); text-transform: none; letter-spacing: -0.01em; }
+h1 { font-size: 26px; font-weight: 700; line-height: 1.15; }
+h2 { font-size: 18px; font-weight: 700; }
+.wrap { gap: 14px; }
+.vh { gap: 4px; padding: 0; border: 0; }
+.sub { font-size: 14px; color: var(--ink-3); line-height: 1.45; }
+.note { font-size: 13px; color: var(--ink-3); font-style: normal; }
+
+/* barre d'appli : logo + rubriques */
+.appbar { max-width: 760px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.logo { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+.logo i { width: 32px; height: 32px; border-radius: 10px; background: var(--hot); display: grid; place-items: center; }
+.appbar .day { font-size: 14px; font-weight: 600; color: var(--ink-3); }
+.tabs { max-width: 760px; margin: 0 auto 16px; display: flex; gap: 8px; border: 0; overflow-x: auto; scrollbar-width: none; }
+.tabs a { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line2); border-radius: 999px; padding: 9px 16px; margin: 0; white-space: nowrap; }
+.tabs a svg { width: 18px; height: 18px; flex: none; }
+.tabs a[aria-current="page"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+
+/* cartes */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; gap: 14px; box-shadow: none; }
+.eyebrow { font-size: 15px; font-weight: 700; color: var(--ink); }
+.eyebrow span { font-weight: 500; color: var(--ink-3); font-size: 13px; }
+
+/* listes de matchs */
+.games { gap: 8px; }
+.game { border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 10px 12px; min-height: 52px; }
+.game .when { font-size: 12px; font-weight: 600; color: var(--ink-3); text-transform: none; }
+.game b { font-weight: 700; }
+.game[aria-pressed="true"] { border-color: var(--hot); box-shadow: inset 0 0 0 1px var(--hot); background: var(--surface); }
+.jlist { gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.jday { font-size: 14px; font-weight: 700; color: var(--ink-3); background: var(--bg); margin: 0; padding: 10px 14px; border: 0; }
+.jrow { border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: var(--surface); padding: 11px 14px; min-height: 56px; }
+.jrow:hover { background: var(--bg); }
+.jf b { font-size: 17px; font-weight: 700; }
+.sp { border-radius: 999px; font-weight: 700; font-size: 11px; padding: 2px 8px; }
+
+/* chances */
+.pct, .pct.num { font-size: 40px; font-weight: 700; line-height: 1; }
+.pname { font-size: 17px; font-weight: 700; }
+.bar { height: 10px; border-radius: 6px; gap: 3px; background: transparent; }
+.bar span { border-radius: 6px; }
+.verdict { font-size: 15px; }
+
+/* contrôles */
+.pick select, .lg select, .pick input { border: 1px solid var(--line2); border-radius: 12px; background: var(--surface); font-size: 16px; font-weight: 600; padding: 11px 12px; }
+.lg, .pick label { font-size: 13px; font-weight: 700; color: var(--ink-3); }
+.seg { border: 0; border-radius: 999px; background: var(--track); padding: 3px; gap: 2px; display: inline-flex; flex-wrap: wrap; }
+.seg button { border: 0 !important; border-radius: 999px; font-weight: 700; padding: 8px 14px; }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0, 0, 0, .12); }
+.swap, td button, .legs button { border: 1px solid var(--line2); border-radius: 10px; font-weight: 700; color: var(--ink); background: var(--surface); }
+.chk input { accent-color: var(--hot); }
+details.more { border-top: 1px solid var(--line); }
+details.more > summary { font-size: 15px; font-weight: 700; color: var(--ink); }
+details.more > summary::before { border-radius: 8px; }
+details.more.sec { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+th { font-size: 12px; font-weight: 700; color: var(--ink-3); }
+.fm { border-radius: 6px; }
+.fm-V { background: var(--grass); }
+.chip { border-radius: 999px; }
+.bilan { border-top: 0; padding-top: 0; }
+#cbBar { background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -6px 24px rgba(0, 0, 0, .08); }
+
+/* ===== simulation ===== */
+.sm-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.sm-head .note { margin: 4px 0 0; }
+.sm-btn { font: inherit; font-size: 15px; font-weight: 700; min-height: 46px; padding: 0 16px; border-radius: 12px; border: 1px solid var(--line2); background: var(--surface); color: var(--ink); cursor: pointer; }
+.sm-main { background: var(--hot); border-color: var(--hot); color: #fff; }
+.sm-body { display: grid; gap: 12px; }
+.sm-card:not(.open) .sm-body { display: none; }
+.sm-btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.sm-whatif { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.sm-l { font-weight: 700; margin-right: 4px; }
+.chip-t { font: inherit; font-size: 13px; font-weight: 700; min-height: 40px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line2); background: var(--surface); color: var(--ink); cursor: pointer; }
+.chip-t[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.sm-score { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 4px 10px; font-weight: 700; }
+.sm-score .h { color: var(--a); } .sm-score .a { color: var(--b); text-align: right; }
+.sm-score b { font-size: 32px; text-align: center; }
+.sm-score small { grid-column: 1 / -1; text-align: center; font-size: 13px; color: var(--ink-3); }
+.sm-pitch, .sm-court, .sm-floor { position: relative; width: 100%; border-radius: 14px; overflow: hidden; }
+.sm-pitch { aspect-ratio: 358 / 230; background: #2F8A57; }
+.sm-court { aspect-ratio: 358 / 380; background: #2B5F9E; max-width: 420px; margin: 0 auto; }
+.sm-floor { aspect-ratio: 358 / 210; background: #D8A56A; }
+.sm-pitch .ln, .sm-court .ln, .sm-floor .ln { position: absolute; border: 2px solid rgba(255, 255, 255, .75); }
+.sm-dot { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; border: 2px solid #fff; transition: left .45s, top .45s; }
+.sm-dot.big { width: 18px; height: 18px; margin: -9px 0 0 -9px; transition: left .25s; }
+.sm-ball { position: absolute; width: 9px; height: 9px; margin: -4px 0 0 -4px; border-radius: 50%; background: #fff; border: 1.5px solid #14161A; transition: left .3s, top .3s; z-index: 2; }
+.sm-ball.nba { width: 10px; height: 10px; margin: -5px 0 0 -5px; background: #E46A1F; border-color: #5A2A0A; }
+.sm-tball { position: absolute; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-radius: 50%; background: #D9F24A; border: 1px solid #5A6B00; transition: left .26s linear, top .26s linear; z-index: 2; }
+.sm-ban { position: absolute; left: 0; right: 0; top: 40%; text-align: center; z-index: 3; }
+.sm-ban span { font-size: 22px; font-weight: 700; color: #fff; background: rgba(20, 22, 26, .78); padding: 6px 16px; border-radius: 12px; }
+.sm-box { display: grid; gap: 8px; }
+.sm-live { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); font-size: 14px; font-weight: 700; }
+.sm-live .h { color: var(--a); } .sm-live .d { color: var(--ink-3); text-align: center; } .sm-live .a { color: var(--b); text-align: right; }
+.sm-chart { width: 100%; height: 110px; display: block; background: var(--bg); border-radius: 10px; }
+.sm-axis { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; color: var(--ink-3); }
+.sm-ev { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+.sm-ev div { display: flex; align-items: center; gap: 8px; } .sm-ev i { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.sm-row { display: grid; grid-template-columns: 44px minmax(0, 1fr) 56px; gap: 8px; align-items: center; font-size: 14px; }
+.sm-row.wide { grid-template-columns: 120px minmax(0, 1fr) 44px; }
+.sm-row b:last-child { text-align: right; }
+.sm-track { height: 10px; border-radius: 5px; background: var(--track); overflow: hidden; } .sm-track span { display: block; height: 100%; background: var(--ink); border-radius: 5px; }
+.sm-sb { display: grid; gap: 6px; }
+.sm-sb div { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; }
+.sm-sb div span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sm-sb i { width: 9px; height: 9px; border-radius: 50%; flex: none; }
+.sm-sb b { width: 24px; text-align: center; } .sm-sb b.pt { width: 40px; background: var(--bg); border-radius: 8px; }
+
+/* ===== téléphone : rubriques en barre du bas, comme une appli ===== */
+@media (max-width: 600px) {
+  .tabs { position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; margin: 0; max-width: none; background: var(--surface); border-top: 1px solid var(--line);
+    gap: 0; padding: 6px max(6px, env(safe-area-inset-right, 0px)) calc(8px + env(safe-area-inset-bottom, 0px)) max(6px, env(safe-area-inset-left, 0px)); }
+  .tabs a { flex: 1; flex-direction: column; gap: 2px; border: 0; background: none; border-radius: 10px; padding: 6px 2px; font-size: 12px; color: var(--ink-3); min-height: 48px; justify-content: center; }
+  .tabs a[aria-current="page"] { background: none; color: var(--hot); }
+  .tabs a svg { width: 22px; height: 22px; }
+  body { padding-bottom: 76px; }
+  body.has-cb #cbBar { bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  h1 { font-size: 24px; }
+  .pct, .pct.num { font-size: 32px; }
+  .pname { font-size: 15px; }
+  .card { padding: 14px; }
+  
+  
+  .games { display: flex !important; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x proximity; padding-bottom: 4px; }
+  .game { flex: 0 0 auto; min-width: 150px; max-width: 74vw; scroll-snap-align: start; }
+  .game.wide { min-width: 210px; }
+  .pick { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) !important; gap: 6px !important; }
+  .vs { display: block !important; font-size: 13px; padding-bottom: 14px; }
+  .pick select, .pick input { font-size: 15px; padding: 10px 8px; }
+  .jrow { grid-template-columns: 42px minmax(0, 1fr) auto; gap: 8px; padding: 10px 12px; }
+  .jf small { display: none; }
+  .result { scroll-margin-top: 12px; }
+}
+
+/* matchs déjà commencés : gardés jusqu'au lendemain, en grisé */
+.game.past, .jrow.past { opacity: .62; }
+.game.past[aria-pressed="true"] { opacity: 1; }
+.jrow.past .jt small { display: block; font-size: 10px; font-weight: 700; color: var(--ink-3); }
+
+/* ===== favoris ===== */
+.star { font: inherit; flex: none; width: 44px; height: 44px; display: grid; place-items: center; border: 0; background: none; color: var(--ink-3); cursor: pointer; border-radius: 10px; }
+.star svg { fill: none; }
+.star[aria-pressed="true"] { color: #D99A00; }
+.star[aria-pressed="true"] svg { fill: #F5B800; }
+.star:hover { background: var(--bg); }
+.jw { display: grid; grid-template-columns: minmax(0, 1fr) 44px; align-items: center; background: var(--surface); border-bottom: 1px solid var(--line); padding-right: 4px; }
+.jw .jrow { border-bottom: 0; }
+.jw.past { opacity: .62; } .jw.past .jrow.past { opacity: 1; }
+.gw { position: relative; display: flex; min-width: 0; }
+.gw .game { flex: 1; min-width: 0; padding-right: 46px; }
+.gw .star { position: absolute; right: 2px; top: 50%; transform: translateY(-50%); }
+.fav-empty { padding: 16px; margin: 0; }
+@media (max-width: 600px) {
+  .tabs a { font-size: 11px; }
+  .gw { flex: 0 0 auto; }
+}
+
+/* lignes de match façon tableau des scores : équipes l'une sous l'autre */
+.jm { min-width: 0; display: grid; gap: 1px; }
+.jm .tm { display: block; font-size: 15px; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.25; }
+.jc { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.jf { min-width: 0; max-width: 112px; text-align: right; }
+.jf > span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
+@media (max-width: 600px) { .jf { max-width: 92px; } .jm .tm { font-size: 14.5px; } }
+@media (max-width: 600px) { .pname { overflow-wrap: normal; word-break: normal; font-size: 14px; } }
+/* langue */
+.appbar .lang { margin-left: auto; }
+.appbar .lang { display: flex; gap: 2px; background: var(--track); border-radius: 999px; padding: 2px; }
+.appbar .lang button { border: 0; background: transparent; color: var(--ink-3); font: inherit; font-size: 12px; font-weight: 700; padding: 4px 8px; border-radius: 999px; cursor: pointer; min-width: 32px; }
+.appbar .lang button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+@media (max-width: 600px) { .appbar .day { font-size: 12px; } }
+/* iPhone : pas de zoom automatique quand on touche un menu ou un champ (texte d'au moins 16 px), pas de défilement horizontal de la page */
+@media (max-width: 600px) { select, textarea, input[type="text"], input[type="search"], input:not([type]) { font-size: 16px !important; } }
+html, body { overflow-x: clip; }
+
+/* sports : rangée en haut sur mobile (la barre du bas garde Accueil, Aujourd'hui, Favoris) */
+.sports { display: none; }
+@media (max-width: 600px) {
+  .tabs #tab-foot, .tabs #tab-tennis, .tabs #tab-basket { display: none; }
+  .sports { display: flex; gap: 8px; max-width: 760px; margin: 0 auto 12px; overflow-x: auto; scrollbar-width: none; }
+  .sports::-webkit-scrollbar { display: none; }
+  .sports a { flex: none; font-size: 15px; font-weight: 700; color: var(--ink); background: var(--surface); border: 1px solid var(--line2); border-radius: 999px; padding: 8px 16px; text-decoration: none; white-space: nowrap; }
+  .sports a[aria-current="page"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+}
+.jf { overflow: hidden; } .jf > span { max-width: 100%; }
+
+/* événements en lecture seule (mi-temps, corners, cartons) */
+.evlist.ro .er { display: flex; justify-content: space-between; gap: 10px; align-items: center; padding: 4px 0; font-size: 14px; }
+.xev { display: grid; gap: 6px; }
+.evlist .evh { grid-column: 1 / -1; margin: 8px 0 0; font-size: 12px; font-weight: 700; color: var(--ink-3); text-transform: uppercase; letter-spacing: .05em; }
+</style>
+<style>
+.lp { max-width: 960px; margin: 0 auto; padding: 12px max(16px, env(safe-area-inset-right, 0px)) 40px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 34px; }
+.appbar { max-width: none; margin: 0; }
+.appbar .open { margin-left: auto; font: inherit; font-weight: 700; font-size: 14px; color: #fff; background: var(--hot); border-radius: 999px; padding: 9px 16px; text-decoration: none; white-space: nowrap; }
+.appbar .open + .lang { margin-left: 0; }
+.hero { display: grid; gap: 14px; padding-top: 10px; }
+.hero h1 { font-size: clamp(30px, 7vw, 46px); line-height: 1.08; margin: 0; text-wrap: balance; letter-spacing: -0.02em; }
+.hero h1 em { font-style: normal; color: var(--hot); }
+.hero p { font-size: 17px; color: var(--ink-2); line-height: 1.5; margin: 0; max-width: 60ch; }
+.ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 20px; border-radius: 12px; background: var(--hot); color: #fff; font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid var(--hot); }
+.btn.ghost { background: var(--surface); color: var(--ink); border-color: var(--line2); }
+.blk { display: grid; gap: 12px; }
+.blk h2 { margin: 0; font-size: 22px; }
+.blk > p.sub { margin: -4px 0 0; }
+.st { display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+.st .pc { font-size: 26px; font-weight: 700; color: var(--hot); min-width: 74px; font-variant-numeric: tabular-nums; }
+.st.big { padding: 20px; } .st.big .pc { font-size: 46px; min-width: 120px; } .st.big .ev { font-size: 19px; }
+.st .ev { margin: 0; font-weight: 700; font-size: 15px; } .st > div { min-width: 0; }
+.mt { margin: 4px 0 0; font-size: 13px; color: var(--ink-3); }
+.tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: var(--track); color: var(--ink-2); margin-right: 4px; }
+.sts { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.md { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 14px; }
+.md .mt { margin: 0; }
+.md-t { display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: end; }
+.md-t div { display: grid; gap: 2px; min-width: 0; } .md-t b { font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.md-t span { font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; } .md-t .pa { color: var(--a); } .md-t .pb { color: var(--b); }
+.md-t .dr { text-align: center; } .md-t .dr span { font-size: 22px; color: var(--ink-2); } .md-t .r { text-align: right; }
+.bar { display: flex; gap: 4px; height: 8px; } .bar i { display: block; border-radius: 4px; }
+.evs { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.evs li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.evs b { font-variant-numeric: tabular-nums; }
+.feats { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+.feats div { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; }
+.feats b { display: block; font-size: 16px; margin-bottom: 6px; } .feats p { margin: 0; color: var(--ink-3); line-height: 1.45; }
+.cov { display: flex; flex-wrap: wrap; gap: 6px; } .cov span { padding: 6px 12px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 13px; font-weight: 600; }
+.plans { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.plan { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: grid; gap: 10px; align-content: start; }
+.plan.top { border: 2px solid var(--hot); }
+.plan h3 { margin: 0; font-size: 18px; } .plan .pr { font-size: 28px; font-weight: 700; } .plan .pr small { font-size: 14px; color: var(--ink-3); font-weight: 600; }
+.plan ul { margin: 0; padding-left: 18px; color: var(--ink-2); line-height: 1.6; }
+.plan .lab { justify-self: start; font-size: 11px; font-weight: 700; color: #fff; background: var(--hot); border-radius: 999px; padding: 3px 10px; }
+.wl { display: flex; gap: 8px; flex-wrap: wrap; } .wl input { flex: 1; min-width: 0; font: inherit; font-size: 16px; padding: 0 12px; height: 46px; border-radius: 12px; border: 1px solid var(--line2); background: var(--bg); color: var(--ink); }
+.wl button { font: inherit; font-weight: 700; height: 46px; padding: 0 16px; border-radius: 12px; border: 0; background: var(--hot); color: #fff; cursor: pointer; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 8px; }
+.faq summary { font-weight: 700; font-size: 15px; cursor: pointer; } .faq p { margin: 8px 0 0; color: var(--ink-2); line-height: 1.5; }
+.foot { color: var(--ink-3); font-size: 13px; line-height: 1.5; border-top: 1px solid var(--line); padding-top: 18px; }
+@media (max-width: 520px) { .st.big { flex-direction: column; align-items: flex-start; gap: 6px; } .st.big .pc { font-size: 52px; } .appbar .open { padding: 8px 12px; font-size: 13px; } }
+</style>
+</head>
+<body>
+<script>
+// ---------- Langue : français (d'origine), anglais, néerlandais ----------
+// Le texte de l'appli est écrit en français ; on le traduit à l'affichage, phrase par phrase.
+// « # » dans une phrase = un nombre, recopié tel quel dans la traduction.
+window.I18N = (() => {
+  let LANG = "fr";
+  try { LANG = localStorage.getItem("pronostat-lang") || ((navigator.language || "").startsWith("nl") ? "nl" : "fr"); } catch (e) {}
+  if (!["fr", "en", "nl"].includes(LANG)) LANG = "fr";
+  document.documentElement.lang = LANG;
+  // dates et heures dans la bonne langue
+  if (LANG !== "fr") {
+    const loc = LANG === "en" ? "en-GB" : "nl-NL";
+    for (const fn of ["toLocaleDateString", "toLocaleTimeString", "toLocaleString"]) {
+      const orig = Date.prototype[fn];
+      Date.prototype[fn] = function (l, o) { return orig.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
+    }
+    const nf = Number.prototype.toLocaleString;
+    Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
+  }
+  const D = [
+    ["Ensemble", "Together", "Samen"],
+    ["selon Pronostat", "according to Pronostat", "volgens Pronostat"], ["des votants Pronostat", "of Pronostat voters", "van de Pronostat-stemmers"], ["Votants Pronostat :", "Pronostat voters:", "Pronostat-stemmers:"],
+    ["Votez sur Pronostat", "Vote on Pronostat", "Stem op Pronostat"], ["Mon combiné", "My combo", "Mijn combinatie"], ["Tout ensemble", "All together", "Alles samen"],
+    ["Choisissez d'abord votre prono.", "Choose your pick first.", "Kies eerst uw voorspelling."], ["pour l'instant", "so far", "tot nu toe"], ["votes", "votes", "stemmen"], ["vote", "vote", "stem"],
+    ["Prochains tournois", "Upcoming tournaments", "Komende toernooien"],
+    ["En cours", "Ongoing", "Bezig"],
+    ["Terre battue", "Clay", "Gravel"],
+    ["Dur", "Hard", "Hard"],
+    ["Gazon", "Grass", "Gras"],
+    ["3 sets gagnants", "Best of 5", "3 gewonnen sets"],
+    ["Les 7 prochains jours", "Next 7 days", "Komende 7 dagen"],
+    ["7 jours", "7 days", "7 dagen"],
+    ["à venir", "ahead", "vooruit"],
+    ["aucun match", "no match", "geen wedstrijd"],
+    ["Aucun match dans les 7 prochains jours. Voici les prochains :", "No match in the next 7 days. Here are the next ones:", "Geen wedstrijd in de komende 7 dagen. Dit zijn de volgende:"],
+    ["Aucun match aujourd'hui. Voici les prochains :", "No match today. Here are the next ones:", "Vandaag geen wedstrijd. Dit zijn de volgende:"],
+    ["Aucun match ce jour-là. Voici les prochains :", "No match that day. Here are the next ones:", "Geen wedstrijd die dag. Dit zijn de volgende:"],
+    ["Pas de statistique marquante pour ces matchs.", "No standout stat for these matches.", "Geen opvallende stat voor deze wedstrijden."],
+    ["Pas d'autre match.", "No other match.", "Geen andere wedstrijd."],
+    ["programmé pour l'instant.", "scheduled for now.", "gepland voorlopig."],
+    ["Simulation du match", "Match simulation", "Wedstrijdsimulatie"],
+    ["Jours", "Days", "Dagen"],
+    ["Cotes justes", "Fair odds", "Faire quoteringen"],
+    ["Analyse détaillée", "Detailed analysis", "Gedetailleerde analyse"],
+    ["Comparer avec d'autres équipes et voir le classement", "Compare with other teams and see the standings", "Vergelijk met andere ploegen en bekijk het klassement"],
+    ["Comparer avec d'autres joueurs et voir le classement", "Compare with other players and see the rankings", "Vergelijk met andere spelers en bekijk de ranking"],
+    ["Classements et outils", "Rankings and tools", "Klassementen en tools"],
+    ["Football : classements, notes d'attaque et de défense", "Football: standings, attack and defence ratings", "Voetbal: klassementen, aanvals- en verdedigingsscores"],
+    ["Tennis : classement Elo ATP et WTA, calendrier", "Tennis: ATP and WTA Elo rankings, calendar", "Tennis: Elo-ranking ATP en WTA, kalender"],
+    ["NBA : classement des équipes, absents", "NBA: team rankings, injuries", "NBA: ploegenklassement, afwezigen"],
+    ["P(Équipe #)", "P(Team #)", "P(Ploeg #)"],
+    ["P(Nul)", "P(Draw)", "P(Gelijk)"],
+    ["Date / Heure", "Date / Time", "Datum / Tijd"],
+    ["Les probabilités,", "Probabilities,", "Kansen,"],
+    ["simplement.", "made simple.", "eenvoudig."],
+    ["Football, tennis et NBA · # simulations par match", "Football, tennis and NBA · # simulations per match", "Voetbal, tennis en NBA · # simulaties per wedstrijd"],
+    ["Tous les sports", "All sports", "Alle sporten"],
+    ["Plus de #,# buts", "Over #.# goals", "Meer dan #,# doelpunten"],
+    ["Score probable", "Likely score", "Waarschijnlijke score"],
+    ["Voir l'analyse", "See the analysis", "Bekijk de analyse"],
+    ["Résultat du match", "Match result", "Uitslag"],
+    ["Au moins # buts", "At least # goals", "Minstens # doelpunten"],
+    ["Par équipe", "By team", "Per ploeg"],
+    ["marque au moins un but", "scores at least one goal", "scoort minstens één doelpunt"],
+    ["Scores possibles", "Possible scores", "Mogelijke scores"],
+    ["# simulations", "# simulations", "# simulaties"],
+    ["Comment ça marche", "How it works", "Hoe het werkt"],
+    ["Matchs", "Matches", "Wedstrijden"],
+    ["À propos", "About", "Over"],
+    ["gagne un set", "wins a set", "wint een set"],
+    ["Victoire des", "Win for the", "Zege voor de"],
+    ["Victoire de", "Win for", "Zege voor"],
+    ["Victoire d'", "Win for ", "Zege voor "],
+    ["Match en # sets", "Match goes to # sets", "Wedstrijd in # sets"],
+    ["Match serré (# pts ou moins)", "Close game (# pts or fewer)", "Spannende wedstrijd (# ptn of minder)"],
+    ["victoire par plus de # pts", "win by more than # pts", "zege met meer dan # ptn"],
+    ["Écart", "Margin", "Verschil"],
+    ["Sets", "Sets", "Sets"],
+    ["Analyse complète et simulateur", "Full analysis and simulator", "Volledige analyse en simulator"],
+    ["Tous les matchs", "All matches", "Alle wedstrijden"],
+    ["Aucun match ce jour-là.", "No match that day.", "Geen wedstrijd die dag."],
+    ["Pas d'autre match ce jour-là.", "No other match that day.", "Geen andere wedstrijd die dag."],
+    ["Pas de statistique marquante ce jour-là.", "No standout stat that day.", "Geen opvallende stat die dag."],
+    ["Ce match n'est plus au programme.", "This match is no longer scheduled.", "Deze wedstrijd staat niet meer op het programma."],
+    ["Voir les matchs", "See matches", "Bekijk wedstrijden"],
+    ["Les pourcentages sont ceux du modèle, pas un conseil de pari.", "Percentages come from the model, not betting advice.", "De percentages komen van het model, geen gokadvies."],
+    ["Aucun match de football programmé.", "No football match scheduled.", "Geen voetbalwedstrijd gepland."],
+    ["Aucun match de tennis programmé.", "No tennis match scheduled.", "Geen tenniswedstrijd gepland."],
+    ["Aucun match de NBA programmé.", "No NBA game scheduled.", "Geen NBA-wedstrijd gepland."],
+    ["Touchez l'étoile à côté d'un match pour le suivre ici.", "Tap the star next to a match to follow it here.", "Tik op de ster naast een wedstrijd om ze hier te volgen."],
+    ["Aucun favori pour l'instant. Touchez ☆ à côté d'un match.", "No favourites yet. Tap ☆ next to a match.", "Nog geen favorieten. Tik op ☆ naast een wedstrijd."],
+    ["Vos matchs favoris sont terminés.", "Your favourite matches are over.", "Uw favoriete wedstrijden zijn voorbij."],
+    ["Pour chaque match, un modèle statistique estime la force des deux camps, puis le match est simulé # fois. Un pourcentage indique combien de fois l'événement s'est produit dans ces simulations.", "For each match, a statistical model estimates the strength of both sides, then the match is simulated # times. A percentage shows how often the event happened in those simulations.", "Voor elke wedstrijd schat een statistisch model de sterkte van beide kanten, waarna de wedstrijd # keer wordt gesimuleerd. Een percentage toont hoe vaak de gebeurtenis in die simulaties voorkwam."],
+    ["Chaque équipe reçoit une note d'attaque et de défense, calculée sur ses matchs des deux dernières saisons (les plus récents comptent davantage), plus l'avantage du terrain. On en déduit le nombre de buts attendu pour chaque camp, puis la probabilité de chaque score.", "Each team gets an attack and a defence rating, computed from its matches over the last two seasons (recent ones count more), plus home advantage. From this we derive the expected goals for each side, then the probability of every score.", "Elke ploeg krijgt een aanvals- en verdedigingsscore, berekend op haar wedstrijden van de laatste twee seizoenen (recente tellen zwaarder), plus thuisvoordeel. Daaruit volgt het verwachte aantal doelpunten per ploeg en de kans op elke score."],
+    ["Chaque joueur et chaque joueuse a un classement Elo par surface (dur, terre battue, gazon), mis à jour après chaque match ATP et WTA. Le format du match (# ou # sets gagnants) est pris en compte.", "Every player has an Elo rating per surface (hard, clay, grass), updated after each ATP and WTA match. The match format (best of # or #) is taken into account.", "Elke speler heeft een Elo-rating per ondergrond (hard, gravel, gras), bijgewerkt na elke ATP- en WTA-wedstrijd. Het formaat (# of # gewonnen sets) wordt meegenomen."],
+    ["Chaque équipe a une note offensive et défensive, corrigée par l'avantage du terrain, la fatigue des matchs consécutifs et les joueurs absents.", "Each team has an offensive and defensive rating, adjusted for home advantage, back-to-back fatigue and missing players.", "Elke ploeg heeft een aanvals- en verdedigingsscore, gecorrigeerd voor thuisvoordeel, vermoeidheid door opeenvolgende wedstrijden en afwezige spelers."],
+    ["À savoir", "Good to know", "Goed om te weten"],
+    ["Un favori à # % perd encore près de # fois sur #.", "A # % favourite still loses nearly # times out of #.", "Een favoriet van # % verliest nog bijna # keer op #."],
+    ["Les données sont mises à jour chaque semaine.", "Data is updated every week.", "De gegevens worden elke week bijgewerkt."],
+    ["Outils avancés", "Advanced tools", "Geavanceerde tools"],
+    ["Choisir deux équipes ou deux joueurs, voir les classements et lancer un match simulé.", "Pick two teams or two players, see the rankings and run a simulated match.", "Kies twee ploegen of twee spelers, bekijk de rangschikkingen en speel een gesimuleerde wedstrijd."],
+    ["Jour précédent", "Previous day", "Vorige dag"],
+    ["Jour suivant", "Next day", "Volgende dag"],
+    ["Choisir le jour", "Choose a day", "Kies een dag"],
+    ["Retour", "Back", "Terug"],
+    ["Rubriques", "Sections", "Rubrieken"],
+    ["Et vous ?", "And you?", "En u?"],
+    ["Résultat et buts", "Result and goals", "Uitslag en doelpunten"],
+    ["En direct", "Live", "Live"], ["Chances maintenant :", "Chances now:", "Kansen nu:"], ["Fin", "FT", "Einde"],
+    ["Votre prono", "Your pick", "Uw voorspelling"], ["Mon prono", "My pick", "Mijn voorspelling"], ["Partager", "Share", "Delen"], ["Les joueurs :", "Players:", "Spelers:"],
+    ["contre", "vs", "tegen"], ["Et vous, vous en pensez quoi ?", "What do you think?", "Wat denkt u?"], ["Télécharger l'image", "Download the image", "Afbeelding downloaden"],
+    ["Copier le texte", "Copy the text", "Tekst kopiëren"], ["Copié !", "Copied!", "Gekopieerd!"],
+    ["Nul à la mi-temps", "Draw at half-time", "Gelijk bij de rust"], ["But en 1re période", "Goal in the 1st half", "Doelpunt in de 1e helft"], ["But en 2e période", "Goal in the 2nd half", "Doelpunt in de 2e helft"],
+    ["obtient plus de corners", "gets more corners", "krijgt meer hoekschoppen"], ["Plus de # corners", "Over # corners", "Meer dan # hoekschoppen"], ["Plus de # cartons", "Over # cards", "Meer dan # kaarten"],
+    ["reçoit plus de cartons", "gets more cards", "krijgt meer kaarten"], ["Au moins un carton rouge", "At least one red card", "Minstens één rode kaart"], ["Cartons", "Cards", "Kaarten"],
+    ["gagne # sets à #", "wins # sets to #", "wint met # sets tegen #"], ["marque plus de # points", "scores over # points", "scoort meer dan # punten"],
+    ["Oui, Pronostat est entièrement gratuit.", "Yes, Pronostat is completely free.", "Ja, Pronostat is volledig gratis."],
+    ["Accueil", "Home", "Home"], ["Les matchs", "Matches", "Wedstrijden"], ["Voir toutes les probabilités", "See all probabilities", "Bekijk alle kansen"], ["Voir les probabilités", "See the probabilities", "Bekijk de kansen"], ["Le match simulé en direct", "The match simulated live", "De wedstrijd live gesimuleerd"],
+    ["Football, tennis et NBA. Chaque match est simulé 10 000 fois : le pourcentage indique combien de fois chaque événement s'est produit.", "Football, tennis and NBA. Every match is simulated 10,000 times: the percentage shows how often each event happened.", "Voetbal, tennis en NBA. Elke wedstrijd wordt 10.000 keer gesimuleerd: het percentage toont hoe vaak elke gebeurtenis voorkwam."],
+    ["Le football (grands championnats européens, coupes d'Europe et coupes nationales), le tennis ATP et WTA, et la NBA.", "Football (major European leagues, European cups and national cups), ATP and WTA tennis, and the NBA.", "Voetbal (grote Europese competities, Europese bekers en nationale bekers), ATP- en WTA-tennis, en de NBA."],
+    // ---- page d'accueil
+    ["Ouvrir l'appli gratuitement", "Open the app for free", "Open de app gratis"], ["Ouvrir l'appli", "Open the app", "Open de app"], ["Voir les offres", "See plans", "Bekijk de abonnementen"],
+    ["Les probabilités de chaque match,", "The probabilities of every match,", "De kansen van elke wedstrijd,"], ["événement par événement.", "event by event.", "gebeurtenis per gebeurtenis."],
+    ["Football, tennis et NBA. Pas seulement qui va gagner : les deux équipes marquent, le nombre de buts, les sets… Calculé chaque matin par un modèle testé sur plus de # matchs.", "Football, tennis and NBA. Not just who wins: both teams to score, number of goals, sets… Calculated every morning by a model tested on more than # matches.", "Voetbal, tennis en NBA. Niet alleen wie wint: beide ploegen scoren, aantal doelpunten, sets… Elke ochtend berekend door een model getest op meer dan # wedstrijden."],
+    ["La stat du jour", "Stat of the day", "Stat van de dag"], ["Le match du jour", "Match of the day", "Wedstrijd van de dag"], ["Voir tous les événements du match", "See all match events", "Bekijk alle wedstrijdgebeurtenissen"],
+    ["Ce que vous trouvez dans Pronostat", "What you'll find in Pronostat", "Wat u vindt in Pronostat"], ["Chaque événement en %", "Every event in %", "Elke gebeurtenis in %"],
+    ["Les deux équipes marquent, plus de 2,5 buts, gagne au moins un set… Pas seulement 1, N ou 2.", "Both teams to score, over 2.5 goals, wins at least one set… Not just 1, X or 2.", "Beide ploegen scoren, meer dan 2,5 doelpunten, wint minstens één set… Niet alleen 1, X of 2."],
+    ["Combinés cohérents", "Consistent combos", "Samenhangende combinaties"],
+    ["Les événements qui vont ensemble, avec leur vraie probabilité commune et leur cote juste.", "Events that go together, with their true joint probability and fair odds.", "Gebeurtenissen die samengaan, met hun echte gezamenlijke kans en eerlijke quotering."],
+    ["Regardez le match se jouer avec les forces du modèle, ou rejouez-le # # fois.", "Watch the match play out with the model's strengths, or replay it 10,000 times.", "Bekijk de wedstrijd met de krachten van het model, of speel hem 10.000 keer opnieuw."],
+    ["Recherche et favoris", "Search and favourites", "Zoeken en favorieten"],
+    ["Trouvez une équipe ou un joueur en deux lettres, suivez vos matchs d'une étoile.", "Find a team or player in two letters, follow your matches with a star.", "Vind een ploeg of speler in twee letters, volg uw wedstrijden met een ster."],
+    ["Compétitions couvertes", "Competitions covered", "Gedekte competities"], ["Offres", "Plans", "Abonnementen"], ["Gratuit", "Free", "Gratis"],
+    ["Tous les matchs du jour", "All of today's matches", "Alle wedstrijden van de dag"], ["Probabilités 1, N, 2", "1, X, 2 probabilities", "Kansen 1, X, 2"],
+    ["Bientôt disponible", "Coming soon", "Binnenkort beschikbaar"], ["Bientôt", "Soon", "Binnenkort"], ["mois", "month", "maand"],
+    ["Tous les événements en %", "All events in %", "Alle gebeurtenissen in %"], ["Simulations et # # matchs simulés", "Simulations and 10,000 simulated matches", "Simulaties en 10.000 gesimuleerde wedstrijden"],
+    ["Sans publicité", "No ads", "Zonder reclame"], ["Sur devis", "On request", "Op offerte"], ["Médias, blogs, créateurs", "Media, blogs, creators", "Media, blogs, makers"],
+    ["Widget ou flux de probabilités", "Widget or probability feed", "Widget of kansenfeed"], ["Vos championnats", "Your leagues", "Uw competities"],
+    ["Questions fréquentes", "Frequently asked questions", "Veelgestelde vragen"], ["Est-ce un conseil de pari ?", "Is this betting advice?", "Is dit gokadvies?"],
+    ["Non. Pronostat donne des probabilités calculées par un modèle statistique. Ce n'est pas une garantie de résultat, et les bookmakers ont souvent raison.", "No. Pronostat gives probabilities calculated by a statistical model. It is not a guarantee of results, and bookmakers are often right.", "Nee. Pronostat geeft kansen berekend door een statistisch model. Het is geen garantie op een uitslag, en bookmakers hebben vaak gelijk."],
+    ["D'où viennent les chiffres ?", "Where do the numbers come from?", "Waar komen de cijfers vandaan?"],
+    ["D'un modèle statistique entraîné sur les résultats passés, testé sur plus de # matchs. Il est recalculé chaque matin avec les derniers résultats.", "From a statistical model trained on past results, tested on more than # matches. It is recalculated every morning with the latest results.", "Van een statistisch model getraind op eerdere uitslagen, getest op meer dan # wedstrijden. Het wordt elke ochtend herberekend met de laatste uitslagen."],
+    ["Quels sports et compétitions ?", "Which sports and competitions?", "Welke sporten en competities?"],
+    ["Le football (grands championnats européens et coupes d'Europe), le tennis ATP et WTA, et la NBA.", "Football (major European leagues and European cups), ATP and WTA tennis, and the NBA.", "Voetbal (grote Europese competities en Europese bekers), ATP- en WTA-tennis, en de NBA."],
+    ["Est-ce gratuit ?", "Is it free?", "Is het gratis?"], ["Oui. Une offre Premium arrivera bientôt pour les fonctions avancées.", "Yes. A Premium plan for advanced features is coming soon.", "Ja. Binnenkort komt er een Premium-abonnement voor geavanceerde functies."],
+    ["Pronostat · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.", "Pronostat · Probabilities for information only, not betting advice. 18+ only.", "Pronostat · Kansen ter informatie, geen gokadvies. Alleen voor 18+."],
+    ["Votre e-mail", "Your email", "Uw e-mail"], ["Me prévenir", "Notify me", "Houd me op de hoogte"],
+    ["Rechercher", "Search", "Zoeken"], ["Équipe, joueur ou joueuse", "Team or player", "Ploeg of speler"], ["Tapez au moins 2 lettres.", "Type at least 2 letters.", "Typ minstens 2 letters."],
+    ["Aucun résultat.", "No results.", "Geen resultaten."], ["Équipes et joueurs", "Teams and players", "Ploegen en spelers"],
+    // ---- textes courts (v2) et simulation
+    ["Bon résultat", "Correct result", "Juiste uitslag"], ["Bon vainqueur", "Correct winner", "Juiste winnaar"], ["matchs testés", "matches tested", "geteste wedstrijden"],
+    ["coupes d'Europe", "European cups", "Europese bekers"], ["à jour au", "updated", "bijgewerkt op"], ["absents inclus", "absentees included", "afwezigen inbegrepen"],
+    ["Attaque et défense : buts en plus ou en moins par rapport à une équipe moyenne.", "Attack and defence: goals above or below an average team.", "Aanval en verdediging: doelpunten boven of onder een gemiddelde ploeg."],
+    ["Le modèle ne tient pas compte des blessés. Données : football-data.co.uk.", "The model doesn't account for injuries. Data: football-data.co.uk.", "Het model houdt geen rekening met blessures. Gegevens: football-data.co.uk."],
+    ["Points par match en plus ou en moins par rapport à une équipe moyenne.", "Points per game above or below an average team.", "Punten per wedstrijd boven of onder een gemiddelde ploeg."],
+    ["Absents mis à jour chaque matin. Données : ESPN.", "Absentees updated every morning. Data: ESPN.", "Afwezigen elke ochtend bijgewerkt. Gegevens: ESPN."],
+    ["Cliquez sur un tournoi pour régler la surface et ses joueurs.", "Click on a tournament to set the surface and its players.", "Klik op een toernooi voor de ondergrond en de spelers."],
+    ["Joueurs actifs ces # derniers mois.", "Players active in the last # months.", "Spelers actief in de laatste # maanden."],
+    ["Pronostics, pas une garantie de gain.", "Predictions, not a guarantee of winnings.", "Voorspellingen, geen garantie op winst."],
+    ["Ça va ensemble", "Goes together", "Gaat samen"], ["ça va ensemble", "goes together", "gaat samen"], ["ça se contredit", "contradicts", "spreekt elkaar tegen"],
+    ["Tous les événements", "All events", "Alle gebeurtenissen"], ["Événements du match", "Match events", "Wedstrijdgebeurtenissen"],
+    ["Pas encore de match : les tableaux sortent la veille du tournoi.", "No matches yet: draws come out the day before the tournament.", "Nog geen wedstrijden: de tabellen verschijnen de dag voor het toernooi."],
+    ["Cliquez sur ☆ à côté d'un match pour le suivre ici.", "Click on ☆ next to a match to follow it here.", "Klik op ☆ naast een wedstrijd om hem hier te volgen."],
+    ["Cliquez sur un match pour le détail.", "Click on a match for details.", "Klik op een wedstrijd voor details."],
+    ["Ajoutez des événements depuis n'importe quel sport.", "Add events from any sport.", "Voeg gebeurtenissen toe vanuit elke sport."],
+    ["Aucun favori. Cliquez sur ☆ à côté d'un match.", "No favourites. Click on ☆ next to a match.", "Geen favorieten. Klik op ☆ naast een wedstrijd."],
+    ["Perdu", "Lost", "Verloren"], ["Cote", "Odds", "Quotering"], ["de la cote juste", "the fair odds", "de eerlijke quotering"],
+    ["est grand favori", "is a big favourite", "is grote favoriet"], ["est favori", "is the favourite", "is favoriet"], ["grand favori", "big favourite", "grote favoriet"],
+    ["Chances de victoire", "Win probability", "Winkans"], ["Lecture", "Play", "Afspelen"], ["Vitesse", "Speed", "Snelheid"], ["Pause", "Pause", "Pauze"],
+    ["Voir le match", "Watch the match", "Bekijk de wedstrijd"], ["FIN", "END", "EINDE"], ["1re période", "1st half", "1e helft"], ["2e période", "2nd half", "2e helft"],
+    ["Coup d'envoi : cliquez sur ▶ pour lancer le match.", "Kick-off: click on ▶ to start the match.", "Aftrap: klik op ▶ om de wedstrijd te starten."],
+    ["Cliquez sur ▶ pour lancer le match.", "Click on ▶ to start the match.", "Klik op ▶ om de wedstrijd te starten."],
+    ["BUT !", "GOAL!", "GOAL!"], ["But !", "Goal!", "Goal!"], ["But", "Goal", "Doelpunt"], ["Arrêt du gardien", "Save", "Redding"], ["Tir dévié · corner", "Deflected · corner", "Afgeweerd · hoekschop"],
+    ["Tir à côté", "Shot wide", "Schot naast"], ["Tir contré", "Blocked shot", "Geblokt schot"], ["Corners", "Corners", "Hoekschoppen"], ["Corner", "Corner", "Hoekschop"],
+    ["Tirs cadrés", "Shots on target", "Schoten op doel"], ["Tirs réussis", "Field goals", "Velddoelpunten"], ["Tirs à 3 pts", "3-pointers", "Driepunters"], ["Tirs", "Shots", "Schoten"],
+    ["Possession", "Possession", "Balbezit"], ["Scores les plus fréquents", "Most frequent scores", "Meest voorkomende scores"], ["Scores en sets", "Set scores", "Setstanden"],
+    ["Double faute", "Double fault", "Dubbele fout"], ["Doubles fautes", "Double faults", "Dubbele fouten"], ["Faute directe", "Unforced error", "Onnodige fout"], ["Fautes directes", "Unforced errors", "Onnodige fouten"],
+    ["Faute", "Fault", "Fout"], ["Coup gagnant", "Winner", "Winner"], ["Coups gagnants", "Winners", "Winners"], ["Points gagnés", "Points won", "Gewonnen punten"],
+    ["Jeu, set et match", "Game, set and match", "Game, set en match"], ["Jeu", "Game", "Game"],
+    ["balle", "ball", "bal"], ["Interception", "Steal", "Onderschept"], ["Perte de balle", "Turnover", "Balverlies"], ["Pertes de balle", "Turnovers", "Balverliezen"],
+    ["Tir à 3 pts", "3-pt shot", "Driepuntspoging"], ["Tir", "Shot", "Schot"], ["Rebond offensif", "Offensive rebound", "Aanvallende rebound"], ["Rebonds", "Rebounds", "Rebounds"], ["Rebond", "Rebound", "Rebound"],
+    ["Claquette après rebond", "Put-back", "Tip-in na rebound"], ["Claquette", "Tip-in", "Tip-in"], ["Panier à 3 points", "Three-pointer", "Driepunter"], ["Lay-up réussi", "Lay-up made", "Lay-up raak"],
+    ["Tir à mi-distance réussi", "Mid-range jumper made", "Middellange afstand raak"], ["Tir à 3 points raté", "Missed three", "Driepunter mis"], ["Tir raté", "Missed shot", "Schot mis"],
+    ["Score moyen", "Average score", "Gemiddelde score"], ["Écart de # pts ou moins", "Margin of # pts or less", "Verschil van # ptn of minder"],
+    // ---- navigation, titres
+    ["Aujourd'hui", "Today", "Vandaag"], ["Demain", "Tomorrow", "Morgen"], ["Favoris", "Favourites", "Favorieten"],
+    ["Matchs à venir", "Upcoming matches", "Komende wedstrijden"], ["Prochains matchs", "Upcoming matches", "Komende wedstrijden"],
+    ["Pronos Foot", "Football predictions", "Voetbalvoorspellingen"], ["Pronos Tennis", "Tennis predictions", "Tennisvoorspellingen"], ["Pronos NBA", "NBA predictions", "NBA-voorspellingen"],
+    ["Foot", "Football", "Voetbal"], ["Football", "Football", "Voetbal"], ["Tous", "All", "Alle"], ["heure locale", "local time", "lokale tijd"],
+    ["Les matchs des deux prochains jours dans les trois sports, avec le favori du modèle. Clique sur un match pour le détail et les combinés.", "Matches for the next two days in all three sports, with the model's favourite. Click on a match for details and combos.", "Wedstrijden van de komende twee dagen in de drie sporten, met de favoriet van het model. Klik op een wedstrijd voor details en combinaties."],
+    ["Cliquez sur l'étoile à côté d'un match pour le retrouver ici. Tes favoris restent enregistrés sur cet appareil.", "Click on the star next to a match to find it here. Your favourites are saved on this device.", "Klik op de ster naast een wedstrijd om hem hier terug te vinden. Je favorieten worden op dit toestel bewaard."],
+    ["Aucun favori pour l'instant. Cliquez sur l'étoile à côté d'un match, dans Aujourd'hui ou dans un sport.", "No favourites yet. Click on the star next to a match, in Today or in a sport.", "Nog geen favorieten. Klik op de ster naast een wedstrijd, in Vandaag of bij een sport."],
+    ["Ajouter aux favoris", "Add to favourites", "Toevoegen aan favorieten"], ["Retirer des favoris", "Remove from favourites", "Verwijderen uit favorieten"],
+    ["Aucun match programmé dans les deux prochains jours", "No matches scheduled in the next two days", "Geen wedstrijden gepland in de komende twee dagen"], ["pour ce sport", "for this sport", "voor deze sport"],
+    ["Afficher les # autres matchs", "Show the other # matches", "Toon de # andere wedstrijden"],
+    ["Résultats pris en compte : foot jusqu'au", "Results included: football up to", "Verwerkte uitslagen: voetbal tot"], ["tennis jusqu'au", "tennis up to", "tennis tot"], ["NBA jusqu'au", "NBA up to", "NBA tot"],
+    ["Le favori affiché est celui du modèle, pas un conseil de pari.", "The favourite shown is the model's, not betting advice.", "De getoonde favoriet is die van het model, geen gokadvies."],
+    ["commencé", "started", "begonnen"], ["Commencé", "Started", "Begonnen"], ["Match nul", "Draw", "Gelijkspel"], ["Nul", "Draw", "Gelijk"], ["nul", "draw", "gelijk"],
+    // ---- foot
+    ["Choisissez une compétition (championnat ou coupe d'Europe), puis un match à venir ou deux équipes. Fiabilité : bon résultat (#, N ou #)", "Pick a competition (league or European cup), then an upcoming match or two teams. Reliability: correct result (1, X or 2)", "Kies een competitie (competitie of Europese beker), dan een komende wedstrijd of twee ploegen. Betrouwbaarheid: juiste uitslag (1, X of 2)"],
+    ["matchs testés, moins qu'au tennis à cause du nul.", "matches tested, lower than tennis because of the draw.", "geteste wedstrijden, lager dan bij tennis door het gelijkspel."],
+    ["Coupes d'Europe : bon résultat # % sur # matchs testés (# % en Ligue des Champions) ; les clubs hors des championnats suivis sont estimés seulement sur leurs matchs européens.", "European cups: correct result $1 % over $2 matches tested ($3 % in the Champions League); clubs outside the tracked leagues are rated on their European matches only.", "Europese bekers: juiste uitslag $1 % op $2 geteste wedstrijden ($3 % in de Champions League); clubs buiten de gevolgde competities worden alleen op hun Europese wedstrijden beoordeeld."],
+    ["Résultats jusqu'au", "Results up to", "Uitslagen tot"], ["résultats jusqu'au", "results up to", "uitslagen tot"],
+    ["Compétition", "Competition", "Competitie"], ["Domicile", "Home", "Thuis"], ["Extérieur", "Away", "Uit"], ["Terrain neutre", "Neutral ground", "Neutraal terrein"], ["Inverser", "Swap", "Omwisselen"],
+    ["Pas de match programmé dans les données pour l'instant. Choisissez deux équipes ci-dessous.", "No match scheduled in the data yet. Pick two teams below.", "Nog geen wedstrijd gepland in de gegevens. Kies hieronder twee ploegen."],
+    ["Choisissez deux équipes différentes", "Pick two different teams", "Kies twee verschillende ploegen"],
+    ["Match très ouvert", "Very open match", "Zeer open wedstrijd"], ["les trois issues sont proches, le nul est une vraie possibilité", "the three outcomes are close, a draw is a real possibility", "de drie uitkomsten liggen dicht bij elkaar, een gelijkspel is goed mogelijk"],
+    ["est légèrement favori", "is a slight favourite", "is lichte favoriet"], ["est léger favori", "is a slight favourite", "is lichte favoriet"], ["est favori net", "is a clear favourite", "is duidelijk favoriet"],
+    ["léger favori", "slight favourite", "lichte favoriet"], ["légèrement favori", "slight favourite", "lichte favoriet"],
+    ["Coup de sifflet final", "Final whistle", "Eindsignaal"], ["Score le plus probable", "Most likely score", "Meest waarschijnlijke score"], ["Forme récente", "Recent form", "Recente vorm"],
+    ["Buts attendus", "Expected goals", "Verwachte doelpunten"], ["Les deux équipes marquent", "Both teams score", "Beide ploegen scoren"], ["Les deux équipes ne marquent pas", "Not both teams score", "Niet beide ploegen scoren"],
+    ["Plus de # buts", "Over # goals", "Meer dan # doelpunten"], ["Plus de # but", "Over # goals", "Meer dan # doelpunten"], ["Moins de # buts", "Under # goals", "Minder dan # doelpunten"],
+    ["gagne de # buts ou plus", "wins by # goals or more", "wint met # doelpunten of meer"], ["n'encaisse aucun but", "keeps a clean sheet", "krijgt geen doelpunt tegen"], ["ou nul", "or draw", "of gelijk"],
+    ["sans son meilleur buteur", "without its top scorer", "zonder topscorer"],
+    ["Classement et notes des équipes", "Table and team ratings", "Stand en ploegscores"], ["Classement des équipes", "Team ratings", "Ploegscores"], ["Classement", "Table", "Stand"],
+    ["Équipe", "Team", "Ploeg"], ["Équipes", "Teams", "Ploegen"], ["Attaque", "Attack", "Aanval"], ["Défense", "Defence", "Verdediging"], ["Forme", "Form", "Vorm"],
+    ["Attaque : buts marqués par rapport à une équipe moyenne du championnat. Défense : buts encaissés en moins (positif = meilleure défense). Forme : # derniers matchs, du plus ancien au plus récent.", "Attack: goals scored compared with an average team in the league. Defence: goals conceded less (positive = better defence). Form: last $1 matches, oldest to most recent.", "Aanval: gescoorde doelpunten tegenover een gemiddelde ploeg in de competitie. Verdediging: minder tegendoelpunten (positief = betere verdediging). Vorm: laatste $1 wedstrijden, van oudste naar recentste."],
+    ["Le modèle ne connaît que les scores : il ignore les blessés, les suspensions, les changements d'entraîneur et les matchs de coupe. Les équipes promues ont peu d'historique, leurs notes sont moins sûres en début de saison. Données : football-data.co.uk.", "The model only knows scores: it ignores injuries, suspensions, coaching changes and cup matches. Promoted teams have little history, so their ratings are less certain early in the season. Data: football-data.co.uk.", "Het model kent alleen uitslagen: blessures, schorsingen, trainerswissels en bekerwedstrijden telt het niet mee. Gepromoveerde ploegen hebben weinig historiek, hun scores zijn begin seizoen minder zeker. Gegevens: football-data.co.uk."],
+    ["Détails du match et match simulé", "Match details and simulated match", "Wedstrijddetails en gesimuleerde wedstrijd"], ["Simuler un match", "Simulate a match", "Simuleer een wedstrijd"], ["Mi-temps", "Half-time", "Rust"],
+    ["Ligue des Champions", "Champions League", "Champions League"], ["Super League Grèce", "Greek Super League", "Griekse Super League"],
+    ["Pays-Bas", "Netherlands", "Nederland"], ["Belgique", "Belgium", "België"], ["Angleterre", "England", "Engeland"], ["Espagne", "Spain", "Spanje"], ["Italie", "Italy", "Italië"],
+    ["Allemagne", "Germany", "Duitsland"], ["France", "France", "Frankrijk"], ["Écosse", "Scotland", "Schotland"], ["Turquie", "Turkey", "Turkije"], ["Grèce", "Greece", "Griekenland"], ["Europe", "Europe", "Europa"],
+    // ---- tennis
+    ["Choisissez un match à venir ou deux joueurs. Fiabilité : bon vainqueur", "Pick an upcoming match or two players. Reliability: correct winner", "Kies een komende wedstrijd of twee spelers. Betrouwbaarheid: juiste winnaar"],
+    ["Choisissez un match à venir ou deux équipes. Fiabilité : bon vainqueur", "Pick an upcoming match or two teams. Reliability: correct winner", "Kies een komende wedstrijd of twee ploegen. Betrouwbaarheid: juiste winnaar"],
+    ["du temps sur la saison passée, écart prévu à", "of the time last season, predicted margin within", "van de tijd vorig seizoen, voorspeld verschil tot op"],
+    ["points près en moyenne. Les absents annoncés (blessés) sont pris en compte. Saison", "points on average. Announced absentees (injuries) are taken into account. Season", "punten gemiddeld. Aangekondigde afwezigen (blessures) worden meegeteld. Seizoen"],
+    ["du temps sur", "of the time over", "van de tijd op"], ["du temps", "of the time", "van de tijd"], ["favori des bookmakers", "bookmakers' favourite", "favoriet van de bookmakers"],
+    ["ATP · hommes", "ATP · men", "ATP · mannen"], ["WTA · femmes", "WTA · women", "WTA · vrouwen"], ["Calendrier des tournois", "Tournament calendar", "Toernooikalender"],
+    ["Les tableaux ne sont connus que la veille du début de chaque tournoi. Un clic sur un tournoi règle la surface et le format, et n'affiche que ses joueurs dès que le tableau est publié.", "Draws are only known the day before each tournament starts. Tapping a tournament sets the surface and format, and shows only its players once the draw is out.", "De tabellen zijn pas de dag voor elk toernooi bekend. Een klik op een toernooi stelt ondergrond en formaat in en toont alleen de spelers zodra de tabel bekend is."],
+    ["Aucun match programmé connu pour l'instant : les tableaux sont publiés la veille du début de chaque tournoi.", "No scheduled matches known yet: draws are published the day before each tournament.", "Nog geen geplande wedstrijden bekend: de tabellen verschijnen de dag voor elk toernooi."],
+    ["Aucun tournoi connu pour les prochaines semaines", "No tournaments known for the coming weeks", "Geen toernooien bekend voor de komende weken"],
+    ["Joueur", "Player", "Speler"], ["Surface", "Surface", "Ondergrond"], ["Dur (béton)", "Hard court", "Hardcourt"], ["dur (béton)", "hard court", "hardcourt"], ["Terre battue", "Clay", "Gravel"], ["Gazon", "Grass", "Gras"], ["Dur", "Hard", "Hard"], ["Terre", "Clay", "Gravel"],
+    ["# sets gagnants", "best of # sets", "# gewonnen sets"], ["en salle", "indoor", "indoor"], ["En cours", "In progress", "Bezig"],
+    ["Choisissez deux joueurs différents", "Pick two different players", "Kies twee verschillende spelers"],
+    ["Choisissez un joueur dans la liste (format : Nom I., par exemple « Sinner J. »)", "Pick a player from the list (format: Name I., e.g. “Sinner J.”)", "Kies een speler uit de lijst (formaat: Naam I., bijv. „Sinner J.”)"],
+    ["Match très serré", "Very close match", "Zeer spannende wedstrijd"], ["match très serré", "very close match", "zeer spannende wedstrijd"], ["aucun des deux ne se détache", "neither player stands out", "geen van beiden springt eruit"],
+    ["Elo général", "Overall Elo", "Algemene Elo"], ["Elo sur", "Elo on", "Elo op"], ["Jeux le plus souvent", "Most frequent games", "Meest voorkomende games"], ["Points gagnés au service", "Service points won", "Gewonnen servicepunten"],
+    ["j sans match", "d without a match", "d zonder wedstrijd"], ["abandon au dernier match", "retired in last match", "opgave in laatste wedstrijd"],
+    ["gagne sans perdre de set", "wins without dropping a set", "wint zonder setverlies"], ["gagne au moins un set", "wins at least one set", "wint minstens één set"],
+    ["gagne le #er set", "wins the 1st set", "wint de 1e set"], ["Match qui va au bout", "Match goes the distance", "Wedstrijd gaat de volle lengte"], ["Au moins un tie-break", "At least one tie-break", "Minstens één tiebreak"],
+    ["Plus de # jeux", "Over # games", "Meer dan # games"], ["Moins de # jeux", "Under # games", "Minder dan # games"], ["médiane", "median", "mediaan"],
+    ["Classement Elo des joueurs", "Player Elo ratings", "Elo-ranking van de spelers"], ["Classement ATP", "ATP ranking", "ATP-ranking"],
+    ["Les joueurs actifs ces # derniers mois. Clique sur une colonne pour trier, ou sur un nom pour le choisir.", "Players active in the last $1 months. Click on a column to sort, or a name to pick it.", "Spelers die de voorbije $1 maanden actief waren. Klik op een kolom om te sorteren, of op een naam om hem te kiezen."],
+    ["La « cote juste » est la cote sans marge du bookmaker. Si un bookmaker propose plus, le modèle trouve le pari intéressant, mais nos tests montrent que le marché a raison plus souvent que lui. Utilise-le comme outil de pronostic, pas comme garantie de gain. Classement ATP : dernier connu au moment du dernier match du joueur.", "The “fair odds” are the odds without the bookmaker's margin. If a bookmaker offers more, the model finds the bet interesting, but our tests show the market is right more often than the model. Use it as a prediction tool, not as a guarantee of winnings. ATP ranking: latest known at the player's last match.", "De „eerlijke quotering” is de quotering zonder marge van de bookmaker. Biedt een bookmaker meer, dan vindt het model de gok interessant, maar onze tests tonen dat de markt vaker gelijk heeft. Gebruik het als voorspellingshulp, niet als garantie op winst. ATP-ranking: laatst bekend bij de laatste wedstrijd van de speler."],
+    ["La liste des participants n'est pas encore connue (elle est publiée la veille du tournoi) : tous les joueurs restent affichés", "The entry list isn't known yet (it is published the day before the tournament): all players stay visible", "De deelnemerslijst is nog niet bekend (die verschijnt de dag voor het toernooi): alle spelers blijven zichtbaar"],
+    ["Afficher tous les joueurs", "Show all players", "Toon alle spelers"], ["joueurs encore en lice dans", "players still in", "spelers nog in de running in"], ["joueurs encore en lice", "players still in", "spelers nog in de running"],
+    ["Seuls les", "Only the", "Alleen de"], ["sont affichés", "are shown", "worden getoond"], ["la liste et le classement n'affichent qu'eux", "the list and table show only them", "de lijst en ranking tonen alleen hen"], ["réglé sur", "set to", "ingesteld op"],
+    ["Un des joueurs n'a pas assez de matchs pour être noté", "One of the players hasn't played enough matches to be rated", "Een van de spelers heeft te weinig wedstrijden voor een score"],
+    ["Finale", "Final", "Finale"], ["Demi-finale", "Semi-final", "Halve finale"], ["Quart de finale", "Quarter-final", "Kwartfinale"], ["#er tour", "Round 1", "1e ronde"], ["#e tour", "Round $1", "$1e ronde"],
+    // ---- NBA
+    ["Absents pris en compte", "Absentees taken into account", "Afwezigen meegeteld"], ["décochez un joueur s'il joue finalement", "untick a player if he plays after all", "vink een speler uit als hij toch speelt"],
+    ["aucun absent important annoncé", "no key absentees announced", "geen belangrijke afwezigen gemeld"], ["au jour le jour", "day-to-day", "dag tot dag"], ["absent", "out", "afwezig"], ["incertain", "doubtful", "onzeker"], ["probable", "probable", "waarschijnlijk"],
+    ["Score prévu", "Predicted score", "Voorspelde score"], ["Écart prévu", "Predicted margin", "Voorspeld verschil"], ["Total prévu", "Predicted total", "Voorspeld totaal"], ["Bilan cette saison", "Record this season", "Balans dit seizoen"],
+    ["pts pour", "pts for", "ptn voor"], ["avec environ # points d'avance prévus", "with a predicted lead of about # points", "met een voorspelde voorsprong van ongeveer # punten"], ["points d'avance prévus", "points ahead predicted", "punten voorsprong voorspeld"], ["avec environ", "with about", "met ongeveer"], ["aucune équipe ne se détache", "no team stands out", "geen ploeg springt eruit"],
+    ["a joué la veille", "played the day before", "speelde de dag ervoor"], ["Domicile a joué la veille", "Home team played the day before", "Thuisploeg speelde de dag ervoor"], ["Extérieur a joué la veille", "Away team played the day before", "Uitploeg speelde de dag ervoor"],
+    ["gagne de # points ou plus", "wins by # points or more", "wint met # punten of meer"], ["gagne de # points ou moins", "wins by # points or fewer", "wint met # punten of minder"],
+    ["Match serré (# points ou moins)", "Close game (# points or fewer)", "Spannende wedstrijd (# punten of minder)"], ["Match serré (# points d'écart ou moins)", "Close game (# points or fewer)", "Spannende wedstrijd (# punten verschil of minder)"],
+    ["Plus de # points au total", "Over # total points", "Meer dan # punten in totaal"], ["Moins de # points au total", "Under # total points", "Minder dan # punten in totaal"],
+    ["Plus de # points en #re mi-temps", "Over $1 points in the 1st half", "Meer dan $1 punten in de 1e helft"], ["mène à la mi-temps", "leads at half-time", "leidt bij de rust"], ["gagne le #er quart-temps", "wins the 1st quarter", "wint het 1e kwart"],
+    ["Match simulé quart-temps par quart-temps", "Simulated match quarter by quarter", "Gesimuleerde wedstrijd per kwart"],
+    ["En NBA, le vainqueur et le total de points sont presque indépendants : aucune paire d'événements ne se renforce vraiment pour ce match. Les combinés du même match y apportent donc peu", "In the NBA, the winner and the points total are almost independent: no pair of events really reinforces each other for this match. Same-game combos therefore add little", "In de NBA zijn winnaar en puntentotaal bijna onafhankelijk: geen enkel paar gebeurtenissen versterkt elkaar echt voor deze wedstrijd. Combinaties binnen dezelfde wedstrijd voegen dus weinig toe"],
+    ["Les notes sont en points par match par rapport à une équipe moyenne : une attaque à +# marque # points de plus qu'une équipe moyenne, une défense à +# en encaisse # de moins. Clique sur une colonne pour trier.", "Ratings are in points per game versus an average team: an attack at +$1 scores $2 more points than an average team, a defence at +$3 concedes $4 fewer. Click on a column to sort.", "De scores zijn in punten per wedstrijd tegenover een gemiddelde ploeg: een aanval op +$1 scoort $2 punten meer dan een gemiddelde ploeg, een verdediging op +$3 krijgt er $4 minder tegen. Klik op een kolom om te sorteren."],
+    ["Les absents annoncés par ESPN sont pris en compte, mais les nouvelles de dernière minute (joueur mis au repos, retour anticipé) arrivent parfois après la mise à jour du matin : vérifie-les avant le match. En début de saison, les notes s'appuient encore en partie sur la saison passée. Données : ESPN via sportsdataverse.", "Absentees announced by ESPN are taken into account, but last-minute news (player rested, early return) sometimes arrives after the morning update: check it before the match. Early in the season, ratings still lean partly on last season. Data: ESPN via sportsdataverse.", "Door ESPN gemelde afwezigen worden meegeteld, maar nieuws op het laatste moment (speler rust, vroege terugkeer) komt soms na de update van de ochtend: controleer het voor de wedstrijd. Begin seizoen steunen de scores deels nog op vorig seizoen. Gegevens: ESPN via sportsdataverse."],
+    ["Aucun match à venir dans les données.", "No upcoming matches in the data.", "Geen komende wedstrijden in de gegevens."],
+    // ---- combinés
+    ["Événements du match · coche pour les ajouter au combiné", "Match events · tick to add them to the combo", "Wedstrijdgebeurtenissen · vink aan om toe te voegen aan de combinatie"],
+    ["Combinaisons cohérentes (des événements qui vont ensemble) :", "Consistent combinations (events that go together):", "Samenhangende combinaties (gebeurtenissen die samengaan):"],
+    ["Tous les événements, avec leur probabilité :", "All events, with their probability:", "Alle gebeurtenissen, met hun kans:"],
+    ["Pas de combinaison vraiment cohérente pour ce match", "No really consistent combination for this match", "Geen echt samenhangende combinatie voor deze wedstrijd"],
+    ["Cochez un ou plusieurs événements.", "Tick one or more events.", "Vink een of meer gebeurtenissen aan."], ["Ajouter au combiné", "Add to combo", "Toevoegen aan combinatie"], ["Ajouter", "Add", "Toevoegen"],
+    ["fois plus probable que si on multipliait les deux", "times more likely than multiplying both", "keer waarschijnlijker dan beide vermenigvuldigen"], ["ces événements vont ensemble", "these events go together", "deze gebeurtenissen gaan samen"], ["ces événements se contredisent", "these events contradict each other", "deze gebeurtenissen spreken elkaar tegen"],
+    ["Ces événements ensemble", "These events together", "Deze gebeurtenissen samen"], ["Cet événement", "This event", "Deze gebeurtenis"], ["si on multipliait", "if multiplied", "bij vermenigvuldiging"], ["cote juste", "fair odds", "eerlijke quotering"], ["Cote juste", "Fair odds", "Eerlijke quotering"],
+    ["Combiné", "Combo", "Combinatie"], ["Le combiné est commun aux trois sports : ajoute des événements depuis l'onglet Foot, Tennis ou Basket, ils s'ajoutent tous ici", "The combo is shared across the three sports: add events from the Football, Tennis or NBA tab, they all land here", "De combinatie is gedeeld over de drie sporten: voeg gebeurtenissen toe vanuit Voetbal, Tennis of NBA, ze komen allemaal hier"],
+    ["Chance de gagner", "Chance of winning", "Winkans"], ["Cote proposée par le bookmaker", "Odds offered by the bookmaker", "Quotering van de bookmaker"], ["Vider le combiné", "Clear the combo", "Combinatie leegmaken"],
+    ["pari remplacé (un seul par match)", "bet replaced (one per match)", "gok vervangen (één per wedstrijd)"], ["ajouté", "added", "toegevoegd"], ["sélection", "selection", "selectie"],
+    ["Ce combiné perd environ", "This combo loses about", "Deze combinatie verliest ongeveer"], ["fois sur 10", "times out of 10", "keer op 10"], ["fois sur", "times out of", "keer op"], ["selon le modèle", "according to the model", "volgens het model"],
+    ["la cote est", "the odds are", "de quotering ligt"], ["au-dessus", "above", "boven"], ["en dessous", "below", "onder"],
+    ["de la cote juste : le modèle y voit un avantage de", "the fair odds: the model sees an edge of", "de eerlijke quotering: het model ziet een voordeel van"],
+    ["Rappel : nos tests montrent que le bookmaker a raison plus souvent que le modèle", "Reminder: our tests show the bookmaker is right more often than the model", "Let op: onze tests tonen dat de bookmaker vaker gelijk heeft dan het model"],
+    ["de la cote juste : sur la durée, ce pari fait perdre environ", "the fair odds: over time, this bet loses about", "de eerlijke quotering: op termijn verlies je met deze gok ongeveer"], ["de la mise selon le modèle", "of the stake according to the model", "van de inzet volgens het model"],
+    // ---- simulation
+    ["Simulation du match", "Match simulation", "Wedstrijdsimulatie"], ["Regarde le match se jouer avec les forces du modèle, ou rejoue-le # # fois.", "Watch the match play out with the model's strengths, or replay it 10,000 times.", "Bekijk de wedstrijd met de krachten van het model, of speel hem 10.000 keer opnieuw."],
+    ["Voir", "View", "Bekijk"], ["Fermer", "Close", "Sluiten"], ["Lancer", "Start", "Start"], ["Reprendre", "Resume", "Hervat"], ["Rejouer", "Replay", "Opnieuw"], ["Rapide", "Fast", "Snel"], ["Normal", "Normal", "Normaal"],
+    ["Et si…", "What if…", "Wat als…"], ["Coup d'envoi", "Kick-off", "Aftrap"], ["Terminé", "Finished", "Afgelopen"], ["BUT", "GOAL", "GOAL"], ["But pour", "Goal for", "Doelpunt voor"], ["Fin du match", "Full time", "Einde wedstrijd"],
+    ["Évolution des chances pendant le match", "How the chances evolve during the match", "Verloop van de kansen tijdens de wedstrijd"], ["Simuler # # matchs", "Simulate 10,000 matches", "Simuleer 10.000 wedstrijden"],
+    ["Sur # # matchs :", "Over 10,000 matches:", "Over 10.000 wedstrijden:"], ["Même le score le plus fréquent n'arrive qu'environ une fois sur dix.", "Even the most frequent score only happens about one time in ten.", "Zelfs de meest voorkomende score valt maar ongeveer één keer op tien."],
+    ["des # # matchs simulés. Score moyen", "of the 10,000 simulated matches. Average score", "van de 10.000 gesimuleerde wedstrijden. Gemiddelde score"], ["des # # matchs simulés.", "of the 10,000 simulated matches.", "van de 10.000 gesimuleerde wedstrijden."],
+    ["% des matchs se jouent à # points ou moins.", "% of matches are decided by $1 points or fewer.", "% van de wedstrijden eindigt met $1 punten verschil of minder."],
+    ["Chaque point est tiré au sort :", "Each point is drawn at random:", "Elk punt wordt willekeurig getrokken:"], ["des points sur son service", "of points on serve", "van de punten op eigen service"],
+    ["Environ # possessions par équipe ; chaque tir est tiré au sort avec l'efficacité prévue par le modèle, absents compris.", "About $1 possessions per team; each shot is drawn at random with the efficiency predicted by the model, absentees included.", "Ongeveer $1 balbezitten per ploeg; elk schot wordt willekeurig getrokken met de efficiëntie die het model voorspelt, afwezigen inbegrepen."],
+    ["prend le jeu", "takes the game", "wint de game"], ["gagne la manche", "wins the set", "wint de set"], ["gagne le match", "wins the match", "wint de wedstrijd"], ["Fin du quart-temps", "End of quarter", "Einde kwart"], ["Prolongation !", "Overtime!", "Verlenging!"], ["Prolongation", "Overtime", "Verlenging"], ["QT", "Q", "K"],
+    ["gagnent", "win", "winnen"], ["gagne", "wins", "wint"],
+    // ---- bilan (caché) et divers
+    ["Bilan du modèle", "Model track record", "Balans van het model"], ["Derniers pronostics réglés", "Latest settled predictions", "Laatst afgehandelde voorspellingen"], ["Pas encore de match réglé", "No settled match yet", "Nog geen afgehandelde wedstrijd"],
+    ["Plus de", "Over", "Meer dan"], ["Moins de", "Under", "Minder dan"], ["points au total", "total points", "punten in totaal"], ["points", "points", "punten"], ["buts", "goals", "doelpunten"],
+  ];
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const NUM = "(\\d[\\d\\s\\u202f.,]*\\d|\\d)";
+  const RULES = LANG === "fr" ? [] : D.map(r => ({ len: r[0].length, re: new RegExp("(?<![A-Za-zÀ-ÿ'])" + esc(r[0]).replace(/#/g, NUM) + "(?![A-Za-zÀ-ÿ])", "g"), to: (LANG === "en" ? r[1] : r[2]).replace(/#/g, () => "$" + (++r.k || (r.k = 1))) }))
+    .sort((a, b) => b.len - a.len);
+  // numérotation des « # » de chaque traduction : $1, $2… dans l'ordre
+  D.forEach(r => delete r.k);
+  const tr = s => { if (!s || LANG === "fr") return s; let o = s; if (/[A-Za-zÀ-ÿ]/.test(o)) for (const r of RULES) o = o.replace(r.re, r.to); if (LANG === "en") o = o.replace(/(\d),(\d{1,2})(?!\d)/g, "$1.$2"); return o; };
+  const done = new WeakMap();
+  function walk(root) {
+    if (LANG === "fr") return;
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = []; let n; while ((n = w.nextNode())) nodes.push(n);
+    for (const t of nodes) {
+      const p = t.parentNode; if (!p || /^(SCRIPT|STYLE)$/.test(p.nodeName)) continue;
+      if (done.get(t) === t.nodeValue) continue;
+      const v = tr(t.nodeValue); if (v !== t.nodeValue) t.nodeValue = v; done.set(t, t.nodeValue);
+    }
+    const els = root.querySelectorAll ? root.querySelectorAll("[aria-label],[title],[placeholder]") : [];
+    for (const e of els) for (const a of ["aria-label", "title", "placeholder"]) { const v = e.getAttribute(a); if (v) { const x = tr(v); if (x !== v) e.setAttribute(a, x); } }
+  }
+  function switcher() {
+    const bar = document.querySelector(".appbar"); if (!bar || bar.querySelector(".lang")) return;
+    const box = document.createElement("div"); box.className = "lang"; box.setAttribute("role", "group"); box.setAttribute("aria-label", "Langue / Language / Taal");
+    box.innerHTML = ["fr", "en", "nl"].map(l => `<button type="button" data-l="${l}" aria-pressed="${l === LANG}">${l.toUpperCase()}</button>`).join("");
+    box.onclick = e => { const b = e.target.closest("button"); if (!b || b.dataset.l === LANG) return; try { localStorage.setItem("pronostat-lang", b.dataset.l); } catch (x) {} location.reload(); };
+    const day = bar.querySelector(".day"); bar.insertBefore(box, day ? day.nextSibling : null);
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    switcher();
+    if (LANG === "fr") return;
+    walk(document.body);
+    let pending = false;
+    new MutationObserver(() => { if (pending) return; pending = true; requestAnimationFrame(() => { pending = false; walk(document.body); }); })
+      .observe(document.body, { childList: true, subtree: true, characterData: true });
+  });
+  return { lang: LANG, tr };
+})();
+</script>
+
+<div class="lp">
+  <header class="appbar"><a class="logo" href="./"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V13 M12 19 V5 M18 19 V10"/></svg></i>Pronostat</a><a class="open" href="app.html">Les matchs</a></header>
+  <section class="hero">
+    <h1>Les probabilités de chaque match, <em>événement par événement.</em></h1>
+    <p>Football, tennis et NBA. Chaque match est simulé 10 000 fois : le pourcentage indique combien de fois chaque événement s'est produit.</p>
+    <div class="ctas"><a class="btn" href="app.html">Voir toutes les probabilités</a></div>
+  </section>
+  <section class="blk" id="stat"><h2>La stat du jour</h2><article class="st big"><b class="pc">56 %</b><div><p class="ev">Despina Papamichail gagne au moins un set</p>
+      <p class="mt"><span class="tag">Tennis</span> Despina Papamichail – Laura Samson · <time data-dt="2026-11-17T20:00:00+00:00"></time></p></div></article>
+      <div class="sts"><article class="st"><b class="pc">51 %</b><div><p class="ev">Miriam Bulgaru gagne au moins un set</p>
+      <p class="mt"><span class="tag">Tennis</span> Polona Hercog – Miriam Bulgaru · <time data-dt="2026-11-17T15:30:00+00:00"></time></p></div></article><article class="st"><b class="pc">76 %</b><div><p class="ev">Los Angeles Lakers gagne</p>
+      <p class="mt"><span class="tag">NBA</span> Los Angeles Lakers – Utah Jazz · <time data-dt="2026-11-19T03:00:00+00:00"></time></p></div></article></div></section>
+  <section class="blk"><h2>Le match du jour</h2>
+    <article class="md"><p class="mt"><span class="tag">Copa del Rey</span> <time data-dt="2026-11-18T19:00:00+00:00"></time></p>
+      <div class="md-t"><div><b>Alcoyano</b><span class="pa">12 %</span></div><div class="dr"><b>Nul</b><span>22 %</span></div><div class="r"><b>Mallorca</b><span class="pb">65 %</span></div></div>
+      <div class="bar"><i style="width:12.4%;background:var(--a)"></i><i style="width:22.5%;background:var(--ink-3)"></i><i style="width:65.1%;background:var(--b)"></i></div>
+      <ul class="evs"><li><span>Les deux équipes marquent</span><b>38 %</b></li><li><span>Plus de 2,5 buts</span><b>42 %</b></li><li><span>Score le plus probable</span><b>0-1</b></li></ul>
+      <a class="btn" href="app.html#foot">Voir toutes les probabilités</a></article></section>
+  <footer class="foot">Pronostat · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.</footer>
+</div>
+<script>
+document.querySelectorAll("time[data-dt]").forEach(t => { const d = new Date(t.dataset.dt), td = new Date(); const day = d.toDateString() === td.toDateString() ? "Aujourd'hui" : d.toLocaleDateString("fr-FR", d - td < 6 * 864e5 ? { weekday: "long" } : { weekday: "short", day: "numeric", month: "short" }); t.textContent = day + " " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }); });
+</script>
+</body>
+</html>

@@ -1,42 +1,92 @@
-
-<div class="wrap" id="view-fav" hidden>
+<div class="wrap favv" id="view-fav" hidden>
   <header class="vh">
     <h1>Favoris</h1>
-    <p class="sub">Cliquez sur ☆ à côté d'un match pour le suivre ici.</p>
+    <p class="sub">Touchez l'étoile à côté d'un match pour le suivre ici.</p>
   </header>
-  <div class="jlist" id="favList"></div>
+  <div class="mlist" id="favList"></div>
 </div>
 
-<div class="wrap" id="view-jour" hidden>
+<div class="wrap home" id="view-jour" hidden>
+  <section class="hero dk">
+    <h1>Les probabilités, <em>simplement.</em></h1>
+    <p class="sub">Football, tennis et NBA · 10 000 simulations par match</p>
+  </section>
+  <div class="hbar dk">
+    <div class="chips" role="group" aria-label="Sport" id="hChips"><button type="button" data-s="" aria-pressed="true">Tous les sports</button><button type="button" data-s="Foot" aria-pressed="false">Football</button><button type="button" data-s="Tennis" aria-pressed="false">Tennis</button><button type="button" data-s="NBA" aria-pressed="false">NBA</button></div>
+    <label class="datesel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><select id="hDate" aria-label="Jour"></select><svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></label>
+  </div>
+
+  <div class="mtabs mb" role="group" aria-label="Sport" id="hTabs">
+    <button type="button" data-s="Foot" aria-pressed="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10z"/></svg>Football</button>
+    <button type="button" data-s="Tennis" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6c3.5 3.5 3.5 9.3 0 12.8M18.4 5.6c-3.5 3.5-3.5 9.3 0 12.8"/></svg>Tennis</button>
+    <button type="button" data-s="NBA" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.5 5.5c3 3 3 10 0 13M18.5 5.5c-3 3-3 10 0 13"/></svg>NBA</button>
+  </div>
+  <div class="daynav mb">
+    <button type="button" id="hPrev" aria-label="Jour précédent"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></button>
+    <div class="lab"><span id="hDayLab">Aujourd'hui</span><span class="cal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><select id="hDateM" aria-label="Choisir le jour"></select></span></div>
+    <button type="button" id="hNext" aria-label="Jour suivant"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+  </div>
+
+  <div class="dstrip" id="hStrip" role="group" aria-label="Jours"></div>
+  <div id="hNote"></div>
+  <div class="hgrid dk">
+    <section><h2>Le match du jour</h2><div id="hMotd"></div></section>
+    <section><h2>La stat du jour</h2><div class="pcard stats" id="hStats"></div></section>
+  </div>
+  <section class="dk"><h2>Prochains matchs</h2><div class="pcard tbl" id="hTable"></div></section>
+  <div class="mlist mb" id="hList"></div>
+  <div id="hTours"></div>
+  <section class="toolsec">
+    <h2>Classements et outils</h2>
+    <div class="tools"><a href="#foot">Football : classements, notes d'attaque et de défense</a><a href="#tennis">Tennis : classement Elo ATP et WTA, calendrier</a><a href="#basket">NBA : classement des équipes, absents</a></div>
+  </section>
+  <p class="note dk">Les pourcentages sont ceux du modèle, pas un conseil de pari.</p>
+</div>
+
+<div class="wrap mview dview" id="view-match" hidden>
+  <a class="dback" href="#jour"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg>Tous les matchs</a>
+  <div id="mBody"></div>
+</div>
+
+<div class="wrap about" id="view-about" hidden>
   <header class="vh">
-    <h1>Matchs à venir</h1>
-    <p class="sub">Cliquez sur un match pour le détail.</p>
+    <h1>Comment ça marche</h1>
+    <p class="sub">Pour chaque match, un modèle statistique estime la force des deux camps, puis le match est simulé 10 000 fois. Un pourcentage indique combien de fois l'événement s'est produit dans ces simulations.</p>
   </header>
-  <div class="seg" role="group" aria-label="Sport" id="jSeg"><button data-s="" aria-pressed="true">Tous</button><button data-s="Foot" aria-pressed="false">Football</button><button data-s="Tennis" aria-pressed="false">Tennis</button><button data-s="NBA" aria-pressed="false">NBA</button></div>
-  <div class="jlist" id="jList"></div>
-  <p class="note" id="jUpd"></p>
+  <div class="acard">
+    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10z"/></svg>Football</h2>
+    <p>Chaque équipe reçoit une note d'attaque et de défense, calculée sur ses matchs des deux dernières saisons (les plus récents comptent davantage), plus l'avantage du terrain. On en déduit le nombre de buts attendu pour chaque camp, puis la probabilité de chaque score.</p>
+  </div>
+  <div class="acard">
+    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6c3.5 3.5 3.5 9.3 0 12.8M18.4 5.6c-3.5 3.5-3.5 9.3 0 12.8"/></svg>Tennis</h2>
+    <p>Chaque joueur et chaque joueuse a un classement Elo par surface (dur, terre battue, gazon), mis à jour après chaque match ATP et WTA. Le format du match (2 ou 3 sets gagnants) est pris en compte.</p>
+  </div>
+  <div class="acard">
+    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.5 5.5c3 3 3 10 0 13M18.5 5.5c-3 3-3 10 0 13"/></svg>NBA</h2>
+    <p>Chaque équipe a une note offensive et défensive, corrigée par l'avantage du terrain, la fatigue des matchs consécutifs et les joueurs absents.</p>
+  </div>
+  <div class="acard">
+    <h2>À savoir</h2>
+    <ul>
+      <li>Un favori à 62 % perd encore près de 4 fois sur 10.</li>
+      <li>Les données sont mises à jour chaque semaine.</li>
+      <li>Les pourcentages sont ceux du modèle, pas un conseil de pari.</li>
+    </ul>
+  </div>
   <section class="bilan" id="bilan" aria-labelledby="bilanT" hidden>
     <h2 id="bilanT">Bilan du modèle</h2>
     <p class="sub">Chaque pronostic est enregistré <b>avant</b> le début du match et n'est jamais modifié ensuite. On compte ici combien de fois le favori du modèle a vu juste, bons et mauvais résultats compris.</p>
     <div class="btiles" id="bTiles"></div>
     <details class="more"><summary>Derniers pronostics réglés</summary><ol class="brec" id="bRec"></ol></details>
   </section>
+  <div class="acard">
+    <h2>Outils avancés</h2>
+    <p>Choisir deux équipes ou deux joueurs, voir les classements et lancer un match simulé.</p>
+    <div class="tools"><a href="#foot">Football</a><a href="#tennis">Tennis</a><a href="#basket">NBA</a></div>
+  </div>
+  <div class="alang" role="group" aria-label="Langue / Language / Taal"><button type="button" data-l="fr">Français</button><button type="button" data-l="en">English</button><button type="button" data-l="nl">Nederlands</button></div>
 </div>
 
-<script>
-(() => {
-  const views = ["jour", "foot", "tennis", "basket", "fav", "strat"].filter(k => document.getElementById("view-" + k));
-  const show = () => {
-    const h = location.hash.slice(1), v = views.includes(h) ? h : "jour";
-    views.forEach(k => {
-      document.getElementById("view-" + k).hidden = k !== v;
-      const a = document.getElementById("tab-" + k); k === v ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current");
-    });
-    document.querySelectorAll(".sports a").forEach(x => x.getAttribute("href") === "#" + v ? x.setAttribute("aria-current", "page") : x.removeAttribute("aria-current"));
-  };
-  addEventListener("hashchange", () => { show(); window.scrollTo(0, 0); }); show();
-})();
-</script>
 <script>
 // ---------- combiné commun aux trois sports ----------
 const Combo = (() => {
@@ -97,58 +147,6 @@ const Combo = (() => {
   } };
 })();
 </script>
-
-<script>
-// ---------- onglet « Aujourd'hui » ----------
-(() => {
-  const f = x => Math.round(x * 100) + " %";
-  const APIS = [window.FootAPI, window.TennisAPI, window.NbaAPI].filter(Boolean);
-  let filt = "", showAll = false;
-  const dayLabel = d => {
-    const t0 = new Date(); t0.setHours(0, 0, 0, 0);
-    const k = Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - t0) / 864e5);
-    return k === 0 ? "Aujourd'hui" : k === 1 ? "Demain" : d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
-  };
-  let items = [];
-  window.__jItems = () => items;
-  function draw() {
-    const now = Date.now();
-    items = APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } })
-      .filter(x => { const t = new Date(x.dt).getTime(), sod = new Date(); sod.setHours(0, 0, 0, 0); return t >= sod.getTime() && t < now + 48 * 3600e3; })
-      .sort((x, y) => new Date(x.dt) - new Date(y.dt));
-    const shown = items.filter(x => !filt || x.sport === filt);
-    const lim = showAll ? shown.length : 40;
-    let html = "", last = "";
-    shown.slice(0, lim).forEach(x => {
-      const d = new Date(x.dt), lab = dayLabel(d);
-      if (lab !== last) { html += `<div class="jday">${lab}</div>`; last = lab; }
-      const drawFav = x.pd != null && x.pd > Math.max(x.pa, x.pb);
-      const fav = drawFav ? "Match nul" : (x.pa >= x.pb ? x.a : x.b), pf = drawFav ? x.pd : Math.max(x.pa, x.pb);
-      const extra = x.pd != null && !drawFav ? `<small>nul ${f(x.pd)}</small>` : "";
-      const past = d.getTime() < now;
-      html += `<div class="jw${past ? " past" : ""}"><button class="jrow${past ? " past" : ""}" data-k="${items.indexOf(x)}"><span class="jt num">${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}</span>
-        <span class="jm"><span class="jc"><span class="sp sp-${x.sport}">${x.sport}</span>${x.comp}${past ? " · commencé" : ""}</span><b class="tm">${x.a}</b><b class="tm">${x.b}</b></span>
-        <span class="jf"><span>${fav}</span><b class="num">${f(pf)}</b>${extra}</span></button>${Fav.star(x.sport, x.dt, x.a, x.b, x.comp)}</div>`;
-    });
-    if (!shown.length) html = `<p class="note">Aucun match programmé dans les deux prochains jours${filt ? " pour ce sport" : ""}.</p>`;
-    if (shown.length > lim) html += `<button class="swap" id="jMore">Afficher les ${shown.length - lim} autres matchs</button>`;
-    document.getElementById("jList").innerHTML = html;
-    const dd = s => s ? new Date(s + "T12:00:00").toLocaleDateString("fr-FR", { day: "numeric", month: "long" }) : "–";
-    document.getElementById("jUpd").textContent = `Le favori affiché est celui du modèle, pas un conseil de pari.`;
-  }
-  document.getElementById("jList").addEventListener("click", e => {
-    if (e.target.closest("#jMore")) { showAll = true; draw(); return; }
-    const b = e.target.closest(".jrow"); if (b) items[+b.dataset.k].open();
-  });
-  document.getElementById("jSeg").addEventListener("click", e => {
-    const b = e.target.closest("button"); if (!b) return;
-    filt = b.dataset.s; showAll = false;
-    document.querySelectorAll("#jSeg button").forEach(x => x.setAttribute("aria-pressed", x === b)); draw();
-  });
-  addEventListener("hashchange", () => { if (!location.hash || location.hash === "#jour") draw(); });
-  draw();
-})();
-</script>
 <script>
 // ---------- bilan public des pronostics ----------
 (() => {
@@ -166,7 +164,8 @@ const Combo = (() => {
     return `<li class="${r.ok ? "ok" : "ko"}"><span class="mk">${r.ok ? "✓" : "✗"}</span><span><b>${r.a} – ${r.b}</b>${r.score ? ` <span class="num">${r.score}</span>` : ""}<small>${r.sport} · ${r.comp} · ${d} · pronostic : ${r.pick} (${f(r.p)})</small></span></li>`;
   }).join("") : `<li class="none">Les premiers résultats apparaîtront après les matchs d'aujourd'hui.</li>`;
 })();
-</script><script>
+</script>
+<script>
 // téléphone : après avoir touché un match, aller directement au pronostic ; toucher le texte d'intro pour le déplier
 (() => {
   const small = () => window.matchMedia("(max-width: 600px)").matches;
@@ -176,41 +175,5 @@ const Combo = (() => {
     const res = g.closest(".wrap") && g.closest(".wrap").querySelector(".result");
     if (res) setTimeout(() => res.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
   });
-})();
-</script>
-<script>
-(() => { const d = document.getElementById("appDay"); if (d) d.textContent = new Date().toLocaleDateString("fr-FR", { weekday: "short", day: "numeric", month: "short" }); })();
-</script>
-<script>
-// ---------- onglet Favoris ----------
-(() => {
-  const APIS = [window.FootAPI, window.TennisAPI, window.NbaAPI].filter(Boolean);
-  const f = x => Math.round(x * 100) + " %";
-  const el = document.getElementById("favList");
-  function draw() {
-    const favs = Fav.all(), keys = Object.keys(favs);
-    const items = APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } });
-    const byKey = {}; items.forEach(x => { byKey[Fav.key(x.sport, x.dt, x.a, x.b)] = x; });
-    if (!keys.length) { el.innerHTML = `<p class="note fav-empty">Aucun favori. Cliquez sur ☆ à côté d'un match.</p>`; return; }
-    const rows = keys.map(k => ({ k, m: favs[k], x: byKey[k] })).sort((p, q) => new Date(p.m.dt) - new Date(q.m.dt));
-    const now = Date.now(); let last = "", html = "";
-    rows.forEach(({ m, x }, i) => {
-      const d = new Date(m.dt), lab = d.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
-      if (lab !== last) { html += `<div class="jday">${lab.charAt(0).toUpperCase() + lab.slice(1)}</div>`; last = lab; }
-      const past = d.getTime() < now;
-      let right = `<span class="jf"><span>${past ? "Commencé" : ""}</span></span>`;
-      if (x) {
-        const drawFav = x.pd != null && x.pd > Math.max(x.pa, x.pb);
-        right = `<span class="jf"><span>${drawFav ? "Match nul" : (x.pa >= x.pb ? x.a : x.b)}</span><b class="num">${f(drawFav ? x.pd : Math.max(x.pa, x.pb))}</b></span>`;
-      }
-      html += `<div class="jw${past ? " past" : ""}"><button class="jrow${past ? " past" : ""}" data-i="${i}" ${x ? "" : "disabled"}><span class="jt num">${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}</span>
-        <span class="jm"><span class="jc"><span class="sp sp-${m.sp}">${m.sp}</span>${m.comp || ""}${past ? " · commencé" : ""}</span><b class="tm">${m.a}</b><b class="tm">${m.b}</b></span>${right}</button>${Fav.star(m.sp, m.dt, m.a, m.b, m.comp)}</div>`;
-    });
-    el.innerHTML = html;
-    el.onclick = e => { const b = e.target.closest(".jrow"); if (b && rows[+b.dataset.i].x) rows[+b.dataset.i].x.open(); };
-  }
-  addEventListener("favchange", () => { if (location.hash === "#fav") draw(); });
-  addEventListener("hashchange", () => { if (location.hash === "#fav") draw(); });
-  draw();
 })();
 </script>
