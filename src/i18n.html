@@ -18,6 +18,17 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["La saison WNBA # est terminée. La suivante commence en mai : les probabilités apparaîtront dès que le calendrier sera publié. En attendant, voici les équipes selon le modèle.", "The # WNBA season is over. The next one starts in May: probabilities will appear as soon as the schedule is published. Meanwhile, here are the teams according to the model.", "Het WNBA-seizoen # is voorbij. Het volgende begint in mei: de kansen verschijnen zodra het programma bekend is. Intussen de ploegen volgens het model."],
+    ["Tout le basket", "All basketball", "Alle basketbal"],
+    ["reprise en mai", "back in May", "terug in mei"],
+    ["Basket", "Basketball", "Basketbal"],
+    ["Aucun match de basket programmé pour l'instant.", "No basketball game scheduled for now.", "Voorlopig geen basketbalwedstrijd gepland."],
+    ["Football, tennis et basket · # simulations par match", "Football, tennis and basketball · # simulations per match", "Voetbal, tennis en basketbal · # simulaties per wedstrijd"],
+    ["les équipes", "the teams", "de ploegen"],
+    ["Bilan", "Record", "Balans"],
+    ["attaque", "attack", "aanval"],
+    ["défense", "defence", "verdediging"],
+    ["Attaque et défense : points par match en plus ou en moins par rapport à une équipe moyenne. Modèle testé sur la saison # : bon vainqueur # % du temps.", "Attack and defence: points per game above or below an average team. Model tested on the # season: right winner # % of the time.", "Aanval en verdediging: punten per wedstrijd meer of minder dan een gemiddelde ploeg. Model getest op seizoen #: juiste winnaar # % van de tijd."],
     ["Tous les championnats", "All leagues", "Alle competities"],
     ["Tous les tournois", "All tournaments", "Alle toernooien"],
     ["Toutes", "All", "Alle"],

@@ -258,6 +258,11 @@ def logos_js():
     return "\n<script>window.LOGOS = " + open(p).read() + ";</script>" if os.path.exists(p) else ""
 
 
+def wnba_js():
+    p = f"{OUT}/wnba_tool.json"
+    return "\n<script>window.WNBA = " + open(p).read() + ";</script>" if os.path.exists(p) else ""
+
+
 def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data=None):
     t = open(f"{SRC}/tennis_tool_template.html").read()
     css = open(f"{SRC}/app.css").read()
@@ -283,7 +288,7 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
     js = lambda name, ph, data: "\n<script>\n" + open(f"{SRC}/{name}").read().replace(ph, json.dumps(data, ensure_ascii=False)) + "\n</script>"
     t = (t + js("nba_fragment.js", "__NBA__", nba_data) + js("foot_fragment.js", "__FOOT__", foot_data)
            + "\n<script>window.HIST = " + json.dumps(hist, ensure_ascii=False) + ";</script>"
-           + open(f"{SRC}/router.html").read() + logos_js() + "\n<script>\n" + open(f"{SRC}/home.js").read() + "\n</script>\n" + open(f"{SRC}/sim.html").read() + open(f"{SRC}/search.html").read() + open(f"{SRC}/share.html").read() + open(f"{SRC}/live.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
+           + open(f"{SRC}/router.html").read() + logos_js() + wnba_js() + "\n<script>\n" + open(f"{SRC}/home.js").read() + "\n</script>\n" + open(f"{SRC}/sim.html").read() + open(f"{SRC}/search.html").read() + open(f"{SRC}/share.html").read() + open(f"{SRC}/live.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
     t = t.replace("__WTA__", json.dumps(wta_data or dict(players=[], coef=tennis_data["coef"], updated=tennis_data["updated"], test=dict(acc=0, acc_pin=None), live=[]), ensure_ascii=False))
     t = t.replace("__DATA__", json.dumps(tennis_data, ensure_ascii=False))
     open(f"{OUT}/pronos.html", "w").write(t)
@@ -294,6 +299,11 @@ if __name__ == "__main__":
     print("Mise à jour du", TODAY.date())
     f = foot()
     n = nba()
+    try:                                         # WNBA (hors saison de novembre à avril : classement seulement)
+        import wnba
+        json.dump(wnba.update(fetch, RAW, TODAY), open(f"{OUT}/wnba_tool.json", "w"), ensure_ascii=False)
+    except Exception as e:
+        print("  ATTENTION WNBA non mise à jour :", repr(e))
     try:
         import tennis as tn
         tennis = tn.update(f"{ROOT}/data/tennis_history.csv", f"{ROOT}/data/tennis_tool.json", OUT, TODAY)

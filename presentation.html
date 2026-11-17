@@ -294,6 +294,17 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["La saison WNBA # est terminée. La suivante commence en mai : les probabilités apparaîtront dès que le calendrier sera publié. En attendant, voici les équipes selon le modèle.", "The # WNBA season is over. The next one starts in May: probabilities will appear as soon as the schedule is published. Meanwhile, here are the teams according to the model.", "Het WNBA-seizoen # is voorbij. Het volgende begint in mei: de kansen verschijnen zodra het programma bekend is. Intussen de ploegen volgens het model."],
+    ["Tout le basket", "All basketball", "Alle basketbal"],
+    ["reprise en mai", "back in May", "terug in mei"],
+    ["Basket", "Basketball", "Basketbal"],
+    ["Aucun match de basket programmé pour l'instant.", "No basketball game scheduled for now.", "Voorlopig geen basketbalwedstrijd gepland."],
+    ["Football, tennis et basket · # simulations par match", "Football, tennis and basketball · # simulations per match", "Voetbal, tennis en basketbal · # simulaties per wedstrijd"],
+    ["les équipes", "the teams", "de ploegen"],
+    ["Bilan", "Record", "Balans"],
+    ["attaque", "attack", "aanval"],
+    ["défense", "defence", "verdediging"],
+    ["Attaque et défense : points par match en plus ou en moins par rapport à une équipe moyenne. Modèle testé sur la saison # : bon vainqueur # % du temps.", "Attack and defence: points per game above or below an average team. Model tested on the # season: right winner # % of the time.", "Aanval en verdediging: punten per wedstrijd meer of minder dan een gemiddelde ploeg. Model getest op seizoen #: juiste winnaar # % van de tijd."],
     ["Tous les championnats", "All leagues", "Alle competities"],
     ["Tous les tournois", "All tournaments", "Alle toernooien"],
     ["Toutes", "All", "Alle"],
@@ -628,8 +639,8 @@ window.I18N = (() => {
       <p class="mt"><span class="tag">NBA</span> Los Angeles Lakers – Utah Jazz · <time data-dt="2026-11-19T03:00:00+00:00"></time></p></div></article></div></section>
   <section class="blk"><h2>Le match du jour</h2>
     <article class="md"><p class="mt"><span class="tag">Copa del Rey</span> <time data-dt="2026-11-18T19:00:00+00:00"></time></p>
-      <div class="md-t"><div><b>Alcoyano</b><span class="pa">12 %</span></div><div class="dr"><b>Nul</b><span>22 %</span></div><div class="r"><b>Mallorca</b><span class="pb">65 %</span></div></div>
-      <div class="bar"><i style="width:12.4%;background:var(--a)"></i><i style="width:22.5%;background:var(--ink-3)"></i><i style="width:65.1%;background:var(--b)"></i></div>
+      <div class="md-t"><div><b>Alcoyano</b><span class="pa">12 %</span></div><div class="dr"><b>Nul</b><span>23 %</span></div><div class="r"><b>Mallorca</b><span class="pb">65 %</span></div></div>
+      <div class="bar"><i style="width:12.4%;background:var(--a)"></i><i style="width:22.5%;background:var(--ink-3)"></i><i style="width:65.0%;background:var(--b)"></i></div>
       <ul class="evs"><li><span>Les deux équipes marquent</span><b>38 %</b></li><li><span>Plus de 2,5 buts</span><b>42 %</b></li><li><span>Score le plus probable</span><b>0-1</b></li></ul>
       <a class="btn" href="app.html#foot">Voir toutes les probabilités</a></article></section>
   <footer class="foot">Pronostat · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.</footer>

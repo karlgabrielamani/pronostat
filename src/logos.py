@@ -210,10 +210,19 @@ def reserves(foot, res):
             if n not in res and m and m.group(1) in res: res[n] = res[m.group(1)]
 
 
+def basket(res, report, league="wnba"):
+    """Logos des équipes WNBA (ESPN)."""
+    try:
+        for t in json.loads(get(f"https://site.api.espn.com/apis/site/v2/sports/basketball/{league}/teams"))["sports"][0]["leagues"][0]["teams"]:
+            n, lg = t["team"]["displayName"], t["team"].get("logos")
+            if n not in res and lg: res[n] = img_uri(get(lg[0]["href"])); report.append(f"{league} {n} -> ESPN")
+    except Exception as e: print("  logos", league, repr(e)[:80])
+
+
 def update(foot):
     """Appelé par update_all.py avant de construire la page : complète data/logos.json (ESPN)."""
     res = json.load(open(DEST)) if os.path.exists(DEST) else {}
-    report = []; from_espn(foot, res, report); from_wiki(foot, res, report, limit=40, budget=120); reserves(foot, res)
+    report = []; basket(res, report); from_espn(foot, res, report); from_wiki(foot, res, report, limit=40, budget=120); reserves(foot, res)
     json.dump(res, open(DEST, "w"), separators=(",", ":"), sort_keys=True)
     return report
 
@@ -235,6 +244,7 @@ if __name__ == "__main__":
     if NBA: nba([t["name"] for t in nb["teams"]], res)
     if REPO: from_repo(foot, res, report)
     from_espn(foot, res, report)
+    basket(res, report)
     from_wiki(foot, res, report, budget=int(os.environ.get("WIKI_BUDGET", "420")))
     reserves(foot, res)
     os.makedirs(f"{ROOT}/data", exist_ok=True)

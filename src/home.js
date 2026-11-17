@@ -80,9 +80,19 @@
   const nbaBy = (x, k) => [1 - Phi((k - x.mg) / x.sg), Phi((-k - x.mg) / x.sg)];
 
   // ---- données
+  // WNBA : même calcul que la NBA (window.WNBA, fait par src/wnba.py), sans les absents
+  const W = window.WNBA;
+  function wnbaList() {
+    if (!W || !W.games) return [];
+    const T = Object.fromEntries(W.teams.map(t => [t.name, t])), sg = W.sd_team * Math.sqrt(2 * (1 - W.corr));
+    return W.games.filter(g => T[g.home] && T[g.away]).map(g => {
+      const a = T[g.home], b = T[g.away], m = (W.mu + a.o - b.d + W.hca / 2) - (W.mu + b.o - a.d - W.hca / 2), p = Phi(m / sg);
+      return { sport: "NBA", comp: "WNBA", lg: "WNBA", dt: g.dt, a: g.home, b: g.away, pa: p, pb: 1 - p, mg: m, sg };
+    });
+  }
   let ALL = [];
   function load() {
-    ALL = APIS().flatMap(a => { try { return a.list(); } catch (e) { return []; } })
+    ALL = APIS().flatMap(a => { try { return a.list(); } catch (e) { return []; } }).concat(wnbaList())
       .filter(x => x.dt && isFinite(new Date(x.dt)))
       .sort((p, q) => new Date(p.dt) - new Date(q.dt));
     const sod = new Date(); sod.setHours(0, 0, 0, 0);
@@ -99,7 +109,7 @@
   const curSport = () => small() ? (S.sport || firstSport()) : S.sport;
   function firstSport() { for (const s of ["Foot", "Tennis", "NBA"]) if (ALL.some(x => x.sport === s)) return s; return "Foot"; }
   // ---- compétitions : championnat (foot), circuit ou tournoi (tennis)
-  const compKey = x => x.sport === "Foot" ? x.lg : x.sport === "Tennis" ? "ev:" + x.tour + "|" + (x.event || x.comp) : "NBA";
+  const compKey = x => x.sport === "Foot" ? x.lg : x.sport === "Tennis" ? "ev:" + x.tour + "|" + (x.event || x.comp) : x.comp;
   const compOk = x => { const c = (S.comp || {})[x.sport]; if (!c) return true; if (c === "ATP" || c === "WTA") return x.tour === c; return compKey(x) === c; };
   const pool = sp => ALL.filter(x => !sp || (x.sport === sp && compOk(x)));
   const SHORT = { "Ligue des Champions": "Ligue des champions", "Jupiler Pro League": "Jupiler Pro League", "Super League Grèce": "Super League" };
@@ -113,6 +123,10 @@
     const chip = (k, label, n) => `<button type="button" data-c="${esc(k)}" aria-pressed="${k === cur}">${label}${n ? `<small>${n}</small>` : ""}</button>`;
     let extra = "";
     if (sp === "Tennis") for (const t of ["ATP", "WTA"]) { const n = base.filter(x => x.tour === t).length; if (n) extra += chip(t, t, n); }
+    if (sp === "NBA") {                                          // basket : NBA et WNBA toujours proposées
+      const n = k => base.filter(x => x.comp === k).length;
+      return chip("", "Tout le basket", base.length) + chip("NBA", "NBA", n("NBA")) + (W ? chip("WNBA", "WNBA" + (n("WNBA") ? "" : " · reprise en mai"), n("WNBA")) : "");
+    }
     if (list.length + (extra ? 1 : 0) < 2 && !cur) return "";
     return chip("", sp === "Foot" ? "Tous les championnats" : sp === "Tennis" ? "Tous les tournois" : "Toutes", base.length) + extra + list.map(([k, { x, n }]) =>
       sp === "Foot" ? chip(k, `<span class="fl">${FLAG[x.country] || "🏳️"}</span>${esc(SHORT[x.comp] || x.comp)}`, n)
@@ -231,14 +245,14 @@
     return out;
   }
   const statRow = c => `<a class="stat" href="#m/${encodeURIComponent(c.x.k)}"><span class="v">${pct(c.v)}</span><span class="l"><b>${esc(c.l)}</b>
-      <span class="m"><span class="tag">${SPN[c.x.sport] === "Football" ? "Foot" : SPN[c.x.sport]}</span><span>${esc(short(c.x, c.x.a))} – ${esc(short(c.x, c.x.b))}</span></span><span class="when">${whenTxt(c.x)}</span></span></a>`;
+      <span class="m"><span class="tag">${c.x.sport === "Foot" ? "Foot" : c.x.sport === "NBA" ? c.x.comp : SPN[c.x.sport]}</span><span>${esc(short(c.x, c.x.a))} – ${esc(short(c.x, c.x.b))}</span></span><span class="when">${whenTxt(c.x)}</span></span></a>`;
 
   // ---- tableau
   function tableRows(items) {
     const lim = S.more ? items.length : 12;
     const rows = items.slice(0, lim).map(x => {
       const cr = x.sport !== "Tennis", past = new Date(x.dt).getTime() < Date.now();
-      return `<tr data-k="${encodeURIComponent(x.k)}"${past ? ' class="past"' : ""}><td class="h-sport"><span class="tag">${x.sport === "Foot" ? "Football" : x.sport}</span></td>
+      return `<tr data-k="${encodeURIComponent(x.k)}"${past ? ' class="past"' : ""}><td class="h-sport"><span class="tag">${x.sport === "Foot" ? "Football" : x.sport === "NBA" ? x.comp : x.sport}</span></td>
         <td><span class="mt">${cr ? crest(x.a, "sm") : ""}<span>${esc(short(x, x.a))}</span><span class="dash">–</span><span>${esc(short(x, x.b))}</span>${cr ? crest(x.b, "sm") : ""}</span></td>
         <td class="dt">${whenTxt(x)}</td><td class="c pc">${pct(x.pa)}</td><td class="c pc d">${x.pd == null ? "–" : pct(x.pd)}</td><td class="c pc">${pct(x.pb)}</td></tr>`;
     }).join("");
@@ -257,6 +271,15 @@
       return `<a class="trow" href="#tennis"><span class="td">${d(t.start).toLocaleDateString("fr-FR", o)} – ${d(t.end).toLocaleDateString("fr-FR", o)}${live ? '<small>En cours</small>' : ""}</span>
         <span class="tn"><b>${esc(t.name)}</b><span>${[t.tour, t.city, SURFN[t.surface] || t.surface, t.bo === 5 ? "3 sets gagnants" : ""].filter(Boolean).map(esc).join(" · ")}</span></span></a>`;
     }).join("")}</div></section>`;
+  }
+
+  // ---- WNBA hors saison : classement selon le modèle
+  function wnbaTable() {
+    if (!W) return "";
+    const f = v => (v > 0 ? "+" : "") + v.toFixed(1).replace(".", ",");
+    return `<section class="tours"><h2>WNBA ${W.season} : les équipes</h2><div class="tlist">${W.teams.map((t, i) =>
+      `<div class="trow wrow"><span class="td">${i + 1}. ${crest(t.name, "sm")}</span><span class="tn"><b>${esc(t.name)}</b><span>Bilan ${t.w}–${t.l} · attaque ${f(t.o)} · défense ${f(t.d)} pts</span></span></div>`).join("")}</div>
+      <p class="note">Attaque et défense : points par match en plus ou en moins par rapport à une équipe moyenne. Modèle testé sur la saison ${W.season} : bon vainqueur ${Math.round(W.test.acc * 100)} % du temps.</p></section>`;
   }
 
   // ---- dessin de l'accueil
@@ -286,9 +309,11 @@
     }
     items = [...items.filter(upcoming), ...items.filter(x => !upcoming(x))];   // matchs commencés à la fin
     $("hNote").innerHTML = note;
-    $("hTours").innerHTML = sp === "Tennis" ? toursHtml() : "";
+    const wOff = sp === "NBA" && (S.comp || {}).NBA === "WNBA" && !items.length;
+    if (wOff) { $("hNote").innerHTML = `<p class="hnote">La saison WNBA ${W.season} est terminée. La suivante commence en mai : les probabilités apparaîtront dès que le calendrier sera publié. En attendant, voici les équipes selon le modèle.</p>`; items = []; }
+    $("hTours").innerHTML = sp === "Tennis" ? toursHtml() : wOff ? wnbaTable() : "";
     if (small()) {
-      $("hList").innerHTML = items.length ? groupedList(items, multi) : `<p class="mempty">Aucun match ${sp === "Tennis" ? "de tennis" : sp === "NBA" ? "de NBA" : "de football"} programmé pour l'instant.</p>`;
+      $("hList").innerHTML = items.length ? groupedList(items, multi) : wOff ? "" : `<p class="mempty">Aucun match ${sp === "Tennis" ? "de tennis" : sp === "NBA" ? "de basket" : "de football"} programmé pour l'instant.</p>`;
     } else {
       const motd = matchOfDay(items);
       $("hMotd").innerHTML = motdCard(motd);
@@ -358,8 +383,8 @@
       <div class="dsec dmore">Analyse détaillée</div>
       <div class="mfull" id="mFull"></div>
       <button type="button" class="dbtn" id="mOpen">Comparer avec d'autres ${x.sport === "Tennis" ? "joueurs" : "équipes"} et voir le classement <span aria-hidden="true">→</span></button>`;
-    embed(x);
-    $("mOpen").onclick = () => { restore(); x.open(); };
+    if (x.open) { embed(x); $("mOpen").onclick = () => { restore(); x.open(); }; }
+    else { $("mOpen").remove(); const dm = box.querySelector(".dmore"); if (dm) dm.remove(); }
   }
 
   // ---- favoris

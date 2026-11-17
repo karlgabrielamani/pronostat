@@ -290,3 +290,5 @@ h1, h2 { letter-spacing: -0.02em; }
 .comps button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--surface); }
 .comps button[aria-pressed="true"] small { color: var(--surface); opacity: .75; }
 @media (max-width: 760px) { .comps { margin: 0 -20px; padding: 10px 16px 0; } }
+.wrow .td { display: flex; align-items: center; gap: 8px; }
+.wrow { grid-template-columns: 64px minmax(0, 1fr); }
