@@ -258,6 +258,33 @@ def logos_js():
     return ""          # la page charge data/logos.json après l'affichage (page plus légère) ; window.LOGOS reste possible pour une page autonome
 
 
+BASKET_CLONES = (("el", "euroleague", "EuroLeague", "ElAPI", "euroleague_tool.json", "Données : site officiel de l'EuroLeague."),
+                 ("wn", "wnba", "WNBA", "WnAPI", "wnba_tool.json", "Données : ESPN."))
+
+
+def basket_clones():
+    """EuroLeague et WNBA : copies de l'outil NBA (analyse, événements, combiné, simulation), avec leurs propres données."""
+    html, js = "", ""
+    for pfx, view, title, api, fn, src in BASKET_CLONES:
+        p = f"{OUT}/{fn}"
+        if not os.path.exists(p): continue
+        d = json.load(open(p))
+        d.setdefault("b2b", 0); d.setdefault("beta", 0)
+        for t in d["teams"]:
+            t.setdefault("inj", []); t.setdefault("abbr", t["name"][:3].upper()); t.setdefault("last", "")
+        h = open(f"{SRC}/nba_fragment.html").read()
+        h = (h.replace('id="nb', f'id="{pfx}').replace('for="nb', f'for="{pfx}').replace('id="view-basket"', f'id="view-{view}"')
+              .replace("<h1>NBA</h1>", f"<h1>{title}</h1>").replace("Absents mis à jour chaque matin. Données : ESPN.", src))
+        h += f'\n<style>label[for={pfx}Ba], label[for={pfx}Bb], #{pfx}Inj {{ display: none !important; }}</style>'
+        j = open(f"{SRC}/nba_fragment.js").read()
+        j = (j.replace('g("nb', f'g("{pfx}').replace("window.NbaAPI", f"window.{api}").replace('"#basket"', f'"#{view}"')
+              .replace('comp: "NBA"', f'comp: "{title}"').replace('sub: "NBA"', f'sub: "{title}"').replace('Combo.add("NBA"', f'Combo.add("{title}"')
+              .replace("5 / 48", "5 / 40").replace('sport: "nba", h:', 'sport: "nba", qsec: 600, h:').replace("En NBA,", f"En {title},")
+              .replace("__NBA__", json.dumps(d, ensure_ascii=False)))
+        html += "\n" + h; js += "\n<script>\n" + j + "\n</script>"
+    return html, js
+
+
 def wnba_js():
     """Autres championnats de basket (src/wnba.py, src/euroleague.py) : window.BASKET = {"WNBA": …, "EuroLeague": …}."""
     B = {k: json.load(open(f"{OUT}/{f}")) for k, f in (("WNBA", "wnba_tool.json"), ("EuroLeague", "euroleague_tool.json")) if os.path.exists(f"{OUT}/{f}")}
@@ -306,9 +333,10 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
     t = t.replace('<script', open(f"{SRC}/i18n.html").read() + '<script', 1)
     t = t.replace('<div class="wrap">', nav + open(f"{SRC}/fav.html").read() + '<div class="wrap" id="view-tennis" hidden>', 1)
     i = t.index("<script>")
-    t = t[:i] + open(f"{SRC}/foot_fragment.html").read() + "\n" + open(f"{SRC}/nba_fragment.html").read() + "\n" + t[i:]
+    bh, bj = basket_clones()
+    t = t[:i] + open(f"{SRC}/foot_fragment.html").read() + "\n" + open(f"{SRC}/nba_fragment.html").read() + bh + "\n" + t[i:]
     js = lambda name, ph, data: "\n<script>\n" + open(f"{SRC}/{name}").read().replace(ph, json.dumps(data, ensure_ascii=False)) + "\n</script>"
-    t = (t + js("nba_fragment.js", "__NBA__", nba_data) + js("foot_fragment.js", "__FOOT__", foot_data)
+    t = (t + js("nba_fragment.js", "__NBA__", nba_data) + bj + js("foot_fragment.js", "__FOOT__", foot_data)
            + "\n<script>window.HIST = " + json.dumps(hist, ensure_ascii=False) + ";</script>"
            + open(f"{SRC}/router.html").read() + logos_js() + wnba_js() + "\n<script>\n" + open(f"{SRC}/home.js").read() + "\n</script>\n" + open(f"{SRC}/sim.html").read() + open(f"{SRC}/search.html").read() + open(f"{SRC}/share.html").read() + open(f"{SRC}/live.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
     t = t.replace("__WTA__", json.dumps(wta_data or dict(players=[], coef=tennis_data["coef"], updated=tennis_data["updated"], test=dict(acc=0, acc_pin=None), live=[]), ensure_ascii=False))

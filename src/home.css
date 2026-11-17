@@ -353,3 +353,14 @@ h1, h2 { letter-spacing: -0.02em; }
 .wrap > * { min-width: 0; }
 .alist { gap: 10px; } .alist p { display: grid; grid-template-columns: 90px minmax(0, 1fr); gap: 8px; } .alist b { min-width: 0; }
 .about .tools { align-items: center; }
+
+/* drapeaux */
+.flg { width: 21px; height: 14px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.08); display: block; flex: none; }
+.fl, .cf { display: inline-flex; align-items: center; justify-content: center; }
+.dhead .lg .fl .flg, .grp .fl .flg { width: 20px; height: 13px; }
+@media (max-width: 380px) {
+  .mcard .mt .crest { display: none; }
+  .daynav .lab { font-size: 15px; white-space: nowrap; }
+  .dteams { grid-template-columns: minmax(0, 1fr); } .dteams .crest { display: none; } .dteams .mt { font-size: 17px; }
+  .dhead { flex-wrap: wrap; }
+}

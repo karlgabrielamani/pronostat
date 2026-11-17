@@ -469,7 +469,7 @@
     });
     const st = R.st, nm = s => s ? NA : NH, col = s => s ? CA : CH;
     const LEN = q => q > 4 ? 20 : 50;
-    const clock = () => { const len = LEN(G.q), per = (G.q > 4 ? 300 : 720) / len, secs = Math.max(0, Math.round((len - G.pc - G.qi / Math.max(1, G.ql)) * per)); return Math.floor(secs / 60) + ":" + String(secs % 60).padStart(2, "0"); };
+    const clock = () => { const len = LEN(G.q), per = (G.q > 4 ? 300 : (P.qsec || 720)) / len, secs = Math.max(0, Math.round((len - G.pc - G.qi / Math.max(1, G.ql)) * per)); return Math.floor(secs / 60) + ":" + String(secs % 60).padStart(2, "0"); };
     const head = () => R.hd(`<div class="bx-top"><div class="bx-team h" style="--c:${CH}"><b>${esc(NH)}</b><small>${esc(P.h)}</small></div><div class="bx-sc h" style="--c:${CH}">${G.hs}</div>
       <div class="bx-mid"><b>${G.done ? "FIN" : (G.q > 4 ? "PR" : "QT" + G.q) + " " + clock()}</b><small>${G.done ? "Terminé" : (G.poss ? NA : NH) + " · balle"}</small></div>
       <div class="bx-sc a" style="--c:${CA}">${G.as}</div><div class="bx-team a" style="--c:${CA}"><b>${esc(NA)}</b><small>${esc(P.a)}</small></div></div>`);
@@ -596,7 +596,7 @@
 
   // ---------------- montage dans chaque onglet ----------------
   const RUN = { foot, tennis, nba };
-  const SPOTS = [["foot", "ftResult", () => window.FootAPI && window.FootAPI.current()], ["nba", "nbResult", () => window.NbaAPI && window.NbaAPI.current()], ["tennis", "result", () => window.TennisAPI && window.TennisAPI.current()]];
+  const SPOTS = [["foot", "ftResult", () => window.FootAPI && window.FootAPI.current()], ["nba", "nbResult", () => window.NbaAPI && window.NbaAPI.current()], ["nba", "elResult", () => window.ElAPI && window.ElAPI.current()], ["nba", "wnResult", () => window.WnAPI && window.WnAPI.current()], ["tennis", "result", () => window.TennisAPI && window.TennisAPI.current()]];
   let stop = null, openEl = null;
   const label = open => open ? "Fermer" : "▶ Voir le match";
   const stopAll = () => { if (stop) stop(); stop = null; if (openEl) { openEl.innerHTML = ""; openEl.closest(".sm-card").classList.remove("open"); openEl = null; } document.querySelectorAll(".sm-open").forEach(b => b.textContent = label(false)); };

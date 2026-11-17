@@ -1,6 +1,5 @@
 """Construit le site public à partir de la sortie de update_all.py :
 - app.html  : l'appli (out/pronos.html dans une page autonome)
-- presentation.html : l ancienne page de présentation (promesse, stats du jour, match du jour, offres, questions)
 et recopie les données mises à jour dans data/."""
 import html, json, math, os, re, shutil, sys
 from datetime import datetime, timedelta, timezone
@@ -253,10 +252,10 @@ document.querySelectorAll("time[data-dt]").forEach(t => {{ const d = new Date(t.
 """
 # i18n doit s'exécuter avant le script des heures (correction des dates) : on le place en tête
 landing = landing.replace("<body>\n", "<body>\n" + I18N, 1).replace(f"</script>\n{I18N}\n</body>", "</script>\n</body>")
-open(f"{ROOT}/presentation.html", "w", encoding="utf-8").write(landing)
+# (l'ancienne page de présentation a été supprimée : la page d'accueil est l'appli)
 
 for name in ["tennis_history.csv", "tennis_tool.json", "wta_history.csv", "wta_tool.json", "cups_history.csv", "predictions_log.csv", "paper_bets.csv"]:
     src = f"{OUT}/{name}"
     if os.path.exists(src) and os.path.getsize(src) > 0:
         shutil.copy(src, f"{ROOT}/data/{name}")
-print("Site écrit :", f"{ROOT}/index.html", "+ app.html, présentation :", f"{ROOT}/presentation.html", f"· {len(stats)} stats du jour", "· match du jour :" , (match_day or {}).get("a"), "-", (match_day or {}).get("b"))
+print("Site écrit :", f"{ROOT}/index.html", "+ app.html", f"· {len(stats)} stats du jour", "· match du jour :" , (match_day or {}).get("a"), "-", (match_day or {}).get("b"))

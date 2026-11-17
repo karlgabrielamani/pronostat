@@ -18,6 +18,7 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["7 prochains jours", "Next 7 days", "Komende 7 dagen"],
     ["Moins d'1 pt", "Under 1 pt", "Minder dan 1 pt"],
     ["Ligue des champions", "Champions League", "Champions League"],
     ["Ligue des Champions", "Champions League", "Champions League"],

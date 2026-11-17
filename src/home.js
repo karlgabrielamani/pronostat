@@ -1,12 +1,26 @@
 // ---------- Accueil (web : match du jour, stat du jour, tableau ; téléphone : cartes par compétition), fiche de match, favoris ----------
 (() => {
   const $ = id => document.getElementById(id);
-  const APIS = () => [window.FootAPI, window.TennisAPI, window.NbaAPI].filter(Boolean);
+  const APIS = () => [window.FootAPI, window.TennisAPI, window.NbaAPI, window.ElAPI, window.WnAPI].filter(Boolean);
   const pct = x => Math.round(x * 100) + " %";
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const SPN = { Foot: "Football", Tennis: "Tennis", NBA: "NBA" };
-  const FLAG = { "France": "🇫🇷", "Espagne": "🇪🇸", "Italie": "🇮🇹", "Allemagne": "🇩🇪", "Angleterre": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Pays-Bas": "🇳🇱", "Belgique": "🇧🇪",
-    "Portugal": "🇵🇹", "Écosse": "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Turquie": "🇹🇷", "Grèce": "🇬🇷", "Europe": "🇪🇺", "États-Unis": "🇺🇸" };
+  // drapeaux dessinés (les drapeaux emoji ne s'affichent pas sous Windows ni sur certains Android)
+  const fsv = (body, vb = "0 0 30 20") => `<svg class="flg" viewBox="${vb}" aria-hidden="true">${body}</svg>`;
+  const v3 = (a, b, c) => fsv(`<rect width="10" height="20" fill="${a}"/><rect x="10" width="10" height="20" fill="${b}"/><rect x="20" width="10" height="20" fill="${c}"/>`);
+  const h3 = (a, b, c, m = 1) => fsv(`<rect width="30" height="20" fill="${a}"/><rect y="${10 - 10 * m / 3}" width="30" height="${20 * m / 3}" fill="${b}"/><rect y="${10 + 10 * m / 3}" width="30" height="${10 - 10 * m / 3}" fill="${c}"/>`);
+  const FLAG = {
+    "France": v3("#002395", "#fff", "#ED2939"), "Italie": v3("#009246", "#fff", "#CE2B37"), "Belgique": v3("#000", "#FAE042", "#ED2939"),
+    "Allemagne": h3("#000", "#DD0000", "#FFCE00"), "Pays-Bas": h3("#AE1C28", "#fff", "#21468B"),
+    "Espagne": fsv('<rect width="30" height="20" fill="#AA151B"/><rect y="5" width="30" height="10" fill="#F1BF00"/>'),
+    "Portugal": fsv('<rect width="30" height="20" fill="#FF0000"/><rect width="12" height="20" fill="#006600"/><circle cx="12" cy="10" r="3.6" fill="#FFCC00"/><circle cx="12" cy="10" r="2.2" fill="#FF0000"/>'),
+    "Angleterre": fsv('<rect width="30" height="20" fill="#fff"/><rect x="12.5" width="5" height="20" fill="#CE1124"/><rect y="7.5" width="30" height="5" fill="#CE1124"/>'),
+    "Écosse": fsv('<rect width="30" height="20" fill="#005EB8"/><path d="M0 0 30 20M30 0 0 20" stroke="#fff" stroke-width="3.2"/>'),
+    "Turquie": fsv('<rect width="30" height="20" fill="#E30A17"/><circle cx="11" cy="10" r="5" fill="#fff"/><circle cx="12.3" cy="10" r="4" fill="#E30A17"/><circle cx="17.6" cy="10" r="1.7" fill="#fff"/>'),
+    "Grèce": fsv('<rect width="30" height="20" fill="#0D5EAF"/>' + [2, 6, 10, 14, 18].map(y => `<rect y="${y - 1.1}" width="30" height="2.2" fill="#fff"/>`).join("") + '<rect width="12" height="11" fill="#0D5EAF"/><rect x="5" width="2.2" height="11" fill="#fff"/><rect y="4.4" width="12" height="2.2" fill="#fff"/>'),
+    "Europe": fsv('<rect width="30" height="20" fill="#003399"/>' + Array.from({ length: 12 }, (_, i) => `<circle cx="${15 + 6 * Math.cos(i * Math.PI / 6)}" cy="${10 + 6 * Math.sin(i * Math.PI / 6)}" r="0.9" fill="#FFCC00"/>`).join("")),
+    "États-Unis": fsv('<rect width="30" height="20" fill="#fff"/>' + [0, 2, 4, 6, 8, 10, 12].map(k => `<rect y="${k * 20 / 13 * 1}" width="30" height="${20 / 13}" fill="#B22234"/>`).join("").replace(/y="([\d.]+)"/g, (m, y) => `y="${(+y * 2).toFixed(2)}"`) + '<rect width="13" height="10.8" fill="#3C3B6E"/>')
+  };
   // ordre d'affichage des compétitions de foot
   const PRIO = ["UCL", "F1", "E0", "SP1", "I1", "D1", "UEL", "N1", "B1", "P1", "UECL", "F2", "E1", "D2", "SP2", "I2", "SC0", "T1", "G1", "CDF", "FAC", "CDR", "CIT", "DFB", "KNVB", "TDP", "SCC"];
   const prio = x => { const i = PRIO.indexOf(x.lg); return i < 0 ? 99 : i; };
@@ -86,7 +100,7 @@
   const BK = window.BASKET || {}, W = BK.WNBA;
   function basketList() {
     return Object.entries(BK).flatMap(([comp, B]) => {
-      if (!B || !B.games) return [];
+      if (!B || !B.games || (comp === "EuroLeague" && window.ElAPI) || (comp === "WNBA" && window.WnAPI)) return [];   // déjà fournis par leur outil
       const T = Object.fromEntries(B.teams.map(t => [t.name, t])), sg = B.sd_team * Math.sqrt(2 * (1 - B.corr));
       return B.games.filter(g => T[g.home] && T[g.away]).map(g => {
         const a = T[g.home], b = T[g.away], h = g.neutral ? 0 : B.hca, m = (B.mu + a.o - b.d + h / 2) - (B.mu + b.o - a.d - h / 2), p = Phi(m / sg);
@@ -128,7 +142,7 @@
       lgs.filter(l => !l.cup && !by[l.k]).forEach(l => list.push({ k: l.k, n: 0, x: { lg: l.k, comp: l.name, country: l.country, cup: false } }));   // championnats sans match cette semaine : gardés
       const GO = ["Coupes d'Europe", "Championnats", "Coupes nationales"];
       list.sort((a, b) => GO.indexOf(FOOTGRP(a.x)) - GO.indexOf(FOOTGRP(b.x)) || prio(a.x) - prio(b.x));
-      list.forEach(o => out.push({ k: o.k, label: SHORT[o.x.comp] || o.x.comp, flag: FLAG[o.x.country] || "🏳️", n: o.n, sub: o.n ? "" : "classement", grp: FOOTGRP(o.x) }));
+      list.forEach(o => out.push({ k: o.k, label: SHORT[o.x.comp] || o.x.comp, flag: FLAG[o.x.country] || "", n: o.n, sub: o.n ? "" : "classement", grp: FOOTGRP(o.x) }));
     } else if (sp === "Tennis") {
       for (const t of ["ATP", "WTA"]) { const n = base.filter(x => x.tour === t).length; if (n) out.push({ k: t, label: t === "ATP" ? "ATP · hommes" : "WTA · femmes", n, grp: "Circuits" }); }
       list.sort((a, b) => new Date(a.x.dt) - new Date(b.x.dt)).forEach(o => out.push({ k: o.k, label: o.x.event || o.x.comp, sub: o.x.tour, n: o.n, grp: "Tournois" }));
@@ -167,7 +181,7 @@
     if (S.day === WEEK || (S.day && days(sp).includes(S.day))) return S.day;
     return pool(sp).some(x => dkey(x.dt) === todayKey() && upcoming(x)) ? todayKey() : WEEK;   // rien aujourd'hui : la semaine qui arrive
   }
-  const dayName = d => d === WEEK ? "Les 7 prochains jours" : dayLabel(d);
+  const dayName = d => d === WEEK ? "7 prochains jours" : dayLabel(d);
   function stripHtml(sp, day) {
     const chip = (d, top, bot, n) => `<button type="button" data-d="${d}" aria-pressed="${d === day}"${n ? "" : ' class="none"'}><span class="t">${top}</span><span class="b">${bot}</span><span class="n">${n ? n + " match" + (n > 1 ? "s" : "") : "–"}</span></button>`;
     return chip(WEEK, "7 jours", "à venir", count(sp, WEEK)) + days(sp).map(d => {
@@ -201,7 +215,7 @@
       ${probsInline(x, "pbox")}</div>`;
   }
   function groupKey(x) {
-    if (x.sport === "Foot") return { id: "F|" + x.lg, order: prio(x), html: `<span class="fl">${FLAG[x.country] || "🏳️"}</span><span><b>${esc((x.country || "").toUpperCase())}</b> · ${esc(x.comp)}</span>` };
+    if (x.sport === "Foot") return { id: "F|" + x.lg, order: prio(x), html: `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc((x.country || "").toUpperCase())}</b> · ${esc(x.comp)}</span>` };
     if (x.sport === "Tennis") return { id: "T|" + x.tour + x.event, order: x.tour === "ATP" ? 0 : 1, html: `<span><b>${esc(x.tour || "")}</b> · ${esc(x.event || x.comp)}${x.round ? " · " + esc(x.round) : ""}</span>` };
     return { id: "B|" + x.comp, order: x.comp === "NBA" ? 0 : 1, html: `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span><span><b>${esc(x.comp || "NBA")}</b></span>` };
   }
@@ -360,7 +374,8 @@
   }
 
   // ---- analyse complète : le bloc de l'outil détaillé (événements, combiné, cotes, prono, partage, simulation…) est déplacé dans la fiche
-  const EMB = { Foot: ["ftResult"], Tennis: ["result"], NBA: ["nbInj", "nbResult"] };
+  const BPFX = { NBA: "nb", EuroLeague: "el", WNBA: "wn" };
+  const embIds = x => x.sport === "Foot" ? ["ftResult"] : x.sport === "Tennis" ? ["result"] : (x.comp === "NBA" ? ["nbInj", "nbResult"] : [BPFX[x.comp] + "Result"]);
   let moved = [], embKey = null;
   function restore() {
     for (const m of moved.reverse()) m.parent.insertBefore(m.el, m.next && m.next.parentNode === m.parent ? m.next : null);
@@ -372,7 +387,7 @@
     try { x.open(); } catch (e) { console.error(e); }       // choisit le match dans l'outil (change l'adresse : on la remet aussitôt)
     history.replaceState(null, "", here);
     const take = el => { moved.push({ el, parent: el.parentNode, next: el.nextSibling }); box.appendChild(el); };
-    for (const id of EMB[x.sport] || []) {
+    for (const id of embIds(x)) {
       const el = $(id); if (!el) continue;
       const host = el.closest(".card"), sim = host && host.nextElementSibling;
       if (sim && sim.classList.contains("sm-card")) take(sim);       // la carte « Simulation du match », en premier
@@ -412,8 +427,7 @@
       <div class="dsec">Résultat du match</div>
       <div class="dres${x.pd == null ? " two" : ""}">${cells.map(([n, p], i) => `<div${i === favI ? ' class="fav"' : ""}><span class="nm">${esc(n)}</span><span class="pc">${pct(p)}</span></div>`).join("")}</div>
       ${bar(x)}${body}
-      <div class="dgrp">Cotes justes</div>${cells.map(([n, p]) => rows(n, (1 / Math.max(p, 1e-4)).toFixed(2).replace(".", ","))).join("")}
-      <p class="dfoot"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg>10 000 simulations</p></div>
+      <div class="dgrp">Cotes justes</div>${cells.map(([n, p]) => rows(n, (1 / Math.max(p, 1e-4)).toFixed(2).replace(".", ","))).join("")}</div>
       <div class="dsec dmore">Analyse détaillée</div>
       <div class="mfull" id="mFull"></div>
       <button type="button" class="dbtn" id="mOpen">Comparer avec d'autres ${x.sport === "Tennis" ? "joueurs" : "équipes"} et voir le classement <span aria-hidden="true">→</span></button>`;
@@ -431,8 +445,8 @@
   }
 
   // ---- navigation
-  const VIEWS = ["jour", "foot", "tennis", "basket", "fav", "about", "match"].filter(k => $("view-" + k));
-  const NAVOF = { jour: "jour", match: "jour", foot: "jour", tennis: "jour", basket: "jour", fav: "fav", about: "about" };
+  const VIEWS = ["jour", "foot", "tennis", "basket", "euroleague", "wnba", "fav", "about", "match"].filter(k => $("view-" + k));
+  const NAVOF = { jour: "jour", match: "jour", foot: "jour", tennis: "jour", basket: "jour", euroleague: "jour", wnba: "jour", fav: "fav", about: "about" };
   let lastHome = "#jour";
   function show(force) {
     const h = location.hash.slice(1);
