@@ -18,6 +18,8 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Plus de #,# buts", "Over #.# goals", "Meer dan #,# doelpunten"],
+    ["gagne de plus de # pts", "wins by more than # pts", "wint met meer dan # ptn"],
     ["Sélections nationales", "National teams", "Nationale ploegen"],
     ["Ligue des nations", "Nations League", "Nations League"],
     ["Qualifications Euro", "Euro qualifiers", "EK-kwalificatie"],

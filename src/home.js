@@ -258,26 +258,35 @@
       ${motdRows(x).map(([l, v]) => `<div class="prow"><span>${esc(l)}</span><b>${esc(v)}</b></div>`).join("")}
       <a class="more-link" href="#m/${encodeURIComponent(x.k)}">Voir l'analyse <span aria-hidden="true">→</span></a></div>`;
   }
-  function statCands(x) {
-    if (x.sport === "Tennis") { const t = tennisS(x), und = x.pa < x.pb;
-      return [{ v: und ? t.setA : t.setB, l: `${short(x, und ? x.a : x.b)} gagne un set`, w: 1.25 }]; }
-    if (x.sport === "NBA") { const fa = x.pa >= x.pb; return [{ v: Math.max(x.pa, x.pb), l: `${bn(x, fa ? x.a : x.b)} gagne`, w: 1 }]; }
-    const m = footM(x);
-    return [{ v: m.o(3), l: "Plus de 2,5 buts", w: 1 }, { v: m.btts, l: "Les deux équipes marquent", w: 1 },
-            { v: Math.max(x.pa, x.pb), l: `${x.pa >= x.pb ? x.a : x.b} gagne`, w: 1 }];
+  function statCands(x) {                                    // statistiques marquantes d'un match (pourcentages élevés de préférence)
+    if (x.sport === "Tennis") { const t = tennisS(x), fa = x.pa >= x.pb, und = !fa;
+      return [{ v: fa ? t.setB : t.setA, l: `${short(x, fa ? x.b : x.a)} gagne un set`, kind: "tset" },
+              { v: Math.max(x.pa, x.pb), l: `${short(x, fa ? x.a : x.b)} gagne`, kind: "twin" }]; }
+    if (x.sport === "NBA") { const fa = x.pa >= x.pb, [a5, b5] = nbaBy(x, 5);
+      return [{ v: Math.max(x.pa, x.pb), l: `${bn(x, fa ? x.a : x.b)} gagne`, kind: "bwin" }, { v: fa ? a5 : b5, l: `${bn(x, fa ? x.a : x.b)} gagne de plus de 5 pts`, kind: "b5" }]; }
+    const m = footM(x), fa = x.pa >= x.pb;
+    return [{ v: m.o(2), l: "Plus de 1,5 buts", kind: "o15" }, { v: m.o(3), l: "Plus de 2,5 buts", kind: "o25" }, { v: m.btts, l: "Les deux équipes marquent", kind: "btts" },
+            { v: fa ? m.ha : m.aa, l: `${fa ? x.a : x.b} marque au moins un but`, kind: "score" }, { v: Math.max(x.pa, x.pb), l: `${fa ? x.a : x.b} gagne`, kind: "win" }];
   }
-  function statsOfDay(items, skip) {
+  function statsOfDay(items, skip, max = 5) {
     const up = items.filter(x => x !== skip && new Date(x.dt) > Date.now() - 2 * 3600e3);
-    const by = {};
-    let lo = 0.5;
-    if (!up.some(x => statCands(x).some(c => c.v >= 0.5 && c.v <= 0.92))) lo = 0.35;
-    up.forEach(x => statCands(x).filter(c => c.v >= lo && c.v <= 0.92).forEach(c => (by[x.sport] = by[x.sport] || []).push({ ...c, x, sc: c.v * c.w * (x.sport === "Foot" ? 1.2 - fame(x) / 20 : 1) })));
-    Object.values(by).forEach(a => a.sort((p, q) => q.sc - p.sc));
-    const out = [], used = new Set(), order = ["Tennis", "NBA", "Foot"].filter(s => by[s]);
-    for (let r = 0; out.length < 3 && r < 6; r++) for (const s of order) {
-      const c = (by[s] || []).find(c => !used.has(c.x.k)); if (c && out.length < 3) { out.push(c); used.add(c.x.k); }
-    }
-    return out;
+    const pick = (lo, hi) => {
+      const by = {};
+      up.forEach(x => {                                    // la meilleure stat de chaque match, entre lo et hi
+        statCands(x).filter(c => c.v >= lo && c.v <= hi).forEach(c => (by[x.sport] = by[x.sport] || []).push({ ...c, x, sc: c.v * (x.sport === "Foot" ? 1.15 - fame(x) / 40 : 1) }));
+      });
+      Object.values(by).forEach(a => a.sort((p, q) => q.sc - p.sc));
+      return by;
+    };
+    let by = pick(0.7, 0.95);
+    if (Object.values(by).flat().length < max) { const more = pick(0.55, 0.95); by = more; }
+    const out = [], used = new Set(), kinds = {}, order = ["Foot", "Tennis", "NBA"].filter(s => by[s]);
+    const ok = c => !used.has(c.x.k) && (kinds[c.kind] || 0) < 2;                         // pas plus de 2 stats du même genre
+    const take = c => { out.push(c); used.add(c.x.k); kinds[c.kind] = (kinds[c.kind] || 0) + 1; };
+    order.forEach(s => { const c = by[s].find(ok); if (c) take(c); });                       // au moins une par sport
+    Object.values(by).flat().sort((p, q) => q.sc - p.sc).forEach(c => { if (out.length < max && ok(c)) take(c); });
+    Object.values(by).flat().sort((p, q) => q.sc - p.sc).forEach(c => { if (out.length < max && !used.has(c.x.k)) take(c); });   // compléter si besoin
+    return out.sort((p, q) => q.v - p.v);
   }
   const statRow = c => `<a class="stat" href="#m/${encodeURIComponent(c.x.k)}"><span class="v">${pct(c.v)}</span><span class="l"><b>${esc(c.l)}</b>
       <span class="m"><span class="tag">${c.x.sport === "Foot" ? "Foot" : c.x.sport === "NBA" ? c.x.comp : SPN[c.x.sport]}</span><span>${esc(short(c.x, c.x.a))} – ${esc(short(c.x, c.x.b))}</span></span><span class="when">${whenTxt(c.x)}</span></span></a>`;
