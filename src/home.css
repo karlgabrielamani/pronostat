@@ -205,7 +205,7 @@ h1, h2 { letter-spacing: -0.02em; }
   .logo i svg { width: 24px; height: 24px; stroke-width: 3.4; }
   body.v-match .hback { display: grid; }
   body.v-match .dback { display: none; }
-  .bnav { display: grid; grid-template-columns: repeat(2, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; background: var(--surface); border-top: 1px solid var(--line);
+  .bnav { display: grid; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; background: var(--surface); border-top: 1px solid var(--line);
     padding: 4px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px)); }
   .bnav a { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px 2px 6px; font-size: 13px; font-weight: 500; color: var(--ink-2); text-decoration: none; border-bottom: 3px solid transparent; margin: 0 14px; }
   .bnav a svg { width: 24px; height: 24px; }
@@ -378,3 +378,25 @@ h1, h2 { letter-spacing: -0.02em; }
 .isel select:hover { border-color: var(--hot); }
 .inj .muted { font-size: 14px; }
 @media (max-width: 760px) { .isel select { font-size: 16px; } }
+
+/* accueil */
+.acc { gap: 26px; }
+.acta { justify-self: start; display: inline-flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: #fff; background: var(--hot); border-radius: 10px; padding: 12px 20px; text-decoration: none; }
+.acta:hover { filter: brightness(.95); }
+.acc h2 { font-size: 21px; font-weight: 700; margin-bottom: 12px; }
+@media (max-width: 760px) {
+  .acc { gap: 18px; padding-top: 20px; }
+  .acc .hero h1 { font-size: 27px; }
+  .acc .hero .sub { font-size: 15px; }
+  .acc .hgrid { grid-template-columns: 1fr; gap: 18px; }
+  .acc h2 { font-size: 18px; margin-bottom: 8px; }
+  .acc .pcard { padding: 14px 16px; }
+  .acc .motd-teams .t { font-size: 16px; gap: 8px; }
+  .acc .motd-teams .crest.lg { width: 34px; height: 34px; }
+  .acc .three2 .pc { font-size: 22px; } .acc .three2 .nm { font-size: 13.5px; }
+  .acc .stats { padding: 2px 14px; }
+  .acc .stat { grid-template-columns: 74px minmax(0, 1fr); gap: 12px; padding: 12px 0; }
+  .acc .stat .v { font-size: 23px; }
+  .acc .stat .l b { font-size: 15px; }
+  .acc .acta { justify-self: stretch; justify-content: center; }
+}

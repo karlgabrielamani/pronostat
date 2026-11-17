@@ -18,6 +18,11 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Accueil", "Home", "Home"],
+    ["Les stats du jour", "Stats of the day", "Stats van de dag"],
+    ["Voir tous les matchs", "See all matches", "Bekijk alle wedstrijden"],
+    ["Pronostat calcule les chances de chaque match de football, de tennis et de basket à partir des résultats passés.", "Pronostat calculates the chances of every football, tennis and basketball match from past results.", "Pronostat berekent de kansen van elke voetbal-, tennis- en basketbalwedstrijd op basis van eerdere resultaten."],
+    ["Pas de statistique marquante pour l'instant.", "No standout stat for now.", "Voorlopig geen opvallende stat."],
     ["+ Ajouter un absent", "+ Add a missing player", "+ Afwezige toevoegen"],
     ["Ajouter un absent", "Add a missing player", "Afwezige toevoegen"],
     ["aucun absent", "no missing player", "geen afwezige"],

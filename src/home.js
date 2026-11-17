@@ -405,6 +405,19 @@
     embKey = x.k;
   }
 
+  // ---- accueil : explication, match du jour, grosses stats du jour (tous sports)
+  function drawAccueil() {
+    load();
+    const now = Date.now(), up = ALL.filter(x => !x.few && new Date(x.dt).getTime() > now - 2 * 3600e3);
+    const first = up.find(x => new Date(x.dt).getTime() > now);
+    const day = first ? dkey(first.dt) : todayKey();
+    const items = up.filter(x => dkey(x.dt) === day);
+    const motd = matchOfDay(items);
+    $("aMotd").innerHTML = motdCard(motd);
+    const st = statsOfDay(items, motd, 5);
+    $("aStats").innerHTML = st.length ? st.map(statRow).join("") : `<p class="empty">Pas de statistique marquante pour l'instant.</p>`;
+  }
+
   // ---- fiche d'un match
   function drawMatch(k) {
     restore();
@@ -454,18 +467,19 @@
   }
 
   // ---- navigation
-  const VIEWS = ["jour", "foot", "tennis", "basket", "euroleague", "wnba", "fav", "match"].filter(k => $("view-" + k));
-  const NAVOF = { jour: "jour", match: "jour", foot: "jour", tennis: "jour", basket: "jour", euroleague: "jour", wnba: "jour", fav: "fav" };
+  const VIEWS = ["accueil", "jour", "foot", "tennis", "basket", "euroleague", "wnba", "fav", "match"].filter(k => $("view-" + k));
+  const NAVOF = { accueil: "accueil", jour: "jour", match: "jour", foot: "jour", tennis: "jour", basket: "jour", euroleague: "jour", wnba: "jour", fav: "fav" };
   let lastHome = "#jour";
   function show(force) {
     const h = location.hash.slice(1);
-    const v = h.startsWith("m/") ? "match" : (VIEWS.includes(h) ? h : "jour");
+    const v = h.startsWith("m/") ? "match" : (VIEWS.includes(h) ? h : (small() ? "accueil" : "jour"));   // téléphone : on arrive sur l'accueil
     if (!force && v === "match" && embKey && embKey === decodeURIComponent(h.slice(2)) && moved.length && !$("view-match").hidden) return;   // déjà affichée
     if (v !== "match") restore();
     VIEWS.forEach(k => { $("view-" + k).hidden = k !== v; });
     document.body.className = document.body.className.replace(/\bv-\w+/g, "").trim() + " v-" + v;
     document.querySelectorAll(".topnav a, .bnav a").forEach(a => a.dataset.v === NAVOF[v] ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
     if (v === "jour") drawHome();
+    if (v === "accueil") drawAccueil();
     if (v === "match") drawMatch(decodeURIComponent(h.slice(2)));
     if (v === "fav") drawFav();
     if (v !== "match") lastHome = location.hash || "#jour";
