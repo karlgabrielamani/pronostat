@@ -22,14 +22,14 @@
     "États-Unis": fsv('<rect width="30" height="20" fill="#fff"/>' + [0, 2, 4, 6, 8, 10, 12].map(k => `<rect y="${k * 20 / 13 * 1}" width="30" height="${20 / 13}" fill="#B22234"/>`).join("").replace(/y="([\d.]+)"/g, (m, y) => `y="${(+y * 2).toFixed(2)}"`) + '<rect width="13" height="10.8" fill="#3C3B6E"/>')
   };
   // ordre d'affichage des compétitions de foot
-  const PRIO = ["UCL", "F1", "E0", "SP1", "I1", "D1", "UEL", "N1", "B1", "P1", "UECL", "F2", "E1", "D2", "SP2", "I2", "SC0", "T1", "G1", "CDF", "FAC", "CDR", "CIT", "DFB", "KNVB", "TDP", "SCC"];
+  const PRIO = ["WC", "EURO", "UNL", "WCQ", "EUQ", "UCL", "F1", "E0", "SP1", "I1", "D1", "UEL", "N1", "B1", "P1", "UECL", "F2", "E1", "D2", "SP2", "I2", "SC0", "T1", "G1", "CDF", "FAC", "CDR", "CIT", "DFB", "KNVB", "TDP", "SCC"];
   const prio = x => { const i = PRIO.indexOf(x.lg); return i < 0 ? 99 : i; };
   // notoriété d'une équipe : niveau de son championnat (1 = grand championnat)
   const LRANK = { "Premier League": 1, "La Liga": 1, "Serie A": 1, "Bundesliga": 1, "Ligue 1": 1, "Eredivisie": 2, "Liga Portugal": 2, "Jupiler Pro League": 2,
     "Championship": 3, "Ligue 2": 3, "2. Bundesliga": 3, "Segunda": 3, "Serie B": 3, "Süper Lig": 3, "Scottish Prem": 3, "Super League Grèce": 3 };
   let TIER = null;
   const tier = n => { if (!TIER) { TIER = {}; try { (window.FootAPI ? FootAPI.teams() : []).forEach(t => { if (!(t.name in TIER)) TIER[t.name] = LRANK[t.sub] || 5; }); } catch (e) {} } return TIER[n] || 5; };
-  const fame = x => tier(x.a) + tier(x.b) + (x.cup && x.country === "Europe" ? -2 : x.cup ? 1 : 0);
+  const fame = x => x.nat ? (x.lg === "FRI" ? 7 : 3) : tier(x.a) + tier(x.b) + (x.cup && x.country === "Europe" ? -2 : x.cup ? 1 : 0);
 
   // ---- écussons : initiales sur une couleur tirée du nom (aucun logo officiel)
   const STOP = new Set(["fc", "cf", "ac", "as", "sc", "sv", "afc", "ssc", "rc", "cd", "ud", "sd", "rcd", "vfb", "vfl", "tsg", "fk", "sk", "bk", "if", "de", "of", "the", "real", "club", "1.", "1"]);
@@ -131,7 +131,7 @@
   const compOk = x => { const c = (S.comp || {})[x.sport]; if (!c) return true; if (c === "ATP" || c === "WTA") return x.tour === c; return compKey(x) === c; };
   const pool = sp => ALL.filter(x => !x.few && (!sp || (x.sport === sp && compOk(x))));
   const SHORT = { "Ligue des Champions": "Ligue des champions", "Jupiler Pro League": "Jupiler Pro League", "Super League Grèce": "Super League" };
-  const FOOTGRP = x => x.cup && x.country === "Europe" ? "Coupes d'Europe" : x.cup ? "Coupes nationales" : "Championnats";
+  const FOOTGRP = x => x.nat ? "Sélections nationales" : x.cup && x.country === "Europe" ? "Coupes d'Europe" : x.cup ? "Coupes nationales" : "Championnats";
   function compOptions(sp) {                                   // [{k, label, flag, n, grp}]
     const base = ALL.filter(x => !x.few && x.sport === sp && upcoming(x));
     const by = {}; base.forEach(x => { const k = compKey(x); (by[k] = by[k] || { x, n: 0 }).n++; });
@@ -140,7 +140,7 @@
     if (sp === "Foot") {
       let lgs = []; try { lgs = window.FootAPI && FootAPI.leagues ? FootAPI.leagues() : []; } catch (e) {}
       lgs.filter(l => !l.cup && !by[l.k]).forEach(l => list.push({ k: l.k, n: 0, x: { lg: l.k, comp: l.name, country: l.country, cup: false } }));   // championnats sans match cette semaine : gardés
-      const GO = ["Coupes d'Europe", "Championnats", "Coupes nationales"];
+      const GO = ["Sélections nationales", "Coupes d'Europe", "Championnats", "Coupes nationales"];
       list.sort((a, b) => GO.indexOf(FOOTGRP(a.x)) - GO.indexOf(FOOTGRP(b.x)) || prio(a.x) - prio(b.x));
       list.forEach(o => out.push({ k: o.k, label: SHORT[o.x.comp] || o.x.comp, flag: FLAG[o.x.country] || "", n: o.n, sub: o.n ? "" : "classement", grp: FOOTGRP(o.x) }));
     } else if (sp === "Tennis") {
@@ -215,7 +215,7 @@
       ${probsInline(x, "pbox")}</div>`;
   }
   function groupKey(x) {
-    if (x.sport === "Foot") return { id: "F|" + x.lg, order: prio(x), html: `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc((x.country || "").toUpperCase())}</b> · ${esc(x.comp)}</span>` };
+    if (x.sport === "Foot") return { id: "F|" + x.lg, order: prio(x), html: x.nat ? `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc(x.comp)}</b></span>` : `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc((x.country || "").toUpperCase())}</b> · ${esc(x.comp)}</span>` };
     if (x.sport === "Tennis") return { id: "T|" + x.tour + x.event, order: x.tour === "ATP" ? 0 : 1, html: `<span><b>${esc(x.tour || "")}</b> · ${esc(x.event || x.comp)}${x.round ? " · " + esc(x.round) : ""}</span>` };
     return { id: "B|" + x.comp, order: x.comp === "NBA" ? 0 : 1, html: `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span><span><b>${esc(x.comp || "NBA")}</b></span>` };
   }
@@ -445,8 +445,8 @@
   }
 
   // ---- navigation
-  const VIEWS = ["jour", "foot", "tennis", "basket", "euroleague", "wnba", "fav", "about", "match"].filter(k => $("view-" + k));
-  const NAVOF = { jour: "jour", match: "jour", foot: "jour", tennis: "jour", basket: "jour", euroleague: "jour", wnba: "jour", fav: "fav", about: "about" };
+  const VIEWS = ["jour", "foot", "tennis", "basket", "euroleague", "wnba", "fav", "match"].filter(k => $("view-" + k));
+  const NAVOF = { jour: "jour", match: "jour", foot: "jour", tennis: "jour", basket: "jour", euroleague: "jour", wnba: "jour", fav: "fav" };
   let lastHome = "#jour";
   function show(force) {
     const h = location.hash.slice(1);

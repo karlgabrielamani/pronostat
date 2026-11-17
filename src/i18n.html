@@ -18,6 +18,14 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Sélections nationales", "National teams", "Nationale ploegen"],
+    ["Ligue des nations", "Nations League", "Nations League"],
+    ["Qualifications Euro", "Euro qualifiers", "EK-kwalificatie"],
+    ["Qualifications Coupe du monde", "World Cup qualifiers", "WK-kwalificatie"],
+    ["Coupe du monde", "World Cup", "Wereldbeker"],
+    ["Matchs amicaux", "Friendlies", "Vriendschappelijke wedstrijden"],
+    ["EuroLeague : classement, simulation", "EuroLeague: standings, simulation", "EuroLeague: klassement, simulatie"],
+    ["WNBA : classement, simulation", "WNBA: standings, simulation", "WNBA: klassement, simulatie"],
     ["7 prochains jours", "Next 7 days", "Komende 7 dagen"],
     ["Moins d'1 pt", "Under 1 pt", "Minder dan 1 pt"],
     ["Ligue des champions", "Champions League", "Champions League"],

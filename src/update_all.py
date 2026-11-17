@@ -305,7 +305,7 @@ def flag_few(f, min_games=4):
     few = 0
     for k in f["order"]:
         L = f["leagues"][k]
-        if not L.get("cup"): continue
+        if not L.get("cup") or L.get("nat"): continue
         for g in L["games"]:
             g["few"] = not all(known(n) or cnt.get(n, 0) >= min_games for n in (g["home"], g["away"]))
             few += g["few"]
@@ -326,10 +326,10 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
     # mise en page 2026-11 : barre du haut (web) + barre du bas (téléphone), remplace la barre ci-dessus
     nav = ('<header class="appbar"><button class="hback" type="button" aria-label="Retour"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button>'
            '<a class="logo" href="#jour"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V14 M12 19 V10 M18 19 V5"/></svg></i>Pronostat</a>'
-           '<nav class="topnav" aria-label="Rubriques"><a href="#jour" data-v="jour">Les matchs</a><a href="#about" data-v="about">Comment ça marche</a></nav></header>'
+           '<nav class="topnav" aria-label="Rubriques"><a href="#jour" data-v="jour">Les matchs</a><a href="#fav" data-v="fav">Favoris</a></nav></header>'
            '<nav class="bnav" aria-label="Navigation"><a href="#jour" data-v="jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Matchs</a>'
            '<a href="#fav" data-v="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a>'
-           '<a href="#about" data-v="about"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></svg>À propos</a></nav>\n')
+           '</nav>\n')
     t = t.replace('<script', open(f"{SRC}/i18n.html").read() + '<script', 1)
     t = t.replace('<div class="wrap">', nav + open(f"{SRC}/fav.html").read() + '<div class="wrap" id="view-tennis" hidden>', 1)
     i = t.index("<script>")
@@ -359,6 +359,12 @@ if __name__ == "__main__":
         json.dump(euroleague.update(fetch, RAW, TODAY), open(f"{OUT}/euroleague_tool.json", "w"), ensure_ascii=False)
     except Exception as e:
         print("  ATTENTION EuroLeague non mise à jour :", repr(e))
+    try:                                         # équipes nationales (Ligue des nations, qualifications, amicaux)
+        import national
+        nat = national.update(fetch, RAW, TODAY)
+        f["leagues"].update(nat); f["order"] += [k for k in nat if k not in f["order"]]
+    except Exception as e:
+        print("  ATTENTION sélections nationales non mises à jour :", repr(e))
     flag_few(f)
     try:
         import tennis as tn

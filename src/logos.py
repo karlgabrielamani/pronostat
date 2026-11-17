@@ -235,10 +235,19 @@ def euroleague(res, report):
             except Exception as e: print("  logo", n, repr(e)[:50])
 
 
+def team_logos(foot, res, report):
+    """Logos fournis avec les données (drapeaux des sélections nationales, ESPN)."""
+    for k in foot["order"]:
+        for t in foot["leagues"][k]["teams"]:
+            if t["name"] not in res and t.get("logo"):
+                try: res[t["name"]] = img_uri(get(t["logo"])); report.append(f"{k} {t['name']}")
+                except Exception as e: print("  logo", t["name"], repr(e)[:50])
+
+
 def update(foot):
     """Appelé par update_all.py avant de construire la page : complète data/logos.json (ESPN)."""
     res = json.load(open(DEST)) if os.path.exists(DEST) else {}
-    report = []; basket(res, report); euroleague(res, report); from_espn(foot, res, report); from_wiki(foot, res, report, limit=40, budget=120); reserves(foot, res)
+    report = []; team_logos(foot, res, report); basket(res, report); euroleague(res, report); from_espn(foot, res, report); from_wiki(foot, res, report, limit=40, budget=120); reserves(foot, res)
     json.dump(res, open(DEST, "w"), separators=(",", ":"), sort_keys=True)
     return report
 
