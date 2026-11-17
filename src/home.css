@@ -339,8 +339,8 @@ h1, h2 { letter-spacing: -0.02em; }
 .appbar .lang .lbtn b { font-weight: 600; }
 .appbar .lang .lbtn .lv { color: var(--ink-3); transition: transform .15s; }
 .appbar .lang .lbtn[aria-expanded="true"] .lv { transform: rotate(180deg); }
-.lmenu { position: absolute; right: 0; top: calc(100% + 6px); min-width: 180px; background: var(--surface); border: 1px solid var(--line2); border-radius: 12px; box-shadow: 0 12px 32px rgba(16, 24, 40, .14); padding: 6px; z-index: 80; animation: cpin .14s ease-out; }
-.appbar .lang .lmenu button { display: flex; align-items: center; justify-content: space-between; width: 100%; font: inherit; font-size: 15px; color: var(--ink); background: none; border: 0; border-radius: 8px; padding: 10px 12px; cursor: pointer; min-height: 44px; }
+.lmenu { position: absolute; right: 0; top: calc(100% + 6px); min-width: 84px; background: var(--surface); border: 1px solid var(--line2); border-radius: 12px; box-shadow: 0 12px 32px rgba(16, 24, 40, .14); padding: 6px; z-index: 80; animation: cpin .14s ease-out; }
+.appbar .lang .lmenu button { display: flex; align-items: center; justify-content: center; font-weight: 600; width: 100%; font: inherit; font-size: 15px; color: var(--ink); background: none; border: 0; border-radius: 8px; padding: 10px 12px; cursor: pointer; min-height: 44px; }
 .appbar .lang .lmenu button small { font-size: 12px; color: var(--ink-3); font-weight: 600; }
 .appbar .lang .lmenu button:hover { background: var(--chip); }
 .appbar .lang .lmenu button[aria-checked="true"] { color: var(--hot); font-weight: 700; background: color-mix(in srgb, var(--hot) 8%, transparent); }
