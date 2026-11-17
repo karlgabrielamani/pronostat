@@ -123,8 +123,11 @@
     let list = Object.entries(by).map(([k, { x, n }]) => ({ k, n, x }));
     const out = [{ k: "", label: sp === "Foot" ? "Tous les championnats" : sp === "Tennis" ? "Tous les tournois" : "Tout le basket", n: base.length, grp: "" }];
     if (sp === "Foot") {
-      list.sort((a, b) => prio(a.x) - prio(b.x));
-      list.forEach(o => out.push({ k: o.k, label: SHORT[o.x.comp] || o.x.comp, flag: FLAG[o.x.country] || "🏳️", n: o.n, grp: FOOTGRP(o.x) }));
+      let lgs = []; try { lgs = window.FootAPI && FootAPI.leagues ? FootAPI.leagues() : []; } catch (e) {}
+      lgs.filter(l => !l.cup && !by[l.k]).forEach(l => list.push({ k: l.k, n: 0, x: { lg: l.k, comp: l.name, country: l.country, cup: false } }));   // championnats sans match cette semaine : gardés
+      const GO = ["Coupes d'Europe", "Championnats", "Coupes nationales"];
+      list.sort((a, b) => GO.indexOf(FOOTGRP(a.x)) - GO.indexOf(FOOTGRP(b.x)) || prio(a.x) - prio(b.x));
+      list.forEach(o => out.push({ k: o.k, label: SHORT[o.x.comp] || o.x.comp, flag: FLAG[o.x.country] || "🏳️", n: o.n, sub: o.n ? "" : "classement", grp: FOOTGRP(o.x) }));
     } else if (sp === "Tennis") {
       for (const t of ["ATP", "WTA"]) { const n = base.filter(x => x.tour === t).length; if (n) out.push({ k: t, label: t === "ATP" ? "ATP · hommes" : "WTA · femmes", n, grp: "Circuits" }); }
       list.sort((a, b) => new Date(a.x.dt) - new Date(b.x.dt)).forEach(o => out.push({ k: o.k, label: o.x.event || o.x.comp, sub: o.x.tour, n: o.n, grp: "Tournois" }));
@@ -290,6 +293,16 @@
     }).join("")}</div></section>`;
   }
 
+  // ---- classement d'un championnat de foot
+  function footTable(L) {
+    const f = v => (v > 0 ? "+" : "") + v.toFixed(2).replace(".", ",");
+    const T = [...L.teams].sort((a, b) => b.pts - a.pts || (b.gf - b.ga) - (a.gf - a.ga) || b.gf - a.gf);
+    const form = s => (s || "").split("").map(c => `<i class="fm fm-${c}">${c}</i>`).join("");
+    return `<section class="tours"><h2>${esc(L.name)} : classement</h2><div class="pcard ftab"><table><thead><tr><th>#</th><th>Équipe</th><th class="c">J</th><th class="c">Pts</th><th class="c">Diff.</th><th class="c hf">Forme</th><th class="c hf">Attaque</th><th class="c hf">Défense</th></tr></thead><tbody>${T.map((t, i) =>
+      `<tr><td class="c">${i + 1}</td><td><span class="mt">${crest(t.name, "sm")}<span>${esc(t.name)}</span></span></td><td class="c">${t.p}</td><td class="c"><b>${t.pts}</b></td><td class="c">${t.gf - t.ga > 0 ? "+" : ""}${t.gf - t.ga}</td><td class="c hf">${form(t.form)}</td><td class="c hf">${f(t.att)}</td><td class="c hf">${f(-t.dfn)}</td></tr>`).join("")}</tbody></table></div>
+      <p class="note">Forme : V victoire, N nul, D défaite (5 derniers matchs). Attaque et défense : notes du modèle, au-dessus de 0 = meilleur qu'une équipe moyenne.</p></section>`;
+  }
+
   // ---- WNBA hors saison : classement selon le modèle
   function basketTable(comp) {
     const W = BK[comp]; if (!W) return "";
@@ -327,9 +340,13 @@
     $("hNote").innerHTML = note;
     const bc = sp === "NBA" ? (S.comp || {}).NBA : "", wOff = bc === "WNBA" && !items.length;
     if (wOff) { $("hNote").innerHTML = `<p class="hnote">La saison WNBA ${W.season} est terminée. La suivante commence en mai : les probabilités apparaîtront dès que le calendrier sera publié. En attendant, voici les équipes selon le modèle.</p>`; items = []; }
-    $("hTours").innerHTML = sp === "Tennis" ? toursHtml() : BK[bc] ? basketTable(bc) : "";
+    const fc = sp === "Foot" ? (S.comp || {}).Foot : "";
+    let FL = null; try { FL = fc && window.FootAPI && FootAPI.leagues ? FootAPI.leagues().find(l => l.k === fc && !l.cup) : null; } catch (e) {}
+    if (FL && !items.length) $("hNote").innerHTML = `<p class="hnote">Pas de match de ${esc(FL.name)} programmé pour l'instant (trêve ou calendrier pas encore publié). Les matchs apparaîtront dès que le calendrier de la prochaine journée sera publié. Voici le classement :</p>`;
+    $("hTours").innerHTML = sp === "Tennis" ? toursHtml() : BK[bc] ? basketTable(bc) : FL ? footTable(FL) : "";
+    $("view-jour").classList.toggle("noitems", !items.length && !!(FL || BK[bc]));
     if (small()) {
-      $("hList").innerHTML = items.length ? groupedList(items, multi) : wOff || BK[bc] ? "" : `<p class="mempty">Aucun match ${sp === "Tennis" ? "de tennis" : sp === "NBA" ? "de basket" : "de football"} programmé pour l'instant.</p>`;
+      $("hList").innerHTML = items.length ? groupedList(items, multi) : wOff || BK[bc] || FL ? "" : `<p class="mempty">Aucun match ${sp === "Tennis" ? "de tennis" : sp === "NBA" ? "de basket" : "de football"} programmé pour l'instant.</p>`;
     } else {
       const motd = matchOfDay(items);
       $("hMotd").innerHTML = motdCard(motd);

@@ -294,6 +294,13 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["classement", "standings", "klassement"],
+    ["Pas de match de # programmé pour l'instant (trêve ou calendrier pas encore publié). Les matchs apparaîtront dès que le calendrier de la prochaine journée sera publié. Voici le classement :", "No match scheduled for now (break or fixtures not yet published). Matches will appear as soon as the next round's fixtures are published. Here are the standings:", "Voorlopig geen wedstrijd gepland (onderbreking of programma nog niet bekend). De wedstrijden verschijnen zodra het programma van de volgende speeldag bekend is. Dit is het klassement:"],
+    ["Forme : V victoire, N nul, D défaite (5 derniers matchs). Attaque et défense : notes du modèle, au-dessus de 0 = meilleur qu'une équipe moyenne.", "Form: V win, N draw, D loss (last 5 matches). Attack and defence: model ratings, above 0 = better than an average team.", "Vorm: V winst, N gelijk, D verlies (laatste 5 wedstrijden). Aanval en verdediging: modelscores, boven 0 = beter dan een gemiddelde ploeg."],
+    ["Équipe", "Team", "Ploeg"],
+    ["Forme", "Form", "Vorm"],
+    ["Attaque", "Attack", "Aanval"],
+    ["Défense", "Defence", "Verdediging"],
     ["Coupes d'Europe", "European cups", "Europese bekers"],
     ["Coupes nationales", "National cups", "Nationale bekers"],
     ["Championnats", "Leagues", "Competities"],
@@ -646,12 +653,12 @@ window.I18N = (() => {
   <section class="blk" id="stat"><h2>La stat du jour</h2><article class="st big"><b class="pc">56 %</b><div><p class="ev">Despina Papamichail gagne au moins un set</p>
       <p class="mt"><span class="tag">Tennis</span> Despina Papamichail – Laura Samson · <time data-dt="2026-11-17T20:00:00+00:00"></time></p></div></article>
       <div class="sts"><article class="st"><b class="pc">51 %</b><div><p class="ev">Miriam Bulgaru gagne au moins un set</p>
-      <p class="mt"><span class="tag">Tennis</span> Polona Hercog – Miriam Bulgaru · <time data-dt="2026-11-17T15:30:00+00:00"></time></p></div></article><article class="st"><b class="pc">77 %</b><div><p class="ev">Miami Heat gagne</p>
-      <p class="mt"><span class="tag">NBA</span> Miami Heat – Milwaukee Bucks · <time data-dt="2026-11-19T00:00:00+00:00"></time></p></div></article></div></section>
+      <p class="mt"><span class="tag">Tennis</span> Polona Hercog – Miriam Bulgaru · <time data-dt="2026-11-17T15:30:00+00:00"></time></p></div></article><article class="st"><b class="pc">76 %</b><div><p class="ev">Los Angeles Lakers gagne</p>
+      <p class="mt"><span class="tag">NBA</span> Los Angeles Lakers – Utah Jazz · <time data-dt="2026-11-19T03:00:00+00:00"></time></p></div></article></div></section>
   <section class="blk"><h2>Le match du jour</h2>
     <article class="md"><p class="mt"><span class="tag">Copa del Rey</span> <time data-dt="2026-11-18T19:00:00+00:00"></time></p>
       <div class="md-t"><div><b>Alcoyano</b><span class="pa">12 %</span></div><div class="dr"><b>Nul</b><span>23 %</span></div><div class="r"><b>Mallorca</b><span class="pb">65 %</span></div></div>
-      <div class="bar"><i style="width:12.5%;background:var(--a)"></i><i style="width:22.5%;background:var(--ink-3)"></i><i style="width:65.0%;background:var(--b)"></i></div>
+      <div class="bar"><i style="width:12.4%;background:var(--a)"></i><i style="width:22.5%;background:var(--ink-3)"></i><i style="width:65.1%;background:var(--b)"></i></div>
       <ul class="evs"><li><span>Les deux équipes marquent</span><b>38 %</b></li><li><span>Plus de 2,5 buts</span><b>42 %</b></li><li><span>Score le plus probable</span><b>0-1</b></li></ul>
       <a class="btn" href="app.html#foot">Voir toutes les probabilités</a></article></section>
   <footer class="foot">Pronostat · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.</footer>

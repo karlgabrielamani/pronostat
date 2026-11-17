@@ -226,6 +226,7 @@
   }
   window.FootAPI = {
     updated: F.updated,
+    leagues: () => F.order.map(k => ({ k, name: F.leagues[k].name, country: F.leagues[k].country, cup: !!F.leagues[k].cup, teams: F.leagues[k].teams })),
     teams() {
       const seen = new Set(), out = [];
       for (const k of [...F.order].sort((x, y) => !!F.leagues[x].cup - !!F.leagues[y].cup)) for (const t of F.leagues[k].teams) {

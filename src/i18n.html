@@ -18,6 +18,13 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["classement", "standings", "klassement"],
+    ["Pas de match de # programmé pour l'instant (trêve ou calendrier pas encore publié). Les matchs apparaîtront dès que le calendrier de la prochaine journée sera publié. Voici le classement :", "No match scheduled for now (break or fixtures not yet published). Matches will appear as soon as the next round's fixtures are published. Here are the standings:", "Voorlopig geen wedstrijd gepland (onderbreking of programma nog niet bekend). De wedstrijden verschijnen zodra het programma van de volgende speeldag bekend is. Dit is het klassement:"],
+    ["Forme : V victoire, N nul, D défaite (5 derniers matchs). Attaque et défense : notes du modèle, au-dessus de 0 = meilleur qu'une équipe moyenne.", "Form: V win, N draw, D loss (last 5 matches). Attack and defence: model ratings, above 0 = better than an average team.", "Vorm: V winst, N gelijk, D verlies (laatste 5 wedstrijden). Aanval en verdediging: modelscores, boven 0 = beter dan een gemiddelde ploeg."],
+    ["Équipe", "Team", "Ploeg"],
+    ["Forme", "Form", "Vorm"],
+    ["Attaque", "Attack", "Aanval"],
+    ["Défense", "Defence", "Verdediging"],
     ["Coupes d'Europe", "European cups", "Europese bekers"],
     ["Coupes nationales", "National cups", "Nationale bekers"],
     ["Championnats", "Leagues", "Competities"],

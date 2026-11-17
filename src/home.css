@@ -325,3 +325,16 @@ h1, h2 { letter-spacing: -0.02em; }
 }
 .wrow .td { display: flex; align-items: center; gap: 8px; }
 .wrow { grid-template-columns: 64px minmax(0, 1fr); }
+
+/* classement d'un championnat */
+.ftab { padding: 0; overflow-x: auto; }
+.ftab table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.ftab th { text-align: left; font-size: 13px; font-weight: 600; color: var(--ink-3); padding: 10px 12px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.ftab td { padding: 8px 12px; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.ftab tr:last-child td { border-bottom: 0; }
+.ftab .c { text-align: center; }
+.ftab .mt { display: flex; align-items: center; gap: 8px; font-weight: 600; white-space: nowrap; }
+.fm { display: inline-grid; place-items: center; width: 18px; height: 18px; border-radius: 4px; font-size: 10.5px; font-style: normal; font-weight: 700; color: #fff; margin: 0 1px; }
+.fm-V { background: #1E8E5A; } .fm-N { background: var(--pdraw); } .fm-D { background: var(--hot); }
+@media (max-width: 760px) { .ftab .hf { display: none; } .ftab td, .ftab th { padding: 8px 8px; } }
+.noitems .hgrid, .noitems .tblsec { display: none !important; }
