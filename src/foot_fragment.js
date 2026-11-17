@@ -248,7 +248,7 @@
           const h = TT[x.home], a = TT[x.away]; if (!h || !a) continue;
           const [pH, pD, pA] = pure(Lg, h, a, x.neutral);
           out.push({ sport: "Foot", lg: k, dt: x.dt + "Z", comp: Lg.name, country: Lg.country, cup: !!Lg.cup, a: x.home, b: x.away, pa: pH, pd: pD, pb: pA,
-            lh: Math.exp(h.att + a.dfn + (x.neutral ? 0 : Lg.home)), la: Math.exp(a.att + h.dfn), rho: Lg.rho, str: h.att - h.dfn + a.att - a.dfn,
+            lh: Math.exp(h.att + a.dfn + (x.neutral ? 0 : Lg.home)), la: Math.exp(a.att + h.dfn), rho: Lg.rho, str: h.att - h.dfn + a.att - a.dfn, few: !!x.few,
             open: () => { location.hash = "#foot"; g("ftL").value = k; setLeague(k);
               const i = games.findIndex(y => y.home === x.home && y.away === x.away);
               const btn = g("ftGames").querySelector(`.game[data-i="${i}"]`);

@@ -18,6 +18,17 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Coupes d'Europe", "European cups", "Europese bekers"],
+    ["Coupes nationales", "National cups", "Nationale bekers"],
+    ["Championnats", "Leagues", "Competities"],
+    ["Circuits", "Tours", "Circuits"],
+    ["Tournois", "Tournaments", "Toernooien"],
+    ["Championnat", "League", "Competitie"],
+    ["Circuit ou tournoi", "Tour or tournament", "Circuit of toernooi"],
+    ["ATP · hommes", "ATP · men", "ATP · mannen"],
+    ["WTA · femmes", "WTA · women", "WTA · vrouwen"],
+    ["Fermer", "Close", "Sluiten"],
+    ["Modèle testé sur une saison qu'il n'avait pas vue au réglage : bon vainqueur # % du temps.", "Model tested on a season it had not seen during tuning: right winner # % of the time.", "Model getest op een seizoen dat het bij de afstelling niet had gezien: juiste winnaar # % van de tijd."],
     ["La saison WNBA # est terminée. La suivante commence en mai : les probabilités apparaîtront dès que le calendrier sera publié. En attendant, voici les équipes selon le modèle.", "The # WNBA season is over. The next one starts in May: probabilities will appear as soon as the schedule is published. Meanwhile, here are the teams according to the model.", "Het WNBA-seizoen # is voorbij. Het volgende begint in mei: de kansen verschijnen zodra het programma bekend is. Intussen de ploegen volgens het model."],
     ["Tout le basket", "All basketball", "Alle basketbal"],
     ["reprise en mai", "back in May", "terug in mei"],

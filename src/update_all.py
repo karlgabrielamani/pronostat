@@ -259,8 +259,30 @@ def logos_js():
 
 
 def wnba_js():
-    p = f"{OUT}/wnba_tool.json"
-    return "\n<script>window.WNBA = " + open(p).read() + ";</script>" if os.path.exists(p) else ""
+    """Autres championnats de basket (src/wnba.py, src/euroleague.py) : window.BASKET = {"WNBA": …, "EuroLeague": …}."""
+    B = {k: json.load(open(f"{OUT}/{f}")) for k, f in (("WNBA", "wnba_tool.json"), ("EuroLeague", "euroleague_tool.json")) if os.path.exists(f"{OUT}/{f}")}
+    return "\n<script>window.BASKET = " + json.dumps(B, ensure_ascii=False) + ";</script>" if B else ""
+
+
+def flag_few(f, min_games=4):
+    """Marque les matchs de coupe où une équipe a trop peu de matchs dans les données (petits clubs) : la page ne les affiche pas à l'accueil."""
+    lg = {t["name"] for k in f["order"] if not f["leagues"][k].get("cup") for t in f["leagues"][k]["teams"]}
+    try:
+        p = f"{OUT}/cups_history.csv" if os.path.exists(f"{OUT}/cups_history.csv") else f"{ROOT}/data/cups_history.csv"
+        c = pd.read_csv(p); c = c[c.done == True]                    # noqa: E712
+        c = c[pd.to_datetime(c.dt, utc=True) >= pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=730)]
+        cnt = pd.concat([c.home, c.away]).value_counts().to_dict()
+    except Exception as e:
+        print("  ATTENTION comptage des matchs de coupe :", repr(e)); return
+    known = lambda n: n in lg or any(len(x) >= 4 and (x in n or n in x) for x in lg)
+    few = 0
+    for k in f["order"]:
+        L = f["leagues"][k]
+        if not L.get("cup"): continue
+        for g in L["games"]:
+            g["few"] = not all(known(n) or cnt.get(n, 0) >= min_games for n in (g["home"], g["away"]))
+            few += g["few"]
+    print(f"  coupes : {few} matchs avec un club aux données insuffisantes (masqués à l'accueil)")
 
 
 def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data=None):
@@ -304,6 +326,12 @@ if __name__ == "__main__":
         json.dump(wnba.update(fetch, RAW, TODAY), open(f"{OUT}/wnba_tool.json", "w"), ensure_ascii=False)
     except Exception as e:
         print("  ATTENTION WNBA non mise à jour :", repr(e))
+    try:
+        import euroleague
+        json.dump(euroleague.update(fetch, RAW, TODAY), open(f"{OUT}/euroleague_tool.json", "w"), ensure_ascii=False)
+    except Exception as e:
+        print("  ATTENTION EuroLeague non mise à jour :", repr(e))
+    flag_few(f)
     try:
         import tennis as tn
         tennis = tn.update(f"{ROOT}/data/tennis_history.csv", f"{ROOT}/data/tennis_tool.json", OUT, TODAY)

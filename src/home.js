@@ -31,6 +31,7 @@
     ? `<span class="crest logo ${cls}" aria-hidden="true"><img src="${LOGOS[n]}" alt="" loading="lazy" decoding="async"></span>`
     : `<span class="crest ${cls}" style="background:hsl(${hue(n)} 52% 40%)" aria-hidden="true">${esc(initials(n))}</span>`;
   const short = (x, n) => x.sport === "Tennis" ? String(n).replace(/\s+[A-Z][\w.\-]*\.$/u, "") : n;
+  const bn = (x, n) => x.comp === "EuroLeague" ? n : nick(n);          // EuroLeague : nom complet (« Tel Aviv », « Istanbul » sont partagés)
   const nick = n => { const w = String(n).split(" "); return w.length > 1 ? w[w.length - 1] : n; };
 
   // ---- jours
@@ -80,19 +81,21 @@
   const nbaBy = (x, k) => [1 - Phi((k - x.mg) / x.sg), Phi((-k - x.mg) / x.sg)];
 
   // ---- données
-  // WNBA : même calcul que la NBA (window.WNBA, fait par src/wnba.py), sans les absents
-  const W = window.WNBA;
-  function wnbaList() {
-    if (!W || !W.games) return [];
-    const T = Object.fromEntries(W.teams.map(t => [t.name, t])), sg = W.sd_team * Math.sqrt(2 * (1 - W.corr));
-    return W.games.filter(g => T[g.home] && T[g.away]).map(g => {
-      const a = T[g.home], b = T[g.away], m = (W.mu + a.o - b.d + W.hca / 2) - (W.mu + b.o - a.d - W.hca / 2), p = Phi(m / sg);
-      return { sport: "NBA", comp: "WNBA", lg: "WNBA", dt: g.dt, a: g.home, b: g.away, pa: p, pb: 1 - p, mg: m, sg };
+  // Autres championnats de basket (window.BASKET : WNBA, EuroLeague…) : même calcul que la NBA, sans les absents
+  const BK = window.BASKET || {}, W = BK.WNBA;
+  function basketList() {
+    return Object.entries(BK).flatMap(([comp, B]) => {
+      if (!B || !B.games) return [];
+      const T = Object.fromEntries(B.teams.map(t => [t.name, t])), sg = B.sd_team * Math.sqrt(2 * (1 - B.corr));
+      return B.games.filter(g => T[g.home] && T[g.away]).map(g => {
+        const a = T[g.home], b = T[g.away], h = g.neutral ? 0 : B.hca, m = (B.mu + a.o - b.d + h / 2) - (B.mu + b.o - a.d - h / 2), p = Phi(m / sg);
+        return { sport: "NBA", comp, lg: comp, dt: g.dt, a: g.home, b: g.away, pa: p, pb: 1 - p, mg: m, sg };
+      });
     });
   }
   let ALL = [];
   function load() {
-    ALL = APIS().flatMap(a => { try { return a.list(); } catch (e) { return []; } }).concat(wnbaList())
+    ALL = APIS().flatMap(a => { try { return a.list(); } catch (e) { return []; } }).concat(basketList())
       .filter(x => x.dt && isFinite(new Date(x.dt)))
       .sort((p, q) => new Date(p.dt) - new Date(q.dt));
     const sod = new Date(); sod.setHours(0, 0, 0, 0);
@@ -111,27 +114,41 @@
   // ---- compétitions : championnat (foot), circuit ou tournoi (tennis)
   const compKey = x => x.sport === "Foot" ? x.lg : x.sport === "Tennis" ? "ev:" + x.tour + "|" + (x.event || x.comp) : x.comp;
   const compOk = x => { const c = (S.comp || {})[x.sport]; if (!c) return true; if (c === "ATP" || c === "WTA") return x.tour === c; return compKey(x) === c; };
-  const pool = sp => ALL.filter(x => !sp || (x.sport === sp && compOk(x)));
+  const pool = sp => ALL.filter(x => !x.few && (!sp || (x.sport === sp && compOk(x))));
   const SHORT = { "Ligue des Champions": "Ligue des champions", "Jupiler Pro League": "Jupiler Pro League", "Super League Grèce": "Super League" };
-  function compsHtml(sp) {
-    const base = ALL.filter(x => x.sport === sp && upcoming(x));
+  const FOOTGRP = x => x.cup && x.country === "Europe" ? "Coupes d'Europe" : x.cup ? "Coupes nationales" : "Championnats";
+  function compOptions(sp) {                                   // [{k, label, flag, n, grp}]
+    const base = ALL.filter(x => !x.few && x.sport === sp && upcoming(x));
     const by = {}; base.forEach(x => { const k = compKey(x); (by[k] = by[k] || { x, n: 0 }).n++; });
-    let list = Object.entries(by);
-    if (sp === "Foot") list.sort((a, b) => prio(a[1].x) - prio(b[1].x));
-    else if (sp === "Tennis") list.sort((a, b) => a[1].x.tour < b[1].x.tour ? -1 : a[1].x.tour > b[1].x.tour ? 1 : new Date(a[1].x.dt) - new Date(b[1].x.dt));
-    const cur = (S.comp || {})[sp] || "";
-    const chip = (k, label, n) => `<button type="button" data-c="${esc(k)}" aria-pressed="${k === cur}">${label}${n ? `<small>${n}</small>` : ""}</button>`;
-    let extra = "";
-    if (sp === "Tennis") for (const t of ["ATP", "WTA"]) { const n = base.filter(x => x.tour === t).length; if (n) extra += chip(t, t, n); }
-    if (sp === "NBA") {                                          // basket : NBA et WNBA toujours proposées
+    let list = Object.entries(by).map(([k, { x, n }]) => ({ k, n, x }));
+    const out = [{ k: "", label: sp === "Foot" ? "Tous les championnats" : sp === "Tennis" ? "Tous les tournois" : "Tout le basket", n: base.length, grp: "" }];
+    if (sp === "Foot") {
+      list.sort((a, b) => prio(a.x) - prio(b.x));
+      list.forEach(o => out.push({ k: o.k, label: SHORT[o.x.comp] || o.x.comp, flag: FLAG[o.x.country] || "🏳️", n: o.n, grp: FOOTGRP(o.x) }));
+    } else if (sp === "Tennis") {
+      for (const t of ["ATP", "WTA"]) { const n = base.filter(x => x.tour === t).length; if (n) out.push({ k: t, label: t === "ATP" ? "ATP · hommes" : "WTA · femmes", n, grp: "Circuits" }); }
+      list.sort((a, b) => new Date(a.x.dt) - new Date(b.x.dt)).forEach(o => out.push({ k: o.k, label: o.x.event || o.x.comp, sub: o.x.tour, n: o.n, grp: "Tournois" }));
+    } else {
       const n = k => base.filter(x => x.comp === k).length;
-      return chip("", "Tout le basket", base.length) + chip("NBA", "NBA", n("NBA")) + (W ? chip("WNBA", "WNBA" + (n("WNBA") ? "" : " · reprise en mai"), n("WNBA")) : "");
+      out.push({ k: "NBA", label: "NBA", flag: FLAG["États-Unis"], n: n("NBA"), grp: "Championnats" });
+      if (BK.EuroLeague) out.push({ k: "EuroLeague", label: "EuroLeague", flag: FLAG.Europe, n: n("EuroLeague"), grp: "Championnats" });
+      if (W) out.push({ k: "WNBA", label: "WNBA", flag: FLAG["États-Unis"], n: n("WNBA"), sub: n("WNBA") ? "" : "reprise en mai", grp: "Championnats" });
     }
-    if (list.length + (extra ? 1 : 0) < 2 && !cur) return "";
-    return chip("", sp === "Foot" ? "Tous les championnats" : sp === "Tennis" ? "Tous les tournois" : "Toutes", base.length) + extra + list.map(([k, { x, n }]) =>
-      sp === "Foot" ? chip(k, `<span class="fl">${FLAG[x.country] || "🏳️"}</span>${esc(SHORT[x.comp] || x.comp)}`, n)
-                    : chip(k, `${esc(x.tour)} · ${esc(x.event || x.comp)}`, n)).join("");
+    return out;
   }
+  function compsHtml(sp) {
+    const opts = compOptions(sp); if (opts.length < 3 && sp !== "NBA") return "";
+    const cur = (S.comp || {})[sp] || "", sel = opts.find(o => o.k === cur) || opts[0];
+    const row = (o, i) => `<button type="button" role="option" class="copt" data-c="${esc(o.k)}" aria-selected="${o.k === sel.k}">
+        <span class="cf">${o.flag || ""}</span><span class="cl"><b>${esc(o.label)}</b>${o.sub ? `<small>${esc(o.sub)}</small>` : ""}</span><span class="cn">${o.n || "–"}</span>
+        <svg class="ck" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></button>`;
+    let html = "", g = null;
+    opts.forEach((o, i) => { if (o.grp !== g) { g = o.grp; if (g) html += `<div class="cgrp">${esc(g)}</div>`; } html += row(o, i); });
+    return `<button type="button" class="cbtn" aria-haspopup="listbox" aria-expanded="false"><span class="cf">${sel.flag || ""}</span><span class="cl"><b>${esc(sel.label)}</b></span><span class="cn">${sel.n ? sel.n + " match" + (sel.n > 1 ? "s" : "") : "aucun match"}</span>
+      <svg class="cv" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="cpop" role="listbox" aria-label="Compétition" hidden><div class="chd"><b>${sp === "Foot" ? "Championnat" : sp === "Tennis" ? "Circuit ou tournoi" : "Championnat"}</b><button type="button" class="cx" aria-label="Fermer">×</button></div><div class="cls">${html}</div></div>`;
+  }
+
   const addDays = (k, n) => { const [y, m, d] = k.split("-").map(Number); return dkey(new Date(y, m - 1, d + n, 12)); };
   const WEEK = "semaine";                                   // vue « les 7 prochains jours »
   function days(sp) {                                       // tous les jours d'aujourd'hui au dernier match connu (au moins 7, au plus 21)
@@ -175,14 +192,14 @@
     const cr = x.sport !== "Tennis";
     return `<div class="mcard${past ? " past" : ""}" data-k="${encodeURIComponent(x.k)}" role="link" tabindex="0">
       <div class="top"><span class="tm">${hm(x)}${past ? "<small>Commencé</small>" : ""}</span>
-        <span class="mt">${cr ? crest(x.a, "sm") : ""}<span class="n">${esc(x.sport === "NBA" ? nick(x.a) : short(x, x.a))}</span><span class="dash">—</span><span class="n">${esc(x.sport === "NBA" ? nick(x.b) : short(x, x.b))}</span>${cr ? crest(x.b, "sm") : ""}</span>
+        <span class="mt">${cr ? crest(x.a, "sm") : ""}<span class="n">${esc(x.sport === "NBA" ? bn(x, x.a) : short(x, x.a))}</span><span class="dash">—</span><span class="n">${esc(x.sport === "NBA" ? bn(x, x.b) : short(x, x.b))}</span>${cr ? crest(x.b, "sm") : ""}</span>
         ${Fav.star(x.sport, x.dt, x.a, x.b, x.comp)}</div>
       ${probsInline(x, "pbox")}</div>`;
   }
   function groupKey(x) {
     if (x.sport === "Foot") return { id: "F|" + x.lg, order: prio(x), html: `<span class="fl">${FLAG[x.country] || "🏳️"}</span><span><b>${esc((x.country || "").toUpperCase())}</b> · ${esc(x.comp)}</span>` };
     if (x.sport === "Tennis") return { id: "T|" + x.tour + x.event, order: x.tour === "ATP" ? 0 : 1, html: `<span><b>${esc(x.tour || "")}</b> · ${esc(x.event || x.comp)}${x.round ? " · " + esc(x.round) : ""}</span>` };
-    return { id: "N", order: 0, html: `<span class="fl">${FLAG["États-Unis"]}</span><span><b>NBA</b></span>` };
+    return { id: "B|" + x.comp, order: x.comp === "NBA" ? 0 : 1, html: `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span><span><b>${esc(x.comp || "NBA")}</b></span>` };
   }
   function groupedList(items, withDays) {
     const out = []; let lastDay = "";
@@ -212,7 +229,7 @@
     if (x.sport === "Tennis") { const t = tennisS(x);
       return [[`${short(x, x.a)} gagne au moins un set`, pct(t.setA)], [`${short(x, x.b)} gagne au moins un set`, pct(t.setB)], ["Score probable", setScore(x, t.sc[0])]]; }
     const fav = x.mg >= 0 ? x.a : x.b, [a10, b10] = nbaBy(x, 10);
-    return [["Écart prévu", `${nick(fav)} +${Math.abs(x.mg).toFixed(0)} pts`], [`${nick(x.a)} : victoire par plus de 10 pts`, pct(a10)], [`${nick(x.b)} : victoire par plus de 10 pts`, pct(b10)]];
+    return [["Écart prévu", `${bn(x, fav)} +${Math.abs(x.mg).toFixed(0)} pts`], [`${bn(x, x.a)} : victoire par plus de 10 pts`, pct(a10)], [`${bn(x, x.b)} : victoire par plus de 10 pts`, pct(b10)]];
   }
   function motdCard(x) {
     if (!x) return `<div class="pcard"><p class="empty">Aucun match ce jour-là.</p></div>`;
@@ -226,7 +243,7 @@
   function statCands(x) {
     if (x.sport === "Tennis") { const t = tennisS(x), und = x.pa < x.pb;
       return [{ v: und ? t.setA : t.setB, l: `${short(x, und ? x.a : x.b)} gagne un set`, w: 1.25 }]; }
-    if (x.sport === "NBA") { const fa = x.pa >= x.pb; return [{ v: Math.max(x.pa, x.pb), l: `Victoire des ${nick(fa ? x.a : x.b)}`, w: 1 }]; }
+    if (x.sport === "NBA") { const fa = x.pa >= x.pb; return [{ v: Math.max(x.pa, x.pb), l: `Victoire des ${bn(x, fa ? x.a : x.b)}`, w: 1 }]; }
     const m = footM(x);
     return [{ v: m.o(3), l: "Plus de 2,5 buts", w: 1 }, { v: m.btts, l: "Les deux équipes marquent", w: 1 },
             { v: Math.max(x.pa, x.pb), l: `Victoire ${/^[AEIOUYH]/i.test(x.pa >= x.pb ? x.a : x.b) ? "d'" : "de "}${x.pa >= x.pb ? x.a : x.b}`, w: 1 }];
@@ -274,12 +291,12 @@
   }
 
   // ---- WNBA hors saison : classement selon le modèle
-  function wnbaTable() {
-    if (!W) return "";
+  function basketTable(comp) {
+    const W = BK[comp]; if (!W) return "";
     const f = v => (v > 0 ? "+" : "") + v.toFixed(1).replace(".", ",");
-    return `<section class="tours"><h2>WNBA ${W.season} : les équipes</h2><div class="tlist">${W.teams.map((t, i) =>
+    return `<section class="tours"><h2>${comp} ${comp === "EuroLeague" ? W.season + "-" + String(W.season + 1).slice(2) : W.season} : les équipes</h2><div class="tlist">${W.teams.map((t, i) =>
       `<div class="trow wrow"><span class="td">${i + 1}. ${crest(t.name, "sm")}</span><span class="tn"><b>${esc(t.name)}</b><span>Bilan ${t.w}–${t.l} · attaque ${f(t.o)} · défense ${f(t.d)} pts</span></span></div>`).join("")}</div>
-      <p class="note">Attaque et défense : points par match en plus ou en moins par rapport à une équipe moyenne. Modèle testé sur la saison ${W.season} : bon vainqueur ${Math.round(W.test.acc * 100)} % du temps.</p></section>`;
+      <p class="note">Attaque et défense : points par match en plus ou en moins par rapport à une équipe moyenne. Modèle testé sur une saison qu'il n'avait pas vue au réglage : bon vainqueur ${Math.round(W.test.acc * 100)} % du temps.</p></section>`;
   }
 
   // ---- dessin de l'accueil
@@ -294,7 +311,6 @@
     const di = day === WEEK ? -1 : ds.indexOf(day); $("hPrev").disabled = day === WEEK; $("hNext").disabled = di >= ds.length - 1;
     $("hStrip").innerHTML = stripHtml(sp, day);
     $("hComps").innerHTML = sp ? compsHtml(sp) : "";
-    const oc = $("hComps").querySelector('[aria-pressed="true"]'); if (oc && oc.dataset.c) oc.scrollIntoView({ block: "nearest", inline: "center" });
     const on = $("hStrip").querySelector('[aria-pressed="true"]'); if (on) on.scrollIntoView({ block: "nearest", inline: "center" });
     document.querySelectorAll("#hChips button").forEach(b => b.setAttribute("aria-pressed", b.dataset.s === S.sport));
     document.querySelectorAll("#hTabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.s === sp));
@@ -309,11 +325,11 @@
     }
     items = [...items.filter(upcoming), ...items.filter(x => !upcoming(x))];   // matchs commencés à la fin
     $("hNote").innerHTML = note;
-    const wOff = sp === "NBA" && (S.comp || {}).NBA === "WNBA" && !items.length;
+    const bc = sp === "NBA" ? (S.comp || {}).NBA : "", wOff = bc === "WNBA" && !items.length;
     if (wOff) { $("hNote").innerHTML = `<p class="hnote">La saison WNBA ${W.season} est terminée. La suivante commence en mai : les probabilités apparaîtront dès que le calendrier sera publié. En attendant, voici les équipes selon le modèle.</p>`; items = []; }
-    $("hTours").innerHTML = sp === "Tennis" ? toursHtml() : wOff ? wnbaTable() : "";
+    $("hTours").innerHTML = sp === "Tennis" ? toursHtml() : BK[bc] ? basketTable(bc) : "";
     if (small()) {
-      $("hList").innerHTML = items.length ? groupedList(items, multi) : wOff ? "" : `<p class="mempty">Aucun match ${sp === "Tennis" ? "de tennis" : sp === "NBA" ? "de basket" : "de football"} programmé pour l'instant.</p>`;
+      $("hList").innerHTML = items.length ? groupedList(items, multi) : wOff || BK[bc] ? "" : `<p class="mempty">Aucun match ${sp === "Tennis" ? "de tennis" : sp === "NBA" ? "de basket" : "de football"} programmé pour l'instant.</p>`;
     } else {
       const motd = matchOfDay(items);
       $("hMotd").innerHTML = motdCard(motd);
@@ -368,10 +384,10 @@
         <div class="dgrp">Scores possibles</div>${t.sc.slice(0, 3).map(c => rows(setScore(x, c), pct(c[1]))).join("")}`;
     } else {
       const [a5, b5] = nbaBy(x, 5), [a10, b10] = nbaBy(x, 10), close = 1 - a5 - b5, fav = x.mg >= 0 ? x.a : x.b;
-      body = `<div class="dgrp">Écart</div>${rows("Écart prévu", `${nick(fav)} +${Math.abs(x.mg).toFixed(0)} pts`)}${rows("Match serré (5 pts ou moins)", pct(close))}
-        <div class="dgrp">Par équipe</div>${rows(`${nick(x.a)} : victoire par plus de 5 pts`, pct(a5))}${rows(`${nick(x.a)} : victoire par plus de 10 pts`, pct(a10))}${rows(`${nick(x.b)} : victoire par plus de 5 pts`, pct(b5))}${rows(`${nick(x.b)} : victoire par plus de 10 pts`, pct(b10))}`;
+      body = `<div class="dgrp">Écart</div>${rows("Écart prévu", `${bn(x, fav)} +${Math.abs(x.mg).toFixed(0)} pts`)}${rows("Match serré (5 pts ou moins)", pct(close))}
+        <div class="dgrp">Par équipe</div>${rows(`${bn(x, x.a)} : victoire par plus de 5 pts`, pct(a5))}${rows(`${bn(x, x.a)} : victoire par plus de 10 pts`, pct(a10))}${rows(`${bn(x, x.b)} : victoire par plus de 5 pts`, pct(b5))}${rows(`${bn(x, x.b)} : victoire par plus de 10 pts`, pct(b10))}`;
     }
-    const fl = x.sport === "Foot" ? `<span class="fl">${FLAG[x.country] || ""}</span>` : x.sport === "NBA" ? `<span class="fl">${FLAG["États-Unis"]}</span>` : "";
+    const fl = x.sport === "Foot" ? `<span class="fl">${FLAG[x.country] || ""}</span>` : x.sport === "NBA" ? `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span>` : "";
     box.innerHTML = `<div class="dcard">
       <div class="dhead"><span class="lg">${fl}${esc(compLabel(x))}</span><span class="dstar"><span class="when">${whenTxt(x)}</span>${Fav.star(x.sport, x.dt, x.a, x.b, x.comp)}</span></div>
       <div class="dteams">${cr ? crest(x.a, "lg") : "<span></span>"}<span class="mt"><span>${esc(short(x, x.a))}</span><i style="font-style:normal">—</i><span>${esc(short(x, x.b))}</span></span>${cr ? crest(x.b, "lg") : "<span></span>"}</div>
@@ -416,7 +432,23 @@
   addEventListener("hashchange", () => { show(); window.scrollTo(0, 0); });
 
   // ---- clics
-  $("hComps").addEventListener("click", e => { const b = e.target.closest("button[data-c]"); if (!b) return; S.comp = S.comp || {}; S.comp[curSport()] = b.dataset.c; S.day = null; S.more = false; drawHome(); });
+  const compPop = open => {
+    const pop = $("hComps").querySelector(".cpop"), btn = $("hComps").querySelector(".cbtn"); if (!pop) return;
+    pop.hidden = !open; btn.setAttribute("aria-expanded", open); document.body.classList.toggle("cpop-open", open && small());
+    if (open) { const on = pop.querySelector('[aria-selected="true"]'); if (on) on.scrollIntoView({ block: "center" }); on && on.focus({ preventScroll: true }); }
+  };
+  $("hComps").addEventListener("click", e => {
+    if (e.target.closest(".cbtn")) { compPop($("hComps").querySelector(".cpop").hidden); return; }
+    if (e.target.closest(".cx") || e.target === $("hComps").querySelector(".cpop")) { compPop(false); return; }
+    const b = e.target.closest(".copt"); if (!b) return;
+    S.comp = S.comp || {}; S.comp[curSport()] = b.dataset.c; S.day = null; S.more = false; compPop(false); drawHome();
+  });
+  document.addEventListener("click", e => { if (!e.target.closest("#hComps")) compPop(false); });
+  document.addEventListener("keydown", e => {
+    const pop = $("hComps").querySelector(".cpop"); if (!pop || pop.hidden) return;
+    if (e.key === "Escape") { compPop(false); $("hComps").querySelector(".cbtn").focus(); }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") { const all = [...pop.querySelectorAll(".copt")], i = all.indexOf(document.activeElement); const n = all[Math.max(0, Math.min(all.length - 1, i + (e.key === "ArrowDown" ? 1 : -1)))]; if (n) { n.focus(); e.preventDefault(); } }
+  });
   $("hChips").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S.sport = b.dataset.s; S.more = false; drawHome(); });
   $("hTabs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S.sport = b.dataset.s; drawHome(); });
   const setDay = d => { S.day = d; S.more = false; drawHome(); };

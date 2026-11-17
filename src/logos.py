@@ -219,10 +219,26 @@ def basket(res, report, league="wnba"):
     except Exception as e: print("  logos", league, repr(e)[:80])
 
 
+def euroleague(res, report):
+    """Logos des clubs d'EuroLeague : blason officiel (out/euroleague_tool.json), sinon ESPN."""
+    p = f"{ROOT}/out/euroleague_tool.json"
+    if not os.path.exists(p): return
+    teams = json.load(open(p))["teams"]; pool = []
+    try:
+        pool = [(t["team"]["displayName"], t["team"]["logos"][0]["href"]) for t in json.loads(get("https://site.api.espn.com/apis/site/v2/sports/basketball/euroleague/teams"))["sports"][0]["leagues"][0]["teams"] if t["team"].get("logos")]
+    except Exception as e: print("  logos EuroLeague ESPN", repr(e)[:60])
+    for t in teams:
+        n = t["name"]
+        if n in res: continue
+        for src in ([t["crest"]] if t.get("crest") else []) + ([best(n, pool)] if best(n, pool) else []):
+            try: res[n] = img_uri(get(src)); report.append(f"EuroLeague {n}"); break
+            except Exception as e: print("  logo", n, repr(e)[:50])
+
+
 def update(foot):
     """Appelé par update_all.py avant de construire la page : complète data/logos.json (ESPN)."""
     res = json.load(open(DEST)) if os.path.exists(DEST) else {}
-    report = []; basket(res, report); from_espn(foot, res, report); from_wiki(foot, res, report, limit=40, budget=120); reserves(foot, res)
+    report = []; basket(res, report); euroleague(res, report); from_espn(foot, res, report); from_wiki(foot, res, report, limit=40, budget=120); reserves(foot, res)
     json.dump(res, open(DEST, "w"), separators=(",", ":"), sort_keys=True)
     return report
 
@@ -245,6 +261,7 @@ if __name__ == "__main__":
     if REPO: from_repo(foot, res, report)
     from_espn(foot, res, report)
     basket(res, report)
+    euroleague(res, report)
     from_wiki(foot, res, report, budget=int(os.environ.get("WIKI_BUDGET", "420")))
     reserves(foot, res)
     os.makedirs(f"{ROOT}/data", exist_ok=True)
