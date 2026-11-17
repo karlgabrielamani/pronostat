@@ -294,6 +294,28 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Moins d'1 pt", "Under 1 pt", "Minder dan 1 pt"],
+    ["Ligue des champions", "Champions League", "Champions League"],
+    ["Ligue des Champions", "Champions League", "Champions League"],
+    ["# matchs", "# matches", "# wedstrijden"],
+    ["# match", "# match", "# wedstrijd"],
+    ["Buts", "Goals", "Doelpunten"],
+    ["Dernier match", "Last match", "Laatste wedstrijd"],
+    ["# à # (médiane #)", "# to # (median #)", "# tot # (mediaan #)"],
+    ["Aucun match cette semaine, voici les suivants.", "No match this week, here are the next ones.", "Deze week geen wedstrijd, dit zijn de volgende."],
+    ["Aucun match aujourd'hui, voici les suivants.", "No match today, here are the next ones.", "Vandaag geen wedstrijd, dit zijn de volgende."],
+    ["Aucun match ce jour-là, voici les suivants.", "No match that day, here are the next ones.", "Geen wedstrijd die dag, dit zijn de volgende."],
+    ["Saison terminée, reprise en mai. Voici le classement.", "Season over, back in May. Here are the standings.", "Seizoen voorbij, terug in mei. Dit is het klassement."],
+    ["Pas encore de match programmé. Voici le classement.", "No match scheduled yet. Here are the standings.", "Nog geen wedstrijd gepland. Dit is het klassement."],
+    ["Attaque et défense : points de plus ou de moins qu'une équipe moyenne.", "Attack and defence: points above or below an average team.", "Aanval en verdediging: punten meer of minder dan een gemiddelde ploeg."],
+    ["V victoire · N nul · D défaite", "V win · N draw · D loss", "V winst · N gelijk · D verlies"],
+    ["Langue / Language / Taal", "Langue / Language / Taal", "Langue / Language / Taal"],
+    ["Un modèle statistique estime la force des deux camps, puis simule chaque match 10 000 fois.", "A statistical model rates both sides, then simulates each match 10,000 times.", "Een statistisch model schat beide kanten in en simuleert elke wedstrijd 10.000 keer."],
+    ["Notes d'attaque et de défense sur deux saisons, avantage du terrain.", "Attack and defence ratings over two seasons, home advantage.", "Aanvals- en verdedigingsscores over twee seizoenen, thuisvoordeel."],
+    ["Classement Elo par surface, format du match pris en compte.", "Elo rating per surface, match format taken into account.", "Elo-rating per ondergrond, rekening houdend met het formaat."],
+    ["Notes d'attaque et de défense, fatigue et joueurs absents.", "Attack and defence ratings, fatigue and missing players.", "Aanvals- en verdedigingsscores, vermoeidheid en afwezige spelers."],
+    ["Mis à jour chaque matin. Ce n'est pas un conseil de pari.", "Updated every morning. Not betting advice.", "Elke ochtend bijgewerkt. Geen gokadvies."],
+    ["Classements et comparaisons d'équipes :", "Rankings and team comparisons:", "Klassementen en vergelijkingen:"],
     ["classement", "standings", "klassement"],
     ["Pas de match de # programmé pour l'instant (trêve ou calendrier pas encore publié). Les matchs apparaîtront dès que le calendrier de la prochaine journée sera publié. Voici le classement :", "No match scheduled for now (break or fixtures not yet published). Matches will appear as soon as the next round's fixtures are published. Here are the standings:", "Voorlopig geen wedstrijd gepland (onderbreking of programma nog niet bekend). De wedstrijden verschijnen zodra het programma van de volgende speeldag bekend is. Dit is het klassement:"],
     ["Forme : V victoire, N nul, D défaite (5 derniers matchs). Attaque et défense : notes du modèle, au-dessus de 0 = meilleur qu'une équipe moyenne.", "Form: V win, N draw, D loss (last 5 matches). Attack and defence: model ratings, above 0 = better than an average team.", "Vorm: V winst, N gelijk, D verlies (laatste 5 wedstrijden). Aanval en verdediging: modelscores, boven 0 = beter dan een gemiddelde ploeg."],
@@ -624,12 +646,19 @@ window.I18N = (() => {
     const els = root.querySelectorAll ? root.querySelectorAll("[aria-label],[title],[placeholder]") : [];
     for (const e of els) for (const a of ["aria-label", "title", "placeholder"]) { const v = e.getAttribute(a); if (v) { const x = tr(v); if (x !== v) e.setAttribute(a, x); } }
   }
-  function switcher() {
+  function switcher() {               // liste déroulante : FR ▾ → Français, English, Nederlands
     const bar = document.querySelector(".appbar"); if (!bar || bar.querySelector(".lang")) return;
-    const box = document.createElement("div"); box.className = "lang"; box.setAttribute("role", "group"); box.setAttribute("aria-label", "Langue / Language / Taal");
-    box.innerHTML = ["fr", "en", "nl"].map(l => `<button type="button" data-l="${l}" aria-pressed="${l === LANG}">${l.toUpperCase()}</button>`).join("");
-    box.onclick = e => { const b = e.target.closest("button"); if (!b || b.dataset.l === LANG) return; try { localStorage.setItem("pronostat-lang", b.dataset.l); } catch (x) {} location.reload(); };
-    const day = bar.querySelector(".day"); bar.insertBefore(box, day ? day.nextSibling : null);
+    const N = { fr: "Français", en: "English", nl: "Nederlands" };
+    const box = document.createElement("div"); box.className = "lang";
+    box.innerHTML = `<button type="button" class="lbtn" aria-haspopup="menu" aria-expanded="false" aria-label="Langue / Language / Taal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg><b>${LANG.toUpperCase()}</b><svg class="lv" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <div class="lmenu" role="menu" hidden>${["fr", "en", "nl"].map(l => `<button type="button" role="menuitemradio" data-l="${l}" aria-checked="${l === LANG}"><span>${N[l]}</span><small>${l.toUpperCase()}</small></button>`).join("")}</div>`;
+    const btn = box.querySelector(".lbtn"), menu = box.querySelector(".lmenu");
+    const open = o => { menu.hidden = !o; btn.setAttribute("aria-expanded", o); };
+    btn.onclick = e => { e.stopPropagation(); open(menu.hidden); };
+    menu.onclick = e => { const b = e.target.closest("[data-l]"); if (!b) return; if (b.dataset.l === LANG) { open(false); return; } try { localStorage.setItem("pronostat-lang", b.dataset.l); } catch (x) {} location.reload(); };
+    document.addEventListener("click", e => { if (!box.contains(e.target)) open(false); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") open(false); });
+    bar.appendChild(box);
   }
   document.addEventListener("DOMContentLoaded", () => {
     switcher();

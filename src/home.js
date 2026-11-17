@@ -26,7 +26,8 @@
     return (w[0][0] + w[1][0]).toUpperCase();
   }
   function hue(n) { let h = 0; for (const c of String(n)) h = (h * 31 + c.charCodeAt(0)) % 360; return h; }
-  const LOGOS = window.LOGOS || {};
+  let LOGOS = window.LOGOS || {};
+  if (!window.LOGOS && window.fetch) fetch("data/logos.json").then(r => r.ok ? r.json() : {}).then(j => { LOGOS = j || {}; if (window.Home) Home.show(true); }).catch(() => {});
   const crest = (n, cls = "") => LOGOS[n]
     ? `<span class="crest logo ${cls}" aria-hidden="true"><img src="${LOGOS[n]}" alt="" loading="lazy" decoding="async"></span>`
     : `<span class="crest ${cls}" style="background:hsl(${hue(n)} 52% 40%)" aria-hidden="true">${esc(initials(n))}</span>`;
@@ -232,7 +233,7 @@
     if (x.sport === "Tennis") { const t = tennisS(x);
       return [[`${short(x, x.a)} gagne au moins un set`, pct(t.setA)], [`${short(x, x.b)} gagne au moins un set`, pct(t.setB)], ["Score probable", setScore(x, t.sc[0])]]; }
     const fav = x.mg >= 0 ? x.a : x.b, [a10, b10] = nbaBy(x, 10);
-    return [["Écart prévu", `${bn(x, fav)} +${Math.abs(x.mg).toFixed(0)} pts`], [`${bn(x, x.a)} : victoire par plus de 10 pts`, pct(a10)], [`${bn(x, x.b)} : victoire par plus de 10 pts`, pct(b10)]];
+    return [["Écart prévu", (Math.abs(x.mg) < 1 ? "Moins d'1 pt" : `${bn(x, fav)} +${Math.abs(x.mg).toFixed(0)} pts`)], [`${bn(x, x.a)} : victoire par plus de 10 pts`, pct(a10)], [`${bn(x, x.b)} : victoire par plus de 10 pts`, pct(b10)]];
   }
   function motdCard(x) {
     if (!x) return `<div class="pcard"><p class="empty">Aucun match ce jour-là.</p></div>`;
@@ -246,10 +247,10 @@
   function statCands(x) {
     if (x.sport === "Tennis") { const t = tennisS(x), und = x.pa < x.pb;
       return [{ v: und ? t.setA : t.setB, l: `${short(x, und ? x.a : x.b)} gagne un set`, w: 1.25 }]; }
-    if (x.sport === "NBA") { const fa = x.pa >= x.pb; return [{ v: Math.max(x.pa, x.pb), l: `Victoire des ${bn(x, fa ? x.a : x.b)}`, w: 1 }]; }
+    if (x.sport === "NBA") { const fa = x.pa >= x.pb; return [{ v: Math.max(x.pa, x.pb), l: `${bn(x, fa ? x.a : x.b)} gagne`, w: 1 }]; }
     const m = footM(x);
     return [{ v: m.o(3), l: "Plus de 2,5 buts", w: 1 }, { v: m.btts, l: "Les deux équipes marquent", w: 1 },
-            { v: Math.max(x.pa, x.pb), l: `Victoire ${/^[AEIOUYH]/i.test(x.pa >= x.pb ? x.a : x.b) ? "d'" : "de "}${x.pa >= x.pb ? x.a : x.b}`, w: 1 }];
+            { v: Math.max(x.pa, x.pb), l: `${x.pa >= x.pb ? x.a : x.b} gagne`, w: 1 }];
   }
   function statsOfDay(items, skip) {
     const up = items.filter(x => x !== skip && new Date(x.dt) > Date.now() - 2 * 3600e3);
@@ -300,7 +301,7 @@
     const form = s => (s || "").split("").map(c => `<i class="fm fm-${c}">${c}</i>`).join("");
     return `<section class="tours"><h2>${esc(L.name)} : classement</h2><div class="pcard ftab"><table><thead><tr><th>#</th><th>Équipe</th><th class="c">J</th><th class="c">Pts</th><th class="c">Diff.</th><th class="c hf">Forme</th><th class="c hf">Attaque</th><th class="c hf">Défense</th></tr></thead><tbody>${T.map((t, i) =>
       `<tr><td class="c">${i + 1}</td><td><span class="mt">${crest(t.name, "sm")}<span>${esc(t.name)}</span></span></td><td class="c">${t.p}</td><td class="c"><b>${t.pts}</b></td><td class="c">${t.gf - t.ga > 0 ? "+" : ""}${t.gf - t.ga}</td><td class="c hf">${form(t.form)}</td><td class="c hf">${f(t.att)}</td><td class="c hf">${f(-t.dfn)}</td></tr>`).join("")}</tbody></table></div>
-      <p class="note">Forme : V victoire, N nul, D défaite (5 derniers matchs). Attaque et défense : notes du modèle, au-dessus de 0 = meilleur qu'une équipe moyenne.</p></section>`;
+      <p class="note">V victoire · N nul · D défaite</p></section>`;
   }
 
   // ---- WNBA hors saison : classement selon le modèle
@@ -309,7 +310,7 @@
     const f = v => (v > 0 ? "+" : "") + v.toFixed(1).replace(".", ",");
     return `<section class="tours"><h2>${comp} ${comp === "EuroLeague" ? W.season + "-" + String(W.season + 1).slice(2) : W.season} : les équipes</h2><div class="tlist">${W.teams.map((t, i) =>
       `<div class="trow wrow"><span class="td">${i + 1}. ${crest(t.name, "sm")}</span><span class="tn"><b>${esc(t.name)}</b><span>Bilan ${t.w}–${t.l} · attaque ${f(t.o)} · défense ${f(t.d)} pts</span></span></div>`).join("")}</div>
-      <p class="note">Attaque et défense : points par match en plus ou en moins par rapport à une équipe moyenne. Modèle testé sur une saison qu'il n'avait pas vue au réglage : bon vainqueur ${Math.round(W.test.acc * 100)} % du temps.</p></section>`;
+      <p class="note">Attaque et défense : points de plus ou de moins qu'une équipe moyenne.</p></section>`;
   }
 
   // ---- dessin de l'accueil
@@ -333,16 +334,16 @@
       if (nxt.length) {
         const first = dkey(nxt[0].dt);
         items = nxt.filter(x => dkey(x.dt) < addDays(first, 3)); multi = true;
-        note = `<p class="hnote">Aucun match ${day === WEEK ? "dans les 7 prochains jours" : day === todayKey() ? "aujourd'hui" : "ce jour-là"}. Voici les prochains :</p>`;
+        note = `<p class="hnote">${day === WEEK ? "Aucun match cette semaine, voici les suivants." : day === todayKey() ? "Aucun match aujourd'hui, voici les suivants." : "Aucun match ce jour-là, voici les suivants."}</p>`;
       }
     }
     items = [...items.filter(upcoming), ...items.filter(x => !upcoming(x))];   // matchs commencés à la fin
     $("hNote").innerHTML = note;
     const bc = sp === "NBA" ? (S.comp || {}).NBA : "", wOff = bc === "WNBA" && !items.length;
-    if (wOff) { $("hNote").innerHTML = `<p class="hnote">La saison WNBA ${W.season} est terminée. La suivante commence en mai : les probabilités apparaîtront dès que le calendrier sera publié. En attendant, voici les équipes selon le modèle.</p>`; items = []; }
+    if (wOff) { $("hNote").innerHTML = `<p class="hnote">Saison terminée, reprise en mai. Voici le classement.</p>`; items = []; }
     const fc = sp === "Foot" ? (S.comp || {}).Foot : "";
     let FL = null; try { FL = fc && window.FootAPI && FootAPI.leagues ? FootAPI.leagues().find(l => l.k === fc && !l.cup) : null; } catch (e) {}
-    if (FL && !items.length) $("hNote").innerHTML = `<p class="hnote">Pas de match de ${esc(FL.name)} programmé pour l'instant (trêve ou calendrier pas encore publié). Les matchs apparaîtront dès que le calendrier de la prochaine journée sera publié. Voici le classement :</p>`;
+    if ((FL || BK[bc]) && !items.length && !wOff) $("hNote").innerHTML = `<p class="hnote">Pas encore de match programmé. Voici le classement.</p>`;
     $("hTours").innerHTML = sp === "Tennis" ? toursHtml() : BK[bc] ? basketTable(bc) : FL ? footTable(FL) : "";
     $("view-jour").classList.toggle("noitems", !items.length && !!(FL || BK[bc]));
     if (small()) {
@@ -401,7 +402,7 @@
         <div class="dgrp">Scores possibles</div>${t.sc.slice(0, 3).map(c => rows(setScore(x, c), pct(c[1]))).join("")}`;
     } else {
       const [a5, b5] = nbaBy(x, 5), [a10, b10] = nbaBy(x, 10), close = 1 - a5 - b5, fav = x.mg >= 0 ? x.a : x.b;
-      body = `<div class="dgrp">Écart</div>${rows("Écart prévu", `${bn(x, fav)} +${Math.abs(x.mg).toFixed(0)} pts`)}${rows("Match serré (5 pts ou moins)", pct(close))}
+      body = `<div class="dgrp">Écart</div>${rows("Écart prévu", (Math.abs(x.mg) < 1 ? "Moins d'1 pt" : `${bn(x, fav)} +${Math.abs(x.mg).toFixed(0)} pts`))}${rows("Match serré (5 pts ou moins)", pct(close))}
         <div class="dgrp">Par équipe</div>${rows(`${bn(x, x.a)} : victoire par plus de 5 pts`, pct(a5))}${rows(`${bn(x, x.a)} : victoire par plus de 10 pts`, pct(a10))}${rows(`${bn(x, x.b)} : victoire par plus de 5 pts`, pct(b5))}${rows(`${bn(x, x.b)} : victoire par plus de 10 pts`, pct(b10))}`;
     }
     const fl = x.sport === "Foot" ? `<span class="fl">${FLAG[x.country] || ""}</span>` : x.sport === "NBA" ? `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span>` : "";
@@ -433,10 +434,10 @@
   const VIEWS = ["jour", "foot", "tennis", "basket", "fav", "about", "match"].filter(k => $("view-" + k));
   const NAVOF = { jour: "jour", match: "jour", foot: "jour", tennis: "jour", basket: "jour", fav: "fav", about: "about" };
   let lastHome = "#jour";
-  function show() {
+  function show(force) {
     const h = location.hash.slice(1);
     const v = h.startsWith("m/") ? "match" : (VIEWS.includes(h) ? h : "jour");
-    if (v === "match" && embKey && embKey === decodeURIComponent(h.slice(2)) && moved.length && !$("view-match").hidden) return;   // déjà affichée
+    if (!force && v === "match" && embKey && embKey === decodeURIComponent(h.slice(2)) && moved.length && !$("view-match").hidden) return;   // déjà affichée
     if (v !== "match") restore();
     VIEWS.forEach(k => { $("view-" + k).hidden = k !== v; });
     document.body.className = document.body.className.replace(/\bv-\w+/g, "").trim() + " v-" + v;

@@ -52,40 +52,21 @@
 <div class="wrap about" id="view-about" hidden>
   <header class="vh">
     <h1>Comment ça marche</h1>
-    <p class="sub">Pour chaque match, un modèle statistique estime la force des deux camps, puis le match est simulé 10 000 fois. Un pourcentage indique combien de fois l'événement s'est produit dans ces simulations.</p>
+    <p class="sub">Un modèle statistique estime la force des deux camps, puis simule chaque match 10 000 fois.</p>
   </header>
-  <div class="acard">
-    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m12 7 4 3-1.5 4.5h-5L8 10z"/></svg>Football</h2>
-    <p>Chaque équipe reçoit une note d'attaque et de défense, calculée sur ses matchs des deux dernières saisons (les plus récents comptent davantage), plus l'avantage du terrain. On en déduit le nombre de buts attendu pour chaque camp, puis la probabilité de chaque score.</p>
+  <div class="acard alist">
+    <p><b>Football</b> Notes d'attaque et de défense sur deux saisons, avantage du terrain.</p>
+    <p><b>Tennis</b> Classement Elo par surface, format du match pris en compte.</p>
+    <p><b>Basket</b> Notes d'attaque et de défense, fatigue et joueurs absents.</p>
   </div>
-  <div class="acard">
-    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6c3.5 3.5 3.5 9.3 0 12.8M18.4 5.6c-3.5 3.5-3.5 9.3 0 12.8"/></svg>Tennis</h2>
-    <p>Chaque joueur et chaque joueuse a un classement Elo par surface (dur, terre battue, gazon), mis à jour après chaque match ATP et WTA. Le format du match (2 ou 3 sets gagnants) est pris en compte.</p>
-  </div>
-  <div class="acard">
-    <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3v18M5.5 5.5c3 3 3 10 0 13M18.5 5.5c-3 3-3 10 0 13"/></svg>NBA</h2>
-    <p>Chaque équipe a une note offensive et défensive, corrigée par l'avantage du terrain, la fatigue des matchs consécutifs et les joueurs absents.</p>
-  </div>
-  <div class="acard">
-    <h2>À savoir</h2>
-    <ul>
-      <li>Un favori à 62 % perd encore près de 4 fois sur 10.</li>
-      <li>Les données sont mises à jour chaque semaine.</li>
-      <li>Les pourcentages sont ceux du modèle, pas un conseil de pari.</li>
-    </ul>
-  </div>
+  <p class="note">Mis à jour chaque matin. Ce n'est pas un conseil de pari.</p>
   <section class="bilan" id="bilan" aria-labelledby="bilanT" hidden>
     <h2 id="bilanT">Bilan du modèle</h2>
-    <p class="sub">Chaque pronostic est enregistré <b>avant</b> le début du match et n'est jamais modifié ensuite. On compte ici combien de fois le favori du modèle a vu juste, bons et mauvais résultats compris.</p>
     <div class="btiles" id="bTiles"></div>
     <details class="more"><summary>Derniers pronostics réglés</summary><ol class="brec" id="bRec"></ol></details>
   </section>
-  <div class="acard">
-    <h2>Outils avancés</h2>
-    <p>Choisir deux équipes ou deux joueurs, voir les classements et lancer un match simulé.</p>
-    <div class="tools"><a href="#foot">Football</a><a href="#tennis">Tennis</a><a href="#basket">NBA</a></div>
-  </div>
-  <div class="alang" role="group" aria-label="Langue / Language / Taal"><button type="button" data-l="fr">Français</button><button type="button" data-l="en">English</button><button type="button" data-l="nl">Nederlands</button></div>
+  <div class="tools"><span class="note">Classements et comparaisons d'équipes :</span><a href="#foot">Football</a><a href="#tennis">Tennis</a><a href="#basket">NBA</a></div>
+</div>
 </div>
 
 <script>

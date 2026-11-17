@@ -255,7 +255,7 @@ FONT_LINK = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?fami
 def logos_js():
     """Logos des équipes (data/logos.json, fait par src/logos.py) ; sans ce fichier la page affiche les initiales."""
     p = f"{ROOT}/data/logos.json"
-    return "\n<script>window.LOGOS = " + open(p).read() + ";</script>" if os.path.exists(p) else ""
+    return ""          # la page charge data/logos.json après l'affichage (page plus légère) ; window.LOGOS reste possible pour une page autonome
 
 
 def wnba_js():
