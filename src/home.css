@@ -400,3 +400,24 @@ h1, h2 { letter-spacing: -0.02em; }
   .acc .stat .l b { font-size: 15px; }
   .acc .acta { justify-self: stretch; justify-content: center; }
 }
+
+/* ===== outils détaillés (foot, tennis, NBA, EuroLeague, WNBA) au même style que l'accueil ===== */
+:is(#view-foot, #view-tennis, #view-basket, #view-euroleague, #view-wnba) .card,
+.mfull .result, .mfull .sm-card { border: 1px solid var(--line2); box-shadow: none; border-radius: 14px; background: var(--surface); }
+:is(#view-foot, #view-tennis, #view-basket, #view-euroleague, #view-wnba) h1 { font-size: 30px; font-weight: 700; }
+.games { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.game { background: var(--surface); border-color: var(--line2); border-radius: 10px; padding: 9px 12px; }
+.game:hover { border-color: var(--ink-3); }
+.game[aria-pressed="true"] { border-color: var(--hot); box-shadow: inset 0 0 0 1px var(--hot); }
+.result .pct { color: var(--hot); font-family: var(--f-display); font-weight: 700; }
+.result .three > div:nth-child(2) .pct { color: var(--ink-2); }
+.sg, .tourn { border-color: var(--line2); border-left: 4px solid var(--hot); background: var(--surface); border-radius: 10px; }
+.sg button { background: none; color: var(--hot); border: 1px solid var(--hot); border-radius: 999px; padding: 5px 12px; }
+.sg button:hover { background: var(--hot); color: #fff; }
+.simbtn { background: var(--hot); color: #fff; border: 0; border-radius: 10px; font-weight: 600; }
+.simbtn:hover { filter: brightness(.95); }
+:is(#view-foot, #view-tennis, #view-basket, #view-euroleague, #view-wnba, .mfull) input[type="checkbox"] { accent-color: var(--hot); }
+:is(#view-foot, #view-tennis, #view-basket, #view-euroleague, #view-wnba) select { border-radius: 12px; border-color: var(--line2); font-weight: 500; }
+details.more > summary { font-weight: 600; }
+#ftA, #nbA, #pA, #elA, #wnA { border-left: 4px solid var(--p1) !important; }
+#ftB, #nbB, #pB, #elB, #wnB { border-left: 4px solid var(--p2) !important; }

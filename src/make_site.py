@@ -42,7 +42,7 @@ def head(title, desc, extra=""):
 
 
 # ---------------------------------------------------------------- l'appli (page d'accueil du site depuis la mise en page 2026-11)
-app = head("Pronostat · les probabilités, simplement", "Probabilités foot, tennis et basket : chaque match, événement par événement.") + page + "\n</body>\n</html>\n"
+app = head("Pronolink · les probabilités, simplement", "Probabilités foot, tennis et basket : chaque match, événement par événement.") + page + "\n</body>\n</html>\n"
 for name in ("index.html", "app.html"):          # app.html reste pour les anciens liens
     open(f"{ROOT}/{name}", "w", encoding="utf-8").write(app)
 
@@ -175,9 +175,9 @@ FEATS = [("Chaque événement en %", "Les deux équipes marquent, plus de 2,5 bu
          ("Recherche et favoris", "Trouvez une équipe ou un joueur en deux lettres, suivez vos matchs d'une étoile.")]
 waitlist = (f"""<form class="wl" action="{esc(FORM_ACTION)}" method="POST"><input type="email" name="email" required placeholder="Votre e-mail" autocomplete="email"><button type="submit">Me prévenir</button></form>"""
             if FORM_ACTION else '<span class="btn ghost" aria-disabled="true">Bientôt disponible</span>')
-FAQ = [("Est-ce un conseil de pari ?", "Non. Pronostat donne des probabilités calculées par un modèle statistique. Ce n'est pas une garantie de résultat, et les bookmakers ont souvent raison."),
+FAQ = [("Est-ce un conseil de pari ?", "Non. Pronolink donne des probabilités calculées par un modèle statistique. Ce n'est pas une garantie de résultat, et les bookmakers ont souvent raison."),
        ("Quels sports et compétitions ?", "Le football (grands championnats européens, coupes d'Europe et coupes nationales), le tennis ATP et WTA, et la NBA."),
-       ("Est-ce gratuit ?", "Oui, Pronostat est entièrement gratuit.")]
+       ("Est-ce gratuit ?", "Oui, Pronolink est entièrement gratuit.")]
 
 css = """<style>
 .lp { max-width: 960px; margin: 0 auto; padding: 12px max(16px, env(safe-area-inset-right, 0px)) 40px max(16px, env(safe-area-inset-left, 0px)); display: grid; gap: 34px; }
@@ -229,11 +229,11 @@ css = """<style>
 @media (max-width: 520px) { .st.big { flex-direction: column; align-items: flex-start; gap: 6px; } .st.big .pc { font-size: 52px; } .appbar .open { padding: 8px 12px; font-size: 13px; } }
 </style>"""
 
-landing = head("Pronostat · Probabilités foot, tennis et NBA",
+landing = head("Pronolink · Probabilités foot, tennis et NBA",
                f"Les probabilités de chaque match, événement par événement : football, tennis et NBA, recalculées chaque matin.",
                fonts + "\n<style>" + THEME + "</style>\n" + css) + f"""
 <div class="lp">
-  <header class="appbar"><a class="logo" href="./"><i>{ICON}</i>Pronostat</a><a class="open" href="app.html">Les matchs</a></header>
+  <header class="appbar"><a class="logo" href="./"><i>{ICON}</i>Pronolink</a><a class="open" href="app.html">Les matchs</a></header>
   <section class="hero">
     <h1>Les probabilités de chaque match, <em>événement par événement.</em></h1>
     <p>Football, tennis et NBA. Chaque match est simulé 10 000 fois : le pourcentage indique combien de fois chaque événement s'est produit.</p>
@@ -241,7 +241,7 @@ landing = head("Pronostat · Probabilités foot, tennis et NBA",
   </section>
   {stats_html}
   {md_html}
-  <footer class="foot">Pronostat · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.</footer>
+  <footer class="foot">Pronolink · Probabilités à titre informatif, pas un conseil de pari. Réservé aux plus de 18 ans.</footer>
 </div>
 <script>
 document.querySelectorAll("time[data-dt]").forEach(t => {{ const d = new Date(t.dataset.dt), td = new Date(); const day = d.toDateString() === td.toDateString() ? "Aujourd'hui" : d.toLocaleDateString("fr-FR", d - td < 6 * 864e5 ? {{ weekday: "long" }} : {{ weekday: "short", day: "numeric", month: "short" }}); t.textContent = day + " " + d.toLocaleTimeString("fr-FR", {{ hour: "2-digit", minute: "2-digit" }}); }});

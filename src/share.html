@@ -67,7 +67,7 @@
         const c = await counts(key); if (!c || !c.length) { com.textContent = ""; C = null; return; }
         const n = c.reduce((s, r) => s + r.n, 0), get = k => (c.find(r => r.pick === k) || { n: 0 }).n / n;
         C = { n, get };
-        com.innerHTML = n >= MIN_VOTES ? `Votants Pronostat : ${opts.map(([k, l]) => `<b>${l} ${Math.round(get(k) * 100)} %</b>`).join(" · ")} (${n} votes)` : `${n} ${n > 1 ? "votes" : "vote"} pour l'instant`;
+        com.innerHTML = n >= MIN_VOTES ? `Votants Pronolink : ${opts.map(([k, l]) => `<b>${l} ${Math.round(get(k) * 100)} %</b>`).join(" · ")} (${n} votes)` : `${n} ${n > 1 ? "votes" : "vote"} pour l'instant`;
       };
       box.querySelector(".mp-picks").onclick = e => {
         const bt = e.target.closest("button"); if (!bt) return;
@@ -102,7 +102,7 @@
     // en-tête
     rr(60, 56, 76, 76, 20, "#D0202E"); x.strokeStyle = "#FFFFFF"; x.lineWidth = 10; x.lineCap = "round";
     x.beginPath(); x.moveTo(82, 112); x.lineTo(82, 96); x.moveTo(98, 112); x.lineTo(98, 76); x.moveTo(114, 112); x.lineTo(114, 90); x.stroke();
-    x.fillStyle = "#14161A"; x.font = F(700, 48); x.textBaseline = "middle"; x.textAlign = "left"; x.fillText("Pronostat", 154, 96);
+    x.fillStyle = "#14161A"; x.font = F(700, 48); x.textBaseline = "middle"; x.textAlign = "left"; x.fillText("Pronolink", 154, 96);
     const comp = D.comp || S.sport; x.font = F(700, 28); const cw = Math.min(x.measureText(comp).width + 40, 420);
     rr(W - 60 - cw, 70, cw, 52, 26, "#EEF0F3"); x.fillStyle = "#3A404B"; x.textAlign = "center"; fit(comp, cw - 30, 700, 28, 18); x.fillText(comp, W - 60 - cw / 2, 97);
     // bandeau du match
@@ -118,14 +118,14 @@
     if (!one) for (const w of words) { const t = (lines[lines.length - 1] + " " + w).trim(); if (x.measureText(t).width > W - 120 && lines[lines.length - 1]) lines.push(w); else lines[lines.length - 1] = t; }
     if (one) lines[0] = big;
     let y = 500; lines.slice(0, 2).forEach((l, k) => { fit(l, W - 120, 700, lines.length > 1 ? 104 : 124, 56); sk(l, W / 2, y + k * 112, "#14161A"); }); y += (Math.min(lines.length, 2) - 1) * 112;
-    // selon Pronostat / votants Pronostat
+    // selon Pronolink / votants Pronolink
     const hasV = !!(C && C.n >= MIN_VOTES), cwd = 400, gx = 24, sx = hasV ? (W - (cwd * 2 + gx)) / 2 : (W - cwd) / 2, cy = y + 60;
     rr(sx, cy, cwd, 124, 24, "#FDECEE"); x.fillStyle = "#D0202E"; x.font = F(700, 64); x.textAlign = "center"; x.fillText(Math.round(D.p[pi] * 100) + " %", sx + cwd / 2, cy + 72);
-    x.fillStyle = "#9B1B24"; fit(up(tr("selon Pronostat")), cwd - 40, 700, 24, 16); x.fillText(up(tr("selon Pronostat")), sx + cwd / 2, cy + 108);
+    x.fillStyle = "#9B1B24"; fit(up(tr("selon Pronolink")), cwd - 40, 700, 24, 16); x.fillText(up(tr("selon Pronolink")), sx + cwd / 2, cy + 108);
     if (hasV) {
       const X2 = sx + cwd + gx; rr(X2, cy, cwd, 124, 24, "#14161A");
       x.fillStyle = "#FFFFFF"; x.font = F(700, 64); x.fillText(Math.round(C.get(mine) * 100) + " %", X2 + cwd / 2, cy + 72);
-      x.fillStyle = "rgba(255,255,255,.78)"; const t = up(tr("des votants Pronostat")); fit(t, cwd - 40, 700, 22, 14); x.fillText(t, X2 + cwd / 2, cy + 108);
+      x.fillStyle = "rgba(255,255,255,.78)"; const t = up(tr("des votants Pronolink")); fit(t, cwd - 40, 700, 22, 14); x.fillText(t, X2 + cwd / 2, cy + 108);
     }
     y = cy + 124;
     // mon combiné (événements cochés par le joueur)
