@@ -206,7 +206,7 @@ Foot|CDR|2026-11-10|Tavernes de la Valldigna|Valencia,Foot,Copa del Rey,2026-11-
 NBA|2026-11-12|Indiana Pacers|Washington Wizards,NBA,NBA,2026-11-12T00:00:00+00:00,Indiana Pacers,Washington Wizards,0.6502,,0.3498,2026-11-10T12:20:57.489664+00:00,A,114-101
 NBA|2026-11-12|Toronto Raptors|Boston Celtics,NBA,NBA,2026-11-12T00:00:00+00:00,Toronto Raptors,Boston Celtics,0.3623,,0.6377,2026-11-10T12:20:57.489664+00:00,B,93-98
 NBA|2026-11-12|New York Knicks|Cleveland Cavaliers,NBA,NBA,2026-11-12T00:00:00+00:00,New York Knicks,Cleveland Cavaliers,0.6583,,0.3417,2026-11-10T12:20:57.489664+00:00,B,107-115
-Foot|CDR|2026-11-12|Calvo Sotelo|Albacete,Foot,Copa del Rey,2026-11-12T17:30:00+00:00,Calvo Sotelo,Albacete,0.2668,0.2626,0.4706,2026-11-11T06:33:05.089430+00:00,,
+Foot|CDR|2026-11-12|Calvo Sotelo|Albacete,Foot,Copa del Rey,2026-11-12T17:30:00+00:00,Calvo Sotelo,Albacete,0.2668,0.2626,0.4706,2026-11-11T06:33:05.089430+00:00,X,
 Foot|CDR|2026-11-12|CD Tarancon|Levante,Foot,Copa del Rey,2026-11-12T18:00:00+00:00,CD Tarancon,Levante,0.1214,0.1894,0.6893,2026-11-11T06:33:05.089430+00:00,B,1-2
 Foot|CDR|2026-11-12|CD Artistico Navalcarnero|Real Betis,Foot,Copa del Rey,2026-11-12T18:00:00+00:00,CD Artistico Navalcarnero,Real Betis,0.0636,0.1286,0.8078,2026-11-11T06:33:05.089430+00:00,B,2-3
 Foot|CDF|2026-11-12|Chambéry Savoie|Grenoble,Foot,Coupe de France,2026-11-12T18:00:00+00:00,Chambéry Savoie,Grenoble,0.3945,0.2872,0.3182,2026-11-11T06:33:05.089430+00:00,B,0-2
@@ -234,7 +234,7 @@ NBA|2026-11-13|Minnesota Timberwolves|Dallas Mavericks,NBA,NBA,2026-11-13T01:00:
 NBA|2026-11-13|Phoenix Suns|Charlotte Hornets,NBA,NBA,2026-11-13T02:00:00+00:00,Phoenix Suns,Charlotte Hornets,0.7052,,0.2948,2026-11-12T06:36:18.900351+00:00,A,101-96
 Tennis|2026-11-12|Michelsen A.|Tabilo A.,Tennis,ATP · Bybit Stockholm Open · Quart de finale,2026-11-12T12:00:00+00:00,Michelsen A.,Tabilo A.,0.6431,,0.3569,2026-11-12T06:36:18.900351+00:00,B,
 Tennis|2026-11-12|Tirante T.A.|Shevchenko A.,Tennis,ATP · Bybit Stockholm Open · Quart de finale,2026-11-12T14:00:00+00:00,Tirante T.A.,Shevchenko A.,0.5677,,0.4323,2026-11-12T06:36:18.900351+00:00,A,
-Tennis|2026-11-12|Fritz T.|Rune H.,Tennis,ATP · Bybit Stockholm Open · Quart de finale,2026-11-12T17:30:00+00:00,Fritz T.,Rune H.,0.778,,0.222,2026-11-12T06:36:18.900351+00:00,,
+Tennis|2026-11-12|Fritz T.|Rune H.,Tennis,ATP · Bybit Stockholm Open · Quart de finale,2026-11-12T17:30:00+00:00,Fritz T.,Rune H.,0.778,,0.222,2026-11-12T06:36:18.900351+00:00,X,
 Tennis|2026-11-12|Musetti L.|Humbert U.,Tennis,ATP · Bybit Stockholm Open · Quart de finale,2026-11-12T19:00:00+00:00,Musetti L.,Humbert U.,0.5619,,0.4381,2026-11-12T06:36:18.900351+00:00,A,
 Tennis|2026-11-12|Elizabeth Mandlik|Andrea Lazaro Garcia,Tennis,WTA · DIRECTV Open Presentado por Compesar · Quart de finale,2026-11-12T15:00:00+00:00,Elizabeth Mandlik,Andrea Lazaro Garcia,0.4195,,0.5805,2026-11-12T06:36:18.900351+00:00,A,
 Tennis|2026-11-12|Laura Samson|Irene Burillo,Tennis,WTA · DIRECTV Open Presentado por Compesar · Quart de finale,2026-11-12T15:00:00+00:00,Laura Samson,Irene Burillo,0.6044,,0.3956,2026-11-12T06:36:18.900351+00:00,A,
@@ -308,34 +308,34 @@ Tennis|2026-11-13|Tabilo A.|Tirante T.A.,Tennis,ATP · Bybit Stockholm Open · D
 Tennis|2026-11-13|Fritz T.|Musetti L.,Tennis,ATP · Bybit Stockholm Open · Demi-finale,2026-11-13T16:00:00+00:00,Fritz T.,Musetti L.,0.5689,,0.4311,2026-11-13T06:34:06.235088+00:00,A,
 Tennis|2026-11-13|Laura Samson|Elizabeth Mandlik,Tennis,WTA · DIRECTV Open Presentado por Compesar · Demi-finale,2026-11-13T15:00:00+00:00,Laura Samson,Elizabeth Mandlik,0.5844,,0.4156,2026-11-13T06:34:06.235088+00:00,B,
 Tennis|2026-11-13|Polona Hercog|Bianca Andreescu,Tennis,WTA · DIRECTV Open Presentado por Compesar · Demi-finale,2026-11-13T16:30:00+00:00,Polona Hercog,Bianca Andreescu,0.2578,,0.7422,2026-11-13T06:34:06.235088+00:00,B,
-Foot|SP2|2026-11-14|Valladolid|Castellon,Foot,Segunda,2026-11-14T13:00:00+00:00,Valladolid,Castellon,0.2813,0.2451,0.4737,2026-11-14T06:25:53.692675+00:00,,
-Foot|SP2|2026-11-14|Sociedad B|Sp Gijon,Foot,Segunda,2026-11-14T15:15:00+00:00,Sociedad B,Sp Gijon,0.3793,0.2608,0.3599,2026-11-14T06:25:53.692675+00:00,,
-Foot|SP2|2026-11-14|Almeria|Andorra,Foot,Segunda,2026-11-14T17:30:00+00:00,Almeria,Andorra,0.6147,0.1915,0.1938,2026-11-14T06:25:53.692675+00:00,,
-Foot|SP2|2026-11-14|Mallorca|Cordoba,Foot,Segunda,2026-11-14T17:30:00+00:00,Mallorca,Cordoba,0.6435,0.2293,0.1272,2026-11-14T06:25:53.692675+00:00,,
-Foot|SP2|2026-11-14|Oviedo|Girona,Foot,Segunda,2026-11-14T20:00:00+00:00,Oviedo,Girona,0.3428,0.2761,0.3811,2026-11-14T06:25:53.692675+00:00,,
-Foot|SP2|2026-11-15|Tenerife|Ceuta,Foot,Segunda,2026-11-15T13:00:00+00:00,Tenerife,Ceuta,0.543,0.2458,0.2112,2026-11-14T06:25:53.692675+00:00,,
-Foot|SP2|2026-11-15|Granada|Las Palmas,Foot,Segunda,2026-11-15T15:15:00+00:00,Granada,Las Palmas,0.429,0.2591,0.3119,2026-11-14T06:25:53.692675+00:00,,
-Foot|SP2|2026-11-15|Eibar|Cadiz,Foot,Segunda,2026-11-15T17:30:00+00:00,Eibar,Cadiz,0.5826,0.2489,0.1685,2026-11-14T06:25:53.692675+00:00,,
-Foot|SP2|2026-11-15|Eldense|Sabadell,Foot,Segunda,2026-11-15T17:30:00+00:00,Eldense,Sabadell,0.2904,0.3471,0.3625,2026-11-14T06:25:53.692675+00:00,,
-Foot|E2|2026-11-14|AFC Wimbledon|Blackpool,Foot,League One,2026-11-14T15:00:00+00:00,AFC Wimbledon,Blackpool,0.2878,0.2764,0.4357,2026-11-14T06:25:53.692675+00:00,,
-Foot|E2|2026-11-14|Milton Keynes Dons|Burton,Foot,League One,2026-11-14T15:00:00+00:00,Milton Keynes Dons,Burton,0.4963,0.2407,0.263,2026-11-14T06:25:53.692675+00:00,,
-Foot|E2|2026-11-14|Sheffield Weds|Plymouth,Foot,League One,2026-11-14T15:00:00+00:00,Sheffield Weds,Plymouth,0.4828,0.2413,0.2759,2026-11-14T06:25:53.692675+00:00,,
-Foot|E2|2026-11-14|Stockport|Reading,Foot,League One,2026-11-14T15:00:00+00:00,Stockport,Reading,0.4766,0.257,0.2664,2026-11-14T06:25:53.692675+00:00,,
-Foot|E2|2026-11-14|Wigan|Barnsley,Foot,League One,2026-11-14T15:00:00+00:00,Wigan,Barnsley,0.392,0.2832,0.3248,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Exeter|Cheltenham,Foot,League Two,2026-11-14T12:30:00+00:00,Exeter,Cheltenham,0.4791,0.3315,0.1894,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Bristol Rvs|Chesterfield,Foot,League Two,2026-11-14T15:00:00+00:00,Bristol Rvs,Chesterfield,0.3281,0.2523,0.4196,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Colchester|Gillingham,Foot,League Two,2026-11-14T15:00:00+00:00,Colchester,Gillingham,0.5049,0.2717,0.2234,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Crewe|Newport County,Foot,League Two,2026-11-14T15:00:00+00:00,Crewe,Newport County,0.5218,0.2544,0.2237,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Port Vale|Accrington,Foot,League Two,2026-11-14T15:00:00+00:00,Port Vale,Accrington,0.439,0.3,0.2611,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Rochdale|York,Foot,League Two,2026-11-14T15:00:00+00:00,Rochdale,York,0.2533,0.197,0.5497,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Salford|Northampton,Foot,League Two,2026-11-14T15:00:00+00:00,Salford,Northampton,0.4765,0.3522,0.1713,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Shrewsbury|Oldham,Foot,League Two,2026-11-14T15:00:00+00:00,Shrewsbury,Oldham,0.2745,0.2864,0.4391,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Swindon|Grimsby,Foot,League Two,2026-11-14T15:00:00+00:00,Swindon,Grimsby,0.3988,0.2538,0.3475,2026-11-14T06:25:53.692675+00:00,,
-Foot|E3|2026-11-14|Fleetwood Town|Tranmere,Foot,League Two,2026-11-14T17:30:00+00:00,Fleetwood Town,Tranmere,0.5113,0.2509,0.2377,2026-11-14T06:25:53.692675+00:00,,
-Foot|SC1|2026-11-14|Ayr|Raith Rvs,Foot,Scottish Championship,2026-11-14T15:00:00+00:00,Ayr,Raith Rvs,0.2861,0.314,0.3999,2026-11-14T06:25:53.692675+00:00,,
-Foot|SC1|2026-11-14|Livingston|Morton,Foot,Scottish Championship,2026-11-14T15:00:00+00:00,Livingston,Morton,0.6731,0.2234,0.1035,2026-11-14T06:25:53.692675+00:00,,
-Foot|SC1|2026-11-14|Partick|Inverness C,Foot,Scottish Championship,2026-11-14T15:00:00+00:00,Partick,Inverness C,0.4948,0.2948,0.2104,2026-11-14T06:25:53.692675+00:00,,
-Foot|SC1|2026-11-14|Stenhousemuir|Queens Park,Foot,Scottish Championship,2026-11-14T15:00:00+00:00,Stenhousemuir,Queens Park,0.5712,0.288,0.1409,2026-11-14T06:25:53.692675+00:00,,
+Foot|SP2|2026-11-14|Valladolid|Castellon,Foot,Segunda,2026-11-14T13:00:00+00:00,Valladolid,Castellon,0.2813,0.2451,0.4737,2026-11-14T06:25:53.692675+00:00,B,0-1
+Foot|SP2|2026-11-14|Sociedad B|Sp Gijon,Foot,Segunda,2026-11-14T15:15:00+00:00,Sociedad B,Sp Gijon,0.3793,0.2608,0.3599,2026-11-14T06:25:53.692675+00:00,N,2-2
+Foot|SP2|2026-11-14|Almeria|Andorra,Foot,Segunda,2026-11-14T17:30:00+00:00,Almeria,Andorra,0.6147,0.1915,0.1938,2026-11-14T06:25:53.692675+00:00,A,2-1
+Foot|SP2|2026-11-14|Mallorca|Cordoba,Foot,Segunda,2026-11-14T17:30:00+00:00,Mallorca,Cordoba,0.6435,0.2293,0.1272,2026-11-14T06:25:53.692675+00:00,N,3-3
+Foot|SP2|2026-11-14|Oviedo|Girona,Foot,Segunda,2026-11-14T20:00:00+00:00,Oviedo,Girona,0.3428,0.2761,0.3811,2026-11-14T06:25:53.692675+00:00,B,1-2
+Foot|SP2|2026-11-15|Tenerife|Ceuta,Foot,Segunda,2026-11-15T13:00:00+00:00,Tenerife,Ceuta,0.543,0.2458,0.2112,2026-11-14T06:25:53.692675+00:00,A,2-0
+Foot|SP2|2026-11-15|Granada|Las Palmas,Foot,Segunda,2026-11-15T15:15:00+00:00,Granada,Las Palmas,0.429,0.2591,0.3119,2026-11-14T06:25:53.692675+00:00,A,1-0
+Foot|SP2|2026-11-15|Eibar|Cadiz,Foot,Segunda,2026-11-15T17:30:00+00:00,Eibar,Cadiz,0.5826,0.2489,0.1685,2026-11-14T06:25:53.692675+00:00,N,1-1
+Foot|SP2|2026-11-15|Eldense|Sabadell,Foot,Segunda,2026-11-15T17:30:00+00:00,Eldense,Sabadell,0.2904,0.3471,0.3625,2026-11-14T06:25:53.692675+00:00,A,2-0
+Foot|E2|2026-11-14|AFC Wimbledon|Blackpool,Foot,League One,2026-11-14T15:00:00+00:00,AFC Wimbledon,Blackpool,0.2878,0.2764,0.4357,2026-11-14T06:25:53.692675+00:00,A,1-0
+Foot|E2|2026-11-14|Milton Keynes Dons|Burton,Foot,League One,2026-11-14T15:00:00+00:00,Milton Keynes Dons,Burton,0.4963,0.2407,0.263,2026-11-14T06:25:53.692675+00:00,A,6-2
+Foot|E2|2026-11-14|Sheffield Weds|Plymouth,Foot,League One,2026-11-14T15:00:00+00:00,Sheffield Weds,Plymouth,0.4828,0.2413,0.2759,2026-11-14T06:25:53.692675+00:00,A,3-0
+Foot|E2|2026-11-14|Stockport|Reading,Foot,League One,2026-11-14T15:00:00+00:00,Stockport,Reading,0.4766,0.257,0.2664,2026-11-14T06:25:53.692675+00:00,A,3-1
+Foot|E2|2026-11-14|Wigan|Barnsley,Foot,League One,2026-11-14T15:00:00+00:00,Wigan,Barnsley,0.392,0.2832,0.3248,2026-11-14T06:25:53.692675+00:00,A,2-1
+Foot|E3|2026-11-14|Exeter|Cheltenham,Foot,League Two,2026-11-14T12:30:00+00:00,Exeter,Cheltenham,0.4791,0.3315,0.1894,2026-11-14T06:25:53.692675+00:00,A,1-0
+Foot|E3|2026-11-14|Bristol Rvs|Chesterfield,Foot,League Two,2026-11-14T15:00:00+00:00,Bristol Rvs,Chesterfield,0.3281,0.2523,0.4196,2026-11-14T06:25:53.692675+00:00,B,0-2
+Foot|E3|2026-11-14|Colchester|Gillingham,Foot,League Two,2026-11-14T15:00:00+00:00,Colchester,Gillingham,0.5049,0.2717,0.2234,2026-11-14T06:25:53.692675+00:00,A,2-0
+Foot|E3|2026-11-14|Crewe|Newport County,Foot,League Two,2026-11-14T15:00:00+00:00,Crewe,Newport County,0.5218,0.2544,0.2237,2026-11-14T06:25:53.692675+00:00,N,2-2
+Foot|E3|2026-11-14|Port Vale|Accrington,Foot,League Two,2026-11-14T15:00:00+00:00,Port Vale,Accrington,0.439,0.3,0.2611,2026-11-14T06:25:53.692675+00:00,A,4-2
+Foot|E3|2026-11-14|Rochdale|York,Foot,League Two,2026-11-14T15:00:00+00:00,Rochdale,York,0.2533,0.197,0.5497,2026-11-14T06:25:53.692675+00:00,B,0-1
+Foot|E3|2026-11-14|Salford|Northampton,Foot,League Two,2026-11-14T15:00:00+00:00,Salford,Northampton,0.4765,0.3522,0.1713,2026-11-14T06:25:53.692675+00:00,N,1-1
+Foot|E3|2026-11-14|Shrewsbury|Oldham,Foot,League Two,2026-11-14T15:00:00+00:00,Shrewsbury,Oldham,0.2745,0.2864,0.4391,2026-11-14T06:25:53.692675+00:00,A,2-1
+Foot|E3|2026-11-14|Swindon|Grimsby,Foot,League Two,2026-11-14T15:00:00+00:00,Swindon,Grimsby,0.3988,0.2538,0.3475,2026-11-14T06:25:53.692675+00:00,B,1-4
+Foot|E3|2026-11-14|Fleetwood Town|Tranmere,Foot,League Two,2026-11-14T17:30:00+00:00,Fleetwood Town,Tranmere,0.5113,0.2509,0.2377,2026-11-14T06:25:53.692675+00:00,A,1-0
+Foot|SC1|2026-11-14|Ayr|Raith Rvs,Foot,Scottish Championship,2026-11-14T15:00:00+00:00,Ayr,Raith Rvs,0.2861,0.314,0.3999,2026-11-14T06:25:53.692675+00:00,A,3-1
+Foot|SC1|2026-11-14|Livingston|Morton,Foot,Scottish Championship,2026-11-14T15:00:00+00:00,Livingston,Morton,0.6731,0.2234,0.1035,2026-11-14T06:25:53.692675+00:00,A,2-0
+Foot|SC1|2026-11-14|Partick|Inverness C,Foot,Scottish Championship,2026-11-14T15:00:00+00:00,Partick,Inverness C,0.4948,0.2948,0.2104,2026-11-14T06:25:53.692675+00:00,A,3-2
+Foot|SC1|2026-11-14|Stenhousemuir|Queens Park,Foot,Scottish Championship,2026-11-14T15:00:00+00:00,Stenhousemuir,Queens Park,0.5712,0.288,0.1409,2026-11-14T06:25:53.692675+00:00,A,2-0
 Foot|CDF|2026-11-14|Olympique des Membres de Cambrai Amerique|SC Amiens,Foot,Coupe de France,2026-11-14T19:00:00+00:00,Olympique des Membres de Cambrai Amerique,SC Amiens,0.507,0.2452,0.2478,2026-11-14T06:25:53.692675+00:00,B,0-3
 Foot|CDF|2026-11-15|AS Tefana|Thionville,Foot,Coupe de France,2026-11-15T04:00:00+00:00,AS Tefana,Thionville,0.4183,0.2835,0.2981,2026-11-14T06:25:53.692675+00:00,N,0-0
 Foot|CDF|2026-11-15|Montigny-Les-Metz|Pontarlier,Foot,Coupe de France,2026-11-15T13:00:00+00:00,Montigny-Les-Metz,Pontarlier,0.4183,0.2835,0.2981,2026-11-14T06:25:53.692675+00:00,B,0-5
@@ -375,33 +375,33 @@ NBA|2026-11-15|Cleveland Cavaliers|Dallas Mavericks,NBA,NBA,2026-11-15T00:30:00+
 NBA|2026-11-15|Minnesota Timberwolves|Chicago Bulls,NBA,NBA,2026-11-15T01:00:00+00:00,Minnesota Timberwolves,Chicago Bulls,0.9298,,0.0702,2026-11-14T06:25:53.692675+00:00,B,106-117
 NBA|2026-11-15|Memphis Grizzlies|Brooklyn Nets,NBA,NBA,2026-11-15T01:00:00+00:00,Memphis Grizzlies,Brooklyn Nets,0.6299,,0.3701,2026-11-14T06:25:53.692675+00:00,A,129-110
 NBA|2026-11-15|Miami Heat|Detroit Pistons,NBA,NBA,2026-11-15T01:00:00+00:00,Miami Heat,Detroit Pistons,0.303,,0.697,2026-11-14T06:25:53.692675+00:00,A,137-117
-NBA|2026-11-15|Philadelphia 76ers|Indiana Pacers,NBA,NBA,2026-11-15T18:00:00+00:00,Philadelphia 76ers,Indiana Pacers,0.6235,,0.3765,2026-11-14T06:25:53.692675+00:00,,
+NBA|2026-11-15|Philadelphia 76ers|Indiana Pacers,NBA,NBA,2026-11-15T18:00:00+00:00,Philadelphia 76ers,Indiana Pacers,0.6235,,0.3765,2026-11-14T06:25:53.692675+00:00,A,131-124
 Tennis|2026-11-14|Fritz T.|Tirante T.A.,Tennis,ATP · Bybit Stockholm Open · Finale,2026-11-14T12:00:00+00:00,Fritz T.,Tirante T.A.,0.7527,,0.2473,2026-11-14T06:25:53.692675+00:00,A,
 Tennis|2026-11-14|Bianca Andreescu|Elizabeth Mandlik,Tennis,WTA · DIRECTV Open Presentado por Compesar · Finale,2026-11-14T17:00:00+00:00,Bianca Andreescu,Elizabeth Mandlik,0.7731,,0.2269,2026-11-14T06:25:53.692675+00:00,A,
 Tennis|2026-11-14|Jessica Pegula|Mirra Andreeva,Tennis,WTA · FAGE WTA Finals Indian Wells · Demi-finale,2026-11-14T20:00:00+00:00,Jessica Pegula,Mirra Andreeva,0.464,,0.536,2026-11-14T06:25:53.692675+00:00,B,
 Tennis|2026-11-14|Linda Noskova|Elina Svitolina,Tennis,WTA · FAGE WTA Finals Indian Wells · Demi-finale,2026-11-14T21:30:00+00:00,Linda Noskova,Elina Svitolina,0.439,,0.561,2026-11-14T06:25:53.692675+00:00,B,
 Foot|CDF|2026-11-15|Riom|FC Limonest,Foot,Coupe de France,2026-11-15T13:00:00+00:00,Riom,FC Limonest,0.4087,0.2973,0.2939,2026-11-15T06:27:36.080422+00:00,B,0-4
 Foot|CDF|2026-11-15|Saint-Pauloise FC|La Tamponnaise,Foot,Coupe de France,2026-11-15T13:00:00+00:00,Saint-Pauloise FC,La Tamponnaise,0.4087,0.2973,0.2939,2026-11-15T06:27:36.080422+00:00,B,1-2
-NBA|2026-11-15|Phoenix Suns|Los Angeles Lakers,NBA,NBA,2026-11-15T21:00:00+00:00,Phoenix Suns,Los Angeles Lakers,0.4149,,0.5851,2026-11-15T06:27:36.080422+00:00,,
-NBA|2026-11-15|LA Clippers|Charlotte Hornets,NBA,NBA,2026-11-15T21:30:00+00:00,LA Clippers,Charlotte Hornets,0.6274,,0.3726,2026-11-15T06:27:36.080422+00:00,,
-NBA|2026-11-15|Utah Jazz|San Antonio Spurs,NBA,NBA,2026-11-15T22:00:00+00:00,Utah Jazz,San Antonio Spurs,0.1441,,0.8559,2026-11-15T06:27:36.080422+00:00,,
-NBA|2026-11-15|Toronto Raptors|New York Knicks,NBA,NBA,2026-11-15T23:00:00+00:00,Toronto Raptors,New York Knicks,0.4117,,0.5883,2026-11-15T06:27:36.080422+00:00,,
-NBA|2026-11-15|Boston Celtics|Dallas Mavericks,NBA,NBA,2026-11-15T23:00:00+00:00,Boston Celtics,Dallas Mavericks,0.7919,,0.2081,2026-11-15T06:27:36.080422+00:00,,
-NBA|2026-11-16|Washington Wizards|Houston Rockets,NBA,NBA,2026-11-16T00:00:00+00:00,Washington Wizards,Houston Rockets,0.2816,,0.7184,2026-11-15T06:27:36.080422+00:00,,
-NBA|2026-11-16|Milwaukee Bucks|Atlanta Hawks,NBA,NBA,2026-11-16T01:00:00+00:00,Milwaukee Bucks,Atlanta Hawks,0.3657,,0.6343,2026-11-15T06:27:36.080422+00:00,,
-NBA|2026-11-16|Sacramento Kings|Oklahoma City Thunder,NBA,NBA,2026-11-16T02:00:00+00:00,Sacramento Kings,Oklahoma City Thunder,0.2025,,0.7975,2026-11-15T06:27:36.080422+00:00,,
+NBA|2026-11-15|Phoenix Suns|Los Angeles Lakers,NBA,NBA,2026-11-15T21:00:00+00:00,Phoenix Suns,Los Angeles Lakers,0.4149,,0.5851,2026-11-15T06:27:36.080422+00:00,B,123-131
+NBA|2026-11-15|LA Clippers|Charlotte Hornets,NBA,NBA,2026-11-15T21:30:00+00:00,LA Clippers,Charlotte Hornets,0.6274,,0.3726,2026-11-15T06:27:36.080422+00:00,A,113-105
+NBA|2026-11-15|Utah Jazz|San Antonio Spurs,NBA,NBA,2026-11-15T22:00:00+00:00,Utah Jazz,San Antonio Spurs,0.1441,,0.8559,2026-11-15T06:27:36.080422+00:00,B,102-110
+NBA|2026-11-15|Toronto Raptors|New York Knicks,NBA,NBA,2026-11-15T23:00:00+00:00,Toronto Raptors,New York Knicks,0.4117,,0.5883,2026-11-15T06:27:36.080422+00:00,B,108-112
+NBA|2026-11-15|Boston Celtics|Dallas Mavericks,NBA,NBA,2026-11-15T23:00:00+00:00,Boston Celtics,Dallas Mavericks,0.7919,,0.2081,2026-11-15T06:27:36.080422+00:00,A,131-94
+NBA|2026-11-16|Washington Wizards|Houston Rockets,NBA,NBA,2026-11-16T00:00:00+00:00,Washington Wizards,Houston Rockets,0.2816,,0.7184,2026-11-15T06:27:36.080422+00:00,B,119-147
+NBA|2026-11-16|Milwaukee Bucks|Atlanta Hawks,NBA,NBA,2026-11-16T01:00:00+00:00,Milwaukee Bucks,Atlanta Hawks,0.3657,,0.6343,2026-11-15T06:27:36.080422+00:00,B,106-113
+NBA|2026-11-16|Sacramento Kings|Oklahoma City Thunder,NBA,NBA,2026-11-16T02:00:00+00:00,Sacramento Kings,Oklahoma City Thunder,0.2025,,0.7975,2026-11-15T06:27:36.080422+00:00,B,103-125
 Tennis|2026-11-15|Elina Svitolina|Mirra Andreeva,Tennis,WTA · FAGE WTA Finals Indian Wells · Finale,2026-11-15T20:00:00+00:00,Elina Svitolina,Mirra Andreeva,0.4485,,0.5515,2026-11-15T06:27:36.080422+00:00,B,
-Tennis|2026-11-16|Sofia Costoulas|Nuria Brancaccio,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Sofia Costoulas,Nuria Brancaccio,0.4844,,0.5156,2026-11-15T06:27:36.080422+00:00,,
-Tennis|2026-11-16|Leyre Romero Gormaz|Ipek Oz,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Leyre Romero Gormaz,Ipek Oz,0.9054,,0.0946,2026-11-15T06:27:36.080422+00:00,,
+Tennis|2026-11-16|Sofia Costoulas|Nuria Brancaccio,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Sofia Costoulas,Nuria Brancaccio,0.4844,,0.5156,2026-11-15T06:27:36.080422+00:00,A,
+Tennis|2026-11-16|Leyre Romero Gormaz|Ipek Oz,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Leyre Romero Gormaz,Ipek Oz,0.9054,,0.0946,2026-11-15T06:27:36.080422+00:00,A,
 Tennis|2026-11-16|Nadia Podoroska|Varvara Lepchenko,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Nadia Podoroska,Varvara Lepchenko,0.6417,,0.3583,2026-11-15T06:27:36.080422+00:00,,
 Tennis|2026-11-16|Maria Lourdes Carle|Veronika Erjavec,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Maria Lourdes Carle,Veronika Erjavec,0.4362,,0.5638,2026-11-15T06:27:36.080422+00:00,,
-Tennis|2026-11-16|Victoria Jimenez Kasintseva|Carole Monnet,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Victoria Jimenez Kasintseva,Carole Monnet,0.3564,,0.6436,2026-11-15T06:27:36.080422+00:00,,
+Tennis|2026-11-16|Victoria Jimenez Kasintseva|Carole Monnet,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Victoria Jimenez Kasintseva,Carole Monnet,0.3564,,0.6436,2026-11-15T06:27:36.080422+00:00,B,
 Tennis|2026-11-16|Lucia Bronzetti|Alicia Herrero Linana,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Lucia Bronzetti,Alicia Herrero Linana,0.4373,,0.5627,2026-11-15T06:27:36.080422+00:00,,
 Tennis|2026-11-16|Despina Papamichail|Laura Samson,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Despina Papamichail,Laura Samson,0.2595,,0.7405,2026-11-15T06:27:36.080422+00:00,,
 Tennis|2026-11-16|Polona Hercog|Miriam Bulgaru,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Polona Hercog,Miriam Bulgaru,0.7884,,0.2116,2026-11-15T06:27:36.080422+00:00,,
-Tennis|2026-11-16|Katrina Scott|Anastasia Zolotareva,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Katrina Scott,Anastasia Zolotareva,0.4812,,0.5188,2026-11-15T06:27:36.080422+00:00,,
+Tennis|2026-11-16|Katrina Scott|Anastasia Zolotareva,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Katrina Scott,Anastasia Zolotareva,0.4812,,0.5188,2026-11-15T06:27:36.080422+00:00,B,
 Tennis|2026-11-16|Irene Burillo|Darja Semenistaja,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T05:00:00+00:00,Irene Burillo,Darja Semenistaja,0.6264,,0.3736,2026-11-15T06:27:36.080422+00:00,,
-Foot|SP2|2026-11-16|Albacete|Celta B,Foot,Segunda,2026-11-16T19:30:00+00:00,Albacete,Celta B,0.5289,0.2103,0.2608,2026-11-16T07:10:06.057383+00:00,,
+Foot|SP2|2026-11-16|Albacete|Celta B,Foot,Segunda,2026-11-16T19:30:00+00:00,Albacete,Celta B,0.5289,0.2103,0.2608,2026-11-16T07:10:06.057383+00:00,A,1-0
 NBA|2026-11-17|Washington Wizards|Memphis Grizzlies,NBA,NBA,2026-11-17T00:00:00+00:00,Washington Wizards,Memphis Grizzlies,0.4497,,0.5503,2026-11-16T07:10:06.057383+00:00,,
 NBA|2026-11-17|Cleveland Cavaliers|Chicago Bulls,NBA,NBA,2026-11-17T00:00:00+00:00,Cleveland Cavaliers,Chicago Bulls,0.7214,,0.2786,2026-11-16T07:10:06.057383+00:00,,
 NBA|2026-11-17|Boston Celtics|Orlando Magic,NBA,NBA,2026-11-17T00:00:00+00:00,Boston Celtics,Orlando Magic,0.781,,0.219,2026-11-16T07:10:06.057383+00:00,,
@@ -410,11 +410,19 @@ NBA|2026-11-17|Brooklyn Nets|Philadelphia 76ers,NBA,NBA,2026-11-17T00:30:00+00:0
 NBA|2026-11-17|New Orleans Pelicans|Golden State Warriors,NBA,NBA,2026-11-17T01:00:00+00:00,New Orleans Pelicans,Golden State Warriors,0.3519,,0.6481,2026-11-16T07:10:06.057383+00:00,,
 NBA|2026-11-17|Minnesota Timberwolves|Portland Trail Blazers,NBA,NBA,2026-11-17T01:00:00+00:00,Minnesota Timberwolves,Portland Trail Blazers,0.6101,,0.3899,2026-11-16T07:10:06.057383+00:00,,
 NBA|2026-11-17|Denver Nuggets|Phoenix Suns,NBA,NBA,2026-11-17T02:00:00+00:00,Denver Nuggets,Phoenix Suns,0.6656,,0.3344,2026-11-16T07:10:06.057383+00:00,,
-Tennis|2026-11-16|Guiomar Maristany Zuleta De Reales|Martina Trevisan,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T15:30:00+00:00,Guiomar Maristany Zuleta De Reales,Martina Trevisan,0.649,,0.351,2026-11-16T07:10:06.057383+00:00,,
-Tennis|2026-11-16|Valeriya Strakhova|Anastasia Tikhonova,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T21:00:00+00:00,Valeriya Strakhova,Anastasia Tikhonova,0.5336,,0.4664,2026-11-16T07:10:06.057383+00:00,,
+Tennis|2026-11-16|Guiomar Maristany Zuleta De Reales|Martina Trevisan,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T15:30:00+00:00,Guiomar Maristany Zuleta De Reales,Martina Trevisan,0.649,,0.351,2026-11-16T07:10:06.057383+00:00,A,
+Tennis|2026-11-16|Valeriya Strakhova|Anastasia Tikhonova,Tennis,WTA · LP Open by IND · 1er tour,2026-11-16T21:00:00+00:00,Valeriya Strakhova,Anastasia Tikhonova,0.5336,,0.4664,2026-11-16T07:10:06.057383+00:00,A,
 Tennis|2026-11-17|Maria Lourdes Carle|Veronika Erjavec,Tennis,WTA · LP Open by IND · 1er tour,2026-11-17T05:00:00+00:00,Maria Lourdes Carle,Veronika Erjavec,0.4357,,0.5643,2026-11-16T07:10:06.057383+00:00,,
 Tennis|2026-11-17|Lucia Bronzetti|Alicia Herrero Linana,Tennis,WTA · LP Open by IND · 1er tour,2026-11-17T05:00:00+00:00,Lucia Bronzetti,Alicia Herrero Linana,0.4503,,0.5497,2026-11-16T07:10:06.057383+00:00,,
 Tennis|2026-11-17|Despina Papamichail|Laura Samson,Tennis,WTA · LP Open by IND · 1er tour,2026-11-17T05:00:00+00:00,Despina Papamichail,Laura Samson,0.2613,,0.7387,2026-11-16T07:10:06.057383+00:00,,
 Tennis|2026-11-17|Irene Burillo|Darja Semenistaja,Tennis,WTA · LP Open by IND · 1er tour,2026-11-17T05:00:00+00:00,Irene Burillo,Darja Semenistaja,0.6246,,0.3754,2026-11-16T07:10:06.057383+00:00,,
 Tennis|2026-11-17|Nadia Podoroska|Varvara Lepchenko,Tennis,WTA · LP Open by IND · 1er tour,2026-11-17T05:00:00+00:00,Nadia Podoroska,Varvara Lepchenko,0.6423,,0.3577,2026-11-16T07:10:06.057383+00:00,,
 Tennis|2026-11-17|Polona Hercog|Miriam Bulgaru,Tennis,WTA · LP Open by IND · 1er tour,2026-11-17T05:00:00+00:00,Polona Hercog,Miriam Bulgaru,0.7867,,0.2133,2026-11-16T07:10:06.057383+00:00,,
+Foot|CDR|2026-11-18|Portugalete|Real Unión Irun,Foot,Copa del Rey,2026-11-18T18:00:00+00:00,Portugalete,Real Unión Irun,0.3995,0.3116,0.2889,2026-11-17T06:36:27.100240+00:00,,
+Foot|CDR|2026-11-18|Utebo|CD Sabadell,Foot,Copa del Rey,2026-11-18T18:00:00+00:00,Utebo,CD Sabadell,0.2264,0.3554,0.4182,2026-11-17T06:36:27.100240+00:00,,
+NBA|2026-11-18|Toronto Raptors|New York Knicks,NBA,NBA,2026-11-18T00:30:00+00:00,Toronto Raptors,New York Knicks,0.409,,0.591,2026-11-17T06:36:27.100240+00:00,,
+NBA|2026-11-18|San Antonio Spurs|Detroit Pistons,NBA,NBA,2026-11-18T01:00:00+00:00,San Antonio Spurs,Detroit Pistons,0.7625,,0.2375,2026-11-17T06:36:27.100240+00:00,,
+NBA|2026-11-18|Minnesota Timberwolves|Portland Trail Blazers,NBA,NBA,2026-11-18T01:00:00+00:00,Minnesota Timberwolves,Portland Trail Blazers,0.5909,,0.4091,2026-11-17T06:36:27.100240+00:00,,
+NBA|2026-11-18|LA Clippers|Utah Jazz,NBA,NBA,2026-11-18T03:30:00+00:00,LA Clippers,Utah Jazz,0.6926,,0.3074,2026-11-17T06:36:27.100240+00:00,,
+NBA|2026-11-18|Los Angeles Lakers|Charlotte Hornets,NBA,NBA,2026-11-18T04:00:00+00:00,Los Angeles Lakers,Charlotte Hornets,0.6931,,0.3069,2026-11-17T06:36:27.100240+00:00,,
+Tennis|2026-11-18|Guiomar Maristany Zuleta De Reales|Sofia Costoulas,Tennis,WTA · LP Open by IND · 2e tour,2026-11-18T05:00:00+00:00,Guiomar Maristany Zuleta De Reales,Sofia Costoulas,0.6696,,0.3304,2026-11-17T06:36:27.100240+00:00,,
