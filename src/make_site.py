@@ -42,7 +42,7 @@ def head(title, desc, extra=""):
 
 
 # ---------------------------------------------------------------- l'appli (page d'accueil du site depuis la mise en page 2026-11)
-app = head("Pronostat · les probabilités, simplement", "Probabilités foot, tennis et NBA : chaque match, événement par événement.") + page + "\n</body>\n</html>\n"
+app = head("Pronostat · les probabilités, simplement", "Probabilités foot, tennis et basket : chaque match, événement par événement.") + page + "\n</body>\n</html>\n"
 for name in ("index.html", "app.html"):          # app.html reste pour les anciens liens
     open(f"{ROOT}/{name}", "w", encoding="utf-8").write(app)
 
