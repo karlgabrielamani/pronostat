@@ -7,7 +7,7 @@ Usage : python src/logos.py <dossier> [<football-logos> <nba.json>]
   <nba.json>       : {"Atlanta Hawks": "<svg…>", …} (paquet npm react-nba-logos rendu en SVG)
 La page affiche les initiales quand une équipe n'a pas de logo.
 """
-import base64, glob, io, json, os, re, sys, unicodedata, urllib.request
+import base64, glob, html, io, json, os, re, sys, time, unicodedata, urllib.parse, urllib.request
 
 ROOT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else ".")
 REPO = sys.argv[2] if len(sys.argv) > 2 else None
@@ -72,6 +72,9 @@ def best(name, pool):
 
 def img_uri(data, h=72):
     from PIL import Image
+    if data.lstrip()[:5] in (b"<?xml", b"<svg ") or b"<svg" in data[:400]:
+        import cairosvg
+        data = cairosvg.svg2png(bytestring=data, output_height=h * 2)
     im = Image.open(io.BytesIO(data)).convert("RGBA")
     if im.getbbox(): im = im.crop(im.getbbox())
     w = max(1, round(im.width * h / im.height)); im = im.resize((w, h), Image.LANCZOS)
@@ -79,8 +82,11 @@ def img_uri(data, h=72):
     return "data:image/webp;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
+UA = "PronostatLogos/1.0 (https://karlgabrielamani.github.io/pronostat/; karlgabrielamani@users.noreply.github.com)"
+
+
 def get(url, timeout=20):
-    req = urllib.request.Request(url, headers={"User-Agent": "pronostat-logos"})
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=timeout) as r: return r.read()
 
 
@@ -135,6 +141,67 @@ def from_espn(foot, res, report):
             except Exception as e: print("  logo", n, repr(e)[:60])
 
 
+WIKI_LANG = {"France": ["fr", "en"], "Espagne": ["es", "en"]}
+COUNTRY_EN = {"Angleterre": "England", "Espagne": "Spain", "France": "France", "Italie": "Italy", "Allemagne": "Germany", "Pays-Bas": "Netherlands",
+              "Belgique": "Belgium", "Portugal": "Portugal", "Écosse": "Scotland", "Turquie": "Turkey", "Grèce": "Greece"}
+
+
+def wiki_get(url):
+    """Wikipédia limite le débit : petite pause, et on réessaie après une pause plus longue en cas de refus."""
+    for wait in (0.3, 5, 15):
+        time.sleep(wait)
+        try: return get(url)
+        except urllib.error.HTTPError as e:
+            if e.code != 429: raise
+    raise RuntimeError("Wikipédia : trop de requêtes")
+
+
+def wiki_logo(name, country, lang):
+    """Cherche l'article du club et renvoie l'image de son infobox (le blason), ou None."""
+    q = f"{name} {'club de football' if lang == 'fr' else 'club de fútbol' if lang == 'es' else 'football club ' + COUNTRY_EN.get(country, '')}"
+    page = wiki_get(f"https://{lang}.wikipedia.org/w/index.php?" + urllib.parse.urlencode({"search": q, "fulltext": 1, "ns0": 1})).decode("utf-8", "ignore")
+    for href in re.findall(r'class="mw-search-result-heading"><a href="/wiki/([^"#]+)"', page)[:3]:
+        title = urllib.parse.unquote(href).replace("_", " ")
+        if score(name, re.sub(r"\s*\(.*?\)", "", title)) < 2: continue
+        art = wiki_get(f"https://{lang}.wikipedia.org/wiki/{href}").decode("utf-8", "ignore")
+        i = art.find('class="infobox'); box = art[i:i + 12000] if i >= 0 else ""
+        if not re.search(r"(?i)(ground|stadium|stade|estadio|campo|terrain|home stadium)", box): continue   # un club, pas une ville
+        for src in re.findall(r'<img[^>]+src="(//[^"]+)"', box):
+            f = urllib.parse.unquote(src.split("?")[0].split("/")[-1])
+            if re.search(r"(?i)(flag|drapeau|bandera|kit_|maillot|equipaci|_arm|_body|_shorts|_socks|pictogram|icon)", f): continue
+            m = re.match(r"//(?:thumb|upload)\.wikimedia\.org/wikipedia/([a-z]+)/thumb/(\w)/(\w\w)/([^/]+)/", src) or re.match(r"//upload\.wikimedia\.org/wikipedia/([a-z]+)/(\w)/(\w\w)/([^/?]+)", src)
+            if not m: continue
+            return wiki_get(f"https://upload.wikimedia.org/wikipedia/{m.group(1)}/{m.group(2)}/{m.group(3)}/{m.group(4)}"), title
+    return None
+
+
+def from_wiki(foot, res, report, limit=150, budget=420, workers=2):
+    """Wikipédia : blasons des petits clubs des matchs à venir qu'aucune autre source n'a (2 en parallèle, durée limitée)."""
+    from concurrent.futures import ThreadPoolExecutor
+    todo, seen = [], set()
+    for k in foot["order"]:
+        L = foot["leagues"][k]
+        for g in L.get("games", []):
+            for n in (g["home"], g["away"]):
+                if n not in res and n not in seen: seen.add(n); todo.append((k, n, L["country"]))
+    todo, t0 = todo[:limit], time.time()
+
+    def one(job):
+        k, n, country = job
+        if time.time() - t0 > budget: return None
+        for lang in WIKI_LANG.get(country, ["en"])[:1] + (["en"] if country not in WIKI_LANG else []):
+            try:
+                r = wiki_logo(n, country, lang)
+                if r: return k, n, img_uri(r[0]), f"Wikipédia {lang} : {r[1]}"
+            except Exception as e: print("  wiki", n, lang, repr(e)[:80], flush=True)
+            break
+        return None
+    with ThreadPoolExecutor(workers) as ex:
+        for i, r in enumerate(ex.map(one, todo), 1):
+            if r: res[r[1]] = r[2]; report.append(f"{r[0]:5} {r[1]} -> {r[3]}")
+            if i % 20 == 0: print(f"  wiki {i}/{len(todo)} · {len(report)} trouvés", flush=True)
+
+
 def reserves(foot, res):
     """Équipes réserves (« Celta B », « Sociedad B ») : logo du club."""
     for k in foot["order"]:
@@ -146,7 +213,7 @@ def reserves(foot, res):
 def update(foot):
     """Appelé par update_all.py avant de construire la page : complète data/logos.json (ESPN)."""
     res = json.load(open(DEST)) if os.path.exists(DEST) else {}
-    report = []; from_espn(foot, res, report); reserves(foot, res)
+    report = []; from_espn(foot, res, report); from_wiki(foot, res, report, limit=40, budget=120); reserves(foot, res)
     json.dump(res, open(DEST, "w"), separators=(",", ":"), sort_keys=True)
     return report
 
@@ -168,6 +235,7 @@ if __name__ == "__main__":
     if NBA: nba([t["name"] for t in nb["teams"]], res)
     if REPO: from_repo(foot, res, report)
     from_espn(foot, res, report)
+    from_wiki(foot, res, report, budget=int(os.environ.get("WIKI_BUDGET", "420")))
     reserves(foot, res)
     os.makedirs(f"{ROOT}/data", exist_ok=True)
     json.dump(res, open(DEST, "w"), separators=(",", ":"), sort_keys=True)

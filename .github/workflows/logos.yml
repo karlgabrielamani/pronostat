@@ -1,0 +1,40 @@
+name: Logos des équipes
+# Cherche les logos qui manquent (ESPN puis Wikipédia) et reconstruit le site.
+# Se lance à la main (Actions > Logos des équipes > Run workflow), chaque lundi, ou quand src/logos.py change.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 4 * * 1"
+  push:
+    branches: [main]
+    paths: ["src/logos.py"]
+permissions:
+  contents: write
+concurrency:
+  group: update
+  cancel-in-progress: false
+jobs:
+  logos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install pandas==3.0.5 numpy==2.5.3 scipy==1.18.1 pillow cairosvg
+      - run: python src/update_all.py .
+      - name: Logos manquants
+        env:
+          WIKI_BUDGET: "1200"
+        run: python src/logos.py .
+      - run: python src/update_all.py .
+      - run: python src/make_site.py .
+      - name: Enregistrer
+        run: |
+          git config user.name "pronostat-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html app.html presentation.html data
+          git diff --cached --quiet || git commit -m "Logos des équipes du $(date -u +%F)"
+          git pull --rebase
+          git push
