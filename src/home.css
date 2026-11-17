@@ -279,3 +279,14 @@ h1, h2 { letter-spacing: -0.02em; }
 .trow .tn b { font-size: 15px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .trow .tn span { font-size: 13px; color: var(--ink-3); }
 @media (max-width: 760px) { #hTours { margin-top: 18px; } .trow { grid-template-columns: 118px minmax(0, 1fr); gap: 10px; padding: 10px 12px; } }
+
+/* choix de la compétition (championnat, circuit, tournoi) */
+.comps { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px; scroll-snap-type: x proximity; }
+.comps:empty { display: none; }
+.comps::-webkit-scrollbar { display: none; }
+.comps button { flex: none; scroll-snap-align: start; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 14px; font-weight: 500; color: var(--ink); background: var(--surface); border: 1px solid var(--line2); border-radius: 999px; padding: 7px 14px; cursor: pointer; white-space: nowrap; }
+.comps button .fl { font-size: 16px; line-height: 1; }
+.comps button small { font-size: 12px; color: var(--ink-3); font-weight: 600; }
+.comps button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.comps button[aria-pressed="true"] small { color: var(--surface); opacity: .75; }
+@media (max-width: 760px) { .comps { margin: 0 -20px; padding: 10px 16px 0; } }

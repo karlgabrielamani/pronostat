@@ -93,12 +93,31 @@
 
   // ---- état de l'accueil
   const small = () => matchMedia("(max-width: 760px)").matches;
-  let S = { sport: "", day: null, more: false };
+  let S = { sport: "", day: null, more: false, comp: {} };
   try { const o = JSON.parse(sessionStorage.getItem("ps-home") || "{}"); if (o && typeof o === "object") S = Object.assign(S, o, { more: false }); } catch (e) {}
   const saveS = () => { try { sessionStorage.setItem("ps-home", JSON.stringify(S)); } catch (e) {} };
   const curSport = () => small() ? (S.sport || firstSport()) : S.sport;
   function firstSport() { for (const s of ["Foot", "Tennis", "NBA"]) if (ALL.some(x => x.sport === s)) return s; return "Foot"; }
-  const pool = sp => ALL.filter(x => !sp || x.sport === sp);
+  // ---- compétitions : championnat (foot), circuit ou tournoi (tennis)
+  const compKey = x => x.sport === "Foot" ? x.lg : x.sport === "Tennis" ? "ev:" + x.tour + "|" + (x.event || x.comp) : "NBA";
+  const compOk = x => { const c = (S.comp || {})[x.sport]; if (!c) return true; if (c === "ATP" || c === "WTA") return x.tour === c; return compKey(x) === c; };
+  const pool = sp => ALL.filter(x => !sp || (x.sport === sp && compOk(x)));
+  const SHORT = { "Ligue des Champions": "Ligue des champions", "Jupiler Pro League": "Jupiler Pro League", "Super League Grèce": "Super League" };
+  function compsHtml(sp) {
+    const base = ALL.filter(x => x.sport === sp && upcoming(x));
+    const by = {}; base.forEach(x => { const k = compKey(x); (by[k] = by[k] || { x, n: 0 }).n++; });
+    let list = Object.entries(by);
+    if (sp === "Foot") list.sort((a, b) => prio(a[1].x) - prio(b[1].x));
+    else if (sp === "Tennis") list.sort((a, b) => a[1].x.tour < b[1].x.tour ? -1 : a[1].x.tour > b[1].x.tour ? 1 : new Date(a[1].x.dt) - new Date(b[1].x.dt));
+    const cur = (S.comp || {})[sp] || "";
+    const chip = (k, label, n) => `<button type="button" data-c="${esc(k)}" aria-pressed="${k === cur}">${label}${n ? `<small>${n}</small>` : ""}</button>`;
+    let extra = "";
+    if (sp === "Tennis") for (const t of ["ATP", "WTA"]) { const n = base.filter(x => x.tour === t).length; if (n) extra += chip(t, t, n); }
+    if (list.length + (extra ? 1 : 0) < 2 && !cur) return "";
+    return chip("", sp === "Foot" ? "Tous les championnats" : sp === "Tennis" ? "Tous les tournois" : "Toutes", base.length) + extra + list.map(([k, { x, n }]) =>
+      sp === "Foot" ? chip(k, `<span class="fl">${FLAG[x.country] || "🏳️"}</span>${esc(SHORT[x.comp] || x.comp)}`, n)
+                    : chip(k, `${esc(x.tour)} · ${esc(x.event || x.comp)}`, n)).join("");
+  }
   const addDays = (k, n) => { const [y, m, d] = k.split("-").map(Number); return dkey(new Date(y, m - 1, d + n, 12)); };
   const WEEK = "semaine";                                   // vue « les 7 prochains jours »
   function days(sp) {                                       // tous les jours d'aujourd'hui au dernier match connu (au moins 7, au plus 21)
@@ -251,6 +270,8 @@
     $("hDayLab").textContent = dayName(day);
     const di = day === WEEK ? -1 : ds.indexOf(day); $("hPrev").disabled = day === WEEK; $("hNext").disabled = di >= ds.length - 1;
     $("hStrip").innerHTML = stripHtml(sp, day);
+    $("hComps").innerHTML = sp ? compsHtml(sp) : "";
+    const oc = $("hComps").querySelector('[aria-pressed="true"]'); if (oc && oc.dataset.c) oc.scrollIntoView({ block: "nearest", inline: "center" });
     const on = $("hStrip").querySelector('[aria-pressed="true"]'); if (on) on.scrollIntoView({ block: "nearest", inline: "center" });
     document.querySelectorAll("#hChips button").forEach(b => b.setAttribute("aria-pressed", b.dataset.s === S.sport));
     document.querySelectorAll("#hTabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.s === sp));
@@ -370,6 +391,7 @@
   addEventListener("hashchange", () => { show(); window.scrollTo(0, 0); });
 
   // ---- clics
+  $("hComps").addEventListener("click", e => { const b = e.target.closest("button[data-c]"); if (!b) return; S.comp = S.comp || {}; S.comp[curSport()] = b.dataset.c; S.day = null; S.more = false; drawHome(); });
   $("hChips").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S.sport = b.dataset.s; S.more = false; drawHome(); });
   $("hTabs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; S.sport = b.dataset.s; drawHome(); });
   const setDay = d => { S.day = d; S.more = false; drawHome(); };

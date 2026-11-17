@@ -18,6 +18,10 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["Tous les championnats", "All leagues", "Alle competities"],
+    ["Tous les tournois", "All tournaments", "Alle toernooien"],
+    ["Toutes", "All", "Alle"],
+    ["Compétition", "Competition", "Competitie"],
     ["Ensemble", "Together", "Samen"],
     ["selon Pronostat", "according to Pronostat", "volgens Pronostat"], ["des votants Pronostat", "of Pronostat voters", "van de Pronostat-stemmers"], ["Votants Pronostat :", "Pronostat voters:", "Pronostat-stemmers:"],
     ["Votez sur Pronostat", "Vote on Pronostat", "Stem op Pronostat"], ["Mon combiné", "My combo", "Mijn combinatie"], ["Tout ensemble", "All together", "Alles samen"],
