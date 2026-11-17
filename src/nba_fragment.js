@@ -45,18 +45,37 @@
   const rho = N.corr, sd = N.sd_team;
   function pair(sdx) { const z1 = gauss(), z2 = gauss(); return [sdx * z1, sdx * (rho * z1 + Math.sqrt(1 - rho * rho) * z2)]; }
   // absents : chaque joueur important blessé retire beta × sa valeur (× probabilité qu'il manque le match)
-  const OFF = {};                                   // cases décochées par l'utilisateur
+  // l'utilisateur peut retirer un blessé (il joue finalement) ou ajouter un absent choisi dans la liste des joueurs importants
+  const OFF = {}, ADD = {};                         // OFF[équipe|joueur] : blessé remis ; ADD[équipe] : {joueur: valeur}
   const missDefault = t => (t.inj || []).reduce((s, x) => s + x.v * x.w, 0);
-  const missNow = t => (t.inj || []).reduce((s, x) => s + (OFF[t.name + "|" + x.name] ? 0 : x.v * x.w), 0);
+  const missNow = t => (t.inj || []).reduce((s, x) => s + (OFF[t.name + "|" + x.name] ? 0 : x.v * x.w), 0) + Object.values(ADD[t.name] || {}).reduce((s, v) => s + v, 0);
   function drawInj(a, b) {
     const st = { "Out": "absent", "Doubtful": "incertain", "Questionable": "incertain", "Day-To-Day": "au jour le jour", "Probable": "probable" };
-    const blk = t => (t.inj && t.inj.length)
-      ? `<div><b>${t.abbr || t.name}</b> ${t.inj.map(x => { const k = t.name + "|" + x.name;
-          return `<label class="chk"><input type="checkbox" data-k="${k}"${OFF[k] ? "" : " checked"}> ${x.name} <span class="muted">(${st[x.status] || x.status})</span></label>`; }).join(" ")}</div>`
-      : `<div><b>${t.abbr || t.name}</b> <span class="muted">aucun absent important annoncé</span></div>`;
-    g("nbInj").innerHTML = `<div class="eyebrow">Absents pris en compte <span style="text-transform:none;letter-spacing:0">· décochez un joueur s'il joue finalement</span></div>${blk(a)}${blk(b)}`;
+    const esc = x => String(x).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const blk = t => {
+      const out = (t.inj || []).filter(x => !OFF[t.name + "|" + x.name]), add = Object.keys(ADD[t.name] || {});
+      const taken = new Set([...out.map(x => x.name), ...add]);
+      const chips = out.map(x => `<span class="ichip">${esc(x.name)} <small>${st[x.status] || x.status}</small><button type="button" data-off="${esc(t.name + "|" + x.name)}" aria-label="Retirer ${esc(x.name)}">×</button></span>`)
+        .concat(add.map(n => `<span class="ichip">${esc(n)} <small>ajouté</small><button type="button" data-rm="${esc(t.name)}" data-p="${esc(n)}" aria-label="Retirer ${esc(n)}">×</button></span>`)).join("");
+      const back = (t.inj || []).filter(x => OFF[t.name + "|" + x.name]);
+      const opts = (t.roster || []).filter(p => !taken.has(p.name));
+      const sel = opts.length || back.length ? `<label class="isel"><select data-team="${esc(t.name)}" aria-label="Ajouter un absent">
+          <option value="">+ Ajouter un absent</option>${back.map(x => `<option value="back|${esc(x.name)}">${esc(x.name)} (blessé)</option>`).join("")}${opts.map(p => `<option value="${esc(p.name)}" data-v="${p.v}">${esc(p.name)}</option>`).join("")}</select></label>` : "";
+      return `<div class="irow"><b>${esc(t.abbr || t.name)}</b><div class="ilist">${chips || '<span class="muted">aucun absent</span>'}${sel}</div></div>`;
+    };
+    g("nbInj").innerHTML = `<div class="eyebrow">Absents pris en compte</div>${blk(a)}${blk(b)}`;
   }
-  g("nbInj").addEventListener("change", e => { const k = e.target.dataset.k; if (!k) return; OFF[k] = !e.target.checked; render(); });
+  g("nbInj").addEventListener("click", e => {
+    const o = e.target.closest("[data-off]"); if (o) { OFF[o.dataset.off] = true; render(); return; }
+    const r = e.target.closest("[data-rm]"); if (r) { delete (ADD[r.dataset.rm] || {})[r.dataset.p]; render(); }
+  });
+  g("nbInj").addEventListener("change", e => {
+    const s = e.target.closest("select[data-team]"); if (!s || !s.value) return;
+    const team = s.dataset.team;
+    if (s.value.startsWith("back|")) delete OFF[team + "|" + s.value.slice(5)];
+    else { const op = s.selectedOptions[0]; (ADD[team] = ADD[team] || {})[s.value] = +op.dataset.v || 0; }
+    render();
+  });
   function expected(a, b) {
     const neutral = g("nbN").checked;
     const h = neutral ? 0 : N.hca / 2;

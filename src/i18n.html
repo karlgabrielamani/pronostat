@@ -18,6 +18,12 @@ window.I18N = (() => {
     Number.prototype.toLocaleString = function (l, o) { return nf.call(this, (l === "fr-FR" || l === "fr") ? loc : l, o); };
   }
   const D = [
+    ["+ Ajouter un absent", "+ Add a missing player", "+ Afwezige toevoegen"],
+    ["Ajouter un absent", "Add a missing player", "Afwezige toevoegen"],
+    ["aucun absent", "no missing player", "geen afwezige"],
+    ["ajouté", "added", "toegevoegd"],
+    ["(blessé)", "(injured)", "(geblesseerd)"],
+    ["Absents pris en compte", "Missing players taken into account", "Afwezigen meegerekend"],
     ["Plus de #,# buts", "Over #.# goals", "Meer dan #,# doelpunten"],
     ["gagne de plus de # pts", "wins by more than # pts", "wint met meer dan # ptn"],
     ["Sélections nationales", "National teams", "Nationale ploegen"],

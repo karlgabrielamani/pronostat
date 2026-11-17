@@ -236,6 +236,7 @@ def nba():
         print("  ATTENTION blessures NBA indisponibles :", repr(e)); INJ = {}
     for tm in teams:
         tm["inj"] = INJ.get(tm["name"], [])
+        tm["roster"] = [dict(name=PNAMES.get(pid, "?"), v=round(v, 1)) for pid, v in sorted(REGS.get(tm["name"], {}).items(), key=lambda kv: -kv[1])][:12]   # joueurs importants (liste des absents à choisir)
     print(f"  NBA absents : {sum(len(v) for v in INJ.values())} joueurs importants signalés")
     sched = pd.read_csv(fetch(f"{REL}/espn_nba_schedules/nba_schedule_{cur_season}.csv", f"{RAW}/nba_schedule_{cur_season}_{TODAY.date()}.csv"), low_memory=False)
     sched["dt"] = pd.to_datetime(sched["date"], utc=True)
