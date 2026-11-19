@@ -22,11 +22,14 @@
     "États-Unis": fsv('<rect width="30" height="20" fill="#fff"/>' + [0, 2, 4, 6, 8, 10, 12].map(k => `<rect y="${k * 20 / 13 * 1}" width="30" height="${20 / 13}" fill="#B22234"/>`).join("").replace(/y="([\d.]+)"/g, (m, y) => `y="${(+y * 2).toFixed(2)}"`) + '<rect width="13" height="10.8" fill="#3C3B6E"/>')
   };
   // ordre d'affichage des compétitions de foot
-  const PRIO = ["WC", "EURO", "UNL", "WCQ", "EUQ", "UCL", "F1", "E0", "SP1", "I1", "D1", "UEL", "N1", "B1", "P1", "UECL", "F2", "E1", "D2", "SP2", "I2", "SC0", "T1", "G1", "CDF", "FAC", "CDR", "CIT", "DFB", "KNVB", "TDP", "SCC"];
+  const PRIO = ["WC", "EURO", "UNL", "WCQ", "EUQ", "UCL", "F1", "E0", "SP1", "I1", "D1", "UEL", "N1", "B1", "P1", "UECL", "F2", "E1", "D2", "SP2", "I2", "SC0", "T1", "G1", "N2", "CDF", "FAC", "CDR", "CIT", "DFB", "KNVB", "TDP", "SCC"];
   const prio = x => { const i = PRIO.indexOf(x.lg); return i < 0 ? 99 : i; };
+  // championnats : ordre alphabétique, la division inférieure juste en dessous
+  const LORD = ["D1", "D2", "N1", "N2", "B1", "SP1", "SP2", "P1", "F1", "F2", "E0", "E1", "E2", "E3", "SC0", "SC1", "I1", "I2", "G1", "T1", "CDR", "CIT", "CDF", "DFB", "EFL", "FAC", "KNVB", "SCC", "SLC", "TDP"];
+  const lord = x => { const i = LORD.indexOf(x.lg); return i < 0 ? 50 + prio(x) : i; };
   // notoriété d'une équipe : niveau de son championnat (1 = grand championnat)
   const LRANK = { "Premier League": 1, "La Liga": 1, "Serie A": 1, "Bundesliga": 1, "Ligue 1": 1, "Eredivisie": 2, "Liga Portugal": 2, "Jupiler Pro League": 2,
-    "Championship": 3, "Ligue 2": 3, "2. Bundesliga": 3, "Segunda": 3, "Serie B": 3, "Süper Lig": 3, "Scottish Prem": 3, "Super League Grèce": 3 };
+    "Championship": 3, "Eerste Divisie": 4, "Ligue 2": 3, "2. Bundesliga": 3, "Segunda": 3, "Serie B": 3, "Süper Lig": 3, "Scottish Prem": 3, "Super League Grèce": 3 };
   let TIER = null;
   const tier = n => { if (!TIER) { TIER = {}; try { (window.FootAPI ? FootAPI.teams() : []).forEach(t => { if (!(t.name in TIER)) TIER[t.name] = LRANK[t.sub] || 5; }); } catch (e) {} } return TIER[n] || 5; };
   const fame = x => x.nat ? (x.lg === "FRI" ? 7 : 3) : tier(x.a) + tier(x.b) + (x.cup && x.country === "Europe" ? -2 : x.cup ? 1 : 0);
@@ -141,7 +144,7 @@
       let lgs = []; try { lgs = window.FootAPI && FootAPI.leagues ? FootAPI.leagues() : []; } catch (e) {}
       lgs.filter(l => !l.cup && !by[l.k]).forEach(l => list.push({ k: l.k, n: 0, x: { lg: l.k, comp: l.name, country: l.country, cup: false } }));   // championnats sans match cette semaine : gardés
       const GO = ["Sélections nationales", "Coupes d'Europe", "Championnats", "Coupes nationales"];
-      list.sort((a, b) => GO.indexOf(FOOTGRP(a.x)) - GO.indexOf(FOOTGRP(b.x)) || prio(a.x) - prio(b.x));
+      list.sort((a, b) => GO.indexOf(FOOTGRP(a.x)) - GO.indexOf(FOOTGRP(b.x)) || lord(a.x) - lord(b.x));
       list.forEach(o => out.push({ k: o.k, label: SHORT[o.x.comp] || o.x.comp, flag: FLAG[o.x.country] || "", n: o.n, sub: o.n ? "" : "classement", grp: FOOTGRP(o.x) }));
     } else if (sp === "Tennis") {
       for (const t of ["ATP", "WTA"]) { const n = base.filter(x => x.tour === t).length; if (n) out.push({ k: t, label: t === "ATP" ? "ATP · hommes" : "WTA · femmes", n, grp: "Circuits" }); }
@@ -179,7 +182,9 @@
   const inWeek = x => { const k = dkey(x.dt); return k >= todayKey() && k < addDays(todayKey(), 7); };
   function pickDay(sp) {
     if (S.day === WEEK || (S.day && days(sp).includes(S.day))) return S.day;
-    return pool(sp).some(x => dkey(x.dt) === todayKey() && upcoming(x)) ? todayKey() : WEEK;   // rien aujourd'hui : la semaine qui arrive
+    if (pool(sp).some(x => dkey(x.dt) === todayKey() && upcoming(x))) return todayKey();
+    const nx = pool(sp).filter(x => upcoming(x) && dkey(x.dt) > todayKey()).map(x => dkey(x.dt)).sort()[0];   // rien aujourd'hui : le prochain jour avec des matchs
+    return nx && days(sp).includes(nx) ? nx : WEEK;
   }
   const dayName = d => d === WEEK ? "7 prochains jours" : dayLabel(d);
   function stripHtml(sp, day) {
@@ -215,14 +220,14 @@
       ${probsInline(x, "pbox")}</div>`;
   }
   function groupKey(x) {
-    if (x.sport === "Foot") return { id: "F|" + x.lg, order: prio(x), html: `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc(x.comp)}</b></span>` };
+    if (x.sport === "Foot") return { id: "F|" + x.lg, order: ["Sélections nationales", "Coupes d'Europe", "Championnats", "Coupes nationales"].indexOf(FOOTGRP(x)) * 100 + lord(x), html: `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc(x.comp)}</b></span>` };
     if (x.sport === "Tennis") return { id: "T|" + x.tour + x.event, order: x.tour === "ATP" ? 0 : 1, html: `<span><b>${esc(x.tour || "")}</b> · ${esc(x.event || x.comp)}${x.round ? " · " + esc(x.round) : ""}</span>` };
     return { id: "B|" + x.comp, order: x.comp === "NBA" ? 0 : 1, html: `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span><span><b>${esc(x.comp || "NBA")}</b></span>` };
   }
   function groupedList(items, withDays) {
     if (withDays) {                                         // plusieurs jours : une seule fois chaque compétition, le jour dans la ligne
       const groups = {}; items.forEach(x => { const g = groupKey(x); (groups[g.id] = groups[g.id] || { g, xs: [] }).xs.push(x); });
-      return Object.values(groups).sort((p, q) => new Date(p.xs[0].dt) - new Date(q.xs[0].dt)).map(({ g, xs }) => `<div class="grp">${g.html}</div>` + xs.map(x => mcard(x, true)).join("")).join("");
+      return Object.values(groups).sort((p, q) => p.g.order - q.g.order || new Date(p.xs[0].dt) - new Date(q.xs[0].dt)).map(({ g, xs }) => `<div class="grp">${g.html}</div>` + xs.map(x => mcard(x, true)).join("")).join("");
     }
     const out = []; let lastDay = "";
     const byDay = {}; items.forEach(x => (byDay[dkey(x.dt)] = byDay[dkey(x.dt)] || []).push(x));
@@ -231,7 +236,7 @@
       byDay[d].forEach(x => { const g = groupKey(x); (groups[g.id] = groups[g.id] || { g, xs: [] }).xs.push(x); });
       const gs = Object.values(groups).sort((p, q) => p.g.order - q.g.order || new Date(p.xs[0].dt) - new Date(q.xs[0].dt));
       if (withDays && d !== lastDay) { out.push(`<div class="jday" style="margin:16px 0 0">${dayLabel(d, true)}</div>`); lastDay = d; }
-      gs.forEach(({ g, xs }) => out.push(`<div class="grp">${g.html}</div>` + xs.map(mcard).join("")));
+      gs.forEach(({ g, xs }) => out.push(`<div class="grp">${g.html}</div>` + xs.map(x => mcard(x)).join("")));
     }
     return out.join("");
   }
@@ -361,7 +366,7 @@
       const nxt = pool(sp).filter(x => dkey(x.dt) > (day === WEEK ? todayKey() : day) && upcoming(x));
       if (nxt.length) {
         const first = dkey(nxt[0].dt);
-        items = nxt.filter(x => dkey(x.dt) < addDays(first, 3)); multi = true;
+        items = nxt.filter(x => dkey(x.dt) === first); multi = false;
         note = `<p class="hnote">${day === WEEK ? "Aucun match cette semaine, voici les suivants." : day === todayKey() ? "Aucun match aujourd'hui, voici les suivants." : "Aucun match ce jour-là, voici les suivants."}</p>`;
       }
     }

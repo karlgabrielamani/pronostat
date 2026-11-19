@@ -5,7 +5,8 @@ import pandas as pd
 
 SLUG = {"E0": "eng.1", "E1": "eng.2", "E2": "eng.3", "E3": "eng.4", "SP1": "esp.1", "SP2": "esp.2", "I1": "ita.1", "I2": "ita.2",
         "D1": "ger.1", "D2": "ger.2", "F1": "fra.1", "F2": "fra.2", "N1": "ned.1", "B1": "bel.1", "P1": "por.1",
-        "SC0": "sco.1", "SC1": "sco.2", "T1": "tur.1", "G1": "gre.1"}
+        "SC0": "sco.1", "SC1": "sco.2", "T1": "tur.1", "G1": "gre.1", "N2": "ned.2"}
+ONLY = {"N2"}                               # championnats absents de football-data : résultats pris sur ESPN
 ALIAS = {"utd": "united", "nott'm": "nottingham", "nottm": "nottingham", "wolves": "wolverhampton", "weds": "wednesday",
          "ath": "atletico", "m'gladbach": "monchengladbach", "ein": "eintracht", "sp": "sporting", "inter": "internazionale",
          "psg": "paris saint germain", "sg": "saint germain", "qpr": "queens park rangers", "mk": "milton keynes",
@@ -90,3 +91,43 @@ def fixtures(div, teams, today, days=8):
         if h[0] in m and a[0] in m:
             out.append((ts.tz_localize(None).normalize(), ts.strftime("%H:%M"), m[h[0]], m[a[0]]))
     return out
+
+
+def _get(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "pronos-weekly-update", "Accept-Encoding": "gzip"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        raw = r.read()
+    return json.loads(gzip.decompress(raw) if raw[:2] == b"\x1f\x8b" else raw)
+
+
+def history(div, today, seasons=2):
+    """Résultats des dernières saisons d'un championnat ESPN : Date, HomeTeam, AwayTeam, FTHG, FTAG."""
+    slug = SLUG[div]
+    y = today.year if today.month >= 7 else today.year - 1
+    teams = [t["team"] for t in _get(f"https://site.api.espn.com/apis/site/v2/sports/soccer/{slug}/teams")["sports"][0]["leagues"][0]["teams"]]
+    rows, seen = [], set()
+    for t in teams:
+        for sy in range(y - seasons + 1, y + 1):
+            try:
+                ev = _get(f"https://site.api.espn.com/apis/site/v2/sports/soccer/{slug}/teams/{t['id']}/schedule?season={sy}").get("events", [])
+            except Exception as e:
+                print("  ESPN historique", div, t.get("displayName"), sy, repr(e)); continue
+            for e in ev:
+                if e.get("id") in seen:
+                    continue
+                c = (e.get("competitions") or [{}])[0]
+                if ((c.get("status") or {}).get("type") or {}).get("state") != "post":
+                    continue
+                H = next((x for x in c.get("competitors", []) if x.get("homeAway") == "home"), None)
+                A = next((x for x in c.get("competitors", []) if x.get("homeAway") == "away"), None)
+                sc = lambda x: x.get("score", {}).get("value") if isinstance(x.get("score"), dict) else x.get("score")
+                try:
+                    hg, ag = int(float(sc(H))), int(float(sc(A)))
+                except Exception:
+                    continue
+                seen.add(e.get("id"))
+                rows.append(dict(Date=pd.Timestamp(e["date"]).tz_convert("Europe/London").tz_localize(None).normalize(),
+                                 HomeTeam=H["team"]["displayName"], AwayTeam=A["team"]["displayName"], FTHG=hg, FTAG=ag))
+    d = pd.DataFrame(rows)
+    start = pd.Timestamp(year=y, month=7, day=1)
+    return [d[d.Date < start].reset_index(drop=True), d[d.Date >= start].reset_index(drop=True)]

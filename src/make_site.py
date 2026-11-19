@@ -58,7 +58,7 @@ def when(s):
     d = datetime.fromisoformat(str(s).replace("Z", "+00:00"))
     return d.replace(tzinfo=timezone.utc) if d.tzinfo is None else d.astimezone(timezone.utc)
 soon = lambda s: now <= when(s) <= until
-PRIO = ["UCL", "E0", "SP1", "I1", "D1", "F1", "N1", "UEL", "B1", "P1", "UECL", "FAC", "CDR", "CIT", "DFB", "CDF", "KNVB", "EFL", "TDP", "E1", "SC0", "SCC", "SLC", "T1", "G1", "D2", "SP2", "I2", "F2", "E2", "E3", "SC1"]
+PRIO = ["UCL", "E0", "SP1", "I1", "D1", "F1", "N1", "UEL", "B1", "P1", "UECL", "FAC", "CDR", "CIT", "DFB", "CDF", "KNVB", "EFL", "TDP", "E1", "SC0", "SCC", "SLC", "T1", "G1", "D2", "SP2", "I2", "F2", "E2", "E3", "SC1", "N2"]
 
 
 def foot_events(L, h, a, neutral=False):

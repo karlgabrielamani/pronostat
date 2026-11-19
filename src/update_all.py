@@ -38,7 +38,7 @@ LEAGUES = {"N1": ("Eredivisie", "Pays-Bas"), "B1": ("Jupiler Pro League", "Belgi
            "P1": ("Liga Portugal", "Portugal"), "E1": ("Championship", "Angleterre"), "D2": ("2. Bundesliga", "Allemagne"),
            "SP2": ("Segunda", "Espagne"), "I2": ("Serie B", "Italie"), "F2": ("Ligue 2", "France"), "E2": ("League One", "Angleterre"),
            "E3": ("League Two", "Angleterre"), "SC0": ("Scottish Prem", "Écosse"), "SC1": ("Scottish Championship", "Écosse"),
-           "T1": ("Süper Lig", "Turquie"), "G1": ("Super League Grèce", "Grèce")}
+           "T1": ("Süper Lig", "Turquie"), "G1": ("Super League Grèce", "Grèce"), "N2": ("Eerste Divisie", "Pays-Bas")}
 FOOT_ACC, FOOT_N = 0.4943, 34259          # mesuré au backtest walk-forward (2021-2026)
 
 
@@ -61,7 +61,15 @@ def foot():
     leagues = {}
     for div, (name, country) in LEAGUES.items():
         frames = []
-        for c in codes:
+        import espn_fix
+        if div in espn_fix.ONLY:                 # pas de fichier football-data : résultats ESPN
+            try:
+                frames = espn_fix.history(div, TODAY)
+            except Exception as e:
+                print("  ATTENTION championnat ESPN", div, repr(e)); continue
+            if frames[-1].empty:
+                print("  ATTENTION championnat ESPN vide", div); continue
+        for c in ([] if div in espn_fix.ONLY else codes):
             dest = f"{RAW}/{div}_{c}.csv" if c != codes[-1] else f"{RAW}/{div}_{c}_{TODAY.date()}.csv"
             try:
                 frames.append(read_fd(fetch(f"https://www.football-data.co.uk/mmz4281/{c}/{div}.csv", dest)))
