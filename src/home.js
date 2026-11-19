@@ -255,7 +255,7 @@
     const cr = x.sport !== "Tennis";
     return `<div class="pcard"><div class="motd-top"><span class="tag">${esc(compLabel(x))}</span><span class="when">· ${whenTxt(x)}</span></div>
       <div class="motd-teams"><span class="t"><span>${esc(short(x, x.a))}</span>${cr ? crest(x.a, "lg") : ""}</span><span class="dash">–</span><span class="t">${cr ? crest(x.b, "lg") : ""}<span>${esc(short(x, x.b))}</span></span></div>
-      ${probsInline(x, "three2")}${bar(x)}
+      ${rbar(x, x.pd == null ? [[short(x, x.a), x.pa], [short(x, x.b), x.pb]] : [[x.a, x.pa], ["Match nul", x.pd], [x.b, x.pb]])}
       ${motdRows(x).map(([l, v]) => `<div class="prow"><span>${esc(l)}</span><b>${esc(v)}</b></div>`).join("")}
       <a class="more-link" href="#m/${encodeURIComponent(x.k)}">Voir l'analyse <span aria-hidden="true">→</span></a></div>`;
   }
