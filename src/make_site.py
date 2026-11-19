@@ -19,7 +19,7 @@ THEME = open(f"{SRC}/theme.css", encoding="utf-8").read()
 
 def head(title, desc, extra=""):
     return f"""<!doctype html>
-<html lang="fr" data-theme="dark">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -30,7 +30,8 @@ def head(title, desc, extra=""):
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE}">
 <meta property="og:image" content="{SITE}icon-512.png">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#D0202E">
+<script>(function(){{var m="light";try{{m=localStorage.getItem("pl-mode")||"light"}}catch(e){{}}document.documentElement.setAttribute("data-theme",m);var t=document.querySelector('meta[name="theme-color"]');if(t)t.content=m==="dark"?"#000000":"#D0202E"}})()</script>
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="manifest" href="manifest.json">
