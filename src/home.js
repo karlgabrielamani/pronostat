@@ -416,9 +416,12 @@
     return `<a class="atile${past ? " past" : ""}" href="#m/${encodeURIComponent(x.k)}"><span class="ac">${esc(compLabel(x))}${past ? " · Commencé" : ""}</span>
       <span class="am">${nm(x.a)}<br><i>contre</i> ${nm(x.b)}</span><span class="ap"><b>${pct(p)}</b><small>${esc(lab)}</small></span></a>`;
   }
+  // accueil : pas d'équipe israélienne, pas de match à 50 % – 50 %
+  const ISR = /maccabi|hapoel|beitar|bnei |ironi |isra[eë]l/i;
+  const accOk = x => !ISR.test(x.a + " " + x.b + " " + (x.country || "")) && !(x.pd == null && Math.abs(x.pa - x.pb) < 0.04);
   function drawAccueil() {
     load();
-    const now = Date.now(), up = ALL.filter(x => !x.few && new Date(x.dt).getTime() > now - 2 * 3600e3);
+    const now = Date.now(), up = ALL.filter(x => !x.few && new Date(x.dt).getTime() > now - 2 * 3600e3 && accOk(x));
     const ds = [...new Set(up.map(x => dkey(x.dt)))].sort().slice(0, 6);
     if (!ds.includes(aDay)) aDay = ds[0] || todayKey();
     $("aDays").innerHTML = ds.map(d => {
