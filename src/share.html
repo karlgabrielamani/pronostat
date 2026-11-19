@@ -10,11 +10,12 @@
 .mp-share { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 12px; border: 0; background: var(--hot); color: #fff; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; }
 .shv { position: fixed; inset: 0; z-index: 70; background: rgba(10,14,22,.72); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
 .shv[hidden] { display: none; }
-.shv-box { background: var(--surface); border-radius: 18px; padding: 14px; width: min(420px, 100%); max-height: 100%; overflow: auto; display: grid; gap: 12px; }
+.shv-box { position: relative; background: var(--surface); border-radius: 18px; padding: 14px; width: min(420px, 100%); max-height: 100%; overflow: auto; display: grid; gap: 12px; }
 .shv-box img { width: 100%; border-radius: 12px; border: 1px solid var(--line); display: block; }
 .shv-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .shv-row a, .shv-row button { flex: 1 1 0; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; font: inherit; font-weight: 700; font-size: 14px; border-radius: 12px; border: 1px solid var(--line2); background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer; padding: 0 12px; white-space: nowrap; }
 .shv-row .main { background: var(--hot); border-color: var(--hot); color: #fff; }
+.shv-x { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%; border: 0; background: rgba(20,22,26,.6); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; }
 .shv-th { display: flex; gap: 4px; background: var(--track, #F1F2F4); border-radius: 12px; padding: 4px; }
 .shv-th button { flex: 1; font: inherit; font-weight: 700; font-size: 14px; border: 0; border-radius: 9px; padding: 9px; background: transparent; color: var(--ink-2, #4B5563); cursor: pointer; }
 .shv-th button[aria-pressed="true"] { background: #fff; color: var(--ink, #14161A); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
@@ -160,12 +161,11 @@
       const can = !!(navigator.canShare && navigator.canShare({ files: [file] }));
       ov.innerHTML = `<div class="shv-box" role="dialog" aria-label="Partager">
         <img alt="" src="${url}">
-        <div class="shv-row">${can ? `<button type="button" class="main" data-a="share">Partager</button>` : `<a class="main" href="${url}" download="pronolink.png">Télécharger l'image</a>`}<button type="button" data-a="copy">Copier le texte</button></div>
-        <div class="shv-row"><button type="button" data-a="close">Fermer</button></div></div>`;
+        <div class="shv-row">${can ? `<button type="button" class="main" data-a="share">Partager</button>` : `<a class="main" href="${url}" download="pronolink.png">Télécharger l'image</a>`}</div>
+        <button type="button" class="shv-x" data-a="close" aria-label="Fermer">×</button></div>`;
       ov.hidden = false;
       ov.querySelector('[data-a="close"]').onclick = () => { ov.hidden = true; };
       const sb = ov.querySelector('[data-a="share"]'); if (sb) sb.onclick = async () => { try { await navigator.share({ files: [file], text }); ov.hidden = true; } catch (e) {} };
-      ov.querySelector('[data-a="copy"]').onclick = async e => { const b = e.currentTarget; try { await navigator.clipboard.writeText(text); b.textContent = tr("Copié !"); } catch (er) { b.textContent = text; } };
     };
     await draw();
   }
