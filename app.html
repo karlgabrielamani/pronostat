@@ -879,6 +879,30 @@ h1, h2 { letter-spacing: -0.02em; }
 details.more > summary { font-weight: 600; }
 #ftA, #nbA, #pA, #elA, #wnA { border-left: 4px solid var(--p1) !important; }
 #ftB, #nbB, #pB, #elB, #wnB { border-left: 4px solid var(--p2) !important; }
+
+/* accueil : fil horaire + tuiles */
+.adays { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 4px 0 18px; }
+.adays::-webkit-scrollbar { display: none; }
+.adays button { flex: none; font: inherit; font-size: 14px; font-weight: 600; border: 1px solid var(--line, #E5E7EB); background: #fff; color: var(--ink); border-radius: 99px; padding: 8px 15px; cursor: pointer; text-transform: capitalize; }
+.adays button[aria-pressed="true"] { background: var(--hot); border-color: var(--hot); color: #fff; }
+.atl { display: flex; flex-direction: column; margin-bottom: 22px; }
+.aslot { display: grid; grid-template-columns: 46px 14px minmax(0, 1fr); gap: 0 10px; }
+.ah { font-weight: 700; font-size: 14px; padding-top: 1px; font-variant-numeric: tabular-nums; }
+.adot { position: relative; }
+.adot::before { content: ""; position: absolute; left: 1px; top: 4px; width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--hot); background: #fff; }
+.adot::after { content: ""; position: absolute; left: 6px; top: 18px; bottom: 0; width: 2px; background: var(--line, #E5E7EB); }
+.aslot:last-child .adot::after { display: none; }
+.aslot.on .adot::before { background: var(--hot); }
+.agrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-bottom: 14px; }
+@media (min-width: 761px) { .agrid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; } .aslot { grid-template-columns: 54px 14px minmax(0, 1fr); } }
+.atile { display: flex; flex-direction: column; justify-content: space-between; gap: 8px; min-height: 128px; border: 1px solid var(--line, #E5E7EB); border-radius: 14px; padding: 11px; color: var(--ink); text-decoration: none; background: #fff; }
+.atile:hover { border-color: #C9CDD3; }
+.atile .ac { font-size: 11px; color: var(--ink-3, #6B7280); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.atile .am { font-weight: 600; font-size: 13px; line-height: 1.3; overflow-wrap: anywhere; }
+.atile .am i { font-style: normal; color: var(--ink-3, #6B7280); font-weight: 500; }
+.atile .ap b { display: block; font-size: 26px; font-weight: 800; color: var(--hot); line-height: 1.1; letter-spacing: -.01em; }
+.atile .ap small { font-size: 11px; color: var(--ink-3, #6B7280); }
+.atile.past { opacity: .6; }
 </style>
 
 <header class="appbar"><button class="hback" type="button" aria-label="Retour"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button><a class="logo" href="#jour"><i>P</i>Pronolink</a><nav class="topnav" aria-label="Rubriques"><a href="#accueil" data-v="accueil">Accueil</a><a href="#jour" data-v="jour">Les matchs</a><a href="#fav" data-v="fav">Favoris</a></nav></header><nav class="bnav" aria-label="Navigation"><a href="#accueil" data-v="accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7v9h-5.5v-5.5h-6V20H3.5z"/></svg>Accueil</a><a href="#jour" data-v="jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Matchs</a><a href="#fav" data-v="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a></nav>
@@ -3184,10 +3208,8 @@ table(); render();
   <section class="hero">
     <h1>Chaque événement, <em>en chiffres.</em></h1>
   </section>
-  <div class="hgrid">
-    <section><h2>Le match du jour</h2><div id="aMotd"></div></section>
-    <section><h2>Les stats du jour</h2><div class="pcard stats" id="aStats"></div></section>
-  </div>
+  <div class="adays" id="aDays"></div>
+  <div class="atl" id="aTl"></div>
   <a class="acta" href="#jour">Voir tous les matchs <span aria-hidden="true">→</span></a>
 </div>
 
@@ -3737,17 +3759,33 @@ const Combo = (() => {
     embKey = x.k;
   }
 
-  // ---- accueil : explication, match du jour, grosses stats du jour (tous sports)
+  // ---- accueil : fil horaire des matchs du jour, en tuiles
+  let aDay = null;
+  function atile(x) {
+    const past = new Date(x.dt).getTime() < Date.now();
+    const cand = [[x.pa, x.a], [x.pb, x.b]]; if (x.pd != null) cand.push([x.pd, null]);
+    const [p, w] = cand.sort((u, v) => v[0] - u[0])[0];
+    const nm = n => esc(x.sport === "NBA" ? bn(x, n) : short(x, n));
+    const lab = w == null ? "Match nul" : `${x.sport === "NBA" ? bn(x, w) : short(x, w)} gagne`;
+    return `<a class="atile${past ? " past" : ""}" href="#m/${encodeURIComponent(x.k)}"><span class="ac">${esc(compLabel(x))}${past ? " · Commencé" : ""}</span>
+      <span class="am">${nm(x.a)}<br><i>contre</i> ${nm(x.b)}</span><span class="ap"><b>${pct(p)}</b><small>${esc(lab)}</small></span></a>`;
+  }
   function drawAccueil() {
     load();
     const now = Date.now(), up = ALL.filter(x => !x.few && new Date(x.dt).getTime() > now - 2 * 3600e3);
-    const first = up.find(x => new Date(x.dt).getTime() > now);
-    const day = first ? dkey(first.dt) : todayKey();
-    const items = up.filter(x => dkey(x.dt) === day);
-    const motd = matchOfDay(items);
-    $("aMotd").innerHTML = motdCard(motd);
-    const st = statsOfDay(items, motd, 5);
-    $("aStats").innerHTML = st.length ? st.map(statRow).join("") : `<p class="empty">Pas de statistique marquante pour l'instant.</p>`;
+    const ds = [...new Set(up.map(x => dkey(x.dt)))].sort().slice(0, 6);
+    if (!ds.includes(aDay)) aDay = ds[0] || todayKey();
+    $("aDays").innerHTML = ds.map(d => {
+      const [y, m, dd] = d.split("-").map(Number), dt = new Date(y, m - 1, dd), n = Math.round((dt - new Date(new Date().setHours(0, 0, 0, 0))) / 864e5);
+      const t = n === 0 ? "Aujourd'hui" : n === 1 ? "Demain" : dt.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric" });
+      return `<button type="button" data-d="${d}" aria-pressed="${d === aDay}">${t}</button>`;
+    }).join("");
+    $("aDays").querySelectorAll("button").forEach(b => b.onclick = () => { aDay = b.dataset.d; drawAccueil(); });
+    const items = up.filter(x => dkey(x.dt) === aDay).sort((p, q) => new Date(p.dt) - new Date(q.dt) || fame(p) - fame(q));
+    const by = []; items.forEach(x => { const h = hm(x), g = by[by.length - 1]; if (g && g.h === h) g.xs.push(x); else by.push({ h, xs: [x] }); });
+    const nowI = aDay !== todayKey() ? -1 : by.findIndex(g => g.xs.some(x => new Date(x.dt).getTime() > now - 2 * 3600e3));
+    $("aTl").innerHTML = by.length ? by.map((g, i) => `<div class="aslot${i === nowI ? " on" : ""}"><span class="ah">${g.h}</span><span class="adot"></span><div class="agrid">${g.xs.map(atile).join("")}</div></div>`).join("")
+      : `<p class="mempty">Aucun match programmé pour l'instant.</p>`;
   }
 
   // ---- fiche d'un match

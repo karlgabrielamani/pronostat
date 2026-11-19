@@ -405,17 +405,33 @@
     embKey = x.k;
   }
 
-  // ---- accueil : explication, match du jour, grosses stats du jour (tous sports)
+  // ---- accueil : fil horaire des matchs du jour, en tuiles
+  let aDay = null;
+  function atile(x) {
+    const past = new Date(x.dt).getTime() < Date.now();
+    const cand = [[x.pa, x.a], [x.pb, x.b]]; if (x.pd != null) cand.push([x.pd, null]);
+    const [p, w] = cand.sort((u, v) => v[0] - u[0])[0];
+    const nm = n => esc(x.sport === "NBA" ? bn(x, n) : short(x, n));
+    const lab = w == null ? "Match nul" : `${x.sport === "NBA" ? bn(x, w) : short(x, w)} gagne`;
+    return `<a class="atile${past ? " past" : ""}" href="#m/${encodeURIComponent(x.k)}"><span class="ac">${esc(compLabel(x))}${past ? " · Commencé" : ""}</span>
+      <span class="am">${nm(x.a)}<br><i>contre</i> ${nm(x.b)}</span><span class="ap"><b>${pct(p)}</b><small>${esc(lab)}</small></span></a>`;
+  }
   function drawAccueil() {
     load();
     const now = Date.now(), up = ALL.filter(x => !x.few && new Date(x.dt).getTime() > now - 2 * 3600e3);
-    const first = up.find(x => new Date(x.dt).getTime() > now);
-    const day = first ? dkey(first.dt) : todayKey();
-    const items = up.filter(x => dkey(x.dt) === day);
-    const motd = matchOfDay(items);
-    $("aMotd").innerHTML = motdCard(motd);
-    const st = statsOfDay(items, motd, 5);
-    $("aStats").innerHTML = st.length ? st.map(statRow).join("") : `<p class="empty">Pas de statistique marquante pour l'instant.</p>`;
+    const ds = [...new Set(up.map(x => dkey(x.dt)))].sort().slice(0, 6);
+    if (!ds.includes(aDay)) aDay = ds[0] || todayKey();
+    $("aDays").innerHTML = ds.map(d => {
+      const [y, m, dd] = d.split("-").map(Number), dt = new Date(y, m - 1, dd), n = Math.round((dt - new Date(new Date().setHours(0, 0, 0, 0))) / 864e5);
+      const t = n === 0 ? "Aujourd'hui" : n === 1 ? "Demain" : dt.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric" });
+      return `<button type="button" data-d="${d}" aria-pressed="${d === aDay}">${t}</button>`;
+    }).join("");
+    $("aDays").querySelectorAll("button").forEach(b => b.onclick = () => { aDay = b.dataset.d; drawAccueil(); });
+    const items = up.filter(x => dkey(x.dt) === aDay).sort((p, q) => new Date(p.dt) - new Date(q.dt) || fame(p) - fame(q));
+    const by = []; items.forEach(x => { const h = hm(x), g = by[by.length - 1]; if (g && g.h === h) g.xs.push(x); else by.push({ h, xs: [x] }); });
+    const nowI = aDay !== todayKey() ? -1 : by.findIndex(g => g.xs.some(x => new Date(x.dt).getTime() > now - 2 * 3600e3));
+    $("aTl").innerHTML = by.length ? by.map((g, i) => `<div class="aslot${i === nowI ? " on" : ""}"><span class="ah">${g.h}</span><span class="adot"></span><div class="agrid">${g.xs.map(atile).join("")}</div></div>`).join("")
+      : `<p class="mempty">Aucun match programmé pour l'instant.</p>`;
   }
 
   // ---- fiche d'un match
