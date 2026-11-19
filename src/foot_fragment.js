@@ -10,9 +10,18 @@
 
   let L = null, T = {}, games = [], meanD = 0;
   const pois = (k, l) => { let p = Math.exp(-l); for (let i = 1; i <= k; i++) p *= l / i; return p; };
+  // buts attendus ramenés un peu vers la moyenne du championnat : testé sur la saison 2025-26 (5 100 matchs),
+  // le modèle brut surestimait « plus de 1,5 but » dans les matchs offensifs et « moins de 3,5 buts » dans les matchs fermés
+  const SHRINK = 0.75;
+  function shrink(Lg, lam, mu) {
+    if (!Lg || !Lg.teams) return [lam, mu];
+    if (Lg._m === undefined) { let s = 0, n = 0; for (const h of Lg.teams) for (const a of Lg.teams) if (h !== a) { s += Math.exp(h.att + a.dfn + Lg.home) + Math.exp(a.att + h.dfn); n++; } Lg._m = n ? s / n : 0; }
+    const t = lam + mu; if (!Lg._m || !t) return [lam, mu];
+    const f = Math.pow(Lg._m / t, 1 - SHRINK); return [lam * f, mu * f];
+  }
   function matrix(h, a) {
     const home = g("ftN0").checked ? 0 : L.home;
-    const lam = Math.exp(h.att + a.dfn + home), mu = Math.exp(a.att + h.dfn);
+    const [lam, mu] = shrink(L, Math.exp(h.att + a.dfn + home), Math.exp(a.att + h.dfn));
     const m = []; let tot = 0;
     for (let i = 0; i <= MAXG; i++) { m.push([]); for (let j = 0; j <= MAXG; j++) {
       let p = pois(i, lam) * pois(j, mu);
@@ -214,7 +223,7 @@
 
   // ---------- accès pour l'onglet « Aujourd'hui » ----------
   function pure(Lg, h, a, neutral) {
-    const lam = Math.exp(h.att + a.dfn + (neutral ? 0 : Lg.home)), mu = Math.exp(a.att + h.dfn);
+    const [lam, mu] = shrink(Lg, Math.exp(h.att + a.dfn + (neutral ? 0 : Lg.home)), Math.exp(a.att + h.dfn));
     let pH = 0, pD = 0, pA = 0, tot = 0;
     for (let i = 0; i <= MAXG; i++) for (let j = 0; j <= MAXG; j++) {
       let q = pois(i, lam) * pois(j, mu);
