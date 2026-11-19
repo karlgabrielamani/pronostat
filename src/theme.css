@@ -5,11 +5,11 @@
   --f-display: "Quicksand", "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif; --f-body: var(--f-display);
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --bg: #0F1114; --surface: #1A1D22; --ink: #F1F2F4; --ink-2: #C9CDD4; --ink-3: #9AA1AC; --line: #2A2E35; --line2: #3A3F47;
-  --a: #6E9BEB; --b: #F08A4B; --hot: #F0474F; --grass: #4FBF8E; --clay: #E38A57; --hard: #6E9BEB; --soft-a: #1C2A40; --soft-b: #3A2418; --track: #262A31; color-scheme: dark; } }
+  --bg: #0B0B0C; --surface: #000000; --ink: #F3F4F6; --ink-2: #C9CDD4; --ink-3: #8E939C; --line: #1F2023; --line2: #2A2B2F;
+  --a: #6E9BEB; --b: #F08A4B; --hot: #F0474F; --grass: #4FBF8E; --clay: #E38A57; --hard: #6E9BEB; --soft-a: #141B26; --soft-b: #2A1214; --track: #1C1D20; color-scheme: dark; } }
 :root[data-theme="dark"] {
-  --bg: #0F1114; --surface: #1A1D22; --ink: #F1F2F4; --ink-2: #C9CDD4; --ink-3: #9AA1AC; --line: #2A2E35; --line2: #3A3F47;
-  --a: #6E9BEB; --b: #F08A4B; --hot: #F0474F; --grass: #4FBF8E; --clay: #E38A57; --hard: #6E9BEB; --soft-a: #1C2A40; --soft-b: #3A2418; --track: #262A31; color-scheme: dark; }
+  --bg: #0B0B0C; --surface: #000000; --ink: #F3F4F6; --ink-2: #C9CDD4; --ink-3: #8E939C; --line: #1F2023; --line2: #2A2B2F;
+  --a: #6E9BEB; --b: #F08A4B; --hot: #F0474F; --grass: #4FBF8E; --clay: #E38A57; --hard: #6E9BEB; --soft-a: #141B26; --soft-b: #2A1214; --track: #1C1D20; color-scheme: dark; }
 
 body { font-family: var(--f-body); font-weight: 500; background: var(--bg); color: var(--ink); }
 h1, h2, .pname, .pct, .vs, .tabs a, .eyebrow, .jday, th, .lg, .pick label, details.more > summary { font-family: var(--f-body); text-transform: none; letter-spacing: -0.01em; }
@@ -32,7 +32,7 @@ h2 { font-size: 18px; font-weight: 700; }
 .tabs a[aria-current="page"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
 
 /* cartes */
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 16px; gap: 14px; box-shadow: none; }
+.card { background: var(--card, var(--surface)); border: 1px solid var(--line); border-radius: 16px; padding: 16px; gap: 14px; box-shadow: none; }
 .eyebrow { font-size: 15px; font-weight: 700; color: var(--ink); }
 .eyebrow span { font-weight: 500; color: var(--ink-3); font-size: 13px; }
 
