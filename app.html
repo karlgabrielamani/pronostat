@@ -4735,10 +4735,9 @@ const Combo = (() => {
     const fit = (t, max, w, s, min = 24) => { let z = s; x.font = F(w, z); while (x.measureText(t).width > max && z > min) { z -= 2; x.font = F(w, z); } return z; };
     const up = t => String(t).toLocaleUpperCase(window.I18N && I18N.lang === "nl" ? "nl" : "fr");
     const rr = (X, Y, w, h, r, col) => { x.beginPath(); x.roundRect(X, Y, w, h, r); x.fillStyle = col; x.fill(); };
-    const sk = (t, cx, y, col) => { x.save(); x.translate(cx, y); x.transform(1, 0, -0.12, 1, 0, 0); x.fillStyle = col; x.textAlign = "center"; x.fillText(t, 0, 0); x.restore(); };
+    const sk = (t, cx, y, col) => { x.save(); x.translate(cx, y); x.font = x.font.replace(/^700/, "800"); x.fillStyle = col; x.textAlign = "center"; x.fillText(t, 0, 0); x.restore(); };
     // fond blanc, bandes grises, coin rouge
-    x.fillStyle = "#FFFFFF"; x.fillRect(0, 0, W, H); x.fillStyle = "#F4F5F7";
-    [[-200, 260], [420, 120], [760, 200]].forEach(([X0, w]) => { x.beginPath(); x.moveTo(X0, 0); x.lineTo(X0 + w, 0); x.lineTo(X0 + w - 520, H); x.lineTo(X0 - 520, H); x.closePath(); x.fill(); });
+    x.fillStyle = "#FFFFFF"; x.fillRect(0, 0, W, H);
     x.fillStyle = "#D0202E"; x.beginPath(); x.moveTo(W, H - 220); x.lineTo(W, H); x.lineTo(W - 220, H); x.closePath(); x.fill();
     // en-tête
     rr(60, 56, 76, 76, 20, "#D0202E"); const BG = '800 54px "Bricolage Grotesque", Inter, sans-serif';
@@ -4747,12 +4746,12 @@ const Combo = (() => {
     const comp = D.comp || S.sport; x.font = F(700, 28); const cw = Math.min(x.measureText(comp).width + 40, 420);
     rr(W - 60 - cw, 70, cw, 52, 26, "#EEF0F3"); x.fillStyle = "#3A404B"; x.textAlign = "center"; fit(comp, cw - 30, 700, 28, 18); x.fillText(comp, W - 60 - cw / 2, 97);
     // bandeau du match
-    x.save(); x.translate(0, 180); x.beginPath(); x.moveTo(40, 0); x.lineTo(W - 20, 0); x.lineTo(W - 40, 100); x.lineTo(20, 100); x.closePath(); x.fillStyle = "#14161A"; x.fill(); x.restore();
-    const vs = up(D.a) + "  –  " + up(D.b); x.fillStyle = "#FFFFFF"; fit(vs, W - 140, 700, 54, 28); x.fillText(vs, W / 2, 232);
+    x.fillStyle = "#E5E7EB"; x.fillRect(60, 172, W - 120, 3);
+    const vs = D.a + "  –  " + D.b; x.fillStyle = "#14161A"; fit(vs, W - 120, 700, 52, 28); x.fillText(vs, W / 2, 238);
     x.textBaseline = "alphabetic";
     // MON PRONO
     const pi = mine === "1" ? 0 : mine === "N" ? 1 : 2, pl = pi === 1 ? tr("Match nul") : `${pi === 0 ? D.a : D.b} ${tr("gagne")}`;
-    x.save(); x.translate(W / 2, 350); x.transform(1, 0, -0.12, 1, 0, 0); x.font = F(700, 40); const lw = x.measureText(up(tr("Mon prono"))).width + 60;
+    x.save(); x.translate(W / 2, 350); x.font = F(700, 36); const lw = x.measureText(up(tr("Mon prono"))).width + 60;
     x.beginPath(); x.roundRect(-lw / 2, -44, lw, 64, 12); x.fillStyle = "#D0202E"; x.fill(); x.fillStyle = "#FFFFFF"; x.textAlign = "center"; x.fillText(up(tr("Mon prono")), 0, 0); x.restore();
     const big = up(pl), words = big.split(" "), lines = [""];
     x.font = F(700, 124); const one = fit(big, W - 120, 700, 124, 84) > 84 || x.measureText(big).width <= W - 120;
@@ -4764,9 +4763,9 @@ const Combo = (() => {
     rr(sx, cy, cwd, 124, 24, "#FDECEE"); x.fillStyle = "#D0202E"; x.font = F(700, 64); x.textAlign = "center"; x.fillText(Math.round(D.p[pi] * 100) + " %", sx + cwd / 2, cy + 72);
     x.fillStyle = "#9B1B24"; fit(up(tr("selon Pronolink")), cwd - 40, 700, 24, 16); x.fillText(up(tr("selon Pronolink")), sx + cwd / 2, cy + 108);
     if (hasV) {
-      const X2 = sx + cwd + gx; rr(X2, cy, cwd, 124, 24, "#14161A");
-      x.fillStyle = "#FFFFFF"; x.font = F(700, 64); x.fillText(Math.round(C.get(mine) * 100) + " %", X2 + cwd / 2, cy + 72);
-      x.fillStyle = "rgba(255,255,255,.78)"; const t = up(tr("des votants Pronolink")); fit(t, cwd - 40, 700, 22, 14); x.fillText(t, X2 + cwd / 2, cy + 108);
+      const X2 = sx + cwd + gx; rr(X2, cy, cwd, 124, 24, "#F1F2F4");
+      x.fillStyle = "#14161A"; x.font = F(700, 64); x.fillText(Math.round(C.get(mine) * 100) + " %", X2 + cwd / 2, cy + 72);
+      x.fillStyle = "#5B6270"; const t = up(tr("des votants Pronolink")); fit(t, cwd - 40, 700, 22, 14); x.fillText(t, X2 + cwd / 2, cy + 108);
     }
     y = cy + 124;
     // mon combiné (événements cochés par le joueur)
@@ -4780,15 +4779,19 @@ const Combo = (() => {
       });
       const mm = String(D.selTxt || "").match(/(\d+(?:[.,]\d+)?)\s*%/), pj = sel.length > 1 && mm ? parseFloat(mm[1].replace(",", ".")) / 100 : 0; if (pj) { x.fillStyle = "#5B6270"; x.font = F(700, 30); x.textAlign = "center"; x.fillText(up(tr("Ensemble")) + " : " + Math.round(pj * 100) + " %", W / 2, y + 26); y += 50; }
     } else {
-      // chances 1 · N · 2, même style que le combiné
+      // chances : barre unique, le prono du joueur en rouge, le reste en gris clair
       const parts = S.sport === "Football" ? [[D.a, D.p[0], 0], [tr("Nul"), D.p[1], 1], [D.b, D.p[2], 2]] : [[D.a, D.p[0], 0], [D.b, D.p[2], 2]];
-      y += 60;
-      parts.forEach(([l, p, k]) => {
-        const on = k === pi;
-        rr(80, y, W - 160, 88, 20, "#FFFFFF"); x.strokeStyle = on ? "#D0202E" : "#E4E6EA"; x.lineWidth = on ? 4 : 3; x.beginPath(); x.roundRect(80, y, W - 160, 88, 20); x.stroke();
-        x.fillStyle = "#14161A"; x.textAlign = "left"; fit(l, W - 420, 700, 36, 20); x.fillText(l, 116, y + 57);
-        x.fillStyle = "#D0202E"; x.font = F(700, 42); x.textAlign = "right"; x.fillText(Math.round(p * 100) + " %", W - 116, y + 59); y += 102;
+      y += 80; const BX = 80, BW = W - 160, gap = 8, BH = 104, n = parts.length, tot = parts.reduce((t, q) => t + Math.max(q[1], .12), 0);
+      let bx = BX; const avail = BW - gap * (n - 1);
+      parts.forEach(([l, p, k], i) => {
+        const w = avail * Math.max(p, .12) / tot, on = k === pi, r = 26, rs = 8;
+        x.beginPath(); x.roundRect(bx, y, w, BH, i === 0 ? [r, rs, rs, r] : i === n - 1 ? [rs, r, r, rs] : rs); x.fillStyle = on ? "#D0202E" : (n === 3 && i === 1 ? "#E2E4E8" : "#F1F2F4"); x.fill();
+        x.fillStyle = on ? "#FFFFFF" : "#14161A"; x.font = F(800, n === 3 ? 40 : 46); x.textAlign = i === 0 ? "left" : i === n - 1 ? "right" : "center";
+        const tx = i === 0 ? bx + 26 : i === n - 1 ? bx + w - 26 : bx + w / 2; x.fillText(Math.round(p * 100) + " %", tx, y + BH / 2 + 15);
+        x.fillStyle = on ? "#14161A" : "#5B6270"; fit(l, w - 10, 700, 28, 16); x.fillText(l, i === 0 ? bx + 4 : i === n - 1 ? bx + w - 4 : bx + w / 2, y + BH + 42);
+        bx += w + gap;
       });
+      y += BH + 60;
     }
     x.font = F(700, 96); fit(up(tr("Et vous ?")), W - 160, 700, 96, 40); sk(up(tr("Et vous ?")), W / 2, Math.min(Math.max(y + 130, 1150), 1250), "#D0202E");
     x.fillStyle = "#5B6270"; x.font = F(600, 28); x.textAlign = "center"; x.fillText(SITE.replace(/^https:\/\//, "").replace(/\/$/, ""), W / 2, 1316);
