@@ -233,7 +233,7 @@ landing = head("Pronolink · Probabilités foot, tennis et NBA",
                f"Les probabilités de chaque match, événement par événement : football, tennis et NBA, recalculées chaque matin.",
                fonts + "\n<style>" + THEME + "</style>\n" + css) + f"""
 <div class="lp">
-  <header class="appbar"><a class="logo" href="./"><i>{ICON}</i>Pronolink</a><a class="open" href="app.html">Les matchs</a></header>
+  <header class="appbar"><a class="logo" href="./"><i>P</i>Pronolink</a><a class="open" href="app.html">Les matchs</a></header>
   <section class="hero">
     <h1>Les probabilités de chaque match, <em>événement par événement.</em></h1>
     <p>Football, tennis et NBA. Chaque match est simulé 10 000 fois : le pourcentage indique combien de fois chaque événement s'est produit.</p>

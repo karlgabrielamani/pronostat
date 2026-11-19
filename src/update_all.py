@@ -250,7 +250,7 @@ def nba():
 
 
 # ------------------------------------------------------------------ PAGE
-FONT_LINK = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">'
+FONT_LINK = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Inter:wght@400;500;600;700&display=swap">'
 
 
 def logos_js():
@@ -320,13 +320,13 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
     t = t.replace("<title>Pronos Tennis ATP</title>", "<title>Pronolink</title>")
     t = t.replace('<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap">', FONT_LINK, 1)   # police Quicksand
     j = t.index("</style>"); t = t[:j] + open(f"{SRC}/theme.css").read() + open(f"{SRC}/home.css").read() + t[j:]
-    nav = ('<header class="appbar"><a class="logo" href="#jour"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V13 M12 19 V5 M18 19 V10"/></svg></i>Pronolink</a></header>'
+    nav = ('<header class="appbar"><a class="logo" href="#jour"><i>P</i>Pronolink</a></header>'
            '<nav class="tabs" aria-label="Sport"><a href="#jour" id="tab-jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10 H20.5 M8 3 V7 M16 3 V7"/></svg>Aujourd&#39;hui</a><a href="#foot" id="tab-foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7 L16 10 L14.5 15 H9.5 L8 10 Z"/></svg>Football</a>'
            '<a href="#tennis" id="tab-tennis"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5 6 C10 9 10 15 5 18 M19 6 C14 9 14 15 19 18"/></svg>Tennis</a><a href="#basket" id="tab-basket"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12 H21 M12 3 V21 M5.5 5.5 C9 9 9 15 5.5 18.5 M18.5 5.5 C15 9 15 15 18.5 18.5"/></svg>NBA</a><a href="#fav" id="tab-fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a></nav>'
            '<nav class="sports" aria-label="Sports"><a href="#foot">Football</a><a href="#tennis">Tennis</a><a href="#basket">NBA</a></nav>\n')
     # mise en page 2026-11 : barre du haut (web) + barre du bas (téléphone), remplace la barre ci-dessus
     nav = ('<header class="appbar"><button class="hback" type="button" aria-label="Retour"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button>'
-           '<a class="logo" href="#jour"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V14 M12 19 V10 M18 19 V5"/></svg></i>Pronolink</a>'
+           '<a class="logo" href="#jour"><i>P</i>Pronolink</a>'
            '<nav class="topnav" aria-label="Rubriques"><a href="#accueil" data-v="accueil">Accueil</a><a href="#jour" data-v="jour">Les matchs</a><a href="#fav" data-v="fav">Favoris</a></nav></header>'
            '<nav class="bnav" aria-label="Navigation"><a href="#accueil" data-v="accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7v9h-5.5v-5.5h-6V20H3.5z"/></svg>Accueil</a><a href="#jour" data-v="jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Matchs</a>'
            '<a href="#fav" data-v="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a>'

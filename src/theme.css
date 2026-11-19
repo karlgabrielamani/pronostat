@@ -22,8 +22,8 @@ h2 { font-size: 18px; font-weight: 700; }
 
 /* barre d'appli : logo + rubriques */
 .appbar { max-width: 760px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.logo { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
-.logo i { width: 32px; height: 32px; border-radius: 10px; background: var(--hot); display: grid; place-items: center; }
+.logo { display: flex; align-items: center; gap: 9px; font-family: "Bricolage Grotesque", Inter, system-ui, sans-serif; font-size: 23px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+.logo i { width: 32px; height: 32px; border-radius: 9px; background: var(--hot); color: #fff; font-style: normal; font-size: 22px; line-height: 1; display: grid; place-items: center; }
 .appbar .day { font-size: 14px; font-weight: 600; color: var(--ink-3); }
 .tabs { max-width: 760px; margin: 0 auto 16px; display: flex; gap: 8px; border: 0; overflow-x: auto; scrollbar-width: none; }
 .tabs a { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; color: var(--ink); background: var(--surface);

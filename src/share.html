@@ -89,7 +89,7 @@
   // ---- l'image à partager
   async function card(S, D, mine, opts, C) {
     const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
-    try { if (!document.getElementById("shFont")) { const l = document.createElement("link"); l.id = "shFont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,600;0,700;0,800;1,800&display=swap"; document.head.appendChild(l); await new Promise(r => { l.onload = r; l.onerror = r; setTimeout(r, 2500); }); } await Promise.all(["700 120px Inter", "600 40px Inter"].map(f => document.fonts.load(f))); } catch (e) {}
+    try { if (!document.getElementById("shFont")) { const l = document.createElement("link"); l.id = "shFont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Inter:ital,wght@0,600;0,700;0,800;1,800&display=swap"; document.head.appendChild(l); await new Promise(r => { l.onload = r; l.onerror = r; setTimeout(r, 2500); }); } await Promise.all(["700 120px Inter", "600 40px Inter", '800 54px "Bricolage Grotesque"'].map(f => document.fonts.load(f))); } catch (e) {}
     const F = (w, s) => `${w} ${s}px Inter, "Helvetica Neue", Arial, sans-serif`;
     const fit = (t, max, w, s, min = 24) => { let z = s; x.font = F(w, z); while (x.measureText(t).width > max && z > min) { z -= 2; x.font = F(w, z); } return z; };
     const up = t => String(t).toLocaleUpperCase(window.I18N && I18N.lang === "nl" ? "nl" : "fr");
@@ -100,9 +100,9 @@
     [[-200, 260], [420, 120], [760, 200]].forEach(([X0, w]) => { x.beginPath(); x.moveTo(X0, 0); x.lineTo(X0 + w, 0); x.lineTo(X0 + w - 520, H); x.lineTo(X0 - 520, H); x.closePath(); x.fill(); });
     x.fillStyle = "#D0202E"; x.beginPath(); x.moveTo(W, H - 220); x.lineTo(W, H); x.lineTo(W - 220, H); x.closePath(); x.fill();
     // en-tête
-    rr(60, 56, 76, 76, 20, "#D0202E"); x.strokeStyle = "#FFFFFF"; x.lineWidth = 10; x.lineCap = "round";
-    x.beginPath(); x.moveTo(82, 112); x.lineTo(82, 96); x.moveTo(98, 112); x.lineTo(98, 76); x.moveTo(114, 112); x.lineTo(114, 90); x.stroke();
-    x.fillStyle = "#14161A"; x.font = F(700, 48); x.textBaseline = "middle"; x.textAlign = "left"; x.fillText("Pronolink", 154, 96);
+    rr(60, 56, 76, 76, 20, "#D0202E"); const BG = '800 54px "Bricolage Grotesque", Inter, sans-serif';
+    x.fillStyle = "#FFFFFF"; x.font = BG; x.textBaseline = "middle"; x.textAlign = "center"; x.fillText("P", 98, 97);
+    x.fillStyle = "#14161A"; x.font = BG; x.textAlign = "left"; x.fillText("Pronolink", 154, 96);
     const comp = D.comp || S.sport; x.font = F(700, 28); const cw = Math.min(x.measureText(comp).width + 40, 420);
     rr(W - 60 - cw, 70, cw, 52, 26, "#EEF0F3"); x.fillStyle = "#3A404B"; x.textAlign = "center"; fit(comp, cw - 30, 700, 28, 18); x.fillText(comp, W - 60 - cw / 2, 97);
     // bandeau du match

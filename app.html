@@ -21,7 +21,7 @@
 <title>Pronolink</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* Layout : outil en une colonne — choix du match en haut, verdict, scénarios, puis classement Elo */
 :root {
@@ -276,8 +276,8 @@ h2 { font-size: 18px; font-weight: 700; }
 
 /* barre d'appli : logo + rubriques */
 .appbar { max-width: 760px; margin: 0 auto 8px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.logo { display: flex; align-items: center; gap: 8px; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
-.logo i { width: 32px; height: 32px; border-radius: 10px; background: var(--hot); display: grid; place-items: center; }
+.logo { display: flex; align-items: center; gap: 9px; font-family: "Bricolage Grotesque", Inter, system-ui, sans-serif; font-size: 23px; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); text-decoration: none; }
+.logo i { width: 32px; height: 32px; border-radius: 9px; background: var(--hot); color: #fff; font-style: normal; font-size: 22px; line-height: 1; display: grid; place-items: center; }
 .appbar .day { font-size: 14px; font-weight: 600; color: var(--ink-3); }
 .tabs { max-width: 760px; margin: 0 auto 16px; display: flex; gap: 8px; border: 0; overflow-x: auto; scrollbar-width: none; }
 .tabs a { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; font-weight: 700; color: var(--ink); background: var(--surface);
@@ -473,8 +473,8 @@ h1, h2 { letter-spacing: -0.02em; }
 .appbar { position: sticky; top: 0; z-index: 40; max-width: none; margin: 0; background: color-mix(in srgb, var(--surface) 94%, transparent);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
   padding: 14px max(20px, calc((100% - 1060px) / 2)); padding-top: calc(14px + env(safe-area-inset-top, 0px)); gap: 18px; justify-content: flex-start; }
-.logo { font-size: 24px; font-weight: 700; letter-spacing: -0.03em; gap: 10px; }
-.logo i { width: 34px; height: 34px; border-radius: 9px; background: var(--hot); color: #fff; }
+.logo { font-size: 25px; font-weight: 800; letter-spacing: -0.02em; gap: 10px; }
+.logo i { width: 34px; height: 34px; border-radius: 9px; background: var(--hot); color: #fff; font-size: 23px; }
 .logo i svg { width: 20px; height: 20px; }
 .topnav { display: flex; align-items: center; gap: 6px; padding-left: 18px; border-left: 1px solid var(--line); }
 .topnav a { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 7px 16px; border-radius: 8px; }
@@ -658,8 +658,8 @@ h1, h2 { letter-spacing: -0.02em; }
   .appbar { padding: 10px 12px; padding-top: calc(10px + env(safe-area-inset-top, 0px)); gap: 6px; border-bottom: 1px solid var(--line); }
   .topnav { display: none; }
   .appbar .sbtn { width: 34px; height: 34px; }
-  .logo { font-size: 22px; gap: 8px; }
-  .logo i { background: none; color: var(--hot); width: 26px; height: 26px; }
+  .logo { font-size: 24px; gap: 9px; }
+  .logo i { width: 32px; height: 32px; font-size: 22px; }
   .logo i svg { width: 24px; height: 24px; stroke-width: 3.4; }
   body.v-match .hback { display: grid; }
   body.v-match .dback { display: none; }
@@ -881,7 +881,7 @@ details.more > summary { font-weight: 600; }
 #ftB, #nbB, #pB, #elB, #wnB { border-left: 4px solid var(--p2) !important; }
 </style>
 
-<header class="appbar"><button class="hback" type="button" aria-label="Retour"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button><a class="logo" href="#jour"><i><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 19 V14 M12 19 V10 M18 19 V5"/></svg></i>Pronolink</a><nav class="topnav" aria-label="Rubriques"><a href="#accueil" data-v="accueil">Accueil</a><a href="#jour" data-v="jour">Les matchs</a><a href="#fav" data-v="fav">Favoris</a></nav></header><nav class="bnav" aria-label="Navigation"><a href="#accueil" data-v="accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7v9h-5.5v-5.5h-6V20H3.5z"/></svg>Accueil</a><a href="#jour" data-v="jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Matchs</a><a href="#fav" data-v="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a></nav>
+<header class="appbar"><button class="hback" type="button" aria-label="Retour"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button><a class="logo" href="#jour"><i>P</i>Pronolink</a><nav class="topnav" aria-label="Rubriques"><a href="#accueil" data-v="accueil">Accueil</a><a href="#jour" data-v="jour">Les matchs</a><a href="#fav" data-v="fav">Favoris</a></nav></header><nav class="bnav" aria-label="Navigation"><a href="#accueil" data-v="accueil"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 11 12 4l8.5 7v9h-5.5v-5.5h-6V20H3.5z"/></svg>Accueil</a><a href="#jour" data-v="jour"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Matchs</a><a href="#fav" data-v="fav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5 L14.6 8.9 L20.5 9.6 L16.1 13.6 L17.3 19.5 L12 16.6 L6.7 19.5 L7.9 13.6 L3.5 9.6 L9.4 8.9 Z"/></svg>Favoris</a></nav>
 <div class="wrap" id="view-foot" hidden>
   <header class="vh">
     <h1>Football</h1>
@@ -1371,6 +1371,7 @@ window.I18N = (() => {
     ["Date / Heure", "Date / Time", "Datum / Tijd"],
     ["Les probabilités,", "Probabilities,", "Kansen,"],
     ["simplement.", "made simple.", "eenvoudig."],
+    ["Chaque événement,", "Every event,", "Elke gebeurtenis,"], ["en chiffres.", "in numbers.", "in cijfers."],
     ["Football, tennis et NBA · # simulations par match", "Football, tennis and NBA · # simulations per match", "Voetbal, tennis en NBA · # simulaties per wedstrijd"],
     ["Tous les sports", "All sports", "Alle sporten"],
     ["Plus de #,# buts", "Over #.# goals", "Meer dan #,# doelpunten"],
@@ -3181,7 +3182,7 @@ table(); render();
 
 <div class="wrap acc" id="view-accueil" hidden>
   <section class="hero">
-    <h1>Les probabilités, <em>simplement.</em></h1>
+    <h1>Chaque événement, <em>en chiffres.</em></h1>
     <p class="sub">Pronolink calcule les chances de chaque match de football, de tennis et de basket à partir des résultats passés.</p>
   </section>
   <div class="hgrid">
@@ -3193,7 +3194,7 @@ table(); render();
 
 <div class="wrap home" id="view-jour" hidden>
   <section class="hero dk">
-    <h1>Les probabilités, <em>simplement.</em></h1>
+    <h1>Chaque événement, <em>en chiffres.</em></h1>
     <p class="sub">Football, tennis et basket</p>
   </section>
   <div class="hbar dk">
@@ -4656,7 +4657,7 @@ const Combo = (() => {
   // ---- l'image à partager
   async function card(S, D, mine, opts, C) {
     const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
-    try { if (!document.getElementById("shFont")) { const l = document.createElement("link"); l.id = "shFont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,600;0,700;0,800;1,800&display=swap"; document.head.appendChild(l); await new Promise(r => { l.onload = r; l.onerror = r; setTimeout(r, 2500); }); } await Promise.all(["700 120px Inter", "600 40px Inter"].map(f => document.fonts.load(f))); } catch (e) {}
+    try { if (!document.getElementById("shFont")) { const l = document.createElement("link"); l.id = "shFont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Inter:ital,wght@0,600;0,700;0,800;1,800&display=swap"; document.head.appendChild(l); await new Promise(r => { l.onload = r; l.onerror = r; setTimeout(r, 2500); }); } await Promise.all(["700 120px Inter", "600 40px Inter", '800 54px "Bricolage Grotesque"'].map(f => document.fonts.load(f))); } catch (e) {}
     const F = (w, s) => `${w} ${s}px Inter, "Helvetica Neue", Arial, sans-serif`;
     const fit = (t, max, w, s, min = 24) => { let z = s; x.font = F(w, z); while (x.measureText(t).width > max && z > min) { z -= 2; x.font = F(w, z); } return z; };
     const up = t => String(t).toLocaleUpperCase(window.I18N && I18N.lang === "nl" ? "nl" : "fr");
@@ -4667,9 +4668,9 @@ const Combo = (() => {
     [[-200, 260], [420, 120], [760, 200]].forEach(([X0, w]) => { x.beginPath(); x.moveTo(X0, 0); x.lineTo(X0 + w, 0); x.lineTo(X0 + w - 520, H); x.lineTo(X0 - 520, H); x.closePath(); x.fill(); });
     x.fillStyle = "#D0202E"; x.beginPath(); x.moveTo(W, H - 220); x.lineTo(W, H); x.lineTo(W - 220, H); x.closePath(); x.fill();
     // en-tête
-    rr(60, 56, 76, 76, 20, "#D0202E"); x.strokeStyle = "#FFFFFF"; x.lineWidth = 10; x.lineCap = "round";
-    x.beginPath(); x.moveTo(82, 112); x.lineTo(82, 96); x.moveTo(98, 112); x.lineTo(98, 76); x.moveTo(114, 112); x.lineTo(114, 90); x.stroke();
-    x.fillStyle = "#14161A"; x.font = F(700, 48); x.textBaseline = "middle"; x.textAlign = "left"; x.fillText("Pronolink", 154, 96);
+    rr(60, 56, 76, 76, 20, "#D0202E"); const BG = '800 54px "Bricolage Grotesque", Inter, sans-serif';
+    x.fillStyle = "#FFFFFF"; x.font = BG; x.textBaseline = "middle"; x.textAlign = "center"; x.fillText("P", 98, 97);
+    x.fillStyle = "#14161A"; x.font = BG; x.textAlign = "left"; x.fillText("Pronolink", 154, 96);
     const comp = D.comp || S.sport; x.font = F(700, 28); const cw = Math.min(x.measureText(comp).width + 40, 420);
     rr(W - 60 - cw, 70, cw, 52, 26, "#EEF0F3"); x.fillStyle = "#3A404B"; x.textAlign = "center"; fit(comp, cw - 30, 700, 28, 18); x.fillText(comp, W - 60 - cw / 2, 97);
     // bandeau du match
