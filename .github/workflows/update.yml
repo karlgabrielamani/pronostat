@@ -2,6 +2,7 @@ name: Mise à jour quotidienne
 on:
   schedule:
     - cron: "39 5 * * *"   # chaque matin vers 6 h 39 (heure d'Amsterdam en hiver)
+    - cron: "47 15 * * *"  # et l'après-midi, pour prendre les calendriers publiés dans la journée
   workflow_dispatch:
 permissions:
   contents: write

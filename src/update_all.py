@@ -94,6 +94,14 @@ def foot():
         T.sort(key=lambda x: (-x["pts"], -(x["gf"] - x["ga"]), -x["gf"]))
         games = [dict(dt=f"{r.Date.date()}T{r.Time if isinstance(r.Time, str) else '15:00'}", home=r.HomeTeam, away=r.AwayTeam)
                  for r in fx[fx.Div == div].sort_values(["Date", "Time"]).itertuples() if r.HomeTeam in tab and r.AwayTeam in tab]
+        try:                                     # secours : matchs à venir pris sur ESPN si football-data ne les a pas encore publiés
+            import espn_fix
+            have = {(g["home"], g["away"]) for g in games}
+            extra = [dict(dt=f"{d.date()}T{t}", home=h, away=a) for d, t, h, a in espn_fix.fixtures(div, teams, TODAY) if (h, a) not in have]
+            if extra:
+                games = sorted(games + extra, key=lambda g: g["dt"]); print(f"  foot {div:4s} +{len(extra)} matchs (ESPN)")
+        except Exception as e:
+            print("  ATTENTION calendrier ESPN", div, repr(e))
         leagues[div] = dict(name=name, country=country, home=round(float(m.params["home_adv"]), 4), rho=round(float(m.params["rho"]), 4),
                             teams=T, games=games, last=str(cur.Date.max().date()), **({"x": lgx} if lgx else {}))
         print(f"  foot {div:4s} {len(T)} équipes, {len(games)} matchs à venir, dernier résultat {leagues[div]['last']}")
