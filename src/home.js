@@ -205,21 +205,25 @@
   const go = x => { location.hash = "#m/" + encodeURIComponent(x.k); };
 
   // ---- carte téléphone
-  function mcard(x) {
+  function mcard(x, showDay) {
     const past = new Date(x.dt).getTime() < Date.now();
     const cr = x.sport !== "Tennis";
     return `<div class="mcard${past ? " past" : ""}" data-k="${encodeURIComponent(x.k)}" role="link" tabindex="0">
-      <div class="top"><span class="tm">${hm(x)}${past ? "<small>Commencé</small>" : ""}</span>
+      <div class="top"><span class="tm">${showDay ? `<small class="dd">${new Date(x.dt).toLocaleDateString("fr-FR", { weekday: "short", day: "numeric" })}</small>` : ""}${hm(x)}${past ? "<small>Commencé</small>" : ""}</span>
         <span class="mt">${cr ? crest(x.a, "sm") : ""}<span class="n">${esc(x.sport === "NBA" ? bn(x, x.a) : short(x, x.a))}</span><span class="dash">—</span><span class="n">${esc(x.sport === "NBA" ? bn(x, x.b) : short(x, x.b))}</span>${cr ? crest(x.b, "sm") : ""}</span>
         ${Fav.star(x.sport, x.dt, x.a, x.b, x.comp)}</div>
       ${probsInline(x, "pbox")}</div>`;
   }
   function groupKey(x) {
-    if (x.sport === "Foot") return { id: "F|" + x.lg, order: prio(x), html: x.nat ? `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc(x.comp)}</b></span>` : `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc((x.country || "").toUpperCase())}</b> · ${esc(x.comp)}</span>` };
+    if (x.sport === "Foot") return { id: "F|" + x.lg, order: prio(x), html: `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc(x.comp)}</b></span>` };
     if (x.sport === "Tennis") return { id: "T|" + x.tour + x.event, order: x.tour === "ATP" ? 0 : 1, html: `<span><b>${esc(x.tour || "")}</b> · ${esc(x.event || x.comp)}${x.round ? " · " + esc(x.round) : ""}</span>` };
     return { id: "B|" + x.comp, order: x.comp === "NBA" ? 0 : 1, html: `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span><span><b>${esc(x.comp || "NBA")}</b></span>` };
   }
   function groupedList(items, withDays) {
+    if (withDays) {                                         // plusieurs jours : une seule fois chaque compétition, le jour dans la ligne
+      const groups = {}; items.forEach(x => { const g = groupKey(x); (groups[g.id] = groups[g.id] || { g, xs: [] }).xs.push(x); });
+      return Object.values(groups).sort((p, q) => new Date(p.xs[0].dt) - new Date(q.xs[0].dt)).map(({ g, xs }) => `<div class="grp">${g.html}</div>` + xs.map(x => mcard(x, true)).join("")).join("");
+    }
     const out = []; let lastDay = "";
     const byDay = {}; items.forEach(x => (byDay[dkey(x.dt)] = byDay[dkey(x.dt)] || []).push(x));
     for (const d of Object.keys(byDay).sort()) {
