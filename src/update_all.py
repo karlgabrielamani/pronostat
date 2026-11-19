@@ -100,12 +100,13 @@ def foot():
         T = [dict(name=t, att=round(float(m.params["att"].get(t, 0)), 4), dfn=round(float(m.params["dfn"].get(t, 0)), 4),
                   pts=3 * tab[t]["w"] + tab[t]["d"], **tab[t], form=form[t], **tx.get(t, {})) for t in teams]
         T.sort(key=lambda x: (-x["pts"], -(x["gf"] - x["ga"]), -x["gf"]))
-        games = [dict(dt=f"{r.Date.date()}T{r.Time if isinstance(r.Time, str) else '15:00'}", home=r.HomeTeam, away=r.AwayTeam)
+        utc = lambda d, t: pd.Timestamp(f"{d} {t}").tz_localize("Europe/London").tz_convert("UTC").strftime("%Y-%m-%dT%H:%M")   # heures anglaises -> UTC (l'appli lit l'heure en UTC)
+        games = [dict(dt=utc(r.Date.date(), r.Time if isinstance(r.Time, str) else "15:00"), home=r.HomeTeam, away=r.AwayTeam)
                  for r in fx[fx.Div == div].sort_values(["Date", "Time"]).itertuples() if r.HomeTeam in tab and r.AwayTeam in tab]
         try:                                     # secours : matchs à venir pris sur ESPN si football-data ne les a pas encore publiés
             import espn_fix
             have = {(g["home"], g["away"]) for g in games}
-            extra = [dict(dt=f"{d.date()}T{t}", home=h, away=a) for d, t, h, a in espn_fix.fixtures(div, teams, TODAY) if (h, a) not in have]
+            extra = [dict(dt=utc(d.date(), t), home=h, away=a) for d, t, h, a in espn_fix.fixtures(div, teams, TODAY) if (h, a) not in have]
             if extra:
                 games = sorted(games + extra, key=lambda g: g["dt"]); print(f"  foot {div:4s} +{len(extra)} matchs (ESPN)")
         except Exception as e:
