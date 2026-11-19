@@ -443,5 +443,8 @@ details.more > summary { font-weight: 600; }
 .atile .am { font-weight: 600; font-size: 13px; line-height: 1.3; overflow-wrap: anywhere; }
 .atile .am i { font-style: normal; color: var(--ink-3, #6B7280); font-weight: 500; }
 .atile .ap b { display: block; font-size: 26px; font-weight: 800; color: var(--hot); line-height: 1.1; letter-spacing: -.01em; }
-.atile .ap small { font-size: 11px; color: var(--ink-3, #6B7280); }
+.atile .ap small { display: block; font-size: 11px; line-height: 1.3; color: var(--ink-3, #6B7280); }
 .atile.past { opacity: .6; }
+
+.adesk { display: none !important; }
+@media (min-width: 761px) { .amob { display: none; } .adesk { display: grid !important; } }

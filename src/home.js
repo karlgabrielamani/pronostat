@@ -432,6 +432,12 @@
     const nowI = aDay !== todayKey() ? -1 : by.findIndex(g => g.xs.some(x => new Date(x.dt).getTime() > now - 2 * 3600e3));
     $("aTl").innerHTML = by.length ? by.map((g, i) => `<div class="aslot${i === nowI ? " on" : ""}"><span class="ah">${g.h}</span><span class="adot"></span><div class="agrid">${g.xs.map(atile).join("")}</div></div>`).join("")
       : `<p class="mempty">Aucun match programmé pour l'instant.</p>`;
+    // ordinateur : match du jour + stats du jour
+    const first = up.find(x => new Date(x.dt).getTime() > now), d0 = first ? dkey(first.dt) : todayKey();
+    const its = up.filter(x => dkey(x.dt) === d0), motd = matchOfDay(its);
+    $("aMotd").innerHTML = motdCard(motd);
+    const st = statsOfDay(its, motd, 5);
+    $("aStats").innerHTML = st.length ? st.map(statRow).join("") : `<p class="empty">Pas de statistique marquante pour l'instant.</p>`;
   }
 
   // ---- fiche d'un match
