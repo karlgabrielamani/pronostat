@@ -3599,7 +3599,8 @@ const Combo = (() => {
     if (f.length) return [...f].sort((p, q) => fame(p) - fame(q) || prio(p) - prio(q) || (q.str || 0) - (p.str || 0))[0];
     const r = items.filter(x => new Date(x.dt) > Date.now() - 2 * 3600e3);
     const pool2 = r.length ? r : items;
-    return [...pool2].sort((p, q) => Math.abs(p.pa - 0.5) - Math.abs(q.pa - 0.5))[0];
+    const fv = x => Math.abs(Math.max(x.pa, x.pb) - 0.62);            // un favori net, sans être joué d'avance
+    return [...pool2].sort((p, q) => fv(p) - fv(q))[0];
   }
   const setScore = (x, [s, p, w]) => `${short(x, w ? x.b : x.a)} ${w ? s.split("–").reverse().join("–") : s}`;
   function motdRows(x) {
@@ -3733,9 +3734,9 @@ const Combo = (() => {
     if (small()) {
       $("hList").innerHTML = items.length ? groupedList(items, multi) : wOff || BK[bc] || FL ? "" : `<p class="mempty">Aucun match ${sp === "Tennis" ? "de tennis" : sp === "NBA" ? "de basket" : "de football"} programmé pour l'instant.</p>`;
     } else {
-      const motd = matchOfDay(items);
+      const motd = matchOfDay(items.filter(accOk));
       $("hMotd").innerHTML = motdCard(motd);
-      const st = statsOfDay(items, motd);
+      const st = statsOfDay(items.filter(accOk), motd);
       $("hStats").innerHTML = st.length ? st.map(statRow).join("") : `<p class="empty">Pas de statistique marquante pour ces matchs.</p>`;
       const rest = items.filter(x => x !== motd);
       $("hTable").innerHTML = rest.length ? tableRows(rest) : `<p class="empty" style="padding:18px 16px">Pas d'autre match.</p>`;
