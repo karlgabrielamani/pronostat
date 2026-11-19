@@ -1465,7 +1465,7 @@ window.I18N = (() => {
     ["Et vous ?", "And you?", "En u?"],
     ["Résultat et buts", "Result and goals", "Uitslag en doelpunten"],
     ["En direct", "Live", "Live"], ["Chances maintenant :", "Chances now:", "Kansen nu:"], ["Fin", "FT", "Einde"],
-    ["Votre prono", "Your pick", "Uw voorspelling"], ["Mon prono", "My pick", "Mijn voorspelling"], ["Partager", "Share", "Delen"], ["Les joueurs :", "Players:", "Spelers:"],
+    ["Votre prono", "Your pick", "Uw voorspelling"], ["Mon prono", "My pick", "Mijn voorspelling"], ["Partager", "Share", "Delen"], ["Blanc", "White", "Wit"], ["Rouge", "Red", "Rood"], ["Les joueurs :", "Players:", "Spelers:"],
     ["contre", "vs", "tegen"], ["Et vous, vous en pensez quoi ?", "What do you think?", "Wat denkt u?"], ["Télécharger l'image", "Download the image", "Afbeelding downloaden"],
     ["Copier le texte", "Copy the text", "Tekst kopiëren"], ["Copié !", "Copied!", "Gekopieerd!"],
     ["Nul à la mi-temps", "Draw at half-time", "Gelijk bij de rust"], ["But en 1re période", "Goal in the 1st half", "Doelpunt in de 1e helft"], ["But en 2e période", "Goal in the 2nd half", "Doelpunt in de 2e helft"],
@@ -4656,6 +4656,9 @@ const Combo = (() => {
 .shv-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .shv-row a, .shv-row button { flex: 1 1 0; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; font: inherit; font-weight: 700; font-size: 14px; border-radius: 12px; border: 1px solid var(--line2); background: var(--surface); color: var(--ink); text-decoration: none; cursor: pointer; padding: 0 12px; white-space: nowrap; }
 .shv-row .main { background: var(--hot); border-color: var(--hot); color: #fff; }
+.shv-th { display: flex; gap: 4px; background: var(--track, #F1F2F4); border-radius: 12px; padding: 4px; }
+.shv-th button { flex: 1; font: inherit; font-weight: 700; font-size: 14px; border: 0; border-radius: 9px; padding: 9px; background: transparent; color: var(--ink-2, #4B5563); cursor: pointer; }
+.shv-th button[aria-pressed="true"] { background: #fff; color: var(--ink, #14161A); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
 </style>
 <script>
 // ---------- Mon prono, vote des joueurs et image à partager ----------
@@ -4727,91 +4730,97 @@ const Combo = (() => {
     draw();
   }
 
-  // ---- l'image à partager
-  async function card(S, D, mine, opts, C) {
-    const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
-    try { if (!document.getElementById("shFont")) { const l = document.createElement("link"); l.id = "shFont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Inter:ital,wght@0,600;0,700;0,800;1,800&display=swap"; document.head.appendChild(l); await new Promise(r => { l.onload = r; l.onerror = r; setTimeout(r, 2500); }); } await Promise.all(["700 120px Inter", "600 40px Inter", '800 54px "Bricolage Grotesque"'].map(f => document.fonts.load(f))); } catch (e) {}
-    const F = (w, s) => `${w} ${s}px Inter, "Helvetica Neue", Arial, sans-serif`;
-    const fit = (t, max, w, s, min = 24) => { let z = s; x.font = F(w, z); while (x.measureText(t).width > max && z > min) { z -= 2; x.font = F(w, z); } return z; };
+  // ---- l'image à partager : deux thèmes, « blanc » (comme l'app) et « rouge » (inversé)
+  let THEME = "blanc"; try { THEME = localStorage.getItem("pl-theme") || "blanc"; } catch (e) {}
+  async function card(S, D, mine, opts, C, theme) {
+    const RED = theme === "rouge", W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
+    try { if (!document.getElementById("shFont")) { const l = document.createElement("link"); l.id = "shFont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Inter:wght@600;700;800&display=swap"; document.head.appendChild(l); await new Promise(r => { l.onload = r; l.onerror = r; setTimeout(r, 2500); }); } await Promise.all(["800 120px Inter", "600 40px Inter", '800 54px "Bricolage Grotesque"'].map(f => document.fonts.load(f))); } catch (e) {}
+    const F = (w, z) => `${w} ${z}px Inter, "Helvetica Neue", Arial, sans-serif`;
     const up = t => String(t).toLocaleUpperCase(window.I18N && I18N.lang === "nl" ? "nl" : "fr");
+    const fit = (t, max, w, z, min = 20) => { x.font = F(w, z); while (x.measureText(t).width > max && z > min) { z -= 2; x.font = F(w, z); } return z; };
     const rr = (X, Y, w, h, r, col) => { x.beginPath(); x.roundRect(X, Y, w, h, r); x.fillStyle = col; x.fill(); };
-    const sk = (t, cx, y, col) => { x.save(); x.translate(cx, y); x.font = x.font.replace(/^700/, "800"); x.fillStyle = col; x.textAlign = "center"; x.fillText(t, 0, 0); x.restore(); };
-    // fond blanc, bandes grises, coin rouge
-    x.fillStyle = "#FFFFFF"; x.fillRect(0, 0, W, H);
-    x.fillStyle = "#D0202E"; x.beginPath(); x.moveTo(W, H - 220); x.lineTo(W, H); x.lineTo(W - 220, H); x.closePath(); x.fill();
-    // en-tête
-    rr(60, 56, 76, 76, 20, "#D0202E"); const BG = '800 54px "Bricolage Grotesque", Inter, sans-serif';
-    x.fillStyle = "#FFFFFF"; x.font = BG; x.textBaseline = "middle"; x.textAlign = "center"; x.fillText("P", 98, 97);
-    x.fillStyle = "#14161A"; x.font = BG; x.textAlign = "left"; x.fillText("Pronolink", 154, 96);
-    const comp = D.comp || S.sport; x.font = F(700, 28); const cw = Math.min(x.measureText(comp).width + 40, 420);
-    rr(W - 60 - cw, 70, cw, 52, 26, "#EEF0F3"); x.fillStyle = "#3A404B"; x.textAlign = "center"; fit(comp, cw - 30, 700, 28, 18); x.fillText(comp, W - 60 - cw / 2, 97);
-    // bandeau du match
-    x.fillStyle = "#E5E7EB"; x.fillRect(60, 172, W - 120, 3);
-    const vs = D.a + "  –  " + D.b; x.fillStyle = "#14161A"; fit(vs, W - 120, 700, 52, 28); x.fillText(vs, W / 2, 238);
-    x.textBaseline = "alphabetic";
+    const INK = RED ? "#FFFFFF" : "#14161A", SUB = RED ? "rgba(255,255,255,.82)" : "#5B6270", ACC = RED ? "#FFFFFF" : "#D0202E", L = 60;
+    x.fillStyle = RED ? "#D0202E" : "#FFFFFF"; x.fillRect(0, 0, W, H);
+    if (!RED) { x.fillStyle = "#D0202E"; x.beginPath(); x.moveTo(W, H - 200); x.lineTo(W, H); x.lineTo(W - 200, H); x.closePath(); x.fill(); }
+    // en-tête : logo P + compétition
+    rr(L, 56, 78, 78, 20, RED ? "#FFFFFF" : "#D0202E"); const BG = '800 56px "Bricolage Grotesque", Inter, sans-serif';
+    x.textBaseline = "middle"; x.font = BG; x.textAlign = "center"; x.fillStyle = RED ? "#D0202E" : "#FFFFFF"; x.fillText("P", L + 39, 97);
+    x.textAlign = "left"; x.fillStyle = INK; x.font = '800 52px "Bricolage Grotesque", Inter, sans-serif'; x.fillText("Pronolink", L + 96, 96);
+    const comp = D.comp || S.sport; x.font = F(700, 28); const cw = Math.min(x.measureText(comp).width + 44, 420);
+    rr(W - L - cw, 72, cw, 52, 26, RED ? "rgba(255,255,255,.18)" : "#EEF0F3"); x.fillStyle = RED ? "#FFFFFF" : "#3A404B"; x.textAlign = "center"; fit(comp, cw - 30, 700, 28, 16); x.fillText(comp, W - L - cw / 2, 99);
+    x.textBaseline = "alphabetic"; x.textAlign = "left";
+    // match
+    let y = 250; x.fillStyle = SUB; fit(`${D.a} – ${D.b}`, W - 2 * L, 700, 36, 22); x.fillText(`${D.a} – ${D.b}`, L, y);
     // MON PRONO
+    y += 90; x.font = F(800, 32); const mp = up(tr("Mon prono")), mw = x.measureText(mp).width + 40;
+    if (RED) { rr(L, y - 40, mw, 56, 12, "#FFFFFF"); x.fillStyle = "#D0202E"; x.fillText(mp, L + 20, y); } else { x.fillStyle = "#D0202E"; x.fillText(mp, L, y); }
+    // le choix du joueur, en grand, avec un point
     const pi = mine === "1" ? 0 : mine === "N" ? 1 : 2, pl = pi === 1 ? tr("Match nul") : `${pi === 0 ? D.a : D.b} ${tr("gagne")}`;
-    x.save(); x.translate(W / 2, 350); x.font = F(700, 36); const lw = x.measureText(up(tr("Mon prono"))).width + 60;
-    x.beginPath(); x.roundRect(-lw / 2, -44, lw, 64, 12); x.fillStyle = "#D0202E"; x.fill(); x.fillStyle = "#FFFFFF"; x.textAlign = "center"; x.fillText(up(tr("Mon prono")), 0, 0); x.restore();
-    const big = up(pl), words = big.split(" "), lines = [""];
-    x.font = F(700, 124); const one = fit(big, W - 120, 700, 124, 84) > 84 || x.measureText(big).width <= W - 120;
-    if (!one) for (const w of words) { const t = (lines[lines.length - 1] + " " + w).trim(); if (x.measureText(t).width > W - 120 && lines[lines.length - 1]) lines.push(w); else lines[lines.length - 1] = t; }
-    if (one) lines[0] = big;
-    let y = 500; lines.slice(0, 2).forEach((l, k) => { fit(l, W - 120, 700, lines.length > 1 ? 104 : 124, 56); sk(l, W / 2, y + k * 112, "#14161A"); }); y += (Math.min(lines.length, 2) - 1) * 112;
-    // selon Pronolink / votants Pronolink
-    const hasV = !!(C && C.n >= MIN_VOTES), cwd = 400, gx = 24, sx = hasV ? (W - (cwd * 2 + gx)) / 2 : (W - cwd) / 2, cy = y + 60;
-    rr(sx, cy, cwd, 124, 24, "#FDECEE"); x.fillStyle = "#D0202E"; x.font = F(700, 64); x.textAlign = "center"; x.fillText(Math.round(D.p[pi] * 100) + " %", sx + cwd / 2, cy + 72);
-    x.fillStyle = "#9B1B24"; fit(up(tr("selon Pronolink")), cwd - 40, 700, 24, 16); x.fillText(up(tr("selon Pronolink")), sx + cwd / 2, cy + 108);
-    if (hasV) {
-      const X2 = sx + cwd + gx; rr(X2, cy, cwd, 124, 24, "#F1F2F4");
-      x.fillStyle = "#14161A"; x.font = F(700, 64); x.fillText(Math.round(C.get(mine) * 100) + " %", X2 + cwd / 2, cy + 72);
-      x.fillStyle = "#5B6270"; const t = up(tr("des votants Pronolink")); fit(t, cwd - 40, 700, 22, 14); x.fillText(t, X2 + cwd / 2, cy + 108);
-    }
-    y = cy + 124;
-    // mon combiné (événements cochés par le joueur)
+    let z = 120, lines;
+    const wrap = () => { x.font = F(800, z); const out = [""]; for (const w of pl.split(" ")) { const t = (out[out.length - 1] + " " + w).trim(); if (x.measureText(t + ".").width > W - 2 * L && out[out.length - 1]) out.push(w); else out[out.length - 1] = t; } return out; };
+    while ((lines = wrap()).length > 2 && z > 70) z -= 6;
+    y += 22; lines.forEach((ln, k) => { y += z * 1.02; x.font = F(800, z); x.fillStyle = INK; x.fillText(ln, L, y); if (k === lines.length - 1) { const w = x.measureText(ln).width; x.fillStyle = RED ? "#FFFFFF" : "#D0202E"; x.fillText(".", L + w - 2, y); } });
+    // chances selon Pronolink (+ votants)
+    const hasV = !!(C && C.n >= MIN_VOTES); y += 78; x.font = F(600, 40); x.fillStyle = SUB;
+    x.fillText(`${Math.round(D.p[pi] * 100)} % ${tr("selon Pronolink")}` + (hasV ? `  ·  ${Math.round(C.get(mine) * 100)} % ${tr("des votants Pronolink")}` : ""), L, y);
+    // combiné coché par le joueur, sinon les chances du match
     const sel = (D.sel || []).map(([l, p]) => [tr(l), p]).slice(0, 3);
     if (sel.length) {
-      y += 70; x.fillStyle = "#5B6270"; x.font = F(700, 28); x.textAlign = "center"; x.fillText("+ " + up(tr("Mon combiné")), W / 2, y); y += 28;
+      y += 80; x.fillStyle = SUB; x.font = F(700, 28); x.fillText("+ " + up(tr("Mon combiné")), L, y); y += 26;
       sel.forEach(([l, p]) => {
-        rr(80, y, W - 160, 88, 20, "#FFFFFF"); x.strokeStyle = "#E4E6EA"; x.lineWidth = 3; x.beginPath(); x.roundRect(80, y, W - 160, 88, 20); x.stroke();
-        x.fillStyle = "#14161A"; x.textAlign = "left"; fit(l, W - 420, 700, 36, 20); x.fillText(l, 116, y + 57);
-        x.fillStyle = "#D0202E"; x.font = F(700, 42); x.textAlign = "right"; x.fillText(Math.round(p * 100) + " %", W - 116, y + 59); y += 102;
+        rr(L, y, W - 2 * L, 88, 20, RED ? "rgba(255,255,255,.15)" : "#F4F5F7");
+        x.fillStyle = INK; x.textAlign = "left"; fit(l, W - 2 * L - 220, 700, 34, 18); x.fillText(l, L + 32, y + 56);
+        x.fillStyle = ACC; x.font = F(800, 40); x.textAlign = "right"; x.fillText(Math.round(p * 100) + " %", W - L - 32, y + 58); x.textAlign = "left"; y += 100;
       });
-      const mm = String(D.selTxt || "").match(/(\d+(?:[.,]\d+)?)\s*%/), pj = sel.length > 1 && mm ? parseFloat(mm[1].replace(",", ".")) / 100 : 0; if (pj) { x.fillStyle = "#5B6270"; x.font = F(700, 30); x.textAlign = "center"; x.fillText(up(tr("Ensemble")) + " : " + Math.round(pj * 100) + " %", W / 2, y + 26); y += 50; }
+      const mm = String(D.selTxt || "").match(/(\d+(?:[.,]\d+)?)\s*%/), pj = sel.length > 1 && mm ? parseFloat(mm[1].replace(",", ".")) / 100 : 0;
+      if (pj) { x.fillStyle = SUB; x.font = F(700, 30); x.fillText(up(tr("Ensemble")) + " : " + Math.round(pj * 100) + " %", L, y + 34); y += 50; }
     } else {
-      // chances : barre unique, le prono du joueur en rouge, le reste en gris clair
       const parts = S.sport === "Football" ? [[D.a, D.p[0], 0], [tr("Nul"), D.p[1], 1], [D.b, D.p[2], 2]] : [[D.a, D.p[0], 0], [D.b, D.p[2], 2]];
-      y += 80; const BX = 80, BW = W - 160, gap = 8, BH = 104, n = parts.length, tot = parts.reduce((t, q) => t + Math.max(q[1], .12), 0);
-      let bx = BX; const avail = BW - gap * (n - 1);
-      parts.forEach(([l, p, k], i) => {
-        const w = avail * Math.max(p, .12) / tot, on = k === pi, r = 26, rs = 8;
-        x.beginPath(); x.roundRect(bx, y, w, BH, i === 0 ? [r, rs, rs, r] : i === n - 1 ? [rs, r, r, rs] : rs); x.fillStyle = on ? "#D0202E" : (n === 3 && i === 1 ? "#E2E4E8" : "#F1F2F4"); x.fill();
-        x.fillStyle = on ? "#FFFFFF" : "#14161A"; x.font = F(800, n === 3 ? 40 : 46); x.textAlign = i === 0 ? "left" : i === n - 1 ? "right" : "center";
-        const tx = i === 0 ? bx + 26 : i === n - 1 ? bx + w - 26 : bx + w / 2; x.fillText(Math.round(p * 100) + " %", tx, y + BH / 2 + 15);
-        x.fillStyle = on ? "#14161A" : "#5B6270"; fit(l, w - 10, 700, 28, 16); x.fillText(l, i === 0 ? bx + 4 : i === n - 1 ? bx + w - 4 : bx + w / 2, y + BH + 42);
-        bx += w + gap;
-      });
-      y += BH + 60;
+      y += 70; const n = parts.length, gap = RED ? 16 : 8, avail = W - 2 * L - gap * (n - 1);
+      if (RED) {                                            // trois cases, le prono en blanc
+        let bx = L; const bw = avail / n;
+        parts.forEach(([l, p, k]) => { const on = k === pi; rr(bx, y, bw, 150, 26, on ? "#FFFFFF" : "rgba(255,255,255,.16)");
+          x.fillStyle = on ? "#D0202E" : "#FFFFFF"; fit(l, bw - 48, 700, 30, 16); x.fillText(l, bx + 24, y + 50); x.font = F(800, 64); x.fillText(Math.round(p * 100) + " %", bx + 24, y + 124); bx += bw + gap; });
+        y += 150;
+      } else {                                              // barre unique, le prono en rouge
+        const tot = parts.reduce((t, q) => t + Math.max(q[1], .12), 0); let bx = L; const BH = 104;
+        parts.forEach(([l, p, k], i) => { const w = avail * Math.max(p, .12) / tot, on = k === pi, r = 26, rs = 8;
+          x.beginPath(); x.roundRect(bx, y, w, BH, i === 0 ? [r, rs, rs, r] : i === n - 1 ? [rs, r, r, rs] : rs); x.fillStyle = on ? "#D0202E" : (n === 3 && i === 1 ? "#E2E4E8" : "#F1F2F4"); x.fill();
+          x.fillStyle = on ? "#FFFFFF" : "#14161A"; x.font = F(800, n === 3 ? 40 : 46); x.textAlign = i === 0 ? "left" : i === n - 1 ? "right" : "center";
+          x.fillText(Math.round(p * 100) + " %", i === 0 ? bx + 26 : i === n - 1 ? bx + w - 26 : bx + w / 2, y + BH / 2 + 15);
+          x.fillStyle = on ? "#14161A" : "#5B6270"; fit(l, w - 10, 700, 28, 14); x.fillText(l, i === 0 ? bx + 4 : i === n - 1 ? bx + w - 4 : bx + w / 2, y + BH + 42); x.textAlign = "left"; bx += w + gap; });
+        y += BH + 42;
+      }
     }
-    x.font = F(700, 96); fit(up(tr("Et vous ?")), W - 160, 700, 96, 40); sk(up(tr("Et vous ?")), W / 2, Math.min(Math.max(y + 130, 1150), 1250), "#D0202E");
-    x.fillStyle = "#5B6270"; x.font = F(600, 28); x.textAlign = "center"; x.fillText(SITE.replace(/^https:\/\//, "").replace(/\/$/, ""), W / 2, 1316);
+    // Et vous ?
+    const ev = tr("Et vous ?"), evy = Math.min(Math.max(y + 150, 1080), 1230); x.font = F(800, 84); const qi = ev.lastIndexOf("?");
+    const head = qi > 0 ? ev.slice(0, qi) : ev; x.fillStyle = INK; x.fillText(head, L, evy); if (qi > 0) { x.fillStyle = RED ? "#FFFFFF" : "#D0202E"; x.fillText("?", L + x.measureText(head).width, evy); }
+    x.fillStyle = SUB; x.font = F(600, 28); x.textAlign = "center"; x.fillText(SITE.replace(/^https:\/\//, "").replace(/\/$/, ""), W / 2, 1306);
     return new Promise(r => c.toBlob(r, "image/png"));
   }
 
   let ov = null;
   async function share(S, D, mine, opts, C) {
-    const blob = await card(S, D, mine, opts, C); if (!blob) return;
     const pick = (opts.find(o => o[0] === mine) || [0, ""])[1];
     const text = `${D.a} – ${D.b} · ${tr("Mon prono")} : ${pick}. ${tr("Et vous ?")} ${SITE}`;
-    const file = new File([blob], "pronostat.png", { type: "image/png" });
-    try { if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], text }); return; } } catch (e) { if (e && e.name === "AbortError") return; }
-    // sinon : aperçu, téléchargement et copie du texte
-    const url = URL.createObjectURL(blob);
     if (!ov) { ov = document.createElement("div"); ov.className = "shv"; ov.hidden = true; document.body.appendChild(ov); ov.addEventListener("click", e => { if (e.target === ov) ov.hidden = true; }); }
-    ov.innerHTML = `<div class="shv-box" role="dialog" aria-label="Partager"><img alt="" src="${url}"><div class="shv-row"><a class="main" href="${url}" download="pronostat.png">Télécharger l'image</a><button type="button" data-a="copy">Copier le texte</button></div><div class="shv-row"><button type="button" data-a="close">Fermer</button></div></div>`;
-    ov.hidden = false;
-    ov.querySelector('[data-a="close"]').onclick = () => { ov.hidden = true; };
-    ov.querySelector('[data-a="copy"]').onclick = async e => { const b = e.currentTarget; try { await navigator.clipboard.writeText(text); b.textContent = tr("Copié !"); } catch (er) { b.textContent = text; } };
+    let blob = null, url = null, file = null;
+    const draw = async () => {
+      blob = await card(S, D, mine, opts, C, THEME); if (!blob) return;
+      if (url) URL.revokeObjectURL(url); url = URL.createObjectURL(blob); file = new File([blob], "pronolink.png", { type: "image/png" });
+      const can = !!(navigator.canShare && navigator.canShare({ files: [file] }));
+      ov.innerHTML = `<div class="shv-box" role="dialog" aria-label="Partager">
+        <div class="shv-th" role="group" aria-label="Style"><button type="button" data-t="blanc" aria-pressed="${THEME === "blanc"}">Blanc</button><button type="button" data-t="rouge" aria-pressed="${THEME === "rouge"}">Rouge</button></div>
+        <img alt="" src="${url}">
+        <div class="shv-row">${can ? `<button type="button" class="main" data-a="share">Partager</button>` : `<a class="main" href="${url}" download="pronolink.png">Télécharger l'image</a>`}<button type="button" data-a="copy">Copier le texte</button></div>
+        <div class="shv-row"><button type="button" data-a="close">Fermer</button></div></div>`;
+      ov.hidden = false;
+      ov.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { THEME = b.dataset.t; try { localStorage.setItem("pl-theme", THEME); } catch (e) {} draw(); });
+      ov.querySelector('[data-a="close"]').onclick = () => { ov.hidden = true; };
+      const sb = ov.querySelector('[data-a="share"]'); if (sb) sb.onclick = async () => { try { await navigator.share({ files: [file], text }); ov.hidden = true; } catch (e) {} };
+      ov.querySelector('[data-a="copy"]').onclick = async e => { const b = e.currentTarget; try { await navigator.clipboard.writeText(text); b.textContent = tr("Copié !"); } catch (er) { b.textContent = text; } };
+    };
+    await draw();
   }
   SPOTS.forEach(mount);
 })();
