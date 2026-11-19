@@ -178,7 +178,7 @@
     return out;
   }
   const upcoming = x => new Date(x.dt).getTime() > Date.now() - 3 * 3600e3;
-  const count = (sp, d) => pool(sp).filter(x => (d === WEEK ? inWeek(x) && upcoming(x) : dkey(x.dt) === d)).length;
+  const count = (sp, d) => pool(sp).filter(x => upcoming(x) && (d === WEEK ? inWeek(x) : dkey(x.dt) === d)).length;
   const inWeek = x => { const k = dkey(x.dt); return k >= todayKey() && k < addDays(todayKey(), 7); };
   function pickDay(sp) {
     if (S.day === WEEK || (S.day && days(sp).includes(S.day))) return S.day;
@@ -361,7 +361,7 @@
     const on = $("hStrip").querySelector('[aria-pressed="true"]'); if (on) on.scrollIntoView({ block: "nearest", inline: "center" });
     document.querySelectorAll("#hChips button").forEach(b => b.setAttribute("aria-pressed", b.dataset.s === S.sport));
     document.querySelectorAll("#hTabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.s === sp));
-    let items = pool(sp).filter(x => day === WEEK ? inWeek(x) && upcoming(x) : dkey(x.dt) === day), note = "", multi = day === WEEK;
+    let items = pool(sp).filter(x => upcoming(x) && (day === WEEK ? inWeek(x) : dkey(x.dt) === day)), note = "", multi = day === WEEK;
     if (!items.length) {                                   // jour vide : on montre ce qui arrive ensuite
       const nxt = pool(sp).filter(x => dkey(x.dt) > (day === WEEK ? todayKey() : day) && upcoming(x));
       if (nxt.length) {
@@ -370,7 +370,7 @@
         note = `<p class="hnote">${day === WEEK ? "Aucun match cette semaine, voici les suivants." : day === todayKey() ? "Aucun match aujourd'hui, voici les suivants." : "Aucun match ce jour-là, voici les suivants."}</p>`;
       }
     }
-    items = [...items.filter(upcoming), ...items.filter(x => !upcoming(x))];   // matchs commencés à la fin
+    items = items.filter(upcoming);                        // les matchs déjà finis ne sont plus affichés
     $("hNote").innerHTML = note;
     const bc = sp === "NBA" ? (S.comp || {}).NBA : "", wOff = bc === "WNBA" && !items.length;
     if (wOff) { $("hNote").innerHTML = `<p class="hnote">Saison terminée, reprise en mai. Voici le classement.</p>`; items = []; }

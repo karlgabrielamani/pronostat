@@ -52,11 +52,11 @@
   let ENT = null, MAT = null, rows = [];
   const load = () => {
     if (ENT) return;
-    const APIS = [window.FootAPI, window.TennisAPI, window.NbaAPI].filter(Boolean);
+    const APIS = [window.FootAPI, window.TennisAPI, window.NbaAPI, window.ElAPI, window.WnAPI].filter(Boolean);
     ENT = APIS.flatMap(a => { try { return a.teams ? a.teams() : []; } catch (e) { return []; } }).map(x => ({ ...x, n: norm(x.name) }));
-    const sod = new Date(); sod.setHours(0, 0, 0, 0);
-    MAT = APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } })
-      .filter(x => { const t = new Date(x.dt).getTime(); return t >= sod.getTime() && t < Date.now() + 7 * 864e5; })
+    let H = []; try { H = window.Home && Home.items ? Home.items() : []; } catch (e) {}
+    MAT = (H.length ? H : APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } }))
+      .filter(x => { const t = new Date(x.dt).getTime(); return t > Date.now() - 2 * 3600e3 && t < Date.now() + 7 * 864e5; })   // à venir (ou en cours), pas les matchs déjà finis
       .sort((x, y) => new Date(x.dt) - new Date(y.dt)).map(x => ({ ...x, n: norm(x.a + " " + x.b) }));
   };
   const when = d => d.toLocaleDateString("fr-FR", { weekday: "short", day: "numeric" }) + " " + d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" });
@@ -79,7 +79,11 @@
   ov.querySelector(".srch-bar button").onclick = close;
   inp.addEventListener("input", draw);
   inp.addEventListener("keydown", e => { if (e.key === "Escape") close(); if (e.key === "Enter" && rows[0]) pick(0); });
-  const pick = i => { const r = rows[i]; if (!r) return; close(); setTimeout(() => r.open(), 10); };
+  const page = x => { try { return window.Fav && x.sport && x.dt ? "#m/" + encodeURIComponent(x.k || Fav.key(x.sport, x.dt, x.a, x.b)) : null; } catch (e) { return null; } };
+  const pick = i => { const r = rows[i]; if (!r) return; close();
+    let h = r.a !== undefined ? page(r) : null;                         // un match : sa fiche
+    if (!h && r.name) { const nx = MAT.find(x => x.a === r.name || x.b === r.name); if (nx) h = page(nx); }   // une équipe : la fiche de son prochain match
+    setTimeout(() => { if (h) location.hash = h; else if (r.open) r.open(); }, 10); };
   res.addEventListener("click", e => { const b = e.target.closest(".srch-it"); if (b) pick(+b.dataset.i); });
 })();
 </script>
