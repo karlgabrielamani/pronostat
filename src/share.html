@@ -132,7 +132,6 @@
     y += 50; const BXH = 120; rr(L, y, W - 2 * L, BXH, 28, "#FDECEE");
     x.font = F(800, 28); const mp = up(tr("Mon prono")), mw = x.measureText(mp).width + 32; rr(L + 30, y + (BXH - 54) / 2, mw, 54, 12, "#D0202E"); x.fillStyle = "#FFFFFF"; x.fillText(mp, L + 46, y + BXH / 2 + 10);
     x.fillStyle = "#14161A"; fit(pl, W - 2 * L - mw - 90, 800, 50, 26); x.fillText(pl, L + 30 + mw + 24, y + BXH / 2 + 17); y += BXH;
-    if (C && C.n >= MIN_VOTES) { y += 50; x.fillStyle = SUB; x.font = F(600, 32); x.fillText(`${Math.round(C.get(mine) * 100)} % ${tr("des votants Pronolink ont le même prono")}`, L, y); }
     // + mon combiné
     const sel = (D.sel || []).map(([l, p]) => [tr(l), p]).slice(0, 3);
     if (sel.length) {
