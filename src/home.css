@@ -448,3 +448,15 @@ details.more > summary { font-weight: 600; }
 
 .adesk { display: none !important; }
 @media (min-width: 761px) { .amob { display: none; } .adesk { display: grid !important; } }
+
+/* fiche : barre unique du résultat */
+.rbar { display: flex; gap: 4px; height: 52px; margin: 6px 0 0; }
+.rbar .rs { min-width: 58px; display: flex; align-items: center; padding: 0 12px; background: #F1F2F4; color: var(--ink); font-size: 19px; font-weight: 800; border-radius: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rbar .rs.mid { background: #E2E4E8; }
+.rbar .rs.fav { background: var(--hot); color: #fff; }
+.rbar .rs.l { border-radius: 14px 4px 4px 14px; justify-content: flex-start; }
+.rbar .rs.r { border-radius: 4px 14px 14px 4px; justify-content: flex-end; }
+.rbar .rs.c { justify-content: center; }
+.rlab { display: flex; gap: 4px; margin: 7px 0 14px; font-size: 13px; font-weight: 600; color: var(--ink-3, #6B7280); }
+.rlab span { min-width: 58px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rlab .r { text-align: right; } .rlab .c { text-align: center; } .rlab .fav { color: var(--ink); }

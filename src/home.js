@@ -445,6 +445,15 @@
   }
 
   // ---- fiche d'un match
+  // ---- résultat du match : une barre unique (favori en rouge, le reste en gris clair)
+  function rbar(x, cells) {
+    const r = cells.map(c => Math.round(c[1] * 100)), top = Math.max(...r), n = cells.length;
+    const mx = r.filter(v => v === top).length > 1 ? -1 : cells[r.indexOf(top)][1];   // égalité : pas de favori
+    const al = i => i === 0 ? "l" : i === n - 1 ? "r" : "c";
+    const seg = cells.map(([nm, p], i) => `<div class="rs ${al(i)}${p === mx ? " fav" : i === 1 && n === 3 ? " mid" : ""}" style="flex:${Math.max(p, 0.12)} 1 0">${pct(p)}</div>`).join("");
+    const lab = cells.map(([nm, p], i) => `<span class="${al(i)}${p === mx ? " fav" : ""}" style="flex:${Math.max(p, 0.12)} 1 0">${esc(x.sport === "NBA" ? bn(x, nm) : nm === "Match nul" ? "Nul" : nm)}</span>`).join("");
+    return `<div class="rbar">${seg}</div><div class="rlab">${lab}</div>`;
+  }
   function drawMatch(k) {
     restore();
     load();
@@ -473,8 +482,7 @@
       <div class="dhead"><span class="lg">${fl}${esc(compLabel(x))}</span><span class="dstar"><span class="when">${whenTxt(x)}</span>${Fav.star(x.sport, x.dt, x.a, x.b, x.comp)}</span></div>
       <div class="dteams">${cr ? crest(x.a, "lg") : "<span></span>"}<span class="mt"><span>${esc(short(x, x.a))}</span><i style="font-style:normal">—</i><span>${esc(short(x, x.b))}</span></span>${cr ? crest(x.b, "lg") : "<span></span>"}</div>
       <div class="dsec">Résultat du match</div>
-      <div class="dres${x.pd == null ? " two" : ""}">${cells.map(([n, p], i) => `<div${i === favI ? ' class="fav"' : ""}><span class="nm">${esc(n)}</span><span class="pc">${pct(p)}</span></div>`).join("")}</div>
-      ${bar(x)}${body}
+      ${rbar(x, cells)}${body}
       <div class="dgrp">Cotes justes</div>${cells.map(([n, p]) => rows(n, (1 / Math.max(p, 1e-4)).toFixed(2).replace(".", ","))).join("")}</div>
       <div class="dsec dmore">Analyse détaillée</div>
       <div class="mfull" id="mFull"></div>
