@@ -1465,7 +1465,7 @@ window.I18N = (() => {
     ["Et vous ?", "And you?", "En u?"],
     ["Résultat et buts", "Result and goals", "Uitslag en doelpunten"],
     ["En direct", "Live", "Live"], ["Chances maintenant :", "Chances now:", "Kansen nu:"], ["Fin", "FT", "Einde"],
-    ["Votre prono", "Your pick", "Uw voorspelling"], ["Mon prono", "My pick", "Mijn voorspelling"], ["Partager", "Share", "Delen"], ["Blanc", "White", "Wit"], ["Rouge", "Red", "Rood"], ["Les joueurs :", "Players:", "Spelers:"],
+    ["Votre prono", "Your pick", "Uw voorspelling"], ["Mon prono", "My pick", "Mijn voorspelling"], ["Partager", "Share", "Delen"], ["Qui gagne", "Who wins", "Wie wint"], ["Votez vous aussi sur Pronolink.", "Vote too on Pronolink.", "Stem ook op Pronolink."], ["des votants Pronolink ont le même prono", "of Pronolink voters made the same pick", "van de Pronolink-stemmers koos hetzelfde"], ["Blanc", "White", "Wit"], ["Rouge", "Red", "Rood"], ["Les joueurs :", "Players:", "Spelers:"],
     ["contre", "vs", "tegen"], ["Et vous, vous en pensez quoi ?", "What do you think?", "Wat denkt u?"], ["Télécharger l'image", "Download the image", "Afbeelding downloaden"],
     ["Copier le texte", "Copy the text", "Tekst kopiëren"], ["Copié !", "Copied!", "Gekopieerd!"],
     ["Nul à la mi-temps", "Draw at half-time", "Gelijk bij de rust"], ["But en 1re période", "Goal in the 1st half", "Doelpunt in de 1e helft"], ["But en 2e période", "Goal in the 2nd half", "Doelpunt in de 2e helft"],
@@ -4731,7 +4731,7 @@ const Combo = (() => {
   }
 
   // ---- l'image à partager : deux thèmes, « blanc » (comme l'app) et « rouge » (inversé)
-  let THEME = "blanc"; try { THEME = localStorage.getItem("pl-theme") || "blanc"; } catch (e) {}
+  const THEME = "blanc";
   async function card(S, D, mine, opts, C, theme) {
     const RED = theme === "rouge", W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H; const x = c.getContext("2d");
     try { if (!document.getElementById("shFont")) { const l = document.createElement("link"); l.id = "shFont"; l.rel = "stylesheet"; l.href = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Inter:wght@600;700;800&display=swap"; document.head.appendChild(l); await new Promise(r => { l.onload = r; l.onerror = r; setTimeout(r, 2500); }); } await Promise.all(["800 120px Inter", "600 40px Inter", '800 54px "Bricolage Grotesque"'].map(f => document.fonts.load(f))); } catch (e) {}
@@ -4749,52 +4749,43 @@ const Combo = (() => {
     const comp = D.comp || S.sport; x.font = F(700, 28); const cw = Math.min(x.measureText(comp).width + 44, 420);
     rr(W - L - cw, 72, cw, 52, 26, RED ? "rgba(255,255,255,.18)" : "#EEF0F3"); x.fillStyle = RED ? "#FFFFFF" : "#3A404B"; x.textAlign = "center"; fit(comp, cw - 30, 700, 28, 16); x.fillText(comp, W - L - cw / 2, 99);
     x.textBaseline = "alphabetic"; x.textAlign = "left";
-    // match
-    let y = 250; x.fillStyle = SUB; fit(`${D.a} – ${D.b}`, W - 2 * L, 700, 36, 22); x.fillText(`${D.a} – ${D.b}`, L, y);
-    // MON PRONO
-    y += 90; x.font = F(800, 32); const mp = up(tr("Mon prono")), mw = x.measureText(mp).width + 40;
-    if (RED) { rr(L, y - 40, mw, 56, 12, "#FFFFFF"); x.fillStyle = "#D0202E"; x.fillText(mp, L + 20, y); } else { x.fillStyle = "#D0202E"; x.fillText(mp, L, y); }
-    // le choix du joueur, en grand, avec un point
+    // la question
     const pi = mine === "1" ? 0 : mine === "N" ? 1 : 2, pl = pi === 1 ? tr("Match nul") : `${pi === 0 ? D.a : D.b} ${tr("gagne")}`;
-    let z = 120, lines;
-    const wrap = () => { x.font = F(800, z); const out = [""]; for (const w of pl.split(" ")) { const t = (out[out.length - 1] + " " + w).trim(); if (x.measureText(t + ".").width > W - 2 * L && out[out.length - 1]) out.push(w); else out[out.length - 1] = t; } return out; };
-    while ((lines = wrap()).length > 2 && z > 70) z -= 6;
-    y += 22; lines.forEach((ln, k) => { y += z * 1.02; x.font = F(800, z); x.fillStyle = INK; x.fillText(ln, L, y); if (k === lines.length - 1) { const w = x.measureText(ln).width; x.fillStyle = RED ? "#FFFFFF" : "#D0202E"; x.fillText(".", L + w - 2, y); } });
-    // chances selon Pronolink (+ votants)
-    const hasV = !!(C && C.n >= MIN_VOTES); y += 78; x.font = F(600, 40); x.fillStyle = SUB;
-    x.fillText(`${Math.round(D.p[pi] * 100)} % ${tr("selon Pronolink")}` + (hasV ? `  ·  ${Math.round(C.get(mine) * 100)} % ${tr("des votants Pronolink")}` : ""), L, y);
-    // combiné coché par le joueur, sinon les chances du match
+    const q = `${tr("Qui gagne")} ${D.a} – ${D.b} ?`;
+    let z = 100, lines;
+    const wrap = () => { x.font = F(800, z); const out = [""]; for (const w of q.split(" ")) { const t = (out[out.length - 1] + " " + w).trim(); if (x.measureText(t).width > W - 2 * L && out[out.length - 1]) out.push(w); else out[out.length - 1] = t; } return out; };
+    const nsel = (D.sel || []).length, maxL = nsel ? 2 : 3;
+    while ((lines = wrap()).length > maxL && z > 50) z -= 4;
+    let y = 215;
+    lines.forEach((ln, k) => { y += z * 1.05; x.font = F(800, z); x.fillStyle = INK; const last = k === lines.length - 1 && ln.endsWith("?");
+      const t = last ? ln.slice(0, -1) : ln; x.fillText(t, L, y); if (last) { x.fillStyle = "#D0202E"; x.fillText("?", L + x.measureText(t).width, y); } });
+    // les chances selon Pronolink : barre unique, le prono du joueur en rouge
+    const parts = S.sport === "Football" ? [[D.a, D.p[0], 0], [tr("Nul"), D.p[1], 1], [D.b, D.p[2], 2]] : [[D.a, D.p[0], 0], [D.b, D.p[2], 2]];
+    y += 64; x.fillStyle = SUB; x.font = F(700, 26); x.fillText(up(tr("selon Pronolink")), L, y); y += 22;
+    { const n = parts.length, gap = 8, avail = W - 2 * L - gap * (n - 1), tot = parts.reduce((t, q) => t + Math.max(q[1], .12), 0); let bx = L; const BH = 104;
+      parts.forEach(([l, p, k], i) => { const w = avail * Math.max(p, .12) / tot, on = k === pi, r = 26, rs = 8;
+        x.beginPath(); x.roundRect(bx, y, w, BH, i === 0 ? [r, rs, rs, r] : i === n - 1 ? [rs, r, r, rs] : rs); x.fillStyle = on ? "#D0202E" : (n === 3 && i === 1 ? "#E2E4E8" : "#F1F2F4"); x.fill();
+        x.fillStyle = on ? "#FFFFFF" : "#14161A"; x.font = F(800, n === 3 ? 40 : 46); x.textAlign = i === 0 ? "left" : i === n - 1 ? "right" : "center";
+        x.fillText(Math.round(p * 100) + " %", i === 0 ? bx + 26 : i === n - 1 ? bx + w - 26 : bx + w / 2, y + BH / 2 + 15);
+        x.fillStyle = on ? "#14161A" : "#5B6270"; fit(l, w - 10, 700, 28, 14); x.fillText(l, i === 0 ? bx + 4 : i === n - 1 ? bx + w - 4 : bx + w / 2, y + BH + 42); x.textAlign = "left"; bx += w + gap; });
+      y += BH + 42; }
+    // mon prono, dans un encadré rose
+    y += 50; const BXH = 120; rr(L, y, W - 2 * L, BXH, 28, "#FDECEE");
+    x.font = F(800, 28); const mp = up(tr("Mon prono")), mw = x.measureText(mp).width + 32; rr(L + 30, y + (BXH - 54) / 2, mw, 54, 12, "#D0202E"); x.fillStyle = "#FFFFFF"; x.fillText(mp, L + 46, y + BXH / 2 + 10);
+    x.fillStyle = "#14161A"; fit(pl, W - 2 * L - mw - 90, 800, 50, 26); x.fillText(pl, L + 30 + mw + 24, y + BXH / 2 + 17); y += BXH;
+    if (C && C.n >= MIN_VOTES) { y += 50; x.fillStyle = SUB; x.font = F(600, 32); x.fillText(`${Math.round(C.get(mine) * 100)} % ${tr("des votants Pronolink ont le même prono")}`, L, y); }
+    // + mon combiné
     const sel = (D.sel || []).map(([l, p]) => [tr(l), p]).slice(0, 3);
     if (sel.length) {
-      y += 80; x.fillStyle = SUB; x.font = F(700, 28); x.fillText("+ " + up(tr("Mon combiné")), L, y); y += 26;
-      sel.forEach(([l, p]) => {
-        rr(L, y, W - 2 * L, 88, 20, RED ? "rgba(255,255,255,.15)" : "#F4F5F7");
-        x.fillStyle = INK; x.textAlign = "left"; fit(l, W - 2 * L - 220, 700, 34, 18); x.fillText(l, L + 32, y + 56);
-        x.fillStyle = ACC; x.font = F(800, 40); x.textAlign = "right"; x.fillText(Math.round(p * 100) + " %", W - L - 32, y + 58); x.textAlign = "left"; y += 100;
-      });
+      y += 60; x.fillStyle = SUB; x.font = F(700, 26); x.fillText("+ " + up(tr("Mon combiné")), L, y); y += 22;
+      sel.forEach(([l, p]) => { rr(L, y, W - 2 * L, 72, 18, "#F4F5F7"); x.fillStyle = INK; fit(l, W - 2 * L - 220, 700, 30, 18); x.fillText(l, L + 30, y + 47);
+        x.fillStyle = "#D0202E"; x.font = F(800, 36); x.textAlign = "right"; x.fillText(Math.round(p * 100) + " %", W - L - 30, y + 49); x.textAlign = "left"; y += 82; });
       const mm = String(D.selTxt || "").match(/(\d+(?:[.,]\d+)?)\s*%/), pj = sel.length > 1 && mm ? parseFloat(mm[1].replace(",", ".")) / 100 : 0;
-      if (pj) { x.fillStyle = SUB; x.font = F(700, 30); x.fillText(up(tr("Ensemble")) + " : " + Math.round(pj * 100) + " %", L, y + 34); y += 50; }
-    } else {
-      const parts = S.sport === "Football" ? [[D.a, D.p[0], 0], [tr("Nul"), D.p[1], 1], [D.b, D.p[2], 2]] : [[D.a, D.p[0], 0], [D.b, D.p[2], 2]];
-      y += 70; const n = parts.length, gap = RED ? 16 : 8, avail = W - 2 * L - gap * (n - 1);
-      if (RED) {                                            // trois cases, le prono en blanc
-        let bx = L; const bw = avail / n;
-        parts.forEach(([l, p, k]) => { const on = k === pi; rr(bx, y, bw, 150, 26, on ? "#FFFFFF" : "rgba(255,255,255,.16)");
-          x.fillStyle = on ? "#D0202E" : "#FFFFFF"; fit(l, bw - 48, 700, 30, 16); x.fillText(l, bx + 24, y + 50); x.font = F(800, 64); x.fillText(Math.round(p * 100) + " %", bx + 24, y + 124); bx += bw + gap; });
-        y += 150;
-      } else {                                              // barre unique, le prono en rouge
-        const tot = parts.reduce((t, q) => t + Math.max(q[1], .12), 0); let bx = L; const BH = 104;
-        parts.forEach(([l, p, k], i) => { const w = avail * Math.max(p, .12) / tot, on = k === pi, r = 26, rs = 8;
-          x.beginPath(); x.roundRect(bx, y, w, BH, i === 0 ? [r, rs, rs, r] : i === n - 1 ? [rs, r, r, rs] : rs); x.fillStyle = on ? "#D0202E" : (n === 3 && i === 1 ? "#E2E4E8" : "#F1F2F4"); x.fill();
-          x.fillStyle = on ? "#FFFFFF" : "#14161A"; x.font = F(800, n === 3 ? 40 : 46); x.textAlign = i === 0 ? "left" : i === n - 1 ? "right" : "center";
-          x.fillText(Math.round(p * 100) + " %", i === 0 ? bx + 26 : i === n - 1 ? bx + w - 26 : bx + w / 2, y + BH / 2 + 15);
-          x.fillStyle = on ? "#14161A" : "#5B6270"; fit(l, w - 10, 700, 28, 14); x.fillText(l, i === 0 ? bx + 4 : i === n - 1 ? bx + w - 4 : bx + w / 2, y + BH + 42); x.textAlign = "left"; bx += w + gap; });
-        y += BH + 42;
-      }
+      if (pj) { x.fillStyle = SUB; x.font = F(700, 28); x.fillText(up(tr("Ensemble")) + " : " + Math.round(pj * 100) + " %", L, y + 30); y += 44; }
     }
-    // Et vous ?
-    const ev = tr("Et vous ?"), evy = Math.min(Math.max(y + 150, 1080), 1230); x.font = F(800, 84); const qi = ev.lastIndexOf("?");
-    const head = qi > 0 ? ev.slice(0, qi) : ev; x.fillStyle = INK; x.fillText(head, L, evy); if (qi > 0) { x.fillStyle = RED ? "#FFFFFF" : "#D0202E"; x.fillText("?", L + x.measureText(head).width, evy); }
+    // appel
+    const cta = tr("Votez vous aussi sur Pronolink."), cy = nsel ? Math.min(y + 80, 1262) : Math.min(Math.max(y + 110, 1150), 1240); x.font = F(700, 42); x.fillStyle = SUB;
+    const k2 = cta.lastIndexOf("Pronolink"); if (k2 > 0) { const a1 = cta.slice(0, k2); x.fillText(a1, L, cy); x.fillStyle = INK; x.font = F(800, 42); x.fillText(cta.slice(k2), L + (x.font = F(700, 42), x.measureText(a1).width), cy); } else x.fillText(cta, L, cy);
     x.fillStyle = SUB; x.font = F(600, 28); x.textAlign = "center"; x.fillText(SITE.replace(/^https:\/\//, "").replace(/\/$/, ""), W / 2, 1306);
     return new Promise(r => c.toBlob(r, "image/png"));
   }
@@ -4810,12 +4801,10 @@ const Combo = (() => {
       if (url) URL.revokeObjectURL(url); url = URL.createObjectURL(blob); file = new File([blob], "pronolink.png", { type: "image/png" });
       const can = !!(navigator.canShare && navigator.canShare({ files: [file] }));
       ov.innerHTML = `<div class="shv-box" role="dialog" aria-label="Partager">
-        <div class="shv-th" role="group" aria-label="Style"><button type="button" data-t="blanc" aria-pressed="${THEME === "blanc"}">Blanc</button><button type="button" data-t="rouge" aria-pressed="${THEME === "rouge"}">Rouge</button></div>
         <img alt="" src="${url}">
         <div class="shv-row">${can ? `<button type="button" class="main" data-a="share">Partager</button>` : `<a class="main" href="${url}" download="pronolink.png">Télécharger l'image</a>`}<button type="button" data-a="copy">Copier le texte</button></div>
         <div class="shv-row"><button type="button" data-a="close">Fermer</button></div></div>`;
       ov.hidden = false;
-      ov.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { THEME = b.dataset.t; try { localStorage.setItem("pl-theme", THEME); } catch (e) {} draw(); });
       ov.querySelector('[data-a="close"]').onclick = () => { ov.hidden = true; };
       const sb = ov.querySelector('[data-a="share"]'); if (sb) sb.onclick = async () => { try { await navigator.share({ files: [file], text }); ov.hidden = true; } catch (e) {} };
       ov.querySelector('[data-a="copy"]').onclick = async e => { const b = e.currentTarget; try { await navigator.clipboard.writeText(text); b.textContent = tr("Copié !"); } catch (er) { b.textContent = text; } };
