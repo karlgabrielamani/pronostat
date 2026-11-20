@@ -10,9 +10,10 @@
   window.HKLOGOS = {};
   for (const k of H.order) for (const t of H.leagues[k].teams) if (t.logo && t.logo[0]) window.HKLOGOS[t.name] = t.logo;
 
-  let L = null, T = {}, games = [], meanD = 0;
+  let L = null, T = {}, games = [];
   const pois = (k, l) => { let p = Math.exp(-l); for (let i = 1; i <= k; i++) p *= l / i; return p; };
-  const lams = (Lg, h, a) => [Math.exp(h.att + a.dfn + Lg.home), Math.exp(a.att + h.dfn)];
+  // buts attendus après 60 min : niveau de la ligue (30 derniers jours) × attaque × défense adverse (moitié buts, moitié tirs cadrés)
+  const lams = (Lg, h, a) => [Lg.lh * h.off * a.dfn, Lg.la * a.off * h.dfn];
   // prolongation et tirs au but : part gagnée à domicile, penchée vers l'équipe qui marque le plus
   const otq = (Lg, lam, mu) => Math.min(.75, Math.max(.25, (Lg.ot || .52) + 0.5 * (lam / (lam + mu) - 0.5)));
   // poids d'un score après 60 min : Poisson + correction Dixon-Coles + nuls plus fréquents (facteur dk)
@@ -22,12 +23,21 @@
     else if (i === 1 && j === 0) p *= 1 + mu * Lg.rho; else if (i === 1 && j === 1) p *= 1 - Lg.rho;
     return i === j ? p * (Lg.dk || 1) : p;
   };
+  // tableau des scores après 60 min, avec le but dans la cage vide : une part (en) des matchs à un but d'écart finit à deux buts d'écart
+  function scoreM(Lg, lam, mu) {
+    const m = []; let tot = 0;
+    for (let i = 0; i <= MAXG; i++) { m.push([]); for (let j = 0; j <= MAXG; j++) { const p = cellW(Lg, i, j, lam, mu); m[i].push(p); tot += p; } }
+    for (const r of m) for (let j = 0; j <= MAXG; j++) r[j] /= tot;
+    const e = Lg.en || 0;
+    if (e) for (let i = MAXG - 1; i >= 0; i--) for (let j = MAXG - 1; j >= 0; j--) {
+      if (i - j === 1) { const x = m[i][j] * e; m[i][j] -= x; m[i + 1][j] += x; }
+      else if (j - i === 1) { const x = m[i][j] * e; m[i][j] -= x; m[i][j + 1] += x; }
+    }
+    return m;
+  }
   function matrix(h, a) {
     const [lam, mu] = lams(L, h, a);
-    const m = []; let tot = 0;
-    for (let i = 0; i <= MAXG; i++) { m.push([]); for (let j = 0; j <= MAXG; j++) { const p = cellW(L, i, j, lam, mu); m[i].push(p); tot += p; } }
-    for (const r of m) for (let j = 0; j <= MAXG; j++) r[j] /= tot;
-    return { m, lam, mu, q: otq(L, lam, mu) };
+    return { m: scoreM(L, lam, mu), lam, mu, q: otq(L, lam, mu) };
   }
   const sum = (m, fn) => { let s = 0; for (let i = 0; i <= MAXG; i++) for (let j = 0; j <= MAXG; j++) if (fn(i, j)) s += m[i][j]; return s; };
 
@@ -35,7 +45,6 @@
   function setLeague(k) {
     L = H.leagues[k]; curKey = k;
     T = Object.fromEntries(L.teams.map(t => [t.name, t]));
-    meanD = L.teams.reduce((s, t) => s + t.dfn, 0) / L.teams.length;
     const opts = [...L.teams].sort((a, b) => a.name.localeCompare(b.name)).map(t => `<option value="${t.name}">${t.name}</option>`).join("");
     g("hkA").innerHTML = opts; g("hkB").innerHTML = opts;
     const now = Date.now();
@@ -136,7 +145,6 @@
   // ---------- événements du match (tous combinables) ----------
   // chaque événement donne un poids à un score (i, j) après 60 min et aux buts de la 1re période (a, b) ;
   // « gagne, prolongation comprise » vaut q (ou 1 − q) quand le score est nul après 60 min
-  const F1 = 0.31;                          // part des buts marqués en 1re période en NHL
   const EV = [
     ["Résultat après 60 min"],
     ["H gagne", (i, j) => i > j], ["Match nul", (i, j) => i === j], ["A gagne", (i, j) => i < j],
@@ -154,7 +162,7 @@
     ["H mène après la 1re période", (i, j, a, b) => a > b], ["A mène après la 1re période", (i, j, a, b) => a < b],
   ];
   function buildJoint(lam, mu) {
-    const G = 9, l1 = lam * F1, m1 = mu * F1, l2 = lam - l1, m2 = mu - m1;
+    const G = 9, F1 = L.f1 || 0.295, e = L.en || 0, l1 = lam * F1, m1 = mu * F1, l2 = lam - l1, m2 = mu - m1;
     const A1 = [], B1 = [], A2 = [], B2 = [];
     for (let k = 0; k <= G; k++) { A1.push(pois(k, l1)); B1.push(pois(k, m1)); A2.push(pois(k, l2)); B2.push(pois(k, m2)); }
     const cells = []; let tot = 0;
@@ -162,7 +170,10 @@
       const i = a1 + a2, j = b1 + b2; let w = A1[a1] * B1[b1] * A2[a2] * B2[b2];
       if (w < 1e-9) continue;
       w *= cellW(L, i, j, lam, mu) / (pois(i, lam) * pois(j, mu));       // mêmes corrections que le tableau des scores
-      cells.push([i, j, a1, b1, w]); tot += w;
+      tot += w;
+      // but dans la cage vide en fin de match : ne change pas la 1re période
+      if (e && Math.abs(i - j) === 1) { cells.push([i, j, a1, b1, w * (1 - e)]); cells.push(i > j ? [i + 1, j, a1, b1, w * e] : [i, j + 1, a1, b1, w * e]); }
+      else cells.push([i, j, a1, b1, w]);
     }
     cells.forEach(c => c[4] /= tot);
     return cells;
@@ -195,16 +206,16 @@
   function table() {
     const sg = v => (v >= 0 ? "+" : "−") + f(Math.abs(v * 100)) + " %";
     const fm = s => s.split("").map(c => `<span class="fm fm-${c === "P" ? "N" : c}">${c}</span>`).join("");
-    g("hkTb").innerHTML = L.teams.map((t, i) => `<tr><td class="num">${i + 1}</td><td class="name">${t.name}</td><td class="num">${t.p}</td><td class="num"><b>${t.pts}</b></td><td class="num">${t.w}-${t.l}-${t.otl}</td><td class="num">${t.gf - t.ga > 0 ? "+" : ""}${t.gf - t.ga}</td><td class="form">${fm(t.form)}</td><td class="num">${sg(Math.exp(t.att) - 1)}</td><td class="num">${sg(1 - Math.exp(t.dfn - meanD))}</td><td><button data-n="${t.name}" data-s="A">Dom.</button> <button data-n="${t.name}" data-s="B">Ext.</button></td></tr>`).join("");
+    g("hkTb").innerHTML = L.teams.map((t, i) => `<tr><td class="num">${i + 1}</td><td class="name">${t.name}</td><td class="num">${t.p}</td><td class="num"><b>${t.pts}</b></td><td class="num">${t.w}-${t.l}-${t.otl}</td><td class="num">${t.gf - t.ga > 0 ? "+" : ""}${t.gf - t.ga}</td><td class="form">${fm(t.form)}</td><td class="num">${sg(t.off - 1)}</td><td class="num">${sg(1 - t.dfn)}</td><td><button data-n="${t.name}" data-s="A">Dom.</button> <button data-n="${t.name}" data-s="B">Ext.</button></td></tr>`).join("");
   }
   g("hkTb").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; g(b.dataset.s === "A" ? "hkA" : "hkB").value = b.dataset.n; render(); window.scrollTo({ top: 0, behavior: "smooth" }); });
 
   // ---------- accès pour l'accueil et la liste des matchs ----------
   function pure(Lg, h, a) {
-    const [lam, mu] = lams(Lg, h, a);
-    let pH = 0, pD = 0, pA = 0, tot = 0;
-    for (let i = 0; i <= MAXG; i++) for (let j = 0; j <= MAXG; j++) { const w = cellW(Lg, i, j, lam, mu); tot += w; if (i > j) pH += w; else if (i === j) pD += w; else pA += w; }
-    return [pH / tot, pD / tot, pA / tot, lam, mu];
+    const [lam, mu] = lams(Lg, h, a), m = scoreM(Lg, lam, mu);
+    let pH = 0, pD = 0, pA = 0;
+    for (let i = 0; i <= MAXG; i++) for (let j = 0; j <= MAXG; j++) { const w = m[i][j]; if (i > j) pH += w; else if (i === j) pD += w; else pA += w; }
+    return [pH, pD, pA, lam, mu];
   }
   const openGame = (k, home, away) => {
     location.hash = "#hockey"; g("hkL").value = k; setLeague(k);
@@ -232,7 +243,7 @@
           const h = TT[x.home], a = TT[x.away]; if (!h || !a) continue;
           const [pH, pD, pA, lam, mu] = pure(Lg, h, a), q = otq(Lg, lam, mu);
           out.push({ sport: "Hockey", lg: k, dt: x.dt + "Z", comp: Lg.name, country: Lg.country, a: x.home, b: x.away, pa: pH, pd: pD, pb: pA,
-            pf: pH + pD * q, lh: lam, la: mu, rho: Lg.rho, dk: Lg.dk || 1, str: h.att - h.dfn + a.att - a.dfn,
+            pf: pH + pD * q, lh: lam, la: mu, rho: Lg.rho, dk: Lg.dk || 1, str: Math.log(h.off / h.dfn) + Math.log(a.off / a.dfn), en: Lg.en || 0,
             open: () => openGame(k, x.home, x.away) });
         }
       }

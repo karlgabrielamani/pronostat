@@ -81,6 +81,10 @@
       if (i === j && x.dk) p *= x.dk;                    // hockey : nuls après 60 min plus fréquents
       m[i].push(p); tot += p; } }
     m.forEach(r => r.forEach((v, j) => r[j] = v / tot));
+    if (x.en) for (let i = MG - 1; i >= 0; i--) for (let j = MG - 1; j >= 0; j--) {   // hockey : but dans la cage vide
+      if (i - j === 1) { const e = m[i][j] * x.en; m[i][j] -= e; m[i + 1][j] += e; }
+      else if (j - i === 1) { const e = m[i][j] * x.en; m[i][j] -= e; m[i][j + 1] += e; }
+    }
     const sum = fn => { let s = 0; for (let i = 0; i <= MG; i++) for (let j = 0; j <= MG; j++) if (fn(i, j)) s += m[i][j]; return s; };
     const sc = []; for (let i = 0; i <= 6; i++) for (let j = 0; j <= 6; j++) sc.push([i, j, m[i][j]]);
     sc.sort((p, q) => q[2] - p[2]);

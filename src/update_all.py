@@ -388,7 +388,7 @@ if __name__ == "__main__":
     hockey = None
     try:                                         # hockey (NHL) : ne bloque pas les autres sports
         import nhl
-        hockey = nhl.update(fetch, RAW, TODAY)
+        hockey = nhl.update(ROOT, TODAY)
     except Exception as e:
         print("  ATTENTION hockey non mis à jour :", repr(e))
         if os.path.exists(f"{ROOT}/data/hockey_tool.json"): hockey = json.load(open(f"{ROOT}/data/hockey_tool.json"))

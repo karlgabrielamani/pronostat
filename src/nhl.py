@@ -1,155 +1,134 @@
 """Hockey : NHL (api-web.nhle.com, gratuit, sans clé).
 
-Modèle : Dixon-Coles sur les buts du temps réglementaire (60 min), comme le foot.
-- un match terminé en prolongation ou aux tirs au but compte comme un nul après 60 min ;
-- la prolongation se joue à pile ou face, un peu penchée vers l'équipe la plus forte (paramètre « ot »).
-Sortie : même forme que l'outil foot (leagues / order), pour pouvoir ajouter d'autres championnats plus tard.
+Historique des matchs gardé dans data/nhl_games.csv (score après 60 min, tirs cadrés, buts de 1re période,
+buts dans la cage vide) ; chaque jour on ne télécharge que les journées manquantes.
+
+Modèle des buts après 60 min, pensé pour les événements (totaux, équipe qui marque 3 buts, 1re période…) :
+- niveau de buts de la ligue : moyenne des 30 derniers jours (domicile et extérieur à part) ;
+- force de chaque équipe : moitié buts, moitié tirs cadrés (les tirs sont bien plus stables que les buts),
+  moyennes pondérées dans le temps (demi-vie d'environ 4 mois) et ramenées vers la moyenne ;
+- loi de Poisson, plus deux corrections propres au hockey : nuls après 60 min plus fréquents (facteur dk)
+  et but dans la cage vide (une partie des matchs à un but d'écart finit avec deux buts d'écart, facteur en) ;
+- 1re période : environ 29,5 % des buts (part mesurée sur l'historique).
+Backtest (saison 2025-26 et début 2026-27, modèle jamais nourri des matchs testés) : voir TEST.
 """
-import json, os, urllib.request
+import json, os, time, urllib.request
+from concurrent.futures import ThreadPoolExecutor
 import numpy as np
 import pandas as pd
-from model import DixonColes
 
 API = "https://api-web.nhle.com/v1"
-XI = 0.0035                    # demi-vie d'environ 200 jours (réglé au backtest)
-TEST = dict(n=1749, acc=0.525, logloss=1.072)   # walk-forward 2025-26 + début 2026-27 (vainqueur final juste 52,5 % ; la NHL est proche du pile ou face)
+XI, N0, K, LVL_DAYS, DK, EN = 0.006, 8, 0.5, 30, 1.55, 0.3
+# événements après 60 min : gain de précision (score de Brier) par rapport à la moyenne NHL des 30 derniers jours
+TEST = dict(n=1744, acc=0.546, events_gain=0.013)   # vainqueur final juste 54,6 % (52,5 % avec l’ancien modèle sur les buts seuls)
 
 
-def _get(url, dest, fetch):
-    return json.load(open(fetch(url, dest, min_bytes=200)))
-
-
-def season_start(today):
-    return today.year if today.month >= 8 else today.year - 1
-
-
-def results(fetch, raw, today):
-    """Matchs NHL (saison régulière et séries) des deux dernières saisons et de la saison en cours, semaine par semaine."""
-    y0 = season_start(today) - 2
-    day, rows, seen = pd.Timestamp(f"{y0}-10-01"), [], set()
-    upcoming = []
-    while day <= today + pd.Timedelta(days=7):
-        cur = day >= today - pd.Timedelta(days=8)          # semaines récentes : rechargées chaque jour
-        dest = f"{raw}/nhl_{day.date()}" + (f"_{today.date()}" if cur else "") + ".json"
+def _get(url):
+    for k in range(3):
         try:
-            d = _get(f"{API}/schedule/{day.date()}", dest, fetch)
-        except Exception as e:
-            print("  NHL semaine ignorée", day.date(), repr(e)[:80]); day += pd.Timedelta(days=7); continue
-        for w in d.get("gameWeek", []):
-            for g in w.get("games", []):
-                if g["id"] in seen or g.get("gameType") not in (2, 3): continue
-                seen.add(g["id"])
-                h, a = g["homeTeam"], g["awayTeam"]
-                info = dict(id=g["id"], dt=pd.Timestamp(g["startTimeUTC"]), type=g["gameType"], season=g["season"],
-                            home=_name(h), away=_name(a), habbr=h["abbrev"], aabbr=a["abbrev"],
-                            hlogo=(h.get("logo", ""), h.get("darkLogo", "")), alogo=(a.get("logo", ""), a.get("darkLogo", "")))
-                if g.get("gameState") in ("OFF", "FINAL") and "score" in h:
-                    last = (g.get("gameOutcome") or {}).get("lastPeriodType", "REG")
-                    hs, as_ = int(h["score"]), int(a["score"])
-                    rh, ra = (hs, as_) if last == "REG" else (min(hs, as_), min(hs, as_))
-                    rows.append(dict(info, hs=hs, as_=as_, rh=rh, ra=ra, last=last))
-                elif g.get("gameState") in ("FUT", "PRE") and g.get("gameScheduleState", "OK") == "OK":
-                    upcoming.append(info)
-        nxt = d.get("nextStartDate")
-        day = pd.Timestamp(nxt) if nxt and pd.Timestamp(nxt) > day else day + pd.Timedelta(days=7)
-    return pd.DataFrame(rows).sort_values("dt").reset_index(drop=True), upcoming
+            req = urllib.request.Request(url, headers={"User-Agent": "pronos-weekly-update"})
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.load(r)
+        except Exception:
+            time.sleep(2 * (k + 1))
+    return None
 
 
-def _name(t):
-    pl, cn = t.get("placeName", {}).get("default", ""), t.get("commonName", {}).get("default", "")
-    return f"{pl} {cn}".strip() if cn and not cn.startswith(pl) else (cn or pl or t.get("abbrev", "?"))
+def _rows(d, js):
+    out = []
+    for g in (js or {}).get("games", []):
+        if g.get("gameType") not in (2, 3) or g.get("gameState") not in ("OFF", "FINAL"):
+            continue
+        h, a = g["homeTeam"], g["awayTeam"]
+        last = (g.get("gameOutcome") or {}).get("lastPeriodType", "REG")
+        hs, as_ = int(h["score"]), int(a["score"])
+        rh, ra = (hs, as_) if last == "REG" else (min(hs, as_),) * 2
+        G = g.get("goals", [])
+        cnt = lambda ab, ok: sum(1 for x in G if x.get("teamAbbrev") == ab and ok(x))
+        out.append(dict(id=g["id"], date=d, season=g["season"], type=g["gameType"], habbr=h["abbrev"], aabbr=a["abbrev"],
+                        hs=hs, as_=as_, last=last, rh=rh, ra=ra, hsog=h.get("sog"), asog=a.get("sog"),
+                        h1=cnt(h["abbrev"], lambda x: x.get("period") == 1), a1=cnt(a["abbrev"], lambda x: x.get("period") == 1),
+                        hen=cnt(h["abbrev"], lambda x: x.get("period", 9) <= 3 and x.get("goalModifier") == "empty-net"),
+                        aen=cnt(a["abbrev"], lambda x: x.get("period", 9) <= 3 and x.get("goalModifier") == "empty-net")))
+    return out
 
 
-def fit(df, today, xi=None):
-    xi = xi or XI
-    h = df[df.dt >= today.tz_localize("UTC") - pd.Timedelta(days=730)]
-    m = DixonColes(xi=xi).fit(h.home.values, h.away.values, h.rh.values, h.ra.values,
-                              (today.tz_localize("UTC") - h.dt).dt.days.values)
-    return m
+def history(root, today):
+    """Charge data/nhl_games.csv et ajoute les journées manquantes (les 3 derniers jours sont toujours revérifiés)."""
+    path = f"{root}/data/nhl_games.csv"
+    old = pd.read_csv(path) if os.path.exists(path) else pd.DataFrame()
+    start = pd.Timestamp(old.date.max()) - pd.Timedelta(days=3) if len(old) else pd.Timestamp(f"{today.year - 2}-10-01")
+    days = [d.date() for d in pd.date_range(start, today) if d.month not in (7, 8, 9)]
+    with ThreadPoolExecutor(8) as ex:
+        res = list(ex.map(lambda d: _get(f"{API}/score/{d}"), days))
+    new = pd.DataFrame([r for d, js in zip(days, res) for r in _rows(str(d), js)])
+    df = pd.concat([old, new]).drop_duplicates("id", keep="last") if len(new) else old
+    df = df.dropna(subset=["hsog", "asog"]).sort_values(["date", "id"]).reset_index(drop=True)
+    df.to_csv(path, index=False)
+    print(f"  hockey NHL : {len(new)} matchs récupérés sur {len(days)} journées, {len(df)} matchs en historique")
+    df["dt"] = pd.to_datetime(df.date)
+    return df
 
 
-def ot_param(df):
-    """Prolongation : part gagnée par l'équipe à domicile, et poids de la différence de force (régression simple)."""
-    o = df[df["last"] != "REG"]
-    return round(float((o.hs > o.as_).mean()), 3) if len(o) > 50 else 0.52
+def ratings(df, t):
+    past = df[(df.dt < t) & (df.dt >= t - pd.Timedelta(days=730))]
+    w = np.exp(-XI * (t - past.dt).dt.days.values)
+    X = pd.concat([pd.DataFrame(dict(team=past.habbr, gf=past.rh, ga=past.ra, sf=past.hsog, sa=past.asog, w=w)),
+                   pd.DataFrame(dict(team=past.aabbr, gf=past.ra, ga=past.rh, sf=past.asog, sa=past.hsog, w=w))])
+    for c in ("gf", "ga", "sf", "sa"):
+        X[c] = X[c] * X.w
+    S = X.groupby("team")[["gf", "ga", "sf", "sa", "w"]].sum()
+    lg, ls = S.gf.sum() / S.w.sum(), S.sf.sum() / S.w.sum()
+    r = lambda c, m: (S[c] + N0 * m) / (S.w + N0) / m
+    off = r("gf", lg) ** K * r("sf", ls) ** (1 - K)
+    dfn = r("ga", lg) ** K * r("sa", ls) ** (1 - K)
+    before = df[df.dt < t]
+    rc = before[before.dt >= t - pd.Timedelta(days=LVL_DAYS)]
+    if len(rc) < 150:
+        rc = before.tail(400)
+    f1 = float((before.h1 + before.a1).sum() / max((before.rh + before.ra).sum(), 1))
+    o = before[before["last"] != "REG"]
+    ot = float((o.hs > o.as_).mean()) if len(o) > 50 else 0.52
+    return off, dfn, dict(lh=float(rc.rh.mean()), la=float(rc.ra.mean()), f1=f1, ot=ot)
 
 
-def draw_k(m, df):
-    """Les nuls après 60 min sont plus fréquents que ne le dit le modèle de Poisson (fin de match prudente, but dans la cage vide…) :
-    facteur appliqué à la diagonale pour retrouver la part de nuls observée."""
-    d = df[df.home.isin(m.params["att"]) & df.away.isin(m.params["att"])].tail(1500)
-    pd_ = float(np.mean([np.trace(m.score_matrix(r.home, r.away)[0]) for r in d.itertuples()]))
-    obs = float((d.rh == d.ra).mean())
-    return round(obs * (1 - pd_) / (pd_ * (1 - obs)), 3)
-
-
-def probs(m, home, away, ot, dk=1.0):
-    mat, lam, mu = m.score_matrix(home, away)
-    mat = mat.copy(); np.fill_diagonal(mat, np.diag(mat) * dk); mat /= mat.sum()
-    pH, pD, pA = np.tril(mat, -1).sum(), np.trace(mat), np.triu(mat, 1).sum()
-    q = ot + 0.5 * (lam / (lam + mu) - 0.5)
-    return pH, pD, pA, pH + pD * q
-
-
-def backtest(df, today):
-    """Walk-forward sur la saison passée et la saison en cours : modèle réajusté tous les 14 jours, jamais sur les matchs testés."""
-    start = pd.Timestamp(f"{season_start(today) - 1}-10-01", tz="UTC")
-    t, ok, ll, n, dsum, dobs = start, 0, 0.0, 0, 0.0, 0
-    ot = ot_param(df[df.dt < start])
-    while t < df.dt.max():
-        past, test = df[df.dt < t], df[(df.dt >= t) & (df.dt < t + pd.Timedelta(days=14))]
-        if len(test) and len(past) > 500:
-            m = fit(past, t.tz_localize(None)); dk = draw_k(m, past)
-            for r in test.itertuples():
-                if r.home not in m.params["att"] or r.away not in m.params["att"]: continue
-                pH, pD, pA, pF = probs(m, r.home, r.away, ot, dk)
-                ok += (pF >= .5) == (r.hs > r.as_); n += 1
-                p = pH if r.rh > r.ra else pD if r.rh == r.ra else pA
-                ll -= np.log(max(p, 1e-9)); dsum += pD; dobs += r.rh == r.ra
-        t += pd.Timedelta(days=14)
-    return dict(n=n, acc=round(ok / max(n, 1), 4), logloss=round(ll / max(n, 1), 4), draw_pred=round(dsum / max(n, 1), 3), draw_obs=round(dobs / max(n, 1), 3))
-
-
-def update(fetch, raw, today, test=TEST):
-    df, up = results(fetch, raw, today)
+def update(root, today, test=TEST):
+    df = history(root, today)
     if df.empty:
         raise RuntimeError("NHL : aucun résultat")
-    m = fit(df, today)
-    ot, dk = ot_param(df), draw_k(m, df)
+    t = pd.Timestamp(today.date()) + pd.Timedelta(days=1)
+    off, dfn, lv = ratings(df, t)
+    st = (_get(f"{API}/standings/now") or {}).get("standings", [])
+    if not st:
+        raise RuntimeError("NHL : classement indisponible")
+    name = {s["teamAbbrev"]["default"]: s["teamName"]["default"] for s in st}
     cs = df.season.max()
-    cur = df[(df.season == cs) & (df.type == 2)]
-    names = sorted(set(cur.home) | set(cur.away)) or sorted(set(df[df.season == cs].home))
-    tab = {t: dict(p=0, w=0, l=0, otl=0, gf=0, ga=0) for t in names}
-    form = {t: "" for t in names}
-    for r in cur.itertuples():
-        for t, f_, c in ((r.home, r.hs, r.as_), (r.away, r.as_, r.hs)):
-            s = tab[t]; s["p"] += 1; s["gf"] += f_; s["ga"] += c
-            win = f_ > c
-            s["w"] += win; s["l"] += (not win) and r.last == "REG"; s["otl"] += (not win) and r.last != "REG"
-            form[t] = (form[t] + ("V" if win else "P" if r.last != "REG" else "D"))[-5:]
-    info = {}
-    for r in df.itertuples():
-        info[r.home] = (r.habbr, r.hlogo); info[r.away] = (r.aabbr, r.alogo)
-    T = [dict(name=t, abbr=info.get(t, ("", ""))[0], logo=list(info.get(t, ("", ("", "")))[1]),
-              att=round(float(m.params["att"].get(t, 0)), 4), dfn=round(float(m.params["dfn"].get(t, 0)), 4),
-              pts=2 * tab[t]["w"] + tab[t]["otl"], **tab[t], form=form[t]) for t in names]
+    form = {}
+    for r in df[(df.season == cs) & (df.type == 2)].itertuples():
+        for ab, f_, c in ((r.habbr, r.hs, r.as_), (r.aabbr, r.as_, r.hs)):
+            form[ab] = (form.get(ab, "") + ("V" if f_ > c else "P" if r.last != "REG" else "D"))[-5:]
+    T = []
+    for s in st:
+        ab = s["teamAbbrev"]["default"]
+        logo = s.get("teamLogo", "")
+        T.append(dict(name=name[ab], abbr=ab, logo=[logo, logo.replace("_light", "_dark")],
+                      off=round(float(off.get(ab, 1)), 4), dfn=round(float(dfn.get(ab, 1)), 4),
+                      p=s["gamesPlayed"], pts=s["points"], w=s["wins"], l=s["losses"], otl=s["otLosses"],
+                      gf=s["goalFor"], ga=s["goalAgainst"], form=form.get(ab, "")))
     T.sort(key=lambda x: (-x["pts"], x["p"], -(x["gf"] - x["ga"])))
-    now = pd.Timestamp.now(tz="UTC")
-    games = [dict(dt=g["dt"].strftime("%Y-%m-%dT%H:%M"), home=g["home"], away=g["away"]) for g in sorted(up, key=lambda g: g["dt"])
-             if g["home"] in tab and g["away"] in tab and now - pd.Timedelta(hours=4) <= g["dt"] <= now + pd.Timedelta(days=8)]
-    L = dict(name="NHL", country="Amérique du Nord", home=round(float(m.params["home_adv"]), 4), rho=round(float(m.params["rho"]), 4),
-             ot=ot, dk=dk, teams=T, games=games, last=str(df.dt.max().date()))
-    print(f"  hockey NHL {len(T)} équipes, {len(games)} matchs à venir, dernier résultat {L['last']}, prolongation gagnée à domicile {ot:.0%}, facteur nuls {dk}")
-    t = test or {}
-    return dict(leagues={"NHL": L}, order=["NHL"], acc=t.get("acc", 0), n_test=t.get("n", 0), updated=str(today.date()))
-
-
-if __name__ == "__main__":                 # backtest : python src/nhl.py <dossier>
-    import sys
-    sys.path.insert(0, os.path.dirname(__file__))
-    from update_all import fetch, RAW, TODAY  # noqa
-    df, _ = results(fetch, RAW, TODAY)
-    print(len(df), "matchs")
-    for xi in (0.0035,):
-        XI = xi
-        print(xi, backtest(df, TODAY))
+    # matchs à venir : semaine en cours et suivante
+    now, games, seen = pd.Timestamp.now(tz="UTC"), [], set()
+    for d in (today.date(), (today + pd.Timedelta(days=7)).date()):
+        for w in (_get(f"{API}/schedule/{d}") or {}).get("gameWeek", []):
+            for g in w.get("games", []):
+                if g["id"] in seen or g.get("gameType") not in (2, 3) or g.get("gameState") not in ("FUT", "PRE"): continue
+                seen.add(g["id"])
+                h, a, dt = g["homeTeam"]["abbrev"], g["awayTeam"]["abbrev"], pd.Timestamp(g["startTimeUTC"])
+                if h in name and a in name and now - pd.Timedelta(hours=4) <= dt <= now + pd.Timedelta(days=8):
+                    games.append(dict(dt=dt.strftime("%Y-%m-%dT%H:%M"), home=name[h], away=name[a]))
+    games.sort(key=lambda x: x["dt"])
+    L = dict(name="NHL", country="Amérique du Nord", lh=round(lv["lh"], 4), la=round(lv["la"], 4), f1=round(lv["f1"], 4),
+             ot=round(lv["ot"], 3), dk=DK, en=EN, rho=0, teams=T, games=games, last=str(df.date.max()))
+    print(f"  hockey NHL {len(T)} équipes, {len(games)} matchs à venir, dernier résultat {L['last']}, "
+          f"buts attendus {L['lh']:.2f}-{L['la']:.2f}, 1re période {L['f1']:.1%}")
+    return dict(leagues={"NHL": L}, order=["NHL"], acc=test["acc"], n_test=test["n"], updated=str(today.date()))
