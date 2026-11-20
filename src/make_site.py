@@ -255,7 +255,7 @@ document.querySelectorAll("time[data-dt]").forEach(t => {{ const d = new Date(t.
 landing = landing.replace("<body>\n", "<body>\n" + I18N, 1).replace(f"</script>\n{I18N}\n</body>", "</script>\n</body>")
 # (l'ancienne page de présentation a été supprimée : la page d'accueil est l'appli)
 
-for name in ["tennis_history.csv", "tennis_tool.json", "wta_history.csv", "wta_tool.json", "cups_history.csv", "predictions_log.csv", "paper_bets.csv"]:
+for name in ["tennis_history.csv", "tennis_tool.json", "wta_history.csv", "wta_tool.json", "cups_history.csv", "predictions_log.csv", "paper_bets.csv", "events_log.csv"]:
     src = f"{OUT}/{name}"
     if os.path.exists(src) and os.path.getsize(src) > 0:
         shutil.copy(src, f"{ROOT}/data/{name}")

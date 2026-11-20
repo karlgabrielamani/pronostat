@@ -78,7 +78,19 @@ def parse_events(data, tour, seen, out):
                 out.append(dict(id=c["id"], dt=pd.Timestamp(c["date"]), tour=e["name"], city=city, major=bool(e.get("major")),
                                 rnd=ROUND[rname], status=c["status"]["type"]["name"], names=names,
                                 winner=[bool(x.get("winner")) for x in comp],
-                                games=[sum(ls.get("value", 0) or 0 for ls in x.get("linescores", [])) for x in comp]))
+                                games=[sum(ls.get("value", 0) or 0 for ls in x.get("linescores", [])) for x in comp],
+                                sets=[[ls.get("value") or 0 for ls in x.get("linescores", [])] for x in comp]))
+
+
+def sets_of(sets, w):
+    """Sets gagnés par le vainqueur (ws) et le perdant (ls), et qui a gagné le 1er set (first = 1 si le vainqueur)."""
+    try:
+        W, L = sets[w], sets[1 - w]
+        if not W or len(W) != len(L): return {}
+        ws = sum(1 for a, b in zip(W, L) if a > b)
+        return dict(ws=ws, ls=len(W) - ws, first=int(W[0] > L[0]))
+    except Exception:
+        return {}
 
 
 def espn_matches(today, since, tour="atp"):
@@ -148,7 +160,8 @@ def update(hist_path, tool_path, out_dir, today, tour="atp"):
             new.append(dict(Date=str(m["dt"].date()), Tournament=m["tour"], rnd=m["rnd"], Surface=surf, bo5=int(m["major"]),
                             Winner=W, Loser=L, WRank=rank.get(W, np.nan), LRank=rank.get(L, np.nan),
                             Comment={"STATUS_FINAL": "Completed", "STATUS_RETIRED": "Retired", "STATUS_WALKOVER": "Walkover"}[st],
-                            gw=m["games"][w] or np.nan, gl=m["games"][1 - w] or np.nan, src=f"espn:{m['id']}"))
+                            gw=m["games"][w] or np.nan, gl=m["games"][1 - w] or np.nan, src=f"espn:{m['id']}",
+                            **sets_of(m["sets"], w)))
         elif st == "STATUS_SCHEDULED" and all(x and x != "TBD" for x in m["names"]) and m["dt"] >= today.tz_localize("UTC") - timedelta(hours=3):
             upcoming.append(dict(dt=m["dt"].isoformat(), tour=m["tour"], city=m["city"], surface=surf, bo=5 if m["major"] else 3,
                                  round=ROUND_FR[m["rnd"]], p1=n1, p2=n2))

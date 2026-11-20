@@ -411,6 +411,12 @@ if __name__ == "__main__":
                               pd.concat(RESULTS["foot"], ignore_index=True), RESULTS["nba"], pd.concat(ths, ignore_index=True))
     except Exception as e:                       # l'historique ne bloque pas la mise à jour
         import traceback; print("  ATTENTION historique non mis à jour :", repr(e)); traceback.print_exc(limit=3)
+    try:                                         # journal des événements (justesse des % d'événements)
+        import evlog
+        evlog.update(f"{ROOT}/data/events_log.csv", OUT, pd.Timestamp.now(tz="UTC"), f, n, [("ATP", tennis), ("WTA", wta)],
+                     pd.concat(RESULTS["foot"], ignore_index=True), RESULTS["nba"], pd.concat(ths, ignore_index=True))
+    except Exception as e:
+        import traceback; print("  ATTENTION journal des événements :", repr(e)); traceback.print_exc(limit=3)
     paper_data = None
     try:
         import paper

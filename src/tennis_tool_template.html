@@ -243,7 +243,9 @@ function prob(a, b) {
   const inact = Math.log1p(Math.min(daysSince(a.last), 365)) - Math.log1p(Math.min(daysSince(b.last), 365));
   const x = [eloB, eloS, gelB, rank, inact, load(a) - load(b), a.ret - b.ret, eloB * (bo === 5 ? 1 : 0), eloS * (bo === 5 ? 1 : 0)];
   const z = x.reduce((acc, v, i) => acc + v * D.coef.w[i], D.coef.c);
-  return 1 / (1 + Math.exp(-z));
+  // prudence : moins catégorique quand un des joueurs a peu de matchs connus
+  const nmin = Math.min(a.n || 0, b.n || 0), f = 1 - 0.3 * Math.exp(-nmin / 50);
+  return 1 / (1 + Math.exp(-z * f));
 }
 // élan : le joueur qui mène au nombre de sets a un peu plus de chances de gagner le set suivant
 // (mesuré sur 3 900 matchs ATP 2025-26 : sans cet effet, les matchs en 3 sets étaient surestimés, 53 % annoncés pour 37 % réels)

@@ -60,7 +60,8 @@ def tennis_prob(D, p1, p2, surface, bo):
     bo5 = 1 if bo == 5 else 0
     x = [eloB, eloS, gelB, rank, inact, load(a) - load(b), a["ret"] - b["ret"], eloB * bo5, eloS * bo5]
     z = sum(v * w for v, w in zip(x, D["coef"]["w"])) + D["coef"]["c"]
-    return 1 / (1 + math.exp(-z))
+    f = 1 - 0.3 * math.exp(-min(a.get("n", 0) or 0, b.get("n", 0) or 0) / 50)     # même prudence que la page
+    return 1 / (1 + math.exp(-z * f))
 
 
 # ------------------------------------------------------------------ journal
