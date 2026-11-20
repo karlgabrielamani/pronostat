@@ -32,4 +32,12 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html app.html data
           git diff --cached --quiet || git commit -m "Mise à jour du $(date -u +%F)"
-          git push
+          # si un commit est arrivé pendant l'exécution : on se remet par-dessus (en cas de conflit sur les fichiers générés, la version du bot gagne)
+          for i in 1 2 3; do
+            git pull --rebase -X theirs && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            echo "Push refusé (essai $i), nouvel essai dans 10 s"; sleep 10
+          done
+          exit 1
+      - name: Vérifier que toutes les sources sont à jour (alerte si une source est bloquée depuis plus de 48 h)
+        run: python src/check_fresh.py . 48

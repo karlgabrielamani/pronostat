@@ -18,6 +18,7 @@ from model import DixonColes  # noqa: E402
 os.makedirs(RAW, exist_ok=True); os.makedirs(OUT, exist_ok=True)
 TODAY = pd.Timestamp(date.today())
 RESULTS = {}                      # résultats réels, pour régler l'historique des pronostics
+OK = set()                        # sources mises à jour sans erreur à cette exécution (voir write_status)
 
 
 def fetch(url, dest, min_bytes=500):
@@ -273,7 +274,7 @@ FONT_LINK = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?fami
 def logos_js():
     """Logos des équipes (data/logos.json, fait par src/logos.py) ; sans ce fichier la page affiche les initiales."""
     p = f"{ROOT}/data/logos.json"
-    return ""          # la page charge data/logos.json après l'affichage (page plus légère) ; window.LOGOS reste possible pour une page autonome
+    return ""          # la page charge data/logos_idx.json (index des fichiers data/logo/, fait par make_site.py) après l'affichage (page plus légère) ; window.LOGOS reste possible pour une page autonome
 
 
 BASKET_CLONES = (("el", "euroleague", "EuroLeague", "ElAPI", "euroleague_tool.json", "Données : site officiel de l'EuroLeague."),
@@ -330,6 +331,23 @@ def flag_few(f, min_games=4):
     print(f"  coupes : {few} matchs avec un club aux données insuffisantes (masqués à l'accueil)")
 
 
+SOURCES = ("foot", "nba", "national", "tennis_atp", "tennis_wta", "hockey", "euroleague", "wnba")
+
+
+def write_status():
+    """out/status.json = dernière mise à jour réussie de chaque source (recopié dans data/ par make_site.py).
+    src/check_fresh.py s'en sert pour faire échouer le workflow quand une source est bloquée depuis trop longtemps."""
+    p = f"{ROOT}/data/status.json"
+    st = json.load(open(p)) if os.path.exists(p) else {}
+    now = pd.Timestamp.now(tz="UTC").isoformat(timespec="minutes")
+    for k in SOURCES:
+        if k in OK or k not in st:           # première fois : on part de maintenant, pour ne pas alerter à tort
+            st[k] = now
+    json.dump(st, open(f"{OUT}/status.json", "w"), indent=1, sort_keys=True)
+    bad = [k for k in SOURCES if k not in OK]
+    print("  sources à jour :", ", ".join(sorted(OK)) or "aucune", "· en échec :", ", ".join(bad) or "aucune")
+
+
 def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data=None, hockey_data=None):
     t = open(f"{SRC}/tennis_tool_template.html").read()
     css = open(f"{SRC}/app.css").read()
@@ -366,42 +384,42 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
 
 if __name__ == "__main__":
     print("Mise à jour du", TODAY.date())
-    f = foot()
-    n = nba()
+    f = foot(); OK.add("foot")
+    n = nba(); OK.add("nba")
     try:                                         # WNBA (hors saison de novembre à avril : classement seulement)
         import wnba
-        json.dump(wnba.update(fetch, RAW, TODAY), open(f"{OUT}/wnba_tool.json", "w"), ensure_ascii=False)
+        json.dump(wnba.update(fetch, RAW, TODAY), open(f"{OUT}/wnba_tool.json", "w"), ensure_ascii=False); OK.add("wnba")
     except Exception as e:
         print("  ATTENTION WNBA non mise à jour :", repr(e))
     try:
         import euroleague
-        json.dump(euroleague.update(fetch, RAW, TODAY), open(f"{OUT}/euroleague_tool.json", "w"), ensure_ascii=False)
+        json.dump(euroleague.update(fetch, RAW, TODAY), open(f"{OUT}/euroleague_tool.json", "w"), ensure_ascii=False); OK.add("euroleague")
     except Exception as e:
         print("  ATTENTION EuroLeague non mise à jour :", repr(e))
     try:                                         # équipes nationales (Ligue des nations, qualifications, amicaux)
         import national
         nat = national.update(fetch, RAW, TODAY)
-        f["leagues"].update(nat); f["order"] += [k for k in nat if k not in f["order"]]
+        f["leagues"].update(nat); f["order"] += [k for k in nat if k not in f["order"]]; OK.add("national")
     except Exception as e:
         print("  ATTENTION sélections nationales non mises à jour :", repr(e))
     flag_few(f)
     hockey = None
     try:                                         # hockey (NHL) : ne bloque pas les autres sports
         import nhl
-        hockey = nhl.update(ROOT, TODAY)
+        hockey = nhl.update(ROOT, TODAY); OK.add("hockey")
     except Exception as e:
         print("  ATTENTION hockey non mis à jour :", repr(e))
         if os.path.exists(f"{ROOT}/data/hockey_tool.json"): hockey = json.load(open(f"{ROOT}/data/hockey_tool.json"))
     try:
         import tennis as tn
-        tennis = tn.update(f"{ROOT}/data/tennis_history.csv", f"{ROOT}/data/tennis_tool.json", OUT, TODAY)
+        tennis = tn.update(f"{ROOT}/data/tennis_history.csv", f"{ROOT}/data/tennis_tool.json", OUT, TODAY); OK.add("tennis_atp")
     except Exception as e:                       # le tennis ne bloque pas le foot et la NBA
         print("  ATTENTION tennis non mis à jour :", repr(e))
         tennis = json.load(open(f"{ROOT}/data/tennis_tool.json"))
     wta = None
     try:
         import tennis as tn
-        wta = tn.update(f"{ROOT}/data/wta_history.csv", f"{ROOT}/data/wta_tool.json", OUT, TODAY, tour="wta")
+        wta = tn.update(f"{ROOT}/data/wta_history.csv", f"{ROOT}/data/wta_tool.json", OUT, TODAY, tour="wta"); OK.add("tennis_wta")
     except Exception as e:
         print("  ATTENTION tennis WTA non mis à jour :", repr(e))
         if os.path.exists(f"{ROOT}/data/wta_tool.json"): wta = json.load(open(f"{ROOT}/data/wta_tool.json"))
@@ -438,3 +456,4 @@ if __name__ == "__main__":
     except Exception as e:
         print("  ATTENTION logos non mis à jour :", repr(e))
     print("Page :", build(f, n, tennis, hist, wta, paper_data, hockey))
+    write_status()

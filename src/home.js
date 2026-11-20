@@ -44,7 +44,7 @@
   }
   function hue(n) { let h = 0; for (const c of String(n)) h = (h * 31 + c.charCodeAt(0)) % 360; return h; }
   let LOGOS = window.LOGOS || {};
-  if (!window.LOGOS && window.fetch) fetch("data/logos.json").then(r => r.ok ? r.json() : {}).then(j => { LOGOS = j || {}; if (window.Home) Home.show(true); }).catch(() => {});
+  if (!window.LOGOS && window.fetch) fetch("data/logos_idx.json").then(r => r.ok ? r.json() : {}).then(j => { LOGOS = j || {}; if (window.Home) Home.show(true); }).catch(() => {});
   const hkLogo = n => { const l = (window.HKLOGOS || {})[n]; if (!l) return ""; const dark = document.documentElement.getAttribute("data-theme") === "dark"; return (dark && l[1]) || l[0]; };   // logos NHL (clair / sombre)
   const crest = (n, cls = "") => LOGOS[n] || hkLogo(n)
     ? `<span class="crest logo ${cls}" aria-hidden="true"><img src="${LOGOS[n] || hkLogo(n)}" alt="" loading="lazy" decoding="async"></span>`

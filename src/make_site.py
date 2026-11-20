@@ -255,8 +255,35 @@ document.querySelectorAll("time[data-dt]").forEach(t => {{ const d = new Date(t.
 landing = landing.replace("<body>\n", "<body>\n" + I18N, 1).replace(f"</script>\n{I18N}\n</body>", "</script>\n</body>")
 # (l'ancienne page de présentation a été supprimée : la page d'accueil est l'appli)
 
-for name in ["hockey_tool.json", "tennis_history.csv", "tennis_tool.json", "wta_history.csv", "wta_tool.json", "cups_history.csv", "predictions_log.csv", "paper_bets.csv", "events_log.csv"]:
+for name in ["hockey_tool.json", "tennis_history.csv", "tennis_tool.json", "wta_history.csv", "wta_tool.json", "cups_history.csv", "predictions_log.csv", "paper_bets.csv", "events_log.csv", "status.json"]:
     src = f"{OUT}/{name}"
     if os.path.exists(src) and os.path.getsize(src) > 0:
         shutil.copy(src, f"{ROOT}/data/{name}")
+# ---------------------------------------------------------------- logos : un petit fichier par image au lieu d'un gros JSON
+# data/logos.json (3 Mo de data URI, fait par src/logos.py) reste la source ; la page ne charge que data/logos_idx.json
+# (nom -> chemin) puis, à la demande, les quelques images affichées, que le navigateur garde en cache.
+def split_logos():
+    import base64, hashlib
+    src = f"{ROOT}/data/logos.json"
+    if not os.path.exists(src): return 0
+    d, idx, keep = json.load(open(src, encoding="utf-8")), {}, set()
+    os.makedirs(f"{ROOT}/data/logo", exist_ok=True)
+    ext = {"image/webp": "webp", "image/svg+xml": "svg", "image/png": "png", "image/jpeg": "jpg"}
+    for name, uri in d.items():
+        m = re.match(r"data:([^;,]+)(;base64)?,(.*)", str(uri), re.S)
+        if not m or m.group(1) not in ext: continue
+        raw = base64.b64decode(m.group(3)) if m.group(2) else __import__("urllib.parse").parse.unquote_to_bytes(m.group(3))
+        fn = hashlib.sha1(raw).hexdigest()[:12] + "." + ext[m.group(1)]     # même image = même fichier (réserves, doublons)
+        if fn not in keep:
+            keep.add(fn); dest = f"{ROOT}/data/logo/{fn}"
+            if not os.path.exists(dest): open(dest, "wb").write(raw)
+        idx[name] = "data/logo/" + fn
+    for fn in os.listdir(f"{ROOT}/data/logo"):                                # images qui ne servent plus
+        if fn not in keep: os.remove(f"{ROOT}/data/logo/{fn}")
+    json.dump(idx, open(f"{ROOT}/data/logos_idx.json", "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    return len(keep)
+
+
+print("  logos :", split_logos(), "fichiers image")
+
 print("Site écrit :", f"{ROOT}/index.html", "+ app.html", f"· {len(stats)} stats du jour", "· match du jour :" , (match_day or {}).get("a"), "-", (match_day or {}).get("b"))
