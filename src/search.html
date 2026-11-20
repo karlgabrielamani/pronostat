@@ -52,7 +52,7 @@
   let ENT = null, MAT = null, rows = [];
   const load = () => {
     if (ENT) return;
-    const APIS = [window.FootAPI, window.TennisAPI, window.NbaAPI, window.ElAPI, window.WnAPI].filter(Boolean);
+    const APIS = [window.FootAPI, window.TennisAPI, window.NbaAPI, window.ElAPI, window.WnAPI, window.HockeyAPI].filter(Boolean);
     ENT = APIS.flatMap(a => { try { return a.teams ? a.teams() : []; } catch (e) { return []; } }).map(x => ({ ...x, n: norm(x.name) }));
     let H = []; try { H = window.Home && Home.items ? Home.items() : []; } catch (e) {}
     MAT = (H.length ? H : APIS.flatMap(a => { try { return a.list(); } catch (e) { return []; } }))

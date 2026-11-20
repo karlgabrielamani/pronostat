@@ -1,0 +1,62 @@
+<div class="wrap" id="view-hockey" hidden>
+  <header class="vh">
+    <h1>Hockey</h1>
+    <p class="sub" hidden>Vainqueur juste <b id="hkAcc"></b> du temps (<span id="hkN"></span> matchs testés)</p>
+  </header>
+
+  <div class="card">
+    <label class="lg" for="hkL">Compétition<select id="hkL"></select></label>
+    <div class="eyebrow">Prochains matchs <span style="text-transform:none;letter-spacing:0">· heure locale</span></div>
+    <div class="games" id="hkGames"></div>
+  </div>
+
+  <div class="card">
+    <div class="pick">
+      <label for="hkA">Domicile<select id="hkA"></select></label>
+      <div class="vs">vs</div>
+      <label for="hkB">Extérieur<select id="hkB"></select></label>
+    </div>
+    <div class="row">
+      <span class="note">Résultat après 60 min, sans prolongation</span>
+      <button class="swap" id="hkSwap">Inverser</button>
+    </div>
+    <p class="err" id="hkErr" hidden></p>
+
+    <div class="result" id="hkResult">
+      <div class="three">
+        <div><span class="pname" id="hkNA"></span><span class="pct pa num" id="hkPH"></span><span class="odd num" id="hkOH"></span></div>
+        <div class="mid"><span class="pname">Nul</span><span class="pct pn num" id="hkPD"></span><span class="odd num" id="hkOD"></span></div>
+        <div><span class="pname" id="hkNB"></span><span class="pct pb num" id="hkPA"></span><span class="odd num" id="hkOA"></span></div>
+      </div>
+      <div class="bar" aria-hidden="true"><span id="hkBarH" style="background:var(--a)"></span><span id="hkBarD" style="background:var(--ink-3)"></span><span id="hkBarA" style="background:var(--b)"></span></div>
+      <p class="verdict" id="hkVerdict"></p>
+      <div class="facts" id="hkFinal"></div>
+      <div class="scen combo" style="gap:10px">
+        <div class="eyebrow">Événements du match</div>
+        <p class="sub2">Ça va ensemble</p>
+        <div class="sugg" id="hkSug"></div>
+        <p class="sub2">Tous les événements</p>
+        <div class="evlist" id="hkEv"></div>
+        <div class="row"><button class="simbtn" id="hkAdd">Ajouter au combiné</button><span class="note" id="hkSel"></span></div>
+      </div>
+      <details class="more">
+        <summary>Détails du match et match simulé</summary>
+        <div class="facts" id="hkFacts"></div>
+        <div class="tl" id="hkTl"></div>
+        <button class="simbtn" id="hkSim">Simuler un match</button>
+      </details>
+    </div>
+  </div>
+
+  <details class="more sec">
+    <summary>Classement et notes des équipes</summary>
+    <p class="sub">Attaque et défense : buts en plus ou en moins par rapport à une équipe moyenne.</p>
+    <div class="card tablewrap" style="padding:8px 12px">
+      <table>
+        <thead><tr><th>#</th><th>Équipe</th><th>J</th><th>Pts</th><th>V-D-P</th><th>Diff.</th><th>Forme</th><th>Attaque</th><th>Défense</th><th></th></tr></thead>
+        <tbody id="hkTb"></tbody>
+      </table>
+    </div>
+    <p class="note">V victoire · D défaite · P défaite en prolongation ou aux tirs au but. Le modèle ne tient pas compte des gardiens titulaires ni des blessés. Données : NHL.</p>
+  </details>
+</div>

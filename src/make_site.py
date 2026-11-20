@@ -43,7 +43,7 @@ def head(title, desc, extra=""):
 
 
 # ---------------------------------------------------------------- l'appli (page d'accueil du site depuis la mise en page 2026-11)
-app = head("Pronolink · les probabilités, simplement", "Probabilités foot, tennis et basket : chaque match, événement par événement.") + page + "\n</body>\n</html>\n"
+app = head("Pronolink · les probabilités, simplement", "Probabilités foot, tennis, basket et hockey : chaque match, événement par événement.") + page + "\n</body>\n</html>\n"
 for name in ("index.html", "app.html"):          # app.html reste pour les anciens liens
     open(f"{ROOT}/{name}", "w", encoding="utf-8").write(app)
 
@@ -255,7 +255,7 @@ document.querySelectorAll("time[data-dt]").forEach(t => {{ const d = new Date(t.
 landing = landing.replace("<body>\n", "<body>\n" + I18N, 1).replace(f"</script>\n{I18N}\n</body>", "</script>\n</body>")
 # (l'ancienne page de présentation a été supprimée : la page d'accueil est l'appli)
 
-for name in ["tennis_history.csv", "tennis_tool.json", "wta_history.csv", "wta_tool.json", "cups_history.csv", "predictions_log.csv", "paper_bets.csv", "events_log.csv"]:
+for name in ["hockey_tool.json", "tennis_history.csv", "tennis_tool.json", "wta_history.csv", "wta_tool.json", "cups_history.csv", "predictions_log.csv", "paper_bets.csv", "events_log.csv"]:
     src = f"{OUT}/{name}"
     if os.path.exists(src) and os.path.getsize(src) > 0:
         shutil.copy(src, f"{ROOT}/data/{name}")

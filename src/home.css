@@ -103,8 +103,8 @@ h1, h2 { letter-spacing: -0.02em; }
 /* appli téléphone : onglets sport, jour, cartes */
 .mb { display: none; }
 @media (min-width: 761px) { .mb { display: none !important; } }
-.mtabs { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); margin: -24px -20px 0; }
-.mtabs button { font: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 16px; font-weight: 500; color: var(--ink-2); background: none; border: 0; border-bottom: 3px solid transparent; padding: 12px 4px 10px; cursor: pointer; }
+.mtabs { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); margin: -24px -20px 0; }
+.mtabs button { font: inherit; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 15px; font-weight: 500; color: var(--ink-2); background: none; border: 0; border-bottom: 3px solid transparent; padding: 12px 4px 10px; cursor: pointer; }
 .mtabs button svg { width: 20px; height: 20px; }
 .mtabs button[aria-pressed="true"] { color: var(--hot); border-bottom-color: var(--hot); font-weight: 600; }
 .daynav { display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; border-bottom: 1px solid var(--line); margin: 0 -20px; padding: 2px 8px; }
@@ -467,3 +467,4 @@ details.more > summary { font-weight: 600; }
 /* téléphone : version allégée */
 .mcard .tm .dd { display: block; font-size: 11px; color: var(--ink-3); text-transform: capitalize; }
 @media (max-width: 760px) { .daynav.mb { display: none !important; } }
+@media (max-width: 400px) { .mtabs button { flex-direction: column; gap: 3px; font-size: 13px; padding: 9px 2px 8px; } }

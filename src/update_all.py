@@ -330,7 +330,7 @@ def flag_few(f, min_games=4):
     print(f"  coupes : {few} matchs avec un club aux données insuffisantes (masqués à l'accueil)")
 
 
-def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data=None):
+def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data=None, hockey_data=None):
     t = open(f"{SRC}/tennis_tool_template.html").read()
     css = open(f"{SRC}/app.css").read()
     t = t.replace("@media (max-width: 520px) {", css + "@media (max-width: 520px) {", 1)
@@ -352,9 +352,10 @@ def build(foot_data, nba_data, tennis_data, hist=None, wta_data=None, paper_data
     t = t.replace('<div class="wrap">', nav + open(f"{SRC}/fav.html").read() + '<div class="wrap" id="view-tennis" hidden>', 1)
     i = t.index("<script>")
     bh, bj = basket_clones()
-    t = t[:i] + open(f"{SRC}/foot_fragment.html").read() + "\n" + open(f"{SRC}/nba_fragment.html").read() + bh + "\n" + t[i:]
+    hk = hockey_data and hockey_data.get("order")
+    t = t[:i] + open(f"{SRC}/foot_fragment.html").read() + "\n" + open(f"{SRC}/nba_fragment.html").read() + bh + (open(f"{SRC}/hockey_fragment.html").read() if hk else "") + "\n" + t[i:]
     js = lambda name, ph, data: "\n<script>\n" + open(f"{SRC}/{name}").read().replace(ph, json.dumps(data, ensure_ascii=False)) + "\n</script>"
-    t = (t + js("nba_fragment.js", "__NBA__", nba_data) + bj + js("foot_fragment.js", "__FOOT__", foot_data)
+    t = (t + js("nba_fragment.js", "__NBA__", nba_data) + bj + js("foot_fragment.js", "__FOOT__", foot_data) + (js("hockey_fragment.js", "__HOCKEY__", hockey_data) if hk else "")
            + "\n<script>window.HIST = " + json.dumps(hist, ensure_ascii=False) + ";</script>"
            + open(f"{SRC}/router.html").read() + logos_js() + wnba_js() + "\n<script>\n" + open(f"{SRC}/home.js").read() + "\n</script>\n" + open(f"{SRC}/sim.html").read() + open(f"{SRC}/search.html").read() + open(f"{SRC}/share.html").read() + open(f"{SRC}/live.html").read())          # Stratégies : suivies en arrière-plan (data/paper_bets.csv), plus affichées
     t = t.replace("__WTA__", json.dumps(wta_data or dict(players=[], coef=tennis_data["coef"], updated=tennis_data["updated"], test=dict(acc=0, acc_pin=None), live=[]), ensure_ascii=False))
@@ -384,6 +385,13 @@ if __name__ == "__main__":
     except Exception as e:
         print("  ATTENTION sélections nationales non mises à jour :", repr(e))
     flag_few(f)
+    hockey = None
+    try:                                         # hockey (NHL) : ne bloque pas les autres sports
+        import nhl
+        hockey = nhl.update(fetch, RAW, TODAY)
+    except Exception as e:
+        print("  ATTENTION hockey non mis à jour :", repr(e))
+        if os.path.exists(f"{ROOT}/data/hockey_tool.json"): hockey = json.load(open(f"{ROOT}/data/hockey_tool.json"))
     try:
         import tennis as tn
         tennis = tn.update(f"{ROOT}/data/tennis_history.csv", f"{ROOT}/data/tennis_tool.json", OUT, TODAY)
@@ -397,7 +405,7 @@ if __name__ == "__main__":
     except Exception as e:
         print("  ATTENTION tennis WTA non mis à jour :", repr(e))
         if os.path.exists(f"{ROOT}/data/wta_tool.json"): wta = json.load(open(f"{ROOT}/data/wta_tool.json"))
-    for k, v in (("foot", f), ("nba", n), ("tennis", tennis), ("wta", wta)):
+    for k, v in (("foot", f), ("nba", n), ("tennis", tennis), ("wta", wta), ("hockey", hockey)):
         if v is None: continue
         json.dump(v, open(f"{OUT}/{k}_tool.json", "w"), ensure_ascii=False)
     hist = None
@@ -429,4 +437,4 @@ if __name__ == "__main__":
         print("  logos :", len(logos.update(f)), "nouveaux")
     except Exception as e:
         print("  ATTENTION logos non mis à jour :", repr(e))
-    print("Page :", build(f, n, tennis, hist, wta, paper_data))
+    print("Page :", build(f, n, tennis, hist, wta, paper_data, hockey))

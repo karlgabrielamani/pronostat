@@ -1,10 +1,10 @@
 // ---------- Accueil (web : match du jour, stat du jour, tableau ; téléphone : cartes par compétition), fiche de match, favoris ----------
 (() => {
   const $ = id => document.getElementById(id);
-  const APIS = () => [window.FootAPI, window.TennisAPI, window.NbaAPI, window.ElAPI, window.WnAPI].filter(Boolean);
+  const APIS = () => [window.FootAPI, window.TennisAPI, window.NbaAPI, window.ElAPI, window.WnAPI, window.HockeyAPI].filter(Boolean);
   const pct = x => Math.round(x * 100) + " %";
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const SPN = { Foot: "Football", Tennis: "Tennis", NBA: "NBA" };
+  const SPN = { Foot: "Football", Tennis: "Tennis", NBA: "NBA", Hockey: "Hockey" };
   // drapeaux dessinés (les drapeaux emoji ne s'affichent pas sous Windows ni sur certains Android)
   const fsv = (body, vb = "0 0 30 20") => `<svg class="flg" viewBox="${vb}" aria-hidden="true">${body}</svg>`;
   const v3 = (a, b, c) => fsv(`<rect width="10" height="20" fill="${a}"/><rect x="10" width="10" height="20" fill="${b}"/><rect x="20" width="10" height="20" fill="${c}"/>`);
@@ -45,8 +45,9 @@
   function hue(n) { let h = 0; for (const c of String(n)) h = (h * 31 + c.charCodeAt(0)) % 360; return h; }
   let LOGOS = window.LOGOS || {};
   if (!window.LOGOS && window.fetch) fetch("data/logos.json").then(r => r.ok ? r.json() : {}).then(j => { LOGOS = j || {}; if (window.Home) Home.show(true); }).catch(() => {});
-  const crest = (n, cls = "") => LOGOS[n]
-    ? `<span class="crest logo ${cls}" aria-hidden="true"><img src="${LOGOS[n]}" alt="" loading="lazy" decoding="async"></span>`
+  const hkLogo = n => { const l = (window.HKLOGOS || {})[n]; if (!l) return ""; const dark = document.documentElement.getAttribute("data-theme") === "dark"; return (dark && l[1]) || l[0]; };   // logos NHL (clair / sombre)
+  const crest = (n, cls = "") => LOGOS[n] || hkLogo(n)
+    ? `<span class="crest logo ${cls}" aria-hidden="true"><img src="${LOGOS[n] || hkLogo(n)}" alt="" loading="lazy" decoding="async"></span>`
     : `<span class="crest ${cls}" style="background:hsl(${hue(n)} 52% 40%)" aria-hidden="true">${esc(initials(n))}</span>`;
   const short = (x, n) => x.sport === "Tennis" ? String(n).replace(/\s+[A-Z][\w.\-]*\.$/u, "") : n;
   const bn = (x, n) => x.comp === "EuroLeague" ? n : nick(n);          // EuroLeague : nom complet (« Tel Aviv », « Istanbul » sont partagés)
@@ -77,6 +78,7 @@
       let p = pois(i, x.lh) * pois(j, x.la);
       if (i === 0 && j === 0) p *= 1 - x.lh * x.la * x.rho; else if (i === 0 && j === 1) p *= 1 + x.lh * x.rho;
       else if (i === 1 && j === 0) p *= 1 + x.la * x.rho; else if (i === 1 && j === 1) p *= 1 - x.rho;
+      if (i === j && x.dk) p *= x.dk;                    // hockey : nuls après 60 min plus fréquents
       m[i].push(p); tot += p; } }
     m.forEach(r => r.forEach((v, j) => r[j] = v / tot));
     const sum = fn => { let s = 0; for (let i = 0; i <= MG; i++) for (let j = 0; j <= MG; j++) if (fn(i, j)) s += m[i][j]; return s; };
@@ -128,9 +130,9 @@
   try { const o = JSON.parse(sessionStorage.getItem("ps-home") || "{}"); if (o && typeof o === "object") S = Object.assign(S, o, { more: false }); } catch (e) {}
   const saveS = () => { try { sessionStorage.setItem("ps-home", JSON.stringify(S)); } catch (e) {} };
   const curSport = () => small() ? (S.sport || firstSport()) : S.sport;
-  function firstSport() { for (const s of ["Foot", "Tennis", "NBA"]) if (ALL.some(x => x.sport === s)) return s; return "Foot"; }
+  function firstSport() { for (const s of ["Foot", "Tennis", "NBA", "Hockey"]) if (ALL.some(x => x.sport === s)) return s; return "Foot"; }
   // ---- compétitions : championnat (foot), circuit ou tournoi (tennis)
-  const compKey = x => x.sport === "Foot" ? x.lg : x.sport === "Tennis" ? "ev:" + x.tour + "|" + (x.event || x.comp) : x.comp;
+  const compKey = x => x.sport === "Foot" || x.sport === "Hockey" ? x.lg : x.sport === "Tennis" ? "ev:" + x.tour + "|" + (x.event || x.comp) : x.comp;
   const compOk = x => { const c = (S.comp || {})[x.sport]; if (!c) return true; if (c === "ATP" || c === "WTA") return x.tour === c; return compKey(x) === c; };
   const pool = sp => ALL.filter(x => !x.few && (!sp || (x.sport === sp && compOk(x))));
   const SHORT = { "Ligue des Champions": "Ligue des champions", "Jupiler Pro League": "Jupiler Pro League", "Super League Grèce": "Super League" };
@@ -139,7 +141,7 @@
     const base = ALL.filter(x => !x.few && x.sport === sp && upcoming(x));
     const by = {}; base.forEach(x => { const k = compKey(x); (by[k] = by[k] || { x, n: 0 }).n++; });
     let list = Object.entries(by).map(([k, { x, n }]) => ({ k, n, x }));
-    const out = [{ k: "", label: sp === "Foot" ? "Tous les championnats" : sp === "Tennis" ? "Tous les tournois" : "Tout le basket", n: base.length, grp: "" }];
+    const out = [{ k: "", label: sp === "Foot" ? "Tous les championnats" : sp === "Tennis" ? "Tous les tournois" : sp === "Hockey" ? "Tout le hockey" : "Tout le basket", n: base.length, grp: "" }];
     if (sp === "Foot") {
       let lgs = []; try { lgs = window.FootAPI && FootAPI.leagues ? FootAPI.leagues() : []; } catch (e) {}
       lgs.filter(l => !l.cup && !by[l.k]).forEach(l => list.push({ k: l.k, n: 0, x: { lg: l.k, comp: l.name, country: l.country, cup: false } }));   // championnats sans match cette semaine : gardés
@@ -149,6 +151,9 @@
     } else if (sp === "Tennis") {
       for (const t of ["ATP", "WTA"]) { const n = base.filter(x => x.tour === t).length; if (n) out.push({ k: t, label: t === "ATP" ? "ATP · hommes" : "WTA · femmes", n, grp: "Circuits" }); }
       list.sort((a, b) => new Date(a.x.dt) - new Date(b.x.dt)).forEach(o => out.push({ k: o.k, label: o.x.event || o.x.comp, sub: o.x.tour, n: o.n, grp: "Tournois" }));
+    } else if (sp === "Hockey") {
+      let lgs = []; try { lgs = window.HockeyAPI ? HockeyAPI.leagues() : []; } catch (e) {}
+      lgs.forEach(l => out.push({ k: l.k, label: l.name, flag: FLAG[l.country] || "", n: base.filter(x => x.lg === l.k).length, grp: "Championnats" }));
     } else {
       const n = k => base.filter(x => x.comp === k).length;
       out.push({ k: "NBA", label: "NBA", flag: FLAG["États-Unis"], n: n("NBA"), grp: "Championnats" });
@@ -221,6 +226,7 @@
   }
   function groupKey(x) {
     if (x.sport === "Foot") return { id: "F|" + x.lg, order: ["Sélections nationales", "Coupes d'Europe", "Championnats", "Coupes nationales"].indexOf(FOOTGRP(x)) * 100 + lord(x), html: `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc(x.comp)}</b></span>` };
+    if (x.sport === "Hockey") return { id: "H|" + x.lg, order: 0, html: `<span class="fl">${FLAG[x.country] || ""}</span><span><b>${esc(x.comp)}</b></span>` };
     if (x.sport === "Tennis") return { id: "T|" + x.tour + x.event, order: x.tour === "ATP" ? 0 : 1, html: `<span><b>${esc(x.tour || "")}</b> · ${esc(x.event || x.comp)}${x.round ? " · " + esc(x.round) : ""}</span>` };
     return { id: "B|" + x.comp, order: x.comp === "NBA" ? 0 : 1, html: `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span><span><b>${esc(x.comp || "NBA")}</b></span>` };
   }
@@ -254,6 +260,8 @@
   function motdRows(x) {
     if (x.sport === "Foot") { const m = footM(x), s = m.sc[0];
       return [["Les deux équipes marquent", pct(m.btts)], ["Plus de 2,5 buts", pct(m.o(3))], ["Score probable", `${s[0]}–${s[1]}`]]; }
+    if (x.sport === "Hockey") { const m = footM(x), s = m.sc[0], fa = x.pf >= .5;
+      return [[`${fa ? x.a : x.b} gagne (prolongation comprise)`, pct(fa ? x.pf : 1 - x.pf)], ["Plus de 5,5 buts (60 min)", pct(m.o(6))], ["Score probable (60 min)", `${s[0]}–${s[1]}`]]; }
     if (x.sport === "Tennis") { const t = tennisS(x);
       return [[`${short(x, x.a)} gagne au moins un set`, pct(t.setA)], [`${short(x, x.b)} gagne au moins un set`, pct(t.setB)], ["Score probable", setScore(x, t.sc[0])]]; }
     const fav = x.mg >= 0 ? x.a : x.b, [a10, b10] = nbaBy(x, 10);
@@ -272,6 +280,9 @@
     if (x.sport === "Tennis") { const t = tennisS(x), fa = x.pa >= x.pb, und = !fa;
       return [{ v: fa ? t.setB : t.setA, l: `${short(x, fa ? x.b : x.a)} gagne un set`, kind: "tset" },
               { v: Math.max(x.pa, x.pb), l: `${short(x, fa ? x.a : x.b)} gagne`, kind: "twin" }]; }
+    if (x.sport === "Hockey") { const m = footM(x), fa = x.pf >= .5;
+      return [{ v: fa ? x.pf : 1 - x.pf, l: `${fa ? x.a : x.b} gagne (prolongation comprise)`, kind: "hwin" }, { v: m.o(5), l: "Plus de 4,5 buts (60 min)", kind: "h45" },
+              { v: m.btts, l: "Les deux équipes marquent", kind: "hbtts" }, { v: fa ? m.ha : m.aa, l: `${fa ? x.a : x.b} marque au moins un but`, kind: "hscore" }]; }
     if (x.sport === "NBA") { const fa = x.pa >= x.pb, [a5, b5] = nbaBy(x, 5);
       return [{ v: Math.max(x.pa, x.pb), l: `${bn(x, fa ? x.a : x.b)} gagne`, kind: "bwin" }, { v: fa ? a5 : b5, l: `${bn(x, fa ? x.a : x.b)} gagne de plus de 5 pts`, kind: "b5" }]; }
     const m = footM(x), fa = x.pa >= x.pb;
@@ -290,7 +301,7 @@
     };
     let by = pick(0.7, 0.95);
     if (Object.values(by).flat().length < max) { const more = pick(0.55, 0.95); by = more; }
-    const out = [], used = new Set(), kinds = {}, order = ["Foot", "Tennis", "NBA"].filter(s => by[s]);
+    const out = [], used = new Set(), kinds = {}, order = ["Foot", "Tennis", "NBA", "Hockey"].filter(s => by[s]);
     const ok = c => !used.has(c.x.k) && (kinds[c.kind] || 0) < 2;                         // pas plus de 2 stats du même genre
     const take = c => { out.push(c); used.add(c.x.k); kinds[c.kind] = (kinds[c.kind] || 0) + 1; };
     order.forEach(s => { const c = by[s].find(ok); if (c) take(c); });                       // au moins une par sport
@@ -299,14 +310,14 @@
     return out.sort((p, q) => q.v - p.v);
   }
   const statRow = c => `<a class="stat" href="#m/${encodeURIComponent(c.x.k)}"><span class="v">${pct(c.v)}</span><span class="l"><b>${esc(c.l)}</b>
-      <span class="m"><span class="tag">${c.x.sport === "Foot" ? "Foot" : c.x.sport === "NBA" ? c.x.comp : SPN[c.x.sport]}</span><span>${esc(short(c.x, c.x.a))} – ${esc(short(c.x, c.x.b))}</span></span><span class="when">${whenTxt(c.x)}</span></span></a>`;
+      <span class="m"><span class="tag">${c.x.sport === "Foot" ? "Foot" : c.x.sport === "NBA" || c.x.sport === "Hockey" ? c.x.comp : SPN[c.x.sport]}</span><span>${esc(short(c.x, c.x.a))} – ${esc(short(c.x, c.x.b))}</span></span><span class="when">${whenTxt(c.x)}</span></span></a>`;
 
   // ---- tableau
   function tableRows(items) {
     const lim = S.more ? items.length : 12;
     const rows = items.slice(0, lim).map(x => {
       const cr = x.sport !== "Tennis", past = new Date(x.dt).getTime() < Date.now();
-      return `<tr data-k="${encodeURIComponent(x.k)}"${past ? ' class="past"' : ""}><td class="h-sport"><span class="tag">${x.sport === "Foot" ? "Football" : x.sport === "NBA" ? x.comp : x.sport}</span></td>
+      return `<tr data-k="${encodeURIComponent(x.k)}"${past ? ' class="past"' : ""}><td class="h-sport"><span class="tag">${x.sport === "Foot" ? "Football" : x.sport === "NBA" || x.sport === "Hockey" ? x.comp : x.sport}</span></td>
         <td><span class="mt">${cr ? crest(x.a, "sm") : ""}<span>${esc(short(x, x.a))}</span><span class="dash">–</span><span>${esc(short(x, x.b))}</span>${cr ? crest(x.b, "sm") : ""}</span></td>
         <td class="dt">${whenTxt(x)}</td><td class="c pc">${pct(x.pa)}</td><td class="c pc d">${x.pd == null ? "–" : pct(x.pd)}</td><td class="c pc">${pct(x.pb)}</td></tr>`;
     }).join("");
@@ -380,7 +391,7 @@
     $("hTours").innerHTML = sp === "Tennis" ? toursHtml() : BK[bc] ? basketTable(bc) : FL ? footTable(FL) : "";
     $("view-jour").classList.toggle("noitems", !items.length && !!(FL || BK[bc]));
     if (small()) {
-      $("hList").innerHTML = items.length ? groupedList(items, multi) : wOff || BK[bc] || FL ? "" : `<p class="mempty">Aucun match ${sp === "Tennis" ? "de tennis" : sp === "NBA" ? "de basket" : "de football"} programmé pour l'instant.</p>`;
+      $("hList").innerHTML = items.length ? groupedList(items, multi) : wOff || BK[bc] || FL ? "" : `<p class="mempty">Aucun match ${sp === "Tennis" ? "de tennis" : sp === "NBA" ? "de basket" : sp === "Hockey" ? "de hockey" : "de football"} programmé pour l'instant.</p>`;
     } else {
       const motd = matchOfDay(items.filter(accOk));
       $("hMotd").innerHTML = motdCard(motd);
@@ -394,7 +405,7 @@
 
   // ---- analyse complète : le bloc de l'outil détaillé (événements, combiné, cotes, prono, partage, simulation…) est déplacé dans la fiche
   const BPFX = { NBA: "nb", EuroLeague: "el", WNBA: "wn" };
-  const embIds = x => x.sport === "Foot" ? ["ftResult"] : x.sport === "Tennis" ? ["result"] : (x.comp === "NBA" ? ["nbInj", "nbResult"] : [BPFX[x.comp] + "Result"]);
+  const embIds = x => x.sport === "Foot" ? ["ftResult"] : x.sport === "Hockey" ? ["hkResult"] : x.sport === "Tennis" ? ["result"] : (x.comp === "NBA" ? ["nbInj", "nbResult"] : [BPFX[x.comp] + "Result"]);
   let moved = [], embKey = null;
   function restore() {
     for (const m of moved.reverse()) m.parent.insertBefore(m.el, m.next && m.next.parentNode === m.parent ? m.next : null);
@@ -477,6 +488,12 @@
       body = `<div class="dgrp">Buts</div>${rows("Au moins 2 buts", pct(m.o(2)))}${rows("Au moins 3 buts", pct(m.o(3)))}${rows("Au moins 4 buts", pct(m.o(4)))}${rows("Les deux équipes marquent", pct(m.btts))}
         <div class="dgrp">Par équipe</div>${rows(`${x.a} marque au moins un but`, pct(m.ha))}${rows(`${x.b} marque au moins un but`, pct(m.aa))}
         <div class="dgrp">Scores possibles</div>${m.sc.slice(0, 3).map(s => rows(`${x.a} ${s[0]}–${s[1]} ${x.b}`, pct(s[2]))).join("")}`;
+    } else if (x.sport === "Hockey") {
+      const m = footM(x);
+      body = `<div class="dgrp">Vainqueur, prolongation comprise</div>${rows(`${x.a} gagne`, pct(x.pf))}${rows(`${x.b} gagne`, pct(1 - x.pf))}
+        <div class="dgrp">Buts après 60 min</div>${rows("Plus de 4,5 buts", pct(m.o(5)))}${rows("Plus de 5,5 buts", pct(m.o(6)))}${rows("Plus de 6,5 buts", pct(m.o(7)))}${rows("Les deux équipes marquent", pct(m.btts))}
+        <div class="dgrp">Par équipe</div>${rows(`${x.a} marque au moins un but`, pct(m.ha))}${rows(`${x.b} marque au moins un but`, pct(m.aa))}
+        <div class="dgrp">Scores possibles après 60 min</div>${m.sc.slice(0, 3).map(s => rows(`${x.a} ${s[0]}–${s[1]} ${x.b}`, pct(s[2]))).join("")}`;
     } else if (x.sport === "Tennis") {
       const t = tennisS(x);
       body = `<div class="dgrp">Sets</div>${rows(`${short(x, x.a)} gagne au moins un set`, pct(t.setA))}${rows(`${short(x, x.b)} gagne au moins un set`, pct(t.setB))}${rows(t.bo === 3 ? "Match en 3 sets" : "Match en 5 sets", pct(t.bo === 3 ? 2 * t.s * (1 - t.s) : 6 * t.s * t.s * (1 - t.s) ** 2))}
@@ -486,11 +503,11 @@
       body = `<div class="dgrp">Écart</div>${rows("Écart prévu", (Math.abs(x.mg) < 1 ? "Moins d'1 pt" : `${bn(x, fav)} +${Math.abs(x.mg).toFixed(0)} pts`))}${rows("Match serré (5 pts ou moins)", pct(close))}
         <div class="dgrp">Par équipe</div>${rows(`${bn(x, x.a)} : victoire par plus de 5 pts`, pct(a5))}${rows(`${bn(x, x.a)} : victoire par plus de 10 pts`, pct(a10))}${rows(`${bn(x, x.b)} : victoire par plus de 5 pts`, pct(b5))}${rows(`${bn(x, x.b)} : victoire par plus de 10 pts`, pct(b10))}`;
     }
-    const fl = x.sport === "Foot" ? `<span class="fl">${FLAG[x.country] || ""}</span>` : x.sport === "NBA" ? `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span>` : "";
+    const fl = x.sport === "Foot" || x.sport === "Hockey" ? `<span class="fl">${FLAG[x.country] || ""}</span>` : x.sport === "NBA" ? `<span class="fl">${x.comp === "EuroLeague" ? FLAG.Europe : FLAG["États-Unis"]}</span>` : "";
     box.innerHTML = `<div class="dcard">
       <div class="dhead"><span class="lg">${fl}${esc(compLabel(x))}</span><span class="dstar"><span class="when">${whenTxt(x)}</span>${Fav.star(x.sport, x.dt, x.a, x.b, x.comp)}</span></div>
       <div class="dteams">${cr ? crest(x.a, "lg") : "<span></span>"}<span class="mt"><span>${esc(short(x, x.a))}</span><i style="font-style:normal">—</i><span>${esc(short(x, x.b))}</span></span>${cr ? crest(x.b, "lg") : "<span></span>"}</div>
-      <div class="dsec">Résultat du match</div>
+      <div class="dsec">Résultat du match${x.sport === "Hockey" ? " après 60 min" : ""}</div>
       ${rbar(x, cells)}${body}
       <div class="dgrp">Cotes justes</div>${cells.map(([n, p]) => rows(n, (1 / Math.max(p, 1e-4)).toFixed(2).replace(".", ","))).join("")}</div>
       <div class="dsec dmore">Analyse détaillée</div>
@@ -510,8 +527,8 @@
   }
 
   // ---- navigation
-  const VIEWS = ["accueil", "jour", "foot", "tennis", "basket", "euroleague", "wnba", "fav", "match"].filter(k => $("view-" + k));
-  const NAVOF = { accueil: "accueil", jour: "jour", match: "jour", foot: "jour", tennis: "jour", basket: "jour", euroleague: "jour", wnba: "jour", fav: "fav" };
+  const VIEWS = ["accueil", "jour", "foot", "tennis", "basket", "euroleague", "wnba", "hockey", "fav", "match"].filter(k => $("view-" + k));
+  const NAVOF = { accueil: "accueil", jour: "jour", match: "jour", foot: "jour", tennis: "jour", basket: "jour", euroleague: "jour", wnba: "jour", hockey: "jour", fav: "fav" };
   let lastHome = "#jour";
   function show(force) {
     const h = location.hash.slice(1);

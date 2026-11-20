@@ -45,6 +45,7 @@
   };
   const SPOTS = [
     { sport: "Football", res: "ftResult", anchor: "ftVerdict", data: () => ({ comp: (window.FootAPI && FootAPI.current() || {}).comp || "", a: txt("ftNA"), b: txt("ftNB"), p: [num(txt("ftPH")), num(txt("ftPD")), num(txt("ftPA"))], ev: evs("#ftEv label"), sel: evs("#ftEv label:has(input:checked)"), selTxt: txt("ftSel") }) },
+    { sport: "Hockey", res: "hkResult", anchor: "hkVerdict", data: () => ({ comp: (window.HockeyAPI && HockeyAPI.current() || {}).comp || "", a: txt("hkNA"), b: txt("hkNB"), p: [num(txt("hkPH")), num(txt("hkPD")), num(txt("hkPA"))], ev: evs("#hkEv label"), sel: evs("#hkEv label:has(input:checked)"), selTxt: txt("hkSel") }) },
     { sport: "NBA", res: "nbResult", anchor: "nbVerdict", data: () => ({ comp: "NBA", a: txt("nbNA"), b: txt("nbNB"), p: [num(txt("nbWA")), 0, num(txt("nbWB"))], ev: evs("#nbEv label"), sel: evs("#nbEv label:has(input:checked)"), selTxt: txt("nbSel") }) },
     { sport: "Tennis", res: "result", anchor: "verdict", data: () => ({ comp: "Tennis", a: txt("nA"), b: txt("nB"), p: [num(txt("wA")), 0, num(txt("wB"))], ev: evs("#evList label"), sel: evs("#evList label:has(input:checked)"), selTxt: txt("cbSel") }) },
   ];
@@ -63,7 +64,7 @@
       const D = S.data(); if (!D.a || !D.b) return;
       const key = [S.sport, D.a, D.b, week()].join("|"); if (key === lastKey && box.childElementCount) return; lastKey = key;
       const picks = load(), mine = picks[key];
-      const opts = S.sport === "Football" ? [["1", D.a], ["N", "Nul"], ["2", D.b]] : [["1", D.a], ["2", D.b]];
+      const opts = S.sport === "Football" || S.sport === "Hockey" ? [["1", D.a], ["N", "Nul"], ["2", D.b]] : [["1", D.a], ["2", D.b]];
       box.innerHTML = `<div class="mp-h"><b>Votre prono</b><button type="button" class="mp-share">${ICO}Partager</button></div>
         <div class="mp-picks">${opts.map(([k, l]) => `<button type="button" data-k="${k}" aria-pressed="${mine === k}">${l}</button>`).join("")}</div><div class="mp-com"></div>`;
       const com = box.querySelector(".mp-com"); let C = null;
@@ -120,7 +121,7 @@
     lines.forEach((ln, k) => { y += z * 1.05; x.font = F(800, z); x.fillStyle = INK; const last = k === lines.length - 1 && ln.endsWith("?");
       const t = last ? ln.slice(0, -1) : ln; x.fillText(t, L, y); if (last) { x.fillStyle = "#D0202E"; x.fillText("?", L + x.measureText(t).width, y); } });
     // les chances selon Pronolink : barre unique, le prono du joueur en rouge
-    const parts = S.sport === "Football" ? [[D.a, D.p[0], 0], [tr("Nul"), D.p[1], 1], [D.b, D.p[2], 2]] : [[D.a, D.p[0], 0], [D.b, D.p[2], 2]];
+    const parts = S.sport === "Football" || S.sport === "Hockey" ? [[D.a, D.p[0], 0], [tr("Nul"), D.p[1], 1], [D.b, D.p[2], 2]] : [[D.a, D.p[0], 0], [D.b, D.p[2], 2]];
     y += 64; x.fillStyle = SUB; x.font = F(700, 26); x.fillText(up(tr("selon Pronolink")), L, y); y += 22;
     { const n = parts.length, gap = 8, avail = W - 2 * L - gap * (n - 1), tot = parts.reduce((t, q) => t + Math.max(q[1], .12), 0); let bx = L; const BH = 104;
       parts.forEach(([l, p, k], i) => { const w = avail * Math.max(p, .12) / tot, on = k === pi, r = 26, rs = 8;
