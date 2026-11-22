@@ -600,7 +600,7 @@ Foot|TDP|2026-11-21|AVS|Tondela,Foot,Taça de Portugal,2026-11-21T15:00:00+00:00
 Foot|TDP|2026-11-21|Estoril|Felgueiras 1932,Foot,Taça de Portugal,2026-11-21T16:00:00+00:00,Estoril,Felgueiras 1932,0.6885,0.1879,0.1236,2026-11-20T06:35:32.005353+00:00,B,2-3
 Foot|TDP|2026-11-21|Maritimo|GD Chaves,Foot,Taça de Portugal,2026-11-21T17:00:00+00:00,Maritimo,GD Chaves,0.5218,0.2495,0.2287,2026-11-20T06:35:32.005353+00:00,N,0-0
 Foot|TDP|2026-11-21|Sporting CP|Uniao da Serra,Foot,Taça de Portugal,2026-11-21T18:00:00+00:00,Sporting CP,Uniao da Serra,0.9303,0.054,0.0158,2026-11-20T06:35:32.005353+00:00,A,4-0
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,NBA,2026-11-21T18:00:00+00:00,Philadelphia 76ers,Milwaukee Bucks,0.7578,,0.2422,2026-11-20T06:35:32.005353+00:00,,
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,NBA,2026-11-21T18:00:00+00:00,Philadelphia 76ers,Milwaukee Bucks,0.7578,,0.2422,2026-11-20T06:35:32.005353+00:00,A,132-129
 Tennis|2026-11-20|Leyre Romero Gormaz|Irene Burillo,Tennis,WTA · LP Open by IND · Quart de finale,2026-11-20T15:00:00+00:00,Leyre Romero Gormaz,Irene Burillo,0.7019,,0.2981,2026-11-20T06:35:32.005353+00:00,A,
 Tennis|2026-11-20|Guiomar Maristany Zuleta De Reales|Andrea Lazaro Garcia,Tennis,WTA · LP Open by IND · Quart de finale,2026-11-20T20:30:00+00:00,Guiomar Maristany Zuleta De Reales,Andrea Lazaro Garcia,0.5451,,0.4549,2026-11-20T06:35:32.005353+00:00,A,
 Foot|N1|2026-11-21|Groningen|Heerenveen,Foot,Eredivisie,2026-11-21T20:00:00+00:00,Groningen,Heerenveen,0.3869,0.2505,0.3625,2026-11-20T08:12:34.340443+00:00,,
@@ -619,11 +619,11 @@ Foot|F2|2026-11-21|Reims|St Etienne,Foot,Ligue 2,2026-11-21T19:00:00+00:00,Reims
 Foot|SC0|2026-11-21|Motherwell|Rangers,Foot,Scottish Prem,2026-11-21T20:00:00+00:00,Motherwell,Rangers,0.2748,0.2406,0.4846,2026-11-20T08:12:34.340443+00:00,,
 Foot|TDP|2026-11-21|Vitória de Guimaraes|Braga,Foot,Taça de Portugal,2026-11-21T20:30:00+00:00,Vitória de Guimaraes,Braga,0.2668,0.2689,0.4642,2026-11-20T10:01:28.421685+00:00,B,0-2
 Foot|D1|2026-11-20|Bayern Munich|FC Koln,Foot,Bundesliga,2026-11-20T19:30:00+00:00,Bayern Munich,FC Koln,0.9106,0.06,0.0294,2026-11-20T13:33:53.294313+00:00,,
-NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,NBA,2026-11-22T00:30:00+00:00,New York Knicks,Portland Trail Blazers,0.6531,,0.3469,2026-11-20T13:33:53.294313+00:00,,
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,NBA,2026-11-22T01:00:00+00:00,Dallas Mavericks,LA Clippers,0.6215,,0.3785,2026-11-20T13:33:53.294313+00:00,,
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,NBA,2026-11-22T01:00:00+00:00,Minnesota Timberwolves,Memphis Grizzlies,0.6571,,0.3429,2026-11-20T13:33:53.294313+00:00,,
-NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,NBA,2026-11-22T01:00:00+00:00,San Antonio Spurs,New Orleans Pelicans,0.8388,,0.1612,2026-11-20T13:33:53.294313+00:00,,
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,NBA,2026-11-22T03:00:00+00:00,Sacramento Kings,Boston Celtics,0.1373,,0.8627,2026-11-20T16:40:56.586610+00:00,,
+NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,NBA,2026-11-22T00:30:00+00:00,New York Knicks,Portland Trail Blazers,0.6531,,0.3469,2026-11-20T13:33:53.294313+00:00,A,97-96
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,NBA,2026-11-22T01:00:00+00:00,Dallas Mavericks,LA Clippers,0.6215,,0.3785,2026-11-20T13:33:53.294313+00:00,A,110-100
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,NBA,2026-11-22T01:00:00+00:00,Minnesota Timberwolves,Memphis Grizzlies,0.6571,,0.3429,2026-11-20T13:33:53.294313+00:00,A,104-95
+NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,NBA,2026-11-22T01:00:00+00:00,San Antonio Spurs,New Orleans Pelicans,0.8388,,0.1612,2026-11-20T13:33:53.294313+00:00,A,114-91
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,NBA,2026-11-22T03:00:00+00:00,Sacramento Kings,Boston Celtics,0.1373,,0.8627,2026-11-20T16:40:56.586610+00:00,A,97-96
 Foot|N1|2026-11-22|Twente|Willem II,Foot,Eredivisie,2026-11-22T11:15:00+00:00,Twente,Willem II,0.8892,0.0816,0.0293,2026-11-21T06:33:19.822600+00:00,,
 Foot|N1|2026-11-22|Ajax|Den Haag,Foot,Eredivisie,2026-11-22T13:30:00+00:00,Ajax,Den Haag,0.7146,0.1772,0.1082,2026-11-21T06:33:19.822600+00:00,,
 Foot|N1|2026-11-22|Sparta Rotterdam|AZ Alkmaar,Foot,Eredivisie,2026-11-22T13:30:00+00:00,Sparta Rotterdam,AZ Alkmaar,0.2462,0.2519,0.502,2026-11-21T06:33:19.822600+00:00,,
@@ -664,10 +664,10 @@ Foot|G1|2026-11-22|Panetolikos|Volos NFC,Foot,Super League Grèce,2026-11-22T15:
 Foot|G1|2026-11-22|Panathinaikos|OFI Crete,Foot,Super League Grèce,2026-11-22T15:30:00+00:00,Panathinaikos,OFI Crete,0.7128,0.2044,0.0828,2026-11-21T06:33:19.822600+00:00,,
 Foot|G1|2026-11-22|Olympiakos|Iraklis,Foot,Super League Grèce,2026-11-22T17:00:00+00:00,Olympiakos,Iraklis,0.7047,0.2407,0.0546,2026-11-21T06:33:19.822600+00:00,,
 Foot|G1|2026-11-22|PAOK|Kifisia,Foot,Super League Grèce,2026-11-22T17:30:00+00:00,PAOK,Kifisia,0.7635,0.1671,0.0694,2026-11-21T06:33:19.822600+00:00,,
-Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,Taça de Portugal,2026-11-22T11:00:00+00:00,Sanjoanense,Académica de Coimbra,0.3997,0.3105,0.2898,2026-11-21T06:33:19.822600+00:00,,
-Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Vitoria Sernache,Lusitania,0.3997,0.3105,0.2898,2026-11-21T06:33:19.822600+00:00,,
-Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Vianense,Rio Ave,0.2882,0.2754,0.4364,2026-11-21T06:33:19.822600+00:00,,
-Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Gil Vicente,Olhanense,0.6936,0.212,0.0945,2026-11-21T06:33:19.822600+00:00,,
+Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,Taça de Portugal,2026-11-22T11:00:00+00:00,Sanjoanense,Académica de Coimbra,0.3997,0.3105,0.2898,2026-11-21T06:33:19.822600+00:00,B,1-2
+Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Vitoria Sernache,Lusitania,0.3997,0.3105,0.2898,2026-11-21T06:33:19.822600+00:00,B,0-1
+Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Vianense,Rio Ave,0.2882,0.2754,0.4364,2026-11-21T06:33:19.822600+00:00,A,1-0
+Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Gil Vicente,Olhanense,0.6936,0.212,0.0945,2026-11-21T06:33:19.822600+00:00,A,3-1
 Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,Taça de Portugal,2026-11-22T15:00:00+00:00,SC Farense,Fatima,0.5572,0.2812,0.1615,2026-11-21T06:33:19.822600+00:00,,
 Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,Taça de Portugal,2026-11-22T18:00:00+00:00,Estrela,Portimonense,0.62,0.224,0.156,2026-11-21T06:33:19.822600+00:00,,
 Tennis|2026-11-21|Alcaraz C.|Shelton B.,Tennis,ATP · Nitto ATP Finals · Demi-finale,2026-11-21T13:30:00+00:00,Alcaraz C.,Shelton B.,0.6981,,0.3019,2026-11-21T06:33:19.822600+00:00,A,
@@ -691,3 +691,29 @@ Foot|T1|2026-11-23|Buyuksehyr|Corum,Foot,Süper Lig,2026-11-23T17:00:00+00:00,Bu
 Foot|G1|2026-11-23|Asteras Tripolis|Aris,Foot,Super League Grèce,2026-11-23T15:00:00+00:00,Asteras Tripolis,Aris,0.2773,0.3461,0.3766,2026-11-22T06:32:09.204436+00:00,,
 Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,ATP · Nitto ATP Finals · Finale,2026-11-22T17:00:00+00:00,Zverev A.,Alcaraz C.,0.3961,,0.6039,2026-11-22T06:32:09.204436+00:00,,
 Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,WTA · LP Open by IND · Finale,2026-11-22T21:00:00+00:00,Leyre Romero Gormaz,Rebeka Masarova,0.6158,,0.3842,2026-11-22T06:32:09.204436+00:00,,
+Foot|E0|2026-11-23|Brentford|Everton,Foot,Premier League,2026-11-23T20:00:00+00:00,Brentford,Everton,0.4565,0.2833,0.2601,2026-11-22T16:29:25.231783+00:00,,
+Foot|SP1|2026-11-23|Levante|Elche,Foot,La Liga,2026-11-23T20:00:00+00:00,Levante,Elche,0.4616,0.2486,0.2898,2026-11-22T16:29:25.231783+00:00,,
+Foot|I1|2026-11-23|Monza|Fiorentina,Foot,Serie A,2026-11-23T19:45:00+00:00,Monza,Fiorentina,0.2452,0.2065,0.5483,2026-11-22T16:29:25.231783+00:00,,
+Foot|SP2|2026-11-23|Ceuta|Almeria,Foot,Segunda,2026-11-23T19:30:00+00:00,Ceuta,Almeria,0.1936,0.2004,0.606,2026-11-22T16:29:25.231783+00:00,,
+Foot|F2|2026-11-23|Nantes|Grenoble,Foot,Ligue 2,2026-11-23T19:45:00+00:00,Nantes,Grenoble,0.3906,0.2757,0.3337,2026-11-22T16:29:25.231783+00:00,,
+Foot|F2|2026-11-23|Sochaux|Dunkerque,Foot,Ligue 2,2026-11-23T19:45:00+00:00,Sochaux,Dunkerque,0.2069,0.2956,0.4975,2026-11-22T16:29:25.231783+00:00,,
+Foot|N2|2026-11-23|Jong Ajax|Jong AZ,Foot,Eerste Divisie,2026-11-23T19:00:00+00:00,Jong Ajax,Jong AZ,0.3695,0.1978,0.4327,2026-11-22T16:29:25.231783+00:00,,
+Foot|N2|2026-11-23|Jong PSV|Jong FC Utrecht,Foot,Eerste Divisie,2026-11-23T19:00:00+00:00,Jong PSV,Jong FC Utrecht,0.4986,0.2145,0.2869,2026-11-22T16:29:25.231783+00:00,,
+Foot|N2|2026-11-23|Vitesse|De Graafschap,Foot,Eerste Divisie,2026-11-23T19:00:00+00:00,Vitesse,De Graafschap,0.4394,0.2302,0.3304,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|Philadelphia 76ers|Portland Trail Blazers,NBA,NBA,2026-11-24T00:00:00+00:00,Philadelphia 76ers,Portland Trail Blazers,0.4459,,0.5541,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|Charlotte Hornets|Memphis Grizzlies,NBA,NBA,2026-11-24T00:00:00+00:00,Charlotte Hornets,Memphis Grizzlies,0.3638,,0.6362,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|Minnesota Timberwolves|Brooklyn Nets,NBA,NBA,2026-11-24T00:30:00+00:00,Minnesota Timberwolves,Brooklyn Nets,0.8761,,0.1239,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|Toronto Raptors|Milwaukee Bucks,NBA,NBA,2026-11-24T00:30:00+00:00,Toronto Raptors,Milwaukee Bucks,0.7157,,0.2843,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|Indiana Pacers|Oklahoma City Thunder,NBA,NBA,2026-11-24T00:30:00+00:00,Indiana Pacers,Oklahoma City Thunder,0.4192,,0.5808,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|Chicago Bulls|Cleveland Cavaliers,NBA,NBA,2026-11-24T01:00:00+00:00,Chicago Bulls,Cleveland Cavaliers,0.3251,,0.6749,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|New Orleans Pelicans|Phoenix Suns,NBA,NBA,2026-11-24T01:00:00+00:00,New Orleans Pelicans,Phoenix Suns,0.3366,,0.6634,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|Houston Rockets|LA Clippers,NBA,NBA,2026-11-24T01:30:00+00:00,Houston Rockets,LA Clippers,0.7987,,0.2013,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|Sacramento Kings|San Antonio Spurs,NBA,NBA,2026-11-24T03:00:00+00:00,Sacramento Kings,San Antonio Spurs,0.2149,,0.7851,2026-11-22T16:29:25.231783+00:00,,
+NBA|2026-11-24|Los Angeles Lakers|Utah Jazz,NBA,NBA,2026-11-24T03:00:00+00:00,Los Angeles Lakers,Utah Jazz,0.7345,,0.2655,2026-11-22T16:29:25.231783+00:00,,
+Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Nadia Podoroska,Leyre Romero Gormaz,0.2857,,0.7143,2026-11-22T16:29:25.231783+00:00,,
+Tennis|2026-11-23|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Solana Sierra,Victoria Jimenez Kasintseva,0.7142,,0.2858,2026-11-22T16:29:25.231783+00:00,,
+Tennis|2026-11-23|Rebeka Masarova|Sofia Costoulas,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Rebeka Masarova,Sofia Costoulas,0.6771,,0.3229,2026-11-22T16:29:25.231783+00:00,,
+Tennis|2026-11-23|Nuria Brancaccio|Anastasia Zolotareva,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Nuria Brancaccio,Anastasia Zolotareva,0.5666,,0.4334,2026-11-22T16:29:25.231783+00:00,,
+Tennis|2026-11-23|Despina Papamichail|Julia Riera,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Despina Papamichail,Julia Riera,0.3207,,0.6793,2026-11-22T16:29:25.231783+00:00,,
+Tennis|2026-11-23|Polona Hercog|Ipek Oz,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Polona Hercog,Ipek Oz,0.7039,,0.2961,2026-11-22T16:29:25.231783+00:00,,
+Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Lucia Bronzetti,Alicia Herrero Linana,0.5788,,0.4212,2026-11-22T16:29:25.231783+00:00,,
