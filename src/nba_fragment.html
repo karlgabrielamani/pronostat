@@ -41,6 +41,18 @@
         <div class="evlist" id="nbEv"></div>
         <div class="row"><button class="simbtn" id="nbAdd">Ajouter au combiné</button><span class="note" id="nbSel"></span></div>
       </div>
+      <div class="scen combo plbox" id="nbPlBox" style="gap:10px" hidden>
+        <div class="eyebrow">Joueurs</div>
+        <p class="sub2">Selon leurs 15 derniers matchs et l'adversaire.</p>
+        <div class="plctl">
+          <div class="seg" id="nbPlT" role="group" aria-label="Équipe"></div>
+          <label class="isel"><select id="nbPlS" aria-label="Statistique">
+            <option value="pts">Points</option><option value="reb">Rebonds</option><option value="ast">Passes</option><option value="tpm">Tirs à 3 pts</option><option value="dd">Double-double</option>
+          </select></label>
+        </div>
+        <div class="pllist" id="nbPl"></div>
+        <div class="row"><button class="simbtn" id="nbPlAdd">Ajouter au combiné</button><span class="note" id="nbPlSel"></span></div>
+      </div>
       <details class="more">
         <summary>Match simulé quart-temps par quart-temps</summary>
         <div class="board" id="nbBoard"></div>
@@ -61,3 +73,21 @@
     <p class="note">Absents mis à jour chaque matin. Données : ESPN.</p>
   </details>
 </div>
+<style>
+.plbox .plctl { display: flex; gap: 8px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+.plbox .seg button { font: inherit; font-size: 14px; cursor: pointer; background: transparent; color: var(--ink-2); }
+.plbox .pllist { display: flex; flex-direction: column; }
+.plbox .plr { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); }
+.plbox .plr:first-child { border-top: 0; }
+.plbox .pn { font-size: 14px; font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.plbox .pn small { display: block; font-size: 12px; font-weight: 500; color: var(--ink-3); }
+.plbox .plc { display: flex; gap: 6px; flex: none; }
+.plbox .pchip { display: inline-flex; flex-direction: column; align-items: center; min-width: 54px; padding: 4px 8px; border-radius: 10px; background: var(--chip); cursor: pointer; font-size: 12px; color: var(--ink-3); line-height: 1.25; }
+.plbox .pchip b { font-size: 14px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.plbox .pchip input { position: absolute; opacity: 0; pointer-events: none; }
+.plbox .pchip:has(input:checked) { background: var(--hot); color: #fff; }
+.plbox .pchip:has(input:checked) b { color: #fff; }
+.plbox .pchip:has(input:focus-visible) { outline: 2px solid var(--hot); outline-offset: 2px; }
+.plbox .plr.out { opacity: .5; }
+@media (max-width: 400px) { .plbox .pchip { min-width: 46px; padding: 4px 5px; } }
+</style>

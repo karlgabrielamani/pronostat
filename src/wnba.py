@@ -67,6 +67,15 @@ def update(fetch, RAW, TODAY):
                  if r.home_display_name in names and r.away_display_name in names]
     except Exception as e:
         print("  WNBA : pas encore de calendrier pour la prochaine saison", repr(e)[:60])
+    PL = {}
+    try:                                       # stats individuelles (src/players.py)
+        import players
+        PB = pd.concat([pd.read_csv(fetch(f"{REL}/espn_wnba_player_boxscores/player_box_{y}.csv",
+                                          f"{RAW}/wnba_player_box_{y}.csv" if y < last_season else f"{RAW}/wnba_player_box_{y}_{TODAY.date()}.csv"), low_memory=False)
+                        for y in (last_season - 1, last_season)], ignore_index=True)
+        PL = players.build(PB, [x["name"] for x in teams])
+    except Exception as e:
+        print("  WNBA : stats joueurs indisponibles", repr(e)[:80])
     print(f"  WNBA {len(teams)} équipes, {len(games)} matchs à venir, dernier résultat {g.date.max().date()}")
     return dict(teams=teams, mu=round(mu, 2), hca=P["hca"], sd_team=round(var ** .5, 2), corr=round(cov / var, 3), test=TEST,
-                season=int(last_season), updated=str(g.date.max().date()), games=games)
+                season=int(last_season), updated=str(g.date.max().date()), games=games, players=PL)

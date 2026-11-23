@@ -144,6 +144,8 @@
     const med = k => { const v = sims.map(r => r[k]).sort((x, y) => x - y); return Math.round(v[v.length >> 1]) - 0.5; };
     cur = { a, b, ea, eb, sims, lines, half: Math.round(exp / 2) + 0.5, ta: med("ta"), tb: med("tb") };
     drawNev();
+    if (plKey !== a.name + "|" + b.name) { PSEL.clear(); plTeam = 0; plKey = a.name + "|" + b.name; }   // autre match : on repart de zéro
+    drawPl();
     s = 4242; drawBoard(simGame(ea, eb, true), 99);
   }
   function drawBoard(m, upto) {
@@ -220,6 +222,76 @@
     th.setAttribute("aria-sort", dir > 0 ? "ascending" : "descending"); table();
   }));
   g("nbTb").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; g(b.dataset.s === "A" ? "nbA" : "nbB").value = b.dataset.n; render(); window.scrollTo({ top: 0, behavior: "smooth" }); });
+
+  // ---------- joueurs : probabilités individuelles (src/players.py) ----------
+  // loi binomiale négative (moyenne m, variance v) ; points ajustés au score prévu de l'équipe pour ce match
+  const PLY = N.players || {};
+  const LINES = { pts: [5, 10, 15, 20, 25, 30, 35, 40, 45], reb: [2, 4, 6, 8, 10, 12, 14, 16], ast: [2, 4, 6, 8, 10, 12, 14], tpm: [1, 2, 3, 4, 5, 6, 7] };
+  const SLAB = { pts: "points", reb: "rebonds", ast: "passes", tpm: "tirs à 3 pts" };
+  const sf = (m, v, k) => {                          // P(X ≥ k)
+    if (k <= 0) return 1; m = Math.max(m, 0.05); let c = 0, p;
+    if (v <= m * 1.0001) { p = Math.exp(-m); for (let i = 0; i < k; i++) { c += p; p *= m / (i + 1); } }
+    else { const r = m * m / (v - m), q = m / v; p = Math.pow(q, r); for (let i = 0; i < k; i++) { c += p; p *= (i + r) / (i + 1) * (1 - q); } }
+    return Math.min(1, Math.max(0, 1 - c));
+  };
+  const adj = p => 0.955 * p + 0.01;                 // sorties sur blessure, banc en fin de match (voir le backtest)
+  const PSEL = new Map();                            // clé → {lab, p}
+  let plTeam = 0, plKey = "";
+  function plOut(t, name) {
+    const inj = (t.inj || []).find(x => x.name === name && !OFF[t.name + "|" + x.name]);
+    if ((ADD[t.name] || {})[name] !== undefined) return "absent";
+    return inj ? (inj.status === "Out" ? "absent" : "incertain") : "";
+  }
+  function drawPl() {
+    const box = g("nbPlBox"), { a, b, ea, eb } = cur;
+    if (!PLY[a.name] && !PLY[b.name]) { box.hidden = true; return; }
+    box.hidden = false;
+    const tms = [a, b];
+    g("nbPlT").innerHTML = tms.map((t, i) => `<button type="button" data-t="${i}" aria-pressed="${i === plTeam}">${t.abbr || t.name}</button>`).join("");
+    const t = tms[plTeam], d = PLY[t.name], st = g("nbPlS").value;
+    if (!d) { g("nbPl").innerHTML = `<p class="note">Pas de données joueurs pour cette équipe.</p>`; plUpd(); return; }
+    const fac = Math.min(1.15, Math.max(0.85, (plTeam === 0 ? ea : eb) / d.ppg));
+    const esc = x => String(x).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+    const list = st === "dd" ? d.pl.filter(p => p.dd >= 0.05) : d.pl;
+    g("nbPl").innerHTML = !list.length ? `<p class="note">Aucun double-double récent.</p>` : list.map(p => {
+      const o = plOut(t, p.name);
+      let avg, chips;
+      if (st === "dd") {
+        avg = `${f(p.dd * 100)} % de ses matchs`;
+        chips = p.dd >= 0.05 ? [{ k: 0, pr: adj(p.dd) }] : [];
+      } else {
+        const m = p[st] * (st === "pts" ? fac : 1), v = p[st + "v"] * (st === "pts" ? fac : 1);
+        avg = `moy. ${f(m, 1)}`;
+        const all = LINES[st].map(k => ({ k, pr: adj(sf(m, v, k)) })).filter(x => x.pr >= 0.12 && x.pr <= 0.93);
+        chips = all.sort((x, y) => Math.abs(x.pr - .6) - Math.abs(y.pr - .6)).slice(0, 3).sort((x, y) => x.k - y.k);
+      }
+      const cells = o === "absent" ? "" : chips.map(c => {
+        const key = `${t.name}|${p.name}|${st}|${c.k}`;
+        const lab = st === "dd" ? `${p.name} double-double` : `${p.name} ${c.k}+ ${SLAB[st]}`;
+        if (PSEL.has(key)) PSEL.get(key).p = c.pr;
+        return `<label class="pchip"><input type="checkbox" data-key="${esc(key)}" data-lab="${esc(lab)}" data-p="${c.pr}"${PSEL.has(key) ? " checked" : ""}><span>${st === "dd" ? "oui" : c.k + "+"}</span><b>${f(c.pr * 100)} %</b></label>`;
+      }).join("");
+      return `<div class="plr${o === "absent" ? " out" : ""}"><span class="pn">${esc(p.name)}<small>${o ? o + " · " : ""}${avg}</small></span><div class="plc">${cells}</div></div>`;
+    }).join("");
+    plUpd();
+  }
+  function plUpd() {
+    const v = [...PSEL.values()], q = v.reduce((x, s) => x * s.p, 1);
+    g("nbPlSel").textContent = v.length ? `${f(q * 100)} % · cote juste ${f(1 / Math.max(q, 1e-4), 2)}` : "Cochez un ou plusieurs événements.";
+    g("nbPlAdd").disabled = !v.length;
+  }
+  g("nbPlT").addEventListener("click", e => { const b = e.target.closest("[data-t]"); if (!b) return; plTeam = +b.dataset.t; drawPl(); });
+  g("nbPlS").addEventListener("change", drawPl);
+  g("nbPl").addEventListener("change", e => {
+    const x = e.target.closest("input[data-key]"); if (!x) return;
+    if (x.checked) PSEL.set(x.dataset.key, { lab: x.dataset.lab, p: +x.dataset.p }); else PSEL.delete(x.dataset.key);
+    plUpd();
+  });
+  g("nbPlAdd").addEventListener("click", () => {
+    const v = [...PSEL.values()]; if (!v.length) return;
+    Combo.add("NBA", `${cur.a.name} – ${cur.b.name}`, v.map(s => s.lab), v.reduce((x, s) => x * s.p, 1));
+    PSEL.clear(); drawPl();
+  });
 
   // ---------- accès pour l'onglet « Aujourd'hui » ----------
   const erf = x => { const s = Math.sign(x); x = Math.abs(x); const u = 1 / (1 + 0.3275911 * x);

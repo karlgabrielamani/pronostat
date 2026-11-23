@@ -256,6 +256,15 @@ def nba():
         tm["inj"] = INJ.get(tm["name"], [])
         tm["roster"] = [dict(name=PNAMES.get(pid, "?"), v=round(v, 1)) for pid, v in sorted(REGS.get(tm["name"], {}).items(), key=lambda kv: -kv[1])][:12]   # joueurs importants (liste des absents à choisir)
     print(f"  NBA absents : {sum(len(v) for v in INJ.values())} joueurs importants signalés")
+    try:                                         # stats individuelles (src/players.py) : mêmes fichiers que les absents, déjà téléchargés
+        import players
+        PB = pd.concat([pd.read_csv(fetch(f"{REL}/espn_nba_player_boxscores/player_box_{y}.csv",
+                                          f"{RAW}/player_box_{y}.csv" if y < cur_season else f"{RAW}/player_box_{y}_{TODAY.date()}.csv"), low_memory=False)
+                        for y in (cur_season - 1, cur_season)], ignore_index=True)
+        PL = players.build(PB, names)
+        print(f"  NBA joueurs : {sum(len(v['pl']) for v in PL.values())} joueurs suivis")
+    except Exception as e:
+        print("  ATTENTION stats joueurs NBA indisponibles :", repr(e)); PL = {}
     sched = pd.read_csv(fetch(f"{REL}/espn_nba_schedules/nba_schedule_{cur_season}.csv", f"{RAW}/nba_schedule_{cur_season}_{TODAY.date()}.csv"), low_memory=False)
     sched["dt"] = pd.to_datetime(sched["date"], utc=True)
     up = sched[(sched.status_type_completed == False) & (sched.dt >= TODAY.tz_localize("UTC")) &  # noqa: E712
@@ -264,7 +273,7 @@ def nba():
              if r.home_display_name in names and r.away_display_name in names]
     print(f"  NBA {len(teams)} équipes, {len(games)} matchs à venir, dernier résultat {g.date.max().date()}")
     return dict(teams=teams, mu=round(mu, 2), hca=NBA_P["hca"], b2b=NBA_P["b2b"], beta=NBA_P["beta"], sd_team=round(var ** .5, 2), corr=round(cov / var, 3),
-                test=NBA_TEST, updated=str(g.date.max().date()), games=games)
+                test=NBA_TEST, updated=str(g.date.max().date()), games=games, players=PL)
 
 
 # ------------------------------------------------------------------ PAGE
