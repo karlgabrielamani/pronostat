@@ -472,20 +472,20 @@ NBA|2026-11-20|Memphis Grizzlies|Golden State Warriors,NBA,NBA,2026-11-20T01:00:
 NBA|2026-11-20|San Antonio Spurs|LA Clippers,NBA,NBA,2026-11-20T01:00:00+00:00,San Antonio Spurs,LA Clippers,0.7888,,0.2112,2026-11-19T06:33:05.924683+00:00,A,124-112
 NBA|2026-11-20|Minnesota Timberwolves|New York Knicks,NBA,NBA,2026-11-20T01:00:00+00:00,Minnesota Timberwolves,New York Knicks,0.5424,,0.4576,2026-11-19T06:33:05.924683+00:00,B,99-102
 Tennis|2026-11-20|Rebeka Masarova|Laura Samson,Tennis,WTA · LP Open by IND · Quart de finale,2026-11-20T05:00:00+00:00,Rebeka Masarova,Laura Samson,0.4191,,0.5809,2026-11-19T06:33:05.924683+00:00,A,
-Foot|B1|2026-11-20|Cercle Brugge|Westerlo,Foot,Jupiler Pro League,2026-11-20T19:45:00+00:00,Cercle Brugge,Westerlo,0.4238,0.2162,0.3599,2026-11-19T15:12:48.627499+00:00,,
-Foot|SP1|2026-11-20|Ath Bilbao|Espanol,Foot,La Liga,2026-11-20T20:00:00+00:00,Ath Bilbao,Espanol,0.491,0.287,0.2221,2026-11-19T15:12:48.627499+00:00,,
-Foot|F1|2026-11-20|Troyes|Le Havre,Foot,Ligue 1,2026-11-20T19:45:00+00:00,Troyes,Le Havre,0.3204,0.3191,0.3605,2026-11-19T15:12:48.627499+00:00,,
-Foot|D2|2026-11-20|Bielefeld|Magdeburg,Foot,2. Bundesliga,2026-11-20T17:30:00+00:00,Bielefeld,Magdeburg,0.4525,0.2241,0.3234,2026-11-19T15:12:48.627499+00:00,,
-Foot|D2|2026-11-20|Darmstadt|Heidenheim,Foot,2. Bundesliga,2026-11-20T17:30:00+00:00,Darmstadt,Heidenheim,0.4586,0.2362,0.3052,2026-11-19T15:12:48.627499+00:00,,
-Foot|SP2|2026-11-20|Andorra|Leganes,Foot,Segunda,2026-11-20T19:30:00+00:00,Andorra,Leganes,0.5601,0.2305,0.2094,2026-11-19T15:12:48.627499+00:00,,
-Foot|I2|2026-11-20|Verona|Cesena,Foot,Serie B,2026-11-20T19:30:00+00:00,Verona,Cesena,0.6206,0.2301,0.1493,2026-11-19T15:12:48.627499+00:00,,
-Foot|F2|2026-11-20|Annecy|Clermont,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Annecy,Clermont,0.4794,0.2716,0.249,2026-11-19T15:12:48.627499+00:00,,
-Foot|F2|2026-11-20|Nancy|Dijon,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Nancy,Dijon,0.3564,0.2355,0.4081,2026-11-19T15:12:48.627499+00:00,,
-Foot|F2|2026-11-20|Guingamp|Rodez,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Guingamp,Rodez,0.3979,0.2465,0.3556,2026-11-19T15:12:48.627499+00:00,,
-Foot|F2|2026-11-20|Metz|Boulogne,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Metz,Boulogne,0.5383,0.2411,0.2206,2026-11-19T15:12:48.627499+00:00,,
-Foot|F2|2026-11-20|Red Star|Pau FC,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Red Star,Pau FC,0.4848,0.2385,0.2767,2026-11-19T15:12:48.627499+00:00,,
-Foot|E2|2026-11-20|Barnsley|Sheffield Weds,Foot,League One,2026-11-20T20:00:00+00:00,Barnsley,Sheffield Weds,0.2369,0.2305,0.5326,2026-11-19T15:12:48.627499+00:00,,
-Foot|SC1|2026-11-20|Inverness C|Ayr,Foot,Scottish Championship,2026-11-20T19:30:00+00:00,Inverness C,Ayr,0.5184,0.2616,0.22,2026-11-19T15:12:48.627499+00:00,,
+Foot|B1|2026-11-20|Cercle Brugge|Westerlo,Foot,Jupiler Pro League,2026-11-20T19:45:00+00:00,Cercle Brugge,Westerlo,0.4238,0.2162,0.3599,2026-11-19T15:12:48.627499+00:00,A,1-0
+Foot|SP1|2026-11-20|Ath Bilbao|Espanol,Foot,La Liga,2026-11-20T20:00:00+00:00,Ath Bilbao,Espanol,0.491,0.287,0.2221,2026-11-19T15:12:48.627499+00:00,B,0-1
+Foot|F1|2026-11-20|Troyes|Le Havre,Foot,Ligue 1,2026-11-20T19:45:00+00:00,Troyes,Le Havre,0.3204,0.3191,0.3605,2026-11-19T15:12:48.627499+00:00,A,3-1
+Foot|D2|2026-11-20|Bielefeld|Magdeburg,Foot,2. Bundesliga,2026-11-20T17:30:00+00:00,Bielefeld,Magdeburg,0.4525,0.2241,0.3234,2026-11-19T15:12:48.627499+00:00,B,1-2
+Foot|D2|2026-11-20|Darmstadt|Heidenheim,Foot,2. Bundesliga,2026-11-20T17:30:00+00:00,Darmstadt,Heidenheim,0.4586,0.2362,0.3052,2026-11-19T15:12:48.627499+00:00,A,3-1
+Foot|SP2|2026-11-20|Andorra|Leganes,Foot,Segunda,2026-11-20T19:30:00+00:00,Andorra,Leganes,0.5601,0.2305,0.2094,2026-11-19T15:12:48.627499+00:00,B,1-3
+Foot|I2|2026-11-20|Verona|Cesena,Foot,Serie B,2026-11-20T19:30:00+00:00,Verona,Cesena,0.6206,0.2301,0.1493,2026-11-19T15:12:48.627499+00:00,B,0-2
+Foot|F2|2026-11-20|Annecy|Clermont,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Annecy,Clermont,0.4794,0.2716,0.249,2026-11-19T15:12:48.627499+00:00,A,4-2
+Foot|F2|2026-11-20|Nancy|Dijon,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Nancy,Dijon,0.3564,0.2355,0.4081,2026-11-19T15:12:48.627499+00:00,A,1-0
+Foot|F2|2026-11-20|Guingamp|Rodez,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Guingamp,Rodez,0.3979,0.2465,0.3556,2026-11-19T15:12:48.627499+00:00,B,1-3
+Foot|F2|2026-11-20|Metz|Boulogne,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Metz,Boulogne,0.5383,0.2411,0.2206,2026-11-19T15:12:48.627499+00:00,A,2-1
+Foot|F2|2026-11-20|Red Star|Pau FC,Foot,Ligue 2,2026-11-20T19:00:00+00:00,Red Star,Pau FC,0.4848,0.2385,0.2767,2026-11-19T15:12:48.627499+00:00,A,2-1
+Foot|E2|2026-11-20|Barnsley|Sheffield Weds,Foot,League One,2026-11-20T20:00:00+00:00,Barnsley,Sheffield Weds,0.2369,0.2305,0.5326,2026-11-19T15:12:48.627499+00:00,B,1-2
+Foot|SC1|2026-11-20|Inverness C|Ayr,Foot,Scottish Championship,2026-11-20T19:30:00+00:00,Inverness C,Ayr,0.5184,0.2616,0.22,2026-11-19T15:12:48.627499+00:00,N,0-0
 Foot|TDP|2026-11-20|FC Porto|Paredes,Foot,Taça de Portugal,2026-11-20T20:45:00+00:00,FC Porto,Paredes,0.8894,0.0868,0.0238,2026-11-19T15:12:48.627499+00:00,N,1-1
 NBA|2026-11-21|Atlanta Hawks|Charlotte Hornets,NBA,NBA,2026-11-21T00:00:00+00:00,Atlanta Hawks,Charlotte Hornets,0.6175,,0.3825,2026-11-19T15:12:48.627499+00:00,A,111-97
 NBA|2026-11-21|Detroit Pistons|Toronto Raptors,NBA,NBA,2026-11-21T00:30:00+00:00,Detroit Pistons,Toronto Raptors,0.6771,,0.3229,2026-11-19T15:12:48.627499+00:00,B,102-105
@@ -506,93 +506,93 @@ Foot|N2|2026-11-20|Jong FC Utrecht|FC Emmen,Foot,Eerste Divisie,2026-11-20T19:00
 Foot|N2|2026-11-20|TOP Oss|Roda JC Kerkrade,Foot,Eerste Divisie,2026-11-20T19:00:00+00:00,TOP Oss,Roda JC Kerkrade,0.3617,0.2576,0.3807,2026-11-19T15:27:34.451549+00:00,A,1-0
 Foot|N2|2026-11-20|Vitesse|Jong AZ,Foot,Eerste Divisie,2026-11-20T19:00:00+00:00,Vitesse,Jong AZ,0.5328,0.2027,0.2645,2026-11-19T15:27:34.451549+00:00,B,0-3
 Tennis|2026-11-20|Lucia Bronzetti|Valeriya Strakhova,Tennis,WTA · LP Open by IND · Quart de finale,2026-11-20T05:00:00+00:00,Lucia Bronzetti,Valeriya Strakhova,0.7401,,0.2599,2026-11-19T19:39:40.110736+00:00,A,
-Foot|N1|2026-11-21|Nijmegen|PSV Eindhoven,Foot,Eredivisie,2026-11-21T15:30:00+00:00,Nijmegen,PSV Eindhoven,0.2119,0.185,0.6031,2026-11-20T06:35:32.005353+00:00,,
-Foot|N1|2026-11-21|Utrecht|Cambuur,Foot,Eredivisie,2026-11-21T17:45:00+00:00,Utrecht,Cambuur,0.4796,0.2036,0.3168,2026-11-20T06:35:32.005353+00:00,,
-Foot|N1|2026-11-21|Feyenoord|Excelsior,Foot,Eredivisie,2026-11-21T17:45:00+00:00,Feyenoord,Excelsior,0.7556,0.1516,0.0928,2026-11-20T06:35:32.005353+00:00,,
-Foot|B1|2026-11-21|Charleroi|St Truiden,Foot,Jupiler Pro League,2026-11-21T15:00:00+00:00,Charleroi,St Truiden,0.4839,0.238,0.2781,2026-11-20T06:35:32.005353+00:00,,
-Foot|B1|2026-11-21|Genk|RAAL La Louviere,Foot,Jupiler Pro League,2026-11-21T17:15:00+00:00,Genk,RAAL La Louviere,0.6481,0.211,0.1409,2026-11-20T06:35:32.005353+00:00,,
-Foot|E0|2026-11-21|Man City|Fulham,Foot,Premier League,2026-11-21T12:30:00+00:00,Man City,Fulham,0.6449,0.2181,0.1371,2026-11-20T06:35:32.005353+00:00,,
-Foot|E0|2026-11-21|Bournemouth|Nott'm Forest,Foot,Premier League,2026-11-21T15:00:00+00:00,Bournemouth,Nott'm Forest,0.4713,0.2685,0.2602,2026-11-20T06:35:32.005353+00:00,,
-Foot|E0|2026-11-21|Aston Villa|Sunderland,Foot,Premier League,2026-11-21T15:00:00+00:00,Aston Villa,Sunderland,0.5309,0.2619,0.2073,2026-11-20T06:35:32.005353+00:00,,
-Foot|E0|2026-11-21|Chelsea|Leeds,Foot,Premier League,2026-11-21T15:00:00+00:00,Chelsea,Leeds,0.4595,0.27,0.2706,2026-11-20T06:35:32.005353+00:00,,
-Foot|E0|2026-11-21|Coventry|Crystal Palace,Foot,Premier League,2026-11-21T15:00:00+00:00,Coventry,Crystal Palace,0.3649,0.2634,0.3718,2026-11-20T06:35:32.005353+00:00,,
-Foot|E0|2026-11-21|Tottenham|Ipswich,Foot,Premier League,2026-11-21T15:00:00+00:00,Tottenham,Ipswich,0.5586,0.2255,0.2159,2026-11-20T06:35:32.005353+00:00,,
-Foot|E0|2026-11-21|Newcastle|Arsenal,Foot,Premier League,2026-11-21T17:30:00+00:00,Newcastle,Arsenal,0.1692,0.2527,0.5781,2026-11-20T06:35:32.005353+00:00,,
-Foot|SP1|2026-11-21|Alaves|La Coruna,Foot,La Liga,2026-11-21T13:00:00+00:00,Alaves,La Coruna,0.392,0.3,0.308,2026-11-20T06:35:32.005353+00:00,,
-Foot|SP1|2026-11-21|Vallecano|Valencia,Foot,La Liga,2026-11-21T15:15:00+00:00,Vallecano,Valencia,0.4727,0.2843,0.2429,2026-11-20T06:35:32.005353+00:00,,
-Foot|SP1|2026-11-21|Sevilla|Betis,Foot,La Liga,2026-11-21T17:30:00+00:00,Sevilla,Betis,0.3348,0.2521,0.4131,2026-11-20T06:35:32.005353+00:00,,
-Foot|I1|2026-11-21|Como|Cagliari,Foot,Serie A,2026-11-21T14:00:00+00:00,Como,Cagliari,0.6366,0.2273,0.1362,2026-11-20T06:35:32.005353+00:00,,
-Foot|I1|2026-11-21|Lazio|Lecce,Foot,Serie A,2026-11-21T14:00:00+00:00,Lazio,Lecce,0.6182,0.2326,0.1493,2026-11-20T06:35:32.005353+00:00,,
-Foot|I1|2026-11-21|Parma|Roma,Foot,Serie A,2026-11-21T17:00:00+00:00,Parma,Roma,0.1068,0.2071,0.6861,2026-11-20T06:35:32.005353+00:00,,
-Foot|D1|2026-11-21|Union Berlin|RB Leipzig,Foot,Bundesliga,2026-11-21T14:30:00+00:00,Union Berlin,RB Leipzig,0.2129,0.2149,0.5722,2026-11-20T06:35:32.005353+00:00,,
-Foot|D1|2026-11-21|Leverkusen|Paderborn,Foot,Bundesliga,2026-11-21T14:30:00+00:00,Leverkusen,Paderborn,0.623,0.2324,0.1446,2026-11-20T06:35:32.005353+00:00,,
-Foot|D1|2026-11-21|M'gladbach|Dortmund,Foot,Bundesliga,2026-11-21T14:30:00+00:00,M'gladbach,Dortmund,0.1719,0.2151,0.613,2026-11-20T06:35:32.005353+00:00,,
-Foot|D1|2026-11-21|Ein Frankfurt|Hoffenheim,Foot,Bundesliga,2026-11-21T14:30:00+00:00,Ein Frankfurt,Hoffenheim,0.4573,0.2077,0.335,2026-11-20T06:35:32.005353+00:00,,
-Foot|D1|2026-11-21|Elversberg|Freiburg,Foot,Bundesliga,2026-11-21T14:30:00+00:00,Elversberg,Freiburg,0.5047,0.2019,0.2934,2026-11-20T06:35:32.005353+00:00,,
-Foot|D1|2026-11-21|Schalke 04|Stuttgart,Foot,Bundesliga,2026-11-21T17:30:00+00:00,Schalke 04,Stuttgart,0.1751,0.3125,0.5124,2026-11-20T06:35:32.005353+00:00,,
-Foot|F1|2026-11-21|Nice|Paris SG,Foot,Ligue 1,2026-11-21T16:15:00+00:00,Nice,Paris SG,0.1656,0.2112,0.6233,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Millwall|QPR,Foot,Championship,2026-11-21T12:30:00+00:00,Millwall,QPR,0.4721,0.2553,0.2726,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Norwich|Cardiff,Foot,Championship,2026-11-21T12:30:00+00:00,Norwich,Cardiff,0.5844,0.1994,0.2162,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Southampton|Derby,Foot,Championship,2026-11-21T12:30:00+00:00,Southampton,Derby,0.666,0.1958,0.1382,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Bolton|Portsmouth,Foot,Championship,2026-11-21T15:00:00+00:00,Bolton,Portsmouth,0.3697,0.2563,0.374,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Lincoln|Wrexham,Foot,Championship,2026-11-21T15:00:00+00:00,Lincoln,Wrexham,0.2729,0.2606,0.4665,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Middlesbrough|Bristol City,Foot,Championship,2026-11-21T15:00:00+00:00,Middlesbrough,Bristol City,0.5924,0.2303,0.1774,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Sheffield United|Watford,Foot,Championship,2026-11-21T15:00:00+00:00,Sheffield United,Watford,0.5577,0.2503,0.192,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Stoke|Birmingham,Foot,Championship,2026-11-21T15:00:00+00:00,Stoke,Birmingham,0.3187,0.291,0.3903,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Swansea|West Brom,Foot,Championship,2026-11-21T15:00:00+00:00,Swansea,West Brom,0.4053,0.2898,0.3049,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|West Ham|Preston,Foot,Championship,2026-11-21T15:00:00+00:00,West Ham,Preston,0.7618,0.1363,0.1019,2026-11-20T06:35:32.005353+00:00,,
-Foot|E1|2026-11-21|Wolves|Charlton,Foot,Championship,2026-11-21T15:00:00+00:00,Wolves,Charlton,0.6513,0.2239,0.1248,2026-11-20T06:35:32.005353+00:00,,
-Foot|D2|2026-11-21|Nurnberg|Braunschweig,Foot,2. Bundesliga,2026-11-21T12:00:00+00:00,Nurnberg,Braunschweig,0.6483,0.2026,0.149,2026-11-20T06:35:32.005353+00:00,,
-Foot|D2|2026-11-21|Hannover|Greuther Furth,Foot,2. Bundesliga,2026-11-21T12:00:00+00:00,Hannover,Greuther Furth,0.5903,0.2212,0.1885,2026-11-20T06:35:32.005353+00:00,,
-Foot|D2|2026-11-21|Wolfsburg|Holstein Kiel,Foot,2. Bundesliga,2026-11-21T12:00:00+00:00,Wolfsburg,Holstein Kiel,0.6941,0.1749,0.131,2026-11-20T06:35:32.005353+00:00,,
-Foot|SP2|2026-11-21|Sabadell|Granada,Foot,Segunda,2026-11-21T13:00:00+00:00,Sabadell,Granada,0.3571,0.3352,0.3077,2026-11-20T06:35:32.005353+00:00,,
-Foot|SP2|2026-11-21|Sociedad B|Cadiz,Foot,Segunda,2026-11-21T15:15:00+00:00,Sociedad B,Cadiz,0.4501,0.2568,0.2931,2026-11-20T06:35:32.005353+00:00,,
-Foot|SP2|2026-11-21|Castellon|Eldense,Foot,Segunda,2026-11-21T17:30:00+00:00,Castellon,Eldense,0.6738,0.1941,0.132,2026-11-20T06:35:32.005353+00:00,,
-Foot|I2|2026-11-21|Ascoli|Vicenza,Foot,Serie B,2026-11-21T14:00:00+00:00,Ascoli,Vicenza,0.7997,0.1443,0.0561,2026-11-20T06:35:32.005353+00:00,,
-Foot|I2|2026-11-21|Carrarese|Virtus Entella,Foot,Serie B,2026-11-21T14:00:00+00:00,Carrarese,Virtus Entella,0.4341,0.321,0.2449,2026-11-20T06:35:32.005353+00:00,,
-Foot|I2|2026-11-21|Modena|Juve Stabia,Foot,Serie B,2026-11-21T14:00:00+00:00,Modena,Juve Stabia,0.4702,0.3156,0.2142,2026-11-20T06:35:32.005353+00:00,,
-Foot|I2|2026-11-21|Sampdoria|Benevento,Foot,Serie B,2026-11-21T14:00:00+00:00,Sampdoria,Benevento,0.2523,0.3388,0.4089,2026-11-20T06:35:32.005353+00:00,,
-Foot|I2|2026-11-21|Sudtirol|Cremonese,Foot,Serie B,2026-11-21T14:00:00+00:00,Sudtirol,Cremonese,0.3103,0.3008,0.3888,2026-11-20T06:35:32.005353+00:00,,
-Foot|I2|2026-11-21|Catanzaro|Palermo,Foot,Serie B,2026-11-21T16:15:00+00:00,Catanzaro,Palermo,0.2735,0.2465,0.48,2026-11-20T06:35:32.005353+00:00,,
-Foot|I2|2026-11-21|Empoli|Pisa,Foot,Serie B,2026-11-21T18:30:00+00:00,Empoli,Pisa,0.2953,0.2611,0.4435,2026-11-20T06:35:32.005353+00:00,,
-Foot|F2|2026-11-21|Laval|Montpellier,Foot,Ligue 2,2026-11-21T13:00:00+00:00,Laval,Montpellier,0.1772,0.2702,0.5526,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Blackpool|Wigan,Foot,League One,2026-11-21T12:30:00+00:00,Blackpool,Wigan,0.4649,0.2909,0.2443,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Reading|Bromley,Foot,League One,2026-11-21T12:30:00+00:00,Reading,Bromley,0.8061,0.1249,0.069,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Bradford|Doncaster,Foot,League One,2026-11-21T15:00:00+00:00,Bradford,Doncaster,0.5346,0.2845,0.1809,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Burton|Luton,Foot,League One,2026-11-21T15:00:00+00:00,Burton,Luton,0.3051,0.2548,0.4401,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Cambridge|Stockport,Foot,League One,2026-11-21T15:00:00+00:00,Cambridge,Stockport,0.277,0.252,0.471,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Huddersfield|Leicester,Foot,League One,2026-11-21T15:00:00+00:00,Huddersfield,Leicester,0.5061,0.2254,0.2685,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Leyton Orient|AFC Wimbledon,Foot,League One,2026-11-21T15:00:00+00:00,Leyton Orient,AFC Wimbledon,0.5983,0.2343,0.1674,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Mansfield|Milton Keynes Dons,Foot,League One,2026-11-21T15:00:00+00:00,Mansfield,Milton Keynes Dons,0.4233,0.224,0.3527,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Notts County|Stevenage,Foot,League One,2026-11-21T15:00:00+00:00,Notts County,Stevenage,0.3984,0.334,0.2676,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Oxford|Wycombe,Foot,League One,2026-11-21T15:00:00+00:00,Oxford,Wycombe,0.6226,0.225,0.1524,2026-11-20T06:35:32.005353+00:00,,
-Foot|E2|2026-11-21|Plymouth|Peterboro,Foot,League One,2026-11-21T15:00:00+00:00,Plymouth,Peterboro,0.5899,0.212,0.1981,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Gillingham|Crewe,Foot,League Two,2026-11-21T12:30:00+00:00,Gillingham,Crewe,0.3485,0.2754,0.3761,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Newport County|Swindon,Foot,League Two,2026-11-21T12:30:00+00:00,Newport County,Swindon,0.3318,0.2545,0.4137,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Accrington|Salford,Foot,League Two,2026-11-21T15:00:00+00:00,Accrington,Salford,0.3137,0.2682,0.4181,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Barnet|Port Vale,Foot,League Two,2026-11-21T15:00:00+00:00,Barnet,Port Vale,0.5114,0.2458,0.2428,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Cheltenham|Bristol Rvs,Foot,League Two,2026-11-21T15:00:00+00:00,Cheltenham,Bristol Rvs,0.4332,0.2426,0.3242,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Chesterfield|Shrewsbury,Foot,League Two,2026-11-21T15:00:00+00:00,Chesterfield,Shrewsbury,0.6317,0.2101,0.1582,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Crawley Town|Fleetwood Town,Foot,League Two,2026-11-21T15:00:00+00:00,Crawley Town,Fleetwood Town,0.3049,0.2827,0.4124,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Grimsby|Rotherham,Foot,League Two,2026-11-21T15:00:00+00:00,Grimsby,Rotherham,0.721,0.156,0.123,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Northampton|Rochdale,Foot,League Two,2026-11-21T15:00:00+00:00,Northampton,Rochdale,0.4684,0.3316,0.1999,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Oldham|Exeter,Foot,League Two,2026-11-21T15:00:00+00:00,Oldham,Exeter,0.2966,0.4209,0.2824,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|Tranmere|Colchester,Foot,League Two,2026-11-21T15:00:00+00:00,Tranmere,Colchester,0.3125,0.2816,0.4059,2026-11-20T06:35:32.005353+00:00,,
-Foot|E3|2026-11-21|York|Walsall,Foot,League Two,2026-11-21T15:00:00+00:00,York,Walsall,0.4449,0.2427,0.3124,2026-11-20T06:35:32.005353+00:00,,
-Foot|SC0|2026-11-21|Celtic|St Mirren,Foot,Scottish Prem,2026-11-21T15:00:00+00:00,Celtic,St Mirren,0.8005,0.1349,0.0646,2026-11-20T06:35:32.005353+00:00,,
-Foot|SC0|2026-11-21|Falkirk|St Johnstone,Foot,Scottish Prem,2026-11-21T15:00:00+00:00,Falkirk,St Johnstone,0.5762,0.2258,0.1981,2026-11-20T06:35:32.005353+00:00,,
-Foot|SC0|2026-11-21|Hibernian|Dundee United,Foot,Scottish Prem,2026-11-21T15:00:00+00:00,Hibernian,Dundee United,0.5824,0.2238,0.1938,2026-11-20T06:35:32.005353+00:00,,
-Foot|SC0|2026-11-21|Kilmarnock|Aberdeen,Foot,Scottish Prem,2026-11-21T15:00:00+00:00,Kilmarnock,Aberdeen,0.4503,0.2527,0.297,2026-11-20T06:35:32.005353+00:00,,
-Foot|SC0|2026-11-21|Dundee|Hearts,Foot,Scottish Prem,2026-11-21T17:45:00+00:00,Dundee,Hearts,0.2632,0.228,0.5088,2026-11-20T06:35:32.005353+00:00,,
-Foot|SC1|2026-11-21|Arbroath|Stenhousemuir,Foot,Scottish Championship,2026-11-21T15:00:00+00:00,Arbroath,Stenhousemuir,0.2851,0.3457,0.3692,2026-11-20T06:35:32.005353+00:00,,
+Foot|N1|2026-11-21|Nijmegen|PSV Eindhoven,Foot,Eredivisie,2026-11-21T15:30:00+00:00,Nijmegen,PSV Eindhoven,0.2119,0.185,0.6031,2026-11-20T06:35:32.005353+00:00,B,1-4
+Foot|N1|2026-11-21|Utrecht|Cambuur,Foot,Eredivisie,2026-11-21T17:45:00+00:00,Utrecht,Cambuur,0.4796,0.2036,0.3168,2026-11-20T06:35:32.005353+00:00,B,2-3
+Foot|N1|2026-11-21|Feyenoord|Excelsior,Foot,Eredivisie,2026-11-21T17:45:00+00:00,Feyenoord,Excelsior,0.7556,0.1516,0.0928,2026-11-20T06:35:32.005353+00:00,B,2-3
+Foot|B1|2026-11-21|Charleroi|St Truiden,Foot,Jupiler Pro League,2026-11-21T15:00:00+00:00,Charleroi,St Truiden,0.4839,0.238,0.2781,2026-11-20T06:35:32.005353+00:00,N,2-2
+Foot|B1|2026-11-21|Genk|RAAL La Louviere,Foot,Jupiler Pro League,2026-11-21T17:15:00+00:00,Genk,RAAL La Louviere,0.6481,0.211,0.1409,2026-11-20T06:35:32.005353+00:00,A,3-0
+Foot|E0|2026-11-21|Man City|Fulham,Foot,Premier League,2026-11-21T12:30:00+00:00,Man City,Fulham,0.6449,0.2181,0.1371,2026-11-20T06:35:32.005353+00:00,N,1-1
+Foot|E0|2026-11-21|Bournemouth|Nott'm Forest,Foot,Premier League,2026-11-21T15:00:00+00:00,Bournemouth,Nott'm Forest,0.4713,0.2685,0.2602,2026-11-20T06:35:32.005353+00:00,A,2-0
+Foot|E0|2026-11-21|Aston Villa|Sunderland,Foot,Premier League,2026-11-21T15:00:00+00:00,Aston Villa,Sunderland,0.5309,0.2619,0.2073,2026-11-20T06:35:32.005353+00:00,N,0-0
+Foot|E0|2026-11-21|Chelsea|Leeds,Foot,Premier League,2026-11-21T15:00:00+00:00,Chelsea,Leeds,0.4595,0.27,0.2706,2026-11-20T06:35:32.005353+00:00,B,1-4
+Foot|E0|2026-11-21|Coventry|Crystal Palace,Foot,Premier League,2026-11-21T15:00:00+00:00,Coventry,Crystal Palace,0.3649,0.2634,0.3718,2026-11-20T06:35:32.005353+00:00,A,3-2
+Foot|E0|2026-11-21|Tottenham|Ipswich,Foot,Premier League,2026-11-21T15:00:00+00:00,Tottenham,Ipswich,0.5586,0.2255,0.2159,2026-11-20T06:35:32.005353+00:00,A,2-0
+Foot|E0|2026-11-21|Newcastle|Arsenal,Foot,Premier League,2026-11-21T17:30:00+00:00,Newcastle,Arsenal,0.1692,0.2527,0.5781,2026-11-20T06:35:32.005353+00:00,N,2-2
+Foot|SP1|2026-11-21|Alaves|La Coruna,Foot,La Liga,2026-11-21T13:00:00+00:00,Alaves,La Coruna,0.392,0.3,0.308,2026-11-20T06:35:32.005353+00:00,A,3-1
+Foot|SP1|2026-11-21|Vallecano|Valencia,Foot,La Liga,2026-11-21T15:15:00+00:00,Vallecano,Valencia,0.4727,0.2843,0.2429,2026-11-20T06:35:32.005353+00:00,B,0-1
+Foot|SP1|2026-11-21|Sevilla|Betis,Foot,La Liga,2026-11-21T17:30:00+00:00,Sevilla,Betis,0.3348,0.2521,0.4131,2026-11-20T06:35:32.005353+00:00,N,1-1
+Foot|I1|2026-11-21|Como|Cagliari,Foot,Serie A,2026-11-21T14:00:00+00:00,Como,Cagliari,0.6366,0.2273,0.1362,2026-11-20T06:35:32.005353+00:00,A,2-0
+Foot|I1|2026-11-21|Lazio|Lecce,Foot,Serie A,2026-11-21T14:00:00+00:00,Lazio,Lecce,0.6182,0.2326,0.1493,2026-11-20T06:35:32.005353+00:00,A,3-0
+Foot|I1|2026-11-21|Parma|Roma,Foot,Serie A,2026-11-21T17:00:00+00:00,Parma,Roma,0.1068,0.2071,0.6861,2026-11-20T06:35:32.005353+00:00,B,1-5
+Foot|D1|2026-11-21|Union Berlin|RB Leipzig,Foot,Bundesliga,2026-11-21T14:30:00+00:00,Union Berlin,RB Leipzig,0.2129,0.2149,0.5722,2026-11-20T06:35:32.005353+00:00,B,1-5
+Foot|D1|2026-11-21|Leverkusen|Paderborn,Foot,Bundesliga,2026-11-21T14:30:00+00:00,Leverkusen,Paderborn,0.623,0.2324,0.1446,2026-11-20T06:35:32.005353+00:00,A,4-0
+Foot|D1|2026-11-21|M'gladbach|Dortmund,Foot,Bundesliga,2026-11-21T14:30:00+00:00,M'gladbach,Dortmund,0.1719,0.2151,0.613,2026-11-20T06:35:32.005353+00:00,B,0-1
+Foot|D1|2026-11-21|Ein Frankfurt|Hoffenheim,Foot,Bundesliga,2026-11-21T14:30:00+00:00,Ein Frankfurt,Hoffenheim,0.4573,0.2077,0.335,2026-11-20T06:35:32.005353+00:00,A,1-0
+Foot|D1|2026-11-21|Elversberg|Freiburg,Foot,Bundesliga,2026-11-21T14:30:00+00:00,Elversberg,Freiburg,0.5047,0.2019,0.2934,2026-11-20T06:35:32.005353+00:00,B,0-1
+Foot|D1|2026-11-21|Schalke 04|Stuttgart,Foot,Bundesliga,2026-11-21T17:30:00+00:00,Schalke 04,Stuttgart,0.1751,0.3125,0.5124,2026-11-20T06:35:32.005353+00:00,N,0-0
+Foot|F1|2026-11-21|Nice|Paris SG,Foot,Ligue 1,2026-11-21T16:15:00+00:00,Nice,Paris SG,0.1656,0.2112,0.6233,2026-11-20T06:35:32.005353+00:00,B,2-3
+Foot|E1|2026-11-21|Millwall|QPR,Foot,Championship,2026-11-21T12:30:00+00:00,Millwall,QPR,0.4721,0.2553,0.2726,2026-11-20T06:35:32.005353+00:00,B,0-1
+Foot|E1|2026-11-21|Norwich|Cardiff,Foot,Championship,2026-11-21T12:30:00+00:00,Norwich,Cardiff,0.5844,0.1994,0.2162,2026-11-20T06:35:32.005353+00:00,A,2-1
+Foot|E1|2026-11-21|Southampton|Derby,Foot,Championship,2026-11-21T12:30:00+00:00,Southampton,Derby,0.666,0.1958,0.1382,2026-11-20T06:35:32.005353+00:00,A,2-0
+Foot|E1|2026-11-21|Bolton|Portsmouth,Foot,Championship,2026-11-21T15:00:00+00:00,Bolton,Portsmouth,0.3697,0.2563,0.374,2026-11-20T06:35:32.005353+00:00,N,1-1
+Foot|E1|2026-11-21|Lincoln|Wrexham,Foot,Championship,2026-11-21T15:00:00+00:00,Lincoln,Wrexham,0.2729,0.2606,0.4665,2026-11-20T06:35:32.005353+00:00,B,0-1
+Foot|E1|2026-11-21|Middlesbrough|Bristol City,Foot,Championship,2026-11-21T15:00:00+00:00,Middlesbrough,Bristol City,0.5924,0.2303,0.1774,2026-11-20T06:35:32.005353+00:00,A,2-0
+Foot|E1|2026-11-21|Sheffield United|Watford,Foot,Championship,2026-11-21T15:00:00+00:00,Sheffield United,Watford,0.5577,0.2503,0.192,2026-11-20T06:35:32.005353+00:00,A,4-0
+Foot|E1|2026-11-21|Stoke|Birmingham,Foot,Championship,2026-11-21T15:00:00+00:00,Stoke,Birmingham,0.3187,0.291,0.3903,2026-11-20T06:35:32.005353+00:00,A,1-0
+Foot|E1|2026-11-21|Swansea|West Brom,Foot,Championship,2026-11-21T15:00:00+00:00,Swansea,West Brom,0.4053,0.2898,0.3049,2026-11-20T06:35:32.005353+00:00,N,2-2
+Foot|E1|2026-11-21|West Ham|Preston,Foot,Championship,2026-11-21T15:00:00+00:00,West Ham,Preston,0.7618,0.1363,0.1019,2026-11-20T06:35:32.005353+00:00,N,1-1
+Foot|E1|2026-11-21|Wolves|Charlton,Foot,Championship,2026-11-21T15:00:00+00:00,Wolves,Charlton,0.6513,0.2239,0.1248,2026-11-20T06:35:32.005353+00:00,A,2-1
+Foot|D2|2026-11-21|Nurnberg|Braunschweig,Foot,2. Bundesliga,2026-11-21T12:00:00+00:00,Nurnberg,Braunschweig,0.6483,0.2026,0.149,2026-11-20T06:35:32.005353+00:00,B,1-2
+Foot|D2|2026-11-21|Hannover|Greuther Furth,Foot,2. Bundesliga,2026-11-21T12:00:00+00:00,Hannover,Greuther Furth,0.5903,0.2212,0.1885,2026-11-20T06:35:32.005353+00:00,A,2-1
+Foot|D2|2026-11-21|Wolfsburg|Holstein Kiel,Foot,2. Bundesliga,2026-11-21T12:00:00+00:00,Wolfsburg,Holstein Kiel,0.6941,0.1749,0.131,2026-11-20T06:35:32.005353+00:00,A,3-0
+Foot|SP2|2026-11-21|Sabadell|Granada,Foot,Segunda,2026-11-21T13:00:00+00:00,Sabadell,Granada,0.3571,0.3352,0.3077,2026-11-20T06:35:32.005353+00:00,N,1-1
+Foot|SP2|2026-11-21|Sociedad B|Cadiz,Foot,Segunda,2026-11-21T15:15:00+00:00,Sociedad B,Cadiz,0.4501,0.2568,0.2931,2026-11-20T06:35:32.005353+00:00,B,0-3
+Foot|SP2|2026-11-21|Castellon|Eldense,Foot,Segunda,2026-11-21T17:30:00+00:00,Castellon,Eldense,0.6738,0.1941,0.132,2026-11-20T06:35:32.005353+00:00,A,2-0
+Foot|I2|2026-11-21|Ascoli|Vicenza,Foot,Serie B,2026-11-21T14:00:00+00:00,Ascoli,Vicenza,0.7997,0.1443,0.0561,2026-11-20T06:35:32.005353+00:00,N,2-2
+Foot|I2|2026-11-21|Carrarese|Virtus Entella,Foot,Serie B,2026-11-21T14:00:00+00:00,Carrarese,Virtus Entella,0.4341,0.321,0.2449,2026-11-20T06:35:32.005353+00:00,A,1-0
+Foot|I2|2026-11-21|Modena|Juve Stabia,Foot,Serie B,2026-11-21T14:00:00+00:00,Modena,Juve Stabia,0.4702,0.3156,0.2142,2026-11-20T06:35:32.005353+00:00,A,2-0
+Foot|I2|2026-11-21|Sampdoria|Benevento,Foot,Serie B,2026-11-21T14:00:00+00:00,Sampdoria,Benevento,0.2523,0.3388,0.4089,2026-11-20T06:35:32.005353+00:00,A,3-1
+Foot|I2|2026-11-21|Sudtirol|Cremonese,Foot,Serie B,2026-11-21T14:00:00+00:00,Sudtirol,Cremonese,0.3103,0.3008,0.3888,2026-11-20T06:35:32.005353+00:00,A,1-0
+Foot|I2|2026-11-21|Catanzaro|Palermo,Foot,Serie B,2026-11-21T16:15:00+00:00,Catanzaro,Palermo,0.2735,0.2465,0.48,2026-11-20T06:35:32.005353+00:00,A,3-1
+Foot|I2|2026-11-21|Empoli|Pisa,Foot,Serie B,2026-11-21T18:30:00+00:00,Empoli,Pisa,0.2953,0.2611,0.4435,2026-11-20T06:35:32.005353+00:00,B,0-1
+Foot|F2|2026-11-21|Laval|Montpellier,Foot,Ligue 2,2026-11-21T13:00:00+00:00,Laval,Montpellier,0.1772,0.2702,0.5526,2026-11-20T06:35:32.005353+00:00,A,1-0
+Foot|E2|2026-11-21|Blackpool|Wigan,Foot,League One,2026-11-21T12:30:00+00:00,Blackpool,Wigan,0.4649,0.2909,0.2443,2026-11-20T06:35:32.005353+00:00,B,1-2
+Foot|E2|2026-11-21|Reading|Bromley,Foot,League One,2026-11-21T12:30:00+00:00,Reading,Bromley,0.8061,0.1249,0.069,2026-11-20T06:35:32.005353+00:00,B,0-1
+Foot|E2|2026-11-21|Bradford|Doncaster,Foot,League One,2026-11-21T15:00:00+00:00,Bradford,Doncaster,0.5346,0.2845,0.1809,2026-11-20T06:35:32.005353+00:00,N,2-2
+Foot|E2|2026-11-21|Burton|Luton,Foot,League One,2026-11-21T15:00:00+00:00,Burton,Luton,0.3051,0.2548,0.4401,2026-11-20T06:35:32.005353+00:00,B,1-2
+Foot|E2|2026-11-21|Cambridge|Stockport,Foot,League One,2026-11-21T15:00:00+00:00,Cambridge,Stockport,0.277,0.252,0.471,2026-11-20T06:35:32.005353+00:00,B,0-3
+Foot|E2|2026-11-21|Huddersfield|Leicester,Foot,League One,2026-11-21T15:00:00+00:00,Huddersfield,Leicester,0.5061,0.2254,0.2685,2026-11-20T06:35:32.005353+00:00,B,0-1
+Foot|E2|2026-11-21|Leyton Orient|AFC Wimbledon,Foot,League One,2026-11-21T15:00:00+00:00,Leyton Orient,AFC Wimbledon,0.5983,0.2343,0.1674,2026-11-20T06:35:32.005353+00:00,A,4-1
+Foot|E2|2026-11-21|Mansfield|Milton Keynes Dons,Foot,League One,2026-11-21T15:00:00+00:00,Mansfield,Milton Keynes Dons,0.4233,0.224,0.3527,2026-11-20T06:35:32.005353+00:00,N,1-1
+Foot|E2|2026-11-21|Notts County|Stevenage,Foot,League One,2026-11-21T15:00:00+00:00,Notts County,Stevenage,0.3984,0.334,0.2676,2026-11-20T06:35:32.005353+00:00,B,0-1
+Foot|E2|2026-11-21|Oxford|Wycombe,Foot,League One,2026-11-21T15:00:00+00:00,Oxford,Wycombe,0.6226,0.225,0.1524,2026-11-20T06:35:32.005353+00:00,A,4-3
+Foot|E2|2026-11-21|Plymouth|Peterboro,Foot,League One,2026-11-21T15:00:00+00:00,Plymouth,Peterboro,0.5899,0.212,0.1981,2026-11-20T06:35:32.005353+00:00,B,0-2
+Foot|E3|2026-11-21|Gillingham|Crewe,Foot,League Two,2026-11-21T12:30:00+00:00,Gillingham,Crewe,0.3485,0.2754,0.3761,2026-11-20T06:35:32.005353+00:00,N,3-3
+Foot|E3|2026-11-21|Newport County|Swindon,Foot,League Two,2026-11-21T12:30:00+00:00,Newport County,Swindon,0.3318,0.2545,0.4137,2026-11-20T06:35:32.005353+00:00,A,2-0
+Foot|E3|2026-11-21|Accrington|Salford,Foot,League Two,2026-11-21T15:00:00+00:00,Accrington,Salford,0.3137,0.2682,0.4181,2026-11-20T06:35:32.005353+00:00,N,1-1
+Foot|E3|2026-11-21|Barnet|Port Vale,Foot,League Two,2026-11-21T15:00:00+00:00,Barnet,Port Vale,0.5114,0.2458,0.2428,2026-11-20T06:35:32.005353+00:00,A,2-1
+Foot|E3|2026-11-21|Cheltenham|Bristol Rvs,Foot,League Two,2026-11-21T15:00:00+00:00,Cheltenham,Bristol Rvs,0.4332,0.2426,0.3242,2026-11-20T06:35:32.005353+00:00,B,0-3
+Foot|E3|2026-11-21|Chesterfield|Shrewsbury,Foot,League Two,2026-11-21T15:00:00+00:00,Chesterfield,Shrewsbury,0.6317,0.2101,0.1582,2026-11-20T06:35:32.005353+00:00,A,4-1
+Foot|E3|2026-11-21|Crawley Town|Fleetwood Town,Foot,League Two,2026-11-21T15:00:00+00:00,Crawley Town,Fleetwood Town,0.3049,0.2827,0.4124,2026-11-20T06:35:32.005353+00:00,A,2-1
+Foot|E3|2026-11-21|Grimsby|Rotherham,Foot,League Two,2026-11-21T15:00:00+00:00,Grimsby,Rotherham,0.721,0.156,0.123,2026-11-20T06:35:32.005353+00:00,N,0-0
+Foot|E3|2026-11-21|Northampton|Rochdale,Foot,League Two,2026-11-21T15:00:00+00:00,Northampton,Rochdale,0.4684,0.3316,0.1999,2026-11-20T06:35:32.005353+00:00,A,3-2
+Foot|E3|2026-11-21|Oldham|Exeter,Foot,League Two,2026-11-21T15:00:00+00:00,Oldham,Exeter,0.2966,0.4209,0.2824,2026-11-20T06:35:32.005353+00:00,N,1-1
+Foot|E3|2026-11-21|Tranmere|Colchester,Foot,League Two,2026-11-21T15:00:00+00:00,Tranmere,Colchester,0.3125,0.2816,0.4059,2026-11-20T06:35:32.005353+00:00,A,2-1
+Foot|E3|2026-11-21|York|Walsall,Foot,League Two,2026-11-21T15:00:00+00:00,York,Walsall,0.4449,0.2427,0.3124,2026-11-20T06:35:32.005353+00:00,N,0-0
+Foot|SC0|2026-11-21|Celtic|St Mirren,Foot,Scottish Prem,2026-11-21T15:00:00+00:00,Celtic,St Mirren,0.8005,0.1349,0.0646,2026-11-20T06:35:32.005353+00:00,A,4-1
+Foot|SC0|2026-11-21|Falkirk|St Johnstone,Foot,Scottish Prem,2026-11-21T15:00:00+00:00,Falkirk,St Johnstone,0.5762,0.2258,0.1981,2026-11-20T06:35:32.005353+00:00,A,2-1
+Foot|SC0|2026-11-21|Hibernian|Dundee United,Foot,Scottish Prem,2026-11-21T15:00:00+00:00,Hibernian,Dundee United,0.5824,0.2238,0.1938,2026-11-20T06:35:32.005353+00:00,B,0-4
+Foot|SC0|2026-11-21|Kilmarnock|Aberdeen,Foot,Scottish Prem,2026-11-21T15:00:00+00:00,Kilmarnock,Aberdeen,0.4503,0.2527,0.297,2026-11-20T06:35:32.005353+00:00,B,2-4
+Foot|SC0|2026-11-21|Dundee|Hearts,Foot,Scottish Prem,2026-11-21T17:45:00+00:00,Dundee,Hearts,0.2632,0.228,0.5088,2026-11-20T06:35:32.005353+00:00,B,0-8
+Foot|SC1|2026-11-21|Arbroath|Stenhousemuir,Foot,Scottish Championship,2026-11-21T15:00:00+00:00,Arbroath,Stenhousemuir,0.2851,0.3457,0.3692,2026-11-20T06:35:32.005353+00:00,A,2-1
 Foot|SC1|2026-11-21|Dunfermline|Morton,Foot,Scottish Championship,2026-11-21T15:00:00+00:00,Dunfermline,Morton,0.5738,0.2742,0.152,2026-11-20T06:35:32.005353+00:00,,
-Foot|SC1|2026-11-21|Queens Park|Livingston,Foot,Scottish Championship,2026-11-21T15:00:00+00:00,Queens Park,Livingston,0.1207,0.2898,0.5895,2026-11-20T06:35:32.005353+00:00,,
-Foot|SC1|2026-11-21|Raith Rvs|Partick,Foot,Scottish Championship,2026-11-21T15:00:00+00:00,Raith Rvs,Partick,0.3383,0.3376,0.3242,2026-11-20T06:35:32.005353+00:00,,
-Foot|T1|2026-11-21|Genclerbirligi|Gaziantep,Foot,Süper Lig,2026-11-21T10:30:00+00:00,Genclerbirligi,Gaziantep,0.465,0.2858,0.2492,2026-11-20T06:35:32.005353+00:00,,
-Foot|T1|2026-11-21|Amedspor|Rizespor,Foot,Süper Lig,2026-11-21T13:00:00+00:00,Amedspor,Rizespor,0.7845,0.1245,0.091,2026-11-20T06:35:32.005353+00:00,,
-Foot|T1|2026-11-21|Galatasaray|Samsunspor,Foot,Süper Lig,2026-11-21T13:00:00+00:00,Galatasaray,Samsunspor,0.8006,0.1318,0.0675,2026-11-20T06:35:32.005353+00:00,,
-Foot|T1|2026-11-21|Kocaelispor|Fenerbahce,Foot,Süper Lig,2026-11-21T16:00:00+00:00,Kocaelispor,Fenerbahce,0.198,0.2888,0.5132,2026-11-20T06:35:32.005353+00:00,,
-Foot|G1|2026-11-21|Kalamata|AEK,Foot,Super League Grèce,2026-11-21T17:30:00+00:00,Kalamata,AEK,0.1081,0.2002,0.6916,2026-11-20T06:35:32.005353+00:00,,
+Foot|SC1|2026-11-21|Queens Park|Livingston,Foot,Scottish Championship,2026-11-21T15:00:00+00:00,Queens Park,Livingston,0.1207,0.2898,0.5895,2026-11-20T06:35:32.005353+00:00,B,1-4
+Foot|SC1|2026-11-21|Raith Rvs|Partick,Foot,Scottish Championship,2026-11-21T15:00:00+00:00,Raith Rvs,Partick,0.3383,0.3376,0.3242,2026-11-20T06:35:32.005353+00:00,B,0-2
+Foot|T1|2026-11-21|Genclerbirligi|Gaziantep,Foot,Süper Lig,2026-11-21T10:30:00+00:00,Genclerbirligi,Gaziantep,0.465,0.2858,0.2492,2026-11-20T06:35:32.005353+00:00,A,1-0
+Foot|T1|2026-11-21|Amedspor|Rizespor,Foot,Süper Lig,2026-11-21T13:00:00+00:00,Amedspor,Rizespor,0.7845,0.1245,0.091,2026-11-20T06:35:32.005353+00:00,B,0-2
+Foot|T1|2026-11-21|Galatasaray|Samsunspor,Foot,Süper Lig,2026-11-21T13:00:00+00:00,Galatasaray,Samsunspor,0.8006,0.1318,0.0675,2026-11-20T06:35:32.005353+00:00,A,2-1
+Foot|T1|2026-11-21|Kocaelispor|Fenerbahce,Foot,Süper Lig,2026-11-21T16:00:00+00:00,Kocaelispor,Fenerbahce,0.198,0.2888,0.5132,2026-11-20T06:35:32.005353+00:00,N,2-2
+Foot|G1|2026-11-21|Kalamata|AEK,Foot,Super League Grèce,2026-11-21T17:30:00+00:00,Kalamata,AEK,0.1081,0.2002,0.6916,2026-11-20T06:35:32.005353+00:00,B,0-1
 Foot|N2|2026-11-21|FC Eindhoven|RKC Waalwijk,Foot,Eerste Divisie,2026-11-21T15:30:00+00:00,FC Eindhoven,RKC Waalwijk,0.2533,0.2118,0.5349,2026-11-20T06:35:32.005353+00:00,A,3-2
 Foot|TDP|2026-11-21|Atlético CP|Casa Pia,Foot,Taça de Portugal,2026-11-21T11:00:00+00:00,Atlético CP,Casa Pia,0.2906,0.3019,0.4075,2026-11-20T06:35:32.005353+00:00,A,1-0
 Foot|TDP|2026-11-21|Mafra|Arouca,Foot,Taça de Portugal,2026-11-21T14:00:00+00:00,Mafra,Arouca,0.1791,0.2406,0.5802,2026-11-20T06:35:32.005353+00:00,A,2-1
@@ -603,67 +603,67 @@ Foot|TDP|2026-11-21|Sporting CP|Uniao da Serra,Foot,Taça de Portugal,2026-11-21
 NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,NBA,2026-11-21T18:00:00+00:00,Philadelphia 76ers,Milwaukee Bucks,0.7578,,0.2422,2026-11-20T06:35:32.005353+00:00,A,132-129
 Tennis|2026-11-20|Leyre Romero Gormaz|Irene Burillo,Tennis,WTA · LP Open by IND · Quart de finale,2026-11-20T15:00:00+00:00,Leyre Romero Gormaz,Irene Burillo,0.7019,,0.2981,2026-11-20T06:35:32.005353+00:00,A,
 Tennis|2026-11-20|Guiomar Maristany Zuleta De Reales|Andrea Lazaro Garcia,Tennis,WTA · LP Open by IND · Quart de finale,2026-11-20T20:30:00+00:00,Guiomar Maristany Zuleta De Reales,Andrea Lazaro Garcia,0.5451,,0.4549,2026-11-20T06:35:32.005353+00:00,A,
-Foot|N1|2026-11-21|Groningen|Heerenveen,Foot,Eredivisie,2026-11-21T20:00:00+00:00,Groningen,Heerenveen,0.3869,0.2505,0.3625,2026-11-20T08:12:34.340443+00:00,,
-Foot|N1|2026-11-21|Telstar|Zwolle,Foot,Eredivisie,2026-11-21T20:00:00+00:00,Telstar,Zwolle,0.527,0.2428,0.2303,2026-11-20T08:12:34.340443+00:00,,
-Foot|B1|2026-11-21|Mechelen|Club Brugge,Foot,Jupiler Pro League,2026-11-21T19:45:00+00:00,Mechelen,Club Brugge,0.1387,0.1782,0.6832,2026-11-20T08:12:34.340443+00:00,,
-Foot|B1|2026-11-21|Waregem|Antwerp,Foot,Jupiler Pro League,2026-11-21T19:45:00+00:00,Waregem,Antwerp,0.4389,0.2551,0.3061,2026-11-20T08:12:34.340443+00:00,,
-Foot|SP1|2026-11-21|Real Madrid|Celta,Foot,La Liga,2026-11-21T20:00:00+00:00,Real Madrid,Celta,0.702,0.1912,0.1067,2026-11-20T08:12:34.340443+00:00,,
-Foot|I1|2026-11-21|Napoli|Torino,Foot,Serie A,2026-11-21T19:45:00+00:00,Napoli,Torino,0.6218,0.2171,0.1611,2026-11-20T08:12:34.340443+00:00,,
-Foot|F1|2026-11-21|Monaco|Auxerre,Foot,Ligue 1,2026-11-21T19:45:00+00:00,Monaco,Auxerre,0.6183,0.2126,0.1691,2026-11-20T08:12:34.340443+00:00,,
-Foot|F1|2026-11-21|Lens|Toulouse,Foot,Ligue 1,2026-11-21T19:45:00+00:00,Lens,Toulouse,0.5497,0.2358,0.2145,2026-11-20T08:12:34.340443+00:00,,
-Foot|F1|2026-11-21|Lille|Lyon,Foot,Ligue 1,2026-11-21T19:45:00+00:00,Lille,Lyon,0.4324,0.2943,0.2733,2026-11-20T08:12:34.340443+00:00,,
-Foot|F1|2026-11-21|Strasbourg|Brest,Foot,Ligue 1,2026-11-21T19:45:00+00:00,Strasbourg,Brest,0.5324,0.2171,0.2505,2026-11-20T08:12:34.340443+00:00,,
-Foot|D2|2026-11-21|St Pauli|Bochum,Foot,2. Bundesliga,2026-11-21T19:30:00+00:00,St Pauli,Bochum,0.3837,0.3043,0.3119,2026-11-20T08:12:34.340443+00:00,,
-Foot|SP2|2026-11-21|Tenerife|Mallorca,Foot,Segunda,2026-11-21T20:00:00+00:00,Tenerife,Mallorca,0.2539,0.3071,0.4389,2026-11-20T08:12:34.340443+00:00,,
-Foot|F2|2026-11-21|Reims|St Etienne,Foot,Ligue 2,2026-11-21T19:00:00+00:00,Reims,St Etienne,0.3709,0.2447,0.3844,2026-11-20T08:12:34.340443+00:00,,
-Foot|SC0|2026-11-21|Motherwell|Rangers,Foot,Scottish Prem,2026-11-21T20:00:00+00:00,Motherwell,Rangers,0.2748,0.2406,0.4846,2026-11-20T08:12:34.340443+00:00,,
+Foot|N1|2026-11-21|Groningen|Heerenveen,Foot,Eredivisie,2026-11-21T20:00:00+00:00,Groningen,Heerenveen,0.3869,0.2505,0.3625,2026-11-20T08:12:34.340443+00:00,B,1-3
+Foot|N1|2026-11-21|Telstar|Zwolle,Foot,Eredivisie,2026-11-21T20:00:00+00:00,Telstar,Zwolle,0.527,0.2428,0.2303,2026-11-20T08:12:34.340443+00:00,B,1-3
+Foot|B1|2026-11-21|Mechelen|Club Brugge,Foot,Jupiler Pro League,2026-11-21T19:45:00+00:00,Mechelen,Club Brugge,0.1387,0.1782,0.6832,2026-11-20T08:12:34.340443+00:00,B,1-5
+Foot|B1|2026-11-21|Waregem|Antwerp,Foot,Jupiler Pro League,2026-11-21T19:45:00+00:00,Waregem,Antwerp,0.4389,0.2551,0.3061,2026-11-20T08:12:34.340443+00:00,N,2-2
+Foot|SP1|2026-11-21|Real Madrid|Celta,Foot,La Liga,2026-11-21T20:00:00+00:00,Real Madrid,Celta,0.702,0.1912,0.1067,2026-11-20T08:12:34.340443+00:00,A,2-1
+Foot|I1|2026-11-21|Napoli|Torino,Foot,Serie A,2026-11-21T19:45:00+00:00,Napoli,Torino,0.6218,0.2171,0.1611,2026-11-20T08:12:34.340443+00:00,A,1-0
+Foot|F1|2026-11-21|Monaco|Auxerre,Foot,Ligue 1,2026-11-21T19:45:00+00:00,Monaco,Auxerre,0.6183,0.2126,0.1691,2026-11-20T08:12:34.340443+00:00,N,1-1
+Foot|F1|2026-11-21|Lens|Toulouse,Foot,Ligue 1,2026-11-21T19:45:00+00:00,Lens,Toulouse,0.5497,0.2358,0.2145,2026-11-20T08:12:34.340443+00:00,N,1-1
+Foot|F1|2026-11-21|Lille|Lyon,Foot,Ligue 1,2026-11-21T19:45:00+00:00,Lille,Lyon,0.4324,0.2943,0.2733,2026-11-20T08:12:34.340443+00:00,B,0-1
+Foot|F1|2026-11-21|Strasbourg|Brest,Foot,Ligue 1,2026-11-21T19:45:00+00:00,Strasbourg,Brest,0.5324,0.2171,0.2505,2026-11-20T08:12:34.340443+00:00,B,0-1
+Foot|D2|2026-11-21|St Pauli|Bochum,Foot,2. Bundesliga,2026-11-21T19:30:00+00:00,St Pauli,Bochum,0.3837,0.3043,0.3119,2026-11-20T08:12:34.340443+00:00,A,2-0
+Foot|SP2|2026-11-21|Tenerife|Mallorca,Foot,Segunda,2026-11-21T20:00:00+00:00,Tenerife,Mallorca,0.2539,0.3071,0.4389,2026-11-20T08:12:34.340443+00:00,N,0-0
+Foot|F2|2026-11-21|Reims|St Etienne,Foot,Ligue 2,2026-11-21T19:00:00+00:00,Reims,St Etienne,0.3709,0.2447,0.3844,2026-11-20T08:12:34.340443+00:00,B,0-1
+Foot|SC0|2026-11-21|Motherwell|Rangers,Foot,Scottish Prem,2026-11-21T20:00:00+00:00,Motherwell,Rangers,0.2748,0.2406,0.4846,2026-11-20T08:12:34.340443+00:00,B,1-2
 Foot|TDP|2026-11-21|Vitória de Guimaraes|Braga,Foot,Taça de Portugal,2026-11-21T20:30:00+00:00,Vitória de Guimaraes,Braga,0.2668,0.2689,0.4642,2026-11-20T10:01:28.421685+00:00,B,0-2
-Foot|D1|2026-11-20|Bayern Munich|FC Koln,Foot,Bundesliga,2026-11-20T19:30:00+00:00,Bayern Munich,FC Koln,0.9106,0.06,0.0294,2026-11-20T13:33:53.294313+00:00,,
+Foot|D1|2026-11-20|Bayern Munich|FC Koln,Foot,Bundesliga,2026-11-20T19:30:00+00:00,Bayern Munich,FC Koln,0.9106,0.06,0.0294,2026-11-20T13:33:53.294313+00:00,N,1-1
 NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,NBA,2026-11-22T00:30:00+00:00,New York Knicks,Portland Trail Blazers,0.6531,,0.3469,2026-11-20T13:33:53.294313+00:00,A,97-96
 NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,NBA,2026-11-22T01:00:00+00:00,Dallas Mavericks,LA Clippers,0.6215,,0.3785,2026-11-20T13:33:53.294313+00:00,A,110-100
 NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,NBA,2026-11-22T01:00:00+00:00,Minnesota Timberwolves,Memphis Grizzlies,0.6571,,0.3429,2026-11-20T13:33:53.294313+00:00,A,104-95
 NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,NBA,2026-11-22T01:00:00+00:00,San Antonio Spurs,New Orleans Pelicans,0.8388,,0.1612,2026-11-20T13:33:53.294313+00:00,A,114-91
 NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,NBA,2026-11-22T03:00:00+00:00,Sacramento Kings,Boston Celtics,0.1373,,0.8627,2026-11-20T16:40:56.586610+00:00,A,97-96
-Foot|N1|2026-11-22|Twente|Willem II,Foot,Eredivisie,2026-11-22T11:15:00+00:00,Twente,Willem II,0.8892,0.0816,0.0293,2026-11-21T06:33:19.822600+00:00,,
-Foot|N1|2026-11-22|Ajax|Den Haag,Foot,Eredivisie,2026-11-22T13:30:00+00:00,Ajax,Den Haag,0.7146,0.1772,0.1082,2026-11-21T06:33:19.822600+00:00,,
-Foot|N1|2026-11-22|Sparta Rotterdam|AZ Alkmaar,Foot,Eredivisie,2026-11-22T13:30:00+00:00,Sparta Rotterdam,AZ Alkmaar,0.2462,0.2519,0.502,2026-11-21T06:33:19.822600+00:00,,
-Foot|N1|2026-11-22|Go Ahead Eagles|For Sittard,Foot,Eredivisie,2026-11-22T15:45:00+00:00,Go Ahead Eagles,For Sittard,0.4823,0.2395,0.2782,2026-11-21T06:33:19.822600+00:00,,
-Foot|B1|2026-11-22|Beveren|Gent,Foot,Jupiler Pro League,2026-11-22T12:30:00+00:00,Beveren,Gent,0.2546,0.2311,0.5142,2026-11-21T06:33:19.822600+00:00,,
-Foot|B1|2026-11-22|Kortrijk|St. Gilloise,Foot,Jupiler Pro League,2026-11-22T15:00:00+00:00,Kortrijk,St. Gilloise,0.0439,0.1411,0.815,2026-11-21T06:33:19.822600+00:00,,
-Foot|B1|2026-11-22|Anderlecht|Oud-Heverlee Leuven,Foot,Jupiler Pro League,2026-11-22T17:30:00+00:00,Anderlecht,Oud-Heverlee Leuven,0.5553,0.2511,0.1936,2026-11-21T06:33:19.822600+00:00,,
-Foot|B1|2026-11-22|Lommel SK|Standard,Foot,Jupiler Pro League,2026-11-22T18:15:00+00:00,Lommel SK,Standard,0.4793,0.2967,0.2239,2026-11-21T06:33:19.822600+00:00,,
-Foot|E0|2026-11-22|Hull|Brighton,Foot,Premier League,2026-11-22T14:00:00+00:00,Hull,Brighton,0.2812,0.3055,0.4133,2026-11-21T06:33:19.822600+00:00,,
-Foot|E0|2026-11-22|Liverpool|Man United,Foot,Premier League,2026-11-22T16:30:00+00:00,Liverpool,Man United,0.5346,0.2247,0.2407,2026-11-21T06:33:19.822600+00:00,,
-Foot|SP1|2026-11-22|Barcelona|Villarreal,Foot,La Liga,2026-11-22T13:00:00+00:00,Barcelona,Villarreal,0.7471,0.1427,0.1102,2026-11-21T06:33:19.822600+00:00,,
-Foot|SP1|2026-11-22|Santander|Sociedad,Foot,La Liga,2026-11-22T15:15:00+00:00,Santander,Sociedad,0.3196,0.1971,0.4833,2026-11-21T06:33:19.822600+00:00,,
-Foot|SP1|2026-11-22|Osasuna|Malaga,Foot,La Liga,2026-11-22T17:30:00+00:00,Osasuna,Malaga,0.6294,0.2333,0.1373,2026-11-21T06:33:19.822600+00:00,,
-Foot|I1|2026-11-22|Juventus|Venezia,Foot,Serie A,2026-11-22T11:30:00+00:00,Juventus,Venezia,0.6724,0.2135,0.1141,2026-11-21T06:33:19.822600+00:00,,
-Foot|I1|2026-11-22|Bologna|Udinese,Foot,Serie A,2026-11-22T14:00:00+00:00,Bologna,Udinese,0.5327,0.236,0.2313,2026-11-21T06:33:19.822600+00:00,,
-Foot|I1|2026-11-22|Sassuolo|Genoa,Foot,Serie A,2026-11-22T14:00:00+00:00,Sassuolo,Genoa,0.3762,0.2552,0.3685,2026-11-21T06:33:19.822600+00:00,,
-Foot|I1|2026-11-22|Milan|Frosinone,Foot,Serie A,2026-11-22T17:00:00+00:00,Milan,Frosinone,0.4141,0.2181,0.3678,2026-11-21T06:33:19.822600+00:00,,
-Foot|D1|2026-11-22|Augsburg|Mainz,Foot,Bundesliga,2026-11-22T14:30:00+00:00,Augsburg,Mainz,0.4133,0.2414,0.3453,2026-11-21T06:33:19.822600+00:00,,
-Foot|D1|2026-11-22|Werder Bremen|Hamburg,Foot,Bundesliga,2026-11-22T16:30:00+00:00,Werder Bremen,Hamburg,0.5053,0.249,0.2457,2026-11-21T06:33:19.822600+00:00,,
-Foot|F1|2026-11-22|Paris FC|Angers,Foot,Ligue 1,2026-11-22T14:00:00+00:00,Paris FC,Angers,0.653,0.2249,0.1221,2026-11-21T06:33:19.822600+00:00,,
-Foot|F1|2026-11-22|Lorient|Rennes,Foot,Ligue 1,2026-11-22T16:15:00+00:00,Lorient,Rennes,0.4058,0.2508,0.3435,2026-11-21T06:33:19.822600+00:00,,
-Foot|E1|2026-11-22|Burnley|Blackburn,Foot,Championship,2026-11-22T12:00:00+00:00,Burnley,Blackburn,0.513,0.2581,0.2288,2026-11-21T06:33:19.822600+00:00,,
-Foot|D2|2026-11-22|Cottbus|Hertha,Foot,2. Bundesliga,2026-11-22T12:30:00+00:00,Cottbus,Hertha,0.3448,0.2478,0.4074,2026-11-21T06:33:19.822600+00:00,,
-Foot|D2|2026-11-22|Kaiserslautern|Dresden,Foot,2. Bundesliga,2026-11-22T12:30:00+00:00,Kaiserslautern,Dresden,0.507,0.251,0.2421,2026-11-21T06:33:19.822600+00:00,,
-Foot|D2|2026-11-22|Karlsruhe|Osnabruck,Foot,2. Bundesliga,2026-11-22T12:30:00+00:00,Karlsruhe,Osnabruck,0.4806,0.2378,0.2817,2026-11-21T06:33:19.822600+00:00,,
-Foot|SP2|2026-11-22|Cordoba|Oviedo,Foot,Segunda,2026-11-22T13:00:00+00:00,Cordoba,Oviedo,0.4009,0.2346,0.3645,2026-11-21T06:33:19.822600+00:00,,
-Foot|SP2|2026-11-22|Sp Gijon|Las Palmas,Foot,Segunda,2026-11-22T15:15:00+00:00,Sp Gijon,Las Palmas,0.4132,0.262,0.3248,2026-11-21T06:33:19.822600+00:00,,
-Foot|SP2|2026-11-22|Celta B|Valladolid,Foot,Segunda,2026-11-22T17:30:00+00:00,Celta B,Valladolid,0.4352,0.2288,0.336,2026-11-21T06:33:19.822600+00:00,,
-Foot|SP2|2026-11-22|Girona|Eibar,Foot,Segunda,2026-11-22T17:30:00+00:00,Girona,Eibar,0.5214,0.2694,0.2092,2026-11-21T06:33:19.822600+00:00,,
-Foot|I2|2026-11-22|Avellino|Mantova,Foot,Serie B,2026-11-22T14:00:00+00:00,Avellino,Mantova,0.4302,0.2896,0.2802,2026-11-21T06:33:19.822600+00:00,,
-Foot|I2|2026-11-22|Arezzo|Padova,Foot,Serie B,2026-11-22T16:15:00+00:00,Arezzo,Padova,0.2592,0.313,0.4278,2026-11-21T06:33:19.822600+00:00,,
-Foot|T1|2026-11-22|Erzurumspor|Goztep,Foot,Süper Lig,2026-11-22T10:30:00+00:00,Erzurumspor,Goztep,0.2587,0.306,0.4353,2026-11-21T06:33:19.822600+00:00,,
-Foot|T1|2026-11-22|Kasimpasa|Alanyaspor,Foot,Süper Lig,2026-11-22T13:00:00+00:00,Kasimpasa,Alanyaspor,0.4853,0.2812,0.2334,2026-11-21T06:33:19.822600+00:00,,
-Foot|T1|2026-11-22|Konyaspor|Besiktas,Foot,Süper Lig,2026-11-22T13:00:00+00:00,Konyaspor,Besiktas,0.2324,0.2892,0.4783,2026-11-21T06:33:19.822600+00:00,,
-Foot|T1|2026-11-22|Trabzonspor|Eyupspor,Foot,Süper Lig,2026-11-22T16:00:00+00:00,Trabzonspor,Eyupspor,0.808,0.1382,0.0539,2026-11-21T06:33:19.822600+00:00,,
-Foot|G1|2026-11-22|Levadeiakos|Atromitos,Foot,Super League Grèce,2026-11-22T14:00:00+00:00,Levadeiakos,Atromitos,0.4458,0.3093,0.2449,2026-11-21T06:33:19.822600+00:00,,
-Foot|G1|2026-11-22|Panetolikos|Volos NFC,Foot,Super League Grèce,2026-11-22T15:00:00+00:00,Panetolikos,Volos NFC,0.3935,0.354,0.2524,2026-11-21T06:33:19.822600+00:00,,
-Foot|G1|2026-11-22|Panathinaikos|OFI Crete,Foot,Super League Grèce,2026-11-22T15:30:00+00:00,Panathinaikos,OFI Crete,0.7128,0.2044,0.0828,2026-11-21T06:33:19.822600+00:00,,
-Foot|G1|2026-11-22|Olympiakos|Iraklis,Foot,Super League Grèce,2026-11-22T17:00:00+00:00,Olympiakos,Iraklis,0.7047,0.2407,0.0546,2026-11-21T06:33:19.822600+00:00,,
-Foot|G1|2026-11-22|PAOK|Kifisia,Foot,Super League Grèce,2026-11-22T17:30:00+00:00,PAOK,Kifisia,0.7635,0.1671,0.0694,2026-11-21T06:33:19.822600+00:00,,
+Foot|N1|2026-11-22|Twente|Willem II,Foot,Eredivisie,2026-11-22T11:15:00+00:00,Twente,Willem II,0.8892,0.0816,0.0293,2026-11-21T06:33:19.822600+00:00,A,2-1
+Foot|N1|2026-11-22|Ajax|Den Haag,Foot,Eredivisie,2026-11-22T13:30:00+00:00,Ajax,Den Haag,0.7146,0.1772,0.1082,2026-11-21T06:33:19.822600+00:00,A,3-0
+Foot|N1|2026-11-22|Sparta Rotterdam|AZ Alkmaar,Foot,Eredivisie,2026-11-22T13:30:00+00:00,Sparta Rotterdam,AZ Alkmaar,0.2462,0.2519,0.502,2026-11-21T06:33:19.822600+00:00,B,1-5
+Foot|N1|2026-11-22|Go Ahead Eagles|For Sittard,Foot,Eredivisie,2026-11-22T15:45:00+00:00,Go Ahead Eagles,For Sittard,0.4823,0.2395,0.2782,2026-11-21T06:33:19.822600+00:00,B,0-1
+Foot|B1|2026-11-22|Beveren|Gent,Foot,Jupiler Pro League,2026-11-22T12:30:00+00:00,Beveren,Gent,0.2546,0.2311,0.5142,2026-11-21T06:33:19.822600+00:00,A,1-0
+Foot|B1|2026-11-22|Kortrijk|St. Gilloise,Foot,Jupiler Pro League,2026-11-22T15:00:00+00:00,Kortrijk,St. Gilloise,0.0439,0.1411,0.815,2026-11-21T06:33:19.822600+00:00,B,0-1
+Foot|B1|2026-11-22|Anderlecht|Oud-Heverlee Leuven,Foot,Jupiler Pro League,2026-11-22T17:30:00+00:00,Anderlecht,Oud-Heverlee Leuven,0.5553,0.2511,0.1936,2026-11-21T06:33:19.822600+00:00,A,1-0
+Foot|B1|2026-11-22|Lommel SK|Standard,Foot,Jupiler Pro League,2026-11-22T18:15:00+00:00,Lommel SK,Standard,0.4793,0.2967,0.2239,2026-11-21T06:33:19.822600+00:00,B,1-2
+Foot|E0|2026-11-22|Hull|Brighton,Foot,Premier League,2026-11-22T14:00:00+00:00,Hull,Brighton,0.2812,0.3055,0.4133,2026-11-21T06:33:19.822600+00:00,A,2-0
+Foot|E0|2026-11-22|Liverpool|Man United,Foot,Premier League,2026-11-22T16:30:00+00:00,Liverpool,Man United,0.5346,0.2247,0.2407,2026-11-21T06:33:19.822600+00:00,A,4-0
+Foot|SP1|2026-11-22|Barcelona|Villarreal,Foot,La Liga,2026-11-22T13:00:00+00:00,Barcelona,Villarreal,0.7471,0.1427,0.1102,2026-11-21T06:33:19.822600+00:00,A,3-2
+Foot|SP1|2026-11-22|Santander|Sociedad,Foot,La Liga,2026-11-22T15:15:00+00:00,Santander,Sociedad,0.3196,0.1971,0.4833,2026-11-21T06:33:19.822600+00:00,A,3-2
+Foot|SP1|2026-11-22|Osasuna|Malaga,Foot,La Liga,2026-11-22T17:30:00+00:00,Osasuna,Malaga,0.6294,0.2333,0.1373,2026-11-21T06:33:19.822600+00:00,A,1-0
+Foot|I1|2026-11-22|Juventus|Venezia,Foot,Serie A,2026-11-22T11:30:00+00:00,Juventus,Venezia,0.6724,0.2135,0.1141,2026-11-21T06:33:19.822600+00:00,A,4-0
+Foot|I1|2026-11-22|Bologna|Udinese,Foot,Serie A,2026-11-22T14:00:00+00:00,Bologna,Udinese,0.5327,0.236,0.2313,2026-11-21T06:33:19.822600+00:00,N,1-1
+Foot|I1|2026-11-22|Sassuolo|Genoa,Foot,Serie A,2026-11-22T14:00:00+00:00,Sassuolo,Genoa,0.3762,0.2552,0.3685,2026-11-21T06:33:19.822600+00:00,B,0-2
+Foot|I1|2026-11-22|Milan|Frosinone,Foot,Serie A,2026-11-22T17:00:00+00:00,Milan,Frosinone,0.4141,0.2181,0.3678,2026-11-21T06:33:19.822600+00:00,A,5-1
+Foot|D1|2026-11-22|Augsburg|Mainz,Foot,Bundesliga,2026-11-22T14:30:00+00:00,Augsburg,Mainz,0.4133,0.2414,0.3453,2026-11-21T06:33:19.822600+00:00,A,3-1
+Foot|D1|2026-11-22|Werder Bremen|Hamburg,Foot,Bundesliga,2026-11-22T16:30:00+00:00,Werder Bremen,Hamburg,0.5053,0.249,0.2457,2026-11-21T06:33:19.822600+00:00,A,4-0
+Foot|F1|2026-11-22|Paris FC|Angers,Foot,Ligue 1,2026-11-22T14:00:00+00:00,Paris FC,Angers,0.653,0.2249,0.1221,2026-11-21T06:33:19.822600+00:00,A,4-0
+Foot|F1|2026-11-22|Lorient|Rennes,Foot,Ligue 1,2026-11-22T16:15:00+00:00,Lorient,Rennes,0.4058,0.2508,0.3435,2026-11-21T06:33:19.822600+00:00,N,1-1
+Foot|E1|2026-11-22|Burnley|Blackburn,Foot,Championship,2026-11-22T12:00:00+00:00,Burnley,Blackburn,0.513,0.2581,0.2288,2026-11-21T06:33:19.822600+00:00,N,2-2
+Foot|D2|2026-11-22|Cottbus|Hertha,Foot,2. Bundesliga,2026-11-22T12:30:00+00:00,Cottbus,Hertha,0.3448,0.2478,0.4074,2026-11-21T06:33:19.822600+00:00,B,0-4
+Foot|D2|2026-11-22|Kaiserslautern|Dresden,Foot,2. Bundesliga,2026-11-22T12:30:00+00:00,Kaiserslautern,Dresden,0.507,0.251,0.2421,2026-11-21T06:33:19.822600+00:00,N,2-2
+Foot|D2|2026-11-22|Karlsruhe|Osnabruck,Foot,2. Bundesliga,2026-11-22T12:30:00+00:00,Karlsruhe,Osnabruck,0.4806,0.2378,0.2817,2026-11-21T06:33:19.822600+00:00,N,0-0
+Foot|SP2|2026-11-22|Cordoba|Oviedo,Foot,Segunda,2026-11-22T13:00:00+00:00,Cordoba,Oviedo,0.4009,0.2346,0.3645,2026-11-21T06:33:19.822600+00:00,A,3-0
+Foot|SP2|2026-11-22|Sp Gijon|Las Palmas,Foot,Segunda,2026-11-22T15:15:00+00:00,Sp Gijon,Las Palmas,0.4132,0.262,0.3248,2026-11-21T06:33:19.822600+00:00,B,0-2
+Foot|SP2|2026-11-22|Celta B|Valladolid,Foot,Segunda,2026-11-22T17:30:00+00:00,Celta B,Valladolid,0.4352,0.2288,0.336,2026-11-21T06:33:19.822600+00:00,N,1-1
+Foot|SP2|2026-11-22|Girona|Eibar,Foot,Segunda,2026-11-22T17:30:00+00:00,Girona,Eibar,0.5214,0.2694,0.2092,2026-11-21T06:33:19.822600+00:00,A,2-1
+Foot|I2|2026-11-22|Avellino|Mantova,Foot,Serie B,2026-11-22T14:00:00+00:00,Avellino,Mantova,0.4302,0.2896,0.2802,2026-11-21T06:33:19.822600+00:00,A,4-1
+Foot|I2|2026-11-22|Arezzo|Padova,Foot,Serie B,2026-11-22T16:15:00+00:00,Arezzo,Padova,0.2592,0.313,0.4278,2026-11-21T06:33:19.822600+00:00,N,1-1
+Foot|T1|2026-11-22|Erzurumspor|Goztep,Foot,Süper Lig,2026-11-22T10:30:00+00:00,Erzurumspor,Goztep,0.2587,0.306,0.4353,2026-11-21T06:33:19.822600+00:00,B,0-1
+Foot|T1|2026-11-22|Kasimpasa|Alanyaspor,Foot,Süper Lig,2026-11-22T13:00:00+00:00,Kasimpasa,Alanyaspor,0.4853,0.2812,0.2334,2026-11-21T06:33:19.822600+00:00,A,2-1
+Foot|T1|2026-11-22|Konyaspor|Besiktas,Foot,Süper Lig,2026-11-22T13:00:00+00:00,Konyaspor,Besiktas,0.2324,0.2892,0.4783,2026-11-21T06:33:19.822600+00:00,B,2-4
+Foot|T1|2026-11-22|Trabzonspor|Eyupspor,Foot,Süper Lig,2026-11-22T16:00:00+00:00,Trabzonspor,Eyupspor,0.808,0.1382,0.0539,2026-11-21T06:33:19.822600+00:00,A,1-0
+Foot|G1|2026-11-22|Levadeiakos|Atromitos,Foot,Super League Grèce,2026-11-22T14:00:00+00:00,Levadeiakos,Atromitos,0.4458,0.3093,0.2449,2026-11-21T06:33:19.822600+00:00,N,1-1
+Foot|G1|2026-11-22|Panetolikos|Volos NFC,Foot,Super League Grèce,2026-11-22T15:00:00+00:00,Panetolikos,Volos NFC,0.3935,0.354,0.2524,2026-11-21T06:33:19.822600+00:00,A,1-0
+Foot|G1|2026-11-22|Panathinaikos|OFI Crete,Foot,Super League Grèce,2026-11-22T15:30:00+00:00,Panathinaikos,OFI Crete,0.7128,0.2044,0.0828,2026-11-21T06:33:19.822600+00:00,A,2-0
+Foot|G1|2026-11-22|Olympiakos|Iraklis,Foot,Super League Grèce,2026-11-22T17:00:00+00:00,Olympiakos,Iraklis,0.7047,0.2407,0.0546,2026-11-21T06:33:19.822600+00:00,A,6-2
+Foot|G1|2026-11-22|PAOK|Kifisia,Foot,Super League Grèce,2026-11-22T17:30:00+00:00,PAOK,Kifisia,0.7635,0.1671,0.0694,2026-11-21T06:33:19.822600+00:00,A,4-0
 Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,Taça de Portugal,2026-11-22T11:00:00+00:00,Sanjoanense,Académica de Coimbra,0.3997,0.3105,0.2898,2026-11-21T06:33:19.822600+00:00,B,1-2
 Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Vitoria Sernache,Lusitania,0.3997,0.3105,0.2898,2026-11-21T06:33:19.822600+00:00,B,0-1
 Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Vianense,Rio Ave,0.2882,0.2754,0.4364,2026-11-21T06:33:19.822600+00:00,A,1-0
@@ -674,19 +674,19 @@ Tennis|2026-11-21|Alcaraz C.|Shelton B.,Tennis,ATP · Nitto ATP Finals · Demi-f
 Tennis|2026-11-21|Zverev A.|Medvedev D.,Tennis,ATP · Nitto ATP Finals · Demi-finale,2026-11-21T19:30:00+00:00,Zverev A.,Medvedev D.,0.5665,,0.4335,2026-11-21T06:33:19.822600+00:00,A,
 Tennis|2026-11-21|Leyre Romero Gormaz|Lucia Bronzetti,Tennis,WTA · LP Open by IND · Demi-finale,2026-11-21T20:00:00+00:00,Leyre Romero Gormaz,Lucia Bronzetti,0.6695,,0.3305,2026-11-21T06:33:19.822600+00:00,A,
 Tennis|2026-11-21|Guiomar Maristany Zuleta De Reales|Rebeka Masarova,Tennis,WTA · LP Open by IND · Demi-finale,2026-11-21T21:30:00+00:00,Guiomar Maristany Zuleta De Reales,Rebeka Masarova,0.5637,,0.4363,2026-11-21T06:33:19.822600+00:00,B,
-Foot|SP1|2026-11-22|Getafe|Ath Madrid,Foot,La Liga,2026-11-22T20:00:00+00:00,Getafe,Ath Madrid,0.2074,0.309,0.4836,2026-11-21T16:28:16.342241+00:00,,
-Foot|I1|2026-11-22|Atalanta|Inter,Foot,Serie A,2026-11-22T19:45:00+00:00,Atalanta,Inter,0.2283,0.2146,0.5571,2026-11-21T16:28:16.342241+00:00,,
-Foot|F1|2026-11-22|Marseille|Le Mans,Foot,Ligue 1,2026-11-22T19:45:00+00:00,Marseille,Le Mans,0.7356,0.1536,0.1108,2026-11-21T16:28:16.342241+00:00,,
-Foot|SP2|2026-11-22|Burgos|Albacete,Foot,Segunda,2026-11-22T20:00:00+00:00,Burgos,Albacete,0.513,0.2764,0.2106,2026-11-21T16:28:16.342241+00:00,,
+Foot|SP1|2026-11-22|Getafe|Ath Madrid,Foot,La Liga,2026-11-22T20:00:00+00:00,Getafe,Ath Madrid,0.2074,0.309,0.4836,2026-11-21T16:28:16.342241+00:00,B,0-3
+Foot|I1|2026-11-22|Atalanta|Inter,Foot,Serie A,2026-11-22T19:45:00+00:00,Atalanta,Inter,0.2283,0.2146,0.5571,2026-11-21T16:28:16.342241+00:00,N,4-4
+Foot|F1|2026-11-22|Marseille|Le Mans,Foot,Ligue 1,2026-11-22T19:45:00+00:00,Marseille,Le Mans,0.7356,0.1536,0.1108,2026-11-21T16:28:16.342241+00:00,B,2-3
+Foot|SP2|2026-11-22|Burgos|Albacete,Foot,Segunda,2026-11-22T20:00:00+00:00,Burgos,Albacete,0.513,0.2764,0.2106,2026-11-21T16:28:16.342241+00:00,A,1-0
 Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,Taça de Portugal,2026-11-22T19:30:00+00:00,Uniao Leiria,Leca,0.4002,0.3097,0.29,2026-11-21T16:28:16.342241+00:00,A,4-2
 Foot|TDP|2026-11-22|Torreense|Benfica,Foot,Taça de Portugal,2026-11-22T20:45:00+00:00,Torreense,Benfica,0.0239,0.0518,0.9244,2026-11-21T16:28:16.342241+00:00,B,1-3
-NBA|2026-11-22|Atlanta Hawks|Detroit Pistons,NBA,NBA,2026-11-22T20:30:00+00:00,Atlanta Hawks,Detroit Pistons,0.4218,,0.5782,2026-11-21T16:28:16.342241+00:00,,
-NBA|2026-11-22|Miami Heat|Oklahoma City Thunder,NBA,NBA,2026-11-22T23:00:00+00:00,Miami Heat,Oklahoma City Thunder,0.4755,,0.5245,2026-11-21T16:28:16.342241+00:00,,
-NBA|2026-11-23|Utah Jazz|Dallas Mavericks,NBA,NBA,2026-11-23T00:00:00+00:00,Utah Jazz,Dallas Mavericks,0.5407,,0.4593,2026-11-21T16:28:16.342241+00:00,,
-NBA|2026-11-23|Chicago Bulls|Denver Nuggets,NBA,NBA,2026-11-23T00:00:00+00:00,Chicago Bulls,Denver Nuggets,0.3764,,0.6236,2026-11-21T16:28:16.342241+00:00,,
-NBA|2026-11-23|Washington Wizards|Orlando Magic,NBA,NBA,2026-11-23T00:00:00+00:00,Washington Wizards,Orlando Magic,0.4079,,0.5921,2026-11-21T16:28:16.342241+00:00,,
-NBA|2026-11-23|New York Knicks|Indiana Pacers,NBA,NBA,2026-11-23T01:00:00+00:00,New York Knicks,Indiana Pacers,0.7224,,0.2776,2026-11-21T16:28:16.342241+00:00,,
-NBA|2026-11-23|Golden State Warriors|Boston Celtics,NBA,NBA,2026-11-23T01:30:00+00:00,Golden State Warriors,Boston Celtics,0.3473,,0.6527,2026-11-21T16:28:16.342241+00:00,,
+NBA|2026-11-22|Atlanta Hawks|Detroit Pistons,NBA,NBA,2026-11-22T20:30:00+00:00,Atlanta Hawks,Detroit Pistons,0.4218,,0.5782,2026-11-21T16:28:16.342241+00:00,A,107-97
+NBA|2026-11-22|Miami Heat|Oklahoma City Thunder,NBA,NBA,2026-11-22T23:00:00+00:00,Miami Heat,Oklahoma City Thunder,0.4755,,0.5245,2026-11-21T16:28:16.342241+00:00,A,123-113
+NBA|2026-11-23|Utah Jazz|Dallas Mavericks,NBA,NBA,2026-11-23T00:00:00+00:00,Utah Jazz,Dallas Mavericks,0.5407,,0.4593,2026-11-21T16:28:16.342241+00:00,B,114-116
+NBA|2026-11-23|Chicago Bulls|Denver Nuggets,NBA,NBA,2026-11-23T00:00:00+00:00,Chicago Bulls,Denver Nuggets,0.3764,,0.6236,2026-11-21T16:28:16.342241+00:00,B,145-151
+NBA|2026-11-23|Washington Wizards|Orlando Magic,NBA,NBA,2026-11-23T00:00:00+00:00,Washington Wizards,Orlando Magic,0.4079,,0.5921,2026-11-21T16:28:16.342241+00:00,A,116-96
+NBA|2026-11-23|New York Knicks|Indiana Pacers,NBA,NBA,2026-11-23T01:00:00+00:00,New York Knicks,Indiana Pacers,0.7224,,0.2776,2026-11-21T16:28:16.342241+00:00,A,113-106
+NBA|2026-11-23|Golden State Warriors|Boston Celtics,NBA,NBA,2026-11-23T01:30:00+00:00,Golden State Warriors,Boston Celtics,0.3473,,0.6527,2026-11-21T16:28:16.342241+00:00,A,88-87
 Foot|T1|2026-11-23|Buyuksehyr|Corum,Foot,Süper Lig,2026-11-23T17:00:00+00:00,Buyuksehyr,Corum,0.5874,0.1954,0.2173,2026-11-22T06:32:09.204436+00:00,,
 Foot|G1|2026-11-23|Asteras Tripolis|Aris,Foot,Super League Grèce,2026-11-23T15:00:00+00:00,Asteras Tripolis,Aris,0.2773,0.3461,0.3766,2026-11-22T06:32:09.204436+00:00,,
 Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,ATP · Nitto ATP Finals · Finale,2026-11-22T17:00:00+00:00,Zverev A.,Alcaraz C.,0.3961,,0.6039,2026-11-22T06:32:09.204436+00:00,B,
@@ -724,3 +724,35 @@ Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,WTA · IEB+ A
 Foot|I2|2026-11-24|Juve Stabia|Catanzaro,Foot,Serie B,2026-11-24T18:00:00+00:00,Juve Stabia,Catanzaro,0.4464,0.2836,0.27,2026-11-23T06:45:28.345092+00:00,,
 Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,Ligue des Champions,2026-11-24T17:45:00+00:00,Bodo/Glimt,LASK Linz,0.6859,0.1388,0.1753,2026-11-23T06:45:28.345092+00:00,,
 Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,Ligue des Champions,2026-11-24T17:45:00+00:00,Galatasaray,Aston Villa,0.276,0.2244,0.4996,2026-11-23T06:45:28.345092+00:00,,
+Foot|E1|2026-11-24|Bristol City|Wrexham,Foot,Championship,2026-11-24T19:45:00+00:00,Bristol City,Wrexham,0.3676,0.271,0.3614,2026-11-23T16:37:11.833489+00:00,,
+Foot|E1|2026-11-24|Cardiff|Preston,Foot,Championship,2026-11-24T19:45:00+00:00,Cardiff,Preston,0.5198,0.2329,0.2472,2026-11-23T16:37:11.833489+00:00,,
+Foot|E1|2026-11-24|Charlton|Lincoln,Foot,Championship,2026-11-24T19:45:00+00:00,Charlton,Lincoln,0.4515,0.3026,0.2459,2026-11-23T16:37:11.833489+00:00,,
+Foot|E1|2026-11-24|Middlesbrough|Swansea,Foot,Championship,2026-11-24T19:45:00+00:00,Middlesbrough,Swansea,0.5468,0.2402,0.2129,2026-11-23T16:37:11.833489+00:00,,
+Foot|E1|2026-11-24|Norwich|QPR,Foot,Championship,2026-11-24T19:45:00+00:00,Norwich,QPR,0.5197,0.2295,0.2508,2026-11-23T16:37:11.833489+00:00,,
+Foot|E1|2026-11-24|Portsmouth|West Ham,Foot,Championship,2026-11-24T19:45:00+00:00,Portsmouth,West Ham,0.297,0.2211,0.4819,2026-11-23T16:37:11.833489+00:00,,
+Foot|E1|2026-11-24|Sheffield United|Southampton,Foot,Championship,2026-11-24T19:45:00+00:00,Sheffield United,Southampton,0.3218,0.2499,0.4283,2026-11-23T16:37:11.833489+00:00,,
+Foot|E1|2026-11-24|Wolves|Derby,Foot,Championship,2026-11-24T20:00:00+00:00,Wolves,Derby,0.6224,0.2166,0.161,2026-11-23T16:37:11.833489+00:00,,
+Foot|I2|2026-11-24|Benevento|Empoli,Foot,Serie B,2026-11-24T19:00:00+00:00,Benevento,Empoli,0.5082,0.2757,0.2161,2026-11-23T16:37:11.833489+00:00,,
+Foot|I2|2026-11-24|Cesena|Ascoli,Foot,Serie B,2026-11-24T19:00:00+00:00,Cesena,Ascoli,0.2127,0.3099,0.4774,2026-11-23T16:37:11.833489+00:00,,
+Foot|I2|2026-11-24|Palermo|Sudtirol,Foot,Serie B,2026-11-24T19:00:00+00:00,Palermo,Sudtirol,0.6155,0.2345,0.15,2026-11-23T16:37:11.833489+00:00,,
+Foot|I2|2026-11-24|Vicenza|Carrarese,Foot,Serie B,2026-11-24T19:00:00+00:00,Vicenza,Carrarese,0.4101,0.2553,0.3346,2026-11-23T16:37:11.833489+00:00,,
+Foot|I2|2026-11-24|Virtus Entella|Verona,Foot,Serie B,2026-11-24T19:00:00+00:00,Virtus Entella,Verona,0.2862,0.3045,0.4093,2026-11-23T16:37:11.833489+00:00,,
+Foot|E2|2026-11-24|Blackpool|Leicester,Foot,League One,2026-11-24T19:45:00+00:00,Blackpool,Leicester,0.3346,0.2506,0.4148,2026-11-23T16:37:11.833489+00:00,,
+Foot|E2|2026-11-24|Bradford|Barnsley,Foot,League One,2026-11-24T19:45:00+00:00,Bradford,Barnsley,0.5244,0.2606,0.2149,2026-11-23T16:37:11.833489+00:00,,
+Foot|E2|2026-11-24|Bromley|Wycombe,Foot,League One,2026-11-24T19:45:00+00:00,Bromley,Wycombe,0.1756,0.1964,0.628,2026-11-23T16:37:11.833489+00:00,,
+Foot|E2|2026-11-24|Stevenage|Sheffield Weds,Foot,League One,2026-11-24T19:45:00+00:00,Stevenage,Sheffield Weds,0.3002,0.3013,0.3986,2026-11-23T16:37:11.833489+00:00,,
+Foot|E3|2026-11-24|Crawley Town|Barnet,Foot,League Two,2026-11-24T19:45:00+00:00,Crawley Town,Barnet,0.2153,0.2348,0.5498,2026-11-23T16:37:11.833489+00:00,,
+Foot|E3|2026-11-24|Port Vale|Northampton,Foot,League Two,2026-11-24T19:45:00+00:00,Port Vale,Northampton,0.4152,0.356,0.2288,2026-11-23T16:37:11.833489+00:00,,
+Foot|SC0|2026-11-24|Hibernian|Dundee,Foot,Scottish Prem,2026-11-24T19:45:00+00:00,Hibernian,Dundee,0.5967,0.211,0.1924,2026-11-23T16:37:11.833489+00:00,,
+Foot|SC0|2026-11-24|Rangers|Aberdeen,Foot,Scottish Prem,2026-11-24T20:00:00+00:00,Rangers,Aberdeen,0.7458,0.1576,0.0966,2026-11-23T16:37:11.833489+00:00,,
+Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,Ligue des Champions,2026-11-24T20:00:00+00:00,Manchester City,Napoli,0.7126,0.1704,0.117,2026-11-23T16:37:11.833489+00:00,,
+Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,Ligue des Champions,2026-11-24T20:00:00+00:00,Feyenoord Rotterdam,FC Porto,0.2721,0.2456,0.4823,2026-11-23T16:37:11.833489+00:00,,
+Foot|UCL|2026-11-24|Como|AEK Athens,Foot,Ligue des Champions,2026-11-24T20:00:00+00:00,Como,AEK Athens,0.6306,0.2161,0.1533,2026-11-23T16:37:11.833489+00:00,,
+Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,Ligue des Champions,2026-11-24T20:00:00+00:00,Arsenal,Borussia Dortmund,0.6872,0.2033,0.1095,2026-11-23T16:37:11.833489+00:00,,
+Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,Ligue des Champions,2026-11-24T20:00:00+00:00,RB Leipzig,Lens,0.5782,0.1928,0.229,2026-11-23T16:37:11.833489+00:00,,
+Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,Ligue des Champions,2026-11-24T20:00:00+00:00,Real Madrid,PSV Eindhoven,0.7073,0.152,0.1407,2026-11-23T16:37:11.833489+00:00,,
+Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,Ligue des Champions,2026-11-24T20:00:00+00:00,Slovan Bratislava,Real Betis,0.053,0.1222,0.8248,2026-11-23T16:37:11.833489+00:00,,
+NBA|2026-11-25|Orlando Magic|Detroit Pistons,NBA,NBA,2026-11-25T00:00:00+00:00,Orlando Magic,Detroit Pistons,0.3857,,0.6143,2026-11-23T16:37:11.833489+00:00,,
+NBA|2026-11-25|Washington Wizards|Boston Celtics,NBA,NBA,2026-11-25T01:00:00+00:00,Washington Wizards,Boston Celtics,0.2807,,0.7193,2026-11-23T16:37:11.833489+00:00,,
+NBA|2026-11-25|Denver Nuggets|Dallas Mavericks,NBA,NBA,2026-11-25T03:00:00+00:00,Denver Nuggets,Dallas Mavericks,0.6535,,0.3465,2026-11-23T16:37:11.833489+00:00,,
+Tennis|2026-11-24|Polona Hercog|Sofia Costoulas,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-24T19:30:00+00:00,Polona Hercog,Sofia Costoulas,0.5834,,0.4166,2026-11-23T16:37:11.833489+00:00,,
