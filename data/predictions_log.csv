@@ -668,8 +668,8 @@ Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,Taça de Portugal,202
 Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Vitoria Sernache,Lusitania,0.3997,0.3105,0.2898,2026-11-21T06:33:19.822600+00:00,B,0-1
 Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Vianense,Rio Ave,0.2882,0.2754,0.4364,2026-11-21T06:33:19.822600+00:00,A,1-0
 Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,Taça de Portugal,2026-11-22T14:00:00+00:00,Gil Vicente,Olhanense,0.6936,0.212,0.0945,2026-11-21T06:33:19.822600+00:00,A,3-1
-Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,Taça de Portugal,2026-11-22T15:00:00+00:00,SC Farense,Fatima,0.5572,0.2812,0.1615,2026-11-21T06:33:19.822600+00:00,,
-Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,Taça de Portugal,2026-11-22T18:00:00+00:00,Estrela,Portimonense,0.62,0.224,0.156,2026-11-21T06:33:19.822600+00:00,,
+Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,Taça de Portugal,2026-11-22T15:00:00+00:00,SC Farense,Fatima,0.5572,0.2812,0.1615,2026-11-21T06:33:19.822600+00:00,A,1-0
+Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,Taça de Portugal,2026-11-22T18:00:00+00:00,Estrela,Portimonense,0.62,0.224,0.156,2026-11-21T06:33:19.822600+00:00,A,1-0
 Tennis|2026-11-21|Alcaraz C.|Shelton B.,Tennis,ATP · Nitto ATP Finals · Demi-finale,2026-11-21T13:30:00+00:00,Alcaraz C.,Shelton B.,0.6981,,0.3019,2026-11-21T06:33:19.822600+00:00,A,
 Tennis|2026-11-21|Zverev A.|Medvedev D.,Tennis,ATP · Nitto ATP Finals · Demi-finale,2026-11-21T19:30:00+00:00,Zverev A.,Medvedev D.,0.5665,,0.4335,2026-11-21T06:33:19.822600+00:00,A,
 Tennis|2026-11-21|Leyre Romero Gormaz|Lucia Bronzetti,Tennis,WTA · LP Open by IND · Demi-finale,2026-11-21T20:00:00+00:00,Leyre Romero Gormaz,Lucia Bronzetti,0.6695,,0.3305,2026-11-21T06:33:19.822600+00:00,A,
@@ -678,8 +678,8 @@ Foot|SP1|2026-11-22|Getafe|Ath Madrid,Foot,La Liga,2026-11-22T20:00:00+00:00,Get
 Foot|I1|2026-11-22|Atalanta|Inter,Foot,Serie A,2026-11-22T19:45:00+00:00,Atalanta,Inter,0.2283,0.2146,0.5571,2026-11-21T16:28:16.342241+00:00,,
 Foot|F1|2026-11-22|Marseille|Le Mans,Foot,Ligue 1,2026-11-22T19:45:00+00:00,Marseille,Le Mans,0.7356,0.1536,0.1108,2026-11-21T16:28:16.342241+00:00,,
 Foot|SP2|2026-11-22|Burgos|Albacete,Foot,Segunda,2026-11-22T20:00:00+00:00,Burgos,Albacete,0.513,0.2764,0.2106,2026-11-21T16:28:16.342241+00:00,,
-Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,Taça de Portugal,2026-11-22T19:30:00+00:00,Uniao Leiria,Leca,0.4002,0.3097,0.29,2026-11-21T16:28:16.342241+00:00,,
-Foot|TDP|2026-11-22|Torreense|Benfica,Foot,Taça de Portugal,2026-11-22T20:45:00+00:00,Torreense,Benfica,0.0239,0.0518,0.9244,2026-11-21T16:28:16.342241+00:00,,
+Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,Taça de Portugal,2026-11-22T19:30:00+00:00,Uniao Leiria,Leca,0.4002,0.3097,0.29,2026-11-21T16:28:16.342241+00:00,A,4-2
+Foot|TDP|2026-11-22|Torreense|Benfica,Foot,Taça de Portugal,2026-11-22T20:45:00+00:00,Torreense,Benfica,0.0239,0.0518,0.9244,2026-11-21T16:28:16.342241+00:00,B,1-3
 NBA|2026-11-22|Atlanta Hawks|Detroit Pistons,NBA,NBA,2026-11-22T20:30:00+00:00,Atlanta Hawks,Detroit Pistons,0.4218,,0.5782,2026-11-21T16:28:16.342241+00:00,,
 NBA|2026-11-22|Miami Heat|Oklahoma City Thunder,NBA,NBA,2026-11-22T23:00:00+00:00,Miami Heat,Oklahoma City Thunder,0.4755,,0.5245,2026-11-21T16:28:16.342241+00:00,,
 NBA|2026-11-23|Utah Jazz|Dallas Mavericks,NBA,NBA,2026-11-23T00:00:00+00:00,Utah Jazz,Dallas Mavericks,0.5407,,0.4593,2026-11-21T16:28:16.342241+00:00,,
@@ -689,8 +689,8 @@ NBA|2026-11-23|New York Knicks|Indiana Pacers,NBA,NBA,2026-11-23T01:00:00+00:00,
 NBA|2026-11-23|Golden State Warriors|Boston Celtics,NBA,NBA,2026-11-23T01:30:00+00:00,Golden State Warriors,Boston Celtics,0.3473,,0.6527,2026-11-21T16:28:16.342241+00:00,,
 Foot|T1|2026-11-23|Buyuksehyr|Corum,Foot,Süper Lig,2026-11-23T17:00:00+00:00,Buyuksehyr,Corum,0.5874,0.1954,0.2173,2026-11-22T06:32:09.204436+00:00,,
 Foot|G1|2026-11-23|Asteras Tripolis|Aris,Foot,Super League Grèce,2026-11-23T15:00:00+00:00,Asteras Tripolis,Aris,0.2773,0.3461,0.3766,2026-11-22T06:32:09.204436+00:00,,
-Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,ATP · Nitto ATP Finals · Finale,2026-11-22T17:00:00+00:00,Zverev A.,Alcaraz C.,0.3961,,0.6039,2026-11-22T06:32:09.204436+00:00,,
-Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,WTA · LP Open by IND · Finale,2026-11-22T21:00:00+00:00,Leyre Romero Gormaz,Rebeka Masarova,0.6158,,0.3842,2026-11-22T06:32:09.204436+00:00,,
+Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,ATP · Nitto ATP Finals · Finale,2026-11-22T17:00:00+00:00,Zverev A.,Alcaraz C.,0.3961,,0.6039,2026-11-22T06:32:09.204436+00:00,B,
+Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,WTA · LP Open by IND · Finale,2026-11-22T21:00:00+00:00,Leyre Romero Gormaz,Rebeka Masarova,0.6158,,0.3842,2026-11-22T06:32:09.204436+00:00,B,
 Foot|E0|2026-11-23|Brentford|Everton,Foot,Premier League,2026-11-23T20:00:00+00:00,Brentford,Everton,0.4565,0.2833,0.2601,2026-11-22T16:29:25.231783+00:00,,
 Foot|SP1|2026-11-23|Levante|Elche,Foot,La Liga,2026-11-23T20:00:00+00:00,Levante,Elche,0.4616,0.2486,0.2898,2026-11-22T16:29:25.231783+00:00,,
 Foot|I1|2026-11-23|Monza|Fiorentina,Foot,Serie A,2026-11-23T19:45:00+00:00,Monza,Fiorentina,0.2452,0.2065,0.5483,2026-11-22T16:29:25.231783+00:00,,
@@ -717,3 +717,7 @@ Tennis|2026-11-23|Nuria Brancaccio|Anastasia Zolotareva,Tennis,WTA · IEB+ Argen
 Tennis|2026-11-23|Despina Papamichail|Julia Riera,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Despina Papamichail,Julia Riera,0.3207,,0.6793,2026-11-22T16:29:25.231783+00:00,,
 Tennis|2026-11-23|Polona Hercog|Ipek Oz,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Polona Hercog,Ipek Oz,0.7039,,0.2961,2026-11-22T16:29:25.231783+00:00,,
 Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-23T05:00:00+00:00,Lucia Bronzetti,Alicia Herrero Linana,0.5788,,0.4212,2026-11-22T16:29:25.231783+00:00,,
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-24T05:00:00+00:00,Nadia Podoroska,Leyre Romero Gormaz,0.2964,,0.7036,2026-11-23T05:36:52.009771+00:00,,
+Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-24T05:00:00+00:00,Rebeka Masarova,Sofia Costoulas,0.6994,,0.3006,2026-11-23T05:36:52.009771+00:00,,
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-24T05:00:00+00:00,Lucia Bronzetti,Alicia Herrero Linana,0.5758,,0.4242,2026-11-23T05:36:52.009771+00:00,,
+Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-24T05:00:00+00:00,Solana Sierra,Victoria Jimenez Kasintseva,0.7148,,0.2852,2026-11-23T05:36:52.009771+00:00,,

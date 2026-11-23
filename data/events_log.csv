@@ -1091,10 +1091,10 @@ NBA|2026-11-21|Los Angeles Lakers|Sacramento Kings,NBA,2026-11-21T03:00:00+00:00
 NBA|2026-11-21|Los Angeles Lakers|Sacramento Kings,NBA,2026-11-21T03:00:00+00:00,Total moins de 250.5 pts,0.7658,2026-11-20T08:12:34.537163+00:00,1.0
 NBA|2026-11-21|Los Angeles Lakers|Sacramento Kings,NBA,2026-11-21T03:00:00+00:00,Domicile plus de 115.5 pts,0.8105,2026-11-20T08:12:34.537163+00:00,0.0
 NBA|2026-11-21|Los Angeles Lakers|Sacramento Kings,NBA,2026-11-21T03:00:00+00:00,Extérieur plus de 98.5 pts,0.8119,2026-11-20T08:12:34.537163+00:00,1.0
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total plus de 212.5 pts,0.7827,2026-11-20T08:12:34.537163+00:00,1
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total moins de 242.5 pts,0.7591,2026-11-20T08:12:34.537163+00:00,0
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Domicile plus de 108.5 pts,0.8051,2026-11-20T08:12:34.537163+00:00,1
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Extérieur plus de 98.5 pts,0.805,2026-11-20T08:12:34.537163+00:00,1
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total plus de 212.5 pts,0.7827,2026-11-20T08:12:34.537163+00:00,1.0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total moins de 242.5 pts,0.7591,2026-11-20T08:12:34.537163+00:00,0.0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Domicile plus de 108.5 pts,0.8051,2026-11-20T08:12:34.537163+00:00,1.0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Extérieur plus de 98.5 pts,0.805,2026-11-20T08:12:34.537163+00:00,1.0
 Tennis|2026-11-20|Leyre Romero Gormaz|Irene Burillo,Tennis,2026-11-20T15:00:00+00:00,A gagne au moins un set,0.8228,2026-11-20T08:12:34.537163+00:00,1.0
 Tennis|2026-11-20|Leyre Romero Gormaz|Irene Burillo,Tennis,2026-11-20T15:00:00+00:00,B gagne au moins un set,0.5544,2026-11-20T08:12:34.537163+00:00,0.0
 Tennis|2026-11-20|Leyre Romero Gormaz|Irene Burillo,Tennis,2026-11-20T15:00:00+00:00,A gagne sans perdre de set,0.4456,2026-11-20T08:12:34.537163+00:00,1.0
@@ -1139,30 +1139,30 @@ NBA|2026-11-21|Atlanta Hawks|Charlotte Hornets,NBA,2026-11-21T00:00:00+00:00,Dom
 NBA|2026-11-21|Utah Jazz|Phoenix Suns,NBA,2026-11-21T02:30:00+00:00,Domicile plus de 106.5 pts,0.7918,2026-11-20T13:33:53.658863+00:00,0.0
 NBA|2026-11-21|Los Angeles Lakers|Sacramento Kings,NBA,2026-11-21T03:00:00+00:00,Extérieur plus de 99.5 pts,0.7913,2026-11-20T13:33:53.658863+00:00,1.0
 NBA|2026-11-21|Denver Nuggets|Houston Rockets,NBA,2026-11-21T03:00:00+00:00,Domicile plus de 101.5 pts,0.792,2026-11-20T13:33:53.658863+00:00,1.0
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total plus de 213.5 pts,0.7848,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total moins de 243.5 pts,0.757,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Domicile plus de 109.5 pts,0.7926,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Extérieur plus de 99.5 pts,0.798,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Total plus de 200.5 pts,0.7853,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Total moins de 230.5 pts,0.7565,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Domicile plus de 100.5 pts,0.8029,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Extérieur plus de 94.5 pts,0.811,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total plus de 220.5 pts,0.7778,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total moins de 250.5 pts,0.7643,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Domicile plus de 109.5 pts,0.8061,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 105.5 pts,0.7964,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total plus de 216.5 pts,0.7796,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total moins de 246.5 pts,0.7625,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Domicile plus de 108.5 pts,0.8002,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 102.5 pts,0.8049,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,2026-11-22T01:00:00+00:00,Total plus de 215.5 pts,0.7851,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,2026-11-22T01:00:00+00:00,Total moins de 245.5 pts,0.7567,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,2026-11-22T01:00:00+00:00,Domicile plus de 112.5 pts,0.7975,2026-11-20T13:33:53.658863+00:00,1
-NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 98.5 pts,0.7936,2026-11-20T13:33:53.658863+00:00,0
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total plus de 206.5 pts,0.7852,2026-11-20T16:40:56.898101+00:00,0
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total moins de 236.5 pts,0.7565,2026-11-20T16:40:56.898101+00:00,1
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Domicile plus de 92.5 pts,0.8109,2026-11-20T16:40:56.898101+00:00,1
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Extérieur plus de 108.5 pts,0.8029,2026-11-20T16:40:56.898101+00:00,0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total plus de 213.5 pts,0.7848,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total moins de 243.5 pts,0.757,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Domicile plus de 109.5 pts,0.7926,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Extérieur plus de 99.5 pts,0.798,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Total plus de 200.5 pts,0.7853,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Total moins de 230.5 pts,0.7565,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Domicile plus de 100.5 pts,0.8029,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Extérieur plus de 94.5 pts,0.811,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total plus de 220.5 pts,0.7778,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total moins de 250.5 pts,0.7643,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Domicile plus de 109.5 pts,0.8061,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 105.5 pts,0.7964,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total plus de 216.5 pts,0.7796,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total moins de 246.5 pts,0.7625,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Domicile plus de 108.5 pts,0.8002,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 102.5 pts,0.8049,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,2026-11-22T01:00:00+00:00,Total plus de 215.5 pts,0.7851,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,2026-11-22T01:00:00+00:00,Total moins de 245.5 pts,0.7567,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,2026-11-22T01:00:00+00:00,Domicile plus de 112.5 pts,0.7975,2026-11-20T13:33:53.658863+00:00,1.0
+NBA|2026-11-22|San Antonio Spurs|New Orleans Pelicans,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 98.5 pts,0.7936,2026-11-20T13:33:53.658863+00:00,0.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total plus de 206.5 pts,0.7852,2026-11-20T16:40:56.898101+00:00,0.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total moins de 236.5 pts,0.7565,2026-11-20T16:40:56.898101+00:00,1.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Domicile plus de 92.5 pts,0.8109,2026-11-20T16:40:56.898101+00:00,1.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Extérieur plus de 108.5 pts,0.8029,2026-11-20T16:40:56.898101+00:00,0.0
 Foot|N1|2026-11-22|Twente|Willem II,Foot,2026-11-22T11:15:00+00:00,"Plus de 1,5 but",0.9088,2026-11-21T06:33:20.083498+00:00,
 Foot|N1|2026-11-22|Twente|Willem II,Foot,2026-11-22T11:15:00+00:00,"Plus de 2,5 buts",0.7558,2026-11-21T06:33:20.083498+00:00,
 Foot|N1|2026-11-22|Twente|Willem II,Foot,2026-11-22T11:15:00+00:00,"Moins de 2,5 buts",0.2442,2026-11-21T06:33:20.083498+00:00,
@@ -1483,68 +1483,68 @@ Foot|G1|2026-11-22|PAOK|Kifisia,Foot,2026-11-22T17:30:00+00:00,"Moins de 4,5 but
 Foot|G1|2026-11-22|PAOK|Kifisia,Foot,2026-11-22T17:30:00+00:00,Domicile marque,0.9215,2026-11-21T06:33:20.083498+00:00,
 Foot|G1|2026-11-22|PAOK|Kifisia,Foot,2026-11-22T17:30:00+00:00,Extérieur marque,0.5254,2026-11-21T06:33:20.083498+00:00,
 Foot|G1|2026-11-22|PAOK|Kifisia,Foot,2026-11-22T17:30:00+00:00,Les deux équipes marquent,0.5,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Plus de 1,5 but",0.6183,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Plus de 2,5 buts",0.3482,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Moins de 2,5 buts",0.6518,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Moins de 3,5 buts",0.8402,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Moins de 4,5 buts",0.9387,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,Domicile marque,0.6857,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,Extérieur marque,0.6072,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,Les deux équipes marquent,0.4164,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Plus de 1,5 but",0.6183,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Plus de 2,5 buts",0.3482,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Moins de 2,5 buts",0.6518,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Moins de 3,5 buts",0.8402,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Moins de 4,5 buts",0.9387,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,Domicile marque,0.6857,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,Extérieur marque,0.6072,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,Les deux équipes marquent,0.4164,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Plus de 1,5 but",0.6935,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Plus de 2,5 buts",0.4326,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Moins de 2,5 buts",0.5674,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Moins de 3,5 buts",0.7768,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Moins de 4,5 buts",0.903,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,Domicile marque,0.6497,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,Extérieur marque,0.7434,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,Les deux équipes marquent,0.4829,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Plus de 1,5 but",0.6836,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Plus de 2,5 buts",0.4208,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Moins de 2,5 buts",0.5792,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Moins de 3,5 buts",0.7863,2026-11-21T06:33:20.083498+00:00,0
-Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Moins de 4,5 buts",0.9086,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,Domicile marque,0.8436,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,Extérieur marque,0.3985,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,Les deux équipes marquent,0.3362,2026-11-21T06:33:20.083498+00:00,1
-Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Plus de 1,5 but",0.6181,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Plus de 2,5 buts",0.348,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Moins de 2,5 buts",0.652,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Moins de 3,5 buts",0.8403,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Moins de 4,5 buts",0.9388,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,Domicile marque,0.7673,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,Extérieur marque,0.469,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,Les deux équipes marquent,0.3599,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Plus de 1,5 but",0.7307,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Plus de 2,5 buts",0.4791,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Moins de 2,5 buts",0.5209,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Moins de 3,5 buts",0.7382,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Moins de 4,5 buts",0.8788,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,Domicile marque,0.8366,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,Extérieur marque,0.5409,2026-11-21T06:33:20.083498+00:00,
-Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,Les deux équipes marquent,0.4525,2026-11-21T06:33:20.083498+00:00,
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total plus de 214.5 pts,0.78,2026-11-21T06:33:20.083498+00:00,1
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total moins de 244.5 pts,0.7621,2026-11-21T06:33:20.083498+00:00,0
-NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Extérieur plus de 100.5 pts,0.8025,2026-11-21T06:33:20.083498+00:00,1
-NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Domicile plus de 99.5 pts,0.8063,2026-11-21T06:33:20.083498+00:00,0
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total plus de 213.5 pts,0.7821,2026-11-21T06:33:20.083498+00:00,0
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total moins de 243.5 pts,0.7599,2026-11-21T06:33:20.083498+00:00,1
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 99.5 pts,0.8087,2026-11-21T06:33:20.083498+00:00,0
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total plus de 219.5 pts,0.7745,2026-11-21T06:33:20.083498+00:00,0
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total moins de 249.5 pts,0.7677,2026-11-21T06:33:20.083498+00:00,1
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Domicile plus de 108.5 pts,0.8011,2026-11-21T06:33:20.083498+00:00,1
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total plus de 204.5 pts,0.7844,2026-11-21T06:33:20.083498+00:00,0
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total moins de 234.5 pts,0.7574,2026-11-21T06:33:20.083498+00:00,1
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Domicile plus de 93.5 pts,0.7919,2026-11-21T06:33:20.083498+00:00,1
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Extérieur plus de 106.5 pts,0.7981,2026-11-21T06:33:20.083498+00:00,0
+Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Plus de 1,5 but",0.6183,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Plus de 2,5 buts",0.3482,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Moins de 2,5 buts",0.6518,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Moins de 3,5 buts",0.8402,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,"Moins de 4,5 buts",0.9387,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,Domicile marque,0.6857,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,Extérieur marque,0.6072,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Sanjoanense|Académica de Coimbra,Foot,2026-11-22T11:00:00+00:00,Les deux équipes marquent,0.4164,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Plus de 1,5 but",0.6183,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Plus de 2,5 buts",0.3482,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Moins de 2,5 buts",0.6518,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Moins de 3,5 buts",0.8402,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,"Moins de 4,5 buts",0.9387,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,Domicile marque,0.6857,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,Extérieur marque,0.6072,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Vitoria Sernache|Lusitania,Foot,2026-11-22T14:00:00+00:00,Les deux équipes marquent,0.4164,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Plus de 1,5 but",0.6935,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Plus de 2,5 buts",0.4326,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Moins de 2,5 buts",0.5674,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Moins de 3,5 buts",0.7768,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,"Moins de 4,5 buts",0.903,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,Domicile marque,0.6497,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,Extérieur marque,0.7434,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Vianense|Rio Ave,Foot,2026-11-22T14:00:00+00:00,Les deux équipes marquent,0.4829,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Plus de 1,5 but",0.6836,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Plus de 2,5 buts",0.4208,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Moins de 2,5 buts",0.5792,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Moins de 3,5 buts",0.7863,2026-11-21T06:33:20.083498+00:00,0.0
+Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,"Moins de 4,5 buts",0.9086,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,Domicile marque,0.8436,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,Extérieur marque,0.3985,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|Gil Vicente|Olhanense,Foot,2026-11-22T14:00:00+00:00,Les deux équipes marquent,0.3362,2026-11-21T06:33:20.083498+00:00,1.0
+Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Plus de 1,5 but",0.6181,2026-11-21T06:33:20.083498+00:00,0
+Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Plus de 2,5 buts",0.348,2026-11-21T06:33:20.083498+00:00,0
+Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Moins de 2,5 buts",0.652,2026-11-21T06:33:20.083498+00:00,1
+Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Moins de 3,5 buts",0.8403,2026-11-21T06:33:20.083498+00:00,1
+Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,"Moins de 4,5 buts",0.9388,2026-11-21T06:33:20.083498+00:00,1
+Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,Domicile marque,0.7673,2026-11-21T06:33:20.083498+00:00,1
+Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,Extérieur marque,0.469,2026-11-21T06:33:20.083498+00:00,0
+Foot|TDP|2026-11-22|SC Farense|Fatima,Foot,2026-11-22T15:00:00+00:00,Les deux équipes marquent,0.3599,2026-11-21T06:33:20.083498+00:00,0
+Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Plus de 1,5 but",0.7307,2026-11-21T06:33:20.083498+00:00,0
+Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Plus de 2,5 buts",0.4791,2026-11-21T06:33:20.083498+00:00,0
+Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Moins de 2,5 buts",0.5209,2026-11-21T06:33:20.083498+00:00,1
+Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Moins de 3,5 buts",0.7382,2026-11-21T06:33:20.083498+00:00,1
+Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,"Moins de 4,5 buts",0.8788,2026-11-21T06:33:20.083498+00:00,1
+Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,Domicile marque,0.8366,2026-11-21T06:33:20.083498+00:00,1
+Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,Extérieur marque,0.5409,2026-11-21T06:33:20.083498+00:00,0
+Foot|TDP|2026-11-22|Estrela|Portimonense,Foot,2026-11-22T18:00:00+00:00,Les deux équipes marquent,0.4525,2026-11-21T06:33:20.083498+00:00,0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total plus de 214.5 pts,0.78,2026-11-21T06:33:20.083498+00:00,1.0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Total moins de 244.5 pts,0.7621,2026-11-21T06:33:20.083498+00:00,0.0
+NBA|2026-11-21|Philadelphia 76ers|Milwaukee Bucks,NBA,2026-11-21T18:00:00+00:00,Extérieur plus de 100.5 pts,0.8025,2026-11-21T06:33:20.083498+00:00,1.0
+NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Domicile plus de 99.5 pts,0.8063,2026-11-21T06:33:20.083498+00:00,0.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total plus de 213.5 pts,0.7821,2026-11-21T06:33:20.083498+00:00,0.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total moins de 243.5 pts,0.7599,2026-11-21T06:33:20.083498+00:00,1.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 99.5 pts,0.8087,2026-11-21T06:33:20.083498+00:00,0.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total plus de 219.5 pts,0.7745,2026-11-21T06:33:20.083498+00:00,0.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total moins de 249.5 pts,0.7677,2026-11-21T06:33:20.083498+00:00,1.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Domicile plus de 108.5 pts,0.8011,2026-11-21T06:33:20.083498+00:00,1.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total plus de 204.5 pts,0.7844,2026-11-21T06:33:20.083498+00:00,0.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total moins de 234.5 pts,0.7574,2026-11-21T06:33:20.083498+00:00,1.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Domicile plus de 93.5 pts,0.7919,2026-11-21T06:33:20.083498+00:00,1.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Extérieur plus de 106.5 pts,0.7981,2026-11-21T06:33:20.083498+00:00,0.0
 Tennis|2026-11-21|Alcaraz C.|Shelton B.,Tennis,2026-11-21T13:30:00+00:00,A gagne au moins un set,0.8333,2026-11-21T06:33:20.083498+00:00,1.0
 Tennis|2026-11-21|Alcaraz C.|Shelton B.,Tennis,2026-11-21T13:30:00+00:00,B gagne au moins un set,0.539,2026-11-21T06:33:20.083498+00:00,1.0
 Tennis|2026-11-21|Alcaraz C.|Shelton B.,Tennis,2026-11-21T13:30:00+00:00,A gagne sans perdre de set,0.461,2026-11-21T06:33:20.083498+00:00,0.0
@@ -1601,34 +1601,34 @@ Foot|SP2|2026-11-22|Burgos|Albacete,Foot,2026-11-22T20:00:00+00:00,"Moins de 4,5
 Foot|SP2|2026-11-22|Burgos|Albacete,Foot,2026-11-22T20:00:00+00:00,Domicile marque,0.7602,2026-11-21T16:28:16.564676+00:00,
 Foot|SP2|2026-11-22|Burgos|Albacete,Foot,2026-11-22T20:00:00+00:00,Extérieur marque,0.5493,2026-11-21T16:28:16.564676+00:00,
 Foot|SP2|2026-11-22|Burgos|Albacete,Foot,2026-11-22T20:00:00+00:00,Les deux équipes marquent,0.4159,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Plus de 1,5 but",0.6202,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Plus de 2,5 buts",0.3502,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Moins de 2,5 buts",0.6498,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Moins de 3,5 buts",0.8388,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Moins de 4,5 buts",0.938,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,Domicile marque,0.687,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,Extérieur marque,0.6085,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,Les deux équipes marquent,0.418,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Plus de 1,5 but",0.9238,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Plus de 2,5 buts",0.7935,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Moins de 2,5 buts",0.2065,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Moins de 3,5 buts",0.3902,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Moins de 4,5 buts",0.5846,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,Domicile marque,0.4628,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,Extérieur marque,0.9729,2026-11-21T16:28:16.564676+00:00,
-Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,Les deux équipes marquent,0.4502,2026-11-21T16:28:16.564676+00:00,
-NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Total plus de 197.5 pts,0.7836,2026-11-21T16:28:16.564676+00:00,0
-NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Total moins de 227.5 pts,0.7579,2026-11-21T16:28:16.564676+00:00,1
-NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Domicile plus de 97.5 pts,0.8093,2026-11-21T16:28:16.564676+00:00,0
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total plus de 212.5 pts,0.7754,2026-11-21T16:28:16.564676+00:00,0
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total moins de 242.5 pts,0.7665,2026-11-21T16:28:16.564676+00:00,1
-NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 98.5 pts,0.8076,2026-11-21T16:28:16.564676+00:00,0
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total plus de 218.5 pts,0.7776,2026-11-21T16:28:16.564676+00:00,0
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total moins de 248.5 pts,0.7642,2026-11-21T16:28:16.564676+00:00,1
-NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 104.5 pts,0.81,2026-11-21T16:28:16.564676+00:00,0
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total plus de 203.5 pts,0.7729,2026-11-21T16:28:16.564676+00:00,0
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total moins de 233.5 pts,0.769,2026-11-21T16:28:16.564676+00:00,1
-NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Extérieur plus de 104.5 pts,0.8071,2026-11-21T16:28:16.564676+00:00,0
+Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Plus de 1,5 but",0.6202,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Plus de 2,5 buts",0.3502,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Moins de 2,5 buts",0.6498,2026-11-21T16:28:16.564676+00:00,0
+Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Moins de 3,5 buts",0.8388,2026-11-21T16:28:16.564676+00:00,0
+Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,"Moins de 4,5 buts",0.938,2026-11-21T16:28:16.564676+00:00,0
+Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,Domicile marque,0.687,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,Extérieur marque,0.6085,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Uniao Leiria|Leca,Foot,2026-11-22T19:30:00+00:00,Les deux équipes marquent,0.418,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Plus de 1,5 but",0.9238,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Plus de 2,5 buts",0.7935,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Moins de 2,5 buts",0.2065,2026-11-21T16:28:16.564676+00:00,0
+Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Moins de 3,5 buts",0.3902,2026-11-21T16:28:16.564676+00:00,0
+Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,"Moins de 4,5 buts",0.5846,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,Domicile marque,0.4628,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,Extérieur marque,0.9729,2026-11-21T16:28:16.564676+00:00,1
+Foot|TDP|2026-11-22|Torreense|Benfica,Foot,2026-11-22T20:45:00+00:00,Les deux équipes marquent,0.4502,2026-11-21T16:28:16.564676+00:00,1
+NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Total plus de 197.5 pts,0.7836,2026-11-21T16:28:16.564676+00:00,0.0
+NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Total moins de 227.5 pts,0.7579,2026-11-21T16:28:16.564676+00:00,1.0
+NBA|2026-11-22|New York Knicks|Portland Trail Blazers,NBA,2026-11-22T00:30:00+00:00,Domicile plus de 97.5 pts,0.8093,2026-11-21T16:28:16.564676+00:00,0.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total plus de 212.5 pts,0.7754,2026-11-21T16:28:16.564676+00:00,0.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Total moins de 242.5 pts,0.7665,2026-11-21T16:28:16.564676+00:00,1.0
+NBA|2026-11-22|Minnesota Timberwolves|Memphis Grizzlies,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 98.5 pts,0.8076,2026-11-21T16:28:16.564676+00:00,0.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total plus de 218.5 pts,0.7776,2026-11-21T16:28:16.564676+00:00,0.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Total moins de 248.5 pts,0.7642,2026-11-21T16:28:16.564676+00:00,1.0
+NBA|2026-11-22|Dallas Mavericks|LA Clippers,NBA,2026-11-22T01:00:00+00:00,Extérieur plus de 104.5 pts,0.81,2026-11-21T16:28:16.564676+00:00,0.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total plus de 203.5 pts,0.7729,2026-11-21T16:28:16.564676+00:00,0.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Total moins de 233.5 pts,0.769,2026-11-21T16:28:16.564676+00:00,1.0
+NBA|2026-11-22|Sacramento Kings|Boston Celtics,NBA,2026-11-22T03:00:00+00:00,Extérieur plus de 104.5 pts,0.8071,2026-11-21T16:28:16.564676+00:00,0.0
 NBA|2026-11-22|Atlanta Hawks|Detroit Pistons,NBA,2026-11-22T20:30:00+00:00,Total plus de 209.5 pts,0.7824,2026-11-21T16:28:16.564676+00:00,
 NBA|2026-11-22|Atlanta Hawks|Detroit Pistons,NBA,2026-11-22T20:30:00+00:00,Total moins de 239.5 pts,0.7593,2026-11-21T16:28:16.564676+00:00,
 NBA|2026-11-22|Atlanta Hawks|Detroit Pistons,NBA,2026-11-22T20:30:00+00:00,Domicile plus de 100.5 pts,0.8068,2026-11-21T16:28:16.564676+00:00,
@@ -1690,18 +1690,18 @@ NBA|2026-11-23|New York Knicks|Indiana Pacers,NBA,2026-11-23T01:00:00+00:00,Ext�
 NBA|2026-11-23|Golden State Warriors|Boston Celtics,NBA,2026-11-23T01:30:00+00:00,Total plus de 199.5 pts,0.7799,2026-11-22T06:32:09.571334+00:00,
 NBA|2026-11-23|Golden State Warriors|Boston Celtics,NBA,2026-11-23T01:30:00+00:00,Total moins de 229.5 pts,0.7618,2026-11-22T06:32:09.571334+00:00,
 NBA|2026-11-23|Golden State Warriors|Boston Celtics,NBA,2026-11-23T01:30:00+00:00,Extérieur plus de 98.5 pts,0.8017,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,A gagne au moins un set,0.6207,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,B gagne au moins un set,0.7729,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,A gagne sans perdre de set,0.2271,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,B gagne sans perdre de set,0.3793,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,Match qui va au bout,0.3936,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,A gagne le 1er set,0.4294,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,A gagne au moins un set,0.7808,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,B gagne au moins un set,0.611,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,A gagne sans perdre de set,0.389,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,B gagne sans perdre de set,0.2192,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,Match qui va au bout,0.3917,2026-11-22T06:32:09.571334+00:00,
-Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,A gagne le 1er set,0.5788,2026-11-22T06:32:09.571334+00:00,
+Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,A gagne au moins un set,0.6207,2026-11-22T06:32:09.571334+00:00,0
+Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,B gagne au moins un set,0.7729,2026-11-22T06:32:09.571334+00:00,1
+Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,A gagne sans perdre de set,0.2271,2026-11-22T06:32:09.571334+00:00,0
+Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,B gagne sans perdre de set,0.3793,2026-11-22T06:32:09.571334+00:00,1
+Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,Match qui va au bout,0.3936,2026-11-22T06:32:09.571334+00:00,0
+Tennis|2026-11-22|Zverev A.|Alcaraz C.,Tennis,2026-11-22T17:00:00+00:00,A gagne le 1er set,0.4294,2026-11-22T06:32:09.571334+00:00,0
+Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,A gagne au moins un set,0.7808,2026-11-22T06:32:09.571334+00:00,0
+Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,B gagne au moins un set,0.611,2026-11-22T06:32:09.571334+00:00,1
+Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,A gagne sans perdre de set,0.389,2026-11-22T06:32:09.571334+00:00,0
+Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,B gagne sans perdre de set,0.2192,2026-11-22T06:32:09.571334+00:00,1
+Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,Match qui va au bout,0.3917,2026-11-22T06:32:09.571334+00:00,0
+Tennis|2026-11-22|Leyre Romero Gormaz|Rebeka Masarova,Tennis,2026-11-22T21:00:00+00:00,A gagne le 1er set,0.5788,2026-11-22T06:32:09.571334+00:00,0
 Foot|E0|2026-11-23|Brentford|Everton,Foot,2026-11-23T20:00:00+00:00,"Plus de 1,5 but",0.7261,2026-11-22T16:29:25.585180+00:00,
 Foot|E0|2026-11-23|Brentford|Everton,Foot,2026-11-23T20:00:00+00:00,"Plus de 2,5 buts",0.4624,2026-11-22T16:29:25.585180+00:00,
 Foot|E0|2026-11-23|Brentford|Everton,Foot,2026-11-23T20:00:00+00:00,"Moins de 2,5 buts",0.5376,2026-11-22T16:29:25.585180+00:00,
@@ -1874,3 +1874,42 @@ Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:
 Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,B gagne sans perdre de set,0.2439,2026-11-22T16:29:25.585180+00:00,
 Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,Match qui va au bout,0.3969,2026-11-22T16:29:25.585180+00:00,
 Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,A gagne le 1er set,0.5534,2026-11-22T16:29:25.585180+00:00,
+NBA|2026-11-24|Charlotte Hornets|Memphis Grizzlies,NBA,2026-11-24T00:00:00+00:00,Total plus de 203.5 pts,0.7795,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Charlotte Hornets|Memphis Grizzlies,NBA,2026-11-24T00:00:00+00:00,Total moins de 233.5 pts,0.7621,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Charlotte Hornets|Memphis Grizzlies,NBA,2026-11-24T00:00:00+00:00,Domicile plus de 95.5 pts,0.8119,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Charlotte Hornets|Memphis Grizzlies,NBA,2026-11-24T00:00:00+00:00,Extérieur plus de 102.5 pts,0.7933,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Minnesota Timberwolves|Brooklyn Nets,NBA,2026-11-24T00:30:00+00:00,Extérieur plus de 91.5 pts,0.8056,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Indiana Pacers|Oklahoma City Thunder,NBA,2026-11-24T00:30:00+00:00,Total plus de 206.5 pts,0.7731,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Indiana Pacers|Oklahoma City Thunder,NBA,2026-11-24T00:30:00+00:00,Total moins de 236.5 pts,0.7687,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Indiana Pacers|Oklahoma City Thunder,NBA,2026-11-24T00:30:00+00:00,Domicile plus de 101.5 pts,0.8002,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Indiana Pacers|Oklahoma City Thunder,NBA,2026-11-24T00:30:00+00:00,Extérieur plus de 99.5 pts,0.7953,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Los Angeles Lakers|Utah Jazz,NBA,2026-11-24T03:00:00+00:00,Total plus de 216.5 pts,0.7819,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Los Angeles Lakers|Utah Jazz,NBA,2026-11-24T03:00:00+00:00,Total moins de 246.5 pts,0.7596,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Los Angeles Lakers|Utah Jazz,NBA,2026-11-24T03:00:00+00:00,Extérieur plus de 100.5 pts,0.801,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Sacramento Kings|San Antonio Spurs,NBA,2026-11-24T03:00:00+00:00,Total plus de 200.5 pts,0.777,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Sacramento Kings|San Antonio Spurs,NBA,2026-11-24T03:00:00+00:00,Total moins de 230.5 pts,0.7647,2026-11-23T05:36:52.274170+00:00,
+NBA|2026-11-24|Sacramento Kings|San Antonio Spurs,NBA,2026-11-24T03:00:00+00:00,Extérieur plus de 101.5 pts,0.804,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.5339,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.8366,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.1634,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,B gagne sans perdre de set,0.4661,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,Match qui va au bout,0.3705,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,A gagne le 1er set,0.3589,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.834,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.5378,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.4622,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,B gagne sans perdre de set,0.166,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,Match qui va au bout,0.3719,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,A gagne le 1er set,0.638,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.754,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.6432,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.3568,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,B gagne sans perdre de set,0.246,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,Match qui va au bout,0.3972,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,A gagne le 1er set,0.5514,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.8435,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.5234,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.4766,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-24T05:00:00+00:00,B gagne sans perdre de set,0.1565,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-24T05:00:00+00:00,Match qui va au bout,0.3668,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-24T05:00:00+00:00,A gagne le 1er set,0.6492,2026-11-23T05:36:52.274170+00:00,
