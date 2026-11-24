@@ -69,9 +69,74 @@
 <script>
 // ---------- combiné commun aux trois sports ----------
 const Combo = (() => {
+  // sauvegardé dans le navigateur ; chaque sélection garde de quoi se régler toute seule après le match (score final ESPN)
+  const KEY = "pl-combo";
   let legs = [], odds = "", note = "", noteT = null;
+  try { const s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s && Array.isArray(s.legs)) { legs = s.legs; odds = s.odds || ""; } } catch (e) {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify({ legs, odds })); } catch (e) {} };
   const f = (x, d = 0) => x.toFixed(d).replace(".", ",");
   const total = () => legs.reduce((x, l) => x * l.p, 1);
+
+  // ---- règlement : une règle = [période, test, seuil] appliquée au score (domicile i, extérieur j)
+  // ft : score final · reg : temps réglementaire (90 min, 60 min au hockey) · p1 : 1re période · h1 / h2 : 1re / 2e mi-temps
+  function part(sc, sport, F) {
+    const sum = n => F.ls.length >= n ? F.ls.slice(0, n).reduce((s, x) => [s[0] + x[0], s[1] + x[1]], [0, 0]) : null;
+    const bb = sport !== "Foot" && sport !== "Hockey";
+    if (sc === "ft") return [F.hs, F.as];
+    if (sc === "reg") return sport === "Hockey" ? (sum(3) || (F.per <= 3 ? [F.hs, F.as] : null)) : sport === "Foot" ? (F.extra ? null : [F.hs, F.as]) : [F.hs, F.as];
+    if (sc === "p1") return F.ls[0] || null;
+    if (sc === "h1") return bb ? sum(2) : F.ls[0] || null;
+    if (sc === "h2") return F.ls.length >= 2 ? F.ls[1] : null;
+    return null;
+  }
+  function check(r, sport, F) {
+    if (!r) return null;
+    const [sc, op, x] = r;
+    if (op === "OT") return F.per > (sport === "Hockey" ? 3 : 4);
+    const s = part(sc, sport, F); if (!s) return null;
+    const [i, j] = s;
+    switch (op) {
+      case "H": return i > j; case "D": return i === j; case "A": return i < j;
+      case "HD": return i >= j; case "AD": return i <= j;
+      case "Hm": return i - j >= x; case "Am": return j - i >= x;
+      case "Hc": return i > j && i - j <= x; case "Ac": return j > i && j - i <= x; case "cl": return Math.abs(i - j) <= x;
+      case "BT": return i > 0 && j > 0; case "NBT": return !(i > 0 && j > 0);
+      case "O": return i + j > x; case "U": return i + j < x;
+      case "Hg": return i > x; case "Ag": return j > x;
+      case "Hcs": return j === 0; case "Acs": return i === 0;
+    }
+    return null;
+  }
+  // état d'une sélection : won / lost / check (fini, à vérifier soi-même) / wait (pas encore réglé) / "" (pas de date de match)
+  const state = l => {
+    if (!l.res) return l.dt ? (Date.now() > new Date(l.dt).getTime() + 3 * 864e5 ? "check" : "wait") : "";
+    if (l.res.some(x => x === false)) return "lost";
+    return l.res.every(x => x === true) ? "won" : "check";
+  };
+  const BADGE = { won: ["Validé", "ok"], lost: ["Perdu", "ko"], check: ["À vérifier", "ck"], wait: ["En attente", "wt"] };
+  const badge = st => st ? `<em class="cbst ${BADGE[st][1]}">${BADGE[st][0]}</em>` : "";
+  const overall = () => {
+    const S = legs.map(state);
+    if (S.includes("lost")) return "lost";
+    if (S.length && S.every(x => x === "won")) return "won";
+    return S.some(x => x === "check") && !S.some(x => x === "wait" || x === "") ? "check" : "";
+  };
+  let busy = false;
+  async function settle() {
+    if (busy || !window.LiveFinal) return; busy = true;
+    let changed = false;
+    try {
+      for (const l of legs) {
+        if (l.res || !l.dt || Date.now() < new Date(l.dt).getTime() + 105 * 60e3) continue;
+        let F = null; try { F = await LiveFinal(l.sport, l.lg, l.dt, l.h, l.a); } catch (e) {}
+        if (!F) continue;
+        l.res = (l.rules || l.events.map(() => null)).map(r => check(r, l.sport, F));
+        l.score = `${F.hs}-${F.as}`; changed = true;
+      }
+    } finally { busy = false; }
+    if (changed) { save(); render(); }
+  }
+
   function verdict(P) {
     const o = parseFloat(String(odds).replace(",", "."));
     let txt = `Perdu <b>${Math.round((1 - P) * 10)} fois sur 10</b> selon le modèle.`;
@@ -96,12 +161,12 @@ const Combo = (() => {
     const P = total(), bar = document.getElementById("cbBar"), panel = document.getElementById("cbPanel"), sum = document.getElementById("cbSum");
     bar.hidden = !legs.length; document.body.classList.toggle("has-cb", !!legs.length);
     if (!legs.length) { open = false; return; }
-    const sports = [...new Set(legs.map(l => l.sport))].join(", ");
-    sum.innerHTML = `<span><b>Combiné</b> · ${legs.length} sélection${legs.length > 1 ? "s" : ""} (${sports})${note ? ` <span class="cbnote">${note}</span>` : ""}</span><span class="num">${f(P * 100)} % · cote juste ${f(1 / Math.max(P, 1e-4), 2)} <span class="chev">${open ? "▾" : "▴"}</span></span>`;
+    const sports = [...new Set(legs.map(l => l.sport))].join(", "), ov = overall();
+    sum.innerHTML = `<span><b>Combiné</b> · ${legs.length} sélection${legs.length > 1 ? "s" : ""} (${sports})${badge(ov)}${note ? ` <span class="cbnote">${note}</span>` : ""}</span><span class="num">${f(P * 100)} % · cote juste ${f(1 / Math.max(P, 1e-4), 2)} <span class="chev">${open ? "▾" : "▴"}</span></span>`;
     sum.setAttribute("aria-expanded", open);
     panel.hidden = !open;
     panel.innerHTML = `<p class="note" style="margin-bottom:8px">Ajoutez des événements depuis n'importe quel sport.</p>
-      <ol class="legs">${legs.map((l, i) => `<li><span>${l.events.join(" + ")}<small>${l.sport} · ${l.match}</small></span><span class="num">${f(l.p * 100)} %</span><button data-r="${i}">Retirer</button></li>`).join("")}</ol>
+      <ol class="legs">${legs.map((l, i) => `<li><span>${l.events.join(" + ")}<small>${l.sport} · ${l.match}${l.score ? " · " + l.score : ""}</small></span><span class="num">${f(l.p * 100)} %${badge(state(l))}</span><button data-r="${i}">Retirer</button></li>`).join("")}</ol>
       <div class="cbtot"><span>Chance de gagner : <span class="num">${f(P * 100)} %</span></span><span>Cote juste <span class="num">${f(1 / Math.max(P, 1e-4), 2)}</span></span></div>
       <label class="bk" for="cbOdds">Cote proposée par le bookmaker <input id="cbOdds" class="cbOdds" type="number" inputmode="decimal" step="0.01" min="1.01" placeholder="ex. 2,10" value="${odds}"></label>
       <p class="verdict cbVerdict">${verdict(P)}</p>
@@ -109,21 +174,28 @@ const Combo = (() => {
     if (flash) { sum.classList.remove("flash"); void sum.offsetWidth; sum.classList.add("flash"); }
   }
   document.addEventListener("click", e => {
-    const r = e.target.closest("#cbPanel [data-r]"); if (r) { legs.splice(+r.dataset.r, 1); render(); return; }
-    if (e.target.closest("#cbPanel [data-clear]")) { legs = []; odds = ""; render(); }
+    const r = e.target.closest("#cbPanel [data-r]"); if (r) { legs.splice(+r.dataset.r, 1); save(); render(); return; }
+    if (e.target.closest("#cbPanel [data-clear]")) { legs = []; odds = ""; save(); render(); }
   });
   document.addEventListener("input", e => {
     if (!e.target.classList.contains("cbOdds")) return;
-    odds = e.target.value;
+    odds = e.target.value; save();
     document.querySelectorAll(".cbVerdict").forEach(x => x.innerHTML = verdict(total()));
   });
-  return { add(sport, match, events, p) {
-    const replaced = legs.some(l => l.match === match);
-    legs = legs.filter(l => l.match !== match); legs.push({ sport, match, events, p });
-    note = replaced ? "· pari remplacé (un seul par match)" : "· ajouté";
-    clearTimeout(noteT); noteT = setTimeout(() => { note = ""; render(); }, 3500);
-    render(true);
-  } };
+  addEventListener("load", () => { render(); settle(); });
+  setInterval(settle, 5 * 60e3);
+  return {
+    // meta (facultatif) : { dt, lg, h, a, rules } — date du match, championnat, équipes domicile / extérieur, une règle par événement
+    add(sport, match, events, p, meta) {
+      const replaced = legs.some(l => l.match === match);
+      legs = legs.filter(l => l.match !== match);
+      const m = meta && meta.dt ? { dt: meta.dt, lg: meta.lg, h: meta.h, a: meta.a, rules: meta.rules } : {};
+      legs.push({ sport, match, events, p, ...m });
+      note = replaced ? "· pari remplacé (un seul par match)" : "· ajouté";
+      clearTimeout(noteT); noteT = setTimeout(() => { note = ""; render(); }, 3500);
+      save(); render(true); settle();
+    }
+  };
 })();
 </script>
 <script>

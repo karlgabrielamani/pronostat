@@ -97,3 +97,6 @@ details.more > *:not(summary) + *:not(summary) { margin-top: 12px; }
 .inj { display: grid; gap: 6px; margin-top: 10px; font-size: 13px; }
 .inj > div { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: center; }
 .inj .muted { color: var(--ink-3, var(--ink-2)); }
+.cbst { display: inline-block; margin-left: 6px; font-style: normal; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 999px; vertical-align: 1px; white-space: nowrap; }
+.cbst.ok { background: var(--grass); color: #fff; } .cbst.ko { background: var(--hot); color: #fff; }
+.cbst.ck { background: var(--track); color: var(--ink-2); } .cbst.wt { background: var(--track); color: var(--ink-3); }

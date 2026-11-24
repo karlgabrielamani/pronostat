@@ -141,15 +141,15 @@
   // corners et cartons : indépendants des buts dans notre modèle ; un combiné qui les mélange multiplie donc leurs probabilités
   const FEV = [
     ["Résultat et buts"],
-    ["H gagne", "g", (i, j) => i > j], ["Match nul", "g", (i, j) => i === j], ["A gagne", "g", (i, j) => i < j],
-    ["H ou nul", "g", (i, j) => i >= j], ["A ou nul", "g", (i, j) => i <= j],
-    ["H gagne de 2 buts ou plus", "g", (i, j) => i - j >= 2], ["A gagne de 2 buts ou plus", "g", (i, j) => j - i >= 2],
-    ["Les deux équipes marquent", "g", (i, j) => i > 0 && j > 0], ["Les deux équipes ne marquent pas", "g", (i, j) => !(i > 0 && j > 0)],
-    ["Plus de 1,5 but", "g", (i, j) => i + j > 1.5], ["Plus de 2,5 buts", "g", (i, j) => i + j > 2.5], ["Moins de 2,5 buts", "g", (i, j) => i + j < 2.5],
-    ["Plus de 3,5 buts", "g", (i, j) => i + j > 3.5], ["H n'encaisse aucun but", "g", (i, j) => j === 0], ["A n'encaisse aucun but", "g", (i, j) => i === 0],
+    ["H gagne", "g", (i, j) => i > j, ["reg","H"]], ["Match nul", "g", (i, j) => i === j, ["reg","D"]], ["A gagne", "g", (i, j) => i < j, ["reg","A"]],
+    ["H ou nul", "g", (i, j) => i >= j, ["reg","HD"]], ["A ou nul", "g", (i, j) => i <= j, ["reg","AD"]],
+    ["H gagne de 2 buts ou plus", "g", (i, j) => i - j >= 2, ["reg","Hm",2]], ["A gagne de 2 buts ou plus", "g", (i, j) => j - i >= 2, ["reg","Am",2]],
+    ["Les deux équipes marquent", "g", (i, j) => i > 0 && j > 0, ["reg","BT"]], ["Les deux équipes ne marquent pas", "g", (i, j) => !(i > 0 && j > 0), ["reg","NBT"]],
+    ["Plus de 1,5 but", "g", (i, j) => i + j > 1.5, ["reg","O",1.5]], ["Plus de 2,5 buts", "g", (i, j) => i + j > 2.5, ["reg","O",2.5]], ["Moins de 2,5 buts", "g", (i, j) => i + j < 2.5, ["reg","U",2.5]],
+    ["Plus de 3,5 buts", "g", (i, j) => i + j > 3.5, ["reg","O",3.5]], ["H n'encaisse aucun but", "g", (i, j) => j === 0, ["reg","Hcs"]], ["A n'encaisse aucun but", "g", (i, j) => i === 0, ["reg","Acs"]],
     ["Mi-temps"],
-    ["H mène à la mi-temps", "g", (i, j, a, b) => a > b], ["Nul à la mi-temps", "g", (i, j, a, b) => a === b], ["A mène à la mi-temps", "g", (i, j, a, b) => a < b],
-    ["But en 1re période", "g", (i, j, a, b) => a + b > 0], ["But en 2e période", "g", (i, j, a, b) => i + j - a - b > 0],
+    ["H mène à la mi-temps", "g", (i, j, a, b) => a > b, ["h1","H"]], ["Nul à la mi-temps", "g", (i, j, a, b) => a === b, ["h1","D"]], ["A mène à la mi-temps", "g", (i, j, a, b) => a < b, ["h1","A"]],
+    ["But en 1re période", "g", (i, j, a, b) => a + b > 0, ["h1","O",0.5]], ["But en 2e période", "g", (i, j, a, b) => i + j - a - b > 0, ["h2","O",0.5]],
     ["Corners"],
     ["H obtient plus de corners", "c", (x, y) => x > y], ["A obtient plus de corners", "c", (x, y) => y > x],
     ["Plus de 8,5 corners", "c", (x, y) => x + y > 8.5], ["Plus de 9,5 corners", "c", (x, y) => x + y > 9.5], ["Plus de 10,5 corners", "c", (x, y) => x + y > 10.5],
@@ -190,6 +190,8 @@
     return p;
   }
   const fLab = (lab, h, a) => lab.replace(/^H /, h.name + " ").replace(/^A /, a.name + " ");
+  // de quoi régler le combiné après le match (seulement pour un match du calendrier, dans le bon sens domicile / extérieur)
+  const fMeta = idx => { const C = FootAPI.current(); return C && C.dt ? { dt: C.dt, lg: C.k, h: C.h, a: C.a, rules: idx.map(k => FEV[k][3] || null) } : null; };
   const fSel = () => [...document.querySelectorAll("#ftEv input:checked")].map(x => +x.dataset.i);
   function drawFev() {
     cur.J = buildJoint(cur.h, cur.a, cur.lam, cur.mu);
@@ -199,7 +201,7 @@
     const labs = FEV.map(e => fLab(e[0], cur.h, cur.a));
     const ok = FEV.map((e, k) => avail(k) ? k : -1).filter(k => k >= 0);
     const sug = suggestCombos(ok.length, idx => fJoint(idx.map(t => ok[t]))).map(o => ({ ...o, i: ok[o.i], j: ok[o.j] }));
-    renderSugg(g("ftSug"), sug, labs, o => Combo.add("Foot", `${cur.h.name} – ${cur.a.name}`, [labs[o.i], labs[o.j]], o.p));
+    renderSugg(g("ftSug"), sug, labs, o => Combo.add("Foot", `${cur.h.name} – ${cur.a.name}`, [labs[o.i], labs[o.j]], o.p, fMeta([o.i, o.j])));
     fUpd();
   }
   function fUpd() {
@@ -210,7 +212,7 @@
   g("ftEv").addEventListener("change", fUpd);
   g("ftAdd").addEventListener("click", () => {
     const idx = fSel(); if (!idx.length) return;
-    Combo.add("Foot", `${cur.h.name} – ${cur.a.name}`, idx.map(k => fLab(FEV[k][0], cur.h, cur.a)), fJoint(idx));
+    Combo.add("Foot", `${cur.h.name} – ${cur.a.name}`, idx.map(k => fLab(FEV[k][0], cur.h, cur.a)), fJoint(idx), fMeta(idx));
     document.querySelectorAll("#ftEv input").forEach(x => x.checked = false); fUpd();
   });
 

@@ -147,19 +147,19 @@
   // « gagne, prolongation comprise » vaut q (ou 1 − q) quand le score est nul après 60 min
   const EV = [
     ["Résultat après 60 min"],
-    ["H gagne", (i, j) => i > j], ["Match nul", (i, j) => i === j], ["A gagne", (i, j) => i < j],
-    ["H ou nul", (i, j) => i >= j], ["A ou nul", (i, j) => i <= j],
-    ["H gagne de 2 buts ou plus", (i, j) => i - j >= 2], ["A gagne de 2 buts ou plus", (i, j) => j - i >= 2],
+    ["H gagne", (i, j) => i > j, ["reg","H"]], ["Match nul", (i, j) => i === j, ["reg","D"]], ["A gagne", (i, j) => i < j, ["reg","A"]],
+    ["H ou nul", (i, j) => i >= j, ["reg","HD"]], ["A ou nul", (i, j) => i <= j, ["reg","AD"]],
+    ["H gagne de 2 buts ou plus", (i, j) => i - j >= 2, ["reg","Hm",2]], ["A gagne de 2 buts ou plus", (i, j) => j - i >= 2, ["reg","Am",2]],
     ["Vainqueur, prolongation et tirs au but compris"],
-    ["H gagne (prolongation comprise)", (i, j, a, b, q) => i > j ? 1 : i === j ? q : 0], ["A gagne (prolongation comprise)", (i, j, a, b, q) => i < j ? 1 : i === j ? 1 - q : 0],
+    ["H gagne (prolongation comprise)", (i, j, a, b, q) => i > j ? 1 : i === j ? q : 0, ["ft","H"]], ["A gagne (prolongation comprise)", (i, j, a, b, q) => i < j ? 1 : i === j ? 1 - q : 0, ["ft","A"]],
     ["Buts après 60 min"],
-    ["Plus de 4,5 buts", (i, j) => i + j > 4.5], ["Plus de 5,5 buts", (i, j) => i + j > 5.5], ["Moins de 5,5 buts", (i, j) => i + j < 5.5], ["Plus de 6,5 buts", (i, j) => i + j > 6.5],
-    ["Les deux équipes marquent", (i, j) => i > 0 && j > 0],
-    ["H marque 3 buts ou plus", (i, j) => i >= 3], ["A marque 3 buts ou plus", (i, j) => j >= 3],
-    ["H n'encaisse aucun but", (i, j) => j === 0], ["A n'encaisse aucun but", (i, j) => i === 0],
+    ["Plus de 4,5 buts", (i, j) => i + j > 4.5, ["reg","O",4.5]], ["Plus de 5,5 buts", (i, j) => i + j > 5.5, ["reg","O",5.5]], ["Moins de 5,5 buts", (i, j) => i + j < 5.5, ["reg","U",5.5]], ["Plus de 6,5 buts", (i, j) => i + j > 6.5, ["reg","O",6.5]],
+    ["Les deux équipes marquent", (i, j) => i > 0 && j > 0, ["reg","BT"]],
+    ["H marque 3 buts ou plus", (i, j) => i >= 3, ["reg","Hg",2.5]], ["A marque 3 buts ou plus", (i, j) => j >= 3, ["reg","Ag",2.5]],
+    ["H n'encaisse aucun but", (i, j) => j === 0, ["reg","Hcs"]], ["A n'encaisse aucun but", (i, j) => i === 0, ["reg","Acs"]],
     ["1re période"],
-    ["But en 1re période", (i, j, a, b) => a + b > 0], ["Plus de 1,5 but en 1re période", (i, j, a, b) => a + b > 1.5],
-    ["H mène après la 1re période", (i, j, a, b) => a > b], ["A mène après la 1re période", (i, j, a, b) => a < b],
+    ["But en 1re période", (i, j, a, b) => a + b > 0, ["p1","O",0.5]], ["Plus de 1,5 but en 1re période", (i, j, a, b) => a + b > 1.5, ["p1","O",1.5]],
+    ["H mène après la 1re période", (i, j, a, b) => a > b, ["p1","H"]], ["A mène après la 1re période", (i, j, a, b) => a < b, ["p1","A"]],
   ];
   function buildJoint(lam, mu) {
     const G = 9, F1 = L.f1 || 0.295, e = L.en || 0, l1 = lam * F1, m1 = mu * F1, l2 = lam - l1, m2 = mu - m1;
@@ -180,6 +180,8 @@
   }
   const joint = idx => { const q = cur.q; let s = 0; for (const c of cur.J) { let w = c[4]; for (const k of idx) { w *= +EV[k][1](c[0], c[1], c[2], c[3], q); if (!w) break; } s += w; } return s; };
   const lab = (t, h, a) => t.replace(/^H /, h.name + " ").replace(/^A /, a.name + " ");
+  // de quoi régler le combiné après le match (seulement pour un match du calendrier)
+  const hMeta = idx => { const C = HockeyAPI.current(); return C && C.dt ? { dt: C.dt, lg: C.k, h: C.h, a: C.a, rules: idx.map(k => EV[k][2] || null) } : null; };
   const sel = () => [...document.querySelectorAll("#hkEv input:checked")].map(x => +x.dataset.i);
   function drawEv() {
     cur.J = buildJoint(cur.lam, cur.mu);
@@ -188,7 +190,7 @@
     const labs = EV.map(e => lab(e[0], cur.h, cur.a));
     const ok = EV.map((e, k) => e[1] ? k : -1).filter(k => k >= 0);
     const sug = suggestCombos(ok.length, idx => joint(idx.map(t => ok[t]))).map(o => ({ ...o, i: ok[o.i], j: ok[o.j] }));
-    renderSugg(g("hkSug"), sug, labs, o => Combo.add("Hockey", `${cur.h.name} – ${cur.a.name}`, [labs[o.i], labs[o.j]], o.p));
+    renderSugg(g("hkSug"), sug, labs, o => Combo.add("Hockey", `${cur.h.name} – ${cur.a.name}`, [labs[o.i], labs[o.j]], o.p, hMeta([o.i, o.j])));
     upd();
   }
   function upd() {
@@ -199,7 +201,7 @@
   g("hkEv").addEventListener("change", upd);
   g("hkAdd").addEventListener("click", () => {
     const idx = sel(); if (!idx.length) return;
-    Combo.add("Hockey", `${cur.h.name} – ${cur.a.name}`, idx.map(k => lab(EV[k][0], cur.h, cur.a)), joint(idx));
+    Combo.add("Hockey", `${cur.h.name} – ${cur.a.name}`, idx.map(k => lab(EV[k][0], cur.h, cur.a)), joint(idx), hMeta(idx));
     document.querySelectorAll("#hkEv input").forEach(x => x.checked = false); upd();
   });
 

@@ -173,25 +173,28 @@
 
   // ---------- combiné ----------
   const NEV = [
-    ["A gagne", r => r.ta > r.tb], ["B gagne", r => r.tb > r.ta],
-    ["A gagne de 10 points ou plus", r => r.ta - r.tb >= 10], ["B gagne de 10 points ou plus", r => r.tb - r.ta >= 10],
-    ["A gagne de 5 points ou moins", r => r.ta > r.tb && r.ta - r.tb <= 5], ["B gagne de 5 points ou moins", r => r.tb > r.ta && r.tb - r.ta <= 5],
-    ["Match serré (5 points ou moins)", r => Math.abs(r.ta - r.tb) <= 5], ["Prolongation", r => r.ot > 0],
-    ["A marque plus de TA points", r => r.ta > cur.ta], ["B marque plus de TB points", r => r.tb > cur.tb],
-    ["Plus de L0 points au total", (r, l) => r.ta + r.tb > l[0]], ["Plus de L1 points au total", (r, l) => r.ta + r.tb > l[1]],
-    ["Moins de L1 points au total", (r, l) => r.ta + r.tb < l[1]], ["Plus de L2 points au total", (r, l) => r.ta + r.tb > l[2]],
-    ["A mène à la mi-temps", r => r.qs[0][0] + r.qs[1][0] > r.qs[0][1] + r.qs[1][1]],
-    ["B mène à la mi-temps", r => r.qs[0][0] + r.qs[1][0] < r.qs[0][1] + r.qs[1][1]],
-    ["A gagne le 1er quart-temps", r => r.qs[0][0] > r.qs[0][1]], ["B gagne le 1er quart-temps", r => r.qs[0][0] < r.qs[0][1]],
-    ["Plus de HH points en 1re mi-temps", r => r.qs[0][0] + r.qs[0][1] + r.qs[1][0] + r.qs[1][1] > cur.half],
+    ["A gagne", r => r.ta > r.tb, () => ["ft","H"]], ["B gagne", r => r.tb > r.ta, () => ["ft","A"]],
+    ["A gagne de 10 points ou plus", r => r.ta - r.tb >= 10, () => ["ft","Hm",10]], ["B gagne de 10 points ou plus", r => r.tb - r.ta >= 10, () => ["ft","Am",10]],
+    ["A gagne de 5 points ou moins", r => r.ta > r.tb && r.ta - r.tb <= 5, () => ["ft","Hc",5]], ["B gagne de 5 points ou moins", r => r.tb > r.ta && r.tb - r.ta <= 5, () => ["ft","Ac",5]],
+    ["Match serré (5 points ou moins)", r => Math.abs(r.ta - r.tb) <= 5, () => ["ft","cl",5]], ["Prolongation", r => r.ot > 0, () => ["ft","OT"]],
+    ["A marque plus de TA points", r => r.ta > cur.ta, () => ["ft","Hg",cur.ta]], ["B marque plus de TB points", r => r.tb > cur.tb, () => ["ft","Ag",cur.tb]],
+    ["Plus de L0 points au total", (r, l) => r.ta + r.tb > l[0], () => ["ft","O",cur.lines[0]]], ["Plus de L1 points au total", (r, l) => r.ta + r.tb > l[1], () => ["ft","O",cur.lines[1]]],
+    ["Moins de L1 points au total", (r, l) => r.ta + r.tb < l[1], () => ["ft","U",cur.lines[1]]], ["Plus de L2 points au total", (r, l) => r.ta + r.tb > l[2], () => ["ft","O",cur.lines[2]]],
+    ["A mène à la mi-temps", r => r.qs[0][0] + r.qs[1][0] > r.qs[0][1] + r.qs[1][1], () => ["h1","H"]],
+    ["B mène à la mi-temps", r => r.qs[0][0] + r.qs[1][0] < r.qs[0][1] + r.qs[1][1], () => ["h1","A"]],
+    ["A gagne le 1er quart-temps", r => r.qs[0][0] > r.qs[0][1], () => ["p1","H"]], ["B gagne le 1er quart-temps", r => r.qs[0][0] < r.qs[0][1], () => ["p1","A"]],
+    ["Plus de HH points en 1re mi-temps", r => r.qs[0][0] + r.qs[0][1] + r.qs[1][0] + r.qs[1][1] > cur.half, () => ["h1","O",cur.half]],
   ];
   const nLab = lab => lab.replace(/^A /, cur.a.name + " ").replace(/^B /, cur.b.name + " ").replace(/L(\d)/, (_, k) => f(cur.lines[+k], 1)).replace("HH", f(cur.half, 1)).replace("TA", f(cur.ta, 1)).replace("TB", f(cur.tb, 1));
+  // de quoi régler le combiné après le match (seulement pour un match du calendrier ; A = domicile ; stats des joueurs : à vérifier soi-même)
+  const nMeta = (idx, players) => curGame && curGame.home === cur.a.name && curGame.away === cur.b.name
+    ? { dt: curGame.dt, lg: "", h: cur.a.name, a: cur.b.name, rules: players ? idx.map(() => null) : idx.map(k => NEV[k][2]()) } : null;
   const nSel = () => [...document.querySelectorAll("#nbEv input:checked")].map(x => +x.dataset.i);
   const nJoint = idx => cur.sims.filter(r => idx.every(k => NEV[k][1](r, cur.lines))).length / cur.sims.length;
   function drawNev() {
     g("nbEv").innerHTML = NEV.map(([lab], k) => `<label for="ne${k}"><input type="checkbox" id="ne${k}" data-i="${k}"><span>${nLab(lab)}</span><span class="q num">${f(nJoint([k]) * 100)} %</span></label>`).join("");
     const labs = NEV.map(e => nLab(e[0]));
-    renderSugg(g("nbSug"), suggestCombos(NEV.length, nJoint), labs, o => Combo.add("NBA", `${cur.a.name} – ${cur.b.name}`, [labs[o.i], labs[o.j]], o.p),
+    renderSugg(g("nbSug"), suggestCombos(NEV.length, nJoint), labs, o => Combo.add("NBA", `${cur.a.name} – ${cur.b.name}`, [labs[o.i], labs[o.j]], o.p, nMeta([o.i, o.j])),
       "En NBA, le vainqueur et le total de points sont presque indépendants : aucune paire d'événements ne se renforce vraiment pour ce match. Les combinés du même match y apportent donc peu.");
     nUpd();
   }
@@ -203,7 +206,7 @@
   g("nbEv").addEventListener("change", nUpd);
   g("nbAdd").addEventListener("click", () => {
     const idx = nSel(); if (!idx.length) return;
-    Combo.add("NBA", `${cur.a.name} – ${cur.b.name}`, idx.map(k => nLab(NEV[k][0])), nJoint(idx));
+    Combo.add("NBA", `${cur.a.name} – ${cur.b.name}`, idx.map(k => nLab(NEV[k][0])), nJoint(idx), nMeta(idx));
     document.querySelectorAll("#nbEv input").forEach(x => x.checked = false); nUpd();
   });
 
@@ -289,7 +292,7 @@
   });
   g("nbPlAdd").addEventListener("click", () => {
     const v = [...PSEL.values()]; if (!v.length) return;
-    Combo.add("NBA", `${cur.a.name} – ${cur.b.name}`, v.map(s => s.lab), v.reduce((x, s) => x * s.p, 1));
+    Combo.add("NBA", `${cur.a.name} – ${cur.b.name}`, v.map(s => s.lab), v.reduce((x, s) => x * s.p, 1), nMeta(v, true));
     PSEL.clear(); drawPl();
   });
 
