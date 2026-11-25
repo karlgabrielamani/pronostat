@@ -1832,12 +1832,12 @@ NBA|2026-11-24|Los Angeles Lakers|Utah Jazz,NBA,2026-11-24T03:00:00+00:00,Total 
 NBA|2026-11-24|Los Angeles Lakers|Utah Jazz,NBA,2026-11-24T03:00:00+00:00,Total moins de 248.5 pts,0.7692,2026-11-22T16:29:25.585180+00:00,1.0
 NBA|2026-11-24|Los Angeles Lakers|Utah Jazz,NBA,2026-11-24T03:00:00+00:00,Domicile plus de 110.5 pts,0.8081,2026-11-22T16:29:25.585180+00:00,0.0
 NBA|2026-11-24|Los Angeles Lakers|Utah Jazz,NBA,2026-11-24T03:00:00+00:00,Extérieur plus de 101.5 pts,0.8092,2026-11-22T16:29:25.585180+00:00,0.0
-Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,A gagne au moins un set,0.5238,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,B gagne au moins un set,0.8432,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,A gagne sans perdre de set,0.1568,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,B gagne sans perdre de set,0.4762,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,Match qui va au bout,0.367,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,A gagne le 1er set,0.3511,2026-11-22T16:29:25.585180+00:00,
+Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,A gagne au moins un set,0.5238,2026-11-22T16:29:25.585180+00:00,1
+Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,B gagne au moins un set,0.8432,2026-11-22T16:29:25.585180+00:00,0
+Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,A gagne sans perdre de set,0.1568,2026-11-22T16:29:25.585180+00:00,1
+Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,B gagne sans perdre de set,0.4762,2026-11-22T16:29:25.585180+00:00,0
+Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,Match qui va au bout,0.367,2026-11-22T16:29:25.585180+00:00,0
+Tennis|2026-11-23|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-23T05:00:00+00:00,A gagne le 1er set,0.3511,2026-11-22T16:29:25.585180+00:00,1
 Tennis|2026-11-23|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-23T05:00:00+00:00,A gagne au moins un set,0.8431,2026-11-22T16:29:25.585180+00:00,
 Tennis|2026-11-23|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-23T05:00:00+00:00,B gagne au moins un set,0.5239,2026-11-22T16:29:25.585180+00:00,
 Tennis|2026-11-23|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-23T05:00:00+00:00,A gagne sans perdre de set,0.4761,2026-11-22T16:29:25.585180+00:00,
@@ -1868,12 +1868,12 @@ Tennis|2026-11-23|Polona Hercog|Ipek Oz,Tennis,2026-11-23T05:00:00+00:00,A gagne
 Tennis|2026-11-23|Polona Hercog|Ipek Oz,Tennis,2026-11-23T05:00:00+00:00,B gagne sans perdre de set,0.1632,2026-11-22T16:29:25.585180+00:00,
 Tennis|2026-11-23|Polona Hercog|Ipek Oz,Tennis,2026-11-23T05:00:00+00:00,Match qui va au bout,0.3704,2026-11-22T16:29:25.585180+00:00,
 Tennis|2026-11-23|Polona Hercog|Ipek Oz,Tennis,2026-11-23T05:00:00+00:00,A gagne le 1er set,0.6412,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,A gagne au moins un set,0.7561,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,B gagne au moins un set,0.6409,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,A gagne sans perdre de set,0.3591,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,B gagne sans perdre de set,0.2439,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,Match qui va au bout,0.3969,2026-11-22T16:29:25.585180+00:00,
-Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,A gagne le 1er set,0.5534,2026-11-22T16:29:25.585180+00:00,
+Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,A gagne au moins un set,0.7561,2026-11-22T16:29:25.585180+00:00,0
+Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,B gagne au moins un set,0.6409,2026-11-22T16:29:25.585180+00:00,1
+Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,A gagne sans perdre de set,0.3591,2026-11-22T16:29:25.585180+00:00,0
+Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,B gagne sans perdre de set,0.2439,2026-11-22T16:29:25.585180+00:00,1
+Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,Match qui va au bout,0.3969,2026-11-22T16:29:25.585180+00:00,0
+Tennis|2026-11-23|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-23T05:00:00+00:00,A gagne le 1er set,0.5534,2026-11-22T16:29:25.585180+00:00,0
 NBA|2026-11-24|Charlotte Hornets|Memphis Grizzlies,NBA,2026-11-24T00:00:00+00:00,Total plus de 203.5 pts,0.7795,2026-11-23T05:36:52.274170+00:00,1.0
 NBA|2026-11-24|Charlotte Hornets|Memphis Grizzlies,NBA,2026-11-24T00:00:00+00:00,Total moins de 233.5 pts,0.7621,2026-11-23T05:36:52.274170+00:00,1.0
 NBA|2026-11-24|Charlotte Hornets|Memphis Grizzlies,NBA,2026-11-24T00:00:00+00:00,Domicile plus de 95.5 pts,0.8119,2026-11-23T05:36:52.274170+00:00,1.0
@@ -1889,24 +1889,24 @@ NBA|2026-11-24|Los Angeles Lakers|Utah Jazz,NBA,2026-11-24T03:00:00+00:00,Extér
 NBA|2026-11-24|Sacramento Kings|San Antonio Spurs,NBA,2026-11-24T03:00:00+00:00,Total plus de 200.5 pts,0.777,2026-11-23T05:36:52.274170+00:00,1.0
 NBA|2026-11-24|Sacramento Kings|San Antonio Spurs,NBA,2026-11-24T03:00:00+00:00,Total moins de 230.5 pts,0.7647,2026-11-23T05:36:52.274170+00:00,1.0
 NBA|2026-11-24|Sacramento Kings|San Antonio Spurs,NBA,2026-11-24T03:00:00+00:00,Extérieur plus de 101.5 pts,0.804,2026-11-23T05:36:52.274170+00:00,1.0
-Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.5339,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.8366,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.1634,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,B gagne sans perdre de set,0.4661,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,Match qui va au bout,0.3705,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,A gagne le 1er set,0.3589,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.5339,2026-11-23T05:36:52.274170+00:00,1
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.8366,2026-11-23T05:36:52.274170+00:00,0
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.1634,2026-11-23T05:36:52.274170+00:00,1
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,B gagne sans perdre de set,0.4661,2026-11-23T05:36:52.274170+00:00,0
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,Match qui va au bout,0.3705,2026-11-23T05:36:52.274170+00:00,0
+Tennis|2026-11-24|Nadia Podoroska|Leyre Romero Gormaz,Tennis,2026-11-24T05:00:00+00:00,A gagne le 1er set,0.3589,2026-11-23T05:36:52.274170+00:00,1
 Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.834,2026-11-23T05:36:52.274170+00:00,
 Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.5378,2026-11-23T05:36:52.274170+00:00,
 Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.4622,2026-11-23T05:36:52.274170+00:00,
 Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,B gagne sans perdre de set,0.166,2026-11-23T05:36:52.274170+00:00,
 Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,Match qui va au bout,0.3719,2026-11-23T05:36:52.274170+00:00,
 Tennis|2026-11-24|Rebeka Masarova|Sofia Costoulas,Tennis,2026-11-24T05:00:00+00:00,A gagne le 1er set,0.638,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.754,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.6432,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.3568,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,B gagne sans perdre de set,0.246,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,Match qui va au bout,0.3972,2026-11-23T05:36:52.274170+00:00,
-Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,A gagne le 1er set,0.5514,2026-11-23T05:36:52.274170+00:00,
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.754,2026-11-23T05:36:52.274170+00:00,0
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.6432,2026-11-23T05:36:52.274170+00:00,1
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.3568,2026-11-23T05:36:52.274170+00:00,0
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,B gagne sans perdre de set,0.246,2026-11-23T05:36:52.274170+00:00,1
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,Match qui va au bout,0.3972,2026-11-23T05:36:52.274170+00:00,0
+Tennis|2026-11-24|Lucia Bronzetti|Alicia Herrero Linana,Tennis,2026-11-24T05:00:00+00:00,A gagne le 1er set,0.5514,2026-11-23T05:36:52.274170+00:00,0
 Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-24T05:00:00+00:00,A gagne au moins un set,0.8435,2026-11-23T05:36:52.274170+00:00,
 Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-24T05:00:00+00:00,B gagne au moins un set,0.5234,2026-11-23T05:36:52.274170+00:00,
 Tennis|2026-11-24|Solana Sierra|Victoria Jimenez Kasintseva,Tennis,2026-11-24T05:00:00+00:00,A gagne sans perdre de set,0.4766,2026-11-23T05:36:52.274170+00:00,
@@ -1921,22 +1921,22 @@ Foot|I2|2026-11-24|Juve Stabia|Catanzaro,Foot,2026-11-24T18:00:00+00:00,"Moins d
 Foot|I2|2026-11-24|Juve Stabia|Catanzaro,Foot,2026-11-24T18:00:00+00:00,Domicile marque,0.7764,2026-11-23T06:45:28.570997+00:00,
 Foot|I2|2026-11-24|Juve Stabia|Catanzaro,Foot,2026-11-24T18:00:00+00:00,Extérieur marque,0.6735,2026-11-23T06:45:28.570997+00:00,
 Foot|I2|2026-11-24|Juve Stabia|Catanzaro,Foot,2026-11-24T18:00:00+00:00,Les deux équipes marquent,0.5366,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Plus de 1,5 but",0.9576,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Plus de 2,5 buts",0.8704,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Moins de 2,5 buts",0.1296,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Moins de 3,5 buts",0.2733,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Moins de 4,5 buts",0.4509,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,Domicile marque,0.9596,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,Extérieur marque,0.8235,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,Les deux équipes marquent,0.7902,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Plus de 1,5 but",0.8423,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Plus de 2,5 buts",0.6421,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Moins de 2,5 buts",0.3579,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Moins de 3,5 buts",0.5786,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Moins de 4,5 buts",0.7612,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,Domicile marque,0.749,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,Extérieur marque,0.8542,2026-11-23T06:45:28.570997+00:00,
-Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,Les deux équipes marquent,0.6398,2026-11-23T06:45:28.570997+00:00,
+Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Plus de 1,5 but",0.9576,2026-11-23T06:45:28.570997+00:00,0
+Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Plus de 2,5 buts",0.8704,2026-11-23T06:45:28.570997+00:00,0
+Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Moins de 2,5 buts",0.1296,2026-11-23T06:45:28.570997+00:00,1
+Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Moins de 3,5 buts",0.2733,2026-11-23T06:45:28.570997+00:00,1
+Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,"Moins de 4,5 buts",0.4509,2026-11-23T06:45:28.570997+00:00,1
+Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,Domicile marque,0.9596,2026-11-23T06:45:28.570997+00:00,1
+Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,Extérieur marque,0.8235,2026-11-23T06:45:28.570997+00:00,0
+Foot|UCL|2026-11-24|Bodo/Glimt|LASK Linz,Foot,2026-11-24T17:45:00+00:00,Les deux équipes marquent,0.7902,2026-11-23T06:45:28.570997+00:00,0
+Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Plus de 1,5 but",0.8423,2026-11-23T06:45:28.570997+00:00,0
+Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Plus de 2,5 buts",0.6421,2026-11-23T06:45:28.570997+00:00,0
+Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Moins de 2,5 buts",0.3579,2026-11-23T06:45:28.570997+00:00,1
+Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Moins de 3,5 buts",0.5786,2026-11-23T06:45:28.570997+00:00,1
+Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,"Moins de 4,5 buts",0.7612,2026-11-23T06:45:28.570997+00:00,1
+Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,Domicile marque,0.749,2026-11-23T06:45:28.570997+00:00,1
+Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,Extérieur marque,0.8542,2026-11-23T06:45:28.570997+00:00,0
+Foot|UCL|2026-11-24|Galatasaray|Aston Villa,Foot,2026-11-24T17:45:00+00:00,Les deux équipes marquent,0.6398,2026-11-23T06:45:28.570997+00:00,0
 Foot|E1|2026-11-24|Bristol City|Wrexham,Foot,2026-11-24T19:45:00+00:00,"Plus de 1,5 but",0.749,2026-11-23T16:37:12.082294+00:00,
 Foot|E1|2026-11-24|Bristol City|Wrexham,Foot,2026-11-24T19:45:00+00:00,"Plus de 2,5 buts",0.4977,2026-11-23T16:37:12.082294+00:00,
 Foot|E1|2026-11-24|Bristol City|Wrexham,Foot,2026-11-24T19:45:00+00:00,"Moins de 2,5 buts",0.5023,2026-11-23T16:37:12.082294+00:00,
@@ -2105,62 +2105,62 @@ Foot|SC0|2026-11-24|Rangers|Aberdeen,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,
 Foot|SC0|2026-11-24|Rangers|Aberdeen,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.9073,2026-11-23T16:37:12.082294+00:00,
 Foot|SC0|2026-11-24|Rangers|Aberdeen,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.5203,2026-11-23T16:37:12.082294+00:00,
 Foot|SC0|2026-11-24|Rangers|Aberdeen,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.4712,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.843,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.6432,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.3568,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.5775,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.7602,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.9125,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.5839,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.5328,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.7945,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.5673,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.4327,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.6567,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.8223,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.7081,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.8221,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.5821,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.7839,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.5519,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.4481,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.6717,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.8333,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.8682,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.5785,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.5022,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.7621,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.521,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.479,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.7008,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.8538,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.8767,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.4866,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.4266,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.8889,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.724,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.276,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.4824,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.6763,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.9022,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.7611,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.6867,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.9092,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.7635,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.2365,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.4313,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.6267,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.9382,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.7067,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.6631,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.8429,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.643,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.357,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.5776,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.7604,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.4299,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.9361,2026-11-23T16:37:12.082294+00:00,
-Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.4024,2026-11-23T16:37:12.082294+00:00,
+Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.843,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.6432,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.3568,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.5775,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.7602,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.9125,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.5839,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Manchester City|Napoli,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.5328,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.7945,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.5673,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.4327,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.6567,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.8223,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.7081,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.8221,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Feyenoord Rotterdam|FC Porto,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.5821,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.7839,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.5519,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.4481,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.6717,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.8333,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.8682,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.5785,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Como|AEK Athens,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.5022,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.7621,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.521,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.479,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.7008,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.8538,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.8767,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.4866,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Arsenal|Borussia Dortmund,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.4266,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.8889,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.724,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.276,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.4824,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.6763,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.9022,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.7611,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|RB Leipzig|Lens,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.6867,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.9092,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.7635,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.2365,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.4313,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.6267,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.9382,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.7067,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Real Madrid|PSV Eindhoven,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.6631,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Plus de 1,5 but",0.8429,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Plus de 2,5 buts",0.643,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Moins de 2,5 buts",0.357,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Moins de 3,5 buts",0.5776,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,"Moins de 4,5 buts",0.7604,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,Domicile marque,0.4299,2026-11-23T16:37:12.082294+00:00,0
+Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,Extérieur marque,0.9361,2026-11-23T16:37:12.082294+00:00,1
+Foot|UCL|2026-11-24|Slovan Bratislava|Real Betis,Foot,2026-11-24T20:00:00+00:00,Les deux équipes marquent,0.4024,2026-11-23T16:37:12.082294+00:00,0
 NBA|2026-11-24|Indiana Pacers|Oklahoma City Thunder,NBA,2026-11-24T00:30:00+00:00,Total plus de 210.5 pts,0.7799,2026-11-23T16:37:12.082294+00:00,1.0
 NBA|2026-11-24|Indiana Pacers|Oklahoma City Thunder,NBA,2026-11-24T00:30:00+00:00,Total moins de 240.5 pts,0.761,2026-11-23T16:37:12.082294+00:00,0.0
 NBA|2026-11-24|Indiana Pacers|Oklahoma City Thunder,NBA,2026-11-24T00:30:00+00:00,Domicile plus de 102.5 pts,0.7921,2026-11-23T16:37:12.082294+00:00,1.0
@@ -2386,3 +2386,180 @@ Tennis|2026-11-25|Martina Trevisan|Veronika Erjavec,Tennis,2026-11-25T05:00:00+0
 Tennis|2026-11-25|Martina Trevisan|Veronika Erjavec,Tennis,2026-11-25T05:00:00+00:00,B gagne sans perdre de set,0.293,2026-11-24T16:45:54.253139+00:00,
 Tennis|2026-11-25|Martina Trevisan|Veronika Erjavec,Tennis,2026-11-25T05:00:00+00:00,Match qui va au bout,0.4013,2026-11-24T16:45:54.253139+00:00,
 Tennis|2026-11-25|Martina Trevisan|Veronika Erjavec,Tennis,2026-11-25T05:00:00+00:00,A gagne le 1er set,0.5059,2026-11-24T16:45:54.253139+00:00,
+Foot|UEL|2026-11-26|Celta Vigo|AFC Bournemouth,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.7598,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Celta Vigo|AFC Bournemouth,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.5179,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Celta Vigo|AFC Bournemouth,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.4821,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Celta Vigo|AFC Bournemouth,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.7037,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Celta Vigo|AFC Bournemouth,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.8558,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Celta Vigo|AFC Bournemouth,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.641,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Celta Vigo|AFC Bournemouth,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.8215,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Celta Vigo|AFC Bournemouth,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.5265,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Union St.-Gilloise|Lech Poznan,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.8377,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Union St.-Gilloise|Lech Poznan,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.6345,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Union St.-Gilloise|Lech Poznan,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.3655,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Union St.-Gilloise|Lech Poznan,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.587,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Union St.-Gilloise|Lech Poznan,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.7681,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Union St.-Gilloise|Lech Poznan,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.9284,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Union St.-Gilloise|Lech Poznan,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.469,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Union St.-Gilloise|Lech Poznan,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.4354,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|RB Salzburg|Ararat-Armenia,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.9329,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|RB Salzburg|Ararat-Armenia,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.8131,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|RB Salzburg|Ararat-Armenia,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.1869,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|RB Salzburg|Ararat-Armenia,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.3622,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|RB Salzburg|Ararat-Armenia,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.5544,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|RB Salzburg|Ararat-Armenia,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.972,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|RB Salzburg|Ararat-Armenia,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.5556,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|RB Salzburg|Ararat-Armenia,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.5401,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Olympiacos|AC Milan,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.634,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Olympiacos|AC Milan,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.3649,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Olympiacos|AC Milan,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.6351,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Olympiacos|AC Milan,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.8283,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Olympiacos|AC Milan,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.9324,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Olympiacos|AC Milan,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.6945,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Olympiacos|AC Milan,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.6202,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Olympiacos|AC Milan,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.4307,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Marseille|Levski Sofia,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.6727,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Marseille|Levski Sofia,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.4081,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Marseille|Levski Sofia,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.5919,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Marseille|Levski Sofia,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.7962,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Marseille|Levski Sofia,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.9144,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Marseille|Levski Sofia,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.7794,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Marseille|Levski Sofia,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.5526,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Marseille|Levski Sofia,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.4307,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Dinamo Zagreb|Bayer Leverkusen,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.857,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Dinamo Zagreb|Bayer Leverkusen,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.6668,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Dinamo Zagreb|Bayer Leverkusen,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.3332,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Dinamo Zagreb|Bayer Leverkusen,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.5509,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Dinamo Zagreb|Bayer Leverkusen,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.7378,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Dinamo Zagreb|Bayer Leverkusen,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.6593,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Dinamo Zagreb|Bayer Leverkusen,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.9054,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Dinamo Zagreb|Bayer Leverkusen,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.5969,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Besiktas|Hapoel Be'er,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.7954,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Besiktas|Hapoel Be'er,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.5687,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Besiktas|Hapoel Be'er,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.4313,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Besiktas|Hapoel Be'er,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.6553,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Besiktas|Hapoel Be'er,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.8214,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Besiktas|Hapoel Be'er,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.9369,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Besiktas|Hapoel Be'er,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.1824,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Besiktas|Hapoel Be'er,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.1709,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Viktoria Plzen|Benfica,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.7109,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Viktoria Plzen|Benfica,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.454,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Viktoria Plzen|Benfica,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.546,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Viktoria Plzen|Benfica,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.7594,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Viktoria Plzen|Benfica,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.8923,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Viktoria Plzen|Benfica,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.5935,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Viktoria Plzen|Benfica,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.7963,2026-11-25T06:31:49.849088+00:00,
+Foot|UEL|2026-11-26|Viktoria Plzen|Benfica,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.4726,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kairat Almaty|Mjällby AIF,Foot,2026-11-26T15:30:00+00:00,"Plus de 1,5 but",0.6041,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kairat Almaty|Mjällby AIF,Foot,2026-11-26T15:30:00+00:00,"Plus de 2,5 buts",0.3335,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kairat Almaty|Mjällby AIF,Foot,2026-11-26T15:30:00+00:00,"Moins de 2,5 buts",0.6665,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kairat Almaty|Mjällby AIF,Foot,2026-11-26T15:30:00+00:00,"Moins de 3,5 buts",0.8503,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kairat Almaty|Mjällby AIF,Foot,2026-11-26T15:30:00+00:00,"Moins de 4,5 buts",0.9439,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kairat Almaty|Mjällby AIF,Foot,2026-11-26T15:30:00+00:00,Domicile marque,0.401,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kairat Almaty|Mjällby AIF,Foot,2026-11-26T15:30:00+00:00,Extérieur marque,0.7824,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kairat Almaty|Mjällby AIF,Foot,2026-11-26T15:30:00+00:00,Les deux équipes marquent,0.3138,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Brighton & Hove Albion|CSU Craiova,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.8247,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Brighton & Hove Albion|CSU Craiova,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.6135,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Brighton & Hove Albion|CSU Craiova,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.3865,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Brighton & Hove Albion|CSU Craiova,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.6095,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Brighton & Hove Albion|CSU Craiova,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.7862,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Brighton & Hove Albion|CSU Craiova,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.9267,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Brighton & Hove Albion|CSU Craiova,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.4262,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Brighton & Hove Albion|CSU Craiova,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.395,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Pafos|FC Midtjylland,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.7985,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Pafos|FC Midtjylland,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.5733,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Pafos|FC Midtjylland,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.4267,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Pafos|FC Midtjylland,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.6507,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Pafos|FC Midtjylland,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.8179,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Pafos|FC Midtjylland,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.789,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Pafos|FC Midtjylland,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.7603,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Pafos|FC Midtjylland,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.5999,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kauno Zalgiris|Riga FC,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.5391,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kauno Zalgiris|Riga FC,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.2711,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kauno Zalgiris|Riga FC,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.7289,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kauno Zalgiris|Riga FC,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.8902,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kauno Zalgiris|Riga FC,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.9631,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kauno Zalgiris|Riga FC,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.2946,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kauno Zalgiris|Riga FC,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.7672,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Kauno Zalgiris|Riga FC,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.226,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Jablonec|FC Lugano,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.8921,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Jablonec|FC Lugano,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.7302,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Jablonec|FC Lugano,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.2698,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Jablonec|FC Lugano,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.4746,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Jablonec|FC Lugano,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.669,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Jablonec|FC Lugano,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.8794,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Jablonec|FC Lugano,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.8135,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Jablonec|FC Lugano,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.7154,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Iberia 1999|Getafe,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.6422,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Iberia 1999|Getafe,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.3738,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Iberia 1999|Getafe,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.6262,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Iberia 1999|Getafe,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.8219,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Iberia 1999|Getafe,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.9289,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Iberia 1999|Getafe,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.6659,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Iberia 1999|Getafe,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.664,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Iberia 1999|Getafe,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.4422,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Heart of Midlothian|AS Monaco,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.8179,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Heart of Midlothian|AS Monaco,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.6029,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Heart of Midlothian|AS Monaco,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.3971,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Heart of Midlothian|AS Monaco,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.6207,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Heart of Midlothian|AS Monaco,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.7949,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Heart of Midlothian|AS Monaco,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.6446,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Heart of Midlothian|AS Monaco,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.8756,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Heart of Midlothian|AS Monaco,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.5644,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Egnatia|Lincoln Red Imps,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.7753,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Egnatia|Lincoln Red Imps,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.5396,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Egnatia|Lincoln Red Imps,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.4604,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Egnatia|Lincoln Red Imps,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.6835,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Egnatia|Lincoln Red Imps,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.8417,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Egnatia|Lincoln Red Imps,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.8051,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Egnatia|Lincoln Red Imps,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.6997,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Egnatia|Lincoln Red Imps,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.5633,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Ajax Amsterdam|FC Thun,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.7125,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Ajax Amsterdam|FC Thun,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.4559,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Ajax Amsterdam|FC Thun,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.5441,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Ajax Amsterdam|FC Thun,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.7578,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Ajax Amsterdam|FC Thun,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.8913,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Ajax Amsterdam|FC Thun,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.8012,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Ajax Amsterdam|FC Thun,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.5867,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|Ajax Amsterdam|FC Thun,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.47,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|SK Brann|AGF,Foot,2026-11-26T17:45:00+00:00,"Plus de 1,5 but",0.4068,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|SK Brann|AGF,Foot,2026-11-26T17:45:00+00:00,"Plus de 2,5 buts",0.1656,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|SK Brann|AGF,Foot,2026-11-26T17:45:00+00:00,"Moins de 2,5 buts",0.8344,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|SK Brann|AGF,Foot,2026-11-26T17:45:00+00:00,"Moins de 3,5 buts",0.9467,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|SK Brann|AGF,Foot,2026-11-26T17:45:00+00:00,"Moins de 4,5 buts",0.9859,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|SK Brann|AGF,Foot,2026-11-26T17:45:00+00:00,Domicile marque,0.649,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|SK Brann|AGF,Foot,2026-11-26T17:45:00+00:00,Extérieur marque,0.2948,2026-11-25T06:31:49.849088+00:00,
+Foot|UECL|2026-11-26|SK Brann|AGF,Foot,2026-11-26T17:45:00+00:00,Les deux équipes marquent,0.1913,2026-11-25T06:31:49.849088+00:00,
+NBA|2026-11-26|Charlotte Hornets|Chicago Bulls,NBA,2026-11-26T00:00:00+00:00,Total plus de 209.5 pts,0.7825,2026-11-25T06:31:49.849088+00:00,
+NBA|2026-11-26|Charlotte Hornets|Chicago Bulls,NBA,2026-11-26T00:00:00+00:00,Total moins de 239.5 pts,0.7583,2026-11-25T06:31:49.849088+00:00,
+NBA|2026-11-26|Charlotte Hornets|Chicago Bulls,NBA,2026-11-26T00:00:00+00:00,Extérieur plus de 102.5 pts,0.7923,2026-11-25T06:31:49.849088+00:00,
+NBA|2026-11-26|New York Knicks|Cleveland Cavaliers,NBA,2026-11-26T00:30:00+00:00,Total plus de 203.5 pts,0.7802,2026-11-25T06:31:49.849088+00:00,
+NBA|2026-11-26|New York Knicks|Cleveland Cavaliers,NBA,2026-11-26T00:30:00+00:00,Total moins de 233.5 pts,0.7606,2026-11-25T06:31:49.849088+00:00,
+NBA|2026-11-26|New York Knicks|Cleveland Cavaliers,NBA,2026-11-26T00:30:00+00:00,Domicile plus de 101.5 pts,0.7917,2026-11-25T06:31:49.849088+00:00,
+NBA|2026-11-26|Golden State Warriors|Sacramento Kings,NBA,2026-11-26T03:00:00+00:00,Total plus de 209.5 pts,0.772,2026-11-25T06:31:49.849088+00:00,
+NBA|2026-11-26|Golden State Warriors|Sacramento Kings,NBA,2026-11-26T03:00:00+00:00,Total moins de 239.5 pts,0.769,2026-11-25T06:31:49.849088+00:00,
+NBA|2026-11-26|Golden State Warriors|Sacramento Kings,NBA,2026-11-26T03:00:00+00:00,Domicile plus de 105.5 pts,0.8003,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-25|Solana Sierra|Carole Monnet,Tennis,2026-11-25T21:00:00+00:00,A gagne au moins un set,0.7401,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-25|Solana Sierra|Carole Monnet,Tennis,2026-11-25T21:00:00+00:00,B gagne au moins un set,0.6591,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-25|Solana Sierra|Carole Monnet,Tennis,2026-11-25T21:00:00+00:00,A gagne sans perdre de set,0.3409,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-25|Solana Sierra|Carole Monnet,Tennis,2026-11-25T21:00:00+00:00,B gagne sans perdre de set,0.2599,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-25|Solana Sierra|Carole Monnet,Tennis,2026-11-25T21:00:00+00:00,Match qui va au bout,0.3991,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-25|Solana Sierra|Carole Monnet,Tennis,2026-11-25T21:00:00+00:00,A gagne le 1er set,0.5375,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Irene Burillo|Laura Samson,Tennis,2026-11-26T05:00:00+00:00,A gagne au moins un set,0.663,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Irene Burillo|Laura Samson,Tennis,2026-11-26T05:00:00+00:00,B gagne au moins un set,0.7365,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Irene Burillo|Laura Samson,Tennis,2026-11-26T05:00:00+00:00,A gagne sans perdre de set,0.2635,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Irene Burillo|Laura Samson,Tennis,2026-11-26T05:00:00+00:00,B gagne sans perdre de set,0.337,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Irene Burillo|Laura Samson,Tennis,2026-11-26T05:00:00+00:00,Match qui va au bout,0.3995,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Irene Burillo|Laura Samson,Tennis,2026-11-26T05:00:00+00:00,A gagne le 1er set,0.4659,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Guiomar Maristany Zuleta De Reales|Nuria Brancaccio,Tennis,2026-11-26T05:00:00+00:00,A gagne au moins un set,0.8188,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Guiomar Maristany Zuleta De Reales|Nuria Brancaccio,Tennis,2026-11-26T05:00:00+00:00,B gagne au moins un set,0.5601,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Guiomar Maristany Zuleta De Reales|Nuria Brancaccio,Tennis,2026-11-26T05:00:00+00:00,A gagne sans perdre de set,0.4399,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Guiomar Maristany Zuleta De Reales|Nuria Brancaccio,Tennis,2026-11-26T05:00:00+00:00,B gagne sans perdre de set,0.1812,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Guiomar Maristany Zuleta De Reales|Nuria Brancaccio,Tennis,2026-11-26T05:00:00+00:00,Match qui va au bout,0.3789,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Guiomar Maristany Zuleta De Reales|Nuria Brancaccio,Tennis,2026-11-26T05:00:00+00:00,A gagne le 1er set,0.6204,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Sofia Costoulas|Varvara Lepchenko,Tennis,2026-11-26T05:00:00+00:00,A gagne au moins un set,0.6726,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Sofia Costoulas|Varvara Lepchenko,Tennis,2026-11-26T05:00:00+00:00,B gagne au moins un set,0.7277,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Sofia Costoulas|Varvara Lepchenko,Tennis,2026-11-26T05:00:00+00:00,A gagne sans perdre de set,0.2723,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Sofia Costoulas|Varvara Lepchenko,Tennis,2026-11-26T05:00:00+00:00,B gagne sans perdre de set,0.3274,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Sofia Costoulas|Varvara Lepchenko,Tennis,2026-11-26T05:00:00+00:00,Match qui va au bout,0.4003,2026-11-25T06:31:49.849088+00:00,
+Tennis|2026-11-26|Sofia Costoulas|Varvara Lepchenko,Tennis,2026-11-26T05:00:00+00:00,A gagne le 1er set,0.4745,2026-11-25T06:31:49.849088+00:00,
