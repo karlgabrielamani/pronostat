@@ -757,9 +757,9 @@ NBA|2026-11-25|Washington Wizards|Boston Celtics,NBA,NBA,2026-11-25T01:00:00+00:
 NBA|2026-11-25|Denver Nuggets|Dallas Mavericks,NBA,NBA,2026-11-25T03:00:00+00:00,Denver Nuggets,Dallas Mavericks,0.6535,,0.3465,2026-11-23T16:37:11.833489+00:00,B,101-120
 Tennis|2026-11-24|Polona Hercog|Sofia Costoulas,Tennis,WTA · IEB+ Argentina Open · 1er tour,2026-11-24T19:30:00+00:00,Polona Hercog,Sofia Costoulas,0.5834,,0.4166,2026-11-23T16:37:11.833489+00:00,B,
 Foot|I2|2026-11-25|Cremonese|Avellino,Foot,Serie B,2026-11-25T18:00:00+00:00,Cremonese,Avellino,0.4828,0.2813,0.2359,2026-11-24T06:30:05.639187+00:00,,
-Foot|UCL|2026-11-25|Sabah FK|Barcelona,Foot,Ligue des Champions,2026-11-25T17:45:00+00:00,Sabah FK,Barcelona,0.0455,0.0831,0.8713,2026-11-24T06:30:05.639187+00:00,,
-Foot|UCL|2026-11-25|Slavia Prague|Villarreal,Foot,Ligue des Champions,2026-11-25T17:45:00+00:00,Slavia Prague,Villarreal,0.1782,0.1961,0.6256,2026-11-24T06:30:05.639187+00:00,,
-Tennis|2026-11-25|Ipek Oz|Julia Riera,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-25T05:00:00+00:00,Ipek Oz,Julia Riera,0.329,,0.671,2026-11-24T06:30:05.639187+00:00,,
+Foot|UCL|2026-11-25|Sabah FK|Barcelona,Foot,Ligue des Champions,2026-11-25T17:45:00+00:00,Sabah FK,Barcelona,0.0455,0.0831,0.8713,2026-11-24T06:30:05.639187+00:00,B,1-4
+Foot|UCL|2026-11-25|Slavia Prague|Villarreal,Foot,Ligue des Champions,2026-11-25T17:45:00+00:00,Slavia Prague,Villarreal,0.1782,0.1961,0.6256,2026-11-24T06:30:05.639187+00:00,B,0-1
+Tennis|2026-11-25|Ipek Oz|Julia Riera,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-25T05:00:00+00:00,Ipek Oz,Julia Riera,0.329,,0.671,2026-11-24T06:30:05.639187+00:00,B,
 Foot|E1|2026-11-25|Bolton|West Brom,Foot,Championship,2026-11-25T19:45:00+00:00,Bolton,West Brom,0.3103,0.2611,0.4285,2026-11-24T09:50:46.023366+00:00,,
 Foot|E1|2026-11-25|Burnley|Birmingham,Foot,Championship,2026-11-25T19:45:00+00:00,Burnley,Birmingham,0.3893,0.2607,0.35,2026-11-24T09:50:46.023366+00:00,,
 Foot|E1|2026-11-25|Watford|Blackburn,Foot,Championship,2026-11-25T19:45:00+00:00,Watford,Blackburn,0.3328,0.3053,0.3619,2026-11-24T09:50:46.023366+00:00,,
@@ -767,13 +767,13 @@ Foot|E1|2026-11-25|Stoke|Millwall,Foot,Championship,2026-11-25T20:00:00+00:00,St
 Foot|I2|2026-11-25|Mantova|Arezzo,Foot,Serie B,2026-11-25T19:00:00+00:00,Mantova,Arezzo,0.631,0.2247,0.1443,2026-11-24T09:50:46.023366+00:00,,
 Foot|I2|2026-11-25|Padova|Sampdoria,Foot,Serie B,2026-11-25T19:00:00+00:00,Padova,Sampdoria,0.4352,0.3265,0.2383,2026-11-24T09:50:46.023366+00:00,,
 Foot|I2|2026-11-25|Pisa|Modena,Foot,Serie B,2026-11-25T19:00:00+00:00,Pisa,Modena,0.4238,0.2817,0.2945,2026-11-24T09:50:46.023366+00:00,,
-Foot|UCL|2026-11-25|Sporting CP|Manchester United,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Sporting CP,Manchester United,0.4378,0.2297,0.3326,2026-11-24T09:50:46.023366+00:00,,
-Foot|UCL|2026-11-25|Paris Saint-Germain|AS Roma,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Paris Saint-Germain,AS Roma,0.5878,0.2082,0.2039,2026-11-24T09:50:46.023366+00:00,,
-Foot|UCL|2026-11-25|Lille|Bayern Munich,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Lille,Bayern Munich,0.1785,0.202,0.6195,2026-11-24T09:50:46.023366+00:00,,
-Foot|UCL|2026-11-25|Club Brugge|Liverpool,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Club Brugge,Liverpool,0.2792,0.2096,0.5111,2026-11-24T09:50:46.023366+00:00,,
-Foot|UCL|2026-11-25|Shakhtar Donetsk|Fenerbahce,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Shakhtar Donetsk,Fenerbahce,0.3977,0.2447,0.3575,2026-11-24T09:50:46.023366+00:00,,
-Foot|UCL|2026-11-25|Atlético Madrid|Viking FK,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Atlético Madrid,Viking FK,0.6401,0.1682,0.1917,2026-11-24T09:50:46.023366+00:00,,
-Foot|UCL|2026-11-25|Internazionale|VfB Stuttgart,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Internazionale,VfB Stuttgart,0.6352,0.1855,0.1793,2026-11-24T09:50:46.023366+00:00,,
+Foot|UCL|2026-11-25|Sporting CP|Manchester United,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Sporting CP,Manchester United,0.4378,0.2297,0.3326,2026-11-24T09:50:46.023366+00:00,N,2-2
+Foot|UCL|2026-11-25|Paris Saint-Germain|AS Roma,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Paris Saint-Germain,AS Roma,0.5878,0.2082,0.2039,2026-11-24T09:50:46.023366+00:00,N,2-2
+Foot|UCL|2026-11-25|Lille|Bayern Munich,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Lille,Bayern Munich,0.1785,0.202,0.6195,2026-11-24T09:50:46.023366+00:00,A,2-1
+Foot|UCL|2026-11-25|Club Brugge|Liverpool,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Club Brugge,Liverpool,0.2792,0.2096,0.5111,2026-11-24T09:50:46.023366+00:00,B,0-3
+Foot|UCL|2026-11-25|Shakhtar Donetsk|Fenerbahce,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Shakhtar Donetsk,Fenerbahce,0.3977,0.2447,0.3575,2026-11-24T09:50:46.023366+00:00,B,0-1
+Foot|UCL|2026-11-25|Atlético Madrid|Viking FK,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Atlético Madrid,Viking FK,0.6401,0.1682,0.1917,2026-11-24T09:50:46.023366+00:00,A,2-0
+Foot|UCL|2026-11-25|Internazionale|VfB Stuttgart,Foot,Ligue des Champions,2026-11-25T20:00:00+00:00,Internazionale,VfB Stuttgart,0.6352,0.1855,0.1793,2026-11-24T09:50:46.023366+00:00,A,2-0
 NBA|2026-11-25|Philadelphia 76ers|Miami Heat,NBA,NBA,2026-11-25T22:00:00+00:00,Philadelphia 76ers,Miami Heat,0.5609,,0.4391,2026-11-24T15:23:00.811605+00:00,,
 NBA|2026-11-26|Charlotte Hornets|Chicago Bulls,NBA,NBA,2026-11-26T00:00:00+00:00,Charlotte Hornets,Chicago Bulls,0.4687,,0.5313,2026-11-24T15:23:00.811605+00:00,,
 NBA|2026-11-26|Oklahoma City Thunder|Minnesota Timberwolves,NBA,NBA,2026-11-26T00:30:00+00:00,Oklahoma City Thunder,Minnesota Timberwolves,0.4167,,0.5833,2026-11-24T15:23:00.811605+00:00,,
@@ -783,7 +783,7 @@ NBA|2026-11-26|Memphis Grizzlies|LA Clippers,NBA,NBA,2026-11-26T01:00:00+00:00,M
 NBA|2026-11-26|Houston Rockets|Phoenix Suns,NBA,NBA,2026-11-26T01:30:00+00:00,Houston Rockets,Phoenix Suns,0.6885,,0.3115,2026-11-24T15:23:00.811605+00:00,,
 NBA|2026-11-26|Golden State Warriors|Sacramento Kings,NBA,NBA,2026-11-26T03:00:00+00:00,Golden State Warriors,Sacramento Kings,0.7174,,0.2826,2026-11-24T15:23:00.811605+00:00,,
 NBA|2026-11-26|Portland Trail Blazers|San Antonio Spurs,NBA,NBA,2026-11-26T03:00:00+00:00,Portland Trail Blazers,San Antonio Spurs,0.601,,0.399,2026-11-24T15:23:00.811605+00:00,,
-Tennis|2026-11-25|Martina Trevisan|Veronika Erjavec,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-25T05:00:00+00:00,Martina Trevisan,Veronika Erjavec,0.5087,,0.4913,2026-11-24T16:45:53.874014+00:00,,
+Tennis|2026-11-25|Martina Trevisan|Veronika Erjavec,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-25T05:00:00+00:00,Martina Trevisan,Veronika Erjavec,0.5087,,0.4913,2026-11-24T16:45:53.874014+00:00,B,
 Foot|UEL|2026-11-26|Celta Vigo|AFC Bournemouth,Foot,Europa League,2026-11-26T17:45:00+00:00,Celta Vigo,AFC Bournemouth,0.2244,0.2444,0.5312,2026-11-25T06:31:49.468159+00:00,,
 Foot|UEL|2026-11-26|Union St.-Gilloise|Lech Poznan,Foot,Europa League,2026-11-26T17:45:00+00:00,Union St.-Gilloise,Lech Poznan,0.8046,0.1301,0.0653,2026-11-25T06:31:49.468159+00:00,,
 Foot|UEL|2026-11-26|RB Salzburg|Ararat-Armenia,Foot,Europa League,2026-11-26T17:45:00+00:00,RB Salzburg,Ararat-Armenia,0.8892,0.0706,0.0403,2026-11-25T06:31:49.468159+00:00,,
@@ -802,7 +802,7 @@ Foot|UECL|2026-11-26|Heart of Midlothian|AS Monaco,Foot,Conference League,2026-1
 Foot|UECL|2026-11-26|Egnatia|Lincoln Red Imps,Foot,Conference League,2026-11-26T17:45:00+00:00,Egnatia,Lincoln Red Imps,0.4781,0.2402,0.2817,2026-11-25T06:31:49.468159+00:00,,
 Foot|UECL|2026-11-26|Ajax Amsterdam|FC Thun,Foot,Conference League,2026-11-26T17:45:00+00:00,Ajax Amsterdam,FC Thun,0.5435,0.2511,0.2054,2026-11-25T06:31:49.468159+00:00,,
 Foot|UECL|2026-11-26|SK Brann|AGF,Foot,Conference League,2026-11-26T17:45:00+00:00,SK Brann,AGF,0.4776,0.4043,0.1181,2026-11-25T06:31:49.468159+00:00,,
-Tennis|2026-11-25|Solana Sierra|Carole Monnet,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-25T21:00:00+00:00,Solana Sierra,Carole Monnet,0.5555,,0.4445,2026-11-25T06:31:49.468159+00:00,,
+Tennis|2026-11-25|Solana Sierra|Carole Monnet,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-25T21:00:00+00:00,Solana Sierra,Carole Monnet,0.5555,,0.4445,2026-11-25T06:31:49.468159+00:00,B,
 Tennis|2026-11-26|Irene Burillo|Laura Samson,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-26T05:00:00+00:00,Irene Burillo,Laura Samson,0.4496,,0.5504,2026-11-25T06:31:49.468159+00:00,,
 Tennis|2026-11-26|Guiomar Maristany Zuleta De Reales|Nuria Brancaccio,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-26T05:00:00+00:00,Guiomar Maristany Zuleta De Reales,Nuria Brancaccio,0.675,,0.325,2026-11-25T06:31:49.468159+00:00,,
 Tennis|2026-11-26|Sofia Costoulas|Varvara Lepchenko,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-26T05:00:00+00:00,Sofia Costoulas,Varvara Lepchenko,0.4622,,0.5378,2026-11-25T06:31:49.468159+00:00,,
@@ -825,3 +825,11 @@ Foot|UECL|2026-11-26|SC Freiburg|FC Twente,Foot,Conference League,2026-11-26T20:
 Foot|UECL|2026-11-26|Inter D'Escaldes|F.C. København,Foot,Conference League,2026-11-26T20:00:00+00:00,Inter D'Escaldes,F.C. København,0.1119,0.1413,0.7468,2026-11-25T16:45:23.977004+00:00,,
 Foot|UECL|2026-11-26|KAA Gent|Red Star Belgrade,Foot,Conference League,2026-11-26T20:00:00+00:00,KAA Gent,Red Star Belgrade,0.3435,0.3047,0.3517,2026-11-25T16:45:23.977004+00:00,,
 Foot|UECL|2026-11-26|Hajduk Split|Sint-Truidense,Foot,Conference League,2026-11-26T20:00:00+00:00,Hajduk Split,Sint-Truidense,0.1265,0.5255,0.348,2026-11-25T16:45:23.977004+00:00,,
+Foot|D2|2026-11-27|Heidenheim|Nurnberg,Foot,2. Bundesliga,2026-11-27T17:30:00+00:00,Heidenheim,Nurnberg,0.3568,0.2319,0.4113,2026-11-26T06:31:50.267553+00:00,,
+Foot|D2|2026-11-27|Bochum|Darmstadt,Foot,2. Bundesliga,2026-11-27T17:30:00+00:00,Bochum,Darmstadt,0.448,0.2765,0.2755,2026-11-26T06:31:50.267553+00:00,,
+Foot|T1|2026-11-27|Alanyaspor|Konyaspor,Foot,Süper Lig,2026-11-27T17:00:00+00:00,Alanyaspor,Konyaspor,0.421,0.3006,0.2785,2026-11-26T06:31:50.267553+00:00,,
+Foot|T1|2026-11-27|Rizespor|Kasimpasa,Foot,Süper Lig,2026-11-27T17:00:00+00:00,Rizespor,Kasimpasa,0.4244,0.2655,0.3101,2026-11-26T06:31:50.267553+00:00,,
+Foot|CDF|2026-11-27|AS Cannes|Le Puy,Foot,Coupe de France,2026-11-27T18:00:00+00:00,AS Cannes,Le Puy,0.2086,0.5978,0.1936,2026-11-26T06:31:50.267553+00:00,,
+Tennis|2026-11-26|Maria Lourdes Carle|Nadia Podoroska,Tennis,WTA · IEB+ Argentina Open · 2e tour,2026-11-26T21:00:00+00:00,Maria Lourdes Carle,Nadia Podoroska,0.3798,,0.6202,2026-11-26T06:31:50.267553+00:00,,
+Tennis|2026-11-27|Carole Monnet|Veronika Erjavec,Tennis,WTA · IEB+ Argentina Open · Quart de finale,2026-11-27T05:00:00+00:00,Carole Monnet,Veronika Erjavec,0.5758,,0.4242,2026-11-26T06:31:50.267553+00:00,,
+Tennis|2026-11-27|Alicia Herrero Linana|Julia Riera,Tennis,WTA · IEB+ Argentina Open · Quart de finale,2026-11-27T05:00:00+00:00,Alicia Herrero Linana,Julia Riera,0.58,,0.42,2026-11-26T06:31:50.267553+00:00,,
